@@ -1,4 +1,4 @@
-# CoreUI React version
+# React version
 
 ## Intro 
 
@@ -28,3 +28,9 @@ public/img (images)
 **npm run clean** to clean build dir
 
 **npm run dev** to run a dev build with watching filesystem for changes 
+
+
+## See also
+
+[Changelog](./CHANGELOG.md)
+[Readme](./README.md)

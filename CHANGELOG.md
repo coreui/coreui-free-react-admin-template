@@ -1,4 +1,9 @@
-## Changelog CoreUI react 
+## Changelog [react](./REACT.md) version
+
+### 2017.08.24
+- webpack.config env.prod
+- Dashboard .dropdown-menu-right temp.scss hotfix (full)
+- callout.scss .chart-wrapper hotfix (full)
 
 ### 2017.08.11
 - Bootstrap 4 beta

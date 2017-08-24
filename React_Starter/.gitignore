@@ -11,6 +11,8 @@ build
 
 # misc
 .DS_Store
+Thumbs.db
 .env
 .idea
 npm-debug.log
+compilation-stats.json

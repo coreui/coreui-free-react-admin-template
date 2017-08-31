@@ -37,11 +37,10 @@
     "font-awesome": "^4.7.0",
     "history": "4.7.2",
     "react": "^15.6.1",
-    "react-addons-css-transition-group": "^15.6.0",
-    "react-addons-transition-group": "^15.6.0",
     "react-chartjs-2": "2.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "4.2.0",
+    "react-router-dom": "4.2.2",
+    "react-transition-group": "^1.2.0",
     "reactstrap": "^4.8.0",
     "simple-line-icons": "^2.4.1"
   },

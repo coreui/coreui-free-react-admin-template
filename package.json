@@ -1,9 +1,9 @@
 {
   "name": "coreui.io-react",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0",
   "description": "Open Source React Admin Template",
   "main": "",
-  "homepage": "http://coreui.io",
+  "homepage": "http://coreui.io/react/",
   "github": "https://github.com/mrholek/CoreUI-React#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

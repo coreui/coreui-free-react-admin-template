@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import {Badge, Nav, NavItem} from 'reactstrap';
 import classNames from 'classnames';
-import nav from './_nav'
+import nav from './_nav';
+import SidebarFooter from './../SidebarFooter';
+import SidebarForm from './../SidebarForm';
+import SidebarHeader from './../SidebarHeader';
 
 class Sidebar extends Component {
 
@@ -65,7 +68,7 @@ class Sidebar extends Component {
     const navDropdown = (item, key) => {
       return (
         <li key={key} className={activeRoute(item.url, props)}>
-          <a className="nav-link nav-dropdown-toggle" href="#" onClick={handleClick.bind(this)}><i className={item.icon}></i> {item.name}</a>
+          <a className="nav-link nav-dropdown-toggle" href="#" onClick={handleClick.bind(this)}><i className={item.icon}></i>{item.name}</a>
           <ul className="nav-dropdown-items">
             {navList(item.children)}
           </ul>
@@ -87,11 +90,14 @@ class Sidebar extends Component {
     // sidebar-nav root
     return (
       <div className="sidebar">
+        <SidebarHeader/>
+        <SidebarForm/>
         <nav className="sidebar-nav">
           <Nav>
             {navList(nav.items)}
           </Nav>
         </nav>
+        <SidebarFooter/>
       </div>
     )
   }

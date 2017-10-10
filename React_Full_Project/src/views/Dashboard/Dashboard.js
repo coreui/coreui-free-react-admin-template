@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Bar, Line} from "react-chartjs-2";
+import React, { Component } from 'react';
+import {Bar, Line} from 'react-chartjs-2';
 import {
   Badge,
   Row,
@@ -11,7 +11,7 @@ import {
   DropdownItem,
   Card,
   CardHeader,
-  CardBlock,
+  CardBody,
   CardFooter,
   CardTitle,
   Button,
@@ -21,7 +21,7 @@ import {
   Label,
   Input,
   Table
-} from "reactstrap";
+} from 'reactstrap';
 
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
@@ -435,14 +435,14 @@ class Dashboard extends Component {
         <Row>
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-primary">
-              <CardBlock className="card-body pb-0">
+              <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
                   <ButtonDropdown id='card1' isOpen={this.state.card1}
                                   toggle={() => { this.setState({ card1: !this.state.card1 }); }}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>
-                    <DropdownMenu className={this.state.card1 ? "show" : ""} right>
+                    <DropdownMenu right>
                       <DropdownItem>Action</DropdownItem>
                       <DropdownItem>Another action</DropdownItem>
                       <DropdownItem disabled>Disabled action</DropdownItem>
@@ -452,7 +452,7 @@ class Dashboard extends Component {
                 </ButtonGroup>
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
-              </CardBlock>
+              </CardBody>
               <div className="chart-wrapper px-3" style={{height:'70px'}}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70}/>
               </div>
@@ -461,14 +461,14 @@ class Dashboard extends Component {
 
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-info">
-              <CardBlock className="card-body pb-0">
+              <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
                   <Dropdown id='card2' isOpen={this.state.card2}
                             toggle={() => { this.setState({ card2: !this.state.card2 }); }}>
-                    <DropdownToggle caret className="p-0" color="transparent">
-                      <i className="icon-settings"></i>
+                    <DropdownToggle className="p-0" color="transparent">
+                      <i className="icon-location-pin"></i>
                     </DropdownToggle>
-                    <DropdownMenu className={this.state.card2 ? "show" : ""} right>
+                    <DropdownMenu right>
                       <DropdownItem>Action</DropdownItem>
                       <DropdownItem>Another action</DropdownItem>
                       <DropdownItem>Something else here</DropdownItem>
@@ -477,7 +477,7 @@ class Dashboard extends Component {
                 </ButtonGroup>
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
-              </CardBlock>
+              </CardBody>
               <div className="chart-wrapper px-3" style={{height:'70px'}}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70}/>
               </div>
@@ -486,14 +486,14 @@ class Dashboard extends Component {
 
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-warning">
-              <CardBlock className="card-body pb-0">
+              <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
                   <Dropdown id='card3' isOpen={this.state.card3}
                             toggle={() => { this.setState({ card3: !this.state.card3 }); }}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>
-                    <DropdownMenu className={this.state.card3 ? "show" : ""} right>
+                    <DropdownMenu right>
                       <DropdownItem>Action</DropdownItem>
                       <DropdownItem>Another action</DropdownItem>
                       <DropdownItem>Something else here</DropdownItem>
@@ -502,7 +502,7 @@ class Dashboard extends Component {
                 </ButtonGroup>
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
-              </CardBlock>
+              </CardBody>
               <div className="chart-wrapper px-0" style={{height:'70px'}}>
                 <Line data={cardChartData3} options={cardChartOpts3} height={70}/>
               </div>
@@ -511,14 +511,14 @@ class Dashboard extends Component {
 
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-danger">
-              <CardBlock className="card-body pb-0">
+              <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
                   <ButtonDropdown id='card4' isOpen={this.state.card4}
                                   toggle={() => { this.setState({ card4: !this.state.card4 }); }}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>
-                    <DropdownMenu className={this.state.card4 ? "show" : ""} right>
+                    <DropdownMenu right>
                       <DropdownItem>Action</DropdownItem>
                       <DropdownItem>Another action</DropdownItem>
                       <DropdownItem>Something else here</DropdownItem>
@@ -527,7 +527,7 @@ class Dashboard extends Component {
                 </ButtonGroup>
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
-              </CardBlock>
+              </CardBody>
               <div className="chart-wrapper px-3" style={{height:'70px'}}>
                 <Bar data={cardChartData4} options={cardChartOpts4} height={70}/>
               </div>
@@ -537,7 +537,7 @@ class Dashboard extends Component {
         <Row>
           <Col>
             <Card>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Row>
                   <Col sm="5">
                     <CardTitle className="mb-0">Traffic</CardTitle>
@@ -563,7 +563,7 @@ class Dashboard extends Component {
                 <div className="chart-wrapper" style={{height: 300 + 'px', marginTop: 40 + 'px'}}>
                   <Line data={mainChart} options={mainChartOpts} height={300}/>
                 </div>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <ul>
                   <li>
@@ -682,7 +682,7 @@ class Dashboard extends Component {
               <CardHeader>
                 Traffic {'&'} Sales
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Row>
                   <Col xs="12" md="6" xl="4">
                     <Row>
@@ -1216,7 +1216,7 @@ class Dashboard extends Component {
                   </tr>
                   </tbody>
                 </Table>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>

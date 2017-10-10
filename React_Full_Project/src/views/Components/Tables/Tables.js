@@ -1,16 +1,16 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import {
   Badge,
   Row,
   Col,
   Card,
   CardHeader,
-  CardBlock,
+  CardBody,
   Table,
   Pagination,
   PaginationItem,
   PaginationLink
-} from "reactstrap";
+} from 'reactstrap';
 
 
 class Tables extends Component {
@@ -23,7 +23,7 @@ class Tables extends Component {
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Simple Table
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Table responsive>
                   <thead>
                   <tr>
@@ -96,7 +96,7 @@ class Tables extends Component {
                     <PaginationLink next href="#"></PaginationLink>
                   </PaginationItem>
                 </Pagination>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -105,7 +105,7 @@ class Tables extends Component {
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Striped Table
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Table responsive striped>
                   <thead>
                   <tr>
@@ -168,7 +168,7 @@ class Tables extends Component {
                   <PaginationItem><PaginationLink href="#">4</PaginationLink></PaginationItem>
                   <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
                 </Pagination>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>
@@ -180,7 +180,7 @@ class Tables extends Component {
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Condensed Table
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Table responsive size="sm">
                   <thead>
                   <tr>
@@ -243,7 +243,7 @@ class Tables extends Component {
                   <PaginationItem><PaginationLink href="#">4</PaginationLink></PaginationItem>
                   <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
                 </Pagination>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -252,7 +252,7 @@ class Tables extends Component {
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Bordered Table
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Table responsive bordered>
                   <thead>
                   <tr>
@@ -310,12 +310,12 @@ class Tables extends Component {
                   <PaginationItem active>
                     <PaginationLink href="#">1</PaginationLink>
                   </PaginationItem>
-                  <lPaginationItemi className="page-item"><PaginationLink href="#">2</PaginationLink></lPaginationItemi>
+                  <PaginationItem className="page-item"><PaginationLink href="#">2</PaginationLink></PaginationItem>
                   <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
                   <PaginationItem><PaginationLink href="#">4</PaginationLink></PaginationItem>
                   <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
                 </Pagination>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -327,7 +327,7 @@ class Tables extends Component {
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Combined All Table
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
@@ -392,7 +392,7 @@ class Tables extends Component {
                     <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
                   </Pagination>
                 </nav>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>

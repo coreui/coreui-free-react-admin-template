@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Badge, Row, Col, Card, CardHeader, CardFooter, CardBlock, Label, Input} from "reactstrap";
+import React, {Component} from 'react';
+import {Badge, Row, Col, Card, CardHeader, CardFooter, CardBody, Label, Input} from 'reactstrap';
 
 class Cards extends Component {
   render() {
@@ -11,20 +11,20 @@ class Cards extends Component {
               <CardHeader>
                 Card title
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
             <Card>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
               <CardFooter>Card footer</CardFooter>
             </Card>
           </Col>
@@ -33,11 +33,11 @@ class Cards extends Component {
               <CardHeader>
                 <i className="fa fa-check float-right"></i>Card with icon
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -50,11 +50,11 @@ class Cards extends Component {
                   <span className="switch-handle"></span>
                 </Label>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -63,11 +63,11 @@ class Cards extends Component {
                 Card with label
                 <Badge color="success" className="float-right">Success</Badge>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -76,11 +76,11 @@ class Cards extends Component {
                 Card with label
                 <Badge pill color="danger" className="float-right">42</Badge>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>
@@ -90,11 +90,11 @@ class Cards extends Component {
               <CardHeader>
                 Card outline primary
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -102,11 +102,11 @@ class Cards extends Component {
               <CardHeader>
                 Card outline secondary
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -114,11 +114,11 @@ class Cards extends Component {
               <CardHeader>
                 Card outline success
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -126,11 +126,11 @@ class Cards extends Component {
               <CardHeader>
                 Card outline info
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -138,11 +138,11 @@ class Cards extends Component {
               <CardHeader>
                 Card outline warning
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -150,11 +150,11 @@ class Cards extends Component {
               <CardHeader>
                 Card outline danger
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>
@@ -165,11 +165,11 @@ class Cards extends Component {
               <CardHeader>
                 Card with accent
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -177,11 +177,11 @@ class Cards extends Component {
               <CardHeader>
                 Card with accent
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -189,11 +189,11 @@ class Cards extends Component {
               <CardHeader>
                 Card with accent
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -201,11 +201,11 @@ class Cards extends Component {
               <CardHeader>
                 Card with accent
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -213,11 +213,11 @@ class Cards extends Component {
               <CardHeader>
                 Card with accent
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -225,73 +225,73 @@ class Cards extends Component {
               <CardHeader>
                 Card with accent
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>
         <Row>
           <Col xs="12" sm="6" md="4">
             <Card className="text-white bg-primary text-center">
-              <CardBlock className="card-body">
+              <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                   <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
                 </blockquote>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
             <Card className="text-white bg-success text-center">
-              <CardBlock className="card-body">
+              <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                   <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
                 </blockquote>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
             <Card className="text-white bg-info text-center">
-              <CardBlock className="card-body">
+              <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                   <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
                 </blockquote>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
             <Card className="text-white bg-warning text-center">
-              <CardBlock className="card-body">
+              <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                   <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
                 </blockquote>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
             <Card className="text-white bg-danger text-center">
-              <CardBlock className="card-body">
+              <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                   <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
                 </blockquote>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
             <Card className="text-white bg-primary text-center">
-              <CardBlock className="card-body">
+              <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                   <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
                 </blockquote>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>
@@ -301,11 +301,11 @@ class Cards extends Component {
               <CardHeader>
                 Card title
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -313,11 +313,11 @@ class Cards extends Component {
               <CardHeader>
                 Card title
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -325,11 +325,11 @@ class Cards extends Component {
               <CardHeader>
                 Card title
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -337,11 +337,11 @@ class Cards extends Component {
               <CardHeader>
                 Card title
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
@@ -349,11 +349,11 @@ class Cards extends Component {
               <CardHeader>
                 Card title
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                 laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
                 ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>

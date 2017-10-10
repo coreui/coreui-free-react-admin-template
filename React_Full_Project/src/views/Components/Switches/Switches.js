@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Row, Col, Card, CardHeader, CardBlock, Label, Input, Table} from "reactstrap";
+import React, {Component} from 'react';
+import {Row, Col, Card, CardHeader, CardBody, Label, Input, Table} from 'reactstrap';
 
 class Switches extends Component {
   render() {
@@ -12,7 +12,7 @@ class Switches extends Component {
               <CardHeader>
                 3d Switch
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-3d switch-primary">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label"></span>
@@ -48,7 +48,7 @@ class Switches extends Component {
                   <span className="switch-label"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -57,7 +57,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch default
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-default switch-primary">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label"></span>
@@ -93,7 +93,7 @@ class Switches extends Component {
                   <span className="switch-label"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -102,7 +102,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch default - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-default switch-pill switch-primary">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label"></span>
@@ -138,7 +138,7 @@ class Switches extends Component {
                   <span className="switch-label"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -147,7 +147,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch outline
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-default switch-primary-outline">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label"></span>
@@ -183,7 +183,7 @@ class Switches extends Component {
                   <span className="switch-label"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -192,7 +192,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch outline - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-default switch-pill switch-primary-outline">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label"></span>
@@ -228,7 +228,7 @@ class Switches extends Component {
                   <span className="switch-label"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -237,7 +237,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch outline alternative
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-default switch-primary-outline-alt">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label"></span>
@@ -273,7 +273,7 @@ class Switches extends Component {
                   <span className="switch-label"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -282,7 +282,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch outline alternative - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-default switch-pill switch-primary-outline-alt">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label"></span>
@@ -318,7 +318,7 @@ class Switches extends Component {
                   <span className="switch-label"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -327,7 +327,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with text
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-text switch-primary">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on="On" data-off="Off"></span>
@@ -363,7 +363,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on="On" data-off="Off"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -372,7 +372,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with text - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-text switch-pill switch-primary">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on="On" data-off="Off"></span>
@@ -408,7 +408,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on="On" data-off="Off"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -417,7 +417,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with text outline
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
 
                 <Label className="switch switch-text switch-primary-outline">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
@@ -454,7 +454,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on="On" data-off="Off"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -463,7 +463,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with text outline - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
 
                 <Label className="switch switch-text switch-pill switch-primary-outline">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
@@ -500,7 +500,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on="On" data-off="Off"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -509,7 +509,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with text outline alternative
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-text switch-primary-outline-alt">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on="On" data-off="Off"></span>
@@ -545,7 +545,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on="On" data-off="Off"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -554,7 +554,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with text outline alternative - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-text switch-pill switch-primary-outline-alt">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on="On" data-off="Off"></span>
@@ -590,7 +590,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on="On" data-off="Off"></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -599,7 +599,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with icon
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-icon switch-primary">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on={'\uf164'} data-off={'\uf165'}></span>
@@ -635,7 +635,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -644,7 +644,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with icon - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-icon switch-pill switch-primary">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
@@ -680,7 +680,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -689,7 +689,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with icon outline
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-icon switch-primary-outline">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
@@ -725,7 +725,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -734,7 +734,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with icon outline - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-icon switch-pill switch-primary-outline">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
@@ -770,7 +770,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -779,7 +779,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with icon outline alternative
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-icon switch-primary-outline-alt">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
@@ -815,7 +815,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -824,7 +824,7 @@ class Switches extends Component {
               <CardHeader>
                 Switch with icon outline alternative - pills
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Label className="switch switch-icon switch-pill switch-primary-outline-alt">
                   <Input type="checkbox" className="switch-input" defaultChecked/>
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
@@ -860,7 +860,7 @@ class Switches extends Component {
                   <span className="switch-label" data-on={'\uf00c'} data-off={'\uf00d'}></span>
                   <span className="switch-handle"></span>
                 </Label>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 
@@ -869,7 +869,7 @@ class Switches extends Component {
               <CardHeader>
                 Sizes
               </CardHeader>
-              <CardBlock className="card-body p-0">
+              <CardBody className="p-0">
                 <Table hover striped className="table-align-middle mb-0">
                   <thead>
                   <tr>
@@ -941,7 +941,7 @@ class Switches extends Component {
                   </tr>
                   </tbody>
                 </Table>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
 

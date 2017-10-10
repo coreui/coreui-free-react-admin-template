@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Card, CardBlock, CardFooter} from "reactstrap";
+import {Card, CardBody, CardFooter} from 'reactstrap';
 import classNames from 'classnames';
 import {mapToCssModules} from 'reactstrap/lib/utils';
 
@@ -34,7 +34,7 @@ class Widget02 extends Component {
     const padding = (variant === '0' ? {card: "p-3", icon: "p-3", lead: "mt-2"} : ( variant === "1" ? {
       card: "p-0", icon: "p-4", lead: "pt-3" } : {card: "p-0", icon: "p-4 px-5", lead: "pt-3"}));
 
-    const card = {style: "card-body clearfix", color: color, icon: icon, classes: ""};
+    const card = {style: "clearfix", color: color, icon: icon, classes: ""};
     card.classes = mapToCssModules(classNames(className, card.style, padding.card), cssModule);
 
     const lead = {style: "h5 mb-0", color: color, classes: ""};
@@ -58,11 +58,11 @@ class Widget02 extends Component {
 
     return (
       <Card>
-        <CardBlock className={ card.classes } {...attributes}>
+        <CardBody className={ card.classes } {...attributes}>
           { blockIcon(card.icon) }
           <div className={ lead.classes }>{ header }</div>
           <div className="text-muted text-uppercase font-weight-bold font-xs">{ mainText }</div>
-        </CardBlock>
+        </CardBody>
         { cardFooter() }
       </Card>
     )

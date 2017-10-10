@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Container, Row, Col, Button, Input, InputGroupAddon, InputGroup, InputGroupButton} from "reactstrap";
+import React, {Component} from 'react';
+import {Container, Row, Col, Button, Input, InputGroupAddon, InputGroup, InputGroupButton} from 'reactstrap';
 
 class Page404 extends Component {
   render() {

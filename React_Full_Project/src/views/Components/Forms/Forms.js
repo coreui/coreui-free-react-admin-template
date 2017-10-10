@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import {
   Row,
   Col,
@@ -10,7 +10,7 @@ import {
   Card,
   CardHeader,
   CardFooter,
-  CardBlock,
+  CardBody,
   Form,
   FormGroup,
   FormText,
@@ -19,7 +19,7 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton
-} from "reactstrap";
+} from 'reactstrap';
 
 class Forms extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class Forms extends Component {
                 <strong>Credit Card</strong>
                 <small> Form</small>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Row>
                   <Col xs="12">
                     <FormGroup>
@@ -99,7 +99,7 @@ class Forms extends Component {
                     </FormGroup>
                   </Col>
                 </Row>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6">
@@ -108,7 +108,7 @@ class Forms extends Component {
                 <strong>Company</strong>
                 <small> Form</small>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <FormGroup>
                   <Label htmlFor="company">Company</Label>
                   <Input type="text" id="company" placeholder="Enter your company name"/>
@@ -139,7 +139,7 @@ class Forms extends Component {
                   <Label htmlFor="country">Country</Label>
                   <Input type="text" id="country" placeholder="Country name"/>
                 </FormGroup>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>
@@ -149,7 +149,7 @@ class Forms extends Component {
               <CardHeader>
                 <strong>Basic Form</strong> Elements
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
                   <FormGroup row>
                     <Col md="3">
@@ -371,8 +371,19 @@ class Forms extends Component {
                       <Input type="file" id="file-multiple-input" name="file-multiple-input" multiple/>
                     </Col>
                   </FormGroup>
+                  <FormGroup row hidden>
+                    <Col md="3">
+                      <Label className="custom-file" htmlFor="file-input">Custom file input</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Label className="custom-file">
+                        <Input className="custom-file" type="file" id="file-input" name="file-input"/>
+                        <span className="custom-file-control"></span>
+                      </Label>
+                    </Col>
+                  </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -382,7 +393,7 @@ class Forms extends Component {
               <CardHeader>
                 <strong>Inline</strong> Form
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" inline>
                   <FormGroup>
                     <Label htmlFor="exampleInputName2" className="pr-1">Name</Label>
@@ -393,7 +404,7 @@ class Forms extends Component {
                     <Input type="email" id="exampleInputEmail2" placeholder="jane.doe@example.com" required/>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -405,7 +416,7 @@ class Forms extends Component {
               <CardHeader>
                 <strong>Horizontal</strong> Form
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" className="form-horizontal">
                   <FormGroup row>
                     <Col md="3">
@@ -426,7 +437,7 @@ class Forms extends Component {
                     </Col>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -436,7 +447,7 @@ class Forms extends Component {
               <CardHeader>
                 <strong>Normal</strong> Form
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post">
                   <FormGroup>
                     <Label htmlFor="nf-email">Email</Label>
@@ -449,7 +460,7 @@ class Forms extends Component {
                     <span className="help-block">Please enter your password</span>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -459,7 +470,7 @@ class Forms extends Component {
               <CardHeader>
                 Input <strong>Grid</strong>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" className="form-horizontal">
                   <FormGroup row>
                     <Col sm="3">
@@ -512,7 +523,7 @@ class Forms extends Component {
                     </Col>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary"><i className="fa fa-user"></i> Login</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -522,7 +533,7 @@ class Forms extends Component {
               <CardHeader>
                 Input <strong>Sizes</strong>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" className="form-horizontal">
                   <FormGroup row>
                     <Col sm="5">
@@ -551,7 +562,7 @@ class Forms extends Component {
                     </Col>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -563,39 +574,37 @@ class Forms extends Component {
           <Col xs="12" sm="6">
             <Card>
               <CardHeader>
-                <strong>Validation states</strong> Form
+                <strong>Validation feedback</strong> Form
               </CardHeader>
-              <CardBlock className="card-body">
-                <FormGroup color="success">
+              <CardBody>
+                <FormGroup>
                   <Label htmlFor="inputIsValid">Input is valid</Label>
-                  <Input state="success" type="text" className="is-valid" id="inputIsValid"/>
+                  <Input type="text" className="is-valid" id="inputIsValid"/>
                 </FormGroup>
-                <FormGroup className="has-warning">
+                <FormGroup>
                   <Label htmlFor="inputIsInvalid">Input is invalid</Label>
                   <Input type="text" className="is-invalid" id="inputIsInvalid"/>
                 </FormGroup>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="6">
             <Card>
               <CardHeader>
-                <strong>Validation states</strong> with optional icons <em>(deprecated)</em>
+                <strong>Validation feedback</strong> Form
               </CardHeader>
-              <CardBlock className="card-body">
-                <FormGroup className="has-success">
-                  <Label htmlFor="inputSuccess2i">Input with success</Label>
-                  <Input type="text" className="form-control-success" id="inputSuccess2i"/>
-                </FormGroup>
-                <FormGroup className="has-warning">
-                  <Label htmlFor="inputWarning2i">Input with warning</Label>
-                  <Input type="text" className="form-control-warning" id="inputWarning2i"/>
-                </FormGroup>
-                <FormGroup className="has-danger has-feedback">
-                  <Label htmlFor="inputError2i">Input with error</Label>
-                  <Input type="text" className="form-control-danger" id="inputError2i"/>
-                </FormGroup>
-              </CardBlock>
+              <CardBody>
+                <Form className="was-validated">
+                  <FormGroup>
+                    <Label htmlFor="inputSuccess2i">Non-required input</Label>
+                    <Input type="text" className="form-control-success" id="inputSuccess2i"/>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label htmlFor="inputWarning2i">Required input</Label>
+                    <Input type="text" className="form-control-warning" id="inputWarning2i" required/>
+                  </FormGroup>
+                </Form>
+              </CardBody>
             </Card>
           </Col>
         </Row>
@@ -605,7 +614,7 @@ class Forms extends Component {
               <CardHeader>
                 <strong>Icon/Text</strong> Groups
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" className="form-horizontal">
                   <FormGroup row>
                     <Col md="12">
@@ -633,7 +642,7 @@ class Forms extends Component {
                     </Col>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -645,7 +654,7 @@ class Forms extends Component {
               <CardHeader>
                 <strong>Buttons</strong> Groups
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" className="form-horizontal">
                   <FormGroup row>
                     <Col md="12">
@@ -681,7 +690,7 @@ class Forms extends Component {
                     </Col>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -693,7 +702,7 @@ class Forms extends Component {
               <CardHeader>
                 <strong>Dropdowns</strong> Groups
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form className="form-horizontal">
                   <FormGroup row>
                     <Col md="12">
@@ -776,7 +785,7 @@ class Forms extends Component {
                     </Col>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
@@ -791,7 +800,7 @@ class Forms extends Component {
                 Use the grid for big devices!
                 <small><code>.col-lg-*</code> <code>.col-md-*</code> <code>.col-sm-*</code></small>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" className="form-horizontal">
                   <FormGroup row>
                     <Col md="8">
@@ -834,7 +843,7 @@ class Forms extends Component {
                     </Col>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary">Action</Button>
                 <Button size="sm" color="danger">Action</Button>
@@ -850,7 +859,7 @@ class Forms extends Component {
                 Input Grid for small devices!
                 <small><code>.col-*</code></small>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post" className="form-horizontal">
                   <FormGroup row>
                     <Col xs="4">
@@ -893,7 +902,7 @@ class Forms extends Component {
                     </Col>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary">Action</Button>
                 <Button size="sm" color="danger">Action</Button>
@@ -910,7 +919,7 @@ class Forms extends Component {
               <CardHeader>
                 Example Form
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post">
                   <FormGroup>
                     <InputGroup>
@@ -937,7 +946,7 @@ class Forms extends Component {
                     <Button type="submit" size="sm" color="primary">Submit</Button>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="4">
@@ -945,7 +954,7 @@ class Forms extends Component {
               <CardHeader>
                 Example Form
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post">
                   <FormGroup>
                     <InputGroup>
@@ -969,7 +978,7 @@ class Forms extends Component {
                     <Button type="submit" size="sm" color="secondary">Submit</Button>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
           <Col xs="12" sm="4">
@@ -977,7 +986,7 @@ class Forms extends Component {
               <CardHeader>
                 Example Form
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form action="" method="post">
                   <FormGroup>
                     <InputGroup>
@@ -1001,7 +1010,7 @@ class Forms extends Component {
                     <Button type="submit" size="sm" color="success">Submit</Button>
                   </FormGroup>
                 </Form>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>
@@ -1016,7 +1025,7 @@ class Forms extends Component {
                   <a href="#" className="btn-close"><i className="icon-close"></i></a>
                 </div>
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Form className="form-horizontal">
                   <FormGroup>
                     <Label htmlFor="prependedInput">Prepended text</Label>
@@ -1072,7 +1081,7 @@ class Forms extends Component {
                     <Button color="secondary">Cancel</Button>
                   </div>
                 </Form>
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>

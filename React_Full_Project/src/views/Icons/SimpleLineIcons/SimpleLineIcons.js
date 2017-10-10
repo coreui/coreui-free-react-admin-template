@@ -1,15 +1,15 @@
-import React, {Component} from "react";
-import {Row, Col, Card, CardHeader, CardBlock} from "reactstrap";
+import React, {Component} from 'react';
+import {Row, Col, Card, CardHeader, CardBody} from 'reactstrap';
 
 class SimpleLineIcons extends Component {
   render() {
     return (
       <div className="animated fadeIn">
-        <Card color="secondary" className="card-default">
+        <Card>
           <CardHeader>
             <i className="fa fa-picture-o"></i> Simple Line Icons
           </CardHeader>
-          <CardBlock className="card-body">
+          <CardBody>
             <Row className="text-center">
 
               <Col xs="6" sm="4" md="3">
@@ -745,7 +745,7 @@ class SimpleLineIcons extends Component {
               </Col>
 
             </Row>
-          </CardBlock>
+          </CardBody>
         </Card>
       </div>
     )

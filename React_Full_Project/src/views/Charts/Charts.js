@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {Bar, Doughnut, Line, Pie, Polar, Radar} from "react-chartjs-2";
-import {CardColumns, Card, CardHeader, CardBlock} from "reactstrap";
+import React, {Component} from 'react';
+import {Bar, Doughnut, Line, Pie, Polar, Radar} from 'react-chartjs-2';
+import {CardColumns, Card, CardHeader, CardBody} from 'reactstrap';
 
 const line = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -153,7 +153,7 @@ class Charts extends Component {
                 </a>
               </div>
             </CardHeader>
-            <CardBlock className="card-body">
+            <CardBody>
               <div className="chart-wrapper">
                 <Line data={line}
                       options={{
@@ -161,7 +161,7 @@ class Charts extends Component {
                   }}
                 />
               </div>
-            </CardBlock>
+            </CardBody>
           </Card>
           <Card>
             <CardHeader>
@@ -172,7 +172,7 @@ class Charts extends Component {
                 </a>
               </div>
             </CardHeader>
-            <CardBlock className="card-body">
+            <CardBody>
               <div className="chart-wrapper">
                 <Bar data={bar}
                      options={{
@@ -180,7 +180,7 @@ class Charts extends Component {
                 }}
                 />
               </div>
-            </CardBlock>
+            </CardBody>
           </Card>
           <Card>
             <CardHeader>
@@ -191,11 +191,11 @@ class Charts extends Component {
                 </a>
               </div>
             </CardHeader>
-            <CardBlock className="card-body">
+            <CardBody>
               <div className="chart-wrapper">
                 <Doughnut data={doughnut}/>
               </div>
-            </CardBlock>
+            </CardBody>
           </Card>
           <Card>
             <CardHeader>
@@ -206,11 +206,11 @@ class Charts extends Component {
                 </a>
               </div>
             </CardHeader>
-            <CardBlock className="card-body">
+            <CardBody>
               <div className="chart-wrapper">
                 <Radar data={radar}/>
               </div>
-            </CardBlock>
+            </CardBody>
           </Card>
           <Card>
             <CardHeader>
@@ -221,11 +221,11 @@ class Charts extends Component {
                 </a>
               </div>
             </CardHeader>
-            <CardBlock className="card-body">
+            <CardBody>
               <div className="chart-wrapper">
                 <Pie data={pie}/>
               </div>
-            </CardBlock>
+            </CardBody>
           </Card>
           <Card>
             <CardHeader>
@@ -236,11 +236,11 @@ class Charts extends Component {
                 </a>
               </div>
             </CardHeader>
-            <CardBlock className="card-body">
+            <CardBody>
               <div className="chart-wrapper">
                 <Polar data={polar}/>
               </div>
-            </CardBlock>
+            </CardBody>
           </Card>
         </CardColumns>
       </div>

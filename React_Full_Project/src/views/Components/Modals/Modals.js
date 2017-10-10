@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardHeader, CardBlock} from "reactstrap";
+import React, {Component} from 'react';
+import {Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardHeader, CardBody} from 'reactstrap';
 
 
 class Modals extends Component {
@@ -84,7 +84,7 @@ class Modals extends Component {
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Bootstrap Modals
               </CardHeader>
-              <CardBlock className="card-body">
+              <CardBody>
                 <Button onClick={this.toggle}>Launch demo modal</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
@@ -222,7 +222,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-              </CardBlock>
+              </CardBody>
             </Card>
           </Col>
         </Row>

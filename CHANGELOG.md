@@ -1,5 +1,8 @@
 ## [react](./REACT.md) version `changelog`
 
+###### `v1.0.2`
+- `HeaderDropdown` component example extracted out of `Header`
+
 ###### `v1.0.1`
 - moved to react: `^16.0.0`
 - moved to reactstrap: `^5.0.0-alpha.3`

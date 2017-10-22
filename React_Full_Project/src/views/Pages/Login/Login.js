@@ -9,7 +9,7 @@ class Login extends Component {
         <Container>
           <Row className="justify-content-center">
             <Col md="8">
-              <CardGroup className="mb-0">
+              <CardGroup>
                 <Card className="p-4">
                   <CardBody>
                     <h1>Login</h1>

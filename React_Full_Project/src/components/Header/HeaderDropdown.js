@@ -27,9 +27,8 @@ class HeaderDropdown extends Component {
   dropAccnt() {
     return (
       <NavDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle nav caret={this.state.caretVisible}>
+        <DropdownToggle nav>
           <img src={'img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com"/>
-          <span className="d-md-down-none">admin</span>
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem header tag="div" className="text-center"><strong>Account</strong></DropdownItem>

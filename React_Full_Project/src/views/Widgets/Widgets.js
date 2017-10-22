@@ -107,7 +107,7 @@ class Widgets extends Component {
             <Widget03 dataBox={() => ({variant: "google-plus", followers : "894", circles: "92"})}/>
           </Col>
         </Row>
-        <CardGroup>
+        <CardGroup className="mb-4">
           <Widget04 icon="icon-people" color="info" header="87.500" value="25">Visitors</Widget04>
           <Widget04 icon="icon-user-follow" color="success" header="385" value="25">New Clients</Widget04>
           <Widget04 icon="icon-basket-loaded" color="warning" header="1238" value="25">Products sold</Widget04>

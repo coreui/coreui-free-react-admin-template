@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import {Badge, Nav, NavItem, NavLink as RsNavLink} from 'reactstrap';
-import isExternal from 'is-url-external';
 import classNames from 'classnames';
 import nav from './_nav';
 import SidebarFooter from './../SidebarFooter';
@@ -17,6 +16,7 @@ class Sidebar extends Component {
   }
 
   activeRoute(routeName, props) {
+    // return this.props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
     return props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
 
   }
@@ -56,11 +56,14 @@ class Sidebar extends Component {
     // nav item with nav link
     const navItem = (item, key) => {
       const classes = classNames( item.class );
+      const isExternal = (url) => {
+        return url.substring(0, 4) === 'http' ? true : false
+      }
       const variant = classNames( "nav-link", item.variant ? `nav-link-${item.variant}` : "");
       return (
         <NavItem key={key} className={classes}>
           { isExternal(item.url) ?
-              <RsNavLink href={item.url} className={variant} activeClassName="active">
+              <RsNavLink href={item.url} className={variant} active>
                 <i className={item.icon}></i>{item.name}{badge(item.badge)}
               </RsNavLink>
             :

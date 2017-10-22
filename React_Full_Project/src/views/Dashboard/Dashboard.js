@@ -992,7 +992,7 @@ class Dashboard extends Component {
                 </Row>
                 <br/>
                 <Table hover responsive className="table-outline mb-0 d-none d-sm-table">
-                  <thead className="thead-default">
+                  <thead className="thead-light">
                   <tr>
                     <th className="text-center"><i className="icon-people"></i></th>
                     <th>User</th>

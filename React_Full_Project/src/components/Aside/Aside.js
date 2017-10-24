@@ -299,15 +299,6 @@ class Aside extends Component {
             </div>
             <Progress className="progress-xs" color="success" value="10"/>
             <small className="text-muted">25GB/256GB</small>
-
-            <div className="text-uppercase mb-1 mt-2">
-              <small><b>Memory</b></small>
-            </div>
-            <Progress multi>
-              <Progress bar className="progress-xs" color="secondary" value={60}>declared</Progress>
-              <Progress bar className="progress-xs" color="info" value="15">buffered</Progress>
-            </Progress>
-            <small className="text-muted">12GB/16GB</small>
           </TabPane>
         </TabContent>
       </aside>

@@ -41,7 +41,7 @@ class Widget01 extends Component {
     }
 
     const classes = mapToCssModules(classNames(className, card.style, card.bgColor), cssModule);
-    progress.style = classNames("progress-xs my-1", progress.style);
+    progress.style = classNames("progress-xs my-3", progress.style);
 
     return (
       <Card className={ classes } {...attributes}>

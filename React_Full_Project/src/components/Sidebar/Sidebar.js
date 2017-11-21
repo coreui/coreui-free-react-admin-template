@@ -46,30 +46,41 @@ class Sidebar extends Component {
 
     // nav list section title
     const title =  (title, key) => {
-      const classes = classNames( "nav-title", title.class);
+      const classes = classNames( 'nav-title', title.class);
       return (<li key={key} className={ classes }>{wrapper(title)} </li>);
     };
 
     // nav list divider
-    const divider = (divider, key) => (<li key={key} className="divider"></li>);
+    const divider = (divider, key) => {
+      const classes = classNames( 'divider', divider.class);
+      return (<li key={key} className={ classes }></li>);
+    };
 
     // nav item with nav link
     const navItem = (item, key) => {
-      const classes = classNames( item.class )
-      const isExternal = (url) => {
-        return url.substring(0, 4) === 'http' ? true : false
-      }
-      const variant = classNames( "nav-link", item.variant ? `nav-link-${item.variant}` : "");
+      const classes = {
+        item: classNames( item.class) ,
+        link: classNames( 'nav-link', item.variant ? `nav-link-${item.variant}` : ''),
+        icon: classNames( item.icon )
+      };
       return (
-        <NavItem key={key} className={classes}>
-          { isExternal(item.url) ?
-              <RsNavLink href={item.url} className={variant} active>
-                <i className={item.icon}></i>{item.name}{badge(item.badge)}
-              </RsNavLink>
+        navLink(item, key, classes)
+      )
+    };
+
+    // nav link
+    const navLink = (item, key, classes) => {
+      const url = item.url ? item.url : '';
+      return (
+        <NavItem key={key} className={classes.item}>
+          { isExternal(url) ?
+            <RsNavLink href={url} className={classes.link} active>
+              <i className={classes.icon}></i>{item.name}{badge(item.badge)}
+            </RsNavLink>
             :
-              <NavLink to={item.url} className={variant} activeClassName="active">
-                <i className={item.icon}></i>{item.name}{badge(item.badge)}
-              </NavLink>
+            <NavLink to={url} className={classes.link} activeClassName="active">
+              <i className={classes.icon}></i>{item.name}{badge(item.badge)}
+            </NavLink>
           }
         </NavItem>
       )
@@ -86,8 +97,8 @@ class Sidebar extends Component {
         </li>)
     };
 
-    // nav link
-    const navLink = (item, idx) =>
+    // nav type
+    const navType = (item, idx) =>
       item.title ? title(item, idx) :
       item.divider ? divider(item, idx) :
       item.children ? navDropdown(item, idx)
@@ -95,7 +106,12 @@ class Sidebar extends Component {
 
     // nav list
     const navList = (items) => {
-      return items.map( (item, index) => navLink(item, index) );
+      return items.map( (item, index) => navType(item, index) );
+    };
+
+    const isExternal = (url) => {
+      const link = url ? url.substring(0, 4) : '';
+      return link === 'http';
     };
 
     // sidebar-nav root

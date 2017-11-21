@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Row, Col, Card, CardHeader, CardBody, Label, Input, Table} from "reactstrap";
+import {Row, Col, Card, CardHeader, CardBody, Label, Input, Table} from 'reactstrap';
 
 class Switches extends Component {
   render() {

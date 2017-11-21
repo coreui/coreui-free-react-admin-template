@@ -1,5 +1,25 @@
 ## [react](./REACT.md) version `changelog`
 
+###### `v1.0.6`
+
+- update: react to `^16.1.1`
+- update: reactstrap to `^5.0.0-alpha.4`
+- refactor: deprecated reactstrap `NavDropdown` change to `Dropdown` with `nav` prop
+- refactor: use prop `bsSize` instead of the `size` to bootstrap's input sizing
+- update: dependencies
+
+###### `v1.0.5`
+- feature: Sidebar add divider.class
+- refactor: Sidebar
+- moved to react: `^16.1.0`
+- chore: dependencies update
+
+###### `v1.0.4`
+- refactor: scss
+
+###### `v1.0.3`
+- update: bootstrap to `4.0.0-beta.2`
+
 ###### `v1.0.2`
 - `HeaderDropdown` component example extracted out of `Header`
 

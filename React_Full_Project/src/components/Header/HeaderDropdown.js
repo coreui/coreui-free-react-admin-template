@@ -4,7 +4,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  NavDropdown
+  Dropdown
 } from 'reactstrap';
 
 class HeaderDropdown extends Component {
@@ -26,7 +26,7 @@ class HeaderDropdown extends Component {
 
   dropAccnt() {
     return (
-      <NavDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+      <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle nav>
           <img src={'img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com"/>
         </DropdownToggle>
@@ -45,7 +45,7 @@ class HeaderDropdown extends Component {
           <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>
           <DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
         </DropdownMenu>
-      </NavDropdown>
+      </Dropdown>
     );
   }
 

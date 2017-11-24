@@ -221,7 +221,7 @@ class Forms extends Component {
                       <Label htmlFor="selectLg">Select Large</Label>
                     </Col>
                     <Col xs="12" md="9" size="lg">
-                      <Input type="select" name="selectLg" id="selectLg" size="lg">
+                      <Input type="select" name="selectLg" id="selectLg" bsSize="lg">
                         <option value="0">Please select</option>
                         <option value="1">Option #1</option>
                         <option value="2">Option #2</option>
@@ -234,7 +234,7 @@ class Forms extends Component {
                       <Label htmlFor="selectSm">Select Small</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="select" name="selectSm" id="SelectLm" size="sm">
+                      <Input type="select" name="selectSm" id="SelectLm" bsSize="sm">
                         <option value="0">Please select</option>
                         <option value="1">Option #1</option>
                         <option value="2">Option #2</option>
@@ -307,9 +307,11 @@ class Forms extends Component {
                         <Label check htmlFor="inline-radio1">
                           <Input type="radio" id="inline-radio1" name="inline-radios" value="option1"/> One
                         </Label>
+                        {' '}
                         <Label check htmlFor="inline-radio2">
                           <Input type="radio" id="inline-radio2" name="inline-radios" value="option2"/> Two
                         </Label>
+                        {' '}
                         <Label check htmlFor="inline-radio3">
                           <Input type="radio" id="inline-radio3" name="inline-radios" value="option3"/> Three
                         </Label>
@@ -346,9 +348,11 @@ class Forms extends Component {
                         <Label check htmlFor="inline-checkbox1">
                           <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"/> One
                         </Label>
+                        {' '}
                         <Label check htmlFor="inline-checkbox2">
                           <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" value="option2"/> Two
                         </Label>
+                        {' '}
                         <Label check htmlFor="inline-checkbox3">
                           <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" value="option3"/> Three
                         </Label>
@@ -540,8 +544,7 @@ class Forms extends Component {
                       <Label htmlFor="input-small">Small Input</Label>
                     </Col>
                     <Col sm="6">
-                      <Input size="sm" type="text" id="input-small" name="input-small" className="input-sm"
-                             placeholder=".form-control-sm"/>
+                      <Input bsSize="sm" type="text" id="input-small" name="input-small" className="input-sm" placeholder=".form-control-sm"/>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -557,8 +560,7 @@ class Forms extends Component {
                       <Label htmlFor="input-large">Large Input</Label>
                     </Col>
                     <Col sm="6">
-                      <Input size="lg" type="text" id="input-large" name="input-large" className="input-lg"
-                             placeholder=".form-control-lg"/>
+                      <Input bsSize="lg" type="text" id="input-large" name="input-large" className="input-lg" placeholder=".form-control-lg"/>
                     </Col>
                   </FormGroup>
                 </Form>

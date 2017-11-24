@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Nav,
   NavItem,
@@ -42,7 +42,7 @@ class Header extends Component {
           <span className="navbar-toggler-icon"></span>
         </NavbarToggler>
       </header>
-    )
+    );
   }
 }
 

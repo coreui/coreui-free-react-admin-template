@@ -13,10 +13,9 @@ class Dashboard extends Component {
   componentDidMount() {
    	axios.get(`http://lgc-sandbox-dev:9200/console/_search`)
    	  .then(res => {
-   	    //const results = res.data.hits.hits.map(obj => obj.data);
-   	    console.log(res);
-   	    //console.log(result);
-   	    //this.setState({ results });
+   	    const results = res.data.data.hits.hits.map(obj => obj.data);
+   	    console.log(results);
+   	    this.setState({ results });
    	  });
   }
 
@@ -25,7 +24,9 @@ class Dashboard extends Component {
       <div className="animated fadeIn">
         <div>
         <ul>
-          
+          {this.state.results.map(result =>
+            <li>{result._source.id_flu}</li>
+          )}
         </ul>
       </div>
       </div>

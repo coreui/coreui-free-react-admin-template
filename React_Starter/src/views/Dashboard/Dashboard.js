@@ -13,10 +13,10 @@ class Dashboard extends Component {
   componentDidMount() {
    	axios.get(`http://lgc-sandbox-dev:9200/console/_search`)
    	  .then(res => {
-   	    const results = res.data.hits.hits.map(obj => obj.data);
+   	    //const results = res.data.hits.hits.map(obj => obj.data);
    	    console.log(res);
-   	    console.log(result);
-   	    this.setState({ results });
+   	    //console.log(result);
+   	    //this.setState({ results });
    	  });
   }
 

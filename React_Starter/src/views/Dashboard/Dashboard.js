@@ -23,7 +23,40 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-   	axios.get(`http://lgc-sandbox-dev:9200/console/_search`)
+   	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
+  		version: true,
+  		size: 500,
+  		sort: [
+  		  {
+  		    ts_cre: {
+  		      order: 'desc',
+  		      unmapped_type: 'boolean'
+  		    }
+  		  }
+  		],
+  		query: {
+  		  bool: {
+  		    must: [
+  		      {
+  		        query_string: {
+  		          query: 'type:flux',
+  		          analyze_wildcard: true,
+  		          default_field: '*'
+  		        }
+  		      },
+  		      {
+  		        range: {
+  		          ts_cre: {
+  		            gte: 1482857265837,
+  		            lte: 1514393265837,
+  		            format: 'epoch_millis'
+  		          }
+  		        }
+  		      }
+  		    ],
+  		  }
+  		}
+   	})
    	  .then(res => {
    	    const results = res.data.hits.hits.map(obj => obj._source);
    	    console.log(results)

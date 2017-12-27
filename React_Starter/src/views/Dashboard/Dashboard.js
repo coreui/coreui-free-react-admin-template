@@ -13,8 +13,9 @@ class Dashboard extends Component {
   componentDidMount() {
    	axios.get(`http://lgc-sandbox-dev:9200/console/_search`)
    	  .then(res => {
+   	    console.log(res);
    	    const results = res.data.data.hits.hits.map(obj => obj.data);
-   	    console.log(results);
+   	    
    	    this.setState({ results });
    	  });
   }

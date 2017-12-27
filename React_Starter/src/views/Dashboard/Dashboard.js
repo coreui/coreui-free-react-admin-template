@@ -67,8 +67,13 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="animated fadeIn">
-        
-      <Table responsive striped>
+        <Col xs="12" lg="12">
+            <Card>
+              <CardHeader>
+                <i className="fa fa-align-justify"></i> 500 Derniers Flux
+              </CardHeader>
+              <CardBody>
+      		  	<Table responsive striped>
                   <thead>
                   <tr>
                     <th>Flux ID</th>
@@ -98,6 +103,9 @@ class Dashboard extends Component {
                   }
                   </tbody>
                 </Table>
+              </CardBody>
+            </Card>
+          </Col>
       </div>
     )
   }

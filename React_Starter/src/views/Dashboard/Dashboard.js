@@ -11,7 +11,7 @@ class Dashboard extends Component {
   }
   
   componentDidMount() {
-   	axios.get(`http://www.reddit.com/r/${this.props.subreddit}.json`)
+   	axios.get(`http://www.reddit.com/r/reactjs.json`)
    	  .then(res => {
    	    const posts = res.data.data.children.map(obj => obj.data);
    	    this.setState({ posts });

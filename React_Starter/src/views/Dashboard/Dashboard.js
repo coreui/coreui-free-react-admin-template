@@ -9,12 +9,14 @@ class Dashboard extends Component {
       posts: []
     };
   }
-  
+
   componentDidMount() {
-   	axios.get(`http://www.reddit.com/r/reactjs.json`)
+   	axios.get(`http://lgc-sandbox-dev:9200/console/_search`)
    	  .then(res => {
-   	    const posts = res.data.data.children.map(obj => obj.data);
-   	    this.setState({ posts });
+   	    const results = res.data.hits.hits.map(obj => obj.data);
+   	    console.log(res);
+   	    console.log(result);
+   	    this.setState({ results });
    	  });
   }
 
@@ -22,10 +24,9 @@ class Dashboard extends Component {
     return (
       <div className="animated fadeIn">
         <div>
-        <h1>{`/r/${this.props.subreddit}`}</h1>
         <ul>
-          {this.state.posts.map(post =>
-            <li key={post.id}>{post.title}</li>
+          {this.state.results.map(result =>
+            <li>{result._source.id_flu}</li>
           )}
         </ul>
       </div>

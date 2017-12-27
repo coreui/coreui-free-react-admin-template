@@ -6,7 +6,7 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      posts: []
+      results: []
     };
   }
 
@@ -25,9 +25,7 @@ class Dashboard extends Component {
       <div className="animated fadeIn">
         <div>
         <ul>
-          {this.state.results.map(result =>
-            <li>{result._source.id_flu}</li>
-          )}
+          
         </ul>
       </div>
       </div>

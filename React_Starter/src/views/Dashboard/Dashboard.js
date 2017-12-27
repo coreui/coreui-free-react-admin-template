@@ -64,6 +64,16 @@ class Dashboard extends Component {
    	  });
   }
 
+  renderStaFlu(sta_flu) {
+  	if (sta_flu == 'S') {
+  		return (<td><Badge color="success">{ sta_flu }</Badge></td>)
+  	} else if (sta_flu == 'A') {
+  		return (<td><Badge color="warning">{ sta_flu }</Badge></td>)
+  	} else {
+  		return (<td><Badge color="danger">{ sta_flu }</Badge></td>)
+  	}
+  }
+
   render() {
     return (
       <div className="animated fadeIn">
@@ -97,7 +107,7 @@ class Dashboard extends Component {
             				<td>{ result.ref_flu }</td>
             				<td>{ result.ts_cre }</td>
             				<td>{ "Requete pas encore implementée" }</td>
-            				<td><Badge color="success">{ result.sta_flu }</Badge></td>
+            				{this.renderStaFlu(result.sta_flu)}
             			</tr>
           			)
                   }

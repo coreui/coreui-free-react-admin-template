@@ -1,4 +1,16 @@
 import React, { Component } from 'react';
+import {
+  Badge,
+  Row,
+  Col,
+  Card,
+  CardHeader,
+  CardBody,
+  Table,
+  Pagination,
+  PaginationItem,
+  PaginationLink
+} from 'reactstrap';
 import axios from 'axios';
 
 class Dashboard extends Component {

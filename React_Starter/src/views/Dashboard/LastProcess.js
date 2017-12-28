@@ -4,9 +4,8 @@ import axios from 'axios';
 class LastProcess extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
-      fluKey: []
+      fluKey: props.flux
     };
   }
 
@@ -27,18 +26,9 @@ class LastProcess extends Component {
   		    must: [
   		      {
   		        query_string: {
-  		          query: 'type:traitement',
+  		          query: 'type:traitement AND num_flu:' + flu_key,
   		          analyze_wildcard: true,
   		          default_field: '*'
-  		        }
-  		      },
-  		      {
-  		        range: {
-  		          ts_cre: {
-  		            gte: 1482857265837,
-  		            lte: 1514393265837,
-  		            format: 'epoch_millis'
-  		          }
   		        }
   		      }
   		    ],

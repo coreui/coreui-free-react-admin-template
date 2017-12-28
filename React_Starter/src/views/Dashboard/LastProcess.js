@@ -26,7 +26,7 @@ class LastProcess extends Component {
   		    must: [
   		      {
   		        query_string: {
-  		          query: 'type:traitement AND num_flu:' + flu_key,
+  		          query: 'type:traitement AND num_flu:' + fluKey,
   		          analyze_wildcard: true,
   		          default_field: '*'
   		        }

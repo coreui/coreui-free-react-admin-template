@@ -75,7 +75,7 @@ class Dashboard extends Component {
   }
 
   renderRAIColumn(gln_flu, rai_soc) {
-  	if (rai_soc != "") {
+  	if (rai_soc != null) {
   		return(rai_soc)
   	} else {
   		return(gln_flu)

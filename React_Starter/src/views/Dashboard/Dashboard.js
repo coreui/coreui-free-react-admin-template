@@ -69,9 +69,9 @@ class Dashboard extends Component {
   	if (sta_flu == 'S') {
   		return (<td><Badge color="success">{ "Succes" }</Badge></td>)
   	} else if (sta_flu == 'A') {
-  		return (<td><Badge color="warning">{ "Avertissement" }</Badge></td>)
+  		return (<td><Badge color="warning"><b>{ "Avertissement" }</b></Badge></td>)
   	} else {
-  		return (<td><Badge color="danger">{ "Erreur" }</Badge></td>)
+  		return (<td><Badge color="danger"><b>{ "Erreur" }</b></Badge></td>)
   	}
   }
 
@@ -112,7 +112,7 @@ class Dashboard extends Component {
                   {
                   	this.state.results.map(result =>
             			<tr key={result.num_flu}>
-            				<td>{ result.id_flu }</td>
+            				<td>{ (result.sta_flu == 'S') ? result.id_flu : <b> { result.id_flu } </b> }</td>
             				<td>{ result.typ_flu }</td>
             				<td>{ this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) }</td>
             				<td>{ this.renderRAIColumn(result.des_flu, result.rai_soc_des) }</td>

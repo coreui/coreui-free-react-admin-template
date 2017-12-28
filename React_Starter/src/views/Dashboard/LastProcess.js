@@ -38,7 +38,7 @@ class LastProcess extends Component {
    	})
    	  .then(res => {
    	    const results = res.data.hits.hits.map(obj => obj._source);
-   	    console.log(results)
+   	    console.log(results);
    	    this.setState({ results });
    	  });
   }
@@ -48,7 +48,8 @@ class LastProcess extends Component {
     		<div>
       			{
       			  this.state.results.map(result =>
-      			  	{ result.typ_tra } - { result.lib_tra } - { new Date(result.ts_cre).toLocaleString() }
+      			  	/*{ result.typ_tra } - { result.lib_tra } - { new Date(result.ts_cre).toLocaleString() }*/
+      			  	console.log(result);
       			  )
       			}
     		</div>

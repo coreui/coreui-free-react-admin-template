@@ -12,6 +12,7 @@ import {
   PaginationLink
 } from 'reactstrap';
 import axios from 'axios';
+import LastProcess from './LastProcess'
 
 class Dashboard extends Component {
   constructor(props) {
@@ -117,7 +118,7 @@ class Dashboard extends Component {
             				<td>{ this.renderRAIColumn(result.des_flu, result.rai_soc_des) }</td>
             				<td>{ result.ref_flu }</td>
             				<td>{ /*result.ts_cre*/  new Date().toLocaleTimeString()}</td>
-            				<td>{ "Requete pas encore implementée" }</td>
+            				<td><LastProcess flux={result.num_flu}/></td>
             				{this.renderStaFlu(result.sta_flu)}
             			</tr>
           			)

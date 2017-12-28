@@ -4,16 +4,16 @@ import axios from 'axios';
 class LastProcess extends Component {
   constructor(props) {
     super(props);
-
+    cnosole.log(props)
     this.state = {
-      results: []
+      fluKey: []
     };
   }
 
   componentDidMount() {
    	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
   		version: true,
-  		size: 500,
+  		size: 1,
   		sort: [
   		  {
   		    ts_cre: {
@@ -46,17 +46,15 @@ class LastProcess extends Component {
   		}
    	})
    	  .then(res => {
-   	    const results = res.data.hits.hits.map(obj => obj._source);
-   	    console.log(results)
-   	    this.setState({ results });
+   	    console.log(res)
    	  });
   }
 
   render() {
     return (
-      
+      "Loading"
     )
   }
 }
 
-export default Dashboard;
+export default LastProcess;

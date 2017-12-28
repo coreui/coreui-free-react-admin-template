@@ -109,9 +109,9 @@ class Dashboard extends Component {
                   </tr>
                   </thead>
                   <tbody>
-                  { // background-color: #f86c6b6b
+                  { // 
                   	this.state.results.map(result =>
-            			<tr key={result.num_flu} style={ (result.sta_flu == 'S') ? {} : { 'background-color': '#f86c6b6b' } }>
+            			<tr key={result.num_flu}>
             				<td>{ (result.sta_flu == 'S') ? result.id_flu : <b> { result.id_flu } </b> }</td>
             				<td>{ (result.sta_flu == 'S') ? result.typ_flu : <b> { result.typ_flu } </b> }</td>
             				<td>{ (result.sta_flu == 'S') ? this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) : <b> { this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) } </b> }</td>

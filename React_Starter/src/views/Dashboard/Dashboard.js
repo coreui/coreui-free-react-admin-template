@@ -14,9 +14,6 @@ import {
 import axios from 'axios';
 import LastProcess from './LastProcess';
 
-const ldap = require('ldapjs')
-
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);

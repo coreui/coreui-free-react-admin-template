@@ -27,7 +27,7 @@ class LastProcess extends Component {
   		    must: [
   		      {
   		        query_string: {
-  		          query: 'type:traitement AND num_flu:' + this.state.fluKey,
+  		          query: 'type:traitement AND num_flu:',
   		          analyze_wildcard: true,
   		          default_field: '*'
   		        }
@@ -43,15 +43,19 @@ class LastProcess extends Component {
    	  });
   }
 
-  render() {
+ render() {
     return (
-      {
-        this.state.results.map(result =>
-        	{ result.typ_tra } - { result.lib_tra } - { new Date(result.ts_cre).toLocaleString() }
-        )
-      }
-    )
+    		<div>
+      			{
+      			  this.state.results.map(result =>
+      			  	{ result.typ_tra } - { result.lib_tra } - { new Date(result.ts_cre).toLocaleString() }
+      			  )
+      			}
+    		</div>
+   		   )
   }
 }
+
+
 
 export default LastProcess;

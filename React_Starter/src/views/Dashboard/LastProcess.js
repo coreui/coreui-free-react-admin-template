@@ -5,7 +5,8 @@ class LastProcess extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fluKey: props.flux
+      fluKey: props.flux,
+      results: []
     };
   }
 
@@ -36,13 +37,19 @@ class LastProcess extends Component {
   		}
    	})
    	  .then(res => {
-   	    console.log(res)
+   	    const results = res.data.hits.hits.map(obj => obj._source);
+   	    console.log(results)
+   	    this.setState({ results });
    	  });
   }
 
   render() {
     return (
-      "Loading"
+      {
+        this.state.results.map(result =>
+        	{ result.typ_tra } - { result.lib_tra } - { new Date(result.ts_cre).toLocaleString() }
+        )
+      }
     )
   }
 }

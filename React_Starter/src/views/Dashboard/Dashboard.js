@@ -117,7 +117,7 @@ class Dashboard extends Component {
             				<td>{ this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) }</td>
             				<td>{ this.renderRAIColumn(result.des_flu, result.rai_soc_des) }</td>
             				<td>{ result.ref_flu }</td>
-            				<td>{ /*result.ts_cre*/  new Date().toLocaleTimeString()}</td>
+            				<td>{ new Date(result.ts_cre).toLocaleString() }</td>
             				<td><LastProcess flux={result.num_flu}/></td>
             				{this.renderStaFlu(result.sta_flu)}
             			</tr>

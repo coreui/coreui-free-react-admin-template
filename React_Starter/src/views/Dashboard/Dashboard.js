@@ -66,14 +66,23 @@ class Dashboard extends Component {
 
   renderStaFlu(sta_flu) {
   	if (sta_flu == 'S') {
-  		return (<td><Badge color="success">{ sta_flu }</Badge></td>)
+  		return (<td><Badge color="success">{ "Succes" }</Badge></td>)
   	} else if (sta_flu == 'A') {
-  		return (<td><Badge color="warning">{ sta_flu }</Badge></td>)
+  		return (<td><Badge color="warning">{ "Avertissement" }</Badge></td>)
   	} else {
-  		return (<td><Badge color="danger">{ sta_flu }</Badge></td>)
+  		return (<td><Badge color="danger">{ "Erreur" }</Badge></td>)
   	}
   }
 
+  renderRAIColumn(gln_flu, rai_soc) {
+  	if (rai_soc != "") {
+  		return(rai_soc_eme)
+  	} else {
+  		return(gln_flu)
+  	}
+  }
+
+  
   render() {
     return (
       <div className="animated fadeIn">
@@ -102,8 +111,8 @@ class Dashboard extends Component {
             			<tr>
             				<td>{ result.id_flu }</td>
             				<td>{ result.typ_flu }</td>
-            				<td>{ result.eme_flu }</td>
-            				<td>{ result.des_flu }</td>
+            				<td>{ this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) }</td>
+            				<td>{ this.renderRAIColumn(result.des_flu, result.rai_soc_des) }</td>
             				<td>{ result.ref_flu }</td>
             				<td>{ result.ts_cre }</td>
             				<td>{ "Requete pas encore implementée" }</td>

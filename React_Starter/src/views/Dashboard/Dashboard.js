@@ -109,16 +109,16 @@ class Dashboard extends Component {
                   </tr>
                   </thead>
                   <tbody>
-                  {
+                  { // background-color: #f86c6b6b
                   	this.state.results.map(result =>
-            			<tr key={result.num_flu}>
+            			<tr key={result.num_flu} style={ (result.sta_flu == 'S') ? '' : 'background-color: #f86c6b6b' }>
             				<td>{ (result.sta_flu == 'S') ? result.id_flu : <b> { result.id_flu } </b> }</td>
-            				<td>{ result.typ_flu }</td>
-            				<td>{ this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) }</td>
-            				<td>{ this.renderRAIColumn(result.des_flu, result.rai_soc_des) }</td>
-            				<td>{ result.ref_flu }</td>
-            				<td>{ new Date(result.ts_cre).toLocaleString() }</td>
-            				<td><LastProcess flux={result.num_flu}/></td>
+            				<td>{ (result.sta_flu == 'S') ? result.typ_flu : <b> { result.typ_flu } </b> }</td>
+            				<td>{ (result.sta_flu == 'S') ? this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) : <b> { this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) } </b> }</td>
+            				<td>{ (result.sta_flu == 'S') ? this.renderRAIColumn(result.des_flu, result.rai_soc_des) : <b> { this.renderRAIColumn(result.des_flu, result.rai_soc_des) } </b> }</td>
+            				<td>{ (result.sta_flu == 'S') ? result.ref_flu : <b> { result.ref_flu } </b> }</td>
+            				<td>{ (result.sta_flu == 'S') ? new Date(result.ts_cre).toLocaleString() : <b> { new Date(result.ts_cre).toLocaleString() } </b> }</td>
+            				<td>{ (result.sta_flu == 'S') ? <LastProcess flux={result.num_flu}/> : <b><LastProcess flux={result.num_flu}/></b> }</td>
             				{this.renderStaFlu(result.sta_flu)}
             			</tr>
           			)

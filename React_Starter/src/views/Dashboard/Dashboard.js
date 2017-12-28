@@ -13,7 +13,9 @@ import {
 } from 'reactstrap';
 import axios from 'axios';
 import LastProcess from './LastProcess';
-import ldap from 'ldapjs';
+
+const ldap = require('ldapjs')
+
 
 class Dashboard extends Component {
   constructor(props) {

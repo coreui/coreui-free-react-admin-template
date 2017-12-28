@@ -1,9 +1,9 @@
 export default {
   items: [
     {
-      name: 'Dashboard',
+      name: 'Console',
       url: '/dashboard',
-      icon: 'icon-speedometer',
+      icon: 'icon-list',
     }
   ]
 };

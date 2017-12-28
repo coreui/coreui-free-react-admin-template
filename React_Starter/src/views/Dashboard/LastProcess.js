@@ -4,7 +4,7 @@ import axios from 'axios';
 class LastProcess extends Component {
   constructor(props) {
     super(props);
-    cnosole.log(props)
+    console.log(props)
     this.state = {
       fluKey: []
     };

@@ -48,8 +48,7 @@ class LastProcess extends Component {
     		<div>
       			{
       			  this.state.results.map(result =>
-      			  	/*{ result.typ_tra } - { result.lib_tra } - { new Date(result.ts_cre).toLocaleString() }*/
-      			  	console.log(result)
+      			  	{ result.typ_tra } - { result.lib_tra } - { new Date(result.ts_cre).toLocaleString() }
       			  )
       			}
     		</div>

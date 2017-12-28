@@ -110,7 +110,7 @@ class Dashboard extends Component {
                   <tbody>
                   {
                   	this.state.results.map(result =>
-            			<tr>
+            			<tr key={result.num_flu}>
             				<td>{ result.id_flu }</td>
             				<td>{ result.typ_flu }</td>
             				<td>{ this.renderRAIColumn(result.eme_flu, result.rai_soc_eme) }</td>

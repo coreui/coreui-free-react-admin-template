@@ -12,7 +12,8 @@ import {
   PaginationLink
 } from 'reactstrap';
 import axios from 'axios';
-import LastProcess from './LastProcess'
+import LastProcess from './LastProcess';
+import ldap from 'ldapjs';
 
 class Dashboard extends Component {
   constructor(props) {

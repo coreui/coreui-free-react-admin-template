@@ -32,7 +32,7 @@ module.exports = (env = {}) => {
       open: true
     },
     module: {
-      noParse: [/dtrace-provider$/, /buyan$/, /safe-json-stringify$/, /mv/],
+      noParse: [/dtrace-provider$/, /ldapjs$/, /safe-json-stringify$/, /mv/],
       rules: [
         {
           test: /\.(js|jsx)$/,

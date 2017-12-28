@@ -92,7 +92,7 @@ class Dashboard extends Component {
         <Col xs="12" lg="12">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i> 500 Derniers Flux
+                <i className="fa fa-align-justify"></i> 20 Derniers Flux
               </CardHeader>
               <CardBody>
       		  	<Table responsive striped>

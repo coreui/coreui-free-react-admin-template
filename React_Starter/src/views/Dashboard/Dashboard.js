@@ -26,7 +26,7 @@ class Dashboard extends Component {
   componentDidMount() {
    	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
   		version: true,
-  		size: 50,
+  		size: 10000,
   		sort: [
   		  {
   		    ts_cre: {

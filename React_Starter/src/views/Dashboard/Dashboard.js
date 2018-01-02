@@ -38,6 +38,7 @@ class Dashboard extends Component {
   }
 
   performElasticQuery(query) {
+  	console.log(query);
   	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
   		version: true,
   		size: 20,

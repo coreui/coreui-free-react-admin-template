@@ -117,7 +117,7 @@ class Dashboard extends Component {
                     </Col>
                 </Row>
                 <Row>
-                  <Col xs="4">
+                  <Col xs="1">
                     <FormGroup>
                       <Label htmlFor="ccmonth">Month</Label>
                       <Input type="select" name="ccmonth" id="ccmonth">

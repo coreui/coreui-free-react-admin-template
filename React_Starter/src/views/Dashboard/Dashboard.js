@@ -33,12 +33,12 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      results: []
+      results: [],
     };
   }
 
-  componentDidMount() {
-   	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
+  performElasticQuery(query) {
+  	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
   		version: true,
   		size: 20,
   		sort: [
@@ -54,7 +54,7 @@ class Dashboard extends Component {
   		    must: [
   		      {
   		        query_string: {
-  		          query: 'type:flux',
+  		          query: 'type:flux' + query,
   		          analyze_wildcard: true,
   		          default_field: '*'
   		        }
@@ -77,6 +77,10 @@ class Dashboard extends Component {
    	    console.log(results)
    	    this.setState({ results });
    	  });
+  }
+
+  componentDidMount() {
+   	
   }
 
   renderStaFlu(sta_flu) {
@@ -112,7 +116,7 @@ class Dashboard extends Component {
                   <Col md="12">
                       <InputGroup>
                         <InputGroupAddon><i className="icon-magnifier"></i></InputGroupAddon>
-                        <Input type="text" id="input1-group1" name="input1-group1" placeholder="Search"/>
+                        <Input type="text" id="input1-group1" name="input1-group1" placeholder="Search" onSubmitEditing={(text) => this.performElasticQuery(({text}))}/>
                       </InputGroup>
                     </Col>
                 </Row>

@@ -80,7 +80,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-   	
+   	this.performElasticQuery('');
   }
 
   renderStaFlu(sta_flu) {

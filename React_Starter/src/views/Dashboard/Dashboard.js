@@ -117,7 +117,7 @@ class Dashboard extends Component {
                   <Col md="12">
                       <InputGroup>
                         <InputGroupAddon><i className="icon-magnifier"></i></InputGroupAddon>
-                        <Input type="text" id="input1-group1" name="input1-group1" placeholder="Search" onChange={(text) => this.performElasticQuery(({text}))}/>
+                        <Input type="text" id="input1-group1" name="input1-group1" placeholder="Search" onChange={(event) => this.performElasticQuery(event.target.value)}/>
                       </InputGroup>
                     </Col>
                 </Row>

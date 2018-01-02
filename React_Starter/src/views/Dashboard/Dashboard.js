@@ -100,6 +100,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="animated fadeIn">
+      <row>
         <Col xs="12" sm="12">
             <Card>
               <CardHeader>
@@ -145,6 +146,8 @@ class Dashboard extends Component {
               </CardFooter>
             </Card>
           </Col>
+          </row>
+          <row>
         <Col xs="12" lg="12">
             <Card>
               <CardHeader>
@@ -184,6 +187,7 @@ class Dashboard extends Component {
               </CardBody>
             </Card>
           </Col>
+          </row>
       </div>
     )
   }

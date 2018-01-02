@@ -116,6 +116,7 @@ class Dashboard extends Component {
                       </InputGroup>
                     </Col>
                 </Row>
+                <Row/>
                 <Row>
                   <Col xs="1">
                     <FormGroup>

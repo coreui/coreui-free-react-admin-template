@@ -55,7 +55,7 @@ class Dashboard extends Component {
   		    must: [
   		      {
   		        query_string: {
-  		          query: 'type:flux' + query,
+  		          query: 'type:flux AND ' + query,
   		          analyze_wildcard: true,
   		          default_field: '*'
   		        }

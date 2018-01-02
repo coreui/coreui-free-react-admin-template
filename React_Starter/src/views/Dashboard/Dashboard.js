@@ -111,10 +111,8 @@ class Dashboard extends Component {
                 <Row>
                   <Col md="12">
                       <InputGroup>
-                        <InputGroupButton>
-                          <Button color="primary"><i className="fa fa-search"></i> Search</Button>
-                        </InputGroupButton>
-                        <Input type="text" id="input1-group2" name="input1-group2" placeholder=""/>
+                        <InputGroupAddon><i className="icon-magnifier"></i></InputGroupAddon>
+                        <Input type="text" id="input1-group1" name="input1-group1" placeholder="Search"/>
                       </InputGroup>
                     </Col>
                 </Row>

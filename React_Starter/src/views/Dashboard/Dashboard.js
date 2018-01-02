@@ -6,10 +6,24 @@ import {
   Card,
   CardHeader,
   CardBody,
+  CardFooter,
   Table,
   Pagination,
   PaginationItem,
-  PaginationLink
+  PaginationLink,
+  Button,
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Form,
+  FormGroup,
+  FormText,
+  Label,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton
 } from 'reactstrap';
 import axios from 'axios';
 import LastProcess from './LastProcess';

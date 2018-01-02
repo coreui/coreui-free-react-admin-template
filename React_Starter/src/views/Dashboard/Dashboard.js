@@ -100,7 +100,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="animated fadeIn">
-        <Col xs="12" sm="6">
+        <Col xs="12" sm="12">
             <Card>
               <CardHeader>
                 <strong>Credit Card</strong>
@@ -108,20 +108,14 @@ class Dashboard extends Component {
               </CardHeader>
               <CardBody>
                 <Row>
-                  <Col xs="12">
-                    <FormGroup>
-                      <Label htmlFor="name">Name</Label>
-                      <Input type="text" id="name" placeholder="Enter your name" required/>
-                    </FormGroup>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs="12">
-                    <FormGroup>
-                      <Label htmlFor="ccnumber">Credit Card Number</Label>
-                      <Input type="text" id="ccnumber" placeholder="0000 0000 0000 0000" required/>
-                    </FormGroup>
-                  </Col>
+                  <Col md="12">
+                      <InputGroup>
+                        <InputGroupButton>
+                          <Button color="primary"><i className="fa fa-search"></i> Search</Button>
+                        </InputGroupButton>
+                        <Input type="text" id="input1-group2" name="input1-group2" placeholder=""/>
+                      </InputGroup>
+                    </Col>
                 </Row>
                 <Row>
                   <Col xs="4">
@@ -143,31 +137,12 @@ class Dashboard extends Component {
                       </Input>
                     </FormGroup>
                   </Col>
-                  <Col xs="4">
-                    <FormGroup>
-                      <Label htmlFor="ccyear">Year</Label>
-                      <Input type="select" name="ccyear" id="ccyear">
-                        <option>2017</option>
-                        <option>2018</option>
-                        <option>2019</option>
-                        <option>2020</option>
-                        <option>2021</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                        <option>2024</option>
-                        <option>2025</option>
-                        <option>2026</option>
-                      </Input>
-                    </FormGroup>
-                  </Col>
-                  <Col xs="4">
-                    <FormGroup>
-                      <Label htmlFor="cvv">CVV/CVC</Label>
-                      <Input type="text" id="cvv" placeholder="123" required/>
-                    </FormGroup>
-                  </Col>
                 </Row>
               </CardBody>
+              <CardFooter>
+                <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
+                <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
+              </CardFooter>
             </Card>
           </Col>
         <Col xs="12" lg="12">

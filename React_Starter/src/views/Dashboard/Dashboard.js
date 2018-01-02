@@ -103,8 +103,8 @@ class Dashboard extends Component {
         <Col xs="12" sm="12">
             <Card>
               <CardHeader>
-                <strong>Credit Card</strong>
-                <small> Form</small>
+                <small>Recherche</small> 
+                <strong>Flux</strong>
               </CardHeader>
               <CardBody>
                 <Row>

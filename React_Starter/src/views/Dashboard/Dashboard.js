@@ -44,7 +44,7 @@ class Dashboard extends Component {
         if (query != '') {
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
                     version: true,
-                    size: 20,
+                    size: 50,
                     sort: [{
                         ts_cre: {
                             order: 'desc',
@@ -74,7 +74,7 @@ class Dashboard extends Component {
         } else {
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
                     version: true,
-                    size: 20,
+                    size: 50,
                     sort: [{
                         ts_cre: {
                             order: 'desc',
@@ -89,7 +89,7 @@ class Dashboard extends Component {
                                         analyze_wildcard: true,
                                         default_field: '*'
                                     }
-                                },
+                                }
                             ],
                         }
                     }

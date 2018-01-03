@@ -1,110 +1,134 @@
-import React, { Component } from 'react';
+import React, {
+    Component
+} from 'react';
 import {
-  Badge,
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Table,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  Button,
-  ButtonDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Form,
-  FormGroup,
-  FormText,
-  Label,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton
+    Badge,
+    Row,
+    Col,
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Table,
+    Pagination,
+    PaginationItem,
+    PaginationLink,
+    Button,
+    ButtonDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    Form,
+    FormGroup,
+    FormText,
+    Label,
+    Input,
+    InputGroup,
+    InputGroupAddon,
+    InputGroupButton
 } from 'reactstrap';
 import axios from 'axios';
 import LastProcess from './LastProcess';
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      results: [],
-    };
-  }
+        this.state = {
+            results: [],
+        };
+    }
 
-  performElasticQuery(query) {
-  	console.log(query);
-  	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
-  		version: true,
-  		size: 20,
-  		sort: [
-  		  {
-  		    ts_cre: {
-  		      order: 'desc',
-  		      unmapped_type: 'boolean'
-  		    }
-  		  }
-  		],
-  		query: {
-  		  bool: {
-  		    must: [
-  		      {
-  		        query_string: {
-  		          query: 'type:flux AND ' + query,
-  		          analyze_wildcard: true,
-  		          default_field: '*'
-  		        }
-  		      },
-  		      {
-  		        range: {
-  		          ts_cre: {
-  		            gte: 1482857265837,
-  		            lte: 1514393265837,
-  		            format: 'epoch_millis'
-  		          }
-  		        }
-  		      }
-  		    ],
-  		  }
-  		}
-   	})
-   	  .then(res => {
-   	    const results = res.data.hits.hits.map(obj => obj._source);
-   	    console.log(results)
-   	    this.setState({ results });
-   	  });
-  }
+    performElasticQuery(query) {
+        console.log(query);
+        if (query != '') {
+            axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
+                    version: true,
+                    size: 20,
+                    sort: [{
+                        ts_cre: {
+                            order: 'desc',
+                            unmapped_type: 'boolean'
+                        }
+                    }],
+                    query: {
+                        bool: {
+                            must: [{
+                                    query_string: {
+                                        query: 'type:flux AND ' + query,
+                                        analyze_wildcard: true,
+                                        default_field: '*'
+                                    }
+                                }
+                            ],
+                        }
+                    }
+                })
+                .then(res => {
+                    const results = res.data.hits.hits.map(obj => obj._source);
+                    console.log(results)
+                    this.setState({
+                        results
+                    });
+                });
+        } else {
+            axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
+                    version: true,
+                    size: 20,
+                    sort: [{
+                        ts_cre: {
+                            order: 'desc',
+                            unmapped_type: 'boolean'
+                        }
+                    }],
+                    query: {
+                        bool: {
+                            must: [{
+                                    query_string: {
+                                        query: 'type:flux',
+                                        analyze_wildcard: true,
+                                        default_field: '*'
+                                    }
+                                },
+                            ],
+                        }
+                    }
+                })
+                .then(res => {
+                    const results = res.data.hits.hits.map(obj => obj._source);
+                    console.log(results)
+                    this.setState({
+                        results
+                    });
+                });
+        }
+    }
 
-  componentDidMount() {
-   	this.performElasticQuery('');
-  }
+    componentDidMount() {
+        this.performElasticQuery('');
+    }
 
-  renderStaFlu(sta_flu) {
-  	if (sta_flu == 'S') {
-  		return (<td><Badge color="success">{ "Succes" }</Badge></td>)
-  	} else if (sta_flu == 'A') {
-  		return (<td><Badge color="warning"><b>{ "Avertissement" }</b></Badge></td>)
-  	} else {
-  		return (<td><Badge color="danger"><b>{ "Erreur" }</b></Badge></td>)
-  	}
-  }
+    renderStaFlu(sta_flu) {
+        if (sta_flu == 'S') {
+            return (<td><Badge color="success">{ "Succes" }</Badge></td>)
+        } else if (sta_flu == 'A') {
+            return (<td><Badge color="warning"><b>{ "Avertissement" }</b></Badge></td>)
+        } else {
+            return (<td><Badge color="danger"><b>{ "Erreur" }</b></Badge></td>)
+        }
+    }
 
-  renderRAIColumn(gln_flu, rai_soc) {
-  	if (rai_soc != null) {
-  		return(rai_soc)
-  	} else {
-  		return(gln_flu)
-  	}
-  }
-  
-  render() {
-    return (
-      <div className="animated fadeIn">
+    renderRAIColumn(gln_flu, rai_soc) {
+        if (rai_soc != null) {
+            return (rai_soc)
+        } else {
+            return (gln_flu)
+        }
+    }
+
+    render() {
+        return (
+            <div className="animated fadeIn">
       <Row>
         <Col xs="12" sm="12">
             <Card>
@@ -193,8 +217,8 @@ class Dashboard extends Component {
           </Col>
           </Row>
       </div>
-    )
-  }
+        )
+    }
 }
 
 export default Dashboard;

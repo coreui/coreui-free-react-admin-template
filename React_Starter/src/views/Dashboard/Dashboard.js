@@ -119,7 +119,7 @@ class Dashboard extends Component {
     }
 
     buildAndPerformElasticQuery() {
-    	performElasticQuery(this.state.searchFieldValue)
+    	this.performElasticQuery(this.state.searchFieldValue)
     }
 
     componentDidMount() {

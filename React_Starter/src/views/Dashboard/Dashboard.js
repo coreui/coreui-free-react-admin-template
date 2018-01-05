@@ -42,16 +42,16 @@ class Dashboard extends Component {
         };
     }
 
-	onShow = ()=> {
+	onShow() {
     	this.setState({ show: true })
   	}
 
-  	onHide = ()=> {
+  	onHide() {
     	this.setState({ show: false })
   	}
 
     performElasticQuery(query) {
-        this.onShow
+        this.onShow()
         if (query != '') {
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
                     version: true,
@@ -81,7 +81,7 @@ class Dashboard extends Component {
                         results : results,
                         nb_result : res.data.hits.total
                     });
-                    this.onHide
+                    this.onHide()
                 });
         } else {
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
@@ -112,7 +112,7 @@ class Dashboard extends Component {
                         results : results,
                         nb_result : res.data.hits.total
                     });
-                    this.onHide
+                    this.onHide()
                 });
         }
     }

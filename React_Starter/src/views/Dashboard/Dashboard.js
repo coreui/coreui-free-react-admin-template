@@ -125,27 +125,27 @@ class Dashboard extends Component {
     updateWarningCheck() {
     	this.setState({
      		warningCheck: !this.state.warningCheck,
-    	}).bind(this);
+    	});
     	this.buildAndPerformElasticQuery()
     }
 
     updateSuccessCheck() {
     	this.setState({
      		successCheck: !this.state.successCheck,
-    	}).bind(this);
+    	});
     	this.buildAndPerformElasticQuery()
     }
 
     updateErrorCheck() {
     	this.setState({
       		errorCheck: !this.state.errorCheck,
-    	}).bind(this);
+    	});
     	this.buildAndPerformElasticQuery()
     }
 
     updateSearchFieldValue(value) {
     	if (value != '') {
-    		this.setState({searchFieldValue:value}).bind(this)
+    		this.setState({searchFieldValue:value})
     	}
     }
 
@@ -177,7 +177,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.performElasticQuery('');
+        this.buildAndPerformElasticQuery();
     }
 
     renderStaFlu(sta_flu) {
@@ -243,15 +243,15 @@ class Dashboard extends Component {
                     <Label>Statut</Label><br/>
                       <FormGroup check className="form-check-inline">
                         <Label check htmlFor="inline-checkbox1">
-                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" defaultChecked={this.state.successCheck} onChange={this.updateSuccessCheck() }/> Success
+                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" defaultChecked={this.state.successCheck} onChange={() => this.updateSuccessCheck() }/> Success
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox2">
-                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" defaultChecked={this.state..warningCheck} onChange={this.updateWarningCheck() }/> Avertissement
+                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" defaultChecked={this.state.warningCheck} onChange={() => this.updateWarningCheck() }/> Avertissement
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox3">
-                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" defaultChecked={this.state.errorCheck} onChange={this.updateErrorCheck() }/> Erreur
+                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" defaultChecked={this.state.errorCheck} onChange={() => this.updateErrorCheck() }/> Erreur
                         </Label>
                       </FormGroup>
                     </Col>

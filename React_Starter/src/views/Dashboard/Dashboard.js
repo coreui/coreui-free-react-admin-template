@@ -130,27 +130,27 @@ class Dashboard extends Component {
     
     updateWarningCheck() {
     	if (this.state.warningCheck == true) {
-    		this.setState({warningCheck : false)
+    		this.setState({warningCheck : false})
     	} else {
-    		this.setState({warningCheck : true)
+    		this.setState({warningCheck : true})
     	}
     	this.buildAndPerformElasticQuery()
     }
 
     updateSuccessCheck() {
     	if (this.state.successCheck == true) {
-    		this.setState({successCheck : false)
+    		this.setState({successCheck : false})
     	} else {
-    		this.setState({successCheck : true)
+    		this.setState({successCheck : true})
     	}
     	this.buildAndPerformElasticQuery()
     }
 
     updateErrorCheck() {
     	if (this.state.errorCheck == true) {
-    		this.setState({errorCheck : false)
+    		this.setState({errorCheck : false})
     	} else {
-    		this.setState({errorCheck : true)
+    		this.setState({errorCheck : true})
     	}
     	this.buildAndPerformElasticQuery()
     }

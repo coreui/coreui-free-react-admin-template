@@ -30,8 +30,6 @@ import {
 
 import axios from 'axios';
 import LastProcess from './LastProcess';
-import LoadingBar from 'react-redux-loading-bar'
-import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 class Dashboard extends Component {
     constructor(props) {

@@ -39,6 +39,7 @@ class Dashboard extends Component {
         this.state = {
             results: [],
             nb_result: "",
+            searchFieldValue: "",
         };
     }
 
@@ -117,6 +118,10 @@ class Dashboard extends Component {
         }
     }
 
+    buildAndPerformElasticQuery() {
+    	performElasticQuery(this.state.searchFieldValue)
+    }
+
     componentDidMount() {
         this.performElasticQuery('');
     }
@@ -155,7 +160,7 @@ class Dashboard extends Component {
                   <Col md="12">
                       <InputGroup>
                         <InputGroupAddon><i className="icon-magnifier"></i></InputGroupAddon>
-                        <Input type="text" id="input1-group1" name="input1-group1" placeholder="Search" onChange={(event) => this.performElasticQuery(event.target.value)}/>
+                        <Input type="text" id="input1-group1" name="input1-group1" placeholder="Search" onChange={(event) => this.setState({searchFieldValue:event.target.value}) }/>
                       </InputGroup>
                     </Col>
                 </Row>
@@ -183,8 +188,7 @@ class Dashboard extends Component {
                 </Row>
               </CardBody>
               <CardFooter>
-                <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>  
-                <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
+                <Button type="submit" size="sm" color="success" onclick={this.buildAndPerformElasticQuery()}><i className="fa fa-dot-circle-o"></i> Submit</Button>  
               </CardFooter>
             </Card>
           </Col>

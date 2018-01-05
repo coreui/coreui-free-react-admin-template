@@ -125,27 +125,27 @@ class Dashboard extends Component {
     updateWarningCheck() {
     	this.setState({
      		warningCheck: !this.state.warningCheck,
-    	});
+    	}).bind(this);
     	this.buildAndPerformElasticQuery()
     }
 
     updateSuccessCheck() {
     	this.setState({
      		successCheck: !this.state.successCheck,
-    	});
+    	}).bind(this);
     	this.buildAndPerformElasticQuery()
     }
 
     updateErrorCheck() {
     	this.setState({
       		errorCheck: !this.state.errorCheck,
-    	});
+    	}).bind(this);
     	this.buildAndPerformElasticQuery()
     }
 
     updateSearchFieldValue(value) {
     	if (value != '') {
-    		this.setState({searchFieldValue:value})
+    		this.setState({searchFieldValue:value}).bind(this)
     	}
     }
 

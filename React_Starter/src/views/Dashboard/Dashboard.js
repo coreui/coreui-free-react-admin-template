@@ -57,6 +57,12 @@ class Dashboard extends Component {
     performElasticQuery(query) {
         this.onShow()
         if (query != '') {
+        	var theQuery = ""
+        	if (query.substring(0,4).indexOf("AND") !== -1) {
+        		theQuery = 'type:flux ' + query
+        	} else {
+        		theQuery = 'type:flux AND ' + query
+        	}
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
                     version: true,
                     size: 50,
@@ -70,7 +76,7 @@ class Dashboard extends Component {
                         bool: {
                             must: [{
                                     query_string: {
-                                        query: 'type:flux AND ' + query,
+                                        query: theQuery,
                                         analyze_wildcard: true,
                                         default_field: '*'
                                     }
@@ -157,7 +163,9 @@ class Dashboard extends Component {
     buildAndPerformElasticQuery() {
     	var addToQuery = ""
     	if (this.state.warningCheck == true) {
-    		addToQuery + " AND sta_flu:A "
+    		if (searchFieldValue != '') {
+    			addToQuery + " AND sta_flu:A "
+    		}
     	}
 		if (this.state.successCheck == true) {
     		addToQuery + " AND sta_flu:S "

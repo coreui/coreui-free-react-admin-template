@@ -30,6 +30,7 @@ import {
 
 import axios from 'axios';
 import LastProcess from './LastProcess';
+import Loading from 'react-loading-bar';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -41,8 +42,16 @@ class Dashboard extends Component {
         };
     }
 
+	onShow = ()=> {
+    	this.setState({ show: true })
+  	}
+
+  	onHide = ()=> {
+    	this.setState({ show: false })
+  	}
+
     performElasticQuery(query) {
-        dispatch(showLoading())
+        this.onShow
         if (query != '') {
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
                     version: true,
@@ -72,7 +81,7 @@ class Dashboard extends Component {
                         results : results,
                         nb_result : res.data.hits.total
                     });
-                    dispatch(hideLoading())
+                    this.onHide
                 });
         } else {
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
@@ -103,7 +112,7 @@ class Dashboard extends Component {
                         results : results,
                         nb_result : res.data.hits.total
                     });
-                    dispatch(hideLoading())
+                    this.onHide
                 });
         }
     }
@@ -133,9 +142,7 @@ class Dashboard extends Component {
     render() {
         return (
         <div className="animated fadeIn">
-            <section>
-        		<LoadingBar scope="sectionBar" />
-      		</section>
+            <Loading show={this.state.show} color="red"/>
       <Row>
         <Col xs="12" sm="12">
             <Card>

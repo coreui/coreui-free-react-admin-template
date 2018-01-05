@@ -58,13 +58,7 @@ class Dashboard extends Component {
         this.onShow()
         console.log(query)
         if (query != '') {
-        	var theQuery = ""
-        	if (query.substring(0,4).indexOf("AND") !== -1) {
-        		theQuery = 'type:flux ' + query
-        	} else {
-        		theQuery = 'type:flux AND ' + query
-        	}
-            axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
+        	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
                     version: true,
                     size: 50,
                     sort: [{
@@ -77,7 +71,7 @@ class Dashboard extends Component {
                         bool: {
                             must: [{
                                     query_string: {
-                                        query: theQuery,
+                                        query: 'type:flux AND ' + query,
                                         analyze_wildcard: true,
                                         default_field: '*'
                                     }
@@ -129,29 +123,23 @@ class Dashboard extends Component {
     }
     
     updateWarningCheck() {
-    	if (this.state.warningCheck == true) {
-    		this.setState({warningCheck : false})
-    	} else {
-    		this.setState({warningCheck : true})
-    	}
+    	this.setState({
+     		warningCheck: !this.state.warningCheck,
+    	});
     	this.buildAndPerformElasticQuery()
     }
 
     updateSuccessCheck() {
-    	if (this.state.successCheck == true) {
-    		this.setState({successCheck : false})
-    	} else {
-    		this.setState({successCheck : true})
-    	}
+    	this.setState({
+     		successCheck: !this.state.successCheck,
+    	});
     	this.buildAndPerformElasticQuery()
     }
 
     updateErrorCheck() {
-    	if (this.state.errorCheck == true) {
-    		this.setState({errorCheck : false})
-    	} else {
-    		this.setState({errorCheck : true})
-    	}
+    	this.setState({
+      		errorCheck: !this.state.errorCheck,
+    	});
     	this.buildAndPerformElasticQuery()
     }
 
@@ -163,16 +151,27 @@ class Dashboard extends Component {
 
     buildAndPerformElasticQuery() {
     	var addToQuery = ''
+    	var addToQueryPrefixString = '('
+    	var successCheckString = 'sta_flu:S OR '
+    	var warningCheckString = 'sta_flu:A OR '
+    	var errorCheckString = 'sta_flu:E'
+    	var addToQuerySuffixString = ')'
+    	
     	console.log("Success : " + this.state.successCheck + "    Warning : " + this.state.warningCheck + "     Error : " + this.state.errorCheck)
-    	if (this.state.warningCheck == true) {
-    		addToQuery = addToQuery + ' AND sta_flu:A '
+    	
+    	
+    	if (this.state.successCheck == false) {
+    		successCheckString = 'NOT ' + successCheckString
     	}
-		if (this.state.successCheck == true) {
-    		addToQuery = addToQuery + ' AND sta_flu:S '
+    	if (this.state.successCheck == false) {
+    		warningCheckString = 'NOT ' + warningCheckString
     	}
-    	if (this.state.errorCheck == true) {
-    		addToQuery = addToQuery + ' AND sta_flu:E '
+    	if (this.state.successCheck == false) {
+    		errorCheckString = 'NOT ' + errorCheckString
     	}
+
+    	addToQuery = addToQueryPrefixString + successCheckString + warningCheckString + errorCheckString + addToQuerySuffixString
+
     	console.log(addToQuery)
     	this.performElasticQuery(this.state.searchFieldValue + addToQuery)
     }
@@ -244,15 +243,15 @@ class Dashboard extends Component {
                     <Label>Statut</Label><br/>
                       <FormGroup check className="form-check-inline">
                         <Label check htmlFor="inline-checkbox1">
-                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" defaultChecked={true} onChange={(event) => this.updateSuccessCheck() }/> Success
+                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" defaultChecked={this.state.successCheck} onChange={(event) => this.updateSuccessCheck() }/> Success
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox2">
-                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" defaultChecked={true} onChange={(event) => this.updateWarningCheck() }/> Avertissement
+                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" defaultChecked={this.state.warningCheck} onChange={(event) => this.updateWarningCheck() }/> Avertissement
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox3">
-                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" defaultChecked={true} onChange={(event) => this.updateErrorCheck() }/> Erreur
+                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" defaultChecked={this.state.errorCheck} onChange={(event) => this.updateErrorCheck() }/> Erreur
                         </Label>
                       </FormGroup>
                     </Col>

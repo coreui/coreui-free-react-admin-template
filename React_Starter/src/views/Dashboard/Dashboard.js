@@ -130,27 +130,27 @@ class Dashboard extends Component {
     
     updateWarningCheck() {
     	if (this.state.warningCheck == true) {
-    		this.state.warningCheck = false 
+    		this.setState({warningCheck : false)
     	} else {
-    		this.state.warningCheck = true
+    		this.setState({warningCheck : true)
     	}
     	this.buildAndPerformElasticQuery()
     }
 
     updateSuccessCheck() {
     	if (this.state.successCheck == true) {
-    		this.state.successCheck = false 
+    		this.setState({successCheck : false)
     	} else {
-    		this.state.successCheck = true
+    		this.setState({successCheck : true)
     	}
     	this.buildAndPerformElasticQuery()
     }
 
     updateErrorCheck() {
     	if (this.state.errorCheck == true) {
-    		this.state.errorCheck = false 
+    		this.setState({errorCheck : false)
     	} else {
-    		this.state.errorCheck = true
+    		this.setState({errorCheck : true)
     	}
     	this.buildAndPerformElasticQuery()
     }
@@ -163,6 +163,7 @@ class Dashboard extends Component {
 
     buildAndPerformElasticQuery() {
     	var addToQuery = ""
+    	console.log("Success : " + this.state.successCheck + "    Warning : " + this.state.warningCheck + "     Error : " + this.state.errorCheck)
     	if (this.state.warningCheck == true) {
     		addToQuery + " AND sta_flu:A "
     	}
@@ -172,6 +173,7 @@ class Dashboard extends Component {
     	if (this.state.errorCheck == true) {
     		addToQuery + " AND sta_flu:E "
     	}
+    	console.log(addToQuery)
     	this.performElasticQuery(this.state.searchFieldValue + addToQuery)
     }
 

@@ -40,6 +40,9 @@ class Dashboard extends Component {
             results: [],
             nb_result: "",
             searchFieldValue: "",
+            errorCheck:true,
+            warningCheck:true,
+            successCheck:true,
         };
     }
 
@@ -117,6 +120,30 @@ class Dashboard extends Component {
                 });
         }
     }
+    
+    updateWarningCheck() {
+    	if (this.state.warningCheck == true) {
+    		this.state.warningCheck = false 
+    	} else {
+    		this.state.warningCheck = true
+    	}
+    }
+
+    updateSuccessCheck() {
+    	if (this.state.successCheck == true) {
+    		this.state.successCheck = false 
+    	} else {
+    		this.state.successCheck = true
+    	}
+    }
+
+    updateErrorCheck() {
+    	if (this.state.errorCheck == true) {
+    		this.state.errorCheck = false 
+    	} else {
+    		this.state.errorCheck = true
+    	}
+    }
 
     updateSearchFieldValue(value) {
     	if (value != '') {
@@ -124,9 +151,18 @@ class Dashboard extends Component {
     	}
     }
 
-    buildAndPerformElasticQuery(event) {
-    	console.log(event)
-    	this.performElasticQuery(this.state.searchFieldValue)
+    buildAndPerformElasticQuery() {
+    	var addToQuery = ""
+    	if (this.state.warningCheck == true) {
+    		addToQuery + " AND sta_flu:A "
+    	}
+		if (this.state.successCheck == true) {
+    		addToQuery + " AND sta_flu:S "
+    	}
+    	if (this.state.errorCheck == true) {
+    		addToQuery + " AND sta_flu:E "
+    	}
+    	this.performElasticQuery(this.state.searchFieldValue + addToQuery)
     }
 
     componentDidMount() {
@@ -196,15 +232,15 @@ class Dashboard extends Component {
                     <Label>Statut</Label><br/>
                       <FormGroup check className="form-check-inline">
                         <Label check htmlFor="inline-checkbox1">
-                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="Success" onChange={(event) => this.buildAndPerformElasticQuery(event.target) }/> Success
+                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" defaultChecked={true} onChange={(event) => this.updateSuccessCheck() }/> Success
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox2">
-                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" value="Warning" onChange={(event) => this.buildAndPerformElasticQuery(event.target) }/> Avertissement
+                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" defaultChecked={true} onChange={(event) => this.updateWarningCheck() }/> Avertissement
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox3">
-                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" value="Error" onChange={(event) => this.buildAndPerformElasticQuery(event.target) }/> Erreur
+                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" defaultChecked={true} onChange={(event) => this.updateErrorCheck() }/> Erreur
                         </Label>
                       </FormGroup>
                     </Col>

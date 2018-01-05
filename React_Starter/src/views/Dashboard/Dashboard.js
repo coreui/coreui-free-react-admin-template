@@ -190,9 +190,9 @@ class Dashboard extends Component {
                         <option value="12">Décembre</option>
                       </Input>
                     </FormGroup>
-                    <Col md="3">
+                    <Col md="2">
                       <Label>Statut</Label></Col>
-                    <Col md="9">
+                    <Col md="5">
                       <FormGroup check className="form-check-inline">
                         <Label check htmlFor="inline-checkbox1">
                           <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"/> Success

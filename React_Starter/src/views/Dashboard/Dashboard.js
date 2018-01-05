@@ -143,12 +143,10 @@ class Dashboard extends Component {
         return (
       <div className="animated fadeIn">
       <Row>
-            <Loading show={this.state.show} color="red"/>
-      </Row>
-      <Row>
         <Col xs="12" sm="12">
             <Card>
               <CardHeader>
+              	<Loading show={this.state.show} color="red"/>
                 <small>Recherche</small> 
                 <strong>Flux</strong>
               </CardHeader>

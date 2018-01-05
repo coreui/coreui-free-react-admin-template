@@ -191,9 +191,8 @@ class Dashboard extends Component {
                       </Input>
                     </FormGroup>
                     </Col>
-                    <Col md="2">
-                      <Label>Statut</Label></Col>
                     <Col md="5">
+                    <Label>Statut</Label>
                       <FormGroup check className="form-check-inline">
                         <Label check htmlFor="inline-checkbox1">
                           <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"/> Success

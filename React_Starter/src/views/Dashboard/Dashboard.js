@@ -196,15 +196,15 @@ class Dashboard extends Component {
                     <Label>Statut</Label><br/>
                       <FormGroup check className="form-check-inline">
                         <Label check htmlFor="inline-checkbox1">
-                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="Success" onChange={(event) => this.buildAndPerformElasticQuery(event) }/> Success
+                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="Success" onChange={(event) => this.buildAndPerformElasticQuery(event.target) }/> Success
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox2">
-                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" value="Warning" onChange={(event) => this.buildAndPerformElasticQuery(event) }/> Avertissement
+                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" value="Warning" onChange={(event) => this.buildAndPerformElasticQuery(event.target) }/> Avertissement
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox3">
-                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" value="Error" onChange={(event) => this.buildAndPerformElasticQuery(event) }/> Erreur
+                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" value="Error" onChange={(event) => this.buildAndPerformElasticQuery(event.target) }/> Erreur
                         </Label>
                       </FormGroup>
                     </Col>

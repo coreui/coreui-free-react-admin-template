@@ -162,16 +162,16 @@ class Dashboard extends Component {
     }
 
     buildAndPerformElasticQuery() {
-    	var addToQuery = ""
+    	var addToQuery = ''
     	console.log("Success : " + this.state.successCheck + "    Warning : " + this.state.warningCheck + "     Error : " + this.state.errorCheck)
     	if (this.state.warningCheck == true) {
-    		addToQuery + " AND sta_flu:A "
+    		addToQuery = addToQuery + ' AND sta_flu:A '
     	}
 		if (this.state.successCheck == true) {
-    		addToQuery + " AND sta_flu:S "
+    		addToQuery = addToQuery + ' AND sta_flu:S '
     	}
     	if (this.state.errorCheck == true) {
-    		addToQuery + " AND sta_flu:E "
+    		addToQuery = addToQuery + ' AND sta_flu:E '
     	}
     	console.log(addToQuery)
     	this.performElasticQuery(this.state.searchFieldValue + addToQuery)

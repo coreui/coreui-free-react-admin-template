@@ -188,7 +188,7 @@ class Dashboard extends Component {
                 </Row>
               </CardBody>
               <CardFooter>
-                <Button type="submit" size="sm" color="success" onclick={this.buildAndPerformElasticQuery()}><i className="fa fa-dot-circle-o"></i> Submit</Button>  
+                <Button type="submit" size="sm" color="success" onClick={this.buildAndPerformElasticQuery()}><i className="fa fa-dot-circle-o"></i> Submit</Button>  
               </CardFooter>
             </Card>
           </Col>

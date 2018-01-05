@@ -38,7 +38,6 @@ class LastProcess extends Component {
    	})
    	  .then(res => {
    	    const results = res.data.hits.hits.map(obj => obj._source);
-   	    console.log(results);
    	    this.setState({ results });
    	  });
   }

@@ -67,9 +67,9 @@ class Dashboard extends Component {
                 })
                 .then(res => {
                     const results = res.data.hits.hits.map(obj => obj._source);
-                    console.log(results)
                     this.setState({
-                        results
+                        results : results,
+                        nb_result : res.data.hits.total
                     });
                 });
         } else {
@@ -97,9 +97,9 @@ class Dashboard extends Component {
                 })
                 .then(res => {
                     const results = res.data.hits.hits.map(obj => obj._source);
-                    console.log(res)
                     this.setState({
-                        results
+                        results : results,
+                        nb_result : res.data.hits.total
                     });
                 });
         }
@@ -180,7 +180,7 @@ class Dashboard extends Component {
         <Col xs="12" lg="12">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i> 20 Derniers Flux
+                <i className="fa fa-align-justify"></i>Flux : { this.state.nb_result } résultats
               </CardHeader>
               <CardBody>
       		  	<Table responsive striped>

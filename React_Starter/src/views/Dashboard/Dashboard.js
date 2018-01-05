@@ -163,7 +163,7 @@ class Dashboard extends Component {
     buildAndPerformElasticQuery() {
     	var addToQuery = ""
     	if (this.state.warningCheck == true) {
-    		if (searchFieldValue != '') {
+    		if (this.state.searchFieldValue != '') {
     			addToQuery + " AND sta_flu:A "
     		}
     	}

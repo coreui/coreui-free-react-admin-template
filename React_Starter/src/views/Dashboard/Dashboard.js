@@ -124,7 +124,8 @@ class Dashboard extends Component {
     	}
     }
 
-    buildAndPerformElasticQuery() {
+    buildAndPerformElasticQuery(event) {
+    	console.log(event)
     	this.performElasticQuery(this.state.searchFieldValue)
     }
 
@@ -195,15 +196,15 @@ class Dashboard extends Component {
                     <Label>Statut</Label><br/>
                       <FormGroup check className="form-check-inline">
                         <Label check htmlFor="inline-checkbox1">
-                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"/> Success
+                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="Success" onChange={(event) => this.buildAndPerformElasticQuery(event) }/> Success
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox2">
-                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" value="option2"/> Avertissement
+                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" value="Warning" onChange={(event) => this.buildAndPerformElasticQuery(event) }/> Avertissement
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox3">
-                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" value="option3"/> Erreur
+                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" value="Error" onChange={(event) => this.buildAndPerformElasticQuery(event) }/> Erreur
                         </Label>
                       </FormGroup>
                     </Col>

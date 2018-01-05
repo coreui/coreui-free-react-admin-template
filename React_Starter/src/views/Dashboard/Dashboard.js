@@ -27,8 +27,10 @@ import {
     InputGroupAddon,
     InputGroupButton
 } from 'reactstrap';
+
 import axios from 'axios';
 import LastProcess from './LastProcess';
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 class Dashboard extends Component {
     constructor(props) {
@@ -41,7 +43,7 @@ class Dashboard extends Component {
     }
 
     performElasticQuery(query) {
-        console.log(query);
+        dispatch(showLoading())
         if (query != '') {
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
                     version: true,
@@ -71,6 +73,7 @@ class Dashboard extends Component {
                         results : results,
                         nb_result : res.data.hits.total
                     });
+                    dispatch(hideLoading())
                 });
         } else {
             axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
@@ -101,6 +104,7 @@ class Dashboard extends Component {
                         results : results,
                         nb_result : res.data.hits.total
                     });
+                    dispatch(hideLoading())
                 });
         }
     }
@@ -129,7 +133,10 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div className="animated fadeIn">
+        <div className="animated fadeIn">
+            <section>
+        		<LoadingBar scope="sectionBar" />
+      		</section>
       <Row>
         <Col xs="12" sm="12">
             <Card>

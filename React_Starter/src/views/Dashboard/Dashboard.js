@@ -190,6 +190,7 @@ class Dashboard extends Component {
                         <option value="12">Décembre</option>
                       </Input>
                     </FormGroup>
+                    </Col>
                     <Col md="2">
                       <Label>Statut</Label></Col>
                     <Col md="5">
@@ -207,7 +208,6 @@ class Dashboard extends Component {
                         </Label>
                       </FormGroup>
                     </Col>
-                  </Col>
                 </Row>
               </CardBody>
               <CardFooter>

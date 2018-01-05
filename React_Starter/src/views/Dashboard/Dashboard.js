@@ -163,10 +163,10 @@ class Dashboard extends Component {
     	if (this.state.successCheck == false) {
     		successCheckString = 'NOT ' + successCheckString
     	}
-    	if (this.state.successCheck == false) {
+    	if (this.state.warningCheck == false) {
     		warningCheckString = 'NOT ' + warningCheckString
     	}
-    	if (this.state.successCheck == false) {
+    	if (this.state.errorCheck == false) {
     		errorCheckString = 'NOT ' + errorCheckString
     	}
 

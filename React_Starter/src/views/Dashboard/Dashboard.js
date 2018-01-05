@@ -56,6 +56,7 @@ class Dashboard extends Component {
 
     performElasticQuery(query) {
         this.onShow()
+        console.log(query)
         if (query != '') {
         	var theQuery = ""
         	if (query.substring(0,4).indexOf("AND") !== -1) {

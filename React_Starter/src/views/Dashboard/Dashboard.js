@@ -36,6 +36,7 @@ class Dashboard extends Component {
 
         this.state = {
             results: [],
+            nb_result: "",
         };
     }
 
@@ -96,7 +97,7 @@ class Dashboard extends Component {
                 })
                 .then(res => {
                     const results = res.data.hits.hits.map(obj => obj._source);
-                    console.log(results)
+                    console.log(res)
                     this.setState({
                         results
                     });

@@ -243,15 +243,15 @@ class Dashboard extends Component {
                     <Label>Statut</Label><br/>
                       <FormGroup check className="form-check-inline">
                         <Label check htmlFor="inline-checkbox1">
-                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" defaultChecked={false} onChange={(event) => this.updateSuccessCheck() }/> Success
+                          <Input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" defaultChecked={false} onChange={this.updateSuccessCheck() }/> Success
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox2">
-                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" defaultChecked={false} onChange={(event) => this.updateWarningCheck() }/> Avertissement
+                          <Input type="checkbox" id="inline-checkbox2" name="inline-checkbox2" defaultChecked={false} onChange={this.updateWarningCheck() }/> Avertissement
                         </Label>
                         {' '}
                         <Label check htmlFor="inline-checkbox3">
-                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" defaultChecked={false} onChange={(event) => this.updateErrorCheck() }/> Erreur
+                          <Input type="checkbox" id="inline-checkbox3" name="inline-checkbox3" defaultChecked={false} onChange={this.updateErrorCheck() }/> Erreur
                         </Label>
                       </FormGroup>
                     </Col>

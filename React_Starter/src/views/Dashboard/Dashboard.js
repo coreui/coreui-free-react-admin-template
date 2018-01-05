@@ -130,9 +130,11 @@ class Dashboard extends Component {
     }
 
     updateSuccessCheck() {
+    	console.log(this.state.successCheck)
     	this.setState({
      		successCheck: !this.state.successCheck,
     	});
+    	console.log(this.state.successCheck)
     	this.buildAndPerformElasticQuery()
     }
 

@@ -133,7 +133,7 @@ class Dashboard extends Component {
     	} else {
     		this.state.warningCheck = true
     	}
-    	buildAndPerformElasticQuery()
+    	this.buildAndPerformElasticQuery()
     }
 
     updateSuccessCheck() {
@@ -142,7 +142,7 @@ class Dashboard extends Component {
     	} else {
     		this.state.successCheck = true
     	}
-    	buildAndPerformElasticQuery()
+    	this.buildAndPerformElasticQuery()
     }
 
     updateErrorCheck() {
@@ -151,7 +151,7 @@ class Dashboard extends Component {
     	} else {
     		this.state.errorCheck = true
     	}
-    	buildAndPerformElasticQuery()
+    	this.buildAndPerformElasticQuery()
     }
 
     updateSearchFieldValue(value) {

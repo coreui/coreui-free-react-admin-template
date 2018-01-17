@@ -13,19 +13,33 @@ class Register extends Component {
                   <h1>Register</h1>
                   <p className="text-muted">Create your account</p>
                   <InputGroup className="mb-3">
-                    <InputGroupAddon><i className="icon-user"></i></InputGroupAddon>
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="icon-user"></i>
+                      </span>
+                    </div>
                     <Input type="text" placeholder="Username"/>
                   </InputGroup>
                   <InputGroup className="mb-3">
-                    <InputGroupAddon>@</InputGroupAddon>
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">@</span>
+                    </div>
                     <Input type="text" placeholder="Email"/>
                   </InputGroup>
                   <InputGroup className="mb-3">
-                    <InputGroupAddon><i className="icon-lock"></i></InputGroupAddon>
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="icon-lock"></i>
+                      </span>
+                    </div>
                     <Input type="password" placeholder="Password"/>
                   </InputGroup>
                   <InputGroup className="mb-4">
-                    <InputGroupAddon><i className="icon-lock"></i></InputGroupAddon>
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="icon-lock"></i>
+                      </span>
+                    </div>
                     <Input type="password" placeholder="Repeat password"/>
                   </InputGroup>
                   <Button color="success" block>Create Account</Button>

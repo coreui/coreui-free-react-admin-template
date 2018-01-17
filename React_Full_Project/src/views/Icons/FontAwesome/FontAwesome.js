@@ -7,7 +7,9 @@ class FontAwesome extends Component {
     return (
       <div className="animated fadeIn">
 		<Card id="new47">
-          <CardHeader>55 New Icons in 4.7</CardHeader>
+          <CardHeader>
+            <i className="fa fa-font-awesome"></i> 55 New Icons in 4.7
+          </CardHeader>
           <CardBody>
             <Row className="text-center">
               <Col className="fa-hover" xs="6" sm="4" md="3" lg="2">

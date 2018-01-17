@@ -416,8 +416,11 @@ class Dashboard extends Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
+
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      radioSelected: 2
     };
   }
 
@@ -427,6 +430,11 @@ class Dashboard extends Component {
     });
   }
 
+  onRadioBtnClick(radioSelected) {
+    this.setState({
+      radioSelected: radioSelected
+    });
+  }
 
   render() {
 
@@ -546,16 +554,10 @@ class Dashboard extends Component {
                   <Col sm="7" className="d-none d-sm-inline-block">
                     <Button color="primary" className="float-right"><i className="icon-cloud-download"></i></Button>
                     <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
-                      <ButtonGroup className="mr-3" data-toggle="buttons" aria-label="First group">
-                        <Label htmlFor="option1" className="btn btn-outline-secondary">
-                          <Input type="radio" name="options" id="option1"/> Day
-                        </Label>
-                        <Label htmlFor="option2" className="btn btn-outline-secondary active">
-                          <Input type="radio" name="options" id="option2" defaultChecked/> Month
-                        </Label>
-                        <Label htmlFor="option3" className="btn btn-outline-secondary">
-                          <Input type="radio" name="options" id="option3"/> Year
-                        </Label>
+                      <ButtonGroup className="mr-3" aria-label="First group">
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
                       </ButtonGroup>
                     </ButtonToolbar>
                   </Col>
@@ -1017,7 +1019,7 @@ class Dashboard extends Component {
                       </div>
                     </td>
                     <td className="text-center">
-                      <img src={'img/flags/USA.png'} alt="USA" style={{height: 24 + 'px'}}/>
+                      <i className="flag-icon flag-icon-us h4 mb-0" title="us" id="us"></i>
                     </td>
                     <td>
                       <div className="clearfix">
@@ -1053,7 +1055,7 @@ class Dashboard extends Component {
                       </div>
                     </td>
                     <td className="text-center">
-                      <img src={'img/flags/Brazil.png'} alt="Brazil" style={{height: 24 + 'px'}}/>
+                      <i className="flag-icon flag-icon-br h4 mb-0" title="br" id="br"></i>
                     </td>
                     <td>
                       <div className="clearfix">
@@ -1088,7 +1090,7 @@ class Dashboard extends Component {
                       </div>
                     </td>
                     <td className="text-center">
-                      <img src={'img/flags/India.png'} alt="India" style={{height: 24 + 'px'}}/>
+                      <i className="flag-icon flag-icon-in h4 mb-0" title="in" id="in"></i>
                     </td>
                     <td>
                       <div className="clearfix">
@@ -1123,7 +1125,7 @@ class Dashboard extends Component {
                       </div>
                     </td>
                     <td className="text-center">
-                      <img src={'img/flags/France.png'} alt="France" style={{height: 24 + 'px'}}/>
+                      <i className="flag-icon flag-icon-fr h4 mb-0" title="fr" id="fr"></i>
                     </td>
                     <td>
                       <div className="clearfix">
@@ -1158,7 +1160,7 @@ class Dashboard extends Component {
                       </div>
                     </td>
                     <td className="text-center">
-                      <img src={'img/flags/Spain.png'} alt="Spain" style={{height: 24 + 'px'}}/>
+                      <i className="flag-icon flag-icon-es h4 mb-0" title="es" id="es"></i>
                     </td>
                     <td>
                       <div className="clearfix">
@@ -1193,7 +1195,7 @@ class Dashboard extends Component {
                       </div>
                     </td>
                     <td className="text-center">
-                      <img src={'img/flags/Poland.png'} alt="Poland" style={{height: 24 + 'px'}}/>
+                      <i className="flag-icon flag-icon-pl h4 mb-0" title="pl" id="pl"></i>
                     </td>
                     <td>
                       <div className="clearfix">

@@ -1,5 +1,17 @@
 ## [react](./REACT.md) version `changelog`
 
+###### `v1.0.8`
+- refactor: Dashboard radio buttons, new `onRadioBtnClick()` method
+- update: react to `16.2.0`
+- update: Bootstrap `4.0.0-beta.3`
+- update: dependencies
+- feature: some Bootstrap4 components added
+- fix: rollback to webpack-dev-server `2.9.7`
+- temp tweaks(b4 beta3): `InputGroupAddon` and `InputGroupButton` 
+- refactor(checkboxes, radios): temp tweaks 
+- feat: mobile sidebar link click closes the sidebar
+- fix: .nav-tabs .nav-link `cursor: pointer`
+
 ###### `v1.0.6`
 
 - update: react to `^16.1.1`

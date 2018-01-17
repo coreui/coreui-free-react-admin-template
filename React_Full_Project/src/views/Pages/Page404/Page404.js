@@ -14,11 +14,15 @@ class Page404 extends Component {
                 <p className="text-muted float-left">The page you are looking for was not found.</p>
               </div>
               <InputGroup className="input-prepend">
-                <InputGroupAddon><i className="fa fa-search"></i></InputGroupAddon>
+                <div className="input-group-prepend">
+                  <span className="input-group-text">
+                    <i className="fa fa-search"></i>
+                  </span>
+                </div>
                 <Input size="16" type="text" placeholder="What are you looking for?"/>
-                <InputGroupButton>
+                <div className="input-group-append">
                   <Button color="info">Search</Button>
-                </InputGroupButton>
+                </div>
               </InputGroup>
             </Col>
           </Row>

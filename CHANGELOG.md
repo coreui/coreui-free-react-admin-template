@@ -1,5 +1,8 @@
 ## [react](./REACT.md) version `changelog`
 
+###### `v1.0.9`
+- refactor: Sidebar structure change
+
 ###### `v1.0.8`
 - refactor: Dashboard radio buttons, new `onRadioBtnClick()` method
 - update: react to `16.2.0`

@@ -69,6 +69,22 @@ class Sidebar extends Component {
       return (<li key={key} className={ classes }></li>);
     };
 
+    // nav label with nav link
+    const navLabel = (item, key) => {
+      const classes = {
+        item: classNames( 'hidden-cn', item.class ),
+        link: classNames( 'nav-label', item.class ? item.class : ''),
+        icon: classNames(
+          !item.icon ? 'fa fa-circle' : item.icon ,
+          item.label.variant ? `text-${item.label.variant}` : '',
+          item.label.class ?  item.label.class : ''
+        )
+      };
+      return (
+        navLink(item, key, classes)
+      );
+    };
+
     // nav item with nav link
     const navItem = (item, key) => {
       const classes = {
@@ -114,6 +130,7 @@ class Sidebar extends Component {
     const navType = (item, idx) =>
       item.title ? title(item, idx) :
       item.divider ? divider(item, idx) :
+      item.label ? navLabel(item, idx) :
       item.children ? navDropdown(item, idx)
                     : navItem(item, idx) ;
 

@@ -1,5 +1,13 @@
 ## [react](./REACT.md) version `changelog`
 
+##### `v1.0.10`
+- refactor: `<InputGroupAddon addonType="prepend">`
+- refactor: `<InputGroupAddon addonType="append">`
+- refactor: `<InputGroupText>`
+- refactor: remove `<InputGroupButton>`
+- update: reactstrap to `5.0.0-beta`
+- update: dependencies
+
 ###### `v1.0.9`
 - refactor: Sidebar structure change
 

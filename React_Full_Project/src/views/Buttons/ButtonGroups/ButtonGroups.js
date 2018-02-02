@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Row, Col, Card, CardHeader, CardBody, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, ButtonGroup, ButtonToolbar, Input, InputGroup, InputGroupAddon } from 'reactstrap';
+import {Row, Col, Card, CardHeader, CardBody, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, ButtonGroup, ButtonToolbar, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 
 class ButtonGroups extends Component {
 
@@ -77,7 +77,7 @@ class ButtonGroups extends Component {
                     <Button>4</Button>
                   </ButtonGroup>
                   <InputGroup>
-                    <div className="input-group-prepend"><span className="input-group-text">@</span></div>
+                    <InputGroupAddon addonType="prepend"><InputGroupText>@</InputGroupText></InputGroupAddon>
                     <Input placeholder="Input group example" />
                   </InputGroup>
                 </ButtonToolbar>
@@ -89,7 +89,7 @@ class ButtonGroups extends Component {
                     <Button>4</Button>
                   </ButtonGroup>
                   <InputGroup>
-                    <div className="input-group-prepend"><span className="input-group-text">@</span></div>
+                    <InputGroupAddon addonType="prepend"><InputGroupText>@</InputGroupText></InputGroupAddon>
                     <Input placeholder="Input group example" />
                   </InputGroup>
                 </ButtonToolbar>

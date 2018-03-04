@@ -1,7 +1,7 @@
 {
-  "name": "@coreui/react",
-  "version": "1.0.10",
-  "description": "Open Source React Admin Template",
+  "name": "@coreui/react-admin-template",
+  "version": "2.0.0",
+  "description": "Free React Admin Template",
   "main": "",
   "homepage": "http://coreui.io/react/",
   "github": "https://github.com/mrholek/CoreUI-React#readme",

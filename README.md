@@ -47,6 +47,7 @@ CoreUI includes 6 Version for Angular 4, AngularJS, React.js, Vue.js, Static HTM
 * [HTML5 Static Version](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template).
 * [React.js Version](https://github.com/mrholek/CoreUI-React).
 * [Vue.js Version](https://github.com/mrholek/CoreUI-Vue).
+* [ASP.NET Core 2 MVC Version](https://github.com/mrholek/CoreUI-NET)
 
 ## Bugs and feature requests
 

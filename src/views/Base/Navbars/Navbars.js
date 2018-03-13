@@ -1,21 +1,19 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-  Row,
-  Col,
   Card,
-  CardHeader,
   CardBody,
+  CardHeader,
   Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
   Nav,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
   NavItem,
   NavLink,
   UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from 'reactstrap';
 
 class Navbars extends Component {
@@ -27,19 +25,19 @@ class Navbars extends Component {
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
       isOpen: false,
-      collapsed: true
+      collapsed: true,
     };
   }
 
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
 
   toggleNavbar() {
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   }
 
@@ -49,8 +47,8 @@ class Navbars extends Component {
         <Card>
           <CardHeader>
             <i className="fa fa-align-justify"></i><strong>Navbar</strong>
-            <div className="card-actions">
-              <a href="https://reactstrap.github.io/components/navbar/" target="_blank">
+            <div className="card-header-actions">
+              <a href="https://reactstrap.github.io/components/navbar/" rel="noreferrer noopener" target="_blank">
                 <small className="text-muted">docs</small>
               </a>
             </div>
@@ -58,7 +56,7 @@ class Navbars extends Component {
           <CardBody>
             <Navbar color="info" light expand="md">
               <NavbarBrand href="/">Bootstrap</NavbarBrand>
-              <NavbarToggler onClick={this.toggle}/>
+              <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                   <NavItem>
@@ -80,7 +78,7 @@ class Navbars extends Component {
                       <DropdownItem>
                         Option 2
                       </DropdownItem>
-                      <DropdownItem divider/>
+                      <DropdownItem divider />
                       <DropdownItem>
                         Reset
                       </DropdownItem>
@@ -98,7 +96,7 @@ class Navbars extends Component {
           <CardBody>
             <Navbar color="success" light>
               <NavbarBrand href="/" className="mr-auto">Bootstrap</NavbarBrand>
-              <NavbarToggler onClick={this.toggleNavbar} className="mr-2"/>
+              <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
               <Collapse isOpen={!this.state.collapsed} navbar>
                 <Nav navbar>
                   <NavItem>

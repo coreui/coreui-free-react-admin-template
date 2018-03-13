@@ -1,13 +1,5 @@
-import React, {Component} from 'react';
-import {
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Collapse, Button, Fade
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Card, CardBody, CardFooter, CardHeader, Collapse, Fade } from 'reactstrap';
 
 class Collapses extends Component {
 
@@ -23,32 +15,32 @@ class Collapses extends Component {
       collapse: false,
       status: 'Closed',
       fadeIn: true,
-      timeout: 300
+      timeout: 300,
     };
   }
 
   onEntering() {
-    this.setState({status: 'Opening...'});
+    this.setState({ status: 'Opening...' });
   }
 
   onEntered() {
-    this.setState({status: 'Opened'});
+    this.setState({ status: 'Opened' });
   }
 
   onExiting() {
-    this.setState({status: 'Closing...'});
+    this.setState({ status: 'Closing...' });
   }
 
   onExited() {
-    this.setState({status: 'Closed'});
+    this.setState({ status: 'Closed' });
   }
 
   toggle() {
-    this.setState({collapse: !this.state.collapse});
+    this.setState({ collapse: !this.state.collapse });
   }
 
   toggleFade() {
-    this.setState({fadeIn: !this.state.fadeIn});
+    this.setState({ fadeIn: !this.state.fadeIn });
   }
 
   render() {
@@ -57,8 +49,8 @@ class Collapses extends Component {
         <Card>
           <CardHeader>
             <i className="fa fa-align-justify"></i><strong>Collapse</strong>
-            <div className="card-actions">
-              <a href="https://reactstrap.github.io/components/collapse/" target="_blank">
+            <div className="card-header-actions">
+              <a href="https://reactstrap.github.io/components/collapse/" rel="noreferrer noopener" target="_blank">
                 <small className="text-muted">docs</small>
               </a>
             </div>
@@ -91,15 +83,15 @@ class Collapses extends Component {
             </CardBody>
           </Collapse>
           <CardFooter>
-            <Button color="primary" onClick={this.toggle} style={{marginBottom: '1rem'}}>Toggle</Button>
+            <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</Button>
             <h5>Current state: {this.state.status}</h5>
           </CardFooter>
         </Card>
         <Card>
           <CardHeader>
             <i className="fa fa-align-justify"></i><strong>Fade</strong>
-            <div className="card-actions">
-              <a href="https://reactstrap.github.io/components/fade/" target="_blank">
+            <div className="card-header-actions">
+              <a href="https://reactstrap.github.io/components/fade/" rel="noreferrer noopener" target="_blank">
                 <small className="text-muted">docs</small>
               </a>
             </div>

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Row, Col, Card, CardHeader, CardBody, CardFooter,  ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, ButtonDropdown, Card, CardBody, CardHeader, Col, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'reactstrap';
 
 class ButtonDropdowns extends Component {
 
@@ -8,14 +8,14 @@ class ButtonDropdowns extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: new Array(16).fill(false)
+      dropdownOpen: new Array(16).fill(false),
     };
   }
 
   toggle(i) {
     const newArray = this.state.dropdownOpen.map((element, index) => { return (index === i ? !element : false); });
     this.setState({
-      dropdownOpen: newArray
+      dropdownOpen: newArray,
     });
   }
 
@@ -27,8 +27,8 @@ class ButtonDropdowns extends Component {
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Button Dropdown</strong>
-                <div className="card-actions">
-                  <a href="https://reactstrap.github.io/components/button-dropdown/" target="_blank">
+                <div className="card-header-actions">
+                  <a href="https://reactstrap.github.io/components/button-dropdown/" rel="noreferrer noopener" target="_blank">
                     <small className="text-muted">docs</small>
                   </a>
                 </div>
@@ -61,7 +61,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
@@ -73,7 +73,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
@@ -85,7 +85,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
@@ -97,7 +97,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
@@ -109,7 +109,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
@@ -121,7 +121,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
@@ -134,67 +134,67 @@ class ButtonDropdowns extends Component {
               <CardBody>
                 <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[7]} toggle={() => { this.toggle(7); }}>
                   <Button id="caret" color="primary">Primary</Button>
-                  <DropdownToggle caret color="primary"/>
+                  <DropdownToggle caret color="primary" />
                   <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
                 <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[8]} toggle={() => { this.toggle(8); }}>
                   <Button id="caret" color="secondary">Secondary</Button>
-                  <DropdownToggle caret color="secondary"/>
+                  <DropdownToggle caret color="secondary" />
                   <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
                 <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[9]} toggle={() => { this.toggle(9); }}>
                   <Button id="caret" color="success">Success</Button>
-                  <DropdownToggle caret color="success"/>
+                  <DropdownToggle caret color="success" />
                   <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
                 <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[10]} toggle={() => { this.toggle(10); }}>
                   <Button id="caret" color="info">Info</Button>
-                  <DropdownToggle caret color="info"/>
+                  <DropdownToggle caret color="info" />
                   <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
                 <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[11]} toggle={() => { this.toggle(11); }}>
                   <Button id="caret" color="warning">Warning</Button>
-                  <DropdownToggle caret color="warning"/>
+                  <DropdownToggle caret color="warning" />
                   <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
                 <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[12]} toggle={() => { this.toggle(12); }}>
                   <Button id="caret" color="danger">Danger</Button>
-                  <DropdownToggle caret color="danger"/>
+                  <DropdownToggle caret color="danger" />
                   <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
@@ -235,7 +235,7 @@ class ButtonDropdowns extends Component {
               </CardHeader>
               <CardBody>
                 <ButtonDropdown dropup className="mr-1" isOpen={this.state.dropdownOpen[15]} toggle={() => { this.toggle(15); }}>
-                  <DropdownToggle caret caret size="lg">
+                  <DropdownToggle caret size="lg">
                     Dropup
                   </DropdownToggle>
                   <DropdownMenu>
@@ -250,7 +250,7 @@ class ButtonDropdowns extends Component {
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 

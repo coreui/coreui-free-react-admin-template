@@ -1,5 +1,11 @@
 ## [react](./REACT.md) version `changelog`
 
+##### `v2.0.0-alpha.1`
+- refactor: separation of concerns - (CoreUI template vs CoreUI components) prepare to use CoreUI as dependency
+- refactor: project structure change
+- refactor: moved to [Create-React-App](CRA.md)
+- chore: moved to [Semantic Versioning](https://semver.org/)
+
 ##### `v1.0.10`
 - refactor: `<InputGroupAddon addonType="prepend">`
 - refactor: `<InputGroupAddon addonType="append">`

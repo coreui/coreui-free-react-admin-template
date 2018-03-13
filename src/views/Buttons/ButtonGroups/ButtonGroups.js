@@ -1,5 +1,22 @@
-import React, {Component} from 'react';
-import {Row, Col, Card, CardHeader, CardBody, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, ButtonGroup, ButtonToolbar, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
+import React, { Component } from 'react';
+import {
+  Button,
+  ButtonDropdown,
+  ButtonGroup,
+  ButtonToolbar,
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Row,
+} from 'reactstrap';
 
 class ButtonGroups extends Component {
 
@@ -8,14 +25,14 @@ class ButtonGroups extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: new Array(2).fill(false)
+      dropdownOpen: new Array(2).fill(false),
     };
   }
 
   toggle(i) {
     const newArray = this.state.dropdownOpen.map((element, index) => { return (index === i ? !element : false); });
     this.setState({
-      dropdownOpen: newArray
+      dropdownOpen: newArray,
     });
   }
 
@@ -27,8 +44,8 @@ class ButtonGroups extends Component {
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Button Group</strong>
-                <div className="card-actions">
-                  <a href="https://reactstrap.github.io/components/button-group/" target="_blank">
+                <div className="card-header-actions">
+                  <a href="https://reactstrap.github.io/components/button-group/" rel="noreferrer noopener" target="_blank">
                     <small className="text-muted">docs</small>
                   </a>
                 </div>
@@ -66,7 +83,8 @@ class ButtonGroups extends Component {
             </Card>
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Button Toolbar</strong> <small>mix with input groups</small>
+                <i className="fa fa-align-justify"></i><strong>Button Toolbar</strong>
+                <small>mix with input groups</small>
               </CardHeader>
               <CardBody>
                 <ButtonToolbar className="mb-3">
@@ -105,13 +123,13 @@ class ButtonGroups extends Component {
                   <Button>Middle</Button>
                   <Button>Right</Button>
                 </ButtonGroup>
-                <hr/>
+                <hr />
                 <ButtonGroup>
                   <Button>Left</Button>
                   <Button>Middle</Button>
                   <Button>Right</Button>
                 </ButtonGroup>
-                <hr/>
+                <hr />
                 <ButtonGroup size="sm">
                   <Button>Left</Button>
                   <Button>Middle</Button>
@@ -162,7 +180,7 @@ class ButtonGroups extends Component {
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 

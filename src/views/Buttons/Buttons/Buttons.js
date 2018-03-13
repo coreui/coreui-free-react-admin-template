@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Row, Col, Card, CardHeader, CardBody, Button} from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
 class Buttons extends Component {
   render() {
@@ -207,7 +207,7 @@ class Buttons extends Component {
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 

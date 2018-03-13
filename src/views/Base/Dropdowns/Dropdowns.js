@@ -1,9 +1,5 @@
-import React, {Component} from 'react';
-import {
-  Row, Col,
-  Card, CardHeader, CardBody, CardFooter,
-  Dropdown, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledDropdown
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Card, CardBody, CardHeader, Col, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap';
 
 class Dropdowns extends Component {
   constructor(props) {
@@ -11,8 +7,8 @@ class Dropdowns extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: new Array(6).fill(false)
-    }
+      dropdownOpen: new Array(6).fill(false),
+    };
   }
 
   toggle(i) {
@@ -20,7 +16,7 @@ class Dropdowns extends Component {
       return (index === i ? !element : false);
     });
     this.setState({
-      dropdownOpen: newArray
+      dropdownOpen: newArray,
     });
   }
 
@@ -32,8 +28,8 @@ class Dropdowns extends Component {
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Dropdowns</strong>
-                <div className="card-actions">
-                  <a href="https://reactstrap.github.io/components/dropdowns/" target="_blank">
+                <div className="card-header-actions">
+                  <a href="https://reactstrap.github.io/components/dropdowns/" rel="noreferrer noopener" target="_blank">
                     <small className="text-muted">docs</small>
                   </a>
                 </div>
@@ -49,7 +45,7 @@ class Dropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
@@ -69,7 +65,7 @@ class Dropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
@@ -89,7 +85,7 @@ class Dropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
@@ -101,7 +97,7 @@ class Dropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
@@ -113,7 +109,7 @@ class Dropdowns extends Component {
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
-                    <DropdownItem divider/>
+                    <DropdownItem divider />
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
@@ -124,21 +120,21 @@ class Dropdowns extends Component {
                 <i className="fa fa-align-justify"></i><strong>Custom Dropdowns</strong>
               </CardHeader>
               <CardBody>
-                <Dropdown isOpen={this.state.dropdownOpen[5]} toggle={() => {this.toggle(5)}}>
+                <Dropdown isOpen={this.state.dropdownOpen[5]} toggle={() => {this.toggle(5);}}>
                   <DropdownToggle
                     tag="span"
-                    onClick={() => {this.toggle(5)}}
+                    onClick={() => {this.toggle(5);}}
                     data-toggle="dropdown"
                     aria-expanded={this.state.dropdownOpen[5]}
                   >
                     Custom Dropdown Content <strong> * </strong>
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <div onClick={() => {this.toggle(5)}}>Custom dropdown item 1 </div>
-                    <div onClick={() => {this.toggle(5)}}>Custom dropdown item 2 </div>
-                    <div onClick={() => {this.toggle(5)}}>Custom dropdown item 3 </div>
+                    <div onClick={() => {this.toggle(5);}}>Custom dropdown item 1</div>
+                    <div onClick={() => {this.toggle(5);}}>Custom dropdown item 2</div>
+                    <div onClick={() => {this.toggle(5);}}>Custom dropdown item 3</div>
                     <hr className="my-0" />
-                    <div onClick={() => {this.toggle(5)}}>Custom dropdown item 4 </div>
+                    <div onClick={() => {this.toggle(5);}}>Custom dropdown item 4</div>
                   </DropdownMenu>
                 </Dropdown>
               </CardBody>

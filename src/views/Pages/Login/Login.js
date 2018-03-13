@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
-
+import React, { Component } from 'react';
+import { Button, Card, CardBody, CardGroup, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 
 class Login extends Component {
   render() {
@@ -20,7 +19,7 @@ class Login extends Component {
                           <i className="icon-user"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Username"/>
+                      <Input type="text" placeholder="Username" />
                     </InputGroup>
                     <InputGroup className="mb-4">
                       <InputGroupAddon addonType="prepend">
@@ -28,7 +27,7 @@ class Login extends Component {
                           <i className="icon-lock"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="password" placeholder="Password"/>
+                      <Input type="password" placeholder="Password" />
                     </InputGroup>
                     <Row>
                       <Col xs="6">

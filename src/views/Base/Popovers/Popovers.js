@@ -1,12 +1,5 @@
-import React, {Component} from 'react';
-import {
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-  Button, Popover, PopoverHeader, PopoverBody
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Card, CardBody, CardHeader, Popover, PopoverBody, PopoverHeader } from 'reactstrap';
 
 class PopoverItem extends Component {
   constructor(props) {
@@ -14,13 +7,13 @@ class PopoverItem extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      popoverOpen: false
+      popoverOpen: false,
     };
   }
 
   toggle() {
     this.setState({
-      popoverOpen: !this.state.popoverOpen
+      popoverOpen: !this.state.popoverOpen,
     });
   }
 
@@ -50,27 +43,27 @@ class Popovers extends Component {
       popovers: [
         {
           placement: 'top',
-          text: 'Top'
+          text: 'Top',
         },
         {
           placement: 'bottom',
-          text: 'Bottom'
+          text: 'Bottom',
         },
         {
           placement: 'left',
-          text: 'Left'
+          text: 'Left',
         },
         {
           placement: 'right',
-          text: 'Right'
-        }
-      ]
+          text: 'Right',
+        },
+      ],
     };
   }
 
   toggle() {
     this.setState({
-      popoverOpen: !this.state.popoverOpen
+      popoverOpen: !this.state.popoverOpen,
     });
   }
 
@@ -80,8 +73,8 @@ class Popovers extends Component {
         <Card>
           <CardHeader>
             <i className="fa fa-align-justify"></i><strong>Popovers</strong>
-            <div className="card-actions">
-              <a href="https://reactstrap.github.io/components/popovers/" target="_blank">
+            <div className="card-header-actions">
+              <a href="https://reactstrap.github.io/components/popovers/" rel="noreferrer noopener" target="_blank">
                 <small className="text-muted">docs</small>
               </a>
             </div>
@@ -102,7 +95,7 @@ class Popovers extends Component {
             <small> list</small>
           </CardHeader>
           <CardBody>
-            { this.state.popovers.map((popover, i) => {
+            {this.state.popovers.map((popover, i) => {
               return <PopoverItem key={i} item={popover} id={i} />;
             })}
           </CardBody>

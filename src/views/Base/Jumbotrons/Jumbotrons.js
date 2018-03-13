@@ -1,13 +1,5 @@
-import React, {Component} from 'react';
-import {
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Jumbotron, Button, Container
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Card, CardBody, CardHeader, Container, Jumbotron } from 'reactstrap';
 
 class Jumbotrons extends Component {
 
@@ -17,8 +9,8 @@ class Jumbotrons extends Component {
         <Card>
           <CardHeader>
             <i className="fa fa-align-justify"></i><strong>Jumbotron</strong>
-            <div className="card-actions">
-              <a href="https://reactstrap.github.io/components/jumbotron/" target="_blank">
+            <div className="card-header-actions">
+              <a href="https://reactstrap.github.io/components/jumbotron/" rel="noreferrer noopener" target="_blank">
                 <small className="text-muted">docs</small>
               </a>
             </div>
@@ -28,7 +20,7 @@ class Jumbotrons extends Component {
               <h1 className="display-3">Hello, world!</h1>
               <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra
                 attention to featured content or information.</p>
-              <hr className="my-2"/>
+              <hr className="my-2" />
               <p>It uses utility classes for typgraphy and spacing to space content out within the larger container.</p>
               <p className="lead">
                 <Button color="primary">Learn More</Button>
@@ -38,7 +30,8 @@ class Jumbotrons extends Component {
         </Card>
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Jumbotron</strong><small> fluid</small>
+            <i className="fa fa-align-justify"></i><strong>Jumbotron</strong>
+            <small> fluid</small>
           </CardHeader>
           <CardBody>
             <Jumbotron fluid>

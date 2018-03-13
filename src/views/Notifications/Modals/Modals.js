@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardHeader, CardBody} from 'reactstrap';
-
+import React, { Component } from 'react';
+import { Button, Card, CardBody, CardHeader, Col, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
 
 class Modals extends Component {
 
@@ -14,7 +13,7 @@ class Modals extends Component {
       success: false,
       warning: false,
       danger: false,
-      info: false
+      info: false,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -29,49 +28,49 @@ class Modals extends Component {
 
   toggle() {
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
     });
   }
 
   toggleLarge() {
     this.setState({
-      large: !this.state.large
+      large: !this.state.large,
     });
   }
 
   toggleSmall() {
     this.setState({
-      small: !this.state.small
+      small: !this.state.small,
     });
   }
 
   togglePrimary() {
     this.setState({
-      primary: !this.state.primary
+      primary: !this.state.primary,
     });
   }
 
   toggleSuccess() {
     this.setState({
-      success: !this.state.success
+      success: !this.state.success,
     });
   }
 
   toggleWarning() {
     this.setState({
-      warning: !this.state.warning
+      warning: !this.state.warning,
     });
   }
 
   toggleDanger() {
     this.setState({
-      danger: !this.state.danger
+      danger: !this.state.danger,
     });
   }
 
   toggleInfo() {
     this.setState({
-      info: !this.state.info
+      info: !this.state.info,
     });
   }
 
@@ -135,7 +134,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-                <hr/>
+                <hr />
 
                 <Button color="primary" onClick={this.togglePrimary}>Primary modal</Button>
                 <Modal isOpen={this.state.primary} toggle={this.togglePrimary}
@@ -227,7 +226,7 @@ class Modals extends Component {
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 

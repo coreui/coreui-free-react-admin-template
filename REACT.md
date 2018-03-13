@@ -1,29 +1,31 @@
-# React version
+# CoreUI React version
 
 ## Intro 
-It uses Sass (with .scss). The style is loaded at the component level.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
-Dependencies can be handled by **npm**.
+It uses Sass (with .scss). The styles are loaded at the template level
+
+Dependencies are handled by **npm**.
 
 ## Directories
 ```
-React_Full_Project/
-├── src/         (js|jsx source)
-├── scss/        (scss source)
+CoreUI-React#v2.0.0
 ├── public/      (html template)
-    ├── img/     (images)
+    ├── assets/  (static assets)
+├── src/             (project root)
+    ├── containers/  (container source)
+    ├── scss/        (scss/css source)
+    ├── views/       (views source)
 ```
 
 ## Usage
-**npm i** - to install dependencies
+`npm i` - to install dependencies
 
-## Sctipts
-**npm start** for developing (it runs webpack-dev-server)  
-**npm run build** to run a dev build  
-**npm run clean** to clean build dir  
-**npm run dev** to run a dev build with watching filesystem for changes  
+## Sctipts 
+`npm start` for developing (it runs webpack-dev-server)  
+`npm run build` to run a dev build  
 
 ## See also
-
+[Create-React-App](CRA.md)
 [Changelog](./CHANGELOG.md)  
 [Readme](./README.md)

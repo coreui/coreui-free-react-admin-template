@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Row, Col, Card, CardHeader, CardBody} from 'reactstrap';
+import React, { Component } from 'react';
+import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
 class SimpleLineIcons extends Component {
   render() {
@@ -748,7 +748,7 @@ class SimpleLineIcons extends Component {
           </CardBody>
         </Card>
       </div>
-    )
+    );
   }
 }
 

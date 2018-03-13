@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Colors extends Component {
   render() {
@@ -97,7 +97,7 @@ class Colors extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

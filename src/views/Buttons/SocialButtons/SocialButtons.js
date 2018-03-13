@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Row, Col, Card, CardHeader, CardBody, Button} from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
 class SocialButtons extends Component {
   render() {
@@ -11,7 +11,7 @@ class SocialButtons extends Component {
               <CardHeader>
                 <strong>Social Media Button</strong>
                 <small>Usage ex.</small>
-                <code style={{textTransform: 'lowercase'}}>&lt;button className="btn-facebook"&gt;&lt;span&gt;
+                <code style={{ textTransform: 'lowercase' }}>&lt;button className="btn-facebook"&gt;&lt;span&gt;
                   Facebook&lt;/span&gt;&lt;/Button&gt;</code>
               </CardHeader>
               <CardBody>
@@ -112,7 +112,7 @@ class SocialButtons extends Component {
               <CardHeader>
                 <strong>Social Media Button</strong>
                 <small>Only icons. Usage ex.</small>
-                <code style={{textTransform: 'lowercase'}}>&lt;button className="btn-facebook icon"&gt;&lt;span&gt;
+                <code style={{ textTransform: 'lowercase' }}>&lt;button className="btn-facebook icon"&gt;&lt;span&gt;
                   Facebook&lt;/span&gt;&lt;/Button&gt;</code>
               </CardHeader>
               <CardBody>
@@ -213,7 +213,7 @@ class SocialButtons extends Component {
               <CardHeader>
                 <strong>Social Media Button</strong>
                 <small>Only text. Usage ex.</small>
-                <code style={{textTransform: 'lowercase'}}>&lt;button className="btn-facebook text"&gt;&lt;span&gt;
+                <code style={{ textTransform: 'lowercase' }}>&lt;button className="btn-facebook text"&gt;&lt;span&gt;
                   Facebook&lt;/span&gt;&lt;/Button&gt;</code>
               </CardHeader>
               <CardBody>
@@ -311,7 +311,7 @@ class SocialButtons extends Component {
         </Row>
       </div>
 
-    )
+    );
   }
 }
 

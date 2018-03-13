@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Badge, Row, Col, Card, CardHeader, CardFooter, CardBody, Label, Input} from 'reactstrap';
+import React, { Component } from 'react';
+import { Badge, Card, CardBody, CardFooter, CardHeader, Col, Input, Label, Row } from 'reactstrap';
 
 class Cards extends Component {
   render() {
@@ -45,7 +45,7 @@ class Cards extends Component {
               <CardHeader>
                 Card with switch
                 <Label className="switch switch-sm switch-text switch-info float-right mb-0">
-                  <Input type="checkbox" className="switch-input"/>
+                  <Input type="checkbox" className="switch-input" />
                   <span className="switch-label" data-on="On" data-off="Off"></span>
                   <span className="switch-handle"></span>
                 </Label>
@@ -239,7 +239,7 @@ class Cards extends Component {
               <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
+                  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
                 </blockquote>
               </CardBody>
             </Card>
@@ -249,7 +249,7 @@ class Cards extends Component {
               <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
+                  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
                 </blockquote>
               </CardBody>
             </Card>
@@ -259,7 +259,7 @@ class Cards extends Component {
               <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
+                  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
                 </blockquote>
               </CardBody>
             </Card>
@@ -269,7 +269,7 @@ class Cards extends Component {
               <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
+                  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
                 </blockquote>
               </CardBody>
             </Card>
@@ -279,7 +279,7 @@ class Cards extends Component {
               <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
+                  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
                 </blockquote>
               </CardBody>
             </Card>
@@ -289,7 +289,7 @@ class Cards extends Component {
               <CardBody>
                 <blockquote className="card-bodyquote">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  <footer>Someone famous in <cite title="Source Title">Source Title</cite> </footer>
+                  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
                 </blockquote>
               </CardBody>
             </Card>
@@ -359,7 +359,7 @@ class Cards extends Component {
         </Row>
       </div>
 
-    )
+    );
   }
 }
 

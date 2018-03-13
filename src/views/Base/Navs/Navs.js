@@ -1,13 +1,5 @@
-import React, {Component} from 'react';
-import {
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-  Nav, NavItem, NavLink,
-  Dropdown, DropdownToggle, DropdownMenu, DropdownItem
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Card, CardBody, CardHeader, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
 
 class Navs extends Component {
 
@@ -16,7 +8,7 @@ class Navs extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: [false, false]
+      dropdownOpen: [false, false],
     };
   }
 
@@ -25,7 +17,7 @@ class Navs extends Component {
       return (index === i ? !element : false);
     });
     this.setState({
-      dropdownOpen: newArray
+      dropdownOpen: newArray,
     });
   }
 
@@ -35,8 +27,8 @@ class Navs extends Component {
         <Card>
           <CardHeader>
             <i className="fa fa-align-justify"></i><strong>Navs</strong>
-            <div className="card-actions">
-              <a href="https://reactstrap.github.io/components/navs/" target="_blank">
+            <div className="card-header-actions">
+              <a href="https://reactstrap.github.io/components/navs/" rel="noreferrer noopener" target="_blank">
                 <small className="text-muted">docs</small>
               </a>
             </div>
@@ -57,10 +49,11 @@ class Navs extends Component {
                 <NavLink disabled href="#">Disabled Link</NavLink>
               </NavItem>
             </Nav>
-            <hr/>
+            <hr />
             <p>Link Based</p>
             <Nav>
-              <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink> <NavLink href="#">Another Link</NavLink> <NavLink disabled href="#">Disabled Link</NavLink>
+              <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink> <NavLink href="#">Another Link</NavLink> <NavLink disabled href="#">Disabled
+              Link</NavLink>
             </Nav>
           </CardBody>
         </Card>
@@ -73,7 +66,7 @@ class Navs extends Component {
               <NavItem>
                 <NavLink href="#" active>Link</NavLink>
               </NavItem>
-              <Dropdown nav isOpen={this.state.dropdownOpen[0]} toggle={() => {this.toggle(0)}}>
+              <Dropdown nav isOpen={this.state.dropdownOpen[0]} toggle={() => {this.toggle(0);}}>
                 <DropdownToggle nav caret>
                   Dropdown
                 </DropdownToggle>
@@ -106,7 +99,7 @@ class Navs extends Component {
               <NavItem>
                 <NavLink href="#" active>Link</NavLink>
               </NavItem>
-              <Dropdown nav isOpen={this.state.dropdownOpen[1]} toggle={() => {this.toggle(1)}}>
+              <Dropdown nav isOpen={this.state.dropdownOpen[1]} toggle={() => {this.toggle(1);}}>
                 <DropdownToggle nav caret>
                   Dropdown
                 </DropdownToggle>
@@ -150,10 +143,11 @@ class Navs extends Component {
                 <NavLink disabled href="#">Disabled Link</NavLink>
               </NavItem>
             </Nav>
-            <hr/>
+            <hr />
             <p>Link based</p>
             <Nav vertical>
-              <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink> <NavLink href="#">Another Link</NavLink> <NavLink disabled href="#">Disabled Link</NavLink>
+              <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink> <NavLink href="#">Another Link</NavLink> <NavLink disabled href="#">Disabled
+              Link</NavLink>
             </Nav>
           </CardBody>
         </Card>

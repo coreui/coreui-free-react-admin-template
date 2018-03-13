@@ -1,12 +1,5 @@
-import React, {Component} from 'react';
-import {
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-  Pagination, PaginationItem, PaginationLink
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Card, CardBody, CardHeader, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 class Paginations extends Component {
 
@@ -16,8 +9,8 @@ class Paginations extends Component {
         <Card>
           <CardHeader>
             <i className="fa fa-align-justify"></i><strong>Pagination</strong>
-            <div className="card-actions">
-              <a href="https://reactstrap.github.io/components/pagination/" target="_blank">
+            <div className="card-header-actions">
+              <a href="https://reactstrap.github.io/components/pagination/" rel="noreferrer noopener" target="_blank">
                 <small className="text-muted">docs</small>
               </a>
             </div>
@@ -60,7 +53,8 @@ class Paginations extends Component {
         </Card>
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Pagination</strong><small> disabled and active states</small>
+            <i className="fa fa-align-justify"></i><strong>Pagination</strong>
+            <small> disabled and active states</small>
           </CardHeader>
           <CardBody>
             <Pagination>
@@ -100,7 +94,8 @@ class Paginations extends Component {
         </Card>
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Pagination</strong><small> sizing</small>
+            <i className="fa fa-align-justify"></i><strong>Pagination</strong>
+            <small> sizing</small>
           </CardHeader>
           <CardBody>
             <Pagination size="lg">

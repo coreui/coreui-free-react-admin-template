@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
-import {Bar, Line} from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 import {
   Badge,
-  Row,
-  Col,
-  Progress,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
+  Button,
+  ButtonDropdown,
+  ButtonGroup,
+  ButtonToolbar,
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
+  CardHeader,
   CardTitle,
-  Button,
-  ButtonToolbar,
-  ButtonGroup,
-  ButtonDropdown,
-  Label,
-  Input,
-  Table
+  Col,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Progress,
+  Row,
+  Table,
 } from 'reactstrap';
+import Widget03 from '../../views/Widgets/Widget03'
 
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
@@ -37,48 +36,50 @@ const cardChartData1 = {
       label: 'My First dataset',
       backgroundColor: brandPrimary,
       borderColor: 'rgba(255,255,255,.55)',
-      data: [65, 59, 84, 84, 51, 55, 40]
-    }
+      data: [65, 59, 84, 84, 51, 55, 40],
+    },
   ],
 };
 
 const cardChartOpts1 = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
   scales: {
-    xAxes: [{
-      gridLines: {
-        color: 'transparent',
-        zeroLineColor: 'transparent'
-      },
-      ticks: {
-        fontSize: 2,
-        fontColor: 'transparent',
-      }
+    xAxes: [
+      {
+        gridLines: {
+          color: 'transparent',
+          zeroLineColor: 'transparent',
+        },
+        ticks: {
+          fontSize: 2,
+          fontColor: 'transparent',
+        },
 
-    }],
-    yAxes: [{
-      display: false,
-      ticks: {
+      }],
+    yAxes: [
+      {
         display: false,
-        min: Math.min.apply(Math, cardChartData1.datasets[0].data) - 5,
-        max: Math.max.apply(Math, cardChartData1.datasets[0].data) + 5,
-      }
-    }],
+        ticks: {
+          display: false,
+          min: Math.min.apply(Math, cardChartData1.datasets[0].data) - 5,
+          max: Math.max.apply(Math, cardChartData1.datasets[0].data) + 5,
+        },
+      }],
   },
   elements: {
     line: {
-      borderWidth: 1
+      borderWidth: 1,
     },
     point: {
       radius: 4,
       hitRadius: 10,
       hoverRadius: 4,
     },
-  }
-}
+  },
+};
 
 // Card Chart 2
 const cardChartData2 = {
@@ -88,49 +89,51 @@ const cardChartData2 = {
       label: 'My First dataset',
       backgroundColor: brandInfo,
       borderColor: 'rgba(255,255,255,.55)',
-      data: [1, 18, 9, 17, 34, 22, 11]
-    }
+      data: [1, 18, 9, 17, 34, 22, 11],
+    },
   ],
 };
 
 const cardChartOpts2 = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
   scales: {
-    xAxes: [{
-      gridLines: {
-        color: 'transparent',
-        zeroLineColor: 'transparent'
-      },
-      ticks: {
-        fontSize: 2,
-        fontColor: 'transparent',
-      }
+    xAxes: [
+      {
+        gridLines: {
+          color: 'transparent',
+          zeroLineColor: 'transparent',
+        },
+        ticks: {
+          fontSize: 2,
+          fontColor: 'transparent',
+        },
 
-    }],
-    yAxes: [{
-      display: false,
-      ticks: {
+      }],
+    yAxes: [
+      {
         display: false,
-        min: Math.min.apply(Math, cardChartData2.datasets[0].data) - 5,
-        max: Math.max.apply(Math, cardChartData2.datasets[0].data) + 5,
-      }
-    }],
+        ticks: {
+          display: false,
+          min: Math.min.apply(Math, cardChartData2.datasets[0].data) - 5,
+          max: Math.max.apply(Math, cardChartData2.datasets[0].data) + 5,
+        },
+      }],
   },
   elements: {
     line: {
       tension: 0.00001,
-      borderWidth: 1
+      borderWidth: 1,
     },
     point: {
       radius: 4,
       hitRadius: 10,
       hoverRadius: 4,
     },
-  }
-}
+  },
+};
 
 // Card Chart 3
 const cardChartData3 = {
@@ -140,35 +143,37 @@ const cardChartData3 = {
       label: 'My First dataset',
       backgroundColor: 'rgba(255,255,255,.2)',
       borderColor: 'rgba(255,255,255,.55)',
-      data: [78, 81, 80, 45, 34, 12, 40]
-    }
+      data: [78, 81, 80, 45, 34, 12, 40],
+    },
   ],
 };
 
 const cardChartOpts3 = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
   scales: {
-    xAxes: [{
-      display: false
-    }],
-    yAxes: [{
-      display: false
-    }],
+    xAxes: [
+      {
+        display: false,
+      }],
+    yAxes: [
+      {
+        display: false,
+      }],
   },
   elements: {
     line: {
-      borderWidth: 2
+      borderWidth: 2,
     },
     point: {
       radius: 0,
       hitRadius: 10,
       hoverRadius: 4,
     },
-  }
-}
+  },
+};
 
 // Card Chart 4
 const cardChartData4 = {
@@ -178,33 +183,35 @@ const cardChartData4 = {
       label: 'My First dataset',
       backgroundColor: 'rgba(255,255,255,.3)',
       borderColor: 'transparent',
-      data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98]
-    }
+      data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98],
+    },
   ],
 };
 
 const cardChartOpts4 = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
   scales: {
-    xAxes: [{
-      display: false,
-      barPercentage: 0.6,
-    }],
-    yAxes: [{
-      display: false,
-    }]
-  }
-}
+    xAxes: [
+      {
+        display: false,
+        barPercentage: 0.6,
+      }],
+    yAxes: [
+      {
+        display: false,
+      }],
+  },
+};
 
 // Social Box Chart
 const socialBoxData = [
-  {data: [65, 59, 84, 84, 51, 55, 40], label: 'facebook'},
-  {data: [1, 13, 9, 17, 34, 41, 38], label: 'twitter'},
-  {data: [78, 81, 80, 45, 34, 12, 40], label: 'linkedin'},
-  {data: [35, 23, 56, 22, 97, 23, 64], label: 'google'}
+  { data: [65, 59, 84, 84, 51, 55, 40], label: 'facebook' },
+  { data: [1, 13, 9, 17, 34, 41, 38], label: 'twitter' },
+  { data: [78, 81, 80, 45, 34, 12, 40], label: 'linkedin' },
+  { data: [35, 23, 56, 22, 97, 23, 64], label: 'google' },
 ];
 
 const makeSocialBoxData = (dataSetNo) => {
@@ -219,8 +226,8 @@ const makeSocialBoxData = (dataSetNo) => {
         borderWidth: 2,
         data: dataset.data,
         label: dataset.label,
-      }
-    ]
+      },
+    ],
   };
   return () => data;
 };
@@ -229,52 +236,54 @@ const socialChartOpts = {
   responsive: true,
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
   scales: {
-    xAxes: [{
-      display: false
-    }],
-    yAxes: [{
-      display: false
-    }]
+    xAxes: [
+      {
+        display: false,
+      }],
+    yAxes: [
+      {
+        display: false,
+      }],
   },
   elements: {
     point: {
       radius: 0,
       hitRadius: 10,
       hoverRadius: 4,
-      hoverBorderWidth: 3
-    }
-  }
+      hoverBorderWidth: 3,
+    },
+  },
 };
 
 // sparkline charts
 const sparkLineChartData = [
   {
     data: [35, 23, 56, 22, 97, 23, 64],
-    label: 'New Clients'
+    label: 'New Clients',
   },
   {
     data: [65, 59, 84, 84, 51, 55, 40],
-    label: 'Recurring Clients'
+    label: 'Recurring Clients',
   },
   {
     data: [35, 23, 56, 22, 97, 23, 64],
-    label: 'Pageviews'
+    label: 'Pageviews',
   },
   {
     data: [65, 59, 84, 84, 51, 55, 40],
-    label: 'Organic'
+    label: 'Organic',
   },
   {
     data: [78, 81, 80, 45, 34, 12, 40],
-    label: 'CTR'
+    label: 'CTR',
   },
   {
     data: [1, 13, 9, 17, 34, 41, 38],
-    label: 'Bounce Rate'
-  }
+    label: 'Bounce Rate',
+  },
 ];
 
 const makeSparkLineData = (dataSetNo, variant) => {
@@ -286,8 +295,8 @@ const makeSparkLineData = (dataSetNo, variant) => {
         backgroundColor: 'transparent',
         borderColor: variant ? variant : '#c2cfd6',
         data: dataset.data,
-        label: dataset.label
-      }
+        label: dataset.label,
+      },
     ],
   };
   return () => data;
@@ -297,27 +306,29 @@ const sparklineChartOpts = {
   responsive: true,
   maintainAspectRatio: true,
   scales: {
-    xAxes: [{
-      display: false,
-    }],
-    yAxes: [{
-      display: false,
-    }]
+    xAxes: [
+      {
+        display: false,
+      }],
+    yAxes: [
+      {
+        display: false,
+      }],
   },
   elements: {
     line: {
-      borderWidth: 2
+      borderWidth: 2,
     },
     point: {
       radius: 0,
       hitRadius: 10,
       hoverRadius: 4,
       hoverBorderWidth: 3,
-    }
+    },
   },
   legend: {
-    display: false
-  }
+    display: false,
+  },
 };
 
 // Main Chart
@@ -358,7 +369,7 @@ const mainChart = {
       borderColor: brandInfo,
       pointHoverBackgroundColor: '#fff',
       borderWidth: 2,
-      data: data1
+      data: data1,
     },
     {
       label: 'My Second dataset',
@@ -366,7 +377,7 @@ const mainChart = {
       borderColor: brandSuccess,
       pointHoverBackgroundColor: '#fff',
       borderWidth: 2,
-      data: data2
+      data: data2,
     },
     {
       label: 'My Third dataset',
@@ -375,30 +386,32 @@ const mainChart = {
       pointHoverBackgroundColor: '#fff',
       borderWidth: 1,
       borderDash: [8, 5],
-      data: data3
-    }
-  ]
-}
+      data: data3,
+    },
+  ],
+};
 
 const mainChartOpts = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
   scales: {
-    xAxes: [{
-      gridLines: {
-        drawOnChartArea: false,
-      }
-    }],
-    yAxes: [{
-      ticks: {
-        beginAtZero: true,
-        maxTicksLimit: 5,
-        stepSize: Math.ceil(250 / 5),
-        max: 250
-      }
-    }]
+    xAxes: [
+      {
+        gridLines: {
+          drawOnChartArea: false,
+        },
+      }],
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true,
+          maxTicksLimit: 5,
+          stepSize: Math.ceil(250 / 5),
+          max: 250,
+        },
+      }],
   },
   elements: {
     point: {
@@ -406,10 +419,9 @@ const mainChartOpts = {
       hitRadius: 10,
       hoverRadius: 4,
       hoverBorderWidth: 3,
-    }
-  }
-}
-
+    },
+  },
+};
 
 class Dashboard extends Component {
   constructor(props) {
@@ -420,19 +432,19 @@ class Dashboard extends Component {
 
     this.state = {
       dropdownOpen: false,
-      radioSelected: 2
+      radioSelected: 2,
     };
   }
 
   toggle() {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: !this.state.dropdownOpen,
     });
   }
 
   onRadioBtnClick(radioSelected) {
     this.setState({
-      radioSelected: radioSelected
+      radioSelected: radioSelected,
     });
   }
 
@@ -461,8 +473,8 @@ class Dashboard extends Component {
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
               </CardBody>
-              <div className="chart-wrapper px-3" style={{height:'70px'}}>
-                <Line data={cardChartData1} options={cardChartOpts1} height={70}/>
+              <div className="chart-wrapper px-3" style={{ height: '70px' }}>
+                <Line data={cardChartData1} options={cardChartOpts1} height={70} />
               </div>
             </Card>
           </Col>
@@ -486,8 +498,8 @@ class Dashboard extends Component {
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
               </CardBody>
-              <div className="chart-wrapper px-3" style={{height:'70px'}}>
-                <Line data={cardChartData2} options={cardChartOpts2} height={70}/>
+              <div className="chart-wrapper px-3" style={{ height: '70px' }}>
+                <Line data={cardChartData2} options={cardChartOpts2} height={70} />
               </div>
             </Card>
           </Col>
@@ -511,8 +523,8 @@ class Dashboard extends Component {
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
               </CardBody>
-              <div className="chart-wrapper px-0" style={{height:'70px'}}>
-                <Line data={cardChartData3} options={cardChartOpts3} height={70}/>
+              <div className="chart-wrapper px-0" style={{ height: '70px' }}>
+                <Line data={cardChartData3} options={cardChartOpts3} height={70} />
               </div>
             </Card>
           </Col>
@@ -536,8 +548,8 @@ class Dashboard extends Component {
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
               </CardBody>
-              <div className="chart-wrapper px-3" style={{height:'70px'}}>
-                <Bar data={cardChartData4} options={cardChartOpts4} height={70}/>
+              <div className="chart-wrapper px-3" style={{ height: '70px' }}>
+                <Bar data={cardChartData4} options={cardChartOpts4} height={70} />
               </div>
             </Card>
           </Col>
@@ -562,38 +574,38 @@ class Dashboard extends Component {
                     </ButtonToolbar>
                   </Col>
                 </Row>
-                <div className="chart-wrapper" style={{height: 300 + 'px', marginTop: 40 + 'px'}}>
-                  <Line data={mainChart} options={mainChartOpts} height={300}/>
+                <div className="chart-wrapper" style={{ height: 300 + 'px', marginTop: 40 + 'px' }}>
+                  <Line data={mainChart} options={mainChartOpts} height={300} />
                 </div>
               </CardBody>
               <CardFooter>
-                <ul>
-                  <li>
+                <Row className="text-center">
+                  <Col sm={12} md className="mb-sm-2 mb-0">
                     <div className="text-muted">Visits</div>
                     <strong>29.703 Users (40%)</strong>
-                    <Progress className="progress-xs mt-2" color="success" value="40"/>
-                  </li>
-                  <li className="d-none d-md-table-cell">
+                    <Progress className="progress-xs mt-2" color="success" value="40" />
+                  </Col>
+                  <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
                     <div className="text-muted">Unique</div>
                     <strong>24.093 Users (20%)</strong>
-                    <Progress className="progress-xs mt-2" color="info" value="20"/>
-                  </li>
-                  <li>
+                    <Progress className="progress-xs mt-2" color="info" value="20" />
+                  </Col>
+                  <Col sm={12} md className="mb-sm-2 mb-0">
                     <div className="text-muted">Pageviews</div>
                     <strong>78.706 Views (60%)</strong>
-                    <Progress className="progress-xs mt-2" color="warning" value="60"/>
-                  </li>
-                  <li className="d-none d-md-table-cell">
+                    <Progress className="progress-xs mt-2" color="warning" value="60" />
+                  </Col>
+                  <Col sm={12} md className="mb-sm-2 mb-0">
                     <div className="text-muted">New Users</div>
                     <strong>22.123 Users (80%)</strong>
-                    <Progress className="progress-xs mt-2" color="danger" value="80"/>
-                  </li>
-                  <li className="d-none d-md-table-cell">
+                    <Progress className="progress-xs mt-2" color="danger" value="80" />
+                  </Col>
+                  <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
                     <div className="text-muted">Bounce Rate</div>
-                    <strong>Average 40.15%</strong>
-                    <Progress className="progress-xs mt-2" color="primary" value="40"/>
-                  </li>
-                </ul>
+                    <strong>Average Rate (40.15%)</strong>
+                    <Progress className="progress-xs mt-2" color="primary" value="40" />
+                  </Col>
+                </Row>
               </CardFooter>
             </Card>
           </Col>
@@ -601,79 +613,73 @@ class Dashboard extends Component {
 
         <Row>
           <Col xs="6" sm="6" lg="3">
-            <div className="social-box facebook">
-              <i className="fa fa-facebook"></i>
+            <Widget03 dataBox={() => ({ variant: 'facebook', friends: '89k', feeds: '459' })} >
               <div className="chart-wrapper">
-                <Line data={makeSocialBoxData(0)} options={socialChartOpts} height={90}/>
+                <Line data={makeSocialBoxData(0)} options={socialChartOpts} height={90} />
               </div>
-              <ul>
-                <li>
-                  <strong>89k</strong>
-                  <span>friends</span>
-                </li>
-                <li>
-                  <strong>459</strong>
-                  <span>feeds</span>
-                </li>
-              </ul>
+            </Widget03>
+          </Col>
+
+          <Col xs="6" sm="6" lg="3">
+            <div className="brand-card">
+              <div className="brand-card-header bg-twitter">
+                <i className="fa fa-twitter"></i>
+                <div className="chart-wrapper">
+                  <Line data={makeSocialBoxData(1)} options={socialChartOpts} height={90} />
+                </div>
+              </div>
+              <div className="brand-card-body">
+                <div>
+                  <div className="text-value">973k</div>
+                  <div className="text-uppercase text-muted small">followers</div>
+                </div>
+                <div>
+                  <div className="text-value">1.792</div>
+                  <div className="text-uppercase text-muted small">tweets</div>
+                </div>
+              </div>
             </div>
           </Col>
 
           <Col xs="6" sm="6" lg="3">
-            <div className="social-box twitter">
-              <i className="fa fa-twitter"></i>
-              <div className="chart-wrapper">
-                <Line data={makeSocialBoxData(1)} options={socialChartOpts} height={90}/>
+            <div className="brand-card">
+              <div className="brand-card-header bg-linkedin">
+                <i className="fa fa-linkedin"></i>
+                <div className="chart-wrapper">
+                  <Line data={makeSocialBoxData(2)} options={socialChartOpts} height={90} />
+                </div>
               </div>
-              <ul>
-                <li>
-                  <strong>973k</strong>
-                  <span>followers</span>
-                </li>
-                <li>
-                  <strong>1.792</strong>
-                  <span>tweets</span>
-                </li>
-              </ul>
+              <div className="brand-card-body">
+                <div>
+                  <div className="text-value">500+</div>
+                  <div className="text-uppercase text-muted small">contacts</div>
+                </div>
+                <div>
+                  <div className="text-value">292</div>
+                  <div className="text-uppercase text-muted small">feeds</div>
+                </div>
+              </div>
             </div>
           </Col>
 
           <Col xs="6" sm="6" lg="3">
-
-            <div className="social-box linkedin">
-              <i className="fa fa-linkedin"></i>
-              <div className="chart-wrapper">
-                <Line data={makeSocialBoxData(2)} options={socialChartOpts} height={90}/>
+            <div className="brand-card">
+              <div className="brand-card-header bg-google-plus">
+                <i className="fa fa-google-plus"></i>
+                <div className="chart-wrapper">
+                  <Line data={makeSocialBoxData(3)} options={socialChartOpts} height={90} />
+                </div>
               </div>
-              <ul>
-                <li>
-                  <strong>500+</strong>
-                  <span>contacts</span>
-                </li>
-                <li>
-                  <strong>292</strong>
-                  <span>feeds</span>
-                </li>
-              </ul>
-            </div>
-          </Col>
-
-          <Col xs="6" sm="6" lg="3">
-            <div className="social-box google-plus">
-              <i className="fa fa-google-plus"></i>
-              <div className="chart-wrapper">
-                <Line data={makeSocialBoxData(3)} options={socialChartOpts} height={90}/>
+              <div className="brand-card-body">
+                <div>
+                  <div className="text-value">894</div>
+                  <div className="text-uppercase text-muted small">followers</div>
+                </div>
+                <div>
+                  <div className="text-value">92</div>
+                  <div className="text-uppercase text-muted small">circles</div>
+                </div>
               </div>
-              <ul>
-                <li>
-                  <strong>894</strong>
-                  <span>followers</span>
-                </li>
-                <li>
-                  <strong>92</strong>
-                  <span>circles</span>
-                </li>
-              </ul>
             </div>
           </Col>
         </Row>
@@ -682,317 +688,340 @@ class Dashboard extends Component {
           <Col>
             <Card>
               <CardHeader>
-                Traffic {'&'} Sales
+                Traffic {' & '} Sales
               </CardHeader>
               <CardBody>
                 <Row>
-                  <Col xs="12" md="6" xl="4">
+                  <Col xs="12" md="6" xl="6">
                     <Row>
                       <Col sm="6">
                         <div className="callout callout-info">
                           <small className="text-muted">New Clients</small>
-                          <br/>
+                          <br />
                           <strong className="h4">9,123</strong>
                           <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(0, brandPrimary)} options={sparklineChartOpts} width={100} height={30}/>
+                            <Line data={makeSparkLineData(0, brandPrimary)} options={sparklineChartOpts} width={100} height={30} />
                           </div>
                         </div>
                       </Col>
                       <Col sm="6">
                         <div className="callout callout-danger">
                           <small className="text-muted">Recurring Clients</small>
-                          <br/>
+                          <br />
                           <strong className="h4">22,643</strong>
                           <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(1, brandDanger)} options={sparklineChartOpts} width={100} height={30}/>
+                            <Line data={makeSparkLineData(1, brandDanger)} options={sparklineChartOpts} width={100} height={30} />
                           </div>
                         </div>
                       </Col>
                     </Row>
-                    <hr className="mt-0"/>
-                    <ul className="horizontal-bars">
-                      <li>
-                        <div className="title">
+                    <hr className="mt-0" />
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
                           Monday
-                        </div>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="info" value="34"/>
-                          <Progress className="progress-xs" color="danger" value="78"/>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="title">
-                          Tuesday
-                        </div>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="info" value="56"/>
-                          <Progress className="progress-xs" color="danger" value="94"/>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="title">
-                          Wednesday
-                        </div>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="info" value="12"/>
-                          <Progress className="progress-xs" color="danger" value="67"/>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="title">
-                          Thursday
-                        </div>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="info" value="43"/>
-                          <Progress className="progress-xs" color="danger" value="91"/>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="title">
-                          Friday
-                        </div>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="info" value="22"/>
-                          <Progress className="progress-xs" color="danger" value="73"/>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="title">
-                          Saturday
-                        </div>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="info" value="53"/>
-                          <Progress className="progress-xs" color="danger" value="82"/>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="title">
-                          Sunday
-                        </div>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="info" value="9"/>
-                          <Progress className="progress-xs" color="danger" value="69"/>
-                        </div>
-                      </li>
-                      <li className="legend">
-                        <Badge pill color="info"></Badge>
-                        <small>New clients</small>
-                        &nbsp; <Badge pill color="danger"></Badge>
-                        <small>Recurring clients</small>
-                      </li>
-                    </ul>
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <Progress className="progress-xs" color="info" value="34" />
+                        <Progress className="progress-xs" color="danger" value="78" />
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                        Tuesday
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <Progress className="progress-xs" color="info" value="56" />
+                        <Progress className="progress-xs" color="danger" value="94" />
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                        Wednesday
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <Progress className="progress-xs" color="info" value="12" />
+                        <Progress className="progress-xs" color="danger" value="67" />
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                        Thursday
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <Progress className="progress-xs" color="info" value="43" />
+                        <Progress className="progress-xs" color="danger" value="91" />
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                        Friday
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <Progress className="progress-xs" color="info" value="22" />
+                        <Progress className="progress-xs" color="danger" value="73" />
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                        Saturday
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <Progress className="progress-xs" color="info" value="53" />
+                        <Progress className="progress-xs" color="danger" value="82" />
+                      </div>
+                    </div>
+                    <div className="progress-group mb-4">
+                      <div className="progress-group-prepend">
+                        <span className="progress-group-text">
+                        Sunday
+                        </span>
+                      </div>
+                      <div className="progress-group-bars">
+                        <Progress className="progress-xs" color="info" value="9" />
+                        <Progress className="progress-xs" color="danger" value="69" />
+                      </div>
+                    </div>
+                    <div className="legend text-center">
+                      <Badge pill color="info" style={{display: "inline-block"}}></Badge>
+                      <small>New clients</small>
+                      &nbsp; <Badge pill color="danger" style={{display: "inline-block"}}></Badge>
+                      <small>Recurring clients</small>
+                    </div>
                   </Col>
-                  <Col xs="12" md="6" xl="4">
+                  <Col xs="12" md="6" xl="6">
                     <Row>
                       <Col sm="6">
                         <div className="callout callout-warning">
                           <small className="text-muted">Pageviews</small>
-                          <br/>
+                          <br />
                           <strong className="h4">78,623</strong>
                           <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(2, brandWarning)} options={sparklineChartOpts} width={100} height={30}/>
+                            <Line data={makeSparkLineData(2, brandWarning)} options={sparklineChartOpts} width={100} height={30} />
                           </div>
                         </div>
                       </Col>
                       <Col sm="6">
                         <div className="callout callout-success">
                           <small className="text-muted">Organic</small>
-                          <br/>
+                          <br />
                           <strong className="h4">49,123</strong>
                           <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(3, brandSuccess)} options={sparklineChartOpts} width={100} height={30}/>
+                            <Line data={makeSparkLineData(3, brandSuccess)} options={sparklineChartOpts} width={100} height={30} />
                           </div>
                         </div>
                       </Col>
                     </Row>
-                    <hr className="mt-0"/>
-                    <ul className="horizontal-bars type-2">
-                      <li>
-                        <i className="icon-user"></i>
-                        <span className="title">Male</span>
-                        <span className="value">43%</span>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="warning" value="43"/>
+                    <hr className="mt-0" />
+                    <ul>
+                      <div className="progress-group">
+                        <div className="progress-group-header">
+                          <i className="icon-user progress-group-icon"></i>
+                          <span className="title">Male</span>
+                          <span className="ml-auto font-weight-bold">43%</span>
                         </div>
-                      </li>
-                      <li>
-                        <i className="icon-user-female"></i>
-                        <span className="title">Female</span>
-                        <span className="value">37%</span>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="warning" value="37"/>
+                        <div className="progress-group-bars">
+                          <Progress className="progress-xs" color="warning" value="43" />
                         </div>
-                      </li>
-                      <li className="divider"></li>
-                      <li>
-                        <i className="icon-globe"></i>
-                        <span className="title">Organic Search</span>
-                        <span className="value">191,235 <span className="text-muted small">(56%)</span></span>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="success" value="56"/>
+                      </div>
+                      <div className="progress-group mb-5">
+                        <div className="progress-group-header">
+                          <i className="icon-user-female progress-group-icon"></i>
+                          <span className="title">Female</span>
+                          <span className="ml-auto font-weight-bold">37%</span>
                         </div>
-                      </li>
-                      <li>
-                        <i className="icon-social-facebook"></i>
-                        <span className="title">Facebook</span>
-                        <span className="value">51,223 <span className="text-muted small">(15%)</span></span>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="success" value="15"/>
+                        <div className="progress-group-bars">
+                          <Progress className="progress-xs" color="warning" value="37" />
                         </div>
-                      </li>
-                      <li>
-                        <i className="icon-social-twitter"></i>
-                        <span className="title">Twitter</span>
-                        <span className="value">37,564 <span className="text-muted small">(11%)</span></span>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="success" value="11"/>
+                      </div>
+                      <div className="progress-group">
+                        <div className="progress-group-header">
+                          <i className="icon-globe progress-group-icon"></i>
+                          <span className="title">Organic Search</span>
+                          <span className="ml-auto font-weight-bold">191,235 <span className="text-muted small">(56%)</span></span>
                         </div>
-                      </li>
-                      <li>
-                        <i className="icon-social-linkedin"></i>
-                        <span className="title">LinkedIn</span>
-                        <span className="value">27,319 <span className="text-muted small">(8%)</span></span>
-                        <div className="bars">
-                          <Progress className="progress-xs" color="success" value="8"/>
+                        <div className="progress-group-bars">
+                          <Progress className="progress-xs" color="success" value="56" />
                         </div>
-                      </li>
-                      <li className="divider text-center">
+                      </div>
+                      <div className="progress-group">
+                        <div className="progress-group-header">
+                          <i className="icon-social-facebook progress-group-icon"></i>
+                          <span className="title">Facebook</span>
+                          <span className="ml-auto font-weight-bold">51,223 <span className="text-muted small">(15%)</span></span>
+                        </div>
+                        <div className="progress-group-bars">
+                          <Progress className="progress-xs" color="success" value="15" />
+                        </div>
+                      </div>
+                      <div className="progress-group">
+                        <div className="progress-group-header">
+                          <i className="icon-social-twitter progress-group-icon"></i>
+                          <span className="title">Twitter</span>
+                          <span className="ml-auto font-weight-bold">37,564 <span className="text-muted small">(11%)</span></span>
+                        </div>
+                        <div className="progress-group-bars">
+                          <Progress className="progress-xs" color="success" value="11" />
+                        </div>
+                      </div>
+                      <div className="progress-group">
+                        <div className="progress-group-header">
+                          <i className="icon-social-linkedin progress-group-icon"></i>
+                          <span className="title">LinkedIn</span>
+                          <span className="ml-auto font-weight-bold">27,319 <span className="text-muted small">(8%)</span></span>
+                        </div>
+                        <div className="progress-group-bars">
+                          <Progress className="progress-xs" color="success" value="8" />
+                        </div>
+                      </div>
+                      <div className="divider text-center">
                         <Button color="link" size="sm" className="text-muted" data-toggle="tooltip" data-placement="top"
                                 title="" data-original-title="show more"><i className="icon-options"></i></Button>
-                      </li>
+                      </div>
                     </ul>
                   </Col>
-                  <Col xs="12" xl="4">
-                    <Row>
-                      <Col sm="6">
-                        <div className="callout">
-                          <small className="text-muted">CTR</small>
-                          <br/>
-                          <strong className="h4">23%</strong>
-                          <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(4)} options={sparklineChartOpts} width={100} height={30}/>
-                          </div>
-                        </div>
-                      </Col>
-                      <Col sm="6">
-                        <div className="callout callout-primary">
-                          <small className="text-muted">Bounce Rate</small>
-                          <br/>
-                          <strong className="h4">5%</strong>
-                          <div className="chart-wrapper">
-                            <Line data={makeSparkLineData(5, brandPrimary)} options={sparklineChartOpts} width={100} height={30}/>
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                    <hr className="mt-0"/>
-                    <ul className="icons-list">
-                      <li>
-                        <i className="icon-screen-desktop bg-primary"></i>
-                        <div className="desc">
-                          <div className="title">iMac 4k</div>
-                          <small>Lorem ipsum dolor sit amet</small>
-                        </div>
-                        <div className="value">
-                          <div className="small text-muted">Sold this week</div>
-                          <strong>1.924</strong>
-                        </div>
-                        <div className="actions">
-                          <Button color="link" className="text-muted"><i className="icon-settings"></i></Button>
-                        </div>
-                      </li>
-                      <li>
-                        <i className="icon-screen-smartphone bg-info"></i>
-                        <div className="desc">
-                          <div className="title">Samsung Galaxy Edge</div>
-                          <small>Lorem ipsum dolor sit amet</small>
-                        </div>
-                        <div className="value">
-                          <div className="small text-muted">Sold this week</div>
-                          <strong>1.224</strong>
-                        </div>
-                        <div className="actions">
-                          <Button color="link" className="text-muted"><i className="icon-settings"></i></Button>
-                        </div>
-                      </li>
-                      <li>
-                        <i className="icon-screen-smartphone bg-warning"></i>
-                        <div className="desc">
-                          <div className="title">iPhone 6S</div>
-                          <small>Lorem ipsum dolor sit amet</small>
-                        </div>
-                        <div className="value">
-                          <div className="small text-muted">Sold this week</div>
-                          <strong>1.163</strong>
-                        </div>
-                        <div className="actions">
-                          <Button color="link" className="text-muted"><i className="icon-settings"></i></Button>
-                        </div>
-                      </li>
-                      <li>
-                        <i className="icon-user bg-danger"></i>
-                        <div className="desc">
-                          <div className="title">Premium accounts</div>
-                          <small>Lorem ipsum dolor sit amet</small>
-                        </div>
-                        <div className="value">
-                          <div className="small text-muted">Sold this week</div>
-                          <strong>928</strong>
-                        </div>
-                        <div className="actions">
-                          <Button color="link" className="text-muted"><i className="icon-settings"></i></Button>
-                        </div>
-                      </li>
-                      <li>
-                        <i className="icon-social-spotify bg-success"></i>
-                        <div className="desc">
-                          <div className="title">Spotify Subscriptions</div>
-                          <small>Lorem ipsum dolor sit amet</small>
-                        </div>
-                        <div className="value">
-                          <div className="small text-muted">Sold this week</div>
-                          <strong>893</strong>
-                        </div>
-                        <div className="actions">
-                          <Button color="link" className="text-muted"><i className="icon-settings"></i></Button>
-                        </div>
-                      </li>
-                      <li>
-                        <i className="icon-cloud-download bg-danger"></i>
-                        <div className="desc">
-                          <div className="title">Ebook</div>
-                          <small>Lorem ipsum dolor sit amet</small>
-                        </div>
-                        <div className="value">
-                          <div className="small text-muted">Downloads</div>
-                          <strong>121.924</strong>
-                        </div>
-                        <div className="actions">
-                          <Button color="link" className="text-muted"><i className="icon-settings"></i></Button>
-                        </div>
-                      </li>
-                      <li>
-                        <i className="icon-camera bg-warning"></i>
-                        <div className="desc">
-                          <div className="title">Photos</div>
-                          <small>Lorem ipsum dolor sit amet</small>
-                        </div>
-                        <div className="value">
-                          <div className="small text-muted">Uploaded</div>
-                          <strong>12.125</strong>
-                        </div>
-                        <div className="actions">
-                          <Button color="link" className="text-muted"><i className="icon-settings"></i></Button>
-                        </div>
-                      </li>
-                      <li className="divider text-center">
-                        <Button color="link" size="sm" className="text-muted" data-toggle="tooltip" data-placement="top"
-                                title="show more"><i className="icon-options"></i></Button>
-                      </li>
-                    </ul>
-                  </Col>
+                  {/*<Col xs="12" xl="4">*/}
+                    {/*<Row>*/}
+                      {/*<Col sm="6">*/}
+                        {/*<div className="callout">*/}
+                          {/*<small className="text-muted">CTR</small>*/}
+                          {/*<br />*/}
+                          {/*<strong className="h4">23%</strong>*/}
+                          {/*<div className="chart-wrapper">*/}
+                            {/*<Line data={makeSparkLineData(4)} options={sparklineChartOpts} width={100} height={30} />*/}
+                          {/*</div>*/}
+                        {/*</div>*/}
+                      {/*</Col>*/}
+                      {/*<Col sm="6">*/}
+                        {/*<div className="callout callout-primary">*/}
+                          {/*<small className="text-muted">Bounce Rate</small>*/}
+                          {/*<br />*/}
+                          {/*<strong className="h4">5%</strong>*/}
+                          {/*<div className="chart-wrapper">*/}
+                            {/*<Line data={makeSparkLineData(5, brandPrimary)} options={sparklineChartOpts} width={100} height={30} />*/}
+                          {/*</div>*/}
+                        {/*</div>*/}
+                      {/*</Col>*/}
+                    {/*</Row>*/}
+                    {/*<hr className="mt-0" />*/}
+                    {/*<ul className="icons-list">*/}
+                      {/*<li>*/}
+                        {/*<i className="icon-screen-desktop bg-primary"></i>*/}
+                        {/*<div className="desc">*/}
+                          {/*<div className="title">iMac 4k</div>*/}
+                          {/*<small>Lorem ipsum dolor sit amet</small>*/}
+                        {/*</div>*/}
+                        {/*<div className="value">*/}
+                          {/*<div className="small text-muted">Sold this week</div>*/}
+                          {/*<strong>1.924</strong>*/}
+                        {/*</div>*/}
+                        {/*<div className="actions">*/}
+                          {/*<Button color="link" className="text-muted"><i className="icon-settings"></i></Button>*/}
+                        {/*</div>*/}
+                      {/*</li>*/}
+                      {/*<li>*/}
+                        {/*<i className="icon-screen-smartphone bg-info"></i>*/}
+                        {/*<div className="desc">*/}
+                          {/*<div className="title">Samsung Galaxy Edge</div>*/}
+                          {/*<small>Lorem ipsum dolor sit amet</small>*/}
+                        {/*</div>*/}
+                        {/*<div className="value">*/}
+                          {/*<div className="small text-muted">Sold this week</div>*/}
+                          {/*<strong>1.224</strong>*/}
+                        {/*</div>*/}
+                        {/*<div className="actions">*/}
+                          {/*<Button color="link" className="text-muted"><i className="icon-settings"></i></Button>*/}
+                        {/*</div>*/}
+                      {/*</li>*/}
+                      {/*<li>*/}
+                        {/*<i className="icon-screen-smartphone bg-warning"></i>*/}
+                        {/*<div className="desc">*/}
+                          {/*<div className="title">iPhone 6S</div>*/}
+                          {/*<small>Lorem ipsum dolor sit amet</small>*/}
+                        {/*</div>*/}
+                        {/*<div className="value">*/}
+                          {/*<div className="small text-muted">Sold this week</div>*/}
+                          {/*<strong>1.163</strong>*/}
+                        {/*</div>*/}
+                        {/*<div className="actions">*/}
+                          {/*<Button color="link" className="text-muted"><i className="icon-settings"></i></Button>*/}
+                        {/*</div>*/}
+                      {/*</li>*/}
+                      {/*<li>*/}
+                        {/*<i className="icon-user bg-danger"></i>*/}
+                        {/*<div className="desc">*/}
+                          {/*<div className="title">Premium accounts</div>*/}
+                          {/*<small>Lorem ipsum dolor sit amet</small>*/}
+                        {/*</div>*/}
+                        {/*<div className="value">*/}
+                          {/*<div className="small text-muted">Sold this week</div>*/}
+                          {/*<strong>928</strong>*/}
+                        {/*</div>*/}
+                        {/*<div className="actions">*/}
+                          {/*<Button color="link" className="text-muted"><i className="icon-settings"></i></Button>*/}
+                        {/*</div>*/}
+                      {/*</li>*/}
+                      {/*<li>*/}
+                        {/*<i className="icon-social-spotify bg-success"></i>*/}
+                        {/*<div className="desc">*/}
+                          {/*<div className="title">Spotify Subscriptions</div>*/}
+                          {/*<small>Lorem ipsum dolor sit amet</small>*/}
+                        {/*</div>*/}
+                        {/*<div className="value">*/}
+                          {/*<div className="small text-muted">Sold this week</div>*/}
+                          {/*<strong>893</strong>*/}
+                        {/*</div>*/}
+                        {/*<div className="actions">*/}
+                          {/*<Button color="link" className="text-muted"><i className="icon-settings"></i></Button>*/}
+                        {/*</div>*/}
+                      {/*</li>*/}
+                      {/*<li>*/}
+                        {/*<i className="icon-cloud-download bg-danger"></i>*/}
+                        {/*<div className="desc">*/}
+                          {/*<div className="title">Ebook</div>*/}
+                          {/*<small>Lorem ipsum dolor sit amet</small>*/}
+                        {/*</div>*/}
+                        {/*<div className="value">*/}
+                          {/*<div className="small text-muted">Downloads</div>*/}
+                          {/*<strong>121.924</strong>*/}
+                        {/*</div>*/}
+                        {/*<div className="actions">*/}
+                          {/*<Button color="link" className="text-muted"><i className="icon-settings"></i></Button>*/}
+                        {/*</div>*/}
+                      {/*</li>*/}
+                      {/*<li>*/}
+                        {/*<i className="icon-camera bg-warning"></i>*/}
+                        {/*<div className="desc">*/}
+                          {/*<div className="title">Photos</div>*/}
+                          {/*<small>Lorem ipsum dolor sit amet</small>*/}
+                        {/*</div>*/}
+                        {/*<div className="value">*/}
+                          {/*<div className="small text-muted">Uploaded</div>*/}
+                          {/*<strong>12.125</strong>*/}
+                        {/*</div>*/}
+                        {/*<div className="actions">*/}
+                          {/*<Button color="link" className="text-muted"><i className="icon-settings"></i></Button>*/}
+                        {/*</div>*/}
+                      {/*</li>*/}
+                      {/*<li className="divider text-center">*/}
+                        {/*<Button color="link" size="sm" className="text-muted" data-toggle="tooltip" data-placement="top" title="show more"><i*/}
+                          {/*className="icon-options"></i></Button>*/}
+                      {/*</li>*/}
+                    {/*</ul>*/}
+                  {/*</Col>*/}
                 </Row>
-                <br/>
+                <br />
                 <Table hover responsive className="table-outline mb-0 d-none d-sm-table">
                   <thead className="thead-light">
                   <tr>
@@ -1008,7 +1037,7 @@ class Dashboard extends Component {
                   <tr>
                     <td className="text-center">
                       <div className="avatar">
-                        <img src={'img/avatars/1.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com"/>
+                        <img src={'assets/img/avatars/1.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
                         <span className="avatar-status badge-success"></span>
                       </div>
                     </td>
@@ -1030,10 +1059,10 @@ class Dashboard extends Component {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div>
                       </div>
-                      <Progress className="progress-xs" color="success" value="50"/>
+                      <Progress className="progress-xs" color="success" value="50" />
                     </td>
                     <td className="text-center">
-                      <i className="fa fa-cc-mastercard" style={{fontSize: 24 + 'px'}}></i>
+                      <i className="fa fa-cc-mastercard" style={{ fontSize: 24 + 'px' }}></i>
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>
@@ -1043,7 +1072,7 @@ class Dashboard extends Component {
                   <tr>
                     <td className="text-center">
                       <div className="avatar">
-                        <img src={'img/avatars/2.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com"/>
+                        <img src={'assets/img/avatars/2.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
                         <span className="avatar-status badge-danger"></span>
                       </div>
                     </td>
@@ -1066,10 +1095,10 @@ class Dashboard extends Component {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div>
                       </div>
-                      <Progress className="progress-xs" color="info" value="10"/>
+                      <Progress className="progress-xs" color="info" value="10" />
                     </td>
                     <td className="text-center">
-                      <i className="fa fa-cc-visa" style={{fontSize: 24 + 'px'}}></i>
+                      <i className="fa fa-cc-visa" style={{ fontSize: 24 + 'px' }}></i>
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>
@@ -1079,7 +1108,7 @@ class Dashboard extends Component {
                   <tr>
                     <td className="text-center">
                       <div className="avatar">
-                        <img src={'img/avatars/3.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com"/>
+                        <img src={'assets/img/avatars/3.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
                         <span className="avatar-status badge-warning"></span>
                       </div>
                     </td>
@@ -1101,10 +1130,10 @@ class Dashboard extends Component {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div>
                       </div>
-                      <Progress className="progress-xs" color="warning" value="74"/>
+                      <Progress className="progress-xs" color="warning" value="74" />
                     </td>
                     <td className="text-center">
-                      <i className="fa fa-cc-stripe" style={{fontSize: 24 + 'px'}}></i>
+                      <i className="fa fa-cc-stripe" style={{ fontSize: 24 + 'px' }}></i>
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>
@@ -1114,7 +1143,7 @@ class Dashboard extends Component {
                   <tr>
                     <td className="text-center">
                       <div className="avatar">
-                        <img src={'img/avatars/4.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com"/>
+                        <img src={'assets/img/avatars/4.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
                         <span className="avatar-status badge-secondary"></span>
                       </div>
                     </td>
@@ -1136,10 +1165,10 @@ class Dashboard extends Component {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div>
                       </div>
-                      <Progress className="progress-xs" color="danger" value="98"/>
+                      <Progress className="progress-xs" color="danger" value="98" />
                     </td>
                     <td className="text-center">
-                      <i className="fa fa-paypal" style={{fontSize: 24 + 'px'}}></i>
+                      <i className="fa fa-paypal" style={{ fontSize: 24 + 'px' }}></i>
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>
@@ -1149,7 +1178,7 @@ class Dashboard extends Component {
                   <tr>
                     <td className="text-center">
                       <div className="avatar">
-                        <img src={'img/avatars/5.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com"/>
+                        <img src={'assets/img/avatars/5.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
                         <span className="avatar-status badge-success"></span>
                       </div>
                     </td>
@@ -1171,10 +1200,10 @@ class Dashboard extends Component {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div>
                       </div>
-                      <Progress className="progress-xs" color="info" value="22"/>
+                      <Progress className="progress-xs" color="info" value="22" />
                     </td>
                     <td className="text-center">
-                      <i className="fa fa-google-wallet" style={{fontSize: 24 + 'px'}}></i>
+                      <i className="fa fa-google-wallet" style={{ fontSize: 24 + 'px' }}></i>
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>
@@ -1184,7 +1213,7 @@ class Dashboard extends Component {
                   <tr>
                     <td className="text-center">
                       <div className="avatar">
-                        <img src={'img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com"/>
+                        <img src={'assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
                         <span className="avatar-status badge-danger"></span>
                       </div>
                     </td>
@@ -1206,10 +1235,10 @@ class Dashboard extends Component {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div>
                       </div>
-                      <Progress className="progress-xs" color="success" value="43"/>
+                      <Progress className="progress-xs" color="success" value="43" />
                     </td>
                     <td className="text-center">
-                      <i className="fa fa-cc-amex" style={{fontSize: 24 + 'px'}}></i>
+                      <i className="fa fa-cc-amex" style={{ fontSize: 24 + 'px' }}></i>
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>
@@ -1223,7 +1252,7 @@ class Dashboard extends Component {
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 

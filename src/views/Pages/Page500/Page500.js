@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Container, Row, Col, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 
 class Page500 extends Component {
   render() {

@@ -1,14 +1,5 @@
-import React, {Component} from 'react';
-import {
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText,
-  Badge
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Badge, Card, CardBody, CardHeader, Col, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Row } from 'reactstrap';
 
 class ListGroups extends Component {
 
@@ -20,8 +11,8 @@ class ListGroups extends Component {
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>List Group</strong>
-                <div className="card-actions">
-                  <a href="https://reactstrap.github.io/components/listgroup/" target="_blank">
+                <div className="card-header-actions">
+                  <a href="https://reactstrap.github.io/components/listgroup/" rel="noreferrer noopener" target="_blank">
                     <small className="text-muted">docs</small>
                   </a>
                 </div>
@@ -47,7 +38,8 @@ class ListGroups extends Component {
                 <ListGroup>
                   <ListGroupItem className="justify-content-between">Cras justo odio <Badge className="float-right" pill>14</Badge></ListGroupItem>
                   <ListGroupItem className="justify-content-between">Dapibus ac facilisis in <Badge className="float-right" pill>2</Badge></ListGroupItem>
-                  <ListGroupItem className="justify-content-between">Morbi leo risus <Badge className="float-right" pill color="warning">1</Badge></ListGroupItem>
+                  <ListGroupItem className="justify-content-between">Morbi leo risus <Badge className="float-right" pill
+                                                                                            color="warning">1</Badge></ListGroupItem>
                 </ListGroup>
               </CardBody>
             </Card>
@@ -104,7 +96,7 @@ class ListGroups extends Component {
                   <ListGroupItem tag="a" href="#" action>Porta ac consectetur ac</ListGroupItem>
                   <ListGroupItem disabled tag="a" href="#" action>Vestibulum at eros</ListGroupItem>
                 </ListGroup>
-                <p/>
+                <p />
               </CardBody>
             </Card>
           </Col>

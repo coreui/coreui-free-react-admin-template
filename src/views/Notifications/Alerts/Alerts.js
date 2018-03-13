@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {Row, Col, Card, CardHeader, CardBody, Alert} from 'reactstrap';
+import React, { Component } from 'react';
+import { Alert, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
 class Alerts extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      visible: true
+      visible: true,
     };
 
     this.onDismiss = this.onDismiss.bind(this);
@@ -24,8 +24,8 @@ class Alerts extends Component {
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Alerts</strong>
-                <div className="card-actions">
-                  <a href="https://reactstrap.github.io/components/alerts/" target="_blank">
+                <div className="card-header-actions">
+                  <a href="https://reactstrap.github.io/components/alerts/" rel="noreferrer noopener" target="_blank">
                     <small className="text-muted">docs</small>
                   </a>
                 </div>
@@ -61,7 +61,8 @@ class Alerts extends Component {
           <Col xs="12" md="6">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Alerts</strong><small> use <code>.alert-link</code> to provide links</small>
+                <i className="fa fa-align-justify"></i><strong>Alerts</strong>
+                <small> use <code>.alert-link</code> to provide links</small>
               </CardHeader>
               <CardBody>
                 <Alert color="primary">
@@ -96,7 +97,8 @@ class Alerts extends Component {
           <Col xs="12" md="6">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Alerts</strong> <small>additional content</small>
+                <i className="fa fa-align-justify"></i><strong>Alerts</strong>
+                <small>additional content</small>
               </CardHeader>
               <CardBody>
                 <Alert color="success">
@@ -117,7 +119,8 @@ class Alerts extends Component {
           <Col xs="12" md="6">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Alerts</strong> <small>dismissing</small>
+                <i className="fa fa-align-justify"></i><strong>Alerts</strong>
+                <small>dismissing</small>
               </CardHeader>
               <CardBody>
                 <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
@@ -128,7 +131,7 @@ class Alerts extends Component {
           </Col>
         </Row>
       </div>
-    )
+    );
   }
 }
 

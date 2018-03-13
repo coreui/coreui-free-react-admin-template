@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {Row, Col, Card, CardHeader, CardBody} from 'reactstrap';
-
+import React, { Component } from 'react';
+import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
 class Flags extends Component {
   render() {
@@ -13,7 +12,8 @@ class Flags extends Component {
           <CardBody>
             <Row className="text-center">
               <Col className="mb-5 text-left" xs="12">
-                For using the flags inline with text add the classes <code>.flag-icon</code> and <code>.flag-icon-xx</code> (where xx is the ISO 3166-1-alpha-2 code of a country) to an empty span. If you want to have a squared version flag then add the class flag-icon-squared as well.
+                For using the flags inline with text add the classes <code>.flag-icon</code> and <code>.flag-icon-xx</code> (where xx is the ISO 3166-1-alpha-2
+                code of a country) to an empty span. If you want to have a squared version flag then add the class flag-icon-squared as well.
               </Col>
               <Col className="mb-5" xs="3" sm="2">
                 <i className="flag-icon flag-icon-ad h1" title="ad" id="ad"></i>
@@ -1015,7 +1015,7 @@ class Flags extends Component {
           </CardBody>
         </Card>
       </div>
-    )
+    );
   }
 }
 

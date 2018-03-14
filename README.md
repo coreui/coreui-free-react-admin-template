@@ -15,7 +15,8 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [Versions](#versions)
 * [CoreUI Pro](#coreui-pro)
 * [Installation](#installation)
-* [Usage](#usage)
+* [Create React App](#create-react-app)
+* [Usage](#basic-usage)
 * [What's included](#whats-included)
 * [Documentation](#documentation)
 * [Contributing](#contributing)
@@ -85,19 +86,19 @@ Within the download you'll find the following directories and files, logically g
 
 ```
 CoreUI-React#v2.0.0
-├── public/      (static files)
-│   ├── assets/  (assets)
-│   └── index.html (html temlpate)
+├── public/          #static files
+│   ├── assets/      #assets
+│   └── index.html   #html temlpate
 │
-├── src/             (project root)
-│   ├── containers/  (container source)
-│   ├── scss/        (scss/css source)
-│   ├── views/       (views source)
+├── src/             #project root
+│   ├── containers/  #container source
+│   ├── scss/        #user scss/css source
+│   ├── views/       #views source
 │   ├── App.js
 │   ├── App.test.js
 │   ├── index.js
-│   ├── _nav.js      (sidebar config)
-│   └── routes.js    (routes config)
+│   ├── _nav.js      #sidebar config
+│   └── routes.js    #routes config
 │
 └── package.json
 ```
@@ -121,12 +122,10 @@ See [the Releases section of our project](https://github.com/mrholek/CoreUI-Reac
 ## Creators
 
 **Łukasz Holeczek**
-
 * <https://twitter.com/lukaszholeczek>
 * <https://github.com/mrholek>
 
 **Andrzej Kopański**
-
 * <https://github.com/xidedix>
 
 ## Community

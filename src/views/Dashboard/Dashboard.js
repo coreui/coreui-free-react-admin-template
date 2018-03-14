@@ -336,11 +336,11 @@ const sparklineChartOpts = {
 // convert Hex to RGBA
 function convertHex(hex, opacity) {
   hex = hex.replace('#', '');
-  var r = parseInt(hex.substring(0, 2), 16);
-  var g = parseInt(hex.substring(2, 4), 16);
-  var b = parseInt(hex.substring(4, 6), 16);
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
 
-  var result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
+  const result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
   return result;
 }
 
@@ -349,12 +349,12 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-var elements = 27;
+const elements = 27;
 var data1 = [];
 var data2 = [];
 var data3 = [];
 
-for (var i = 0; i <= elements; i++) {
+for (let i = 0; i <= elements; i++) {
   data1.push(random(50, 200));
   data2.push(random(80, 100));
   data3.push(65);
@@ -457,8 +457,7 @@ class Dashboard extends Component {
             <Card className="text-white bg-primary">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
-                  <ButtonDropdown id='card1' isOpen={this.state.card1}
-                                  toggle={() => { this.setState({ card1: !this.state.card1 }); }}>
+                  <ButtonDropdown id='card1' isOpen={this.state.card1} toggle={() => { this.setState({ card1: !this.state.card1 }); }}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>
@@ -483,8 +482,7 @@ class Dashboard extends Component {
             <Card className="text-white bg-info">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
-                  <Dropdown id='card2' isOpen={this.state.card2}
-                            toggle={() => { this.setState({ card2: !this.state.card2 }); }}>
+                  <Dropdown id='card2' isOpen={this.state.card2} toggle={() => { this.setState({ card2: !this.state.card2 }); }}>
                     <DropdownToggle className="p-0" color="transparent">
                       <i className="icon-location-pin"></i>
                     </DropdownToggle>
@@ -508,8 +506,7 @@ class Dashboard extends Component {
             <Card className="text-white bg-warning">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
-                  <Dropdown id='card3' isOpen={this.state.card3}
-                            toggle={() => { this.setState({ card3: !this.state.card3 }); }}>
+                  <Dropdown id='card3' isOpen={this.state.card3} toggle={() => { this.setState({ card3: !this.state.card3 }); }}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>
@@ -533,8 +530,7 @@ class Dashboard extends Component {
             <Card className="text-white bg-danger">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
-                  <ButtonDropdown id='card4' isOpen={this.state.card4}
-                                  toggle={() => { this.setState({ card4: !this.state.card4 }); }}>
+                  <ButtonDropdown id='card4' isOpen={this.state.card4} toggle={() => { this.setState({ card4: !this.state.card4 }); }}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>

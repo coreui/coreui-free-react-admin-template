@@ -151,7 +151,7 @@ class Charts extends Component {
             <CardHeader>
               Line Chart
               <div className="card-header-actions">
-                <a href="http://www.chartjs.org">
+                <a href="http://www.chartjs.org" className="card-header-action">
                   <small className="text-muted">docs</small>
                 </a>
               </div>
@@ -166,7 +166,7 @@ class Charts extends Component {
             <CardHeader>
               Bar Chart
               <div className="card-header-actions">
-                <a href="http://www.chartjs.org">
+                <a href="http://www.chartjs.org" className="card-header-action">
                   <small className="text-muted">docs</small>
                 </a>
               </div>
@@ -181,7 +181,7 @@ class Charts extends Component {
             <CardHeader>
               Doughnut Chart
               <div className="card-header-actions">
-                <a href="http://www.chartjs.org">
+                <a href="http://www.chartjs.org" className="card-header-action">
                   <small className="text-muted">docs</small>
                 </a>
               </div>
@@ -196,7 +196,7 @@ class Charts extends Component {
             <CardHeader>
               Radar Chart
               <div className="card-header-actions">
-                <a href="http://www.chartjs.org">
+                <a href="http://www.chartjs.org" className="card-header-action">
                   <small className="text-muted">docs</small>
                 </a>
               </div>
@@ -211,7 +211,7 @@ class Charts extends Component {
             <CardHeader>
               Pie Chart
               <div className="card-header-actions">
-                <a href="http://www.chartjs.org">
+                <a href="http://www.chartjs.org" className="card-header-action">
                   <small className="text-muted">docs</small>
                 </a>
               </div>
@@ -226,7 +226,7 @@ class Charts extends Component {
             <CardHeader>
               Polar Area Chart
               <div className="card-header-actions">
-                <a href="http://www.chartjs.org">
+                <a href="http://www.chartjs.org" className="card-header-action">
                   <small className="text-muted">docs</small>
                 </a>
               </div>

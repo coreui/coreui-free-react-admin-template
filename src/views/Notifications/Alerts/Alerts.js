@@ -25,7 +25,7 @@ class Alerts extends Component {
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Alerts</strong>
                 <div className="card-header-actions">
-                  <a href="https://reactstrap.github.io/components/alerts/" rel="noreferrer noopener" target="_blank">
+                  <a href="https://reactstrap.github.io/components/alerts/" rel="noreferrer noopener" target="_blank" className="card-header-action">
                     <small className="text-muted">docs</small>
                   </a>
                 </div>

@@ -1051,9 +1051,9 @@ class Forms extends Component {
               <CardHeader>
                 <i className="fa fa-edit"></i>Form Elements
                 <div className="card-header-actions">
-                  <a href="#" className="btn-setting"><i className="icon-settings"></i></a>
-                  <Button className="btn btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></Button>
-                  <a href="#" className="btn-close"><i className="icon-close"></i></a>
+                  <a href="#" className="card-header-action btn-setting"><i className="icon-settings"></i></a>
+                  <a className="card-header-action btn btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></a>
+                  <a href="#" className="card-header-action btn-close"><i className="icon-close"></i></a>
                 </div>
               </CardHeader>
               <Collapse isOpen={this.state.collapse} id="collapseExample">

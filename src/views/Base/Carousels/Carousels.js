@@ -88,7 +88,7 @@ class Carousels extends Component {
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Carousel</strong>
                 <div className="card-header-actions">
-                  <a href="https://reactstrap.github.io/components/carousel/" rel="noreferrer noopener" target="_blank">
+                  <a href="https://reactstrap.github.io/components/carousel/" rel="noreferrer noopener" target="_blank" className="card-header-action">
                     <small className="text-muted">docs</small>
                   </a>
                 </div>

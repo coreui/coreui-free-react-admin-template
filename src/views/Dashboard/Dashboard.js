@@ -337,10 +337,10 @@ const sparklineChartOpts = {
 function convertHex(hex, opacity) {
   hex = hex.replace('#', '');
   const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
+  var g = parseInt(hex.substring(2, 4), 16);
+  var b = parseInt(hex.substring(4, 6), 16);
 
-  const result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
+  var result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
   return result;
 }
 
@@ -349,12 +349,12 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const elements = 27;
+var elements = 27;
 var data1 = [];
 var data2 = [];
 var data3 = [];
 
-for (let i = 0; i <= elements; i++) {
+for (var i = 0; i <= elements; i++) {
   data1.push(random(50, 200));
   data2.push(random(80, 100));
   data3.push(65);
@@ -454,7 +454,7 @@ class Dashboard extends Component {
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" sm="6" lg="3">
-            <Card className="text-white bg-primary">
+            <Card className="text-white bg-info">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
                   <ButtonDropdown id='card1' isOpen={this.state.card1} toggle={() => { this.setState({ card1: !this.state.card1 }); }}>
@@ -473,13 +473,13 @@ class Dashboard extends Component {
                 <p>Members online</p>
               </CardBody>
               <div className="chart-wrapper px-3" style={{ height: '70px' }}>
-                <Line data={cardChartData1} options={cardChartOpts1} height={70} />
+                <Line data={cardChartData2} options={cardChartOpts2} height={70} />
               </div>
             </Card>
           </Col>
 
           <Col xs="12" sm="6" lg="3">
-            <Card className="text-white bg-info">
+            <Card className="text-white bg-primary">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
                   <Dropdown id='card2' isOpen={this.state.card2} toggle={() => { this.setState({ card2: !this.state.card2 }); }}>
@@ -497,7 +497,7 @@ class Dashboard extends Component {
                 <p>Members online</p>
               </CardBody>
               <div className="chart-wrapper px-3" style={{ height: '70px' }}>
-                <Line data={cardChartData2} options={cardChartOpts2} height={70} />
+                <Line data={cardChartData1} options={cardChartOpts1} height={70} />
               </div>
             </Card>
           </Col>

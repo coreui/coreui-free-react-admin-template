@@ -12,8 +12,8 @@
     "url": "git@github.com:mrholek/CoreUI-React.git"
   },
   "dependencies": {
-    "@coreui/styles": "git://github.com/coreui/styles.git",
-    "@coreui/react-dev": "git://github.com/coreui/react.git",
+    "@coreui/styles": "next",
+    "@coreui/react": "git://github.com/coreui/react.git",
     "bootstrap": "4.0.0",
     "chart.js": "2.7.2",
     "classnames": "^2.2.3",

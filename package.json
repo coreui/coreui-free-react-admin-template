@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@coreui/styles": "next",
-    "@coreui/react": "git://github.com/coreui/react.git",
+    "@coreui/react": "next",
     "bootstrap": "4.0.0",
     "chart.js": "2.7.2",
     "classnames": "^2.2.3",

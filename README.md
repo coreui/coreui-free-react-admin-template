@@ -2,9 +2,9 @@
 
 ### Check out our React Admin Templates and support CoreUI Development
 
-[![Bootstrap Admin Templates Bundle](https://genesisui.com/img/bundle2.png)](https://genesisui.com/bundle.html?support=1)
+[![Bootstrap Admin Templates Bundle](https://genesisui.com/img/bundle2.png)](https://genesisui.com/admin-templates/reactjs/prime/?support=1)
 
-[Check out React Admin Templates Bundle](https://genesisui.com/bundle.html?support=1)
+[Check out React Admin Templates Bundle](https://genesisui.com/admin-templates/reactjs/prime/?support=1)
 
 This is React.js version of our Bootstrap 4 admin template [CoreUI](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template).
 

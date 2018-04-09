@@ -18,7 +18,7 @@ import {
   Tooltips,
 } from './Base';
 
-import { ButtonDropdowns, ButtonGroups, Buttons, SocialButtons } from './Buttons';
+import { ButtonDropdowns, ButtonGroups, Buttons, BrandButtons } from './Buttons';
 import Charts from './Charts';
 import Dashboard from './Dashboard';
 import { Flags, FontAwesome, SimpleLineIcons } from './Icons';
@@ -42,7 +42,7 @@ export {
   FontAwesome,
   ButtonDropdowns,
   ButtonGroups,
-  SocialButtons,
+  BrandButtons,
   Buttons,
   Tooltips,
   Tabs,

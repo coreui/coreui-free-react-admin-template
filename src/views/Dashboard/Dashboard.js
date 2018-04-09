@@ -790,10 +790,13 @@ class Dashboard extends Component {
                       </div>
                     </div>
                     <div className="legend text-center">
-                      <Badge pill color="info" style={{display: "inline-block"}}></Badge>
-                      <small>New clients</small>
-                      &nbsp; <Badge pill color="danger" style={{display: "inline-block"}}></Badge>
-                      <small>Recurring clients</small>
+                      <small>
+                        <sup className="px-1"><Badge pill color="info">&nbsp;</Badge></sup>
+                        New clients
+                        &nbsp;
+                        <sup className="px-1"><Badge pill color="danger">&nbsp;</Badge></sup>
+                        Recurring clients
+                      </small>
                     </div>
                   </Col>
                   <Col xs="12" md="6" xl="6">

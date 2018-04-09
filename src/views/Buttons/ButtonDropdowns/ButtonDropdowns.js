@@ -8,7 +8,7 @@ class ButtonDropdowns extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: new Array(16).fill(false),
+      dropdownOpen: new Array(19).fill(false),
     };
   }
 
@@ -202,6 +202,57 @@ class ButtonDropdowns extends Component {
             </Card>
             <Card>
               <CardHeader>
+                <i className="fa fa-align-justify"></i><strong>Dropdown directions</strong>
+              </CardHeader>
+              <CardBody>
+                <ButtonDropdown direction="up" className="mr-1" isOpen={this.state.dropdownOpen[15]} toggle={() => { this.toggle(15); }}>
+                  <DropdownToggle caret size="lg">
+                    Direction Up
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem header>Header</DropdownItem>
+                    <DropdownItem disabled>Action Disabled</DropdownItem>
+                    <DropdownItem>Action</DropdownItem>
+                    <DropdownItem>Another Action</DropdownItem>
+                  </DropdownMenu>
+                </ButtonDropdown>
+                <ButtonDropdown direction="left" className="mr-1" isOpen={this.state.dropdownOpen[16]} toggle={() => { this.toggle(16); }}>
+                  <DropdownToggle caret size="lg">
+                    Direction Left
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem header>Header</DropdownItem>
+                    <DropdownItem disabled>Action Disabled</DropdownItem>
+                    <DropdownItem>Action</DropdownItem>
+                    <DropdownItem>Another Action</DropdownItem>
+                  </DropdownMenu>
+                </ButtonDropdown>
+                <ButtonDropdown direction="right" className="mr-1" isOpen={this.state.dropdownOpen[17]} toggle={() => { this.toggle(17); }}>
+                  <DropdownToggle caret size="lg">
+                    Direction Right
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem header>Header</DropdownItem>
+                    <DropdownItem disabled>Action Disabled</DropdownItem>
+                    <DropdownItem>Action</DropdownItem>
+                    <DropdownItem>Another Action</DropdownItem>
+                  </DropdownMenu>
+                </ButtonDropdown>
+                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[18]} toggle={() => { this.toggle(18); }}>
+                  <DropdownToggle caret size="lg">
+                    Default Down
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem header>Header</DropdownItem>
+                    <DropdownItem disabled>Action Disabled</DropdownItem>
+                    <DropdownItem>Action</DropdownItem>
+                    <DropdownItem>Another Action</DropdownItem>
+                  </DropdownMenu>
+                </ButtonDropdown>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Button Dropdown sizing</strong>
               </CardHeader>
               <CardBody>
@@ -219,24 +270,6 @@ class ButtonDropdowns extends Component {
                 <ButtonDropdown isOpen={this.state.dropdownOpen[14]} toggle={() => { this.toggle(14); }}>
                   <DropdownToggle caret size="sm">
                     Small Button
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Button Dropup variation</strong>
-              </CardHeader>
-              <CardBody>
-                <ButtonDropdown dropup className="mr-1" isOpen={this.state.dropdownOpen[15]} toggle={() => { this.toggle(15); }}>
-                  <DropdownToggle caret size="lg">
-                    Dropup
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>

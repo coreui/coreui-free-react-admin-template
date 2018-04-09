@@ -144,8 +144,8 @@ export default {
           icon: 'icon-cursor',
         },
         {
-          name: 'Social Buttons',
-          url: '/buttons/social-buttons',
+          name: 'Brand Buttons',
+          url: '/buttons/brand-buttons',
           icon: 'icon-cursor',
         },
       ],

@@ -12,9 +12,9 @@ class Buttons extends Component {
                 <strong>Options</strong>
               </CardHeader>
               <CardBody>
-                <Button color="primary">Primary</Button>{' '}
-                <Button color="secondary">Secondary</Button>{' '}
-                <Button color="success">Success</Button>{' '}
+                <Button color="primary" className="mr-1">Primary</Button>
+                <Button color="secondary" className="mr-1">Secondary</Button>
+                <Button color="success" className="mr-1">Success</Button>
                 <Button color="warning">Warning</Button>{' '}
                 <Button color="danger">Danger</Button>{' '}
                 <Button color="link">Link</Button>{' '}
@@ -25,12 +25,12 @@ class Buttons extends Component {
                 <strong>With Icons</strong>
               </CardHeader>
               <CardBody>
-                <Button color="primary"><i className="fa fa-star"></i>{'\u00A0'} Primary</Button>
-                <Button color="secondary"><i className="fa fa-lightbulb-o"></i>{'\u00A0 Secondary'}</Button>
-                <Button color="success"><i className="fa fa-magic"></i>&nbsp; Success</Button>
-                <Button color="warning"><i className="fa fa-map-marker"></i>&nbsp; Warning</Button>
-                <Button color="danger"><i className="fa fa-rss"></i>&nbsp; Danger</Button>
-                <Button color="link"><i className="fa fa-link"></i>&nbsp; Link</Button>
+                <Button color="primary" className="mr-1"><i className="fa fa-star"></i>{'\u00A0'} Primary</Button>
+                <Button color="secondary" className="mr-1"><i className="fa fa-lightbulb-o"></i>{'\u00A0 Secondary'}</Button>
+                <Button color="success" className="mr-1"><i className="fa fa-magic"></i>&nbsp; Success</Button>
+                <Button color="warning"><i className="fa fa-map-marker"></i>&nbsp; Warning</Button>{' '}
+                <Button color="danger"><i className="fa fa-rss"></i>&nbsp; Danger</Button>{' '}
+                <Button color="link"><i className="fa fa-link"></i>&nbsp; Link</Button>{' '}
               </CardBody>
             </Card>
             <Card>

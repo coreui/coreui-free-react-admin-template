@@ -16,6 +16,8 @@ const defaultProps = {
 
 class Widget03 extends Component {
   render() {
+
+    // eslint-disable-next-line
     const { children, className, cssModule, dataBox, ...attributes } = this.props;
 
     // demo purposes only

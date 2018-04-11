@@ -38,15 +38,7 @@ class Full extends Component {
             <AppSidebarMinimizer />
           </AppSidebar>
           <main className="main">
-            <AppBreadcrumb appRoutes={routes}>
-              <li class="breadcrumb-menu d-md-down-none">
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                  <a class="btn" href="#"><i class="icon-speech"></i></a>
-                  <a class="btn" href="/dashboard"><i class="icon-graph"></i> &nbsp;Dashboard</a>
-                  <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
-                </div>
-              </li>
-            </AppBreadcrumb>
+            <AppBreadcrumb appRoutes={routes}/>
             <Container fluid>
               <Switch>
                 {routes.map((route, idx) => {
@@ -60,11 +52,11 @@ class Full extends Component {
               </Switch>
             </Container>
           </main>
-          <AppAside fixed hidden display="lg">
+          <AppAside fixed hidden>
             <FullAside />
           </AppAside>
         </div>
-        <AppFooter fixed>
+        <AppFooter>
           <FullFooter />
         </AppFooter>
       </div>

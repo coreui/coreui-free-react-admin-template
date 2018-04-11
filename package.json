@@ -1,6 +1,6 @@
 {
   "name": "CoreUI-React",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
   "author": "Łukasz Holeczek",
   "homepage": "http://coreui.io",
@@ -12,8 +12,9 @@
     "url": "git@github.com:mrholek/CoreUI-React.git"
   },
   "dependencies": {
-    "@coreui/styles": "next",
-    "@coreui/react": "next",
+    "@coreui/coreui": "^2.0.0-beta.5",
+    "@coreui/react": "^2.0.0-alpha.5",
+    "babel-jest": "^22.4.3",
     "bootstrap": "4.0.0",
     "chart.js": "^2.7.2",
     "classnames": "^2.2.3",

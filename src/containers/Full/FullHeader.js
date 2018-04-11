@@ -13,6 +13,7 @@ const defaultProps = {};
 class FullHeader extends Component {
   render() {
 
+    // eslint-disable-next-line
     const { children, ...attributes } = this.props;
 
     return (
@@ -67,7 +68,7 @@ class FullHeader extends Component {
           </AppHeaderDropdown>
         </Nav>
         <AppAsideToggler className="d-md-down-none" />
-        <AppAsideToggler className="d-lg-none" mobile />
+        {/*<AppAsideToggler className="d-lg-none" mobile />*/}
       </React.Fragment>
     );
   }

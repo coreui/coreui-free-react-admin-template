@@ -1,4 +1,10 @@
-## [react](./REACT.md) version `changelog`
+## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
+
+##### `v2.0.0-alpha.3`
+- refactor: Colors
+- refactor: FullAside - ListGroup (deprecate callout)
+- refactor: Full* containers minor fixes
+- refactor: Dropdowns minor fixes
 
 ##### `v2.0.0-alpha.2`
 - refactor: FullHeader `<AppHeaderDropdown direction="down">` (required prop `direction`)

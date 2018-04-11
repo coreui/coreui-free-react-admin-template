@@ -61,7 +61,7 @@ class Dropdowns extends Component {
                   <DropdownToggle caret>
                     This dropdown's menu is right-aligned
                   </DropdownToggle>
-                  <DropdownMenu right>
+                  <DropdownMenu right style={{right: 'auto'}}>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
@@ -81,7 +81,7 @@ class Dropdowns extends Component {
                   <DropdownToggle caret>
                     Large Dropdown
                   </DropdownToggle>
-                  <DropdownMenu right>
+                  <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
@@ -93,7 +93,7 @@ class Dropdowns extends Component {
                   <DropdownToggle caret>
                     Normal Dropdown
                   </DropdownToggle>
-                  <DropdownMenu right>
+                  <DropdownMenu>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
@@ -129,11 +129,11 @@ class Dropdowns extends Component {
                   >
                     Custom Dropdown Content <strong> * </strong>
                   </DropdownToggle>
-                  <DropdownMenu right>
-                    <div onClick={() => {this.toggle(5);}}>Custom dropdown item 1</div>
-                    <div onClick={() => {this.toggle(5);}}>Custom dropdown item 2</div>
-                    <div onClick={() => {this.toggle(5);}}>Custom dropdown item 3</div>
-                    <hr className="my-0" />
+                  <DropdownMenu>
+                    <div className="dropdown-item" onClick={() => {this.toggle(5);}}>Custom dropdown item 1</div>
+                    <div className="dropdown-item" onClick={() => {this.toggle(5);}}>Custom dropdown item 2</div>
+                    <div className="dropdown-item-text" onClick={() => {this.toggle(5);}}>Custom dropdown text 3</div>
+                    <hr className="my-0 dropdown-item-text" />
                     <div onClick={() => {this.toggle(5);}}>Custom dropdown item 4</div>
                   </DropdownMenu>
                 </Dropdown>

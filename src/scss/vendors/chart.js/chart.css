@@ -23,6 +23,7 @@
   white-space: nowrap;
   position: relative;
   margin-bottom: 4px;
+  border-radius: 0.25rem;
   padding: 2px 8px 2px 28px;
   font-size: smaller;
   cursor: default; }
@@ -39,4 +40,5 @@
   left: 0;
   top: 0;
   width: 20px;
-  height: 20px; }
+  height: 20px;
+  border-radius: 0.25rem; }

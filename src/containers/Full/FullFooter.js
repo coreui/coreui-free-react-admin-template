@@ -10,6 +10,7 @@ const defaultProps = {};
 class FullFooter extends Component {
   render() {
 
+    // eslint-disable-next-line
     const { children, ...attributes } = this.props;
 
     return (

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
  * CoreUI - Open Source Dashboard UI Kit
- * @version v2.0.0-beta.5
+ * @version v2.0.0-beta.6
  * @link https://coreui.io
  * Copyright (c) 2018 creativeLabs Łukasz Holeczek
  * Licensed under MIT (https://coreui.io/license)
@@ -7423,16 +7423,15 @@ canvas {
     align-items: center;
     font-size: 0.76563rem;
     white-space: nowrap; }
+  .chartjs-tooltip .tooltip-body-item-color {
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-right: 0.875rem; }
   .chartjs-tooltip .tooltip-body-item-value {
     padding-left: 1rem;
     margin-left: auto;
     font-weight: 700; }
-
-.chartjs-tooltip-key {
-  display: inline-block;
-  width: 0.875rem;
-  height: 0.875rem;
-  margin-right: 0.875rem; }
 
 .dropdown-item {
   position: relative;

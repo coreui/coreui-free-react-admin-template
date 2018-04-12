@@ -1,10 +1,18 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
 ##### `v2.0.0-alpha.3`
-- refactor: Colors
-- refactor: FullAside - ListGroup (deprecate callout)
-- refactor: Full* containers minor fixes
-- refactor: Dropdowns minor fixes
+- refactor(Colors): view layout, minor temp tweaks
+- refactor(FullAside): - ListGroup (deprecate callout)
+- refactor(Full*): containers minor fixes
+- refactor(Dropdowns): minor fixes
+- refactor(Forms): `card-header-actions`
+- feat(Forms): `<Input type="date">`
+- feat(Forms): `FormFeedback`
+- feat(Collapses): Accordion, Custom Accordion 
+- feat(ListGroup): with TabPanes
+- refactor(PaginationItem): `tag="button"`
+- refactor(BrandButtons): spacing
+- refactor:(Buttons): view layout
 
 ##### `v2.0.0-alpha.2`
 - refactor: FullHeader `<AppHeaderDropdown direction="down">` (required prop `direction`)

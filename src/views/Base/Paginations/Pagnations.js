@@ -18,35 +18,35 @@ class Paginations extends Component {
           <CardBody>
             <Pagination>
               <PaginationItem>
-                <PaginationLink previous href="#" />
+                <PaginationLink previous tag="button" />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   1
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   2
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   3
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   4
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   5
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink next href="#" />
+                <PaginationLink next tag="button" />
               </PaginationItem>
             </Pagination>
           </CardBody>
@@ -59,35 +59,35 @@ class Paginations extends Component {
           <CardBody>
             <Pagination>
               <PaginationItem disabled>
-                <PaginationLink previous href="#" />
+                <PaginationLink previous tag="button" />
               </PaginationItem>
               <PaginationItem active>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   1
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   2
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   3
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   4
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   5
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink next href="#" />
+                <PaginationLink next tag="button" />
               </PaginationItem>
             </Pagination>
           </CardBody>
@@ -100,71 +100,71 @@ class Paginations extends Component {
           <CardBody>
             <Pagination size="lg">
               <PaginationItem>
-                <PaginationLink previous href="#" />
+                <PaginationLink previous tag="button" />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   1
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   2
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   3
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem className="d-none d-sm-block">
-                <PaginationLink next href="#" />
+                <PaginationLink next tag="button" />
               </PaginationItem>
             </Pagination>
             <Pagination>
               <PaginationItem>
-                <PaginationLink previous href="#" />
+                <PaginationLink previous tag="button" />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   1
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   2
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   3
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink next href="#" />
+                <PaginationLink next tag="button" />
               </PaginationItem>
             </Pagination>
             <Pagination size="sm">
               <PaginationItem>
-                <PaginationLink previous href="#" />
+                <PaginationLink previous tag="button" />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   1
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   2
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">
+                <PaginationLink tag="button">
                   3
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink next href="#" />
+                <PaginationLink next tag="button" />
               </PaginationItem>
             </Pagination>
           </CardBody>

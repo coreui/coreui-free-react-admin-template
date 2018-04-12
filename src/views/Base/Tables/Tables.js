@@ -66,22 +66,22 @@ class Tables extends Component {
                 </Table>
                 <Pagination>
                   <PaginationItem>
-                    <PaginationLink previous href="#"></PaginationLink>
+                    <PaginationLink previous tag="button"></PaginationLink>
                   </PaginationItem>
                   <PaginationItem active>
-                    <PaginationLink href="#">1</PaginationLink>
+                    <PaginationLink tag="button">1</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationLink href="#">2</PaginationLink>
+                    <PaginationLink tag="button">2</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationLink href="#">3</PaginationLink>
+                    <PaginationLink tag="button">3</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationLink href="#">4</PaginationLink>
+                    <PaginationLink tag="button">4</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationLink next href="#"></PaginationLink>
+                    <PaginationLink next tag="button"></PaginationLink>
                   </PaginationItem>
                 </Pagination>
               </CardBody>
@@ -147,14 +147,14 @@ class Tables extends Component {
                   </tbody>
                 </Table>
                 <Pagination>
-                  <PaginationItem disabled><PaginationLink previous href="#">Prev</PaginationLink></PaginationItem>
+                  <PaginationItem disabled><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>
                   <PaginationItem active>
-                    <PaginationLink href="#">1</PaginationLink>
+                    <PaginationLink tag="button">1</PaginationLink>
                   </PaginationItem>
-                  <PaginationItem><PaginationLink href="#">2</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink href="#">4</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink tag="button">2</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink next tag="button">Next</PaginationLink></PaginationItem>
                 </Pagination>
               </CardBody>
             </Card>
@@ -222,14 +222,14 @@ class Tables extends Component {
                   </tbody>
                 </Table>
                 <Pagination>
-                  <PaginationItem><PaginationLink previous href="#">Prev</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>
                   <PaginationItem active>
-                    <PaginationLink href="#">1</PaginationLink>
+                    <PaginationLink tag="button">1</PaginationLink>
                   </PaginationItem>
-                  <PaginationItem><PaginationLink href="#">2</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink href="#">4</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink tag="button">2</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink next tag="button">Next</PaginationLink></PaginationItem>
                 </Pagination>
               </CardBody>
             </Card>
@@ -294,14 +294,14 @@ class Tables extends Component {
                   </tbody>
                 </Table>
                 <Pagination>
-                  <PaginationItem><PaginationLink previous href="#">Prev</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>
                   <PaginationItem active>
-                    <PaginationLink href="#">1</PaginationLink>
+                    <PaginationLink tag="button">1</PaginationLink>
                   </PaginationItem>
-                  <PaginationItem className="page-item"><PaginationLink href="#">2</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink href="#">4</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
+                  <PaginationItem className="page-item"><PaginationLink tag="button">2</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem>
+                  <PaginationItem><PaginationLink next tag="button">Next</PaginationLink></PaginationItem>
                 </Pagination>
               </CardBody>
             </Card>
@@ -370,14 +370,14 @@ class Tables extends Component {
                 </Table>
                 <nav>
                   <Pagination>
-                    <PaginationItem><PaginationLink previous href="#">Prev</PaginationLink></PaginationItem>
+                    <PaginationItem><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>
                     <PaginationItem active>
-                      <PaginationLink href="#">1</PaginationLink>
+                      <PaginationLink tag="button">1</PaginationLink>
                     </PaginationItem>
-                    <PaginationItem><PaginationLink href="#">2</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationLink href="#">4</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationLink next href="#">Next</PaginationLink></PaginationItem>
+                    <PaginationItem><PaginationLink tag="button">2</PaginationLink></PaginationItem>
+                    <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
+                    <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem>
+                    <PaginationItem><PaginationLink next tag="button">Next</PaginationLink></PaginationItem>
                   </Pagination>
                 </nav>
               </CardBody>

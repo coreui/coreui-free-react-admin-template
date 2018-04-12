@@ -14,6 +14,7 @@ import {
   Form,
   FormGroup,
   FormText,
+  FormFeedback,
   Input,
   InputGroup,
   InputGroupAddon,
@@ -127,14 +128,14 @@ class Forms extends Component {
                   <Label htmlFor="street">Street</Label>
                   <Input type="text" id="street" placeholder="Enter street name" />
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup row className="my-0">
                   <Col xs="8">
                     <FormGroup>
                       <Label htmlFor="city">City</Label>
                       <Input type="text" id="city" placeholder="Enter your city" />
                     </FormGroup>
                   </Col>
-                  <Col xs="8">
+                  <Col xs="4">
                     <FormGroup>
                       <Label htmlFor="postal-code">Postal Code</Label>
                       <Input type="text" id="postal-code" placeholder="Postal Code" />
@@ -190,6 +191,14 @@ class Forms extends Component {
                     <Col xs="12" md="9">
                       <Input type="password" id="password-input" name="password-input" placeholder="Password" />
                       <FormText className="help-block">Please enter a complex password</FormText>
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="date-input">Date Input</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input type="date" id="date-input" name="date-input" placeholder="date" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -572,11 +581,13 @@ class Forms extends Component {
               <CardBody>
                 <FormGroup>
                   <Label htmlFor="inputIsValid">Input is valid</Label>
-                  <Input type="text" className="is-valid" id="inputIsValid" />
+                  <Input type="text" valid id="inputIsValid" />
+                  <FormFeedback valid>Cool! Input is valid</FormFeedback>
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="inputIsInvalid">Input is invalid</Label>
-                  <Input type="text" className="is-invalid" id="inputIsInvalid" />
+                  <Input type="text" invalid id="inputIsInvalid" />
+                  <FormFeedback>Houston, we have a problem...</FormFeedback>
                 </FormGroup>
               </CardBody>
             </Card>
@@ -591,10 +602,12 @@ class Forms extends Component {
                   <FormGroup>
                     <Label htmlFor="inputSuccess2i">Non-required input</Label>
                     <Input type="text" className="form-control-success" id="inputSuccess2i" />
+                    <FormFeedback valid>Non-required</FormFeedback>
                   </FormGroup>
                   <FormGroup>
                     <Label htmlFor="inputWarning2i">Required input</Label>
                     <Input type="text" className="form-control-warning" id="inputWarning2i" required />
+                    <FormFeedback className="help-block">Please provide a valid information</FormFeedback>
                   </FormGroup>
                 </Form>
               </CardBody>
@@ -1051,9 +1064,9 @@ class Forms extends Component {
               <CardHeader>
                 <i className="fa fa-edit"></i>Form Elements
                 <div className="card-header-actions">
-                  <a href="#" className="card-header-action btn-setting"><i className="icon-settings"></i></a>
-                  <a className="card-header-action btn btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></a>
-                  <a href="#" className="card-header-action btn-close"><i className="icon-close"></i></a>
+                  <Button color="link" className="card-header-action btn-setting"><i className="icon-settings"></i></Button>
+                  <Button color="link" className="card-header-action btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></Button>
+                  <Button color="link" className="card-header-action btn-close"><i className="icon-close"></i></Button>
                 </div>
               </CardHeader>
               <Collapse isOpen={this.state.collapse} id="collapseExample">

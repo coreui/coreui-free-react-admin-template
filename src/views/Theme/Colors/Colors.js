@@ -2,13 +2,26 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { Row, Col } from 'reactstrap'
-import { rgbToHex }from '@coreui/coreui/js/src/utilities/'
+// import { rgbToHex } from '@coreui/coreui/js/src/utilities/'
+
+const rgbToHex = (color) => {
+  const rgb = color.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i)
+  if (rgb) {
+    const r = `0${parseInt(rgb[1], 10).toString(16)}`
+    const g = `0${parseInt(rgb[2], 10).toString(16)}`
+    const b = `0${parseInt(rgb[3], 10).toString(16)}`
+
+    return rgb ? `#${r.slice(-2)}${g.slice(-2)}${b.slice(-2)}` : ''
+  }
+  return ''
+}
 
 class ThemeView extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      bgColor: 'rgb(255, 0, 0)'
+      bgColor: 'rgb(255, 255, 255)'
     }
   }
 
@@ -16,7 +29,7 @@ class ThemeView extends Component {
     const elem = ReactDOM.findDOMNode(this).parentNode.firstChild
     const color = window.getComputedStyle(elem).getPropertyValue('background-color')
     this.setState({
-      bgColor: color
+      bgColor: color || this.state.bgColor
     })
   }
 
@@ -40,12 +53,13 @@ class ThemeView extends Component {
 }
 
 class ThemeColor extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
 
-    const { className, children, ...attributes } = this.props
+    // const { className, children, ...attributes } = this.props
+    const { className, children } = this.props
 
     const classes = classNames(className, 'theme-color w-75 rounded mb-3')
 

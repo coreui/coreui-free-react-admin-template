@@ -40,7 +40,7 @@ class ButtonGroups extends Component {
     return (
       <div className="animated fadeIn">
         <Row>
-          <Col xs="12">
+          <Col md="6">
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Button Group</strong>
@@ -55,6 +55,26 @@ class ButtonGroups extends Component {
                   <Button>Left</Button>
                   <Button>Middle</Button>
                   <Button>Right</Button>
+                </ButtonGroup>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardHeader>
+                <i className="fa fa-align-justify"></i><strong>Vertical variation</strong>
+              </CardHeader>
+              <CardBody>
+                <ButtonGroup vertical>
+                  <Button>1</Button>
+                  <Button>2</Button>
+                  <ButtonDropdown isOpen={this.state.dropdownOpen[1]} toggle={() => { this.toggle(1); }}>
+                    <DropdownToggle caret>
+                      Dropdown
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem>Dropdown Link</DropdownItem>
+                      <DropdownItem>Dropdown Link</DropdownItem>
+                    </DropdownMenu>
+                  </ButtonDropdown>
                 </ButtonGroup>
               </CardBody>
             </Card>
@@ -81,38 +101,8 @@ class ButtonGroups extends Component {
                 </ButtonToolbar>
               </CardBody>
             </Card>
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Button Toolbar</strong>
-                <small>mix with input groups</small>
-              </CardHeader>
-              <CardBody>
-                <ButtonToolbar className="mb-3">
-                  <ButtonGroup className="mr-2">
-                    <Button>1</Button>
-                    <Button>2</Button>
-                    <Button>3</Button>
-                    <Button>4</Button>
-                  </ButtonGroup>
-                  <InputGroup>
-                    <InputGroupAddon addonType="prepend"><InputGroupText>@</InputGroupText></InputGroupAddon>
-                    <Input placeholder="Input group example" />
-                  </InputGroup>
-                </ButtonToolbar>
-                <ButtonToolbar className="justify-content-between">
-                  <ButtonGroup>
-                    <Button>1</Button>
-                    <Button>2</Button>
-                    <Button>3</Button>
-                    <Button>4</Button>
-                  </ButtonGroup>
-                  <InputGroup>
-                    <InputGroupAddon addonType="prepend"><InputGroupText>@</InputGroupText></InputGroupAddon>
-                    <Input placeholder="Input group example" />
-                  </InputGroup>
-                </ButtonToolbar>
-              </CardBody>
-            </Card>
+          </Col>
+          <Col md={6}>
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>Sizing</strong>
@@ -157,24 +147,39 @@ class ButtonGroups extends Component {
                 </ButtonGroup>
               </CardBody>
             </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Vertical variation</strong>
+                <i className="fa fa-align-justify"></i><strong>Button Toolbar</strong> <small>with input groups</small>
               </CardHeader>
               <CardBody>
-                <ButtonGroup vertical>
-                  <Button>1</Button>
-                  <Button>2</Button>
-                  <ButtonDropdown isOpen={this.state.dropdownOpen[1]} toggle={() => { this.toggle(1); }}>
-                    <DropdownToggle caret>
-                      Dropdown
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>Dropdown Link</DropdownItem>
-                      <DropdownItem>Dropdown Link</DropdownItem>
-                    </DropdownMenu>
-                  </ButtonDropdown>
-                </ButtonGroup>
+                <ButtonToolbar className="mb-3">
+                  <ButtonGroup className="mr-2">
+                    <Button>1</Button>
+                    <Button>2</Button>
+                    <Button>3</Button>
+                    <Button>4</Button>
+                  </ButtonGroup>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend"><InputGroupText>@</InputGroupText></InputGroupAddon>
+                    <Input placeholder="Input group example" />
+                  </InputGroup>
+                </ButtonToolbar>
+                <ButtonToolbar className="justify-content-between">
+                  <ButtonGroup>
+                    <Button>1</Button>
+                    <Button>2</Button>
+                    <Button>3</Button>
+                    <Button>4</Button>
+                  </ButtonGroup>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend"><InputGroupText>@</InputGroupText></InputGroupAddon>
+                    <Input placeholder="Input group example" />
+                  </InputGroup>
+                </ButtonToolbar>
               </CardBody>
             </Card>
           </Col>

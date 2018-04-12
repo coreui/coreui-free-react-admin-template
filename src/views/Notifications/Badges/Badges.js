@@ -26,7 +26,7 @@ class Badges extends Component {
               </CardBody>
               <CardFooter>
                 <Button color="primary" outline>
-                  Notifications <Badge color="secondary" style={{ position: 'static' }}>4</Badge>
+                  Notifications <Badge color="secondary" pill style={{ position: 'static' }}>9</Badge>
                 </Button>
               </CardFooter>
             </Card>
@@ -34,8 +34,7 @@ class Badges extends Component {
           <Col xs="12" md="6">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Badges</strong>
-                <small>contextual variations</small>
+                <i className="fa fa-align-justify"></i><strong>Badges</strong> <small>contextual variations</small>
               </CardHeader>
               <CardBody>
                 <Badge className="mr-1" color="primary">Primary</Badge>
@@ -50,8 +49,7 @@ class Badges extends Component {
             </Card>
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Badges</strong>
-                <small>pill badges</small>
+                <i className="fa fa-align-justify"></i><strong>Badges</strong> <small>pill badges</small>
               </CardHeader>
               <CardBody>
                 <Badge className="mr-1" color="primary" pill>Primary</Badge>
@@ -66,8 +64,7 @@ class Badges extends Component {
             </Card>
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Badges</strong>
-                <small>links</small>
+                <i className="fa fa-align-justify"></i><strong>Badges</strong> <small>links</small>
               </CardHeader>
               <CardBody>
                 <Badge className="mr-1" href="#" color="primary">Primary</Badge>

@@ -1,32 +1,49 @@
 {
-  "name": "@coreui/react",
-  "version": "1.0.10",
-  "description": "Open Source React Admin Template",
-  "main": "",
-  "homepage": "http://coreui.io/react/",
-  "github": "https://github.com/mrholek/CoreUI-React#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "CoreUI-React",
+  "version": "2.0.0-beta",
+  "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
+  "author": "Łukasz Holeczek",
+  "homepage": "http://coreui.io",
+  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
+  "license": "MIT",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrholek/CoreUI-React.git"
+    "url": "git@github.com:mrholek/CoreUI-React.git"
   },
-  "keywords": [
-    "Bootstrap",
-    "Admin",
-    "Template",
-    "Open Source",
-    "CSS",
-    "HTML",
-    "RWD",
-    "Dashboard",
-    "React",
-    "React.js",
-    "Reactjs"
-  ],
-  "author": "Łukasz Holeczek",
-  "license": "MIT",
+  "dependencies": {
+    "@coreui/coreui": "^2.0.0-beta.6",
+    "@coreui/react": "^2.0.0-beta",
+    "babel-jest": "^22.4.3",
+    "bootstrap": "4.0.0",
+    "chart.js": "^2.7.2",
+    "classnames": "^2.2.3",
+    "flag-icon-css": "^3.0.0",
+    "font-awesome": "^4.7.0",
+    "node-sass-chokidar": "^1.2.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.1",
+    "react-chartjs-2": "^2.7.0",
+    "react-dom": "^16.3.1",
+    "react-router-config": "^1.0.0-beta.4",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.1.4",
+    "reactstrap": "^5.0.0",
+    "simple-line-icons": "^2.4.1"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.2"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
   "bugs": {
     "url": "https://github.com/mrholek/CoreUI-React/issues"
   }

@@ -1,4 +1,36 @@
-## [react](./REACT.md) version `changelog`
+## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
+
+##### `v2.0.0-alpha.3`
+- refactor(Colors): view layout, minor temp tweaks
+- refactor(FullAside): - ListGroup (deprecate callout)
+- refactor(Full*): containers minor fixes
+- refactor(Dropdowns): minor fixes
+- refactor(Forms): `card-header-actions`
+- feat(Forms): `<Input type="date">`
+- feat(Forms): `FormFeedback`
+- feat(Collapses): Accordion, Custom Accordion 
+- feat(ListGroup): with TabPanes
+- refactor(PaginationItem): `tag="button"`
+- refactor(BrandButtons): spacing
+- refactor:(Buttons): view layout
+
+##### `v2.0.0-alpha.2`
+- refactor: FullHeader `<AppHeaderDropdown direction="down">` (required prop `direction`)
+- refactor: ButtonDropdowns `<Dropdown direction="up">` (deprecate 'dropup')
+- refactor: Dashboard legend badge pill
+- refactor: SocialButtons to BrandButtons `btn-brand`
+- refactor: Buttons spacing `mr-1`
+- update: reactstrap to `5.0.0`
+- update: react, react-dom to `16.3.1`
+- update: node-sass-chokidar to `1.1.0`
+- update: prop-types to `15.5.8`
+- update: react-scripts to `1.1.4`
+
+##### `v2.0.0-alpha.1`
+- refactor: separation of concerns - (CoreUI template vs CoreUI components) prepare to use CoreUI as dependency
+- refactor: project structure change
+- refactor: moved to [Create-React-App](CRA.md)
+- chore: moved to [Semantic Versioning](https://semver.org/)
 
 ##### `v1.0.10`
 - refactor: `<InputGroupAddon addonType="prepend">`

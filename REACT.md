@@ -1,29 +1,40 @@
-# React version
+# CoreUI React version
 
 ## Intro 
-It uses Sass (with .scss). The style is loaded at the component level.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
-Dependencies can be handled by **npm**.
+It uses Sass (with .scss). The styles are loaded at the template level with n`ode-sass-chokidar` css preprocessor
+
+Dependencies are handled by **npm**.
 
 ## Directories
 ```
-React_Full_Project/
-├── src/         (js|jsx source)
-├── scss/        (scss source)
-├── public/      (html template)
-    ├── img/     (images)
+CoreUI-React#v2.0.0
+├── public/      (static files)
+│   ├── assets/  (assets)
+│   └── index.html (html temlpate)
+│
+├── src/             (project root)
+│   ├── containers/  (container source)
+│   ├── scss/        (scss/css source)
+│   ├── views/       (views source)
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.js
+│   ├── _nav.js      (sidebar config)
+│   └── routes.js    (routes config)
+│
+└── package.json
 ```
 
 ## Usage
-**npm i** - to install dependencies
+`npm i` - to install dependencies
 
-## Sctipts
-**npm start** for developing (it runs webpack-dev-server)  
-**npm run build** to run a dev build  
-**npm run clean** to clean build dir  
-**npm run dev** to run a dev build with watching filesystem for changes  
+## Sctipts 
+`npm start` for developing (it runs webpack-dev-server)  
+`npm run build` to run a dev build  
 
 ## See also
-
+[Create-React-App](CRA.md)
 [Changelog](./CHANGELOG.md)  
 [Readme](./README.md)

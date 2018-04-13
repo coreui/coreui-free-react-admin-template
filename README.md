@@ -107,6 +107,7 @@ CoreUI-React#v2.0.0
 
 The documentation for the CoreUI  Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
 
+
 ## Contributing
 
 Please read through our [contributing guidelines](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template/blob/v2.0.0/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.

@@ -1,15 +1,15 @@
 {
-  "name": "CoreUI-React",
+  "name": "@coreui/coreui-free-react-admin-template",
   "version": "2.0.0-beta",
   "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
   "author": "Łukasz Holeczek",
-  "homepage": "http://coreui.io",
+  "homepage": "https://coreui.io",
   "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:mrholek/CoreUI-React.git"
+    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
   },
   "dependencies": {
     "@coreui/coreui": "^2.0.0-beta.6",
@@ -45,6 +45,6 @@
     "eject": "react-scripts eject"
   },
   "bugs": {
-    "url": "https://github.com/mrholek/CoreUI-React/issues"
+    "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
   }
 }

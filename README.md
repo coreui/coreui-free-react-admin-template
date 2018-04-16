@@ -14,9 +14,9 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 * [Versions](#versions)
 * [CoreUI Pro](#coreui-pro)
+* [Admin Templates built on top of CoreUI Pro](#admin-templates-built-on-top-of-coreui-pro)
 * [Installation](#installation)
-* [Create React App](#create-react-app)
-* [Usage](#basic-usage)
+* [Usage](#usage)
 * [What's included](#whats-included)
 * [Documentation](#documentation)
 * [Contributing](#contributing)
@@ -29,11 +29,12 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ## Versions
 
-* [CoreUI Free Bootstrap Admin Template (Ajax)](https://github.com/coreui/free-bootstrap-admin-template-ajax)
-* [CoreUI Free Angular 2+ Admin Template](https://github.com/coreui/free-angular-admin-template)
-* [CoreUI Free .NET Core 2 Admin Template](https://github.com/coreui/free-dotnet-admin-template)
-* [CoreUI Free React.js Admin Template](https://github.com/coreui/free-react-admin-template)
-* [CoreUI Free Vue.js Admin Template](https://github.com/coreui/free-vue-admin-template)
+* [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
+* [CoreUI Free Bootstrap Admin Template (Ajax)](https://github.com/coreui/coreui-free-bootstrap-admin-template-ajax)
+* [CoreUI Free Angular 2+ Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
+* 🚧 CoreUI Free .NET Core 2 Admin Template (Available Soon)
+* [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
+* 🚧 CoreUI Free Vue.js Admin Template (Available Soon)
 
 ## CoreUI Pro
 
@@ -43,11 +44,17 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
 
+## Admin Templates built on top of CoreUI Pro
+
+| CoreUI Pro | Prime | Root | Alba | Leaf |
+| --- | --- | --- | --- | --- |
+| [![CoreUI Pro React Admin Template](https://coreui.io/assets/img/example-coureui.jpg)](https://coreui.io/pro/react/) | [![Prime React Admin Template](https://genesisui.com/assets/img/templates/prime1280.jpg)](https://genesisui.com/admin-templates/reactjs/prime/?support=1) | [![Root React Admin Template](https://genesisui.com/assets/img/templates/root1280.jpg)](https://genesisui.com/admin-templates/reactjs/root/?support=1) | [![Alba React Admin Template](https://genesisui.com/assets/img/templates/alba1280.jpg)](https://genesisui.com/admin-templates/reactjs/alba/?support=1) | [![Leaf React Admin Template](https://genesisui.com/assets/img/templates/leaf1280.jpg)](https://genesisui.com/admin-templates/reactjs/leaf/?support=1)
+
 ## Installation
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/mrholek/CoreUI-React.git my-project
+$ git clone https://github.com/coreui/coreui-free-react-admin-template.git my-project
 
 # go into app's directory
 $ cd my-project
@@ -59,7 +66,7 @@ $ npm install
 ## Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
-see also: 
+see also:
 [User Guide](CRA.md)
 
 ### Basic usage
@@ -73,7 +80,7 @@ Navigate to [http://localhost:3000](http://localhost:3000). The app will automat
 
 ### Build
 
-Run `build` to build the project. The build artifacts will be stored in the `build/` directory. 
+Run `build` to build the project. The build artifacts will be stored in the `build/` directory.
 
 ```bash
 # build for production with minification
@@ -110,15 +117,15 @@ The documentation for the CoreUI  Admin Template is hosted at our website [CoreU
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template/blob/v2.0.0/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+Please read through our [contributing guidelines](https://github.com/coreui/coreui-free-react-admin-template/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-Editor preferences are available in the [editor config](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template/blob/v2.0.0/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+Editor preferences are available in the [editor config](https://github.com/coreui/coreui-free-react-admin-template/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
 ## Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
-See [the Releases section of our project](https://github.com/mrholek/CoreUI-React/releases) for changelogs for each release version.
+See [the Releases section of our project](https://github.com/coreui/coreui-free-react-admin-template/releases) for changelogs for each release version.
 
 ## Creators
 
@@ -133,7 +140,7 @@ See [the Releases section of our project](https://github.com/mrholek/CoreUI-Reac
 
 Get updates on CoreUI's development and chat with the project maintainers and community members.
 
-- Follow [@coreuikit on Twitter](https://twitter.com/coreuikit).
+- Follow [@core_ui on Twitter](https://twitter.com/core_ui).
 - Read and subscribe to [CoreUI Blog](https://coreui.ui/blog/).
 
 ### Community Projects

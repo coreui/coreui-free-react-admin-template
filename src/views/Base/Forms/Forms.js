@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Badge,
   Button,
   ButtonDropdown,
   Card,
@@ -195,7 +196,7 @@ class Forms extends Component {
                   </FormGroup>
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="date-input">Date Input</Label>
+                      <Label htmlFor="date-input">Date Input <Badge>NEW</Badge></Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="date" id="date-input" name="date-input" placeholder="date" />

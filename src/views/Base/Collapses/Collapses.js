@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, CardBody, CardFooter, CardHeader, Col, Collapse, Fade, Row } from 'reactstrap';
+import { Badge, Button, Card, CardBody, CardFooter, CardHeader, Col, Collapse, Fade, Row } from 'reactstrap';
 
 class Collapses extends Component {
 
@@ -130,6 +130,9 @@ class Collapses extends Component {
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Collapse <small>accordion</small>
+                <div className="card-header-actions">
+                  <Badge>NEW</Badge>
+                </div>
               </CardHeader>
               <CardBody>
                 <div id="accordion">
@@ -187,6 +190,9 @@ class Collapses extends Component {
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i> Collapse <small>custom accordion</small>
+                <div className="card-header-actions">
+                  <Badge>NEW</Badge>
+                </div>
               </CardHeader>
               <CardBody>
                 <div id="exampleAccordion" data-children=".item">

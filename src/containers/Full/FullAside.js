@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Input, Label, Nav, NavItem, NavLink, Progress, TabContent, TabPane, ListGroup, ListGroupItem } from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { AppSwitch } from '@coreui/react'
 
 const propTypes = {
   children: PropTypes.node,
@@ -239,11 +240,7 @@ class FullAside extends Component {
             <div className="aside-options">
               <div className="clearfix mt-4">
                 <small><b>Option 1</b></small>
-                <Label className="switch switch-text switch-pill switch-success switch-sm float-right">
-                  <Input type="checkbox" className="switch-input" defaultChecked />
-                  <span className="switch-label" data-on="On" data-off="Off"></span>
-                  <span className="switch-handle"></span>
-                </Label>
+                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} defaultChecked size={'sm'}/>
               </div>
               <div>
                 <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -255,11 +252,7 @@ class FullAside extends Component {
             <div className="aside-options">
               <div className="clearfix mt-3">
                 <small><b>Option 2</b></small>
-                <Label className="switch switch-text switch-pill switch-success switch-sm float-right">
-                  <Input type="checkbox" className="switch-input" />
-                  <span className="switch-label" data-on="On" data-off="Off"></span>
-                  <span className="switch-handle"></span>
-                </Label>
+                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
               </div>
               <div>
                 <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -271,22 +264,17 @@ class FullAside extends Component {
             <div className="aside-options">
               <div className="clearfix mt-3">
                 <small><b>Option 3</b></small>
-                <Label className="switch switch-text switch-pill switch-success switch-sm float-right">
-                  <Input type="checkbox" className="switch-input" />
-                  <span className="switch-label" data-on="On" data-off="Off"></span>
-                  <span className="switch-handle"></span>
-                </Label>
+                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} defaultChecked size={'sm'} disabled/>
+                <div>
+                  <small className="text-muted">Option disabled.</small>
+                </div>
               </div>
             </div>
 
             <div className="aside-options">
               <div className="clearfix mt-3">
                 <small><b>Option 4</b></small>
-                <Label className="switch switch-text switch-pill switch-success switch-sm float-right">
-                  <Input type="checkbox" className="switch-input" defaultChecked />
-                  <span className="switch-label" data-on="On" data-off="Off"></span>
-                  <span className="switch-handle"></span>
-                </Label>
+                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} defaultChecked size={'sm'} />
               </div>
             </div>
 

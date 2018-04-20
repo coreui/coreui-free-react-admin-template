@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@coreui/coreui": "^2.0.0-beta.10",
+    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.0.0",
     "@coreui/react": "^2.0.0-beta.1",
     "bootstrap": "^4.1.0",
     "chart.js": "^2.7.2",

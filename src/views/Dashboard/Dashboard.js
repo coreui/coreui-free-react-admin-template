@@ -21,6 +21,7 @@ import {
   Table,
 } from 'reactstrap';
 import Widget03 from '../../views/Widgets/Widget03'
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips/js/';
 
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
@@ -42,6 +43,10 @@ const cardChartData1 = {
 };
 
 const cardChartOpts1 = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips
+  },
   maintainAspectRatio: false,
   legend: {
     display: false,
@@ -78,8 +83,9 @@ const cardChartOpts1 = {
       hitRadius: 10,
       hoverRadius: 4,
     },
-  },
-};
+  }
+}
+
 
 // Card Chart 2
 const cardChartData2 = {
@@ -95,6 +101,10 @@ const cardChartData2 = {
 };
 
 const cardChartOpts2 = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips
+  },
   maintainAspectRatio: false,
   legend: {
     display: false,
@@ -149,6 +159,10 @@ const cardChartData3 = {
 };
 
 const cardChartOpts3 = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips
+  },
   maintainAspectRatio: false,
   legend: {
     display: false,
@@ -189,6 +203,10 @@ const cardChartData4 = {
 };
 
 const cardChartOpts4 = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips
+  },
   maintainAspectRatio: false,
   legend: {
     display: false,
@@ -233,6 +251,10 @@ const makeSocialBoxData = (dataSetNo) => {
 };
 
 const socialChartOpts = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips
+  },
   responsive: true,
   maintainAspectRatio: false,
   legend: {
@@ -303,6 +325,10 @@ const makeSparkLineData = (dataSetNo, variant) => {
 };
 
 const sparklineChartOpts = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips
+  },
   responsive: true,
   maintainAspectRatio: true,
   scales: {
@@ -392,6 +418,10 @@ const mainChart = {
 };
 
 const mainChartOpts = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips
+  },
   maintainAspectRatio: false,
   legend: {
     display: false,

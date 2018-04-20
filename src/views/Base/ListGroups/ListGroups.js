@@ -172,6 +172,9 @@ class ListGroups extends Component {
             <Card>
               <CardHeader>
                 <i className="fa fa-align-justify"></i><strong>List Group</strong> <small>with TabPanes</small>
+                <div className="card-header-actions">
+                  <Badge>NEW</Badge>
+                </div>
               </CardHeader>
               <CardBody>
                 <Row>

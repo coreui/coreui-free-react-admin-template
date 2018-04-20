@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Badge, Card, CardBody, CardFooter, CardHeader, Col, Input, Label, Row, Collapse, Fade } from 'reactstrap';
+import { Badge, Card, CardBody, CardFooter, CardHeader, Col, Row, Collapse, Fade } from 'reactstrap';
+import { AppSwitch } from '@coreui/react'
 
 class Cards extends Component {
   constructor(props) {
@@ -64,11 +65,7 @@ class Cards extends Component {
             <Card>
               <CardHeader>
                 Card with switch
-                <Label className="switch switch-sm switch-text switch-info float-right mb-0">
-                  <Input type="checkbox" className="switch-input" />
-                  <span className="switch-label" data-on="On" data-off="Off"></span>
-                  <span className="switch-handle"></span>
-                </Label>
+                <AppSwitch className={'float-right mb-0'} label color={'info'} defaultChecked size={'sm'}/>
               </CardHeader>
               <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut

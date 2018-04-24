@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Bar, Doughnut, Line, Pie, Polar, Radar } from 'react-chartjs-2';
 import { Card, CardBody, CardColumns, CardHeader } from 'reactstrap';
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
 const line = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -142,6 +143,14 @@ const polar = {
   ],
 };
 
+const options = {
+  tooltips: {
+    enabled: false,
+    custom: CustomTooltips
+  },
+  maintainAspectRatio: false
+}
+
 class Charts extends Component {
   render() {
     return (
@@ -158,7 +167,7 @@ class Charts extends Component {
             </CardHeader>
             <CardBody>
               <div className="chart-wrapper">
-                <Line data={line} options={{ maintainAspectRatio: false, }} />
+                <Line data={line} options={options} />
               </div>
             </CardBody>
           </Card>
@@ -173,7 +182,7 @@ class Charts extends Component {
             </CardHeader>
             <CardBody>
               <div className="chart-wrapper">
-                <Bar data={bar} options={{ maintainAspectRatio: false, }} />
+                <Bar data={bar} options={options} />
               </div>
             </CardBody>
           </Card>
@@ -233,7 +242,7 @@ class Charts extends Component {
             </CardHeader>
             <CardBody>
               <div className="chart-wrapper">
-                <Polar data={polar} />
+                <Polar data={polar} options={options}/>
               </div>
             </CardBody>
           </Card>

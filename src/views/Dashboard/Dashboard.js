@@ -21,7 +21,7 @@ import {
   Table,
 } from 'reactstrap';
 import Widget03 from '../../views/Widgets/Widget03'
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips/js/';
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
@@ -387,7 +387,7 @@ for (var i = 0; i <= elements; i++) {
 }
 
 const mainChart = {
-  labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
   datasets: [
     {
       label: 'My First dataset',
@@ -420,7 +420,15 @@ const mainChart = {
 const mainChartOpts = {
   tooltips: {
     enabled: false,
-    custom: CustomTooltips
+    custom: CustomTooltips,
+    intersect: true,
+    mode: 'index',
+    position: 'nearest',
+    callbacks: {
+      labelColor: function(tooltipItem, chart) {
+        return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
+      }
+    }
   },
   maintainAspectRatio: false,
   legend: {

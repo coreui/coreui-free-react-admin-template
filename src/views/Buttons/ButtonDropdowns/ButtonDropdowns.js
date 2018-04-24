@@ -209,7 +209,7 @@ class ButtonDropdowns extends Component {
                   <DropdownToggle caret size="lg">
                     Direction Up
                   </DropdownToggle>
-                  <DropdownMenu>
+                  <DropdownMenu style={{bottom: "-116px"}}>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action Disabled</DropdownItem>
                     <DropdownItem>Action</DropdownItem>

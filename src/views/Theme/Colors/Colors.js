@@ -2,19 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { Row, Col } from 'reactstrap'
-// import { rgbToHex } from '@coreui/coreui/js/src/utilities/'
-
-const rgbToHex = (color) => {
-  const rgb = color.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i)
-  if (rgb) {
-    const r = `0${parseInt(rgb[1], 10).toString(16)}`
-    const g = `0${parseInt(rgb[2], 10).toString(16)}`
-    const b = `0${parseInt(rgb[3], 10).toString(16)}`
-
-    return rgb ? `#${r.slice(-2)}${g.slice(-2)}${b.slice(-2)}` : ''
-  }
-  return ''
-}
+import { rgbToHex } from '@coreui/coreui/dist/js/utilities'
 
 class ThemeView extends Component {
   constructor(props) {

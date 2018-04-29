@@ -1,6 +1,6 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
   "author": "Łukasz Holeczek",
   "homepage": "https://coreui.io",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@coreui/coreui": "^2.0.0-beta.10",
+    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/react": "^2.0.0-beta.1",
     "bootstrap": "^4.1.0",
     "chart.js": "^2.7.2",
@@ -35,8 +36,8 @@
     "react-scripts": "^1.1.4"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "build-css": "node-sass-chokidar --include-path ./node_modules ./src/scss -o ./src/scss",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./node_modules ./src/scss -o ./src/scss --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",

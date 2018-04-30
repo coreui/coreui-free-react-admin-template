@@ -22,7 +22,7 @@ import {
 } from 'reactstrap';
 import Widget03 from '../../views/Widgets/Widget03'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
-import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/utilities'
+import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
 
 const brandPrimary = getStyle('--primary')
 const brandSuccess = getStyle('--success')
@@ -500,7 +500,7 @@ class Dashboard extends Component {
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
               </CardBody>
-              <div className="chart-wrapper px-3" style={{ height: '70px' }}>
+              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
               </div>
             </Card>
@@ -524,7 +524,7 @@ class Dashboard extends Component {
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
               </CardBody>
-              <div className="chart-wrapper px-3" style={{ height: '70px' }}>
+              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70} />
               </div>
             </Card>
@@ -548,7 +548,7 @@ class Dashboard extends Component {
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
               </CardBody>
-              <div className="chart-wrapper px-0" style={{ height: '70px' }}>
+              <div className="chart-wrapper" style={{ height: '70px' }}>
                 <Line data={cardChartData3} options={cardChartOpts3} height={70} />
               </div>
             </Card>
@@ -572,7 +572,7 @@ class Dashboard extends Component {
                 <h4 className="mb-0">9.823</h4>
                 <p>Members online</p>
               </CardBody>
-              <div className="chart-wrapper px-3" style={{ height: '70px' }}>
+              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Bar data={cardChartData4} options={cardChartOpts4} height={70} />
               </div>
             </Card>

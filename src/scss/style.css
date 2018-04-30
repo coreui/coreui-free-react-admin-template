@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
  * CoreUI - Open Source Dashboard UI Kit
- * @version v2.0.0-beta.10
+ * @version v2.0.0-rc.1
  * @link https://coreui.io
  * Copyright (c) 2018 creativeLabs Łukasz Holeczek
  * Licensed under MIT (https://coreui.io/license)
@@ -6562,6 +6562,7 @@ a.text-dark:hover, a.text-dark:focus {
   .brand-card-header .chart-wrapper {
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%; }
 

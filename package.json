@@ -14,7 +14,7 @@
   "dependencies": {
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/react": "^2.0.0-beta.2",
-    "bootstrap": "^4.1.0",
+    "bootstrap": "^4.1.1",
     "chart.js": "^2.7.2",
     "classnames": "^2.2.5",
     "core-js": "^2.5.5",

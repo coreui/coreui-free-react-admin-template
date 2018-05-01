@@ -181,7 +181,7 @@ class Forms extends Component {
                       <Label htmlFor="email-input">Email Input</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="email" id="email-input" name="email-input" placeholder="Enter Email" />
+                      <Input type="email" id="email-input" name="email-input" placeholder="Enter Email" autoComplete="email"/>
                       <FormText className="help-block">Please enter your email</FormText>
                     </Col>
                   </FormGroup>
@@ -190,7 +190,7 @@ class Forms extends Component {
                       <Label htmlFor="password-input">Password</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="password" id="password-input" name="password-input" placeholder="Password" />
+                      <Input type="password" id="password-input" name="password-input" placeholder="Password" autoComplete="new-password" />
                       <FormText className="help-block">Please enter a complex password</FormText>
                     </Col>
                   </FormGroup>
@@ -265,7 +265,7 @@ class Forms extends Component {
                       <Label htmlFor="disabledSelect">Disabled Select</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="select" name="disabledSelect" id="disabledSelect" disabled>
+                      <Input type="select" name="disabledSelect" id="disabledSelect" disabled autoComplete="name">
                         <option value="0">Please select</option>
                         <option value="1">Option #1</option>
                         <option value="2">Option #2</option>
@@ -434,7 +434,7 @@ class Forms extends Component {
                       <Label htmlFor="hf-email">Email</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="email" id="hf-email" name="hf-email" placeholder="Enter Email..." />
+                      <Input type="email" id="hf-email" name="hf-email" placeholder="Enter Email..." autoComplete="email" />
                       <FormText className="help-block">Please enter your email</FormText>
                     </Col>
                   </FormGroup>
@@ -443,7 +443,7 @@ class Forms extends Component {
                       <Label htmlFor="hf-password">Password</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="password" id="hf-password" name="hf-password" placeholder="Enter Password..." />
+                      <Input type="password" id="hf-password" name="hf-password" placeholder="Enter Password..." autoComplete="current-password"/>
                       <FormText className="help-block">Please enter your password</FormText>
                     </Col>
                   </FormGroup>
@@ -462,12 +462,12 @@ class Forms extends Component {
                 <Form action="" method="post">
                   <FormGroup>
                     <Label htmlFor="nf-email">Email</Label>
-                    <Input type="email" id="nf-email" name="nf-email" placeholder="Enter Email.." />
+                    <Input type="email" id="nf-email" name="nf-email" placeholder="Enter Email.." autoComplete="email"/>
                     <FormText className="help-block">Please enter your email</FormText>
                   </FormGroup>
                   <FormGroup>
                     <Label htmlFor="nf-password">Password</Label>
-                    <Input type="password" id="nf-password" name="nf-password" placeholder="Enter Password.." />
+                    <Input type="password" id="nf-password" name="nf-password" placeholder="Enter Password.." autoComplete="current-password"/>
                     <FormText className="help-block">Please enter your password</FormText>
                   </FormGroup>
                 </Form>
@@ -947,7 +947,7 @@ class Forms extends Component {
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>Username</InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" id="username3" name="username3" />
+                      <Input type="email" id="username3" name="username3" autoComplete="name"/>
                       <InputGroupAddon addonType="append">
                         <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                       </InputGroupAddon>
@@ -958,7 +958,7 @@ class Forms extends Component {
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>Email</InputGroupText>
                       </InputGroupAddon>
-                      <Input type="email" id="email3" name="email3" />
+                      <Input type="email" id="email3" name="email3" autoComplete="username"/>
                       <InputGroupAddon addonType="append">
                         <InputGroupText><i className="fa fa-envelope"></i></InputGroupText>
                       </InputGroupAddon>
@@ -969,7 +969,7 @@ class Forms extends Component {
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>Password</InputGroupText>
                       </InputGroupAddon>
-                      <Input type="password" id="password3" name="password3" />
+                      <Input type="password" id="password3" name="password3" autoComplete="current-password"/>
                       <InputGroupAddon addonType="append">
                         <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
                       </InputGroupAddon>
@@ -991,7 +991,7 @@ class Forms extends Component {
                 <Form action="" method="post">
                   <FormGroup>
                     <InputGroup>
-                      <Input type="text" id="username2" name="username2" placeholder="Username" />
+                      <Input type="text" id="username2" name="username2" placeholder="Username" autoComplete="name"/>
                       <InputGroupAddon addonType="append">
                         <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                       </InputGroupAddon>
@@ -999,7 +999,7 @@ class Forms extends Component {
                   </FormGroup>
                   <FormGroup>
                     <InputGroup>
-                      <Input type="email" id="email2" name="email2" placeholder="Email" />
+                      <Input type="email" id="email2" name="email2" placeholder="Email" autoComplete="username"/>
                       <InputGroupAddon addonType="append">
                         <InputGroupText><i className="fa fa-envelope"></i></InputGroupText>
                       </InputGroupAddon>
@@ -1007,7 +1007,7 @@ class Forms extends Component {
                   </FormGroup>
                   <FormGroup>
                     <InputGroup>
-                      <Input type="password" id="password2" name="password2" placeholder="Password" />
+                      <Input type="password" id="password2" name="password2" placeholder="Password" autoComplete="current-password"/>
                       <InputGroupAddon addonType="append">
                         <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
                       </InputGroupAddon>
@@ -1032,7 +1032,7 @@ class Forms extends Component {
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" id="username" name="username" placeholder="Username" />
+                      <Input type="text" id="username1" name="username1" placeholder="Username" autoComplete="name"/>
                     </InputGroup>
                   </FormGroup>
                   <FormGroup>
@@ -1040,7 +1040,7 @@ class Forms extends Component {
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText><i className="fa fa-envelope"></i></InputGroupText>
                       </InputGroupAddon>
-                      <Input type="email" id="email" name="email" placeholder="Email" />
+                      <Input type="email" id="email1" name="email1" placeholder="Email" autoComplete="username"/>
                     </InputGroup>
                   </FormGroup>
                   <FormGroup>
@@ -1048,7 +1048,7 @@ class Forms extends Component {
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
                       </InputGroupAddon>
-                      <Input type="password" id="password" name="password" placeholder="Password" />
+                      <Input type="password" id="password1" name="password1" placeholder="Password" autoComplete="current-password"/>
                     </InputGroup>
                   </FormGroup>
                   <FormGroup className="form-actions">

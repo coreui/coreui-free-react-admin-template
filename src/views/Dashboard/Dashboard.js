@@ -22,12 +22,13 @@ import {
 } from 'reactstrap';
 import Widget03 from '../../views/Widgets/Widget03'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
 
-const brandPrimary = '#20a8d8';
-const brandSuccess = '#4dbd74';
-const brandInfo = '#63c2de';
-const brandWarning = '#f8cb00';
-const brandDanger = '#f86c6b';
+const brandPrimary = getStyle('--primary')
+const brandSuccess = getStyle('--success')
+const brandInfo = getStyle('--info')
+const brandWarning = getStyle('--warning')
+const brandDanger = getStyle('--danger')
 
 // Card Chart 1
 const cardChartData1 = {
@@ -359,17 +360,6 @@ const sparklineChartOpts = {
 
 // Main Chart
 
-// convert Hex to RGBA
-function convertHex(hex, opacity) {
-  hex = hex.replace('#', '');
-  const r = parseInt(hex.substring(0, 2), 16);
-  var g = parseInt(hex.substring(2, 4), 16);
-  var b = parseInt(hex.substring(4, 6), 16);
-
-  var result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
-  return result;
-}
-
 //Random Numbers
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -391,7 +381,7 @@ const mainChart = {
   datasets: [
     {
       label: 'My First dataset',
-      backgroundColor: convertHex(brandInfo, 10),
+      backgroundColor: hexToRgba(brandInfo, 10),
       borderColor: brandInfo,
       pointHoverBackgroundColor: '#fff',
       borderWidth: 2,
@@ -510,7 +500,7 @@ class Dashboard extends Component {
                 <div className="text-value">9.823</div>
                 <div>Members online</div>
               </CardBody>
-              <div className="chart-wrapper mt-3 mx-3" style={{ height: '70px' }}>
+              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
               </div>
             </Card>
@@ -534,7 +524,7 @@ class Dashboard extends Component {
                 <div className="text-value">9.823</div>
                 <div>Members online</div>
               </CardBody>
-              <div className="chart-wrapper mt-3 mx-3" style={{ height: '70px' }}>
+              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70} />
               </div>
             </Card>
@@ -558,7 +548,7 @@ class Dashboard extends Component {
                 <div className="text-value">9.823</div>
                 <div>Members online</div>
               </CardBody>
-              <div className="chart-wrapper px-0 mt-3" style={{ height: '70px' }}>
+              <div className="chart-wrapper" style={{ height: '70px' }}>
                 <Line data={cardChartData3} options={cardChartOpts3} height={70} />
               </div>
             </Card>
@@ -582,7 +572,7 @@ class Dashboard extends Component {
                 <div className="text-value">9.823</div>
                 <div>Members online</div>
               </CardBody>
-              <div className="chart-wrapper mt-3 mx-3" style={{ height: '70px' }}>
+              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Bar data={cardChartData4} options={cardChartOpts4} height={70} />
               </div>
             </Card>

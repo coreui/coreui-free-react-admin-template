@@ -13,7 +13,7 @@ import './scss/style.css'
 // import '../node_modules/@coreui/styles/scss/_dropdown-menu-right.scss';
 
 // Containers
-import { Full } from './containers';
+import { DefaultLayout } from './containers';
 // Pages
 import { Login, Page404, Page500, Register } from './views/Pages';
 
@@ -28,7 +28,7 @@ class App extends Component {
           <Route exact path="/register" name="Register Page" component={Register} />
           <Route exact path="/404" name="Page 404" component={Page404} />
           <Route exact path="/500" name="Page 500" component={Page500} />
-          <Route path="/" name="Home" component={Full} />
+          <Route path="/" name="Home" component={DefaultLayout} />
         </Switch>
       </HashRouter>
     );

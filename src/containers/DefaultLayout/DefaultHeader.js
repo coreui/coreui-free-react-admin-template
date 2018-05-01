@@ -10,7 +10,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-class FullHeader extends Component {
+class DefaultHeader extends Component {
   render() {
 
     // eslint-disable-next-line
@@ -74,7 +74,7 @@ class FullHeader extends Component {
   }
 }
 
-FullHeader.propTypes = propTypes;
-FullHeader.defaultProps = defaultProps;
+DefaultHeader.propTypes = propTypes;
+DefaultHeader.defaultProps = defaultProps;
 
-export default FullHeader;
+export default DefaultHeader;

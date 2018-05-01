@@ -18,16 +18,16 @@ import {
 import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
-import FullAside from './FullAside';
-import FullFooter from './FullFooter';
-import FullHeader from './FullHeader';
+import DefaultAside from './DefaultAside';
+import DefaultFooter from './DefaultFooter';
+import DefaultHeader from './DefaultHeader';
 
-class Full extends Component {
+class DefaultLayout extends Component {
   render() {
     return (
       <div className="app">
         <AppHeader fixed>
-          <FullHeader />
+          <DefaultHeader />
         </AppHeader>
         <div className="app-body">
           <AppSidebar fixed display="lg">
@@ -53,15 +53,15 @@ class Full extends Component {
             </Container>
           </main>
           <AppAside fixed hidden>
-            <FullAside />
+            <DefaultAside />
           </AppAside>
         </div>
         <AppFooter>
-          <FullFooter />
+          <DefaultFooter />
         </AppFooter>
       </div>
     );
   }
 }
 
-export default Full;
+export default DefaultLayout;

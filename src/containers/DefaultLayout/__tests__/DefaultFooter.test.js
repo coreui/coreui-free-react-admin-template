@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FullFooter from '../FullFooter';
+import DefaultFooter from '../DefaultFooter';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<FullFooter />, div);
+  ReactDOM.render(<DefaultFooter />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

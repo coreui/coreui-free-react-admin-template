@@ -7,7 +7,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-class FullFooter extends Component {
+class DefaultFooter extends Component {
   render() {
 
     // eslint-disable-next-line
@@ -22,7 +22,7 @@ class FullFooter extends Component {
   }
 }
 
-FullFooter.propTypes = propTypes;
-FullFooter.defaultProps = defaultProps;
+DefaultFooter.propTypes = propTypes;
+DefaultFooter.defaultProps = defaultProps;
 
-export default FullFooter;
+export default DefaultFooter;

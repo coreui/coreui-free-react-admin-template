@@ -17,6 +17,7 @@
     "bootstrap": "^4.1.0",
     "chart.js": "^2.7.2",
     "classnames": "^2.2.5",
+    "core-js": "^2.5.5",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "flag-icon-css": "^3.0.0",

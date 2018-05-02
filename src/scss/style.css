@@ -9938,3 +9938,6 @@ body {
 
 .app-header .navbar-nav .dropdown-menu-right {
   right: auto; }
+
+html body .align-items-center {
+  height: 100vh; }

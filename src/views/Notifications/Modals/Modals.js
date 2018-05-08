@@ -84,7 +84,7 @@ class Modals extends Component {
                 <i className="fa fa-align-justify"></i> Bootstrap Modals
               </CardHeader>
               <CardBody>
-                <Button onClick={this.toggle}>Launch demo modal</Button>
+                <Button onClick={this.toggle} className="mr-1">Launch demo modal</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                   <ModalBody>
@@ -100,7 +100,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-                <Button onClick={this.toggleLarge}>Launch large modal</Button>
+                <Button onClick={this.toggleLarge} className="mr-1">Launch large modal</Button>
                 <Modal isOpen={this.state.large} toggle={this.toggleLarge}
                        className={'modal-lg ' + this.props.className}>
                   <ModalHeader toggle={this.toggleLarge}>Modal title</ModalHeader>
@@ -117,7 +117,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-                <Button onClick={this.toggleSmall}>Launch small modal</Button>
+                <Button onClick={this.toggleSmall} className="mr-1">Launch small modal</Button>
                 <Modal isOpen={this.state.small} toggle={this.toggleSmall}
                        className={'modal-sm ' + this.props.className}>
                   <ModalHeader toggle={this.toggleSmall}>Modal title</ModalHeader>
@@ -136,7 +136,7 @@ class Modals extends Component {
 
                 <hr />
 
-                <Button color="primary" onClick={this.togglePrimary}>Primary modal</Button>
+                <Button color="primary" onClick={this.togglePrimary} className="mr-1">Primary modal</Button>
                 <Modal isOpen={this.state.primary} toggle={this.togglePrimary}
                        className={'modal-primary ' + this.props.className}>
                   <ModalHeader toggle={this.togglePrimary}>Modal title</ModalHeader>
@@ -153,7 +153,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-                <Button color="success" onClick={this.toggleSuccess}>Success modal</Button>
+                <Button color="success" onClick={this.toggleSuccess} className="mr-1">Success modal</Button>
                 <Modal isOpen={this.state.success} toggle={this.toggleSuccess}
                        className={'modal-success ' + this.props.className}>
                   <ModalHeader toggle={this.toggleSuccess}>Modal title</ModalHeader>
@@ -170,7 +170,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-                <Button color="warning" onClick={this.toggleWarning}>Warning modal</Button>
+                <Button color="warning" onClick={this.toggleWarning} className="mr-1">Warning modal</Button>
                 <Modal isOpen={this.state.warning} toggle={this.toggleWarning}
                        className={'modal-warning ' + this.props.className}>
                   <ModalHeader toggle={this.toggleWarning}>Modal title</ModalHeader>
@@ -187,7 +187,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-                <Button color="danger" onClick={this.toggleDanger}>Danger modal</Button>
+                <Button color="danger" onClick={this.toggleDanger} className="mr-1">Danger modal</Button>
                 <Modal isOpen={this.state.danger} toggle={this.toggleDanger}
                        className={'modal-danger ' + this.props.className}>
                   <ModalHeader toggle={this.toggleDanger}>Modal title</ModalHeader>
@@ -204,7 +204,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-                <Button color="info" onClick={this.toggleInfo}>Info modal</Button>
+                <Button color="info" onClick={this.toggleInfo} className="mr-1">Info modal</Button>
                 <Modal isOpen={this.state.info} toggle={this.toggleInfo}
                        className={'modal-info ' + this.props.className}>
                   <ModalHeader toggle={this.toggleInfo}>Modal title</ModalHeader>

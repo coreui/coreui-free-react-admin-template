@@ -1,6 +1,6 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-rc.0",
   "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
   "author": "Łukasz Holeczek",
   "homepage": "https://coreui.io",
@@ -12,12 +12,13 @@
     "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
   },
   "dependencies": {
+    "@coreui/coreui": "^2.0.0-rc.2",
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/react": "^2.0.0-beta.3",
     "bootstrap": "^4.1.1",
     "chart.js": "^2.7.2",
     "classnames": "^2.2.5",
-    "core-js": "^2.5.5",
+    "core-js": "^2.5.6",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "flag-icon-css": "^3.0.0",

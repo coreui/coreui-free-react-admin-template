@@ -84,25 +84,7 @@ class Switches extends Component {
           <Col xs="12" md="6">
             <Card>
               <CardHeader>
-                3d Switch <small><code>outline label</code></small>
-              </CardHeader>
-              <CardBody>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'primary'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'} />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'secondary'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'}/>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'success'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'}/>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'warning'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'}/>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'info'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'}/>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'danger'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'}/>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'light'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'}/>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'dark'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'}/>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'primary'} label dataOn={'\u2713'} dataOff={'\u2715'}/>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col xs="12" md="6">
-            <Card>
-              <CardHeader>
-                3d Switch <small><code>outline={'alt'} label</code></small>
+                3d Switch <small><code>outline="alt" label</code></small>
               </CardHeader>
               <CardBody>
                 <AppSwitch className={'mx-1'} variant={'3d'} outline={'alt'} color={'primary'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'} />
@@ -120,25 +102,7 @@ class Switches extends Component {
           <Col xs="12" md="6">
             <Card>
               <CardHeader>
-                3d Switch <small><code>outline label</code></small>
-              </CardHeader>
-              <CardBody>
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'primary'} defaultChecked label />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'secondary'} defaultChecked label />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'success'} defaultChecked label />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'warning'} defaultChecked label />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'info'} defaultChecked label />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'danger'} defaultChecked label />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'light'} defaultChecked label />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'dark'} defaultChecked label />
-                <AppSwitch className={'mx-1'} variant={'3d'} outline color={'primary'} label />
-              </CardBody>
-            </Card>
-          </Col>
-          <Col xs="12" md="6">
-            <Card>
-              <CardHeader>
-                3d Switch <small><code>outline={'alt'} label</code></small>
+                3d Switch <small><code>outline="alt" label</code></small>
               </CardHeader>
               <CardBody>
                 <AppSwitch className={'mx-1'} variant={'3d'} outline={'alt'} color={'primary'} defaultChecked label />

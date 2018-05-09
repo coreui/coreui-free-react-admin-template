@@ -161,13 +161,18 @@ export default {
       icon: 'icon-star',
       children: [
         {
+          name: 'CoreUI Icons',
+          url: '/icons/coreui-icons',
+          icon: 'icon-star',
+          badge: {
+            variant: 'info',
+            text: 'NEW',
+          },
+        },
+        {
           name: 'Flags',
           url: '/icons/flags',
           icon: 'icon-star',
-          badge: {
-            variant: 'success',
-            text: 'NEW',
-          },
         },
         {
           name: 'Font Awesome',

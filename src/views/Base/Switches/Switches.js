@@ -11,6 +11,42 @@ class Switches extends Component {
           <Col xs="12" md="6">
             <Card>
               <CardHeader>
+                Switch default
+              </CardHeader>
+              <CardBody>
+                <AppSwitch className={'mx-1'} color={'primary'} checked />
+                <AppSwitch className={'mx-1'} color={'secondary'} checked />
+                <AppSwitch className={'mx-1'} color={'success'} checked />
+                <AppSwitch className={'mx-1'} color={'warning'} checked />
+                <AppSwitch className={'mx-1'} color={'info'} checked />
+                <AppSwitch className={'mx-1'} color={'danger'} checked />
+                <AppSwitch className={'mx-1'} color={'light'} checked />
+                <AppSwitch className={'mx-1'} color={'dark'} checked />
+                <AppSwitch className={'mx-1'} color={'primary'} disabled />
+              </CardBody>
+            </Card>
+          </Col>
+          <Col xs="12" md="6">
+            <Card>
+              <CardHeader>
+                Switch pills
+              </CardHeader>
+              <CardBody>
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'primary'} checked />
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'secondary'} checked />
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'success'} checked />
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'warning'} checked />
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'info'} checked />
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'danger'} checked />
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'light'} checked />
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'dark'} checked />
+                <AppSwitch className={'mx-1'} variant={'pill'} color={'primary'} disabled />
+              </CardBody>
+            </Card>
+          </Col>
+          <Col xs="12" md="6">
+            <Card>
+              <CardHeader>
                 3d Switch
               </CardHeader>
               <CardBody>
@@ -117,43 +153,6 @@ class Switches extends Component {
               </CardBody>
             </Card>
           </Col>
-          <Col xs="12" md="6">
-            <Card>
-              <CardHeader>
-                Switch default
-              </CardHeader>
-              <CardBody>
-                <AppSwitch className={'mx-1'} color={'primary'} checked />
-                <AppSwitch className={'mx-1'} color={'secondary'} checked />
-                <AppSwitch className={'mx-1'} color={'success'} checked />
-                <AppSwitch className={'mx-1'} color={'warning'} checked />
-                <AppSwitch className={'mx-1'} color={'info'} checked />
-                <AppSwitch className={'mx-1'} color={'danger'} checked />
-                <AppSwitch className={'mx-1'} color={'light'} checked />
-                <AppSwitch className={'mx-1'} color={'dark'} checked />
-                <AppSwitch className={'mx-1'} color={'primary'} disabled />
-              </CardBody>
-            </Card>
-          </Col>
-          <Col xs="12" md="6">
-            <Card>
-              <CardHeader>
-                Switch pills
-              </CardHeader>
-              <CardBody>
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'primary'} checked />
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'secondary'} checked />
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'success'} checked />
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'warning'} checked />
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'info'} checked />
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'danger'} checked />
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'light'} checked />
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'dark'} checked />
-                <AppSwitch className={'mx-1'} variant={'pill'} color={'primary'} disabled />
-              </CardBody>
-            </Card>
-          </Col>
-
           <Col xs="12" md="6">
             <Card>
               <CardHeader>

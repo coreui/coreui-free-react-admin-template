@@ -1,5 +1,5 @@
 {
-  "name": "SocialButtons",
+  "name": "BrandButtons",
   "version": "0.0.0",
   "private": true,
   "main": "./BrandButtons.js"

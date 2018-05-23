@@ -1,5 +1,8 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2-next`
+- feat(Forms): FormFeedback valid
+
 ##### `v2.0.3`
 - refactor: disable `ServiceWorker` by default
 - fix(routes): mismatched `SimpleLineIcons` dynamic import

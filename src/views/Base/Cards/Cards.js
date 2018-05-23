@@ -20,7 +20,7 @@ class Cards extends Component {
   }
 
   toggleFade() {
-    this.setState({ fadeIn: !this.state.fadeIn });
+    this.setState((prevState) => { return { fadeIn: !prevState }});
   }
 
   render() {

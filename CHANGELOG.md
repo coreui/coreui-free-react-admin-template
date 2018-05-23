@@ -1,5 +1,34 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.0.3`
+- refactor: disable `ServiceWorker` by default
+- fix(routes): mismatched `SimpleLineIcons` dynamic import
+- refactor: CoreUI Icons `v0.2.0`
+- chore: update`babel-jest` to `v22.4.4`
+
+##### `v2.0.2`
+- chore: update `@coreui/react` to `v2.0.0`,
+
+##### `v2.0.1`
+- refactor: code splitting via dynamic import
+- refactor: switches view rearrange
+- fix: update component names in package.json
+- chore: update `node-sass-chokidar` to `v1.3.0`
+- chore(release): dependencies update
+
+##### `v2.0.0-rc.1`
+- feat: new CoreUI Icons set
+
+##### `v2.0.0-beta.2`
+- feat: CoreUI custom tooltips plugin for chart.js 
+
+##### `v2.0.0-beta.1`
+- refactor(Switches): move to AppSwitch component
+- fix: typo
+
+##### `v2.0.0-beta`
+- update to `@coreui/react: ^2.0.0-beta`
+
 ##### `v2.0.0-alpha.3`
 - refactor(Colors): view layout, minor temp tweaks
 - refactor(FullAside): - ListGroup (deprecate callout)

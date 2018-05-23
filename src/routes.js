@@ -138,7 +138,7 @@ const FontAwesome = Loadable({
 });
 
 const SimpleLineIcons = Loadable({
-  loader: () => import('./views/Icons/FontAwesome'),
+  loader: () => import('./views/Icons/SimpleLineIcons'),
   loading: Loading,
 });
 

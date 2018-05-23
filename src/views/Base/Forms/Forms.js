@@ -609,6 +609,7 @@ class Forms extends Component {
                     <Label htmlFor="inputWarning2i">Required input</Label>
                     <Input type="text" className="form-control-warning" id="inputWarning2i" required />
                     <FormFeedback className="help-block">Please provide a valid information</FormFeedback>
+                    <FormFeedback valid className="help-block">Input provided</FormFeedback>
                   </FormGroup>
                 </Form>
               </CardBody>

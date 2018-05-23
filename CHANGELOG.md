@@ -2,6 +2,7 @@
 
 ##### `v2-next`
 - feat(Forms): FormFeedback valid, toggleFade
+- refactor(Cards): toggleFade
 
 ##### `v2.0.3`
 - refactor: disable `ServiceWorker` by default

@@ -23,6 +23,16 @@ import DefaultFooter from './DefaultFooter';
 import DefaultHeader from './DefaultHeader';
 
 class DefaultLayout extends Component {
+
+  hideMobile() {
+    if (document.body.classList.contains('sidebar-show')) {
+      document.body.classList.toggle('sidebar-show');
+    }
+    if (document.body.classList.contains('aside-menu-show')){
+      document.body.classList.toggle('aside-menu-show');
+    }
+  }
+
   render() {
     return (
       <div className="app">
@@ -37,7 +47,7 @@ class DefaultLayout extends Component {
             <AppSidebarFooter />
             <AppSidebarMinimizer />
           </AppSidebar>
-          <main className="main">
+          <main className="main" onClick={this.hideMobile}>
             <AppBreadcrumb appRoutes={routes}/>
             <Container fluid>
               <Switch>

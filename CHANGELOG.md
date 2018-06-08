@@ -1,8 +1,18 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
-##### `v2-next`
+##### `v2.0.4`
 - feat(Forms): FormFeedback valid, toggleFade
 - refactor(Cards): toggleFade
+- chore: update `@coreui/coreui` to `2.0.2`,
+- chore: update `@coreui/react` to `2.0.1`,
+- chore: update `classnames` to `2.2.6`,
+- chore: update `core-js` to `2.5.7`,
+- chore: update `react` to `16.4.0`,
+- chore: update `react-dom` to `16.4.0`,
+- chore: update `react-router-dom` to `4.3.1`,
+- chore: update `react-test-renderer` to `16.4.0`,
+- chore: update `reactstrap` to `6.1.0`,
+- chore: update `babel-jest` to `23.0.1`,
 
 ##### `v2.0.3`
 - refactor: disable `ServiceWorker` by default

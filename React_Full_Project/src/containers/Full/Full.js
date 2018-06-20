@@ -50,6 +50,10 @@ import Alerts from '../../views/Notifications/Alerts/';
 import Badges from '../../views/Notifications/Badges/';
 import Modals from '../../views/Notifications/Modals/';
 
+// Users
+import Users from '../../views/Users/Users'
+import User from '../../views/Users/User'
+
 class Full extends Component {
   render() {
     return (
@@ -93,6 +97,8 @@ class Full extends Component {
                 <Route path="/notifications/modals" name="Modals" component={Modals}/>
                 <Route path="/widgets" name="Widgets" component={Widgets}/>
                 <Route path="/charts" name="Charts" component={Charts}/>
+                <Route path="/users" exact name="Users" component={Users}/>
+                <Route path="/users/:id" name="User Profile" component={User}/>
                 <Redirect from="/" to="/dashboard"/>
               </Switch>
             </Container>

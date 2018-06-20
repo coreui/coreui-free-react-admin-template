@@ -1,9 +1,19 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Route, Link, matchPath}  from 'react-router-dom';
 import {Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import routes from '../../routes';
 
-const findRouteName = url => routes[url];
+const findRouteName = (url) => {
+  let found;
+  for (let path of Object.entries(routes)) {
+    found = matchPath(url, {path, exact: true});
+
+    if (found) {
+      return routes[found.path[0]];
+    }
+  }
+  return null;
+};
 
 const getPaths = (pathname) => {
   const paths = ['/'];

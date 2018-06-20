@@ -35,6 +35,8 @@ const routes = {
   '/theme': 'Theme',
   '/theme/colors': 'Colors',
   '/theme/typography': 'Typography',
-  '/widgets': 'Widgets'
+  '/widgets': 'Widgets',
+  '/users': 'Users',
+  '/users/:id': 'User Profile'
 };
 export default routes;

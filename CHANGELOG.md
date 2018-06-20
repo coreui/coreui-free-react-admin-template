@@ -1,5 +1,9 @@
 ## [react](./REACT.md) version `changelog`
 
+##### `v1.0.11`
+- refactor(Breadcrumb): fix for dynamic url like `/resource/:id`
+- feat: Users/User Breadcrumb example with `/users/:id`
+
 ##### `v1.0.10`
 - refactor: `<InputGroupAddon addonType="prepend">`
 - refactor: `<InputGroupAddon addonType="append">`

@@ -172,6 +172,17 @@ const Widgets = Loadable({
   loading: Loading,
 });
 
+const Users = Loadable({
+  loader: () => import('./views/Users/Users'),
+  loading: Loading,
+});
+
+const User = Loadable({
+  loader: () => import('./views/Users/User'),
+  loading: Loading,
+});
+
+
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -214,6 +225,8 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', component: Modals },
   { path: '/widgets', name: 'Widgets', component: Widgets },
   { path: '/charts', name: 'Charts', component: Charts },
+  { path: '/users', exact: true,  name: 'Users', component: Users },
+  { path: '/users/:id', exact: true, name: 'User Details', component: User },
 ];
 
 export default routes;

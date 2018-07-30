@@ -25,7 +25,7 @@ class User extends Component {
                       {
                         userDetails.map(([key, value]) => {
                           return (
-                            <tr>
+                            <tr key={key}>
                               <td>{`${key}:`}</td>
                               <td><strong>{value}</strong></td>
                             </tr>

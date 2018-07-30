@@ -1,5 +1,14 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.0.8`
+- fix(User): add missing unique key prop
+- fix(Login): add missing form and autoComplete
+- fix(Register): add missing form and autoComplete
+- chore: update `@coreui/react` to `2.0.5`
+- chore: update `bootstrap` to `4.1.3`
+- chore: update `reactstrap` to `6.3.1`
+- chore: update `babel-jest` to `23.4.2`
+
 ##### `v2.0.5`
 - feat(router): Users/User Breadcrumb example with `/users/:id`
 - chore: update `@coreui/react` to `2.0.4`,

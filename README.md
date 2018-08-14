@@ -34,7 +34,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [CoreUI Free Angular 2+ Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
 * 🚧 CoreUI Free .NET Core 2 Admin Template (Available Soon)
 * [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
-* 🚧 CoreUI Free Vue.js Admin Template (Available Soon)
+* [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
 
 ## CoreUI Pro
 

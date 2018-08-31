@@ -1,5 +1,14 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.0.9`
+- chore: update `@coreui/icons` to `0.3.0`
+- refactor(CoreUIIcons): move to `@coreui/icons v0.3.0`
+- chore: update `enzyme` to `3.5.0`
+- chore: update `enzyme-adapter-react-16` to `1.3.1`
+- chore: update `react-loadable` to `5.5.0`
+- chore: update `reactstrap` to `6.4.0`
+- chore: update `react-scripts` to `1.1.5`
+
 ##### `v2.0.8`
 - fix(User): add missing unique key prop
 - fix(Login): add missing form and autoComplete

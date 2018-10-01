@@ -1,5 +1,17 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.0.10`
+- chore: update `@coreui/coreui` to `^2.0.14`
+- chore: update `@coreui/react` to `^2.0.6`
+- chore: update `enzyme` to `^3.6.0`
+- chore: update `enzyme-adapter-react-16` to `^1.5.0`
+- chore: update `flag-icon-css` to `^3.2.0`
+- chore: update `react` to `^16.5.2`
+- chore: update `react-dom` to `^16.5.2`
+- chore: update `react-router-config` to `^4.4.0-beta.1`
+- chore: update `react-test-renderer` to `^16.5.2`
+- chore: update `babel-jest` to `^23.6.0`
+
 ##### `v2.0.9`
 - chore: update `@coreui/icons` to `0.3.0`
 - refactor(CoreUIIcons): move to `@coreui/icons v0.3.0`

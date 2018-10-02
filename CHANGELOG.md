@@ -1,5 +1,27 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.0.11`
+- chore: update `@coreui/react` to `^2.0.7`
+- chore: migration to [Create React App 2.0](https://reactjs.org/blog/2018/10/01/create-react-app-v2.html)
+  - chore: update `react-scripts` to `^2.0.3`
+  - chore: update `node-sass-chokidar` to `^1.3.3`
+  - chore: add `node-sass v4.9.3`
+  - chore: add `react-app-polyfill v0.1.3` 
+  - chore: add `eslintConfig` in `package.json` 
+  - chore: add `browserslist` in `package.json` 
+  - chore: update `manifest.json`
+  - refactor(index.js): add `react-app-polyfill` for `ie9-11` support
+  - refactor(index.js): migration to `serviceWorker.js`
+
+###### Migrating from CRA 1.x to 2.x:
+affected files: 
+- `package.json` -> dependencies update  
+- `src/index.js` -> move to `serviceWorker`, add `react-app-polyfill` for `ie9-11` support when needed
+
+In most cases bumping the `react-scripts` version in `package.json` and running `npm install` in this folder should be enough, but it’s good to consult the [changelog](https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md#migrating-from-1x-to-203) for potential breaking changes.  
+
+---
+
 ##### `v2.0.10`
 - chore: update `@coreui/coreui` to `^2.0.14`
 - chore: update `@coreui/react` to `^2.0.6`

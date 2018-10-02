@@ -11,7 +11,8 @@ Dependencies are handled by **npm**.
 ```
 CoreUI-React#v2.0.0
 ├── public/      (static files)
-│   ├── assets/  (assets)
+│   ├── assets/    (assets)
+│   ├── favicon.ico  
 │   └── index.html (html temlpate)
 │
 ├── src/             (project root)

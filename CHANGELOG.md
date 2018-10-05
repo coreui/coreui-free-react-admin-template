@@ -1,5 +1,15 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.0.12` 
+fixes some issues with `rtl`, `ie11`, `sidebar-minimized` behaviour and `aside` responsiveness
+- fix(DefaultAside): `ListGroup` with `tag="div"` works better with `rtl` 
+- fix(DefaultLayout): `AppAside` remove deprecated `hidden` prop 
+- chore: update `@coreui/react` to `^2.0.8`
+- chore: update `reactsrtrap` to `^6.5.0`
+- chore: update `react-scripts` to `^2.0.4`
+- chore: `enzyme` to `3.7.0`
+- chore: `enzyme-adapter-react-16` to `1.6.0`
+  
 ##### `v2.0.11`
 - chore: update `@coreui/react` to `^2.0.7`
 - chore: migration to [Create React App 2.0](https://reactjs.org/blog/2018/10/01/create-react-app-v2.html)

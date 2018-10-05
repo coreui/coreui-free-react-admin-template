@@ -1,6 +1,6 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
   "author": "Łukasz Holeczek",
   "homepage": "https://coreui.io",
@@ -15,13 +15,13 @@
     "@coreui/coreui": "^2.0.14",
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/icons": "0.3.0",
-    "@coreui/react": "^2.0.7",
+    "@coreui/react": "^2.0.8",
     "bootstrap": "^4.1.3",
     "chart.js": "^2.7.2",
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "flag-icon-css": "^3.2.0",
     "font-awesome": "^4.7.0",
     "node-sass": "^4.9.3",
@@ -34,14 +34,14 @@
     "react-router-config": "^4.4.0-beta.1",
     "react-router-dom": "^4.3.1",
     "react-test-renderer": "^16.5.2",
-    "reactstrap": "^6.4.0",
+    "reactstrap": "^6.5.0",
     "simple-line-icons": "^2.4.1"
   },
   "devDependencies": {
     "babel-jest": "^23.6.0",
     "node-sass-chokidar": "^1.3.3",
     "npm-run-all": "^4.1.3",
-    "react-scripts": "^2.0.3"
+    "react-scripts": "^2.0.4"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./node_modules ./src/scss -o ./src/scss",

@@ -1,5 +1,17 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.0.13` 
+- refactor: migration to [Create React App 2.0](https://reactjs.org/blog/2018/10/01/create-react-app-v2.html) cleanup 
+  - cleanup `package.json` scripts
+  - remove `babel-jest` dependency
+  - remove `node-sass-chokidar` dependency
+  - remove `npm-run-all` dependency
+  - move `App.js` import styles to `App.scss` 
+  - replace imports from `node_modules/` with `~` prefix
+- chore: remove unused `src/scss/vendors/charts.js/` directory
+- chore: update `@coreui/coreui` to `^2.0.15`
+- chore: update `@coreui/react` to `^2.0.9`
+
 ##### `v2.0.12` 
 fixes some issues with `rtl`, `ie11`, `sidebar-minimized` behaviour and `aside` responsiveness
 - fix(DefaultAside): `ListGroup` with `tag="div"` works better with `rtl` 

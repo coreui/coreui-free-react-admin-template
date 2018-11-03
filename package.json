@@ -12,33 +12,33 @@
     "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
   },
   "dependencies": {
-    "@coreui/coreui": "^2.0.15",
+    "@coreui/coreui": "^2.0.25",
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/icons": "0.3.0",
     "@coreui/react": "^2.0.9",
     "bootstrap": "^4.1.3",
-    "chart.js": "^2.7.2",
+    "chart.js": "^2.7.3",
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
-    "flag-icon-css": "^3.2.0",
+    "flag-icon-css": "^3.2.1",
     "font-awesome": "^4.7.0",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.9.4",
     "prop-types": "^15.6.2",
-    "react": "^16.5.2",
+    "react": "^16.6.0",
     "react-app-polyfill": "^0.1.3",
     "react-chartjs-2": "^2.7.2",
-    "react-dom": "^16.5.2",
+    "react-dom": "^16.6.0",
     "react-loadable": "^5.5.0",
-    "react-router-config": "^4.4.0-beta.1",
+    "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
-    "react-test-renderer": "^16.5.2",
+    "react-test-renderer": "^16.6.0",
     "reactstrap": "^6.5.0",
     "simple-line-icons": "^2.4.1"
   },
   "devDependencies": {
-    "react-scripts": "^2.0.4"
+    "react-scripts": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

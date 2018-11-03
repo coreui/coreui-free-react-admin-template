@@ -1,5 +1,17 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.0.14` 
+- chore: update `@coreui/coreui` to `2.0.25`
+- chore: update `chart.js` to `2.7.3`
+- chore: update `flag-icon-css` to `3.2.1`
+- chore: update `node-sass` to `4.9.4`
+- chore: update `react` to `16.6.0`
+- chore: update `react-dom` to `16.6.0`
+- chore: update `react-router-config` to `4.4.0-beta.6`
+- chore: update `react-test-renderer` to `16.6.0`
+- chore: update `react-scripts` to `2.1.1`
+
+
 ##### `v2.0.13` 
 - refactor: migration to [Create React App 2.0](https://reactjs.org/blog/2018/10/01/create-react-app-v2.html) cleanup 
   - cleanup `package.json` scripts

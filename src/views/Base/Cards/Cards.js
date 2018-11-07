@@ -52,7 +52,10 @@ class Cards extends Component {
           <Col xs="12" sm="6" md="4">
             <Card>
               <CardHeader>
-                <i className="fa fa-check float-right"></i>Card with icon
+                Card with icon
+                <div className="card-header-actions">
+                  <i className="fa fa-check float-right"></i>
+                </div>
               </CardHeader>
               <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
@@ -65,7 +68,9 @@ class Cards extends Component {
             <Card>
               <CardHeader>
                 Card with switch
-                <AppSwitch className={'float-right mb-0'} label color={'info'} defaultChecked size={'sm'}/>
+                <div className="card-header-actions">
+                  <AppSwitch className={'float-right mb-0'} label color={'info'} defaultChecked size={'sm'}/>
+                </div>
               </CardHeader>
               <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
@@ -78,7 +83,9 @@ class Cards extends Component {
             <Card>
               <CardHeader>
                 Card with label
-                <Badge color="success" className="float-right">Success</Badge>
+                <div className="card-header-actions">
+                  <Badge color="success" className="float-right">Success</Badge>
+                </div>
               </CardHeader>
               <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
@@ -91,7 +98,9 @@ class Cards extends Component {
             <Card>
               <CardHeader>
                 Card with label
-                <Badge pill color="danger" className="float-right">42</Badge>
+                <div className="card-header-actions">
+                  <Badge pill color="danger" className="float-right">42</Badge>
+                </div>
               </CardHeader>
               <CardBody>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut

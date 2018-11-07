@@ -1,5 +1,35 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.0` 
+- feat(SidebarNav): navLink `attributes` - optional JS object with valid JS API naming:
+  - valid attributes: `rel`, `target`, `hidden`, `disabled`, etc...  
+  - starting with `@coreui/coreui`, `@coreui/react` version `2.1.0` and up
+  - closes #106 
+  - item example(`./src/_nav.js`):
+      ```js
+      {
+        name: 'Disabled',
+        url: '/disabled',
+        icon: 'icon-ban',
+        attributes: { disabled: true },
+      },
+      {
+        name: 'Try CoreUI PRO',
+        url: 'https://coreui.io/pro/react/',
+        icon: 'cui-layers icons',
+        variant: 'danger',
+        attributes: { target: '_blank', rel: "noopener" },
+      },
+      ```
+- fix(Cards): `card-header-actions` added to `CardHeader` for `rtl` support
+- feat(Dashboard): new `Suspense` example with Widget03
+- chore: update `@coreui/coreui` to `2.1.0`
+- chore: update `@coreui/react` to `2.1.0`
+- chore: update `node-sass` to `4.10.0`
+- chore: update `react` to `16.6.1`
+- chore: update `react-dom` to `16.6.1`
+- chore: update `react-test-renderer` to `16.6.1`
+
 ##### `v2.0.14` 
 - chore: update `@coreui/coreui` to `2.0.25`
 - chore: update `chart.js` to `2.7.3`
@@ -10,7 +40,6 @@
 - chore: update `react-router-config` to `4.4.0-beta.6`
 - chore: update `react-test-renderer` to `16.6.0`
 - chore: update `react-scripts` to `2.1.1`
-
 
 ##### `v2.0.13` 
 - refactor: migration to [Create React App 2.0](https://reactjs.org/blog/2018/10/01/create-react-app-v2.html) cleanup 

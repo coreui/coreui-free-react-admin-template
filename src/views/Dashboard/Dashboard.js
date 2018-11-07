@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import {
   Badge,
@@ -20,9 +20,12 @@ import {
   Row,
   Table,
 } from 'reactstrap';
-import Widget03 from '../../views/Widgets/Widget03'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
+
+// import Widget03 from '../../views/Widgets/Widget03'
+const Widget03 = lazy(() => import('../../views/Widgets/Widget03'));
+const Loading = () => <div>Loading...</div>
 
 const brandPrimary = getStyle('--primary')
 const brandSuccess = getStyle('--success')
@@ -637,53 +640,33 @@ class Dashboard extends Component {
 
         <Row>
           <Col xs="6" sm="6" lg="3">
-            <Widget03 dataBox={() => ({ variant: 'facebook', friends: '89k', feeds: '459' })} >
-              <div className="chart-wrapper">
-                <Line data={makeSocialBoxData(0)} options={socialChartOpts} height={90} />
-              </div>
-            </Widget03>
+            <Suspense fallback={Loading()}>
+              <Widget03 dataBox={() => ({ variant: 'facebook', friends: '89k', feeds: '459' })} >
+                <div className="chart-wrapper">
+                  <Line data={makeSocialBoxData(0)} options={socialChartOpts} height={90} />
+                </div>
+              </Widget03>
+            </Suspense>
           </Col>
 
           <Col xs="6" sm="6" lg="3">
-            <div className="brand-card">
-              <div className="brand-card-header bg-twitter">
-                <i className="fa fa-twitter"></i>
+            <Suspense fallback={Loading()}>
+              <Widget03 dataBox={() => ({ variant: 'twitter', followers: '973k', tweets: '1.792' })} >
                 <div className="chart-wrapper">
                   <Line data={makeSocialBoxData(1)} options={socialChartOpts} height={90} />
                 </div>
-              </div>
-              <div className="brand-card-body">
-                <div>
-                  <div className="text-value">973k</div>
-                  <div className="text-uppercase text-muted small">followers</div>
-                </div>
-                <div>
-                  <div className="text-value">1.792</div>
-                  <div className="text-uppercase text-muted small">tweets</div>
-                </div>
-              </div>
-            </div>
+              </Widget03>
+            </Suspense>
           </Col>
 
           <Col xs="6" sm="6" lg="3">
-            <div className="brand-card">
-              <div className="brand-card-header bg-linkedin">
-                <i className="fa fa-linkedin"></i>
+            <Suspense fallback={Loading()}>
+              <Widget03 dataBox={() => ({ variant: 'linkedin', contacts: '500+', feeds: '292' })} >
                 <div className="chart-wrapper">
                   <Line data={makeSocialBoxData(2)} options={socialChartOpts} height={90} />
                 </div>
-              </div>
-              <div className="brand-card-body">
-                <div>
-                  <div className="text-value">500+</div>
-                  <div className="text-uppercase text-muted small">contacts</div>
-                </div>
-                <div>
-                  <div className="text-value">292</div>
-                  <div className="text-uppercase text-muted small">feeds</div>
-                </div>
-              </div>
-            </div>
+              </Widget03>
+            </Suspense>
           </Col>
 
           <Col xs="6" sm="6" lg="3">

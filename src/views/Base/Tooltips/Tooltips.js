@@ -82,6 +82,7 @@ class Tooltips extends Component {
             </div>
           </CardHeader>
           <CardBody>
+            {/*eslint-disable-next-line*/}
             <p>Somewhere in here is a <a href="#" id="TooltipExample">tooltip</a>.</p>
             <Tooltip placement="right" isOpen={this.state.tooltipOpen[0]} target="TooltipExample" toggle={() => {this.toggle(0);}}>
               Hello world!
@@ -94,6 +95,7 @@ class Tooltips extends Component {
             <small> disable autohide</small>
           </CardHeader>
           <CardBody>
+            {/*eslint-disable-next-line*/}
             <p>Sometimes you need to allow users to select text within a <a href="#" id="DisabledAutoHideExample">tooltip</a>.</p>
             <Tooltip placement="top" isOpen={this.state.tooltipOpen[1]} autohide={false} target="DisabledAutoHideExample" toggle={() => {this.toggle(1);}}>
               Try to select this text!
@@ -117,6 +119,7 @@ class Tooltips extends Component {
             <small> uncontrolled</small>
           </CardHeader>
           <CardBody>
+            {/*eslint-disable-next-line*/}
             <p>Somewhere in here is a <a href="#" id="UncontrolledTooltipExample">tooltip</a>.</p>
             <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
               Hello world!

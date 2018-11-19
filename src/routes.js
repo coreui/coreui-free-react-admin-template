@@ -1,188 +1,41 @@
 import React from 'react';
-import Loadable from 'react-loadable'
-
 import DefaultLayout from './containers/DefaultLayout';
 
-function Loading() {
-  return <div>Loading...</div>;
-}
-
-const Breadcrumbs = Loadable({
-  loader: () => import('./views/Base/Breadcrumbs'),
-  loading: Loading,
-});
-
-const Cards = Loadable({
-  loader: () => import('./views/Base/Cards'),
-  loading: Loading,
-});
-
-const Carousels = Loadable({
-  loader: () => import('./views/Base/Carousels'),
-  loading: Loading,
-});
-
-const Collapses = Loadable({
-  loader: () => import('./views/Base/Collapses'),
-  loading: Loading,
-});
-
-const Dropdowns = Loadable({
-  loader: () => import('./views/Base/Dropdowns'),
-  loading: Loading,
-});
-
-const Forms = Loadable({
-  loader: () => import('./views/Base/Forms'),
-  loading: Loading,
-});
-
-const Jumbotrons = Loadable({
-  loader: () => import('./views/Base/Jumbotrons'),
-  loading: Loading,
-});
-
-const ListGroups = Loadable({
-  loader: () => import('./views/Base/ListGroups'),
-  loading: Loading,
-});
-
-const Navbars = Loadable({
-  loader: () => import('./views/Base/Navbars'),
-  loading: Loading,
-});
-
-const Navs = Loadable({
-  loader: () => import('./views/Base/Navs'),
-  loading: Loading,
-});
-
-const Paginations = Loadable({
-  loader: () => import('./views/Base/Paginations'),
-  loading: Loading,
-});
-
-const Popovers = Loadable({
-  loader: () => import('./views/Base/Popovers'),
-  loading: Loading,
-});
-
-const ProgressBar = Loadable({
-  loader: () => import('./views/Base/ProgressBar'),
-  loading: Loading,
-});
-
-const Switches = Loadable({
-  loader: () => import('./views/Base/Switches'),
-  loading: Loading,
-});
-
-const Tables = Loadable({
-  loader: () => import('./views/Base/Tables'),
-  loading: Loading,
-});
-
-const Tabs = Loadable({
-  loader: () => import('./views/Base/Tabs'),
-  loading: Loading,
-});
-
-const Tooltips = Loadable({
-  loader: () => import('./views/Base/Tooltips'),
-  loading: Loading,
-});
-
-const BrandButtons = Loadable({
-  loader: () => import('./views/Buttons/BrandButtons'),
-  loading: Loading,
-});
-
-const ButtonDropdowns = Loadable({
-  loader: () => import('./views/Buttons/ButtonDropdowns'),
-  loading: Loading,
-});
-
-const ButtonGroups = Loadable({
-  loader: () => import('./views/Buttons/ButtonGroups'),
-  loading: Loading,
-});
-
-const Buttons = Loadable({
-  loader: () => import('./views/Buttons/Buttons'),
-  loading: Loading,
-});
-
-const Charts = Loadable({
-  loader: () => import('./views/Charts'),
-  loading: Loading,
-});
-
-const Dashboard = Loadable({
-  loader: () => import('./views/Dashboard'),
-  loading: Loading,
-});
-
-const CoreUIIcons = Loadable({
-  loader: () => import('./views/Icons/CoreUIIcons'),
-  loading: Loading,
-});
-
-const Flags = Loadable({
-  loader: () => import('./views/Icons/Flags'),
-  loading: Loading,
-});
-
-const FontAwesome = Loadable({
-  loader: () => import('./views/Icons/FontAwesome'),
-  loading: Loading,
-});
-
-const SimpleLineIcons = Loadable({
-  loader: () => import('./views/Icons/SimpleLineIcons'),
-  loading: Loading,
-});
-
-const Alerts = Loadable({
-  loader: () => import('./views/Notifications/Alerts'),
-  loading: Loading,
-});
-
-const Badges = Loadable({
-  loader: () => import('./views/Notifications/Badges'),
-  loading: Loading,
-});
-
-const Modals = Loadable({
-  loader: () => import('./views/Notifications/Modals'),
-  loading: Loading,
-});
-
-const Colors = Loadable({
-  loader: () => import('./views/Theme/Colors'),
-  loading: Loading,
-});
-
-const Typography = Loadable({
-  loader: () => import('./views/Theme/Typography'),
-  loading: Loading,
-});
-
-const Widgets = Loadable({
-  loader: () => import('./views/Widgets/Widgets'),
-  loading: Loading,
-});
-
-const Users = Loadable({
-  loader: () => import('./views/Users/Users'),
-  loading: Loading,
-});
-
-const User = Loadable({
-  loader: () => import('./views/Users/User'),
-  loading: Loading,
-});
-
-
+const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
+const Cards = React.lazy(() => import('./views/Base/Cards'));
+const Carousels = React.lazy(() => import('./views/Base/Carousels'));
+const Collapses = React.lazy(() => import('./views/Base/Collapses'));
+const Dropdowns = React.lazy(() => import('./views/Base/Dropdowns'));
+const Forms = React.lazy(() => import('./views/Base/Forms'));
+const Jumbotrons = React.lazy(() => import('./views/Base/Jumbotrons'));
+const ListGroups = React.lazy(() => import('./views/Base/ListGroups'));
+const Navbars = React.lazy(() => import('./views/Base/Navbars'));
+const Navs = React.lazy(() => import('./views/Base/Navs'));
+const Paginations = React.lazy(() => import('./views/Base/Paginations'));
+const Popovers = React.lazy(() => import('./views/Base/Popovers'));
+const ProgressBar = React.lazy(() => import('./views/Base/ProgressBar'));
+const Switches = React.lazy(() => import('./views/Base/Switches'));
+const Tables = React.lazy(() => import('./views/Base/Tables'));
+const Tabs = React.lazy(() => import('./views/Base/Tabs'));
+const Tooltips = React.lazy(() => import('./views/Base/Tooltips'));
+const BrandButtons = React.lazy(() => import('./views/Buttons/BrandButtons'));
+const ButtonDropdowns = React.lazy(() => import('./views/Buttons/ButtonDropdowns'));
+const ButtonGroups = React.lazy(() => import('./views/Buttons/ButtonGroups'));
+const Buttons = React.lazy(() => import('./views/Buttons/Buttons'));
+const Charts = React.lazy(() => import('./views/Charts'));
+const Dashboard = React.lazy(() => import('./views/Dashboard'));
+const CoreUIIcons = React.lazy(() => import('./views/Icons/CoreUIIcons'));
+const Flags = React.lazy(() => import('./views/Icons/Flags'));
+const FontAwesome = React.lazy(() => import('./views/Icons/FontAwesome'));
+const SimpleLineIcons = React.lazy(() => import('./views/Icons/SimpleLineIcons'));
+const Alerts = React.lazy(() => import('./views/Notifications/Alerts'));
+const Badges = React.lazy(() => import('./views/Notifications/Badges'));
+const Modals = React.lazy(() => import('./views/Notifications/Modals'));
+const Colors = React.lazy(() => import('./views/Theme/Colors'));
+const Typography = React.lazy(() => import('./views/Theme/Typography'));
+const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
+const Users = React.lazy(() => import('./views/Users/Users'));
+const User = React.lazy(() => import('./views/Users/User'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [

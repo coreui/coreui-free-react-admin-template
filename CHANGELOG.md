@@ -1,5 +1,12 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.1`
+- chore: update `enzyme-adapter-react-16` to `1.7.0`
+- chore: update `react` to `16.6.3`
+- chore: update `react-dom` to `16.6.3`
+- chore: update `react-test-renderer` to `16.6.3`
+ 
+
 ##### `v2.1.0` 
 - feat(SidebarNav): navLink `attributes` - optional JS object with valid JS API naming:
   - valid attributes: `rel`, `target`, `hidden`, `disabled`, etc...  

@@ -1,5 +1,19 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.1`
+- refactor(App.js): code splitting with `react-loadable` (waiting for release of `react-router-dom`) 
+- refactor(routes.js): code splitting with `React.lazy`, remove `react-loadable`
+- refactor(DefaultLayout): code splitting with `React.lazy` Aside, Footer, Header, routes 
+- refactor(Dashboard): tweak lazy and Suspense for Widget03 
+- refactor(Login): add router link to `Register` button 
+- refactor(Register): add margins to social-media buttons  
+- chore: disable eslint warning for href="#" attribute
+- chore: update `@coreui/coreui` to `^2.1.1`
+- chore: update `enzyme-adapter-react-16` to `1.7.0`
+- chore: update `react` to `16.6.3`
+- chore: update `react-dom` to `16.6.3`
+- chore: update `react-test-renderer` to `16.6.3`
+
 ##### `v2.1.0` 
 - feat(SidebarNav): navLink `attributes` - optional JS object with valid JS API naming:
   - valid attributes: `rel`, `target`, `hidden`, `disabled`, etc...  

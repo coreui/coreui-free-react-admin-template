@@ -1,5 +1,9 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.2`
+- fix(scss): floating footer ie11 issue
+- chore: update `@coreui/react` to `^2.1.1`
+
 ##### `v2.1.1`
 - refactor(App.js): code splitting with `react-loadable` (waiting for release of `react-router-dom`) 
 - refactor(routes.js): code splitting with `React.lazy`, remove `react-loadable`

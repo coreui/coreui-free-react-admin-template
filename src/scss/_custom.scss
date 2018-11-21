@@ -1,1 +1,41 @@
 // Here you can add other styles
+body {
+  color: #e4e7ea !important;
+  background-color: #2f353a !important;
+}
+
+header.app-header.navbar{
+  background-color: #3a4149 !important;
+  border-bottom: 1px solid #23282c !important;
+}
+
+.sidebar {
+  color: #f3f4f5 !important;
+  background: #3a4149 !important;
+  border-right: 1px solid #23282c !important;
+
+  .nav-dropdown{
+    .nav-title {
+      background-color: #3a4149 !important;
+      transition: background .3s ease-in-out !important;
+    }
+
+    //needed to color transition
+    .nav-link {
+      color: #fff !important;
+      background: 0 0 !important;
+    }
+  }
+}
+
+//ol.breadcrumb {
+//  background-color: #3a4149 !important;
+//}
+
+.container-fluid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 30px !important;
+  overflow: hidden;
+}

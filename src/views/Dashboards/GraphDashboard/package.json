@@ -1,0 +1,6 @@
+{
+  "name": "GraphDashboard",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./GraphDashboard.js"
+}

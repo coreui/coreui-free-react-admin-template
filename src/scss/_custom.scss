@@ -39,3 +39,48 @@ header.app-header.navbar{
   padding-top: 30px !important;
   overflow: hidden;
 }
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #3a4149;
+  background-clip: border-box;
+  border: 1px solid #24729f;
+  border-radius: 0.25rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.0625rem + 2px);
+  padding: .375rem .75rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: #e4e7ea;
+  background-color: #515b65;
+  background-clip: padding-box;
+  border: 1px solid #23282c;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.input-group-text {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: .375rem .75rem;
+  margin-bottom: 0;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #e4e7ea;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #343b41;
+  border: 1px solid #23282c;
+  border-radius: .25rem;
+}

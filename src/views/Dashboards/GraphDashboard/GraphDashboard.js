@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
-import { ReactCytoscape } from 'react-cytoscape';
+import 'react-cytoscape';
 import { Chart } from "react-google-charts";
 import windowSize from 'react-window-size';
 import { Table, Row } from 'reactstrap';
@@ -13,49 +13,6 @@ class GraphDashboard extends Component {
   color3="#1C7293";
   color4="#9EB3C2";
   alertColor="#D6A157";
-
-  makeLayout( opts ){
-    var defaultNodeSpacing = 150;
-    var params = {
-      name: 'cola',
-      directed: true,
-      padding: 30,
-      maxSimulationTime: 100,
-      edgeLengthVal: 1,
-      nodeSpacing: defaultNodeSpacing
-    };
-
-    params.randomize = false;
-
-    for( var i in opts ){
-      params[i] = opts[i];
-    }
-
-
-    // return this.cy.layout( params );
-  }
-
-  componentDidMount() {
-
-    // var configTransformation = $('#transformation');
-    // var configNodeSpacing = $('#node-spacing');
-
-// 1. DISPLAY INTERFACE SETTINGS IN DASHBOARD
-//     makeSlider();
-//     makeButton();
-
-// 2. SET GRAPH DISPLAY SETTINGS
-//     var layout = this.makeLayout({});
-    var running = false;
-    this.cy.on('layoutstart', function(){
-      running = true;
-    }).on('layoutstop', function(){
-      running = false;
-    });
-//
-// // RENDER GRAPH FOR FIRST TIME
-//     this.cy.layout.run();
-  }
 
 
   render() {
@@ -220,12 +177,11 @@ class GraphDashboard extends Component {
 
     return (
       <div className="animated fadeIn">
-
         <Row>
           <div  class="header-1">
             Graph
           </div>
-          <CytoscapeComponent id="cy" cy={cy => this.cy = cy} elements={elements} stylesheet={ stylesheet } layout={ layout }/>
+          <CytoscapeComponent id="cy" elements={ elements } stylesheet={ stylesheet } layout={ layout }/>
           <div id="cy2">
             <div class="header-1">
               <span>Last Findings</span>

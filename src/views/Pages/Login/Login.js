@@ -1,10 +1,62 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Particles from 'react-particles-js';
+import axios from 'axios';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import auth from '../../../Auth';
 
 class Login extends Component {
+
+  state = {
+    username: '',
+    password: '',
+  };
+
+  componentDidMount() {
+    if (this.state.logged_in) {
+      fetch('http://localhost:8000/core/current_user/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }
+      })
+        .then(res => res.json())
+        .then(json => {
+          this.setState({ username: json.username });
+        });
+    }
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    };
+
+    axios.post('http://127.0.0.1:3001/login/auth', user)
+      .then(res => {
+        auth.authenticate(() => {
+          this.setState({ redirectToReferrer: true, jwtToken: res.data.token })
+        })
+      })
+  };
+
+
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) {
+      return (
+        <Redirect to={from} />
+      )
+    }
+
     return (
       <div>
         <Particles style={{position: 'absolute'}} params={
@@ -113,53 +165,52 @@ class Login extends Component {
             },
             "retina_detect": true
           }
-          }/>
-          <div className="app flex-row align-items-center">
+        }/>
+        <div className="app flex-row align-items-center">
           <Container>
-          <Row className="justify-content-center">
-          <Col md="6">
-          <CardGroup>
-          <Card className="p-4">
-          <CardBody>
-          <Form>
-          <h1>Login</h1>
-          <p className="text-muted">Sign In to your account</p>
-          <InputGroup className="mb-3">
-          <InputGroupAddon addonType="prepend">
-          <InputGroupText>
-          <i className="icon-user"></i>
-          </InputGroupText>
-          </InputGroupAddon>
-          <Input type="text" placeholder="Username" autoComplete="username" />
-          </InputGroup>
-          <InputGroup className="mb-4">
-          <InputGroupAddon addonType="prepend">
-          <InputGroupText>
-          <i className="icon-lock"></i>
-          </InputGroupText>
-          </InputGroupAddon>
-          <Input type="password" placeholder="Password" autoComplete="current-password" />
-          </InputGroup>
-          <Row>
-          <Col xs="6">
-          <Button color="primary" className="px-4">Login</Button>
-          </Col>
-          <Col xs="6" className="text-right">
-          <Button color="link" className="px-0">Forgot password?</Button>
-          </Col>
-          </Row>
-          </Form>
-          </CardBody>
-          </Card>
-          </CardGroup>
-          </Col>
-          </Row>
-
+            <Row className="justify-content-center">
+              <Col md="6">
+                <CardGroup>
+                  <Card className="p-4">
+                    <CardBody>
+                      <Form onSubmit={this.handleSubmit}>
+                        <h1>Login</h1>
+                        <p className="text-muted">Sign In to your account</p>
+                        <InputGroup className="mb-3">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="icon-user"></i>
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input type="text" name="username" onChange={this.handleChange} placeholder="Username" autoComplete="username" />
+                        </InputGroup>
+                        <InputGroup className="mb-4">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="icon-lock"></i>
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input type="password" name="password" onChange={this.handleChange} placeholder="Password" autoComplete="current-password" />
+                        </InputGroup>
+                        <Row>
+                          <Col xs="6">
+                            <Button color="primary" className="px-4">Login</Button>
+                          </Col>
+                          <Col xs="6" className="text-right">
+                            <Button color="link" className="px-0">Forgot password?</Button>
+                          </Col>
+                        </Row>
+                      </Form>
+                    </CardBody>
+                  </Card>
+                </CardGroup>
+              </Col>
+            </Row>
           </Container>
-          </div>
-          </div>
-          );
-          }
-        }
+        </div>
+      </div>
+    );
+  }
+}
 
-        export default Login;
+export default Login;

@@ -205,7 +205,7 @@ class ButtonDropdowns extends Component {
                 <i className="fa fa-align-justify"></i><strong>Dropdown directions</strong>
               </CardHeader>
               <CardBody>
-                <ButtonDropdown direction="up" className="mr-1" isOpen={this.state.dropdownOpen[15]} toggle={() => { this.toggle(15); }}>
+                <ButtonDropdown direction="up" className="mr-1" isOpen={this.state.dropdownOpen[13]} toggle={() => { this.toggle(13); }}>
                   <DropdownToggle caret size="lg">
                     Direction Up
                   </DropdownToggle>
@@ -216,7 +216,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
-                <ButtonDropdown direction="left" className="mr-1" isOpen={this.state.dropdownOpen[16]} toggle={() => { this.toggle(16); }}>
+                <ButtonDropdown direction="left" className="mr-1" isOpen={this.state.dropdownOpen[14]} toggle={() => { this.toggle(14); }}>
                   <DropdownToggle caret size="lg">
                     Direction Left
                   </DropdownToggle>
@@ -227,7 +227,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
-                <ButtonDropdown direction="right" className="mr-1" isOpen={this.state.dropdownOpen[17]} toggle={() => { this.toggle(17); }}>
+                <ButtonDropdown direction="right" className="mr-1" isOpen={this.state.dropdownOpen[15]} toggle={() => { this.toggle(15); }}>
                   <DropdownToggle caret size="lg">
                     Direction Right
                   </DropdownToggle>
@@ -238,7 +238,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[18]} toggle={() => { this.toggle(18); }}>
+                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[16]} toggle={() => { this.toggle(16); }}>
                   <DropdownToggle caret size="lg">
                     Default Down
                   </DropdownToggle>
@@ -256,7 +256,7 @@ class ButtonDropdowns extends Component {
                 <i className="fa fa-align-justify"></i><strong>Button Dropdown sizing</strong>
               </CardHeader>
               <CardBody>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[13]} toggle={() => { this.toggle(13); }}>
+                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[17]} toggle={() => { this.toggle(17); }}>
                   <DropdownToggle caret size="lg">
                     Large Button
                   </DropdownToggle>
@@ -267,7 +267,7 @@ class ButtonDropdowns extends Component {
                     <DropdownItem>Another Action</DropdownItem>
                   </DropdownMenu>
                 </ButtonDropdown>
-                <ButtonDropdown isOpen={this.state.dropdownOpen[14]} toggle={() => { this.toggle(14); }}>
+                <ButtonDropdown isOpen={this.state.dropdownOpen[18]} toggle={() => { this.toggle(18); }}>
                   <DropdownToggle caret size="sm">
                     Small Button
                   </DropdownToggle>

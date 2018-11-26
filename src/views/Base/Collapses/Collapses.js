@@ -103,7 +103,8 @@ class Collapses extends Component {
                 </CardBody>
               </Collapse>
               <CardFooter>
-                <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</Button>
+                <Button color="primary" onClick={this.toggle} className={'mb-1'} id="toggleCollapse1">Toggle</Button>
+                <hr/>
                 <h5>Current state: {this.state.status}</h5>
               </CardFooter>
             </Card>
@@ -122,7 +123,7 @@ class Collapses extends Component {
                 </Fade>
               </CardBody>
               <CardFooter>
-                <Button color="primary" onClick={this.toggleFade}>Toggle Fade</Button>
+                <Button color="primary" onClick={this.toggleFade} id="toggleFade1">Toggle Fade</Button>
               </CardFooter>
             </Card>
           </Col>

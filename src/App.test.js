@@ -1,20 +1,9 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import App from './App';
-//
-// jest.mock('react-chartjs-2', () => ({
-//   Line: () => null,
-//   Polar: () => null,
-//   Pie: () => null,
-//   Radar: () => null,
-//   Bar: () => null,
-//   Doughnut: () => null,
-// }));
+import React from 'react';
+import {shallow} from 'enzyme/build';
+import App from './App';
 
-// it('renders without crashing', () => {
-//   const div = document.createElement('div');
-//   ReactDOM.render(<App />, div);
-//   ReactDOM.unmountComponentAtNode(div);
-// });
 
-it('', () => {})
+it('mounts without crashing', () => {
+  const wrapper = shallow(<App />);
+  wrapper.unmount()
+});

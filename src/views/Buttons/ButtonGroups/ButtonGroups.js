@@ -66,7 +66,7 @@ class ButtonGroups extends Component {
                 <ButtonGroup vertical>
                   <Button>1</Button>
                   <Button>2</Button>
-                  <ButtonDropdown isOpen={this.state.dropdownOpen[1]} toggle={() => { this.toggle(1); }}>
+                  <ButtonDropdown isOpen={this.state.dropdownOpen[1]} toggle={() => { this.toggle(0); }}>
                     <DropdownToggle caret>
                       Dropdown
                     </DropdownToggle>
@@ -135,7 +135,7 @@ class ButtonGroups extends Component {
                 <ButtonGroup>
                   <Button>1</Button>
                   <Button>2</Button>
-                  <ButtonDropdown isOpen={this.state.dropdownOpen[0]} toggle={() => { this.toggle(0); }}>
+                  <ButtonDropdown isOpen={this.state.dropdownOpen[0]} toggle={() => { this.toggle(1); }}>
                     <DropdownToggle caret>
                       Dropdown
                     </DropdownToggle>

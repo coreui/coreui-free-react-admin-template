@@ -7,6 +7,8 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Dropdowns />, div);
   ReactDOM.unmountComponentAtNode(div);
+});
+it('toggle click without crashing', () => {
   const wrapper = mount(<Dropdowns />);
   for (let i=0; i<5; i++) {
     let Dropdown = wrapper.find('button.dropdown-toggle').at(i);

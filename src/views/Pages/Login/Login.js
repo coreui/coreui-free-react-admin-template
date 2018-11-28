@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Particles from 'react-particles-js';
 import axios from 'axios';
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardGroup, Col, Container, Form, FormFeedback, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import auth from '../../../Auth';
 
 class Login extends Component {
@@ -13,21 +13,22 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    if (this.state.logged_in) {
-      fetch('http://localhost:8000/core/current_user/', {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem('token')}`
-        }
-      })
-        .then(res => res.json())
-        .then(json => {
-          this.setState({ username: json.username });
+    if (auth.isLoggedIn()) {
+      auth.hasAValidToken()
+        .then(response => {
+          auth.hasValidToken = true;
+          this.setState({ redirectToReferrer: true })
+        })
+        .catch(err => {
+          auth.signout()
         });
     }
   }
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    // if (event.target.name === ('username' || 'password')) {
+      this.setState({[event.target.name]: event.target.value});
+    // }
   };
 
   handleSubmit = event => {
@@ -40,9 +41,26 @@ class Login extends Component {
 
     axios.post('http://127.0.0.1:3001/login/auth', user)
       .then(res => {
-        auth.authenticate(() => {
-          this.setState({ redirectToReferrer: true, jwtToken: res.data.token })
-        })
+        auth.authenticate(res.data.token);
+        this.setState({ redirectToReferrer: true })
+      })
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
       })
   };
 
@@ -182,7 +200,8 @@ class Login extends Component {
                               <i className="icon-user"></i>
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input type="text" name="username" onChange={this.handleChange} placeholder="Username" autoComplete="username" />
+                          <Input type="text" name="username" onChange={this.handleChange} placeholder="Username" autoComplete="username" invalid/>
+                          <FormFeedback>Oh noes! that name is already taken</FormFeedback>
                         </InputGroup>
                         <InputGroup className="mb-4">
                           <InputGroupAddon addonType="prepend">

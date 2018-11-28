@@ -18,6 +18,7 @@ import {
 import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
+import auth from '../../Auth'
 
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
@@ -25,10 +26,24 @@ const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
 class DefaultLayout extends Component {
 
+  componentDidMount() {
+    if (auth.isLoggedIn()) {
+      auth.hasAValidToken()
+        .then(response => {
+          auth.hasValidToken = true;
+        })
+        .catch(err => {
+          auth.signout();
+          this.props.history.push('/login')
+        });
+    }
+  }
+
   loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
 
   signOut(e) {
-    e.preventDefault()
+    e.preventDefault();
+    auth.signout();
     this.props.history.push('/login')
   }
 

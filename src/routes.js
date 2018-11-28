@@ -66,7 +66,7 @@ const routes = [
   { path: '/buttons/buttons', name: 'Buttons', component: Buttons },
   { path: '/buttons/button-dropdowns', name: 'Button Dropdowns', component: ButtonDropdowns },
   { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
-  { path: '/dashboards/graph', name: 'Graph Dashboard', component: GraphDashboard },
+  { path: '/dashboards/graph/:graph_id', name: 'Graph Dashboard', component: GraphDashboard },
   { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
   { path: '/icons/flags', name: 'Flags', component: Flags },

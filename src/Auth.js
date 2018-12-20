@@ -1,4 +1,5 @@
 import axios from 'axios';
+import api from './api';
 
 class Auth {
   constructor() {
@@ -18,12 +19,12 @@ class Auth {
 
   hasAValidToken() {
     axios.defaults.headers['X-API-TOKEN'] = localStorage.getItem(this.storageKey);
-    return axios.get('http://127.0.0.1:3001/session')
+    return api.getSession()
   }
 
   isLoggedIn(){
     const rememberMe = localStorage.getItem(this.storageKey);
-    return rememberMe !== 'undefined';
+    return rememberMe != null && rememberMe !== 'undefined';
   }
 }
 

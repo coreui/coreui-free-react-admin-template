@@ -52,25 +52,6 @@ function PrivateRoute({ component: Component, ...rest }) {
   );
 }
 
-function AuthOrSignUpRoute({ component: Component, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        !auth.hasValidToken ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/dashboard",
-            }}
-          />
-        )
-      }
-    />
-  );
-}
-
 class App extends Component {
 
   render() {

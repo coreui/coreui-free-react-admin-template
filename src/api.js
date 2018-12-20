@@ -5,6 +5,21 @@ class Api {
     this.url = url;
   }
 
+  // session controller
+  getSession(){
+    return axios.get(`${this.url}/session`)
+  }
+
+  // finding controller
+  login(username, password) {
+    const user = {
+      username: username,
+      password: password
+    };
+
+    return axios.post(`${this.url}/login/auth`, user)
+  }
+
   // finding controller
   findingSearch() {
     return axios.get(`${this.url}/findings/search`, {})
@@ -20,6 +35,6 @@ class Api {
   }
 }
 
-const api = new Api({ url: 'http://localhost:3001' });
+const api = new Api({ url: 'http://localhost:3000' });
 
 export default api;

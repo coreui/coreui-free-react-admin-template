@@ -19,6 +19,7 @@ import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
 import auth from '../../Auth'
+import GraphDashboardProvider, {GraphDashboardContext} from "../../views/Dashboards/GraphDashboard/GraphDashboardProvider";
 
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
@@ -48,6 +49,8 @@ class DefaultLayout extends Component {
   }
 
   render() {
+    const param = this.props.match.params.graph_id;
+
     return (
       <div className="app">
         <AppHeader fixed>
@@ -89,7 +92,7 @@ class DefaultLayout extends Component {
           </main>
           <AppAside fixed>
             <Suspense fallback={this.loading()}>
-              <DefaultAside />
+              <DefaultAside/>
             </Suspense>
           </AppAside>
         </div>

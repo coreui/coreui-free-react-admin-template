@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Particles from 'react-particles-js';
-import axios from 'axios';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, FormFeedback, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import auth from '../../../Auth';
+import NotificationSystem from 'react-notification-system';
+import api from '../../../api'
+
 
 class Login extends Component {
 
   state = {
+    _notificationSystem: null,
     username: '',
     password: '',
   };
 
   componentDidMount() {
+    this.state._notificationSystem = this.refs.notificationSystem;
+
     if (auth.isLoggedIn()) {
       auth.hasAValidToken()
         .then(response => {
@@ -26,42 +31,27 @@ class Login extends Component {
   }
 
   handleChange = event => {
-    // if (event.target.name === ('username' || 'password')) {
       this.setState({[event.target.name]: event.target.value});
-    // }
   };
 
   handleSubmit = event => {
     event.preventDefault();
 
-    const user = {
-      username: this.state.username,
-      password: this.state.password
-    };
-
-    axios.post('http://127.0.0.1:3001/login/auth', user)
+    api.login(this.state.username, this.state.password)
       .then(res => {
         auth.authenticate(res.data.token);
         this.setState({ redirectToReferrer: true })
       })
       .catch(error => {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+        let messageNotification = "An error occured. Please retry later.";
+        if(error.response.status === 401){
+          messageNotification = "Identification failed."
         }
-        console.log(error.config);
-      })
+        this.state._notificationSystem.addNotification({
+          message: messageNotification,
+          level: 'error'
+        });
+      });
   };
 
 
@@ -184,7 +174,8 @@ class Login extends Component {
             "retina_detect": true
           }
         }/>
-        <div className="app flex-row align-items-center">
+        <NotificationSystem ref="notificationSystem" />
+        <div className="app flex-row align-items-center shake">
           <Container>
             <Row className="justify-content-center">
               <Col md="6">
@@ -200,8 +191,7 @@ class Login extends Component {
                               <i className="icon-user"></i>
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input type="text" name="username" onChange={this.handleChange} placeholder="Username" autoComplete="username" invalid/>
-                          <FormFeedback>Oh noes! that name is already taken</FormFeedback>
+                          <Input type="text" name="username" onChange={this.handleChange} placeholder="Username" autoComplete="username" />
                         </InputGroup>
                         <InputGroup className="mb-4">
                           <InputGroupAddon addonType="prepend">

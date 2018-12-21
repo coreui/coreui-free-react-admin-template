@@ -25,13 +25,17 @@ class Api {
     return axios.get(`${this.url}/findings/search`, {})
   }
 
+  getFindingCount() {
+    return axios.get(`${this.url}/findings/count`, {})
+  }
+
   // node controller
   getNodesByGraph(graphId) {
     return axios.get(`${this.url}/graphs/${graphId}/nodes`, {})
   }
 
   getEdgesWithinLastMinutes(graphId, lastMinutes) {
-    return axios.get(`${this.url}/graphs/${graphId}/nodes/edges`, {last_minutes: lastMinutes})
+    return axios.get(`${this.url}/graphs/${graphId}/nodes/edges?last_minutes=${lastMinutes}`, {})
   }
 }
 

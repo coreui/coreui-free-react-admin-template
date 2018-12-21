@@ -26,6 +26,8 @@
     "flag-icon-css": "^3.2.1",
     "font-awesome": "^4.7.0",
     "glyphicons": "^0.2.0",
+    "mobx": "^5.8.0",
+    "mobx-react": "^5.4.3",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
     "rc-slider": "^8.6.4",

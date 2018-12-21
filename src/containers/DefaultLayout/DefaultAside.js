@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { Nav, NavItem, NavLink, Progress, TabContent, TabPane, ListGroup, ListGroupItem } from 'reactstrap';
+import React, {Component} from 'react';
+import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { AppSwitch } from '@coreui/react'
+import {AppSwitch} from '@coreui/react'
 import NumericInput from 'react-numeric-input';
-import GraphDashboardProvider, { GraphDashboardContext } from '../../views/Dashboards/GraphDashboard/GraphDashboardProvider';
+import {graphDashboardOptions} from "../../views/Dashboards/GraphDashboard/GraphDashboardOptions";
+import {observer} from "mobx-react";
 
 const propTypes = {
   children: PropTypes.node,
@@ -31,6 +32,87 @@ class DefaultAside extends Component {
       });
     }
   }
+
+  handleChange(event) {
+    graphDashboardOptions.isGraphArOn = event.target.checked;
+  }
+
+  handleSpacingChange(value) {
+    let opts = {nodeSpacing: value};
+
+    graphDashboardOptions.params.randomize = false;
+
+    for( var i in opts ){
+      graphDashboardOptions.params[i] = opts[i];
+    }
+
+    graphDashboardOptions.cy.layout(graphDashboardOptions.params).run();
+  }
+
+  handleRandomizeChange(event) {
+    let opts = {randomize: true, flow: null, directed: true};
+
+    graphDashboardOptions.params.randomize = false;
+
+    for( var i in opts ){
+      graphDashboardOptions.params[i] = opts[i];
+    }
+
+    graphDashboardOptions.cy.layout(graphDashboardOptions.params).run();
+  }
+
+  handleVerticalRandomizeChange() {
+    let opts = {
+      flow: { axis: 'y', minSeparation: 30 }
+    }
+
+    graphDashboardOptions.params.randomize = false;
+
+    for( var i in opts ){
+      graphDashboardOptions.params[i] = opts[i];
+    }
+
+    graphDashboardOptions.cy.layout(graphDashboardOptions.params).run();
+  }
+
+  moveUp() {
+    graphDashboardOptions.cy.panBy({
+      x: 0,
+      y: -50
+    });
+  }
+
+  moveDown() {
+    graphDashboardOptions.cy.panBy({
+      x: 0,
+      y: 50
+    });
+  }
+
+  moveLeft() {
+    graphDashboardOptions.cy.panBy({
+      x: -50,
+      y: 0
+    });
+  }
+
+  moveRight() {
+    graphDashboardOptions.cy.panBy({
+      x: 50,
+      y: 0
+    });
+  }
+
+  zoomIn() {
+    graphDashboardOptions.cy.zoom(graphDashboardOptions.cy.zoom() + 0.1);
+    graphDashboardOptions.cy.center()
+  }
+
+  zoomOut() {
+    graphDashboardOptions.cy.zoom(graphDashboardOptions.cy.zoom() - 0.1);
+    graphDashboardOptions.cy.center()
+  }
+
 
   render() {
 
@@ -77,11 +159,7 @@ class DefaultAside extends Component {
             <div className="aside-options">
               <div className="clearfix mt-4">
                 <small><b>Graph</b></small>
-                <GraphDashboardProvider>
-                  <GraphDashboardContext.Consumer>
-                    {context => ( <AppSwitch checked={this.state.arGraph} onChange={this.state.arGraph ? context.stopTimer : context.startTimer('email') } className={'float-right'} variant={'pill'} label color={'success'} defaultChecked size={'sm'}/> )}
-                  </GraphDashboardContext.Consumer>
-                </GraphDashboardProvider>
+                <AppSwitch checked={graphDashboardOptions.isGraphArOn} onChange={this.handleChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
               </div>
             </div>
 
@@ -104,10 +182,10 @@ class DefaultAside extends Component {
                 <small><b>Transformation</b></small>
                 <div className="row">
                   <div id="transformation" className="col-md-8">
-                    <button className="btn btn-transformation">
+                    <button onClick={this.handleRandomizeChange} className="btn btn-transformation">
                       <i class="fa fa-random"></i>
                     </button>
-                    <button className="btn btn-transformation">
+                    <button onClick={this.handleVerticalRandomizeChange} className="btn btn-transformation">
                       <i className="fa fa-long-arrow-down"></i>
                     </button>
                   </div>
@@ -117,7 +195,7 @@ class DefaultAside extends Component {
                 <small><b>Spacing</b></small>
                 <div className="row">
                   <div id="spacing" className="col-md-8">
-                    <NumericInput min={0} max={100} value={50}/>
+                    <NumericInput onChange={this.handleSpacingChange} min={0} max={400} value={graphDashboardOptions.params.nodeSpacing} step={16} />
                   </div>
                 </div>
               </div>
@@ -125,25 +203,21 @@ class DefaultAside extends Component {
                 <small><b>Viewport</b></small>
                 <div className="grid">
                   <div className="up">
-                    <GraphDashboardProvider>
-                      <GraphDashboardContext.Consumer>
-                        {context => (<button onClick={context.moveUp} type="submit" className="glyphicon glyphicon-menu-up btn btn-transformation"/>)}
-                      </GraphDashboardContext.Consumer>
-                    </GraphDashboardProvider>
+                    <button onClick={this.moveUp} type="submit" className="glyphicon glyphicon-menu-up btn btn-transformation"/>
                   </div>
-                  {/*<div className="left">*/}
-                  {/*<button onClick={this.moveLeft()} type="submit" className="glyphicon glyphicon-menu-left btn btn-transformation"/>*/}
-                  {/*</div>*/}
-                  {/*<div className="ok">*/}
-                  {/*<button onClick={this.zoomOut()} type="submit" className="glyphicon glyphicon-minus btn btn-transformation"/>*/}
-                  {/*<button onClick={this.zoomIn()} type="submit" className="glyphicon glyphicon-plus btn btn-transformation"/>*/}
-                  {/*</div>*/}
-                  {/*<div className="right">*/}
-                  {/*<button onClick={this.moveRight()} type="submit" className="glyphicon glyphicon-menu-right btn btn-transformation"/>*/}
-                  {/*</div>*/}
-                  {/*<div className="down">*/}
-                  {/*<button onClick={this.moveDown()} type="submit" className="glyphicon glyphicon-menu-down btn btn-transformation"/>*/}
-                  {/*</div>*/}
+                  <div className="left">
+                    <button onClick={this.moveLeft} type="submit" className="glyphicon glyphicon-menu-left btn btn-transformation"/>
+                  </div>
+                  <div className="ok">
+                    <button onClick={this.zoomOut} type="submit" className="glyphicon glyphicon-minus btn btn-transformation"/>
+                    <button onClick={this.zoomIn} type="submit" className="glyphicon glyphicon-plus btn btn-transformation"/>
+                  </div>
+                  <div className="right">
+                    <button onClick={this.moveRight} type="submit" className="glyphicon glyphicon-menu-right btn btn-transformation"/>
+                  </div>
+                  <div className="down">
+                    <button onClick={this.moveDown} type="submit" className="glyphicon glyphicon-menu-down btn btn-transformation"/>
+                  </div>
                 </div>
               </div>
             </div>
@@ -157,4 +231,4 @@ class DefaultAside extends Component {
 DefaultAside.propTypes = propTypes;
 DefaultAside.defaultProps = defaultProps;
 
-export default DefaultAside;
+export default observer(DefaultAside);

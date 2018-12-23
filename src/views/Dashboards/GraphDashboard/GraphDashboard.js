@@ -1,29 +1,29 @@
 import React, {Component} from 'react';
-import CytoscapeComponent from 'react-cytoscapejs';
 import 'react-cytoscape';
-import {Chart} from "react-google-charts";
 import windowSize from 'react-window-size';
-import {Row, Table} from 'reactstrap';
+import {Row} from 'reactstrap';
 import './graph.scss'
 import {graphDashboardOptions} from './GraphDashboardOptions';
 import api from "../../../api";
 import {observer} from "mobx-react";
+import GraphDataProcessed from "./GraphDataProcessed";
+import GraphFindingNumbers from "./GraphFindingNumbers";
+import GraphFindingPercentage from "./GraphFindingPercentage";
+import GraphData from "./GraphData";
+import GraphLastFindings from "./GraphLastFindings";
 
 const LAST_DATA_PROCESS_TIME = 60;
+const LAST_FINDINGS_TO_DISPLAY = 9;
+const STYLE_REMOVE_LOADER = {backgroundImage: 'none'};
 
 class GraphDashboard extends Component {
-  color0="#21295C";
-  color1="#1B3B6F";
-  color2="#065A82";
-  color3="#1C7293";
-  color4="#9EB3C2";
   alertColor="#D6A157";
 
   constructor(props) {
     super(props);
 
     this.state = {
-      last_findings: {},
+      last_findings: [],
       findings_count: {},
       findings_percentage: {},
       last_edges: {},
@@ -281,12 +281,11 @@ class GraphDashboard extends Component {
             }
           });
 
-        api.getFindingCount(graphId)
+        api.getFindings(LAST_FINDINGS_TO_DISPLAY)
           .then(res => {
             console.log(res.data.message.findings);
             this.setState({
-              findings_count: this.getFindingsNumbersChartOptions(res.data.message.findings),
-              findings_percentage: this.getFindingsPercentageChartOptions(res.data.message.findings)
+              last_findings: res.data.message.findings
             });
           })
           .catch(error => {
@@ -358,286 +357,44 @@ class GraphDashboard extends Component {
     return data_options;
   }
 
-  // drawGraphDataProcessChart(data_options) {
-  //   var data = new google.visualization.DataTable();
-  //   data.addColumn('number', 'X');
-  //   data.addColumn('number', 'Data Hops');
-  //
-  //   data.addRows(data_options);
-  //
-  //   var options = {
-  //     backgroundColor: '#2F3139',
-  //     legendTextStyle: { color: '#FFF' },
-  //     legend: { position: 'in'},
-  //     titleTextStyle: { color: '#FFF' },
-  //     hAxis: {
-  //       title: 'Last hour',
-  //       textStyle:{color: '#FFF'},
-  //       titleTextStyle: {
-  //         color: '#FFF',
-  //         fontSize: 12
-  //       },
-  //       gridlines: {
-  //         color: 'transparent'
-  //       }
-  //     },
-  //     vAxis: {
-  //       title: 'Data processed',
-  //       textStyle:{color: '#FFF'},
-  //       titleTextStyle: {
-  //         color: '#FFF',
-  //         fontSize: 12
-  //       },
-  //       gridlines: {
-  //         color: 'transparent'
-  //       }
-  //     },
-  //     width: $(window).width()*0.40,
-  //     height: $(window).height()*0.21,
-  //     chartArea: {'width': '95%', 'height': '80%'},
-  //     titlePosition: 'in',
-  //     axisTitlesPosition: 'in',
-  //     colors: [color2, color3, color4],
-  //     lineWidth: 3,
-  //     axisFontSize : 0
-  //   };
-  //
-  //   var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-  //   chart.draw(data, options);
-  // }
-
   async componentDidMount() {
     this.startChartsArTimer();
-    // this.startGraphArTimer();
+    this.startGraphArTimer();
   }
 
-
   render() {
-    const stylesheet = [
-      {
-        selector: '.node-protected',
-        css: {
-          'content': 'data(id)',
-          'color': '#fff',
-          'border-width': '4 px',
-          'border-color': this.color4,
-          'background-color': this.color4
-        }
-      },
-      {
-        selector: '.node-unprotected',
-        css: {
-          'content': 'data(id)',
-          'color': '#fff',
-          'border-width': '4 px',
-          'border-color': this.color4,
-          'background-color': 'rgb(68, 77, 88)'
-        }
-      },
-      {
-        selector: 'edge',
-        css: {
-          'curve-style': 'bezier',
-          'target-arrow-shape': 'triangle',
-          'width': 2,
-          'line-color': this.alertColor,
-          'target-arrow-color': this.alertColor
-        }
-      },
-      {
-        selector: '.highlighted',
-        css: {
-          'line-color': this.color4,
-          'target-arrow-color': this.color4,
-          'transition-property': 'background-color, line-color, target-arrow-color',
-          'transition-duration': '0.5s'
-        }
-      }
-    ];
 
-    const options = {
-      backgroundColor: '#2F3139',
-      legendTextStyle: { color: '#FFF' },
-      legend: { position: 'in'},
-      titleTextStyle: { color: '#FFF' },
-      hAxis: {
-        title: 'Last hour',
-        textStyle:{color: '#FFF'},
-        titleTextStyle: {
-          color: '#FFF',
-          fontSize: 12
-        },
-        gridlines: {
-          color: 'transparent'
-        }
-      },
-      vAxis: {
-        title: 'Data processed',
-        textStyle:{color: '#FFF'},
-        titleTextStyle: {
-          color: '#FFF',
-          fontSize: 12
-        },
-        gridlines: {
-          color: 'transparent'
-        }
-      },
-      width: this.props.windowWidth*0.345,
-      height: this.props.windowHeight*0.21,
-      chartArea: {'width': '90%', 'height': '80%'},
-      titlePosition: 'in',
-      axisTitlesPosition: 'in',
-      colors: [this.color2, this.color3, this.color4],
-      lineWidth: 3,
-      axisFontSize : 0
-    };
-
-    const options2 = {
-      title: '',
-      width: this.props.windowWidth*0.345,
-      height: this.props.windowHeight*0.28,
-      bar: {groupWidth: "95%"},
-      legend: { position: "none" },
-      chartArea: {'width': '90%', 'height': '90%'},
-      backgroundColor: '#2F3139',
-      colors: [this.color0, this.color1, this.color2, this.color3, this.color4],
-      hAxis: {
-        textStyle:{color: '#FFF'},
-        gridlines: {
-          color: 'transparent'
-        }
-      },
-      vAxis: {
-        textStyle:{color: '#FFF'},
-        gridlines: {
-          color: 'transparent'
-        }
-      }
-    };
-
-    const options3 = {
-      title: '',
-      pieHole: 0.4,
-      backgroundColor: '#2F3139',
-      pieSliceBorderColor: '#2F3139',
-      colors: [this.color0, this.color1, this.color2, this.color3, this.color4],
-      legend: {
-        position: 'labeled',
-        textStyle: {
-          color: 'white',
-          fontSize: 14
-        }
-      },
-      width: this.props.windowWidth*0.345,
-      height: this.props.windowHeight*0.30,
-      chartArea: {'width': '95%', 'height': '85%'}
-    };
+    const styleCy2 = this.state.last_findings.length === 0 ? {} : STYLE_REMOVE_LOADER;
+    const styleCy = this.state.edges.length === 0 ? {} : STYLE_REMOVE_LOADER;
 
     return (
       <div className="animated fadeIn">
         <Row>
-          <div  class="header-1">
+          <div class="header-1">
             Graph
           </div>
-          <CytoscapeComponent
-            id="cy" cy={ cy => graphDashboardOptions.cy = cy }
-            elements={ CytoscapeComponent.normalizeElements({
-              nodes: this.state.nodes,
-              edges: this.state.edges
-            })}
-            stylesheet={ stylesheet } layout={ graphDashboardOptions.params }
+          <GraphData
+            nodes={this.state.nodes}
+            edges={this.state.edges}
           />
-          <div id="cy2">
-            <div class="header-1">
-              <span>Last Findings</span>
-            </div>
-            <Table id="last_findings_table">
-              <thead>
-              <tr>
-                <th class="prop-1">Type</th>
-                <th class="prop-2">Hostname</th>
-                <th class="prop-3">Date</th>
-                <th class="prop-4">Resolved</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>asdad</td>
-                <td>asdad</td>
-                <td>asdsad</td>
-                <td>true</td>
-              </tr>
-              <tr>
-                <td>asdad</td>
-                <td>asdad</td>
-                <td>asdsad</td>
-                <td>true</td>
-              </tr>
-              <tr>
-                <td>asdad</td>
-                <td>asdad</td>
-                <td>asdsad</td>
-                <td>true</td>
-              </tr>
-              <tr>
-                <td>asdad</td>
-                <td>asdad</td>
-                <td>asdsad</td>
-                <td>true</td>
-              </tr>
-              <tr>
-                <td>asdad</td>
-                <td>asdad</td>
-                <td>asdsad</td>
-                <td>true</td>
-              </tr>
-              <tr>
-                <td>asdad</td>
-                <td>asdad</td>
-                <td>asdsad</td>
-                <td>true</td>
-              </tr>
-              <tr>
-                <td>asdad</td>
-                <td>asdad</td>
-                <td>asdsad</td>
-                <td>true</td>
-              </tr>
-
-              </tbody>
-            </Table>
+          <div id="cy2" style={ styleCy2 }>
+            <GraphLastFindings
+              last_findings={this.state.last_findings}
+            />
           </div>
           <div id="cy3">
-            <div class="header-1">
-              <span>Graph Metrics</span>
-            </div>
-            <Chart
-              chartType="AreaChart"
-              data={this.state.last_edges}
-              options={options}
-              legendToggle
+            <GraphDataProcessed
+              last_edges={this.state.last_edges}
             />
           </div>
           <div id="cy4">
-            <div class="header-1">
-              <span>Findings Numbers</span>
-            </div>
-            <Chart
-              chartType="ColumnChart"
-              data={this.state.findings_count}
-              options={options2}
-              legendToggle
+            <GraphFindingNumbers
+              findings_count={this.state.findings_count}
             />
           </div>
           <div id="cy5">
-            <div class="header-1">
-              <span>Findings Percentage</span>
-            </div>
-            <Chart
-              chartType="PieChart"
-              data={this.state.findings_percentage}
-              options={options3}
-              legendToggle
+            <GraphFindingPercentage
+              findings_percentage={this.state.findings_percentage}
             />
           </div>
         </Row>

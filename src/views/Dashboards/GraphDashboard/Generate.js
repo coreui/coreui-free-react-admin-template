@@ -89,7 +89,7 @@ class Generate extends Component {
   render() {
     const graphs = this.state.graphs.map(graph => (
       <tr>
-        <td><Link to={"dashboards/graph/" + graph.variable}>{graph.variable}</Link></td>
+        <td><Link to={"/dashboards/graph/" + graph.variable}>{graph.variable}</Link></td>
         <td>{new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(graph.created_at))}
         </td>
       </tr>));

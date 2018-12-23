@@ -21,8 +21,8 @@ class Api {
   }
 
   // finding controller
-  findingSearch() {
-    return axios.get(`${this.url}/findings/search`, {})
+  getFindings(max) {
+    return axios.get(`${this.url}/findings/last?max=${max}`, {})
   }
 
   getFindingCount() {

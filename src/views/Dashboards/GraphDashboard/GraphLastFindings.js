@@ -1,0 +1,42 @@
+import React, {Component} from 'react';
+import 'react-cytoscape';
+import windowSize from 'react-window-size';
+import './graph.scss'
+import {Table} from "reactstrap";
+
+
+class GraphLastFindings extends Component {
+  render() {
+
+    const last_findings = this.props.last_findings.map(finding => (
+      <tr>
+        <td>{finding.type_finding}</td>
+        <td>{finding.hostname}</td>
+        <td>{new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(finding.created_at))}</td>
+        <td>{finding.resolved}</td>
+      </tr>));
+
+    return (
+      <div>
+        <div className="header-1">
+          <span>Last Findings</span>
+        </div>
+        <Table id="last_findings_table">
+          <thead>
+          <tr>
+            <th className="prop-1">Type</th>
+            <th className="prop-2">Hostname</th>
+            <th className="prop-3">Date</th>
+            <th className="prop-4">Resolved</th>
+          </tr>
+          </thead>
+          <tbody>
+          {last_findings}
+          </tbody>
+        </Table>
+      </div>
+    )
+  }
+}
+
+export default windowSize(GraphLastFindings);

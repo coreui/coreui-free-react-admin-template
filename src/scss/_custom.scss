@@ -63,16 +63,25 @@ header.app-header.navbar{
   overflow: hidden;
 }
 
+.card-header:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0 !important;
+}
+
+.card-header {
+  background-color: #343b41 !important;
+  border-bottom: 1px solid #23282c !important;
+}
+
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
   background-color: #3a4149;
   background-clip: border-box;
   border: 1px solid #24729f;
   border-radius: 0.25rem;
+}
+
+.card-footer {
+  background-color: #343b41;
+  border-top: 1px solid #23282c;
 }
 
 .form-control {

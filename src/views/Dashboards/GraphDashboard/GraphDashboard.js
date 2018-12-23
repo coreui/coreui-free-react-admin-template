@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import 'react-cytoscape';
-import { Chart } from "react-google-charts";
+import {Chart} from "react-google-charts";
 import windowSize from 'react-window-size';
-import { Table, Row } from 'reactstrap';
+import {Row, Table} from 'reactstrap';
 import './graph.scss'
-import { graphDashboardOptions } from './GraphDashboardOptions';
+import {graphDashboardOptions} from './GraphDashboardOptions';
 import api from "../../../api";
 import {observer} from "mobx-react";
-import google from "react-google-charts";
 
 const LAST_DATA_PROCESS_TIME = 60;
 
@@ -25,6 +24,8 @@ class GraphDashboard extends Component {
 
     this.state = {
       last_findings: {},
+      findings_count: {},
+      findings_percentage: {},
       last_edges: {},
       nodes: [],
       edges: [],
@@ -258,7 +259,34 @@ class GraphDashboard extends Component {
           .then(res => {
             console.log(res.data.message.findings);
             this.setState({
-              findings_count: this.getFindingsNumbersChartOptions(res.data.message.findings)
+              findings_count: this.getFindingsNumbersChartOptions(res.data.message.findings),
+              findings_percentage: this.getFindingsPercentageChartOptions(res.data.message.findings)
+            });
+          })
+          .catch(error => {
+            if (error.response) {
+              // The request was made and the server responded with a status code
+              // that falls out of the range of 2xx
+              console.log(error.response.data);
+              console.log(error.response.status);
+              console.log(error.response.headers);
+            } else if (error.request) {
+              // The request was made but no response was received
+              // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+              // http.ClientRequest in node.js
+              console.log(error.request);
+            } else {
+              // Something happened in setting up the request that triggered an Error
+              console.log('Error', error.message);
+            }
+          });
+
+        api.getFindingCount(graphId)
+          .then(res => {
+            console.log(res.data.message.findings);
+            this.setState({
+              findings_count: this.getFindingsNumbersChartOptions(res.data.message.findings),
+              findings_percentage: this.getFindingsPercentageChartOptions(res.data.message.findings)
             });
           })
           .catch(error => {
@@ -308,6 +336,22 @@ class GraphDashboard extends Component {
     let i = 1;
     findings_count.some(function(elm){
       data_options[i] = [elm.key, elm.count, ['color' + (i-1)%4]];
+      i++;
+    });
+
+    return data_options;
+  }
+
+  getFindingsPercentageChartOptions(findings_count){
+    let data_options = [];
+    if (findings_count.length === 0){
+      return data_options
+    }
+    data_options[0] = ['Task', 'Findings percentage'];
+    let i = 1;
+
+    findings_count.some(function(elm){
+      data_options[i] = [elm.key, elm.count/100];
       i++;
     });
 
@@ -447,17 +491,6 @@ class GraphDashboard extends Component {
       lineWidth: 3,
       axisFontSize : 0
     };
-
-    const data = [
-      ["Age", "Weight"],
-      [8, 12],
-      [4, 5.5],
-      [11, 14],
-      [4, 5],
-      [3, 3.5],
-      [6.5, 7]
-    ];
-
 
     const options2 = {
       title: '',
@@ -602,7 +635,7 @@ class GraphDashboard extends Component {
             </div>
             <Chart
               chartType="PieChart"
-              data={[["Age", "Weight"], ["a", 12], ["b", 5.5]]}
+              data={this.state.findings_percentage}
               options={options3}
               legendToggle
             />

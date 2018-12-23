@@ -71,7 +71,7 @@ class Login extends Component {
           {
             particles: {
               number: {
-                value: 40,
+                value: 150,
                 density: {
                   enable: true,
                   value_area: 700
@@ -91,12 +91,12 @@ class Login extends Component {
                 }
               },
               opacity: {
-                value: 0.5,
+                value: 1,
                 random: false,
                 anim: {
                   enable: false,
                   speed: 1.5,
-                  opacity_min: 0.15,
+                  opacity_min: 0.7,
                   sync: false
                 }
               },

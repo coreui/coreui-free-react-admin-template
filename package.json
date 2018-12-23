@@ -30,6 +30,7 @@
     "mobx-react": "^5.4.3",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
+    "rc-pagination": "^1.17.5",
     "rc-slider": "^8.6.4",
     "react": "^16.6.3",
     "react-app-polyfill": "^0.1.3",

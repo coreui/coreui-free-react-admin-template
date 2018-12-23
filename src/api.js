@@ -10,7 +10,7 @@ class Api {
     return axios.get(`${this.url}/session`)
   }
 
-  // finding controller
+  // login controller
   login(username, password) {
     const user = {
       username: username,
@@ -37,6 +37,16 @@ class Api {
   getEdgesWithinLastMinutes(graphId, lastMinutes) {
     return axios.get(`${this.url}/graphs/${graphId}/nodes/edges?last_minutes=${lastMinutes}`, {})
   }
+
+  // graph controller
+  getListGraph(page, max) {
+    return axios.get(`${this.url}/graphs/list/?page=${page}&max=${max}`, {})
+  }
+
+  getGraphByVariable(graphVar) {
+    return axios.get(`${this.url}/graphs/variable/${graphVar}`, {})
+  }
+
 }
 
 const api = new Api({ url: 'http://localhost:3000' });

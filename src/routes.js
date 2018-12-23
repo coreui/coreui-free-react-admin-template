@@ -18,7 +18,8 @@ const Switches = React.lazy(() => import('./views/Base/Switches'));
 const Tables = React.lazy(() => import('./views/Base/Tables'));
 const Tabs = React.lazy(() => import('./views/Base/Tabs'));
 const Tooltips = React.lazy(() => import('./views/Base/Tooltips'));
-const GraphDashboard = React.lazy(() => import('./views/Dashboards/GraphDashboard'));
+const GraphDashboard = React.lazy(() => import('./views/Dashboards/GraphDashboard/GraphDashboard'));
+const GenerateGraphDashboard = React.lazy(() => import('./views/Dashboards/GraphDashboard/Generate'));
 const ButtonDropdowns = React.lazy(() => import('./views/Buttons/ButtonDropdowns'));
 const ButtonGroups = React.lazy(() => import('./views/Buttons/ButtonGroups'));
 const Buttons = React.lazy(() => import('./views/Buttons/Buttons'));
@@ -66,6 +67,7 @@ const routes = [
   { path: '/buttons/buttons', name: 'Buttons', component: Buttons },
   { path: '/buttons/button-dropdowns', name: 'Button Dropdowns', component: ButtonDropdowns },
   { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
+  { path: '/dashboards/graph/generate', name: 'Generate Graph Dashboard', component: GenerateGraphDashboard },
   { path: '/dashboards/graph/:graph_id', name: 'Graph Dashboard', component: GraphDashboard },
   { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
@@ -73,7 +75,7 @@ const routes = [
   { path: '/icons/font-awesome', name: 'Font Awesome', component: FontAwesome },
   { path: '/icons/simple-line-icons', name: 'Simple Line Icons', component: SimpleLineIcons },
   { path: '/notifications', exact: true, name: 'Notifications', component: Alerts },
-  { path: '/notifications/alerts', name: 'Alerts', component: Alerts },
+  { path: '/notifications/alerts', name: 'Generate', component: Alerts },
   { path: '/notifications/badges', name: 'Badges', component: Badges },
   { path: '/notifications/modals', name: 'Modals', component: Modals },
   { path: '/widgets', name: 'Widgets', component: Widgets },

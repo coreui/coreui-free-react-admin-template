@@ -19,7 +19,7 @@ export default    {
       children: [
         {
           name: 'Graph',
-          url: '/dashboards/graph',
+          url: '/dashboards/graph/generate',
           icon: 'icon-puzzle',
         },
         {

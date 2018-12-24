@@ -47,6 +47,11 @@ class Api {
     return axios.get(`${this.url}/graphs/variable/${graphVar}`, {})
   }
 
+  // lock controller
+  getLock(graphVar) {
+    return axios.get(`${this.url}/locks/${graphVar}`, {})
+  }
+
 }
 
 const api = new Api({ url: 'http://localhost:3000' });

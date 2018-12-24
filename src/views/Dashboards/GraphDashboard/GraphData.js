@@ -52,15 +52,17 @@ class GraphData extends Component {
         }
       }
     ];
+    const styleCy = this.props.edges.length === 0 ? {} : {backgroundImage: 'none'};
 
     return (
-      <CytoscapeComponent
+    <CytoscapeComponent
         id="cy" cy={ cy => graphDashboardOptions.cy = cy }
         elements={ CytoscapeComponent.normalizeElements({
           nodes: this.props.nodes,
           edges: this.props.edges
         })}
         stylesheet={ stylesheet } layout={ graphDashboardOptions.params }
+        style={styleCy}
       />
     );
   }

@@ -109,9 +109,6 @@ class Generate extends Component {
                     <Col md="12">
                       <InputGroup>
                         <Input type="text" onChange={this.onChange} id="input3-group2" name="input3-group2" placeholder="Search" />
-                        <InputGroupAddon addonType="append">
-                          <Button type="button" color="primary"><i className="fa fa-search"></i></Button>
-                        </InputGroupAddon>
                       </InputGroup>
                     </Col>
                   </FormGroup>

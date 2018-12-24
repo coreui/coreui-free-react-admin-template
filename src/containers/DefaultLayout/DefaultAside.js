@@ -6,6 +6,7 @@ import {AppSwitch} from '@coreui/react'
 import NumericInput from 'react-numeric-input';
 import {graphDashboardOptions} from "../../views/Dashboards/GraphDashboard/GraphDashboardOptions";
 import {observer} from "mobx-react";
+import './defaultAside.scss'
 
 const propTypes = {
   children: PropTypes.node,
@@ -33,8 +34,12 @@ class DefaultAside extends Component {
     }
   }
 
-  handleChange(event) {
+  handleGraphArChange(event) {
     graphDashboardOptions.isGraphArOn = event.target.checked;
+  }
+
+  handleChartsArChange(event) {
+    graphDashboardOptions.isChartsArOn = event.target.checked;
   }
 
   handleSpacingChange(value) {
@@ -64,7 +69,7 @@ class DefaultAside extends Component {
   handleVerticalRandomizeChange() {
     let opts = {
       flow: { axis: 'y', minSeparation: 30 }
-    }
+    };
 
     graphDashboardOptions.params.randomize = false;
 
@@ -159,14 +164,14 @@ class DefaultAside extends Component {
             <div className="aside-options">
               <div className="clearfix mt-4">
                 <small><b>Graph</b></small>
-                <AppSwitch checked={graphDashboardOptions.isGraphArOn} onChange={this.handleChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
+                <AppSwitch checked={graphDashboardOptions.isGraphArOn} onChange={this.handleGraphArChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
               </div>
             </div>
 
             <div className="aside-options">
               <div className="clearfix mt-4">
                 <small><b>Charts</b></small>
-                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
+                <AppSwitch checked={graphDashboardOptions.isChartsArOn} onChange={this.handleChartsArChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
               </div>
               {/*<div>*/}
               {/*<small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod*/}

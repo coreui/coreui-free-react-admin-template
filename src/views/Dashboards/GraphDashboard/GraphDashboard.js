@@ -11,6 +11,37 @@ import GraphFindingNumbers from "./GraphFindingNumbers";
 import GraphFindingPercentage from "./GraphFindingPercentage";
 import GraphData from "./GraphData";
 import GraphLastFindings from "./GraphLastFindings";
+// import cytoscape from 'cytoscape';
+// import popper from 'cytoscape-popper';
+// import tippy from 'tippy.js';
+// cytoscape.use( popper );
+import RGL, { WidthProvider } from "react-grid-layout";
+
+const ReactGridLayout = WidthProvider(RGL);
+const originalLayout = getFromLS("layout") || [];
+
+function getFromLS(key) {
+  let ls = {};
+  if (global.localStorage) {
+    try {
+      ls = JSON.parse(global.localStorage.getItem("rgl-7")) || {};
+    } catch (e) {
+      /*Ignore*/
+    }
+  }
+  return ls[key];
+}
+
+function saveToLS(key, value) {
+  if (global.localStorage) {
+    global.localStorage.setItem(
+      "rgl-7",
+      JSON.stringify({
+        [key]: value
+      })
+    );
+  }
+}
 
 const LAST_DATA_PROCESS_TIME = 60;
 const LAST_FINDINGS_TO_DISPLAY = 9;
@@ -18,6 +49,13 @@ const STYLE_REMOVE_LOADER = {backgroundImage: 'none'};
 
 class GraphDashboard extends Component {
   alertColor="#D6A157";
+
+  static defaultProps = {
+    className: "layout",
+    cols: 2,
+    // rowHeight: 30,
+    onLayoutChange: function() {}
+  };
 
   constructor(props) {
     super(props);
@@ -29,28 +67,39 @@ class GraphDashboard extends Component {
       last_edges: {},
       nodes: [],
       edges: [],
-
-      time: 0,
-      start: 0,
+      lock: [],
+      layout: JSON.parse(JSON.stringify(originalLayout))
     };
 
     this.startGraphArTimer = this.startGraphArTimer.bind(this);
+    this.stopGraphArTimer = this.stopGraphArTimer.bind(this);
+
+    this.onLayoutChange = this.onLayoutChange.bind(this);
+    this.resetLayout = this.resetLayout.bind(this);
+  }
+
+  resetLayout() {
+    this.setState({
+      layout: []
+    });
+  }
+
+  onLayoutChange(layout) {
+    /*eslint no-console: 0*/
+    saveToLS("layout", layout);
+    this.setState({ layout });
+    this.props.onLayoutChange(layout); // updates status display
   }
 
   // AR
-  startGraphArTimer() {
-    console.log("startGraphArTimer");
-    let graphId = 'email';
-    let timer = setInterval(() => {
+  startGraphArTimer(graphId, lock) {
+    graphDashboardOptions.graphArTimer = setInterval(() => {
       if (graphDashboardOptions.isGraphArOn) {
-        console.log("isGraphArOn");
-
         api.getNodesByGraph(graphId)
           .then(res => {
             let cy = graphDashboardOptions.cy;
             let nodes = res.data.message.nodes;
             let sEdges = res.data.message.edges;
-
             // format
             var newElementFound = false;
             cy.batch(function () {
@@ -90,107 +139,76 @@ class GraphDashboard extends Component {
               });
             });
 
-            // var lock = JSON.parse($("#lock_data_controller").html());
-            // var elements_lock = [];
-            // var elements = cy.elements();
-            // var i = 0;
-            // var displayLock = function(){
-            //   if( i < elements.length ){
-            //     elements_lock.some(function(elm){
-            //       if(elements[i].data("source") !== 'undefined' &&
-            //         elements[i].data("source") === elm.source &&
-            //         elements[i].data("target") === elm.target &&
-            //         elements[i].data("variable") === elm.variable) {
-            //         elements[i].addClass('highlighted');
-            //         return true
-            //       }else{
-            //         if(elements[i].data("source") === 'undefined') {
-            //           return true
-            //         }
-            //       }
-            //     });
-            //
-            //     i++;
-            //     setTimeout(displayLock, 500);
-            //   }
+            var elements_lock = [];
+            var elements = cy.elements();
+            var i = 0;
+            var displayLock = function(){
+              if( i < elements.length ){
+                elements_lock.some(function(elm){
+                  if(elements[i].data("source") !== 'undefined' &&
+                    elements[i].data("source") === elm.source &&
+                    elements[i].data("target") === elm.target &&
+                    elements[i].data("variable") === elm.variable) {
+                    elements[i].addClass('highlighted');
+                    return true
+                  }else{
+                    if(elements[i].data("source") === 'undefined') {
+                      return true
+                    }
+                  }
+                });
+
+                i++;
+                setTimeout(displayLock, 500);
+              }
+            };
+
+            if (lock.length > 0 ){
+              // map
+              elements_lock = JSON.parse(lock[0].relations);
+              // array
+              displayLock();
+            }
+
+            // var makeTippy = function(node, text){
+            //   return tippy( node.popperRef(), {
+            //     html: (function(){
+            //       var div = document.createElement('div');
+            //       div.innerHTML = text;
+            //       return div;
+            //     })(),
+            //     trigger: 'manual',
+            //     arrow: true,
+            //     placement: 'bottom',
+            //     hideOnClick: false,
+            //     multiple: true,
+            //     sticky: true
+            //   } ).tooltips[0];
             // };
-            //
-            // if (lock.length > 0 ){
-            //   // map
-            //   elements_lock = JSON.parse(lock[0].relations);
-            //   // array
-            //   displayLock();
-            // }
-            //
-            //
-            // cy.edges().forEach(function(n){
-            //   var variable = n.data('variable');
-            //   var value = n.data('value');
-            //
-            //   n.qtip({
-            //     content: function(){ return  variable + '=' + value },
-            //     position: {
-            //       my: 'top center',
-            //       at: 'bottom center'
-            //     },
-            //     style: {
-            //       classes: 'qtip-bootstrap',
-            //       tip: {
-            //         width: 16,
-            //         height: 8
-            //       }
-            //     }
-            //   });
-            // });
-            //
-            // cy.nodes().forEach(function(n){
-            //   var id = n.data('id');
-            //
-            //   if (!n.data('has_agent')) {
-            //     n.addClass('node-unprotected');
-            //   }else{
-            //     n.addClass('node-protected');
-            //   }
-            //
-            //   n.qtip({
-            //     content: function(){ return  id },
-            //     position: {
-            //       my: 'top center',
-            //       at: 'bottom center'
-            //     },
-            //     style: {
-            //       classes: 'qtip-bootstrap',
-            //       tip: {
-            //         width: 16,
-            //         height: 8
-            //       }
-            //     }
-            //   });
-            // });
+
+            cy.nodes().forEach(function(n){
+              if (!n.data('has_agent')) {
+                n.addClass('node-unprotected');
+              }else{
+                n.addClass('node-protected');
+              }
+            });
+
+            cy.edges().forEach(function(n) {
+              // makeTippy(n, 'testsdsds').show();
+            });
 
             if (newElementFound) {
-              console.log(newElementFound);
-              // layout.stop();
-              // layout = makeLayout();
-              // layout.run();
+              cy.layout(graphDashboardOptions.params).stop();
               cy.layout(graphDashboardOptions.params).run()
             }
 
-            //UPDATE METRICS
-            // $("#nodes-display-value").html(nodes.length);
-            // $("#edges-display-value").html(edges.length);
-
-
             // update dashboard state
             this.setState({
-              time: timer,
-              start: Date.now() - this.state.time,
-              isOn: true,
               nodes: nodes,
               edges: sEdges
             });
           })
-
           .catch(error => {
             if (error.response) {
               // The request was made and the server responded with a status code
@@ -208,31 +226,19 @@ class GraphDashboard extends Component {
               console.log('Error', error.message);
             }
           });
-        // this.setState({time: Date.now() - this.state.start})
       }
-    }, 5000);
+    }, graphDashboardOptions.graphArTime);
   }
 
-  stopTimer() {
-    console.log("stopTimer");
-    this.setState({isOn: false});
-    clearInterval(this.state.timer)
+  stopGraphArTimer() {
+    graphDashboardOptions.stopGraphArTimer()
   }
 
-  resetTimer() {
-    this.setState({time: 0})
-  }
-
-  startChartsArTimer() {
-    console.log("startChartsArTimer");
-    let graphId = 'email';
-    let timer = setInterval(() => {
+  startChartsArTimer(graphId) {
+    graphDashboardOptions.chartsArTimer = setInterval(() => {
       if (graphDashboardOptions.isChartsArOn) {
-        console.log("isChartsArOn");
-
         api.getEdgesWithinLastMinutes(graphId, LAST_DATA_PROCESS_TIME)
           .then(res => {
-            console.log(res.data.message.edges);
             this.setState({
               last_edges: this.getGraphDataProcessChartOptions(res.data.message.edges)
             });
@@ -257,7 +263,6 @@ class GraphDashboard extends Component {
 
         api.getFindingCount(graphId)
           .then(res => {
-            console.log(res.data.message.findings);
             this.setState({
               findings_count: this.getFindingsNumbersChartOptions(res.data.message.findings),
               findings_percentage: this.getFindingsPercentageChartOptions(res.data.message.findings)
@@ -306,9 +311,15 @@ class GraphDashboard extends Component {
             }
           });
       }
-    }, 5000);
+    }, graphDashboardOptions.chartsArTime);
   }
 
+  stopChartsArTimer() {
+    graphDashboardOptions.stopChartsArTimer()
+  }
+
+
+  // format methods
   getGraphDataProcessChartOptions(edges){
     let data_options = [];
     data_options[0] = ['X', 'Data Hops'];
@@ -357,50 +368,104 @@ class GraphDashboard extends Component {
     return data_options;
   }
 
+  // lifecycle methods
   async componentDidMount() {
-    this.startChartsArTimer();
-    this.startGraphArTimer();
+    const graphId = this.props.match.params.graph_id;
+
+    this.startChartsArTimer(graphId);
+
+    api.getLock(graphId)
+      .then(res => {
+        let lock = res.data.message.lock;
+        this.setState({
+          lock: lock
+        });
+        this.startGraphArTimer(graphId, lock);
+      })
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+      })
+  }
+
+  componentWillUnmount() {
+    this.stopGraphArTimer();
+    this.stopChartsArTimer();
   }
 
   render() {
-
     const styleCy2 = this.state.last_findings.length === 0 ? {} : STYLE_REMOVE_LOADER;
-    const styleCy = this.state.edges.length === 0 ? {} : STYLE_REMOVE_LOADER;
 
     return (
+
       <div className="animated fadeIn">
-        <Row>
-          <div class="header-1">
-            Graph
-          </div>
-          <GraphData
-            nodes={this.state.nodes}
-            edges={this.state.edges}
-          />
-          <div id="cy2" style={ styleCy2 }>
-            <GraphLastFindings
-              last_findings={this.state.last_findings}
-            />
-          </div>
-          <div id="cy3">
-            <GraphDataProcessed
-              last_edges={this.state.last_edges}
-            />
-          </div>
-          <div id="cy4">
-            <GraphFindingNumbers
-              findings_count={this.state.findings_count}
-            />
-          </div>
-          <div id="cy5">
-            <GraphFindingPercentage
-              findings_percentage={this.state.findings_percentage}
-            />
-          </div>
-        </Row>
+
+
+        {/*<div key="2" data-grid={{ w: 2, h: 3, x: 2, y: 0 }}>*/}
+          {/*<span className="text">2</span>*/}
+        {/*</div>*/}
+        {/*<div key="3" data-grid={{ w: 2, h: 3, x: 4, y: 0 }}>*/}
+          {/*<span className="text">3</span>*/}
+        {/*</div>*/}
+        {/*<div key="4" data-grid={{ w: 2, h: 3, x: 6, y: 0 }}>*/}
+          {/*<span className="text">4</span>*/}
+        {/*</div>*/}
+        {/*<div key="5" data-grid={{ w: 2, h: 3, x: 8, y: 0 }}>*/}
+          {/*<span className="text">5</span>*/}
+        {/*</div>*/}
+
+          <ReactGridLayout
+            {...this.props}
+            layout={this.state.layout}
+            onLayoutChange={this.onLayoutChange}
+          >
+            {/*<div key="1" data-grid={{ w: 2, h: 3, x: 0, y: 0 }}>*/}
+              <GraphData
+                nodes={this.state.nodes}
+                edges={this.state.edges}
+              />
+            {/*</div>*/}
+            {/*<div key="1" data-grid={{ w: 2, h: 3, x: 0, y: 0 }}>*/}
+
+            <div key="1" id="cy2" style={ styleCy2 } data-grid={{ w: 2, h: 3, x: 0, y: 1 }}>
+              <GraphLastFindings
+                last_findings={this.state.last_findings}
+              />
+            </div>
+            <div key="2" id="cy3" data-grid={{ w: 0, h: 0, x: 1, y: 0 }}>
+              <GraphDataProcessed
+                last_edges={this.state.last_edges}
+              />
+            </div>
+            <div key="3" id="cy4" data-grid={{ w: 0, h: 0, x: 1, y: 0 }}>
+              <GraphFindingNumbers
+                findings_count={this.state.findings_count}
+              />
+            </div>
+            <div id="cy5">
+              <GraphFindingPercentage
+                findings_percentage={this.state.findings_percentage}
+              />
+            </div>
+          </ReactGridLayout>
+
       </div>
     );
   }
 }
 
 export default windowSize(observer(GraphDashboard));
+

@@ -1,7 +1,7 @@
 import {decorate, observable} from "mobx"
 
 class GraphDashboardOptions {
-  isGraphArOn = true;
+  // Graph
   cy = {};
   params = {
     name: 'cola',
@@ -9,15 +9,28 @@ class GraphDashboardOptions {
     padding: 30,
     maxSimulationTime: 100,
     edgeLengthVal: 1,
-    nodeSpacing: 150
+    nodeSpacing: 200
   };
-
+  // Timers
+  chartsArTimer = {};
+  chartsArTime = 2000;
   isChartsArOn = true;
+
+  graphArTimer = {};
+  graphArTime = 2000;
+  isGraphArOn = true;
+
+  stopChartsArTimer() {
+    clearInterval(this.chartsArTimer)
+  }
+
+  stopGraphArTimer() {
+    clearInterval(this.graphArTimer)
+  }
 }
 
 decorate(GraphDashboardOptions, {
   cy: observable
 });
-
 
 export const graphDashboardOptions = new GraphDashboardOptions();

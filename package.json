@@ -21,11 +21,15 @@
     "chart.js": "^2.7.3",
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
+    "cytoscape": "^3.3.1",
+    "cytoscape-popper": "^1.0.2",
+    "cytoscape-qtip": "^2.7.1",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "flag-icon-css": "^3.2.1",
     "font-awesome": "^4.7.0",
     "glyphicons": "^0.2.0",
+    "jquery": "^3.3.1",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
     "node-sass": "^4.10.0",
@@ -38,7 +42,9 @@
     "react-cytoscape": "^1.0.6",
     "react-cytoscapejs": "^1.1.0",
     "react-dom": "^16.6.3",
+    "react-draggable": "^3.1.1",
     "react-google-charts": "^3.0.10",
+    "react-grid-layout": "^0.16.6",
     "react-input-slider": "^4.0.1",
     "react-loadable": "^5.5.0",
     "react-notification-system": "^0.2.17",
@@ -50,7 +56,8 @@
     "react-test-renderer": "^16.6.3",
     "react-window-size": "^1.2.2",
     "reactstrap": "^6.5.0",
-    "simple-line-icons": "^2.4.1"
+    "simple-line-icons": "^2.4.1",
+    "tippy.js": "^2.5.4"
   },
   "devDependencies": {
     "react-scripts": "^2.1.1"

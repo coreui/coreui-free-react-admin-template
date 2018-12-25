@@ -32,17 +32,19 @@ class GraphFindingPercentage extends Component {
       chartArea: {'width': '95%', 'height': '85%'}
     };
 
+    const chartOrNoChart = this.props.findings_percentage.length > 0 ? ( <Chart
+      chartType="PieChart"
+      data={this.props.findings_percentage}
+      options={options3}
+      legendToggle
+    />) : ('');
+
     return (
       <div>
         <div className="header-1">
           <span>Findings Percentage</span>
         </div>
-        <Chart
-          chartType="PieChart"
-          data={this.props.findings_percentage}
-          options={options3}
-          legendToggle
-        />
+        {chartOrNoChart}
       </div>
     );
   }

@@ -37,17 +37,19 @@ class GraphFindingNumbers extends Component {
       }
     };
 
+    const chartOrNoChart = this.props.findings_count.length > 0 ? ( <Chart
+      chartType="ColumnChart"
+      data={this.props.findings_count}
+      options={options2}
+      legendToggle
+    />) : ('');
+
     return (
       <div>
         <div className="header-1">
           <span>Finding Numbers</span>
         </div>
-        <Chart
-          chartType="ColumnChart"
-          data={this.props.findings_count}
-          options={options2}
-          legendToggle
-        />
+        {chartOrNoChart}
       </div>
     );
   }

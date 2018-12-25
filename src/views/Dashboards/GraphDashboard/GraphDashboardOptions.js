@@ -21,7 +21,7 @@ class GraphDashboardOptions {
   isGraphArOn = true;
 
   // Layout
-  isDraggable = true;
+  isDraggable = false;
 
   updateIsDraggable(val) {
     this.isDraggable = val;

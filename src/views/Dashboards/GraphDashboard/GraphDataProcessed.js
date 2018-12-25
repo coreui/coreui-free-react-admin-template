@@ -50,17 +50,19 @@ class GraphDataProcessed extends Component {
       axisFontSize : 0
     };
 
+    const chartOrNoChart = this.props.last_edges.length > 0 ? ( <Chart
+      chartType="AreaChart"
+      data={this.props.last_edges}
+      options={options}
+      legendToggle
+    />) : ('');
+
     return (
       <div>
         <div class="header-1">
           <span>Graph Metrics</span>
         </div>
-        <Chart
-          chartType="AreaChart"
-          data={this.props.last_edges}
-          options={options}
-          legendToggle
-        />
+        {chartOrNoChart}
       </div>
     );
   }

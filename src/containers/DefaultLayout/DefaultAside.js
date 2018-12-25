@@ -177,11 +177,6 @@ class DefaultAside extends Component {
                 <small><b>Charts</b></small>
                 <AppSwitch checked={graphDashboardOptions.isChartsArOn} onChange={this.handleChartsArChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
               </div>
-              {/*<div>*/}
-              {/*<small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod*/}
-              {/*tempor incididunt ut labore et dolore magna aliqua.*/}
-              {/*</small>*/}
-              {/*</div>*/}
             </div>
 
             <hr />

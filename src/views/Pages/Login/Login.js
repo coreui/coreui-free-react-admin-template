@@ -44,8 +44,12 @@ class Login extends Component {
       })
       .catch(error => {
         let messageNotification = "An error occured. Please retry later.";
-        if(error.response.status === 401){
-          messageNotification = "Identification failed."
+        if (error.response) {
+          if(error.response.status === 401){
+            messageNotification = "Identification failed."
+          }
+        } else if (error.request) {
+          messageNotification = "An error occured. Make sure you are connected to the internet.";
         }
         this.state._notificationSystem.addNotification({
           message: messageNotification,

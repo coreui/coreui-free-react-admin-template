@@ -30,6 +30,7 @@
     "font-awesome": "^4.7.0",
     "glyphicons": "^0.2.0",
     "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
     "node-sass": "^4.10.0",

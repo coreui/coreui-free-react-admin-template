@@ -42,6 +42,10 @@ class DefaultAside extends Component {
     graphDashboardOptions.isChartsArOn = event.target.checked;
   }
 
+  handleIsDraggableChange(event) {
+    graphDashboardOptions.updateIsDraggable(event.target.checked);
+  }
+
   handleSpacingChange(value) {
     let opts = {nodeSpacing: value};
 
@@ -224,6 +228,18 @@ class DefaultAside extends Component {
                     <button onClick={this.moveDown} type="submit" className="glyphicon glyphicon-menu-down btn btn-transformation"/>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <hr />
+            <h6>Layout</h6>
+            <div className="aside-options">
+              <div className="clearfix mt-4">
+                <small><b>Drag and Drop</b></small>
+                <AppSwitch checked={!graphDashboardOptions.isDraggable} onChange={this.handleIsDraggableChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
+              </div>
+              <div>
+              <small className="text-muted">Allow a user to rearrange the dashboard layout.</small>
               </div>
             </div>
           </TabPane>

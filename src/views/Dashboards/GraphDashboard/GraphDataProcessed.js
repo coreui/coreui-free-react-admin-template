@@ -40,8 +40,8 @@ class GraphDataProcessed extends Component {
           color: 'transparent'
         }
       },
-      width: this.props.windowWidth*0.345,
-      height: this.props.windowHeight*0.21,
+      width: this.props.windowWidth*0.280,
+      height: this.props.windowHeight*0.235,
       chartArea: {'width': '90%', 'height': '80%'},
       titlePosition: 'in',
       axisTitlesPosition: 'in',

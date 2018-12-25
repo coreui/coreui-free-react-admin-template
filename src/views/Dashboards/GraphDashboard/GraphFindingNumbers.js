@@ -16,8 +16,8 @@ class GraphFindingNumbers extends Component {
 
     const options2 = {
       title: '',
-      width: this.props.windowWidth*0.345,
-      height: this.props.windowHeight*0.28,
+      width: this.props.windowWidth*0.280,
+      height: this.props.windowHeight*0.235,
       bar: {groupWidth: "95%"},
       legend: { position: "none" },
       chartArea: {'width': '90%', 'height': '90%'},

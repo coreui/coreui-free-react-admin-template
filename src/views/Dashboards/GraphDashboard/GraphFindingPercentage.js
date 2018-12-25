@@ -27,8 +27,8 @@ class GraphFindingPercentage extends Component {
           fontSize: 14
         }
       },
-      width: this.props.windowWidth*0.345,
-      height: this.props.windowHeight*0.30,
+      width: this.props.windowWidth*0.280,
+      height: this.props.windowHeight*0.235,
       chartArea: {'width': '95%', 'height': '85%'}
     };
 

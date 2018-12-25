@@ -2,8 +2,8 @@
   position: absolute;
   left: 0;
   top: 0;
-  bottom: 40%;
-  right: 40%;
+  right: 0;
+  bottom: 0;
   background-image: url("../../../assets/img/loader-facebook.gif");
   background-repeat: no-repeat;
   background-size: 3% 10%;
@@ -11,11 +11,6 @@
 }
 
 #cy2 {
-  position: absolute;
-  left: 0;
-  top: 63%;
-  bottom: 0;
-  right: 40%;
   background-image: url("../../../assets/img/loader-facebook.gif");
   background-repeat: no-repeat;
   background-size: 3% 15%;
@@ -44,11 +39,6 @@
 }
 
 #cy3 {
-  position: absolute;
-  left: 60%;
-  top: 0;
-  bottom: 73%;
-  right: 1.5%;
   background-image: url("../../../assets/img/loader-facebook.gif");
   background-repeat: no-repeat;
   background-size: 4% 18%;
@@ -56,11 +46,6 @@
 }
 
 #cy4 {
-  position: absolute;
-  left: 60%;
-  top: 28%;
-  bottom: 36%;
-  right: 1.5%;
   background-image: url("../../../assets/img/loader-facebook.gif");
   background-repeat: no-repeat;
   background-size: 4% 14%;
@@ -68,25 +53,11 @@
 }
 
 #cy5 {
-  position: absolute;
-  left: 60%;
-  top: 63%;
-  bottom: 1%;
-  right: 1.5%;
   background-image: url("../../../assets/img/loader-facebook.gif");
   background-repeat: no-repeat;
   background-size: 4% 14%;
   background-position: center;
 }
-
-#cy6 {
-  position: absolute;
-  left: 0;
-  top: 63%;
-  bottom: 0;
-  right: 40%;
-}
-
 
 @media screen and (max-width: 1920px) and (max-height: 1200px) {
   .zoom-left-position {

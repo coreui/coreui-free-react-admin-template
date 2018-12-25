@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import 'react-cytoscape';
 import windowSize from 'react-window-size';
-import {Row} from 'reactstrap';
 import './graph.scss'
 import {graphDashboardOptions} from './GraphDashboardOptions';
 import api from "../../../api";
@@ -15,33 +14,9 @@ import GraphLastFindings from "./GraphLastFindings";
 // import popper from 'cytoscape-popper';
 // import tippy from 'tippy.js';
 // cytoscape.use( popper );
-import RGL, { WidthProvider } from "react-grid-layout";
+import RGL, {WidthProvider} from "react-grid-layout";
 
 const ReactGridLayout = WidthProvider(RGL);
-const originalLayout = getFromLS("layout") || [];
-
-function getFromLS(key) {
-  let ls = {};
-  if (global.localStorage) {
-    try {
-      ls = JSON.parse(global.localStorage.getItem("rgl-7")) || {};
-    } catch (e) {
-      /*Ignore*/
-    }
-  }
-  return ls[key];
-}
-
-function saveToLS(key, value) {
-  if (global.localStorage) {
-    global.localStorage.setItem(
-      "rgl-7",
-      JSON.stringify({
-        [key]: value
-      })
-    );
-  }
-}
 
 const LAST_DATA_PROCESS_TIME = 60;
 const LAST_FINDINGS_TO_DISPLAY = 9;
@@ -49,13 +24,6 @@ const STYLE_REMOVE_LOADER = {backgroundImage: 'none'};
 
 class GraphDashboard extends Component {
   alertColor="#D6A157";
-
-  static defaultProps = {
-    className: "layout",
-    cols: 2,
-    // rowHeight: 30,
-    onLayoutChange: function() {}
-  };
 
   constructor(props) {
     super(props);
@@ -68,27 +36,16 @@ class GraphDashboard extends Component {
       nodes: [],
       edges: [],
       lock: [],
-      layout: JSON.parse(JSON.stringify(originalLayout))
     };
 
     this.startGraphArTimer = this.startGraphArTimer.bind(this);
     this.stopGraphArTimer = this.stopGraphArTimer.bind(this);
-
-    this.onLayoutChange = this.onLayoutChange.bind(this);
-    this.resetLayout = this.resetLayout.bind(this);
   }
 
   resetLayout() {
     this.setState({
       layout: []
     });
-  }
-
-  onLayoutChange(layout) {
-    /*eslint no-console: 0*/
-    saveToLS("layout", layout);
-    this.setState({ layout });
-    this.props.onLayoutChange(layout); // updates status display
   }
 
   // AR
@@ -370,6 +327,8 @@ class GraphDashboard extends Component {
 
   // lifecycle methods
   async componentDidMount() {
+    this.setState({ mounted: true });
+
     const graphId = this.props.match.params.graph_id;
 
     this.startChartsArTimer(graphId);
@@ -410,52 +369,36 @@ class GraphDashboard extends Component {
     const styleCy2 = this.state.last_findings.length === 0 ? {} : STYLE_REMOVE_LOADER;
 
     return (
-
       <div className="animated fadeIn">
-
-
-        {/*<div key="2" data-grid={{ w: 2, h: 3, x: 2, y: 0 }}>*/}
-          {/*<span className="text">2</span>*/}
-        {/*</div>*/}
-        {/*<div key="3" data-grid={{ w: 2, h: 3, x: 4, y: 0 }}>*/}
-          {/*<span className="text">3</span>*/}
-        {/*</div>*/}
-        {/*<div key="4" data-grid={{ w: 2, h: 3, x: 6, y: 0 }}>*/}
-          {/*<span className="text">4</span>*/}
-        {/*</div>*/}
-        {/*<div key="5" data-grid={{ w: 2, h: 3, x: 8, y: 0 }}>*/}
-          {/*<span className="text">5</span>*/}
-        {/*</div>*/}
-
-          <ReactGridLayout
-            {...this.props}
-            layout={this.state.layout}
-            onLayoutChange={this.onLayoutChange}
+        <ReactGridLayout
+          isDraggable={graphDashboardOptions.isDraggable}
+          autoSize={true}
+          isResizable={true}
+          rowHeight={this.props.windowHeight/3.7}
+          cols={3}
           >
-            {/*<div key="1" data-grid={{ w: 2, h: 3, x: 0, y: 0 }}>*/}
+            <div key="1" data-grid={{ w: 2, h: 2, x: 0, y: 0 }}>
               <GraphData
                 nodes={this.state.nodes}
                 edges={this.state.edges}
               />
-            {/*</div>*/}
-            {/*<div key="1" data-grid={{ w: 2, h: 3, x: 0, y: 0 }}>*/}
-
-            <div key="1" id="cy2" style={ styleCy2 } data-grid={{ w: 2, h: 3, x: 0, y: 1 }}>
+            </div>
+            <div key="2" id="cy2" style={ styleCy2 } data-grid={{ w: 1, h: 1, x: 0, y: 2 }}>
               <GraphLastFindings
                 last_findings={this.state.last_findings}
               />
             </div>
-            <div key="2" id="cy3" data-grid={{ w: 0, h: 0, x: 1, y: 0 }}>
+            <div key="3" id="cy3" data-grid={{ w: 1, h: 1, x: 3, y: 0 }}>
               <GraphDataProcessed
                 last_edges={this.state.last_edges}
               />
             </div>
-            <div key="3" id="cy4" data-grid={{ w: 0, h: 0, x: 1, y: 0 }}>
+            <div key="4" id="cy4" data-grid={{ w: 1, h: 1, x: 3, y: 1 }}>
               <GraphFindingNumbers
                 findings_count={this.state.findings_count}
               />
             </div>
-            <div id="cy5">
+            <div key="5" id="cy5" data-grid={{ w: 1, h: 1, x: 3, y: 2 }}>
               <GraphFindingPercentage
                 findings_percentage={this.state.findings_percentage}
               />
@@ -466,6 +409,5 @@ class GraphDashboard extends Component {
     );
   }
 }
-
 export default windowSize(observer(GraphDashboard));
 

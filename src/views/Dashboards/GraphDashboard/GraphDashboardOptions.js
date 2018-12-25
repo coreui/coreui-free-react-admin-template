@@ -20,6 +20,13 @@ class GraphDashboardOptions {
   graphArTime = 2000;
   isGraphArOn = true;
 
+  // Layout
+  isDraggable = true;
+
+  updateIsDraggable(val) {
+    this.isDraggable = val;
+  }
+
   stopChartsArTimer() {
     clearInterval(this.chartsArTimer)
   }
@@ -30,7 +37,8 @@ class GraphDashboardOptions {
 }
 
 decorate(GraphDashboardOptions, {
-  cy: observable
+  cy: observable,
+  isDragAndDrop: observable,
 });
 
 export const graphDashboardOptions = new GraphDashboardOptions();

@@ -42,12 +42,6 @@ class GraphDashboard extends Component {
     this.stopGraphArTimer = this.stopGraphArTimer.bind(this);
   }
 
-  resetLayout() {
-    this.setState({
-      layout: []
-    });
-  }
-
   // AR
   startGraphArTimer(graphId, lock) {
     graphDashboardOptions.graphArTimer = setInterval(() => {
@@ -57,6 +51,7 @@ class GraphDashboard extends Component {
             let cy = graphDashboardOptions.cy;
             let nodes = res.data.message.nodes;
             let sEdges = res.data.message.edges;
+
             // format
             var newElementFound = false;
             cy.batch(function () {
@@ -96,22 +91,15 @@ class GraphDashboard extends Component {
               });
             });
 
-            var elements_lock = [];
+            var lock_relations;
             var elements = cy.elements();
             var i = 0;
             var displayLock = function(){
               if( i < elements.length ){
-                elements_lock.some(function(elm){
-                  if(elements[i].data("source") !== 'undefined' &&
-                    elements[i].data("source") === elm.source &&
-                    elements[i].data("target") === elm.target &&
-                    elements[i].data("variable") === elm.variable) {
+                lock_relations.some(function(elm){
+                  if(elements[i].data("target") === elm &&
+                    elements[i].data("variable") === graphDashboardOptions.graphVar) {
                     elements[i].addClass('highlighted');
-                    return true
-                  }else{
-                    if(elements[i].data("source") === 'undefined') {
-                      return true
-                    }
                   }
                 });
 
@@ -122,7 +110,7 @@ class GraphDashboard extends Component {
 
             if (lock.length > 0 ){
               // map
-              elements_lock = JSON.parse(lock[0].relations);
+              lock_relations= JSON.parse(lock[0].relations);
               // array
               displayLock();
             }
@@ -329,7 +317,7 @@ class GraphDashboard extends Component {
   async componentDidMount() {
     this.setState({ mounted: true });
 
-    const graphId = this.props.match.params.graph_id;
+    let graphId = graphDashboardOptions.graphVar = this.props.match.params.graph_id;
 
     this.startChartsArTimer(graphId);
 

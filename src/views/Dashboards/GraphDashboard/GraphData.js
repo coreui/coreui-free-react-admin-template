@@ -62,7 +62,7 @@ class GraphData extends Component {
           edges: this.props.edges
         })}
         stylesheet={ stylesheet } layout={ graphDashboardOptions.params }
-        style={styleCy}
+        style={ styleCy }
       />
     );
   }

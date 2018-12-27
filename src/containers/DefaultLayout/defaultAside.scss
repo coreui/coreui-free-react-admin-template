@@ -350,3 +350,13 @@ fieldset[disabled] .btn-transformation.focus {
 .glyphicon-menu-right             { &:before { content: "\e258"; } }
 .glyphicon-menu-down              { &:before { content: "\e259"; } }
 .glyphicon-menu-up                { &:before { content: "\e260"; } }
+
+.modal-body {
+  height: 800px;
+}
+
+@media (min-width: 992px) {
+  .modal-lg {
+    max-width: 1200px;
+  }
+}

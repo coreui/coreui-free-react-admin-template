@@ -2,6 +2,7 @@ import {decorate, observable} from "mobx"
 
 class GraphDashboardOptions {
   // Graph
+  graphVar = '';
   cy = {};
   params = {
     name: 'cola',
@@ -11,6 +12,7 @@ class GraphDashboardOptions {
     edgeLengthVal: 1,
     nodeSpacing: 200
   };
+  relationsInLock = [];
   // Timers
   chartsArTimer = {};
   chartsArTime = 2000;

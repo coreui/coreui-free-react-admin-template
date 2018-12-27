@@ -52,6 +52,10 @@ class Api {
     return axios.get(`${this.url}/locks/${graphVar}`, {})
   }
 
+  createOrUpdateLock(graphVar, relations) {
+    return axios.post(`${this.url}/locks/create`, {graph_variable: graphVar, relations: relations})
+  }
+
 }
 
 const api = new Api({ url: 'http://localhost:3000' });

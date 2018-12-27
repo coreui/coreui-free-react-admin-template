@@ -146,6 +146,18 @@ header.app-header.navbar{
   box-shadow: 0 0 0 0.2rem rgba(32,168,216,.25);
 }
 
+.btn-primary {
+  color: #fff !important;
+  background-color: #20a8d8 !important;
+  border-color: #20a8d8 !important;
+}
+
+.btn-secondary {
+  color: #fff !important;
+  background-color: #73818f !important;
+  border-color: #73818f !important;
+}
+
 .input-group-text {
   display: -ms-flexbox;
   display: flex;
@@ -169,4 +181,23 @@ header.app-header.navbar{
   background: #3a4149;
   border-top: 1px solid #23282c;
 }
+
+.modal-content {
+  background-color: #3a4149 !important;
+  background-clip: padding-box !important;
+  border: 1px solid #23282c !important;
+  border-radius: .3rem !important;
+  outline: 0 !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid #23282c !important;
+  border-top-left-radius: .3rem !important;
+  border-top-right-radius: .3rem !important;
+}
+
+.modal-footer {
+  border-top: 1px solid #23282c !important;
+}
+
 

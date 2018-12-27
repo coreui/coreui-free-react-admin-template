@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {AppSwitch} from '@coreui/react'
@@ -7,6 +7,9 @@ import NumericInput from 'react-numeric-input';
 import {graphDashboardOptions} from "../../views/Dashboards/GraphDashboard/GraphDashboardOptions";
 import {observer} from "mobx-react";
 import './defaultAside.scss'
+import GraphData from "../../views/Dashboards/GraphDashboard/GraphData";
+import LockGraphData from "../../views/Dashboards/GraphDashboard/LockGraphData";
+import api from "../../api";
 
 const propTypes = {
   children: PropTypes.node,
@@ -21,9 +24,12 @@ class DefaultAside extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      arGraph: false,
-      activeTab: '2'
+      activeTab: '2',
+      lockEditor: false,
     };
+
+    this.toggleLockEditor = this.toggleLockEditor.bind(this);
+    this.handleLockSave = this.handleLockSave.bind(this);
   }
 
   toggle(tab) {
@@ -31,6 +37,41 @@ class DefaultAside extends Component {
       this.setState({
         activeTab: tab,
       });
+    }
+  }
+
+  toggleLockEditor() {
+    this.setState({
+      lockEditor: !this.state.lockEditor,
+    });
+  }
+
+  handleLockSave() {
+    if (graphDashboardOptions.relationsInLock.length > 0) {
+      console.log(JSON.stringify(graphDashboardOptions.relationsInLock));
+      api.createOrUpdateLock(graphDashboardOptions.graphVar, JSON.stringify(graphDashboardOptions.relationsInLock))
+        .then(res => {
+          this.setState({
+            lockEditor: !this.state.lockEditor,
+          });
+        })
+        .catch(error => {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+          }
+        })
     }
   }
 
@@ -234,7 +275,31 @@ class DefaultAside extends Component {
                 <AppSwitch checked={!graphDashboardOptions.isDraggable} onChange={this.handleIsDraggableChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
               </div>
               <div>
-              <small className="text-muted">Allow a user to rearrange the dashboard layout.</small>
+                <small className="text-muted">Allows a user to rearrange the dashboard layout.</small>
+              </div>
+            </div>
+
+            <hr />
+            <h6>Lock</h6>
+            <div className="aside-options">
+              <div className="clearfix mt-4">
+                <Button onClick={this.toggleLockEditor} className={'btn btn-transformation'}>Open graph lock editor</Button>
+                <Modal isOpen={this.state.lockEditor} toggle={this.toggleLockEditor}
+                       className={'modal-lg ' + this.props.className}>
+                  <ModalHeader toggle={this.toggleLockEditor}>Lock Editor</ModalHeader>
+                  <ModalBody>
+                    <LockGraphData
+                      elements={graphDashboardOptions.cy.elements()}
+                    />
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="primary" onClick={this.handleLockSave}>Save Lock</Button>{' '}
+                    <Button color="secondary" onClick={this.toggleLockEditor}>Cancel</Button>
+                  </ModalFooter>
+                </Modal>
+              </div>
+              <div>
+                <small className="text-muted">Allows a user to lock a graph and receive alerts through the notification center.</small>
               </div>
             </div>
           </TabPane>

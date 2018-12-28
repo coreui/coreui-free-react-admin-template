@@ -95,7 +95,7 @@ class Generate extends Component {
       </tr>));
 
     return (
-      <div className="animated fadeIn">
+      <div className="animated fadeIn padding-30">
         <Row>
           <Col xs="12" md="12">
             <Card>

@@ -3,7 +3,7 @@ import {decorate, observable} from "mobx"
 class GraphDashboardOptions {
   // Graph
   graphVar = '';
-  cy = {};
+  cy = { elements: () => {return []} };
   params = {
     name: 'cola',
     directed: true,
@@ -35,6 +35,10 @@ class GraphDashboardOptions {
 
   stopGraphArTimer() {
     clearInterval(this.graphArTimer)
+  }
+
+  getCy() {
+    return this.cy;
   }
 }
 

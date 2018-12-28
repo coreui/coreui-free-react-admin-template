@@ -168,6 +168,7 @@ class DefaultAside extends Component {
 
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
+    const graphElements = graphDashboardOptions.getCy() === {} ? [] : graphDashboardOptions.cy.elements();
 
     return (
       <React.Fragment>
@@ -272,7 +273,7 @@ class DefaultAside extends Component {
             <div className="aside-options">
               <div className="clearfix mt-4">
                 <small><b>Drag and Drop</b></small>
-                <AppSwitch checked={!graphDashboardOptions.isDraggable} onChange={this.handleIsDraggableChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
+                <AppSwitch checked={graphDashboardOptions.isDraggable} onChange={this.handleIsDraggableChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
               </div>
               <div>
                 <small className="text-muted">Allows a user to rearrange the dashboard layout.</small>
@@ -289,7 +290,7 @@ class DefaultAside extends Component {
                   <ModalHeader toggle={this.toggleLockEditor}>Lock Editor</ModalHeader>
                   <ModalBody>
                     <LockGraphData
-                      elements={graphDashboardOptions.cy.elements()}
+                      elements={graphElements}
                     />
                   </ModalBody>
                   <ModalFooter>

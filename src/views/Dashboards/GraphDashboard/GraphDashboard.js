@@ -15,6 +15,7 @@ import GraphLastFindings from "./GraphLastFindings";
 // import tippy from 'tippy.js';
 // cytoscape.use( popper );
 import RGL, {WidthProvider} from "react-grid-layout";
+import NotificationSystem from 'react-notification-system';
 
 const ReactGridLayout = WidthProvider(RGL);
 
@@ -29,6 +30,8 @@ class GraphDashboard extends Component {
     super(props);
 
     this.state = {
+      _notificationSystem: null,
+
       last_findings: [],
       findings_count: {},
       findings_percentage: {},
@@ -154,23 +157,7 @@ class GraphDashboard extends Component {
               edges: sEdges
             });
           })
-          .catch(error => {
-            if (error.response) {
-              // The request was made and the server responded with a status code
-              // that falls out of the range of 2xx
-              console.log(error.response.data);
-              console.log(error.response.status);
-              console.log(error.response.headers);
-            } else if (error.request) {
-              // The request was made but no response was received
-              // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-              // http.ClientRequest in node.js
-              console.log(error.request);
-            } else {
-              // Something happened in setting up the request that triggered an Error
-              console.log('Error', error.message);
-            }
-          });
+          .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
       }
     }, graphDashboardOptions.graphArTime);
   }
@@ -315,6 +302,7 @@ class GraphDashboard extends Component {
 
   // lifecycle methods
   async componentDidMount() {
+    this.state._notificationSystem = this.refs.notificationSystem;
     this.setState({ mounted: true });
 
     let graphId = graphDashboardOptions.graphVar = this.props.match.params.graph_id;
@@ -329,23 +317,7 @@ class GraphDashboard extends Component {
         });
         this.startGraphArTimer(graphId, lock);
       })
-      .catch(error => {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
-        }
-      })
+      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
   }
 
   componentWillUnmount() {
@@ -358,6 +330,7 @@ class GraphDashboard extends Component {
 
     return (
       <div className="animated fadeIn">
+        <NotificationSystem ref="notificationSystem" />
         <ReactGridLayout
           isDraggable={graphDashboardOptions.isDraggable}
           autoSize={true}

@@ -1,7 +1,20 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import Particles from 'react-particles-js';
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, FormFeedback, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import {
+  Button,
+  Card,
+  CardBody,
+  CardGroup,
+  Col,
+  Container,
+  Form,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Row
+} from 'reactstrap';
 import auth from '../../../Auth';
 import NotificationSystem from 'react-notification-system';
 import api from '../../../api'
@@ -42,20 +55,7 @@ class Login extends Component {
         auth.authenticate(res.data.token);
         this.setState({ redirectToReferrer: true })
       })
-      .catch(error => {
-        let messageNotification = "An error occured. Please retry later.";
-        if (error.response) {
-          if(error.response.status === 401){
-            messageNotification = "Identification failed."
-          }
-        } else if (error.request) {
-          messageNotification = "An error occured. Make sure you are connected to the internet.";
-        }
-        this.state._notificationSystem.addNotification({
-          message: messageNotification,
-          level: 'error'
-        });
-      });
+      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
   };
 
 

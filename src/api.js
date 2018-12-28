@@ -56,6 +56,26 @@ class Api {
     return axios.post(`${this.url}/locks/create`, {graph_variable: graphVar, relations: relations})
   }
 
+  // Error Utils
+  getFormattedErrorNotification(error) {
+    let messageNotification = "An error occurred. Please retry later.";
+    if (error.response) {
+      if(error.response.status === 401){
+        messageNotification = "Identification failed."
+      }else{
+        if(error.response.status === 403){
+          messageNotification = "Not allowed to access the resource."
+        }
+      }
+    } else if (error.request) {
+      messageNotification = "An error occurred. Make sure you are connected to the internet.";
+    }
+    return({
+      message: messageNotification,
+      level: 'error'
+    });
+  }
+
 }
 
 const api = new Api({ url: 'http://localhost:3000' });

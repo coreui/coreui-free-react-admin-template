@@ -21,8 +21,8 @@ class GraphLastFindings extends Component {
         <div className="header-1">
           <span>Last Findings</span>
         </div>
-        <Table id="last_findings_table">
-          <thead>
+        <Table hover responsive className="table table-outline mb-0 d-none d-sm-table">
+          <thead className="thead-light">
           <tr>
             <th className="prop-1">Type</th>
             <th className="prop-2">Hostname</th>

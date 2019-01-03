@@ -337,12 +337,13 @@ class GraphDashboard extends Component {
         <div className="animated fadeIn">
           <NotificationSystem ref="notificationSystem" />
           <Responsive
-            width={width}
+            //fix undefined bug
+            width={`${width}` === 'undefined' ? this.props.windowWidth - 200 : `${width}`}
             isDraggable={graphDashboardOptions.isDraggable}
             // autoSize={true}
             // isResizable={true}
             rowHeight={this.props.windowHeight/3.7}
-            cols={{lg: 3, xxs: 3}}
+            cols={{lg: 3, md: 3, xxs: 3}}
           >
             <div key="1" data-grid={{ w: 2, h: 2, x: 0, y: 0 }}>
               <GraphData
@@ -350,7 +351,7 @@ class GraphDashboard extends Component {
                 edges={this.state.edges}
               />
             </div>
-            <div key="2" id="cy2" style={ styleCy2 } data-grid={{ w: 1, h: 1, x: 0, y: 2 }}>
+            <div key="2" id="cy2" style={ styleCy2 } data-grid={{ w: 2, h: 1, x: 0, y: 2 }}>
               <GraphLastFindings
                 last_findings={this.state.last_findings}
               />

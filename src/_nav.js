@@ -48,6 +48,26 @@ export default    {
     },
     {
       title: true,
+      name: 'Configuration',
+      wrapper: {
+        element: '',
+        attributes: {},
+      },
+    },
+    {
+      name: 'Configuration',
+      url: '/configuration',
+      icon: 'icon-calculator',
+      children: [
+        {
+          name: 'Follow',
+          url: '/configuration/follow',
+          icon: 'icon-calculator',
+        },
+      ],
+    },
+    {
+      title: true,
       name: 'Settings',
       class: 'mt-auto',
     },
@@ -55,6 +75,11 @@ export default    {
       name: 'Profile',
       url: '/profile',
       icon: 'icon-user',
+    },
+    {
+      name: 'Logout',
+      url: '/logout',
+      icon: 'icon-logout',
     },
   ],
 };

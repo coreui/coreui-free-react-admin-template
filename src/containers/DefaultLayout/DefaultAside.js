@@ -9,7 +9,11 @@ import {
   NavItem,
   NavLink,
   TabContent,
-  TabPane
+  TabPane,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -100,12 +104,12 @@ class DefaultAside extends Component {
     graphDashboardOptions.updateIsDraggable(event.target.checked);
   }
 
-  handleSpacingChange(value) {
-    let opts = {nodeSpacing: value};
+  handleSpacingChange(event) {
+    let opts = {nodeSpacing: event.target.value};
 
     graphDashboardOptions.params.randomize = false;
 
-    for (var i in opts) {
+    for (let i in opts) {
       graphDashboardOptions.params[i] = opts[i];
     }
 
@@ -117,7 +121,7 @@ class DefaultAside extends Component {
 
     graphDashboardOptions.params.randomize = false;
 
-    for (var i in opts) {
+    for (let i in opts) {
       graphDashboardOptions.params[i] = opts[i];
     }
 
@@ -246,7 +250,7 @@ class DefaultAside extends Component {
                      onClick={() => {
                        this.toggle('1');
                      }}>
-              <i className="icon-speech"></i>
+              <i className="icon-speech"/>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -254,7 +258,7 @@ class DefaultAside extends Component {
                      onClick={() => {
                        this.toggle('2');
                      }}>
-              <i className="icon-settings"></i>
+              <i className="icon-settings"/>
             </NavLink>
           </NavItem>
         </Nav>
@@ -277,60 +281,63 @@ class DefaultAside extends Component {
             <h6>Auto Refresh</h6>
             <div className="aside-options">
               <div className="clearfix mt-4">
-                <small><b>Graph</b></small>
-                <AppSwitch checked={graphDashboardOptions.isGraphArOn} onChange={this.handleGraphArChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
+                <small>Graph</small>
+                <AppSwitch checked={graphDashboardOptions.isGraphArOn} onChange={this.handleGraphArChange} className={'float-right'} label color={'primary'} size={'sm'}/>
               </div>
             </div>
 
             <div className="aside-options">
               <div className="clearfix mt-4">
-                <small><b>Charts</b></small>
-                <AppSwitch checked={graphDashboardOptions.isChartsArOn} onChange={this.handleChartsArChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
+                <small>Charts</small>
+                <AppSwitch checked={graphDashboardOptions.isChartsArOn} onChange={this.handleChartsArChange} className={'float-right'} label color={'primary'} size={'sm'}/>
               </div>
             </div>
 
             <hr />
             <h6>Graph Transformation</h6>
             <div className="aside-options">
-              <div className="clearfix mt-3">
-                <small><b>Transformation</b></small>
-                <div className="row">
-                  <div id="transformation" className="col-md-8">
-                    <button onClick={this.handleRandomizeChange} className="btn btn-transformation">
-                      <i className="fa fa-random"/>
-                    </button>
-                    <button onClick={this.handleVerticalRandomizeChange} className="btn btn-transformation">
-                      <i className="fa fa-long-arrow-down"/>
-                    </button>
-                  </div>
-                </div>
+              <div className="clearfix mt-4">
+                <small>Shuffle</small>
+                <button onClick={this.handleVerticalRandomizeChange} className="btn btn-transformation float-right">
+                  <i className="fa fa-long-arrow-down"/>
+                </button>
               </div>
-              <div className="clearfix mt-3">
-                <small><b>Spacing</b></small>
-                <div className="row">
-                  <div id="spacing" className="col-md-8">
-                    <NumericInput onChange={this.handleSpacingChange} min={0} max={400} value={graphDashboardOptions.params.nodeSpacing} step={16} />
-                  </div>
-                </div>
+            </div>
+
+            <div className="aside-options">
+              <div className="clearfix mt-4">
+                <small>Vertical</small>
+                <button onClick={this.handleRandomizeChange} className="btn btn-transformation float-right">
+                  <i className="fa fa-random"/>
+                </button>
               </div>
+            </div>
+
+            <div className="aside-options">
+              <div className="clearfix mt-4">
+                <small>Spacing</small>
+                <Input addon type="range" onChange={this.handleSpacingChange} min={0} max={400} step={16} style={{width: '100%'}} className="btn btn-transformation float-right" />
+              </div>
+            </div>
+            <div className="aside-options">
               <div className="clearfix mt-3">
-                <small><b>Viewport</b></small>
-                <div className="grid">
+                <small>Viewport</small>
+                <div className="grid float-right">
                   <div className="up">
-                    <button onClick={this.moveUp} type="submit" className="glyphicon glyphicon-menu-up btn btn-transformation"/>
+                    <button onClick={this.moveUp} type="submit" className="fa fa-chevron-up btn btn-transformation"/>
                   </div>
                   <div className="left">
-                    <button onClick={this.moveLeft} type="submit" className="glyphicon glyphicon-menu-left btn btn-transformation"/>
+                    <button onClick={this.moveLeft} type="submit" className="fa fa-chevron-left btn btn-transformation"/>
                   </div>
                   <div className="ok">
-                    <button onClick={this.zoomOut} type="submit" className="glyphicon glyphicon-minus btn btn-transformation"/>
-                    <button onClick={this.zoomIn} type="submit" className="glyphicon glyphicon-plus btn btn-transformation"/>
+                    <button onClick={this.zoomOut} type="submit" className="fa fa-minus btn btn-transformation"/>
+                    <button onClick={this.zoomIn} type="submit" className="fa fa-plus btn btn-transformation"/>
                   </div>
                   <div className="right">
-                    <button onClick={this.moveRight} type="submit" className="glyphicon glyphicon-menu-right btn btn-transformation"/>
+                    <button onClick={this.moveRight} type="submit" className="fa fa-chevron-right btn btn-transformation"/>
                   </div>
                   <div className="down">
-                    <button onClick={this.moveDown} type="submit" className="glyphicon glyphicon-menu-down btn btn-transformation"/>
+                    <button onClick={this.moveDown} type="submit" className="fa fa-chevron-down btn btn-transformation"/>
                   </div>
                 </div>
               </div>
@@ -340,8 +347,8 @@ class DefaultAside extends Component {
             <h6>Layout</h6>
             <div className="aside-options">
               <div className="clearfix mt-4">
-                <small><b>Drag and Drop</b></small>
-                <AppSwitch checked={graphDashboardOptions.isDraggable} onChange={this.handleIsDraggableChange} className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
+                <small>Drag and Drop</small>
+                <AppSwitch checked={graphDashboardOptions.isDraggable} onChange={this.handleIsDraggableChange} className={'float-right'} label color={'primary'} size={'sm'}/>
               </div>
               <div>
                 <small className="text-muted">Allows a user to rearrange the dashboard layout.</small>
@@ -352,7 +359,8 @@ class DefaultAside extends Component {
             <h6>Lock</h6>
             <div className="aside-options">
               <div className="clearfix mt-4">
-                <Button onClick={this.toggleLockEditor} className={'btn btn-transformation'}>Open graph lock editor</Button>
+                <small>Editor</small>
+                <Button onClick={this.toggleLockEditor} className={'btn btn-transformation float-right'}><i className={'fa fa-lock'}></i></Button>
                 <Modal isOpen={this.state.lockEditor} toggle={this.toggleLockEditor}
                        className={'modal-lg ' + this.props.className}>
                   <ModalHeader toggle={this.toggleLockEditor}>Lock Editor</ModalHeader>

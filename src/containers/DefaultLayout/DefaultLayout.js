@@ -1,10 +1,9 @@
-import React, { Component, Suspense } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import React, {Component, Suspense} from 'react';
+import {Redirect, Route, Switch} from 'react-router-dom';
+import {Container} from 'reactstrap';
 
 import {
   AppAside,
-  AppBreadcrumb,
   AppFooter,
   AppHeader,
   AppSidebar,
@@ -19,8 +18,6 @@ import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
 import auth from '../../Auth'
-import graphDashboardOptions from "../../views/Dashboards/GraphDashboard/GraphDashboardOptions";
-import NotificationSystem from "react-notification-system";
 
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));

@@ -14,10 +14,13 @@ import GraphLastFindings from "./GraphLastFindings";
 // import popper from 'cytoscape-popper';
 // import tippy from 'tippy.js';
 // cytoscape.use( popper );
-import RGL, {WidthProvider} from "react-grid-layout";
+import {Responsive} from "react-grid-layout";
 import NotificationSystem from 'react-notification-system';
+import '../../../../node_modules/react-grid-layout/css/styles.css';
+import '../../../../node_modules/react-resizable/css/styles.css';
+// const ReactGridLayout = WidthProvider(RGL);
 
-const ReactGridLayout = WidthProvider(RGL);
+import ReactResizeDetector from 'react-resize-detector';
 
 const LAST_DATA_PROCESS_TIME = 60;
 const LAST_FINDINGS_TO_DISPLAY = 9;
@@ -329,14 +332,17 @@ class GraphDashboard extends Component {
     const styleCy2 = this.state.last_findings.length === 0 ? {} : STYLE_REMOVE_LOADER;
 
     return (
-      <div className="animated fadeIn">
-        <NotificationSystem ref="notificationSystem" />
-        <ReactGridLayout
-          isDraggable={graphDashboardOptions.isDraggable}
-          autoSize={true}
-          isResizable={true}
-          rowHeight={this.props.windowHeight/3.7}
-          cols={3}
+      <ReactResizeDetector handleWidth handleHeight>
+        {(width, height) => (
+        <div className="animated fadeIn">
+          <NotificationSystem ref="notificationSystem" />
+          <Responsive
+            width={width}
+            isDraggable={graphDashboardOptions.isDraggable}
+            // autoSize={true}
+            // isResizable={true}
+            rowHeight={this.props.windowHeight/3.7}
+            cols={{lg: 3, xxs: 3}}
           >
             <div key="1" data-grid={{ w: 2, h: 2, x: 0, y: 0 }}>
               <GraphData
@@ -352,21 +358,27 @@ class GraphDashboard extends Component {
             <div key="3" id="cy3" data-grid={{ w: 1, h: 1, x: 3, y: 0 }}>
               <GraphDataProcessed
                 last_edges={this.state.last_edges}
+                width={width*0.320}
+                height={height*0.250}
               />
             </div>
             <div key="4" id="cy4" data-grid={{ w: 1, h: 1, x: 3, y: 1 }}>
               <GraphFindingNumbers
                 findings_count={this.state.findings_count}
+                width={width*0.320}
+                height={height*0.250}
               />
             </div>
             <div key="5" id="cy5" data-grid={{ w: 1, h: 1, x: 3, y: 2 }}>
               <GraphFindingPercentage
                 findings_percentage={this.state.findings_percentage}
+                width={width*0.320}
+                height={height*0.250}
               />
             </div>
-          </ReactGridLayout>
-
-      </div>
+          </Responsive>
+        </div>)}
+      </ReactResizeDetector>
     );
   }
 }

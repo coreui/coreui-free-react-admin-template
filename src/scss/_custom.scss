@@ -1,3 +1,6 @@
+$lightgrey: #3a4149;
+$darkgrey: #23282c;
+
 // Here you can add other styles
 body {
   color: #e4e7ea !important;
@@ -5,18 +8,18 @@ body {
 }
 
 header.app-header.navbar{
-  background-color: #3a4149 !important;
-  border-bottom: 1px solid #23282c !important;
+  background-color: $lightgrey !important;
+  border-bottom: 1px solid $darkgrey !important;
 }
 
 .sidebar {
   color: #f3f4f5 !important;
-  background: #3a4149 !important;
-  border-right: 1px solid #23282c !important;
+  background: $lightgrey !important;
+  border-right: 1px solid $darkgrey !important;
 
   .nav-dropdown{
     .nav-title {
-      background-color: #3a4149 !important;
+      background-color: $lightgrey !important;
       transition: background .3s ease-in-out !important;
     }
 
@@ -30,17 +33,17 @@ header.app-header.navbar{
 
 .aside-menu {
   color: #f3f4f5 !important;
-  background: #3a4149 !important;
-  border-left: 1px solid #23282c !important;
+  background: $lightgrey !important;
+  border-left: 1px solid $darkgrey !important;
 
   .tab-content {
-    border-left: 0px solid #23282c !important;
+    border-left: 0px solid $darkgrey !important;
   }
 
   .nav-tabs .nav-link.active {
     color: #20a8d8 !important;
-    border-right-color: #23282c !important;
-    border-left-color: #23282c !important;
+    border-right-color: $darkgrey !important;
+    border-left-color: $darkgrey !important;
   }
 }
 
@@ -57,11 +60,11 @@ header.app-header.navbar{
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   color: #f3f4f5;
   background-color: #343b41;
-  border-color: #23282c #23282c #23282c;
+  border-color: $darkgrey $darkgrey $darkgrey;
 }
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-  border-color: #23282c #23282c #23282c;
+  border-color: $darkgrey $darkgrey $darkgrey;
 }
 
 .nav-tabs .nav-link {
@@ -79,21 +82,21 @@ header.app-header.navbar{
 }
 
 .tab-content {
-  background: #3a4149 !important;;
-  border: 1px solid #23282c !important;;
+  background: $lightgrey !important;;
+  border: 1px solid $darkgrey !important;;
   border-radius: 0 0 .25rem .25rem !important;;
 }
 
 .aside-menu .nav-tabs {
-  border-color: #23282c !important;
+  border-color: $darkgrey !important;
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #23282c !important;
+  border-bottom: 1px solid $darkgrey !important;
 }
 
 //ol.breadcrumb {
-//  background-color: #3a4149 !important;
+//  background-color: $lightgrey !important;
 //}
 
 .container-fluid {
@@ -118,11 +121,11 @@ header.app-header.navbar{
 
 .card-header {
   background-color: #343b41 !important;
-  border-bottom: 1px solid #23282c !important;
+  border-bottom: 1px solid $darkgrey !important;
 }
 
 .card {
-  background-color: #3a4149;
+  background-color: $lightgrey;
   background-clip: border-box;
   border: 1px solid #24729f;
   border-radius: 0.25rem;
@@ -130,14 +133,14 @@ header.app-header.navbar{
 
 .card-footer {
   background-color: #343b41;
-  border-top: 1px solid #23282c;
+  border-top: 1px solid $darkgrey;
 }
 
 .form-control {
   color: #e4e7ea;
   background-color: #515b65;
   background-clip: padding-box;
-  border: 1px solid #23282c;
+  border: 1px solid $darkgrey;
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -176,32 +179,32 @@ header.app-header.navbar{
   text-align: center;
   white-space: nowrap;
   background-color: #343b41;
-  border: 1px solid #23282c;
+  border: 1px solid $darkgrey;
   border-radius: .25rem;
 }
 
 .app-footer {
   color: #e4e7ea;
-  background: #3a4149;
-  border-top: 1px solid #23282c;
+  background: $lightgrey;
+  border-top: 1px solid $darkgrey;
 }
 
 .modal-content {
-  background-color: #3a4149 !important;
+  background-color: $lightgrey !important;
   background-clip: padding-box !important;
-  border: 1px solid #23282c !important;
+  border: 1px solid $darkgrey !important;
   border-radius: .3rem !important;
   outline: 0 !important;
 }
 
 .modal-header {
-  border-bottom: 1px solid #23282c !important;
+  border-bottom: 1px solid $darkgrey !important;
   border-top-left-radius: .3rem !important;
   border-top-right-radius: .3rem !important;
 }
 
 .modal-footer {
-  border-top: 1px solid #23282c !important;
+  border-top: 1px solid $darkgrey !important;
 }
 
 

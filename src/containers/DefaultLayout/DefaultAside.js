@@ -1,5 +1,16 @@
 import React, {Component} from 'react';
-import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Nav,
+  NavItem,
+  NavLink,
+  TabContent,
+  TabPane
+} from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {AppSwitch} from '@coreui/react'
@@ -7,9 +18,9 @@ import NumericInput from 'react-numeric-input';
 import {graphDashboardOptions} from "../../views/Dashboards/GraphDashboard/GraphDashboardOptions";
 import {observer} from "mobx-react";
 import './defaultAside.scss'
-import GraphData from "../../views/Dashboards/GraphDashboard/GraphData";
 import LockGraphData from "../../views/Dashboards/GraphDashboard/LockGraphData";
 import api from "../../api";
+import '../../../node_modules/progress-tracker/app/styles/progress-tracker.scss'
 
 const propTypes = {
   children: PropTypes.node,
@@ -25,6 +36,8 @@ class DefaultAside extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       activeTab: '2',
+
+      steps: 1,
       lockEditor: false,
     };
 
@@ -41,37 +54,37 @@ class DefaultAside extends Component {
   }
 
   toggleLockEditor() {
+    //if process is over, let's go back to step 1
+    let step = this.state.steps;
+    if (this.state.steps === 3 && !this.state.lockEditor){
+      step = 1
+    }
     this.setState({
       lockEditor: !this.state.lockEditor,
+      steps: step,
     });
   }
 
   handleLockSave() {
-    if (graphDashboardOptions.relationsInLock.length > 0) {
-      console.log(JSON.stringify(graphDashboardOptions.relationsInLock));
-      api.createOrUpdateLock(graphDashboardOptions.graphVar, JSON.stringify(graphDashboardOptions.relationsInLock))
-        .then(res => {
-          this.setState({
-            lockEditor: !this.state.lockEditor,
-          });
-        })
-        .catch(error => {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
-          }
-        })
+    if (this.state.steps === 1) {
+      if (graphDashboardOptions.relationsInLock.length > 0) {
+        this.setState({
+          steps: 2
+        });
+      }
+    } else {
+      if (this.state.steps === 2) {
+        if (graphDashboardOptions.relationsInLock.length > 0) {
+          console.log(JSON.stringify(graphDashboardOptions.relationsInLock));
+          api.createOrUpdateLock(graphDashboardOptions.graphVar, JSON.stringify(graphDashboardOptions.relationsInLock))
+            .then(res => {
+              this.setState({
+                steps: 3
+              });
+            })
+            .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+        }
+      }
     }
   }
 
@@ -92,7 +105,7 @@ class DefaultAside extends Component {
 
     graphDashboardOptions.params.randomize = false;
 
-    for( var i in opts ){
+    for (var i in opts) {
       graphDashboardOptions.params[i] = opts[i];
     }
 
@@ -104,7 +117,7 @@ class DefaultAside extends Component {
 
     graphDashboardOptions.params.randomize = false;
 
-    for( var i in opts ){
+    for (var i in opts) {
       graphDashboardOptions.params[i] = opts[i];
     }
 
@@ -113,12 +126,12 @@ class DefaultAside extends Component {
 
   handleVerticalRandomizeChange() {
     let opts = {
-      flow: { axis: 'y', minSeparation: 30 }
+      flow: {axis: 'y', minSeparation: 30}
     };
 
     graphDashboardOptions.params.randomize = false;
 
-    for( var i in opts ){
+    for (var i in opts) {
       graphDashboardOptions.params[i] = opts[i];
     }
 
@@ -163,12 +176,67 @@ class DefaultAside extends Component {
     graphDashboardOptions.cy.center()
   }
 
-
   render() {
+    let modalStep = "";
+    if (this.state.steps === 1) {
+      modalStep = (
+        <LockGraphData
+          elements={graphDashboardOptions.cy.elements()}
+        />
+      )
+    } else {
+      if (this.state.steps === 2) {
+        modalStep = (
+          <div className="card-body">
+            <medium>
+              The notification center is offering you the possibility of being notified whenever the data goes beyond the lock path. A report will be sent to you at the specified email. Close this window if you do not want to get notified by email. <br/><br/>
+            </medium>
+            <div className="row">
+              <div className="col-sm-12">
+                <div className="form-group">
+                  <label htmlFor="reportemail">Email</label>
+                  <input className="form-control" id="reportemail" type="text" placeholder="Enter your email"/>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="form-group col-sm-12">
+                <label htmlFor="reporttype">Report Type</label>
+                <select className="form-control" id="reporttype">
+                  <option value="">Select</option>
+                  <option value="1">GDPR</option>
+                  <option value="2">PCI-DSS</option>
+                  <option value="3">Generic</option>
+                </select>
+              </div>
+              <div className="form-group col-sm-12">
+                <label htmlFor="reportfrequency">Frequency</label>
+                <select className="form-control" id="reportfrequency">
+                  <option value="">Select</option>
+                  <option value="1">Daily</option>
+                  <option value="2">Weekly</option>
+                  <option value="3">Monthly</option>
+                </select>
+              </div>
+            </div>
+          </div>)
+      } else {
+        modalStep = (
+          <div>
+            <svg id="checkmarkreport" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+              <circle className="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1"
+                      cy="65.1" r="62.1"/>
+              <polyline className="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+            </svg>
+            <p className="success">Your settings have been saved. <br /> You can now close this popup.</p>
+          </div>);
+      }
+    }
 
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
-    const graphElements = graphDashboardOptions.getCy() === {} ? [] : graphDashboardOptions.cy.elements();
 
     return (
       <React.Fragment>
@@ -229,10 +297,10 @@ class DefaultAside extends Component {
                 <div className="row">
                   <div id="transformation" className="col-md-8">
                     <button onClick={this.handleRandomizeChange} className="btn btn-transformation">
-                      <i class="fa fa-random"></i>
+                      <i className="fa fa-random"/>
                     </button>
                     <button onClick={this.handleVerticalRandomizeChange} className="btn btn-transformation">
-                      <i className="fa fa-long-arrow-down"></i>
+                      <i className="fa fa-long-arrow-down"/>
                     </button>
                   </div>
                 </div>
@@ -288,14 +356,18 @@ class DefaultAside extends Component {
                 <Modal isOpen={this.state.lockEditor} toggle={this.toggleLockEditor}
                        className={'modal-lg ' + this.props.className}>
                   <ModalHeader toggle={this.toggleLockEditor}>Lock Editor</ModalHeader>
+                  <ul className="progressbar">
+                    <li className={this.state.steps === 1 ? 'active' : ''}>Lock the path</li>
+                    <li className={this.state.steps === 2 ? 'active' : ''}>Notification center</li>
+                    <li className={this.state.steps === 3 ? 'active' : ''}>Confirmation</li>
+                  </ul>
                   <ModalBody>
-                    <LockGraphData
-                      elements={graphElements}
-                    />
+                    {modalStep}
                   </ModalBody>
                   <ModalFooter>
-                    <Button color="primary" onClick={this.handleLockSave}>Save Lock</Button>{' '}
-                    <Button color="secondary" onClick={this.toggleLockEditor}>Cancel</Button>
+                    <Button color="secondary" onClick={this.toggleLockEditor}>{this.state.steps === 3 ? 'Close' : 'Cancel'}</Button>{' '}
+                    <Button color="primary" onClick={() => {let steps = this.state.steps; if (steps > 1) { this.setState({steps: steps-1}) }}} disabled={this.state.steps === 1}>Previous</Button>{' '}
+                    <Button color="primary" onClick={this.handleLockSave} disabled={this.state.steps === 3}>Next</Button>
                   </ModalFooter>
                 </Modal>
               </div>

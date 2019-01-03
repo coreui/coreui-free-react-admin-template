@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import 'react-cytoscape';
 import {Chart} from "react-google-charts";
-import windowSize from 'react-window-size';
 import './graph.scss'
 
 
 class GraphDataProcessed extends Component {
-  color0="#21295C";
-  color1="#1B3B6F";
   color2="#065A82";
   color3="#1C7293";
   color4="#9EB3C2";
@@ -40,8 +37,8 @@ class GraphDataProcessed extends Component {
           color: 'transparent'
         }
       },
-      width: this.props.windowWidth*0.280,
-      height: this.props.windowHeight*0.235,
+      width: this.props.width,
+      height: this.props.height,
       chartArea: {'width': '90%', 'height': '80%'},
       titlePosition: 'in',
       axisTitlesPosition: 'in',
@@ -68,4 +65,4 @@ class GraphDataProcessed extends Component {
   }
 }
 
-export default windowSize(GraphDataProcessed);
+export default GraphDataProcessed;

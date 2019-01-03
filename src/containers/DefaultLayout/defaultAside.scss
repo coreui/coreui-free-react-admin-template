@@ -1,3 +1,7 @@
+$lightgrey: #3a4149;
+$darkgrey: #23282c;
+$lightblue: #286090;
+
 .grid {
   display: inline-flex;           /* 1 */
   flex-flow: row wrap;
@@ -33,16 +37,16 @@
 }
 .btn-transformation:focus, .btn-transformation.focus {
   color: #fff;
-  background-color: #286090;
+  background-color: $lightblue;
   border-color: #122b40; }
 .btn-transformation:hover {
   color: #fff;
-  background-color: #286090;
+  background-color: $lightblue;
   border-color: rgb(68, 77, 88); }
 .btn-transformation:active, .btn-transformation.active,
 .open > .btn-transformation.dropdown-toggle {
   color: #fff;
-  background-color: #286090;
+  background-color: $lightblue;
   border-color: rgb(68, 77, 88); }
 .btn-transformation:active:hover, .btn-transformation:active:focus, .btn-transformation:active.focus, .btn-transformation.active:hover, .btn-transformation.active:focus, .btn-transformation.active.focus,
 .open > .btn-transformation.dropdown-toggle:hover,
@@ -359,4 +363,139 @@ fieldset[disabled] .btn-transformation.focus {
   .modal-lg {
     max-width: 1200px;
   }
+}
+
+
+//// checkmarks
+#checkmarkreport {
+  width: 75px;
+  display: block;
+  margin: 40px auto 0;
+}
+
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  &.circle {
+    -webkit-animation: dash .9s ease-in-out;
+    animation: dash .9s ease-in-out;
+  }
+  &.line {
+    stroke-dashoffset: 1000;
+    -webkit-animation: dash .9s .35s ease-in-out forwards;
+    animation: dash .9s .35s ease-in-out forwards;
+  }
+  &.check {
+    stroke-dashoffset: -100;
+    -webkit-animation: dash-check .9s .35s ease-in-out forwards;
+    animation: dash-check .9s .35s ease-in-out forwards;
+  }
+}
+
+p {
+  text-align: center;
+  margin: 20px 0 60px;
+  font-size: 1.25em;
+  &.success {
+    color: #73AF55;
+  }
+  &.error {
+    color: #D06079;
+  }
+}
+
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+//progress bar lock editor
+
+.progressbar {
+  text-align:center;
+  counter-reset: step;
+}
+
+.progressbar li {
+  margin-top: 20px;
+  list-style-type: none;
+  width: 25%;
+  //float: left;
+  display:inline-block;
+  font-size: 12px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  color: #7d7d7d;
+  -webkit-filter: blur(0.2px);
+}
+.progressbar li:before {
+  width: 40px;
+  height: 40px;
+  content: counter(step);
+  counter-increment: step;
+  line-height: 40px;
+  border: 2px solid #7d7d7d;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: $lightgrey;
+  -webkit-filter: blur(0.2px);
+}
+.progressbar li:after {
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: #7d7d7d;
+  top: 15px;
+  left: -43%;
+  z-index: -1;
+}
+.progressbar li:first-child:after {
+  content: none;
+}
+.progressbar li.active {
+  color: $lightblue !important;
+  font-weight: bold;
+}
+.progressbar li.active:before {
+  border: 4px solid $lightblue;
+  line-height: 33px;
+}
+.progressbar li.active + li:after {
+  background-color: #7d7d7d !important;
 }

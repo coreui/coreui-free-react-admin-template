@@ -38,6 +38,8 @@ class DefaultLayout extends Component {
           auth.signout();
           this.props.history.push('/login')
         });
+    } else {
+      this.props.history.push('/login')
     }
   }
 

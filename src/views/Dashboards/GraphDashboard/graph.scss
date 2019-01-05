@@ -232,3 +232,19 @@ $lightgrey: #3a4149;
 }
 
 
+// react-table lib
+.ReactTable .rt-tr {
+  padding: 8px !important;
+}
+
+.ReactTable .-pagination input, .ReactTable .-pagination select {
+  border: 1px solid #3a4149 !important;
+  background: #3b4149 !important;
+  padding: 5px 7px !important;
+}
+
+.ReactTable .rt-thead .rt-tr {
+  text-align: left !important;
+}
+
+

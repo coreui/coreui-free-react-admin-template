@@ -9,6 +9,8 @@ import {observer} from "mobx-react";
 
 class GraphData extends Component {
   color4="#9EB3C2";
+  alertColor="#D6A157";
+
 
   render() {
     const stylesheet = [

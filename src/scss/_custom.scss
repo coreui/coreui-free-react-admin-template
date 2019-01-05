@@ -127,7 +127,8 @@ header.app-header.navbar{
 .card {
   background-color: $lightgrey;
   background-clip: border-box;
-  border: 1px solid #24729f;
+  border: 1px solid $darkgrey;
+  //border: 1px solid #24729f;
   border-radius: 0.25rem;
 }
 

@@ -36,12 +36,12 @@ export default    {
       children: [
         {
           name: 'Agents',
-          url: '/metrics/agents',
+          url: '/metrics/agent',
           icon: 'icon-calculator',
         },
         {
           name: 'Findings',
-          url: '/metrics/findings',
+          url: '/metrics/finding',
           icon: 'icon-calculator',
         },
       ],
@@ -55,16 +55,9 @@ export default    {
       },
     },
     {
-      name: 'Configuration',
-      url: '/configuration',
-      icon: 'icon-calculator',
-      children: [
-        {
-          name: 'Follow',
-          url: '/configuration/follow',
-          icon: 'icon-calculator',
-        },
-      ],
+      name: 'Follow',
+      url: '/configuration/follow',
+      icon: 'icon-follow',
     },
     {
       title: true,
@@ -73,7 +66,7 @@ export default    {
     },
     {
       name: 'Profile',
-      url: '/profile',
+      url: '/settings/profile',
       icon: 'icon-user',
     },
     {

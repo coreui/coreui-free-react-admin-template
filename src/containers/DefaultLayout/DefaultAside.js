@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
   Button,
+  Input,
   Modal,
   ModalBody,
   ModalFooter,
@@ -9,16 +10,11 @@ import {
   NavItem,
   NavLink,
   TabContent,
-  TabPane,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText
+  TabPane
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {AppSwitch} from '@coreui/react'
-import NumericInput from 'react-numeric-input';
 import {graphDashboardOptions} from "../../views/Dashboards/GraphDashboard/GraphDashboardOptions";
 import {observer} from "mobx-react";
 import './defaultAside.scss'

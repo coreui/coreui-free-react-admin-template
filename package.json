@@ -58,6 +58,7 @@
     "react-router-dom": "^4.3.1",
     "react-sizeme": "^2.5.2",
     "react-stepzilla": "^4.8.0",
+    "react-table": "^6.8.6",
     "react-test-renderer": "^16.6.3",
     "react-window-size": "^1.2.2",
     "reactstrap": "^6.5.0",

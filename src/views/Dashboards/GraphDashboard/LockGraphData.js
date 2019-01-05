@@ -14,6 +14,8 @@ class LockGraphData extends Component {
 
     this.state = {
       cy: '',
+
+      nodesInLock: []
     };
 
     this.highlightNodeAndPathToAndFromThisNode = this.highlightNodeAndPathToAndFromThisNode.bind(this);
@@ -31,9 +33,12 @@ class LockGraphData extends Component {
         nodeData.id === elm.data('target') &&
         graphVar === elm.data('variable'))
       {
+        let relation = {source: elm.data('source'), target: elm.data('target'), variable: elm.data('variable')};
         if (isHighlight) {
+          graphDashboardOptions.relationsInLock.push(relation);
           elm.addClass(cssSelector);
         }else{
+          graphDashboardOptions.relationsInLock.splice(graphDashboardOptions.relationsInLock.indexOf(relation), 1);
           elm.removeClass(cssSelector);
         }
       }
@@ -42,15 +47,15 @@ class LockGraphData extends Component {
 
   componentDidMount() {
     let highlight = this.highlightNodeAndPathToAndFromThisNode;
+    let state = this.state;
     this.state.cy.nodes().forEach(function(n){
       n.on('click', function () {
         //exists
-        if (graphDashboardOptions.relationsInLock.indexOf(n.data().id) === -1){
-          graphDashboardOptions.relationsInLock.push(n.data().id);
-          console.log(JSON.stringify(graphDashboardOptions.relationsInLock));
+        if (state.nodesInLock.indexOf(n.data().id) === -1){
+          state.nodesInLock.push(n.data().id);
           highlight(n, graphDashboardOptions.graphVar, 'highlighted', true);
         }else{
-          graphDashboardOptions.relationsInLock.splice(graphDashboardOptions.relationsInLock.indexOf(n.data().id), 1);
+          state.nodesInLock.splice(graphDashboardOptions.relationsInLock.indexOf(n.data().id), 1);
           highlight(n, graphDashboardOptions.graphVar, 'highlighted', false);
         }
       });

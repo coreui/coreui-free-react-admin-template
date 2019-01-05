@@ -1,0 +1,75 @@
+/***
+Input icons
+***/
+
+.input-icon {
+  position: relative;
+  left: 0;
+
+  > i {
+    color: #ccc;
+    display: block;
+    position: absolute;
+    margin: 11px 2px 4px 10px;
+    z-index: 3;
+    width: 16px;
+    font-size: 16px;
+    text-align: center;
+    left: 0;
+  }
+
+  &.right {
+    left: auto;
+    right: 0;
+
+    > .form-control {
+      padding-right: 33px;
+      padding-left: 12px;
+    }
+
+    > i {
+      left: auto;
+      right: 8px;
+      float: right;
+    }
+  }
+
+  &.input-icon-lg {
+    > i {
+      margin-top: 16px;
+    }
+  }
+
+  &.input-icon-sm {
+    > i {
+      margin-top: 8px;
+      font-size: 13px;
+    }
+  }
+}
+
+// react-table lib
+.ReactTable .rt-tr {
+  padding: 8px !important;
+}
+
+.ReactTable .-pagination input, .ReactTable .-pagination select {
+  border: 1px solid #3a4149 !important;
+  background: #3b4149 !important;
+  padding: 5px 7px !important;
+}
+
+.ReactTable .rt-thead .rt-tr {
+  text-align: left !important;
+}
+
+// online status
+.host_status_up {
+  font-weight: 800; color: #6BD873
+}
+
+.host_status_down {
+  font-weight: 800; color: #d12610
+}
+
+

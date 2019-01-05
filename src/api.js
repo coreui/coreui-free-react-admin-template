@@ -56,6 +56,29 @@ class Api {
     return axios.post(`${this.url}/locks/create`, {graph_variable: graphVar, relations: relations})
   }
 
+  // profile controller
+  getProfile(){
+    return axios.get(`${this.url}/profile`, {})
+  }
+
+  updateProfile(username, occupation){
+    return axios.post(`${this.url}/profile`, {username: username, occupation: occupation})
+  }
+
+  updatePassword(password, npassword){
+    return axios.post(`${this.url}/profile/password`, {password: password, npassword: npassword})
+  }
+
+  deleteProfile(username){
+    return axios.delete(`${this.url}/profile/${username}`)
+  }
+
+  // agent controller
+  getAgents(page, max){
+    return axios.get(`${this.url}/agents/list/?page=${page}&max=${max}`, {})
+  }
+
+
   // Error Utils
   getFormattedErrorNotification(error) {
     let messageNotification = "An error occurred. Please retry later.";
@@ -64,11 +87,11 @@ class Api {
         messageNotification = "Identification failed."
       }else{
         if(error.response.status === 403){
-          messageNotification = "Not allowed to access the resource."
+          messageNotification = "This action is not allowed."
         }
       }
     } else if (error.request) {
-      messageNotification = "An error occurred. Make sure you are connected to the internet.";
+      messageNotification = "An error occurred. Make sure you are connected to internet.";
     }
     return({
       message: messageNotification,

@@ -18,7 +18,6 @@ import {Responsive} from "react-grid-layout";
 import NotificationSystem from 'react-notification-system';
 import '../../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../../node_modules/react-resizable/css/styles.css';
-// const ReactGridLayout = WidthProvider(RGL);
 
 import ReactResizeDetector from 'react-resize-detector';
 
@@ -56,10 +55,10 @@ class GraphDashboard extends Component {
           .then(res => {
             let cy = graphDashboardOptions.cy;
             let nodes = res.data.message.nodes;
-            let sEdges = res.data.message.edges;
+            let sEdges = this.singleEdges(res.data.message.edges);
 
             // format
-            var newElementFound = false;
+            let newElementFound = false;
             cy.batch(function () {
               nodes.some(function (elm) {
                 var found = false;
@@ -75,7 +74,7 @@ class GraphDashboard extends Component {
                 }
               });
               sEdges.some(function (elm) {
-                var found = false;
+                let found = false;
                 cy.edges().forEach(function (n) {
                   if (n.data('source') === elm.data.source &&
                     n.data('target') === elm.data.target &&
@@ -97,15 +96,22 @@ class GraphDashboard extends Component {
               });
             });
 
-            var lock_relations;
-            var elements = cy.elements();
-            var i = 0;
-            var displayLock = function(){
+            let lock_relations;
+            let elements = cy.elements();
+            let i = 0;
+            let displayLock = function(){
               if( i < elements.length ){
                 lock_relations.some(function(elm){
-                  if(elements[i].data("target") === elm &&
-                    elements[i].data("variable") === graphDashboardOptions.graphVar) {
+                  if(elements[i].data("source") !== 'undefined' &&
+                    elements[i].data("source") === elm.source &&
+                    elements[i].data("target") === elm.target &&
+                    elements[i].data("variable") === elm.variable) {
                     elements[i].addClass('highlighted');
+                    return true
+                  }else{
+                    if(elements[i].data("source") === 'undefined') {
+                      return true
+                    }
                   }
                 });
 
@@ -113,7 +119,6 @@ class GraphDashboard extends Component {
                 setTimeout(displayLock, 500);
               }
             };
-
             if (lock.length > 0 ){
               // map
               lock_relations= JSON.parse(lock[0].relations);
@@ -152,17 +157,46 @@ class GraphDashboard extends Component {
             if (newElementFound) {
               cy.layout(graphDashboardOptions.params).stop();
               cy.layout(graphDashboardOptions.params).run()
-            }
 
-            // update dashboard state
-            this.setState({
-              nodes: nodes,
-              edges: sEdges
-            });
+              // update dashboard state
+              this.setState({
+                nodes: nodes,
+                edges: sEdges
+              });
+            }
           })
           .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
       }
     }, graphDashboardOptions.graphArTime);
+  }
+
+  singleEdges(edges){
+    let sEdges = [];
+    if (edges.length === 0){
+      return sEdges;
+    }
+
+    sEdges.push({
+      data: edges[0].data
+    });
+
+    edges.some(function(elm) {
+      let found = false;
+      sEdges.some(function (se) {
+        if (elm.data.source === se.data.source &&
+          elm.data.target === se.data.target &&
+          elm.data.variable === se.data.variable)  {
+          found = true;
+          return;
+        }
+      });
+      if(!found){
+        sEdges.push({
+          data: elm.data
+        });
+      }
+    });
+    return sEdges
   }
 
   stopGraphArTimer() {
@@ -343,7 +377,7 @@ class GraphDashboard extends Component {
             // autoSize={true}
             // isResizable={true}
             rowHeight={this.props.windowHeight/3.7}
-            cols={{lg: 3, md: 3, xxs: 3}}
+            cols={{lg: 3, md: 3, sm: 3, xxs: 3}}
           >
             <div key="1" data-grid={{ w: 2, h: 2, x: 0, y: 0 }}>
               <GraphData

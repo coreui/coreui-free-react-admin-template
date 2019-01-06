@@ -16,18 +16,31 @@ class Generate extends Component {
       _notificationSystem: null,
 
       graphs: [],
-      per_page: PER_PAGE
     };
 
     this.onChange = this.onChange.bind(this);
+    this.getListAgents = this.getListAgents.bind(this);
   }
 
   onChange(event) {
-    api.getGraphByVariable(event.target.value)
+    if (event.target.value === ''){
+      this.getListAgents()
+    }else{
+      api.getGraphByVariable(event.target.value, true)
+        .then(res => {
+          this.setState({
+            graphs: res.data.message.aggs,
+          });
+        })
+        .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+    }
+  }
+
+  getListAgents() {
+    api.getListGraph(1, PER_PAGE)
       .then(res => {
         this.setState({
-          graphs: res.data.message.graph,
-          perPage: res.data.message.graphs.length < 10 ? res.data.message.graphs.length : PER_PAGE
+          graphs: res.data.message.graphs,
         });
       })
       .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
@@ -38,21 +51,11 @@ class Generate extends Component {
   }
 
   componentWillMount() {
-    this.state._notificationSystem = this.refs.notificationSystem;
-
-    api.getListGraph(1, PER_PAGE)
-      .then(res => {
-        this.setState({
-          graphs: res.data.message.graphs,
-          perPage: res.data.message.graphs.length < 10 ? res.data.message.graphs.length : PER_PAGE
-        });
-      })
-      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+    this.getListAgents();
   }
 
   render() {
     const data = this.state.graphs;
-    const perPage = this.state.perPage;
 
     return (
       <div className="animated fadeIn padding-30">
@@ -93,7 +96,7 @@ class Generate extends Component {
                       ]
                     }
                   ]}
-                  defaultPageSize={5}
+                  defaultPageSize={PER_PAGE}
                   className="-striped -highlight"
                 />
               </CardBody>

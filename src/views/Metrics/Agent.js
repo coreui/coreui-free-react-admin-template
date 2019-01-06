@@ -29,8 +29,15 @@ class Agent extends Component {
     this.setState({[event.target.name]: event.target.value});
   };
 
-  handleFilterHostname() {
-
+  handleFilterHostname(event) {
+    api.getAgents(event.target.value, this.state.page, MAX)
+      .then(res => {
+        let agents = res.data.message.agents;
+        this.setState({
+          agents: agents,
+        });
+      })
+      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
   }
 
   componentDidMount() {
@@ -38,7 +45,8 @@ class Agent extends Component {
   }
 
   componentWillMount() {
-    api.getAgents(this.state.page, MAX)
+    let query = this.props.match.params.q === undefined ? '' : this.props.match.params.q;
+    api.getAgents(query, this.state.page, MAX)
       .then(res => {
         let agents = res.data.message.agents;
         this.setState({
@@ -98,7 +106,7 @@ class Agent extends Component {
                             Header: "Updated",
                             id: "updated_at",
                             accessor: d => d.updated_at,
-                            width: Math.round(width * 0.3)
+                            width: Math.round(width * 0.2)
                           },
                           {
                             Header: "Features",

@@ -43,8 +43,12 @@ class Api {
     return axios.get(`${this.url}/graphs/list/?page=${page}&max=${max}`, {})
   }
 
-  getGraphByVariable(graphVar) {
-    return axios.get(`${this.url}/graphs/variable/${graphVar}`, {})
+  getGraphByVariable(graphVar, aggs) {
+    if (aggs){
+      return axios.get(`${this.url}/graphs/variable/${graphVar}?aggs=${aggs}`, {})
+    } else {
+      return axios.get(`${this.url}/graphs/variable/${graphVar}`, {})
+    }
   }
 
   // lock controller
@@ -74,8 +78,12 @@ class Api {
   }
 
   // agent controller
-  getAgents(page, max){
-    return axios.get(`${this.url}/agents/list/?page=${page}&max=${max}`, {})
+  getAgents(query, page, max){
+    if (query !== ''){
+      return axios.get(`${this.url}/agents/list/?q=${query}&page=${page}&max=${max}`, {})
+    } else{
+      return axios.get(`${this.url}/agents/list/?page=${page}&max=${max}`, {})
+    }
   }
 
 

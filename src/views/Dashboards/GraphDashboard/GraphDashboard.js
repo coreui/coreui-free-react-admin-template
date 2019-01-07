@@ -18,6 +18,7 @@ import {Responsive} from "react-grid-layout";
 import NotificationSystem from 'react-notification-system';
 import '../../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../../node_modules/react-resizable/css/styles.css';
+import {AppAsideToggler} from "@coreui/react";
 
 import ReactResizeDetector from 'react-resize-detector';
 
@@ -367,6 +368,18 @@ class GraphDashboard extends Component {
 
     return (
       <ReactResizeDetector handleWidth handleHeight>
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">Home</li>
+          <li className="breadcrumb-item">
+            <a href="#">Admin</a>
+          </li>
+          <li className="breadcrumb-menu d-md-down-none">
+            <div className="btn-group" role="group" aria-label="Button group">
+              <AppAsideToggler className="d-md-down-none" />
+              <AppAsideToggler className="d-lg-none" mobile />
+            </div>
+          </li>
+        </ol>
         {(width, height) => (
         <div className="animated fadeIn">
           <NotificationSystem ref="notificationSystem" />

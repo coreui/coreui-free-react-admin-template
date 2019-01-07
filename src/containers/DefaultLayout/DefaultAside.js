@@ -199,7 +199,6 @@ class DefaultAside extends Component {
                 </div>
               </div>
             </div>
-
             <div className="row">
               <div className="form-group col-sm-12">
                 <label htmlFor="reporttype">Report Type</label>
@@ -356,7 +355,7 @@ class DefaultAside extends Component {
             <div className="aside-options">
               <div className="clearfix mt-4">
                 <small>Editor</small>
-                <Button onClick={this.toggleLockEditor} className={'btn btn-transformation float-right'}><i className={'fa fa-lock'}></i></Button>
+                <Button onClick={this.toggleLockEditor} className={'btn btn-transformation float-right'}><i className={'fa fa-lock'}/></Button>
                 <Modal isOpen={this.state.lockEditor} toggle={this.toggleLockEditor}
                        className={'modal-lg ' + this.props.className}>
                   <ModalHeader toggle={this.toggleLockEditor}>Lock Editor</ModalHeader>

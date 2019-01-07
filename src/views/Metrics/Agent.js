@@ -21,13 +21,8 @@ class Agent extends Component {
       page: 1,
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleFilterHostname = this.handleFilterHostname.bind(this);
   }
-
-  handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
-  };
 
   handleFilterHostname(event) {
     api.getAgents(event.target.value, this.state.page, MAX)

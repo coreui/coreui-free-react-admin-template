@@ -57,7 +57,7 @@ export default    {
     {
       name: 'Follow',
       url: '/configuration/follow',
-      icon: 'icon-follow',
+      icon: 'icon-arrow-right-circle',
     },
     {
       title: true,

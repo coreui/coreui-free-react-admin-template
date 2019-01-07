@@ -78,12 +78,25 @@ class Api {
   }
 
   // agent controller
-  getAgents(query, page, max){
-    if (query !== ''){
+  getAgents(query, page, max) {
+    if (query !== '') {
       return axios.get(`${this.url}/agents/list/?q=${query}&page=${page}&max=${max}`, {})
-    } else{
+    } else {
       return axios.get(`${this.url}/agents/list/?page=${page}&max=${max}`, {})
     }
+  }
+
+  // data sensors controller
+  getDataSensors(query, page, max){
+    if (query !== ''){
+      return axios.get(`${this.url}/data_sensors/list/?q=${query}&page=${page}&max=${max}`, {})
+    } else{
+      return axios.get(`${this.url}/data_sensors/list/?page=${page}&max=${max}`, {})
+    }
+  }
+
+  createOrUpdateDataSensor(id, name, type, rule, label, isActivated){
+    return axios.post(`${this.url}/data_sensors/${id}`, {name: name, type: type, rule: rule, label: label, is_activated: isActivated})
   }
 
 

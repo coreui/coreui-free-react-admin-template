@@ -40,6 +40,7 @@ const User = React.lazy(() => import('./views/Users/User'));
 const LogOut = React.lazy(() => import('./views/LogOut'));
 const Profile = React.lazy(() => import('./views/Settings/Profile'));
 const Agent = React.lazy(() => import('./views/Metrics/Agent'));
+const Follow = React.lazy(() => import('./views/Configuration/FollowConfiguration'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -86,8 +87,9 @@ const routes = [
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   { path: '/logout', exact: true, name: 'Logout', component: LogOut },
-  { path: '/settings/profile', exact: true, name: 'Profile', component: Profile },
-  { path: '/metrics/agent', exact: true, name: 'Agent', component: Agent },
+  { path: '/settings/profile', exact: true, name: 'Profile Settings', component: Profile },
+  { path: '/metrics/agent', exact: true, name: 'Agents Metrics', component: Agent },
+  { path: '/configuration/follow', exact: true, name: 'Follow Configuration', component: Follow },
 ];
 
 export default routes;

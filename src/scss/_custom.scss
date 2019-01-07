@@ -95,9 +95,52 @@ header.app-header.navbar{
   border-bottom: 1px solid $darkgrey !important;
 }
 
-//ol.breadcrumb {
-//  background-color: $lightgrey !important;
-//}
+.breadcrumb {
+  border-bottom: 1px solid #23282c !important;
+  padding: 0.6rem 1.5rem;
+  margin-bottom: 0 !important;
+}
+
+.breadcrumb-menu .btn-outline-primary{
+  padding: 0.1rem 0.7rem;
+  color: #20a8d8;
+  vertical-align: top;
+  background-color: transparent;
+  border: 1px solid #20a8d8;
+
+  &:hover{
+    background-color: #20a8d8;
+    color: #fff;
+  }
+}
+
+.breadcrumb-menu .btn-outline-danger{
+  padding: 0 0.7rem;
+  color: #f86c6b;
+  vertical-align: top;
+  background-color: transparent;
+  border: 1px solid #f86c6b;
+
+  &:hover{
+    background-color: #f63c3a;
+    border-color: #f5302e;
+  }
+}
+
+.breadcrumb-menu .btn-group {
+  .navbar-toggler{
+    padding: 0;
+  }
+  .navbar-toggler-icon {
+    height: 20px;
+    padding: 0;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+}
+
+ol.breadcrumb {
+  background-color: $lightgrey !important;
+}
 
 .container-fluid {
   position: relative;

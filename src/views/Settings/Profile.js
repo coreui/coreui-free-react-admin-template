@@ -54,9 +54,11 @@ class Profile extends Component {
     this.setState({isValidOccupation: true, isValidUsername: true});
 
     let canSubmit = true;
-    if(this.state.occupation !== "" && this.state.occupation.length < 2){
-      this.setState({isValidOccupation: false});
-      canSubmit=false;
+    if(this.state.occupation !== '') {
+      if (this.state.occupation.length < 2) {
+        this.setState({isValidOccupation: false});
+        canSubmit = false;
+      }
     }
 
     if(this.state.username.length < 2){

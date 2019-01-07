@@ -63,7 +63,8 @@
     "react-window-size": "^1.2.2",
     "reactstrap": "^6.5.0",
     "simple-line-icons": "^2.4.1",
-    "tippy.js": "^2.5.4"
+    "tippy.js": "^2.5.4",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "react-scripts": "^2.1.1"

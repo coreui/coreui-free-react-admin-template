@@ -99,6 +99,10 @@ class Api {
     return axios.post(`${this.url}/data_sensors/${id}`, {name: name, type: type, rule: rule, label: label, is_activated: isActivated})
   }
 
+  deleteDataSensor(id){
+    return axios.delete(`${this.url}/data_sensors/${id}`)
+  }
+
 
   // Error Utils
   getFormattedErrorNotification(error) {

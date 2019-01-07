@@ -95,6 +95,39 @@ header.app-header.navbar{
   border-bottom: 1px solid $darkgrey !important;
 }
 
+.dropdown-menu {
+  color: #fff !important;
+  background-color: $lightgrey !important;
+  border: 1px solid $darkgrey !important;
+  border-bottom: 0;
+}
+
+.dropdown-item {
+  color: #e4e7ea !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid #23282c !important;
+}
+
+.dropdown-item i {
+  display: inline-block;
+  width: 20px;
+  margin-right: 10px;
+  margin-left: -10px;
+  color: #c8ced3;
+  text-align: center;
+}
+
+.dropdown-divider {
+  border-top: 1px solid #343b41 !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #e4e7ea !important;
+  text-decoration: none;
+  background-color: $darkgrey !important;
+}
+
 .breadcrumb {
   border-bottom: 1px solid #23282c !important;
   padding: 0.6rem 1.5rem;

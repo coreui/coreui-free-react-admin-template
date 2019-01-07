@@ -1,12 +1,30 @@
 import React, {Component} from 'react';
-import {Button, Card, CardBody, Col, Form, FormFeedback, FormGroup, FormText, Input, Label, Row} from 'reactstrap';
+import {
+  Button,
+  ButtonDropdown,
+  Card,
+  CardBody,
+  Col,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Form,
+  FormFeedback,
+  FormGroup,
+  FormText,
+  Input,
+  Label,
+  Row
+} from 'reactstrap';
 import api from "../../../api";
 import NotificationSystem from "react-notification-system";
 import './followconfiguration.scss';
+import ReactResizeDetector from 'react-resize-detector';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import ReactResizeDetector from 'react-resize-detector';
+import checkboxHOC from "react-table/lib/hoc/selectTable";
 
+const SelectTable = checkboxHOC(ReactTable);
 const uuidv4 = require('uuid/v4');
 const PAGE_SIZE = 10;
 const MAX = 30;
@@ -18,12 +36,17 @@ class FollowConfiguration extends Component {
     this.state = {
       _notificationSystem: null,
 
+      // table and its data
+      dropdownActions: new Array(19).fill(false),
       sensors: [],
       page: 1,
+      selection: [],
+      selectAll: [],
 
       newDataSensorLayout: false,
 
       //new data sensor form
+      id: '',
       name: '',
       isValidName: true,
       type: '',
@@ -38,18 +61,71 @@ class FollowConfiguration extends Component {
     };
 
     this.handleFilterDataSensors = this.handleFilterDataSensors.bind(this);
-    this.handleNewDataSensor = this.handleNewDataSensor.bind(this);
-    this.toggleNewDataTracer = this.toggleNewDataTracer.bind(this);
+    this.handleNewOrUpdateDataSensor = this.handleNewOrUpdateDataSensor.bind(this);
+    this.handleEditDataSensor = this.handleEditDataSensor.bind(this);
+    this.handleDeleteDataSensor = this.handleDeleteDataSensor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    this.isSelected = this.isSelected.bind(this);
+    this.toggleAll = this.toggleAll.bind(this);
+    this.toggleNewDataSensor = this.toggleNewDataSensor.bind(this);
+    this.toggleSelection = this.toggleSelection.bind(this);
+    this.toggleDropdownActions = this.toggleDropdownActions.bind(this);
   }
 
-  toggleNewDataTracer() {
+  toggleDropdownActions(i) {
+    const newArray = this.state.dropdownActions.map((element, index) => { return (index === i ? !element : false); });
+    this.setState({
+      dropdownActions: newArray,
+    });
+  }
+
+  toggleNewDataSensor() {
     this.setState({newDataSensorLayout: !this.state.newDataSensorLayout})
   };
 
   handleChange = event => {
     this.setState({[event.target.name]: event.target.value});
   };
+
+  handleDeleteDataSensor(event) {
+    let dataSensorIds = this.state.selection;
+
+    if (dataSensorIds.length === 0){
+      this.state._notificationSystem.addNotification({level: 'error', message: 'You need to select at least one data sensor to perform this action'});
+      return;
+    }
+
+    dataSensorIds.forEach(sensorId => {
+      api.deleteDataSensor(sensorId)
+    });
+
+    this.state._notificationSystem.addNotification({message: 'Information updated. Please note that this action can take up to several seconds before being taken into account', level: 'success'});
+  }
+
+  handleEditDataSensor(event) {
+    let dataSensors = this.state.selection;
+
+    if (dataSensors.length === 0){
+      this.state._notificationSystem.addNotification({level: 'error', message: 'You need to select one data sensor to perform this action'});
+      return;
+    }
+
+    if (dataSensors.length > 1) {
+      this.state._notificationSystem.addNotification({level: 'error', message: 'Only one data sensor can be edited at a time'});
+    }else{
+      let dataSensor = this.state.sensors.filter(x => x._id === dataSensors[0])[0];
+
+      this.state.id = dataSensor._id;
+      this.state.name = dataSensor.name;
+      this.state.type = dataSensor.type_app;
+      this.state.label = dataSensor.label;
+      this.state.rule = dataSensor.value;
+      this.state.isActivated = dataSensor.is_activated;
+
+      this.toggleNewDataSensor();
+    }
+  }
 
   handleFilterDataSensors(event) {
     api.getDataSensors(event.target.value, this.state.page, MAX)
@@ -62,7 +138,7 @@ class FollowConfiguration extends Component {
       .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
   }
 
-  handleNewDataSensor(event){
+  handleNewOrUpdateDataSensor(event){
     event.preventDefault();
     this.setState({isValidName: true, isValidRule: true, isValidLabel: true, isValidType: true, isValidIsActivated: true});
 
@@ -97,7 +173,8 @@ class FollowConfiguration extends Component {
     }
 
     api.createOrUpdateDataSensor(
-      uuidv4(),
+      //if edit or save
+      this.state.id === '' ? uuidv4() : this.state.id,
       this.state.name,
       this.state.type,
       this.state.rule,
@@ -105,10 +182,85 @@ class FollowConfiguration extends Component {
       this.state.isActivated)
       .then(res => {
         this.state._notificationSystem.addNotification({message: 'Information updated', level: 'success'});
-        this.toggleNewDataTracer();
+        this.toggleNewDataSensor();
+        this.setState({
+          id: '',
+          name: '',
+          type: '',
+          rule: '',
+          label: '',
+          isActivated: false,
+        })
       })
       .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
   }
+
+  isSelected = key => {
+    /*
+      Instead of passing our external selection state we provide an 'isSelected'
+      callback and detect the selection state ourselves. This allows any implementation
+      for selection (either an array, object keys, or even a Javascript Set object).
+    */
+    return this.state.selection.includes(key);
+  };
+
+  toggleSelection = (key, shift, row) => {
+    /*
+      Implementation of how to manage the selection state is up to the developer.
+      This implementation uses an array stored in the component state.
+      Other implementations could use object keys, a Javascript Set, or Redux... etc.
+    */
+    // start off with the existing state
+    let selection = [...this.state.selection];
+    const keyIndex = selection.indexOf(key);
+    // check to see if the key exists
+    if (keyIndex >= 0) {
+      // it does exist so we will remove it using destructing
+      selection = [
+        ...selection.slice(0, keyIndex),
+        ...selection.slice(keyIndex + 1)
+      ];
+    } else {
+      // it does not exist so add it
+      selection.push(key);
+    }
+    // update the state
+    this.setState({ selection });
+  };
+
+  toggleAll = () => {
+    /*
+      'toggleAll' is a tricky concept with any filterable table
+      do you just select ALL the records that are in your data?
+      OR
+      do you only select ALL the records that are in the current filtered data?
+
+      The latter makes more sense because 'selection' is a visual thing for the user.
+      This is especially true if you are going to implement a set of external functions
+      that act on the selected information (you would not want to DELETE the wrong thing!).
+
+      So, to that end, access to the internals of ReactTable are required to get what is
+      currently visible in the table (either on the current page or any other page).
+
+      The HOC provides a method call 'getWrappedInstance' to get a ref to the wrapped
+      ReactTable and then get the internal state and the 'sortedData'.
+      That can then be iterrated to get all the currently visible records and set
+      the selection state.
+    */
+    const selectAll = !this.state.selectAll;
+    const selection = [];
+    if (selectAll) {
+      // we need to get at the internals of ReactTable
+      const wrappedInstance = this.checkboxTable.getWrappedInstance();
+      // the 'sortedData' property contains the currently accessible records based on the filter and sort
+      const currentRecords = wrappedInstance.getResolvedState().sortedData;
+      // we just push all the IDs onto the selection array
+      currentRecords.forEach(item => {
+        selection.push(item._original._id);
+      });
+    }
+    this.setState({ selectAll, selection });
+  };
 
   componentDidMount() {
     this.state._notificationSystem = this.refs.notificationSystem;
@@ -128,17 +280,41 @@ class FollowConfiguration extends Component {
 
   render() {
     const data = this.state.sensors;
+    const selectAll = this.state.selectAll;
+
+    const { toggleSelection, toggleAll, isSelected } = this;
+    const checkboxProps = {
+      selectAll,
+      isSelected,
+      toggleSelection,
+      toggleAll,
+      selectType: "checkbox",
+    };
+
     const toDisplay = (width) => ( !this.state.newDataSensorLayout ?
       <div className="animated fadeIn padding-20">
         <Row>
           <Col xs="12" sm="6" md="12">
             <Card>
               <CardBody>
-                <div className="input-icon right mb-5" style={{marginLeft: '0'}}>
+                <div className="input-icon right mb-3" style={{marginLeft: '0'}}>
                   <i className="icon-magnifier"/>
                   <Input type="text" onChange={this.handleFilterDataSensors} placeholder="Filter by data sensor"/>
                 </div>
-                <ReactTable
+                <div className={'mb-3'}>
+                  <ButtonDropdown className="mr-1" isOpen={this.state.dropdownActions[4]} toggle={() => { this.toggleDropdownActions(4); }}>
+                    <DropdownToggle caret color="info">
+                      <i className="fa fa-cogs" />&nbsp;&nbsp;&nbsp;Actions
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem onClick={this.toggleNewDataSensor}>New Data Sensor</DropdownItem>
+                      <DropdownItem onClick={this.handleEditDataSensor}>Edit Data Sensor</DropdownItem>
+                      <DropdownItem onClick={this.handleDeleteDataSensor}>Delete Data Sensor</DropdownItem>
+                    </DropdownMenu>
+                  </ButtonDropdown>
+                </div>
+                <SelectTable
+                  ref={(r) => this.checkboxTable = r}
                   data={data}
                   columns={[
                     {
@@ -148,6 +324,13 @@ class FollowConfiguration extends Component {
                           id: "name",
                           accessor: d => d.name,
                           width: Math.round(width * 0.15)
+                        },
+                        {
+                          Header: "Type",
+                          id: "type",
+                          accessor: d => d.type_app,
+                          width: Math.round(width * 0.08)
+
                         },
                         {
                           Header: "Activated",
@@ -160,27 +343,27 @@ class FollowConfiguration extends Component {
                         {
                           Header: "Created",
                           id: "created_at",
-                          accessor: d => (<td>{new Intl.DateTimeFormat('en-GB', {
+                          accessor: d => (new Intl.DateTimeFormat('en-GB', {
                             year: 'numeric',
                             month: '2-digit',
                             day: '2-digit',
                             hour: '2-digit',
                             minute: '2-digit',
                             second: '2-digit'
-                          }).format(new Date(d.created_at))}</td>),
+                          }).format(new Date(d.created_at))),
                           width: Math.round(width * 0.14)
                         },
                         {
                           Header: "Updated",
                           id: "updated_at",
-                          accessor: d => (<td>{new Intl.DateTimeFormat('en-GB', {
+                          accessor: d => (new Intl.DateTimeFormat('en-GB', {
                             year: 'numeric',
                             month: '2-digit',
                             day: '2-digit',
                             hour: '2-digit',
                             minute: '2-digit',
                             second: '2-digit'
-                          }).format(new Date(d.updated_at))}</td>),
+                          }).format(new Date(d.updated_at))),
                           width: Math.round(width * 0.14)
                         },
                       ]
@@ -188,6 +371,7 @@ class FollowConfiguration extends Component {
                   ]}
                   defaultPageSize={PAGE_SIZE}
                   className="-striped -highlight"
+                  {...checkboxProps}
                 />
               </CardBody>
             </Card>
@@ -207,9 +391,9 @@ class FollowConfiguration extends Component {
                     </Col>
                     <Col md="9" className={'type-data-sensor'}>
                       <FormGroup check className="radio">
-                        <Input className="form-check-input" id="radio1" onChange={this.handleChange} type="radio" name="type" value="SECRET" invalid={!this.state.isValidType} />
+                        <Input className="form-check-input" id="radio1" onChange={this.handleChange} type="radio" name="type" value="SECRET" invalid={!this.state.isValidType} checked={this.state.type === 'SECRET'}/>
                         <Label check className="form-check-label" htmlFor="radio1">Secret</Label>
-                        <Input className="form-check-input" id="radio2" onChange={this.handleChange} type="radio" name="type" value="REGEX" invalid={!this.state.isValidType} />
+                        <Input className="form-check-input" id="radio2" onChange={this.handleChange} type="radio" name="type" value="REGEX" invalid={!this.state.isValidType} checked={this.state.type === 'REGEX'}/>
                         <Label check htmlFor="radio2" style={{marginLeft: '25px'}}>Regex</Label>
                         <FormFeedback>Please select the type of data sensor you want to create</FormFeedback>
                         <FormText color="muted">A secret should be used if it's a sensitive piece of data. The system is then only storing a hash (sha-1).</FormText>
@@ -221,9 +405,9 @@ class FollowConfiguration extends Component {
                       <Label htmlFor="name">Name</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" name="name" onChange={this.handleChange} placeholder="data tracer name" invalid={!this.state.isValidName}/>
+                      <Input type="text" name="name" onChange={this.handleChange} value={this.state.name} placeholder="Data sensor name" invalid={!this.state.isValidName}/>
                       <FormFeedback>Name should contain at least 2 characters</FormFeedback>
-                      <FormText color="muted">Input the data tracer name</FormText>
+                      <FormText color="muted">Input the data sensor name</FormText>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -231,9 +415,9 @@ class FollowConfiguration extends Component {
                       <Label htmlFor="text-input">Label</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" name="label" onChange={this.handleChange} placeholder="Text" invalid={!this.state.isValidLabel}/>
+                      <Input type="text" name="label" onChange={this.handleChange} value={this.state.label} placeholder="Text" invalid={!this.state.isValidLabel}/>
                       <FormFeedback>Label should contain at least 2 characters</FormFeedback>
-                      <FormText color="muted">Input the data tracer labels - labels are taken into account in the search functionality of this interface</FormText>
+                      <FormText color="muted">Input the data sensor labels - labels are taken into account in the search functionality of this interface</FormText>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -241,7 +425,7 @@ class FollowConfiguration extends Component {
                       <Label htmlFor="textarea-input">Rule</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="textarea" name="rule" onChange={this.handleChange} rows="9" placeholder="Rule..." invalid={!this.state.isValidRule}/>
+                      <Input type="textarea" name="rule" onChange={this.handleChange} value={this.state.rule} rows="9" placeholder="Rule..." invalid={!this.state.isValidRule}/>
                       <FormFeedback>Rule should contain at least 3 characters</FormFeedback>
                     </Col>
                   </FormGroup>
@@ -250,7 +434,7 @@ class FollowConfiguration extends Component {
                       <Label htmlFor="select">Activate Now</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="select" name="isActivated" onChange={this.handleChange} invalid={!this.state.isValidIsActivated}>
+                      <Input type="select" name="isActivated" value={this.state.isActivated} onChange={this.handleChange} invalid={!this.state.isValidIsActivated}>
                         <option value="0">Please select</option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
@@ -259,7 +443,8 @@ class FollowConfiguration extends Component {
                     </Col>
                   </FormGroup>
                   <FormGroup>
-                    <Button type="submit" color="primary" onClick={this.handleNewDataSensor}>New Data Sensor</Button>{' '}
+                    <Button type="submit" color="danger" onClick={this.toggleNewDataSensor}>Cancel</Button>{' '}
+                    <Button type="submit" color="primary" onClick={this.handleNewOrUpdateDataSensor}>Save Data Sensor</Button>
                   </FormGroup>
                 </Form>
               </CardBody>
@@ -273,16 +458,8 @@ class FollowConfiguration extends Component {
         <NotificationSystem ref="notificationSystem"/>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">Home</li>
-          <li className="breadcrumb-item">
-            <a href="#">Admin</a>
-          </li>
-          <li className="breadcrumb-item active">Dashboard</li>
-
-          <li className="breadcrumb-menu d-md-down-none">
-            <div className="btn-group" role="group" aria-label="Button group">
-              {!this.state.newDataSensorLayout ? (<Button block outline color="primary" onClick={this.toggleNewDataTracer}>New Data Tracer&nbsp;&nbsp;<i className="fa fa-plus"/></Button>) : (<Button block outline color="danger" onClick={this.toggleNewDataTracer}>New Data Tracer&nbsp;&nbsp;<i className="fa fa-close"/></Button>)}
-            </div>
-          </li>
+          <li className="breadcrumb-item">Configuration</li>
+          <li className="breadcrumb-item active">Follow</li>
         </ol>
         {(width) => (toDisplay(width))}
       </ReactResizeDetector>

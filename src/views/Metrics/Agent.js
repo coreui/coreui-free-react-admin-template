@@ -56,9 +56,14 @@ class Agent extends Component {
 
     return (
       <ReactResizeDetector handleWidth>
+        <NotificationSystem ref="notificationSystem" />
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">Home</li>
+          <li className="breadcrumb-item">Metrics</li>
+          <li className="breadcrumb-item active">Agents</li>
+        </ol>
         {(width) => (
-        <div className="animated fadeIn padding-30">
-          <NotificationSystem ref="notificationSystem" />
+        <div className="animated fadeIn padding-20">
           <Row>
             <Col xs="12" sm="6" md="12">
               <Card>

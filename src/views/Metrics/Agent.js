@@ -63,7 +63,7 @@ class Agent extends Component {
             <Col xs="12" sm="6" md="12">
               <Card>
                 <CardBody>
-                  <div class="input-icon right mb-5">
+                  <div class="input-icon right mb-3" style={{marginLeft: '0'}}>
                     <i class="icon-magnifier"/>
                     <Input type="text" onChange={this.handleFilterHostname} placeholder="Filter by hostname" />
                   </div>

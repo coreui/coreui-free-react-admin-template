@@ -58,51 +58,55 @@ class Generate extends Component {
     const data = this.state.graphs;
 
     return (
-      <div className="animated fadeIn padding-30">
+      <div>
         <NotificationSystem ref="notificationSystem" />
-        <Row>
-          <Col xs="12" md="12">
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"/><strong>Generate Graph Dashboard</strong>
-                  <small><code>&nbsp;&nbsp;by tag</code></small>
-              </CardHeader>
-              <CardBody>
-                <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
-                  <FormGroup row>
-                    <Col md="12">
-                      <InputGroup>
-                        <Input type="text" onChange={this.onChange} id="input3-group2" name="input3-group2" placeholder="Search" />
-                      </InputGroup>
-                    </Col>
-                  </FormGroup>
-                </Form>
-                <ReactTable
-                  data={data}
-                  columns={[
-                    {
-                      columns: [
-                        {
-                          Header: "Tag",
-                          id: "tag",
-                          accessor: d => (<Link to={"/dashboards/graph/" + d.key}>{d.key}</Link>)
-                        },
-                        {
-                          Header: "Unique Graphs",
-                          id: "ugraphs",
-                          accessor: d => d.doc_count,
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">Home</li>
+          <li className="breadcrumb-item">Dashboards</li>
+          <li className="breadcrumb-item">Graph</li>
+          <li className="breadcrumb-item active">Generate</li>
+        </ol>
+        <div className="animated fadeIn padding-20">
+          <Row>
+            <Col xs="12" md="12">
+              <Card>
+                <CardBody>
+                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
+                    <FormGroup row>
+                      <Col md="12">
+                        <InputGroup>
+                          <Input type="text" onChange={this.onChange} placeholder="Search a graph by tag" />
+                        </InputGroup>
+                      </Col>
+                    </FormGroup>
+                  </Form>
+                  <ReactTable
+                    data={data}
+                    columns={[
+                      {
+                        columns: [
+                          {
+                            Header: "Tag",
+                            id: "tag",
+                            accessor: d => (<Link to={"/dashboards/graph/" + d.key}>{d.key}</Link>)
+                          },
+                          {
+                            Header: "Unique Graphs",
+                            id: "ugraphs",
+                            accessor: d => d.doc_count,
 
-                        },
-                      ]
-                    }
-                  ]}
-                  defaultPageSize={PER_PAGE}
-                  className="-striped -highlight"
-                />
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
+                          },
+                        ]
+                      }
+                    ]}
+                    defaultPageSize={PER_PAGE}
+                    className="-striped -highlight"
+                  />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   }

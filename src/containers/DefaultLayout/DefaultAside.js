@@ -59,6 +59,7 @@ class DefaultAside extends Component {
     if (this.state.steps === 3 && !this.state.lockEditor){
       step = 1
     }
+    graphDashboardOptions.relationsInLock = [];
     this.setState({
       lockEditor: !this.state.lockEditor,
       steps: step,

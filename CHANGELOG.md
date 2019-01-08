@@ -1,5 +1,23 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.3`
+- fix(Collapse): add `mb-0` to accordion cards
+- fix(ButtonGroups): misplaced dropdownOpen
+- chore: update `@coreui/coreui` to `^2.1.5`
+- chore: update `@coreui/react` to `^2.1.3`
+- chore: update `bootstrap` to `^4.2.1`
+- chore: update `core-js` to `^2.6.1`
+- chore: update `enzyme` to `^3.8.0`
+- chore: update `enzyme-adapter-react-16` to `^1.7.1`
+- chore: update `node-sass` to `^4.11.0`
+- chore: update `react` to `^16.7.0`
+- chore: update `react-app-polyfill` to `^0.2.0`
+- chore: update `react-chartjs-2` to `^2.7.4`
+- chore: update `react-dom` to `^16.7.0`
+- chore: update `react-test-renderer` to `^16.7.0`
+- chore: update `reactstrap` to `^7.0.2`
+- chore: update `react-scripts` to `2.1.3`
+
 ##### `v2.1.2`
 - fix(scss): floating footer ie11 issue
 - chore: update `@coreui/react` to `^2.1.1`

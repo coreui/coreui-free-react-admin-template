@@ -157,7 +157,7 @@ class GraphDashboard extends Component {
 
             if (newElementFound) {
               cy.layout(graphDashboardOptions.params).stop();
-              cy.layout(graphDashboardOptions.params).run()
+              cy.layout(graphDashboardOptions.params).run();
 
               // update dashboard state
               this.setState({
@@ -231,7 +231,7 @@ class GraphDashboard extends Component {
             }
           })
 
-        api.getFindingCount(graphId)
+        api.getFindingCountByType()
           .then(res => {
             this.setState({
               findings_count: this.getFindingsNumbersChartOptions(res.data.message.findings),
@@ -370,9 +370,9 @@ class GraphDashboard extends Component {
       <ReactResizeDetector handleWidth handleHeight>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">Home</li>
-          <li className="breadcrumb-item">
-            <a href="#">Admin</a>
-          </li>
+          <li className="breadcrumb-item">Dashboards</li>
+          <li className="breadcrumb-item">Graph</li>
+          <li className="breadcrumb-item active">{graphDashboardOptions.graphVar}</li>
           <li className="breadcrumb-menu d-md-down-none">
             <div className="btn-group" role="group" aria-label="Button group">
               <AppAsideToggler className="d-md-down-none" />
@@ -385,10 +385,8 @@ class GraphDashboard extends Component {
           <NotificationSystem ref="notificationSystem" />
           <Responsive
             //fix undefined bug
-            width={`${width}` === 'undefined' ? this.props.windowWidth - 200 : `${width}`}
+            width={width === undefined ? this.props.windowWidth - 200 : width}
             isDraggable={graphDashboardOptions.isDraggable}
-            // autoSize={true}
-            // isResizable={true}
             rowHeight={this.props.windowHeight/3.7}
             cols={{lg: 3, md: 3, sm: 3, xxs: 3}}
           >

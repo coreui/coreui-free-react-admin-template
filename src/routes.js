@@ -20,11 +20,11 @@ const Tabs = React.lazy(() => import('./views/Base/Tabs'));
 const Tooltips = React.lazy(() => import('./views/Base/Tooltips'));
 const GraphDashboard = React.lazy(() => import('./views/Dashboards/GraphDashboard/GraphDashboard'));
 const GenerateGraphDashboard = React.lazy(() => import('./views/Dashboards/GraphDashboard/Generate'));
+const FindingDashboard = React.lazy(() => import('./views/Dashboards/FindingDashboard'));
 const ButtonDropdowns = React.lazy(() => import('./views/Buttons/ButtonDropdowns'));
 const ButtonGroups = React.lazy(() => import('./views/Buttons/ButtonGroups'));
 const Buttons = React.lazy(() => import('./views/Buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/Charts'));
-const Dashboard = React.lazy(() => import('./views/Dashboard'));
 const CoreUIIcons = React.lazy(() => import('./views/Icons/CoreUIIcons'));
 const Flags = React.lazy(() => import('./views/Icons/Flags'));
 const FontAwesome = React.lazy(() => import('./views/Icons/FontAwesome'));
@@ -45,7 +45,6 @@ const Follow = React.lazy(() => import('./views/Configuration/FollowConfiguratio
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', exact: true, name: 'Home', component: DefaultLayout },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
@@ -73,6 +72,7 @@ const routes = [
   { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
   { path: '/dashboards/graph/generate', name: 'Generate Graph Dashboard', component: GenerateGraphDashboard },
   { path: '/dashboards/graph/:graph_id', name: 'Graph Dashboard', component: GraphDashboard },
+  { path: '/dashboards/finding', name: 'FindingDashboard', component: FindingDashboard },
   { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
   { path: '/icons/flags', name: 'Flags', component: Flags },

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import 'react-cytoscape';
-import windowSize from 'react-window-size';
-import './graph.scss'
+import './graph_last_findings.scss'
 import {Table} from "reactstrap";
 
 
@@ -21,7 +20,7 @@ class GraphLastFindings extends Component {
         <div className="header-1">
           <span>Last Findings</span>
         </div>
-        <Table hover responsive className="table table-outline mb-0 d-none d-sm-table">
+        <Table style={{height: this.props.height}} hover responsive className="table table-outline mb-0 d-none d-sm-table">
           <thead className="thead-light">
           <tr>
             <th className="prop-1">Type</th>
@@ -39,4 +38,4 @@ class GraphLastFindings extends Component {
   }
 }
 
-export default windowSize(GraphLastFindings);
+export default GraphLastFindings;

@@ -1,0 +1,45 @@
+// react-table lib
+.table {
+  //border-color: #23282c;
+  border: none;
+}
+
+.table .thead-light th {
+  color: #e4e7ea;
+  background-color: #343b41;
+  //border-color: #23282c;
+  border: none;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  //border-bottom: 2px solid #23282c;
+}
+
+th {
+  font-weight: bold;
+}
+
+td, th {
+  display: table-cell;
+  padding: .55rem;
+  vertical-align: top;
+  //border-top: 1px solid #23282c;
+  border: none !important;
+}
+
+.ReactTable .rt-tr {
+  padding: 8px !important;
+}
+
+.ReactTable .-pagination input, .ReactTable .-pagination select {
+  border: 1px solid #3a4149 !important;
+  background: #3b4149 !important;
+  padding: 5px 7px !important;
+}
+
+.ReactTable .rt-thead .rt-tr {
+  text-align: left !important;
+}
+
+

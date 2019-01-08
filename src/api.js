@@ -25,8 +25,16 @@ class Api {
     return axios.get(`${this.url}/findings/last?max=${max}`, {})
   }
 
-  getFindingCount() {
-    return axios.get(`${this.url}/findings/count`, {})
+  getFindingCountByType() {
+    return axios.get(`${this.url}/findings/count?order_by=type`, {})
+  }
+
+  getFindingCountByHostname() {
+    return axios.get(`${this.url}/findings/count?order_by=hostname`, {})
+  }
+
+  getFindingCountByTime(minute) {
+    return axios.get(`${this.url}/findings/count?order_by=created_at&from=${minute}`, {})
   }
 
   // node controller

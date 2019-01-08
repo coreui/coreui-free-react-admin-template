@@ -404,21 +404,18 @@ class GraphDashboard extends Component {
             <div key="3" id="cy3" data-grid={{ w: 1, h: 1, x: 3, y: 0 }}>
               <GraphDataProcessed
                 last_edges={this.state.last_edges}
-                width={width*0.320}
                 height={height*0.250}
               />
             </div>
             <div key="4" id="cy4" data-grid={{ w: 1, h: 1, x: 3, y: 1 }}>
               <GraphFindingNumbers
                 findings_count={this.state.findings_count}
-                width={width*0.320}
                 height={height*0.250}
               />
             </div>
             <div key="5" id="cy5" data-grid={{ w: 1, h: 1, x: 3, y: 2 }}>
               <GraphFindingPercentage
                 findings_percentage={this.state.findings_percentage}
-                width={width*0.320}
                 height={height*0.250}
               />
             </div>

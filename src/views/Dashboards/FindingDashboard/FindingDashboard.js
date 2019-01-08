@@ -10,6 +10,7 @@ import {observer} from "mobx-react";
 import GraphFindingPercentage from "../GraphDashboard/GraphFindingPercentage";
 import GraphFindingNumbersLastMinutes from "./GraphFindingNumbersLastMinutes";
 import '../../../../node_modules/react-grid-layout/css/styles.css';
+import './findingdashboard.scss'
 import GraphFindingNumbersLastMinutesPerHostname from "./GraphFindingNumbersLastMinutesPerHostname";
 import GraphLastFindings from "../GraphDashboard/GraphLastFindings";
 import GraphFindingCompanyPerformance from "./GraphFindingCompanyPerformance";
@@ -132,39 +133,36 @@ class FindingDashboard extends Component {
               isDraggable={true}
               autoResize={true}
               compactType={null}
-              rowHeight={this.props.windowHeight/13.5}
+              rowHeight={this.props.windowHeight/13.3}
               cols={{lg: 8, md: 8, sm: 8, xxs: 8}}
             >
-              <div key="1" data-grid={{ w: 4, h: 1, x: 0, y: 0 }}>
+              <div className={'containerDragAndDrop'} key="1" data-grid={{ w: 4, h: 1, x: 0, y: 0 }}>
                 <GraphFindingCompanyPerformance
-                  height={height*0.05}
+                  height={this.props.windowHeight*0.05}
                 />
               </div>
-              <div key="2" data-grid={{ w: 4, h: 2, x: 0, y: 0 }}>
+              <div className={'containerDragAndDrop'} key="2" data-grid={{ w: 4, h: 2, x: 0, y: 0 }}>
                 <GraphFindingNumbersLastMinutes
                   findings_count_per_minute={this.state.findings_count_per_minute}
-                  width={width*0.495}
-                  height={height*0.230}
+                  height={this.props.windowHeight*0.210}
                 />
               </div>
-              <div key="3" data-grid={{ w: 4, h: 2, x: 0, y: 4 }}>
+              <div className={'containerDragAndDrop'}  key="3" data-grid={{ w: 4, h: 2, x: 0, y: 4 }}>
                 <GraphFindingPercentage
                   findings_percentage={this.state.findings_percentage}
-                  width={width*0.495}
-                  height={height*0.230}
+                  height={this.props.windowHeight*0.210}
                 />
               </div>
-              <div key="4" data-grid={{ w: 4, h: 2, x: 0, y: 7 }}>
+              <div className={'containerDragAndDrop'} key="4" data-grid={{ w: 4, h: 2, x: 0, y: 7 }}>
                 <GraphFindingNumbersLastMinutesPerHostname
                   findings_count_per_minute={this.state.findings_count_per_minute}
-                  width={width*0.495}
-                  height={height*0.230}
+                  height={this.props.windowHeight*0.210}
                 />
               </div>
-              <div key="5" data-grid={{ w: 4, h: 10, x: 5, y: 0 }}>
+              <div className={'containerDragAndDrop'} key="5" data-grid={{ w: 4, h: 10, x: 5, y: 0 }}>
                 <GraphLastFindings
                   last_findings={this.state.findings_last}
-                  height={height*0.230}
+                  height={this.props.windowHeight*0.220}
                 />
               </div>
             </Responsive>

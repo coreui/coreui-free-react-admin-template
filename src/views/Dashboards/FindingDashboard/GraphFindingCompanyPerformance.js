@@ -4,7 +4,7 @@ import {Col, Row} from 'reactstrap'
 
 class GraphFindingCompanyPerformance extends Component {
   render() {
-
+    const scale = this.props.height/55;
     return (
       <div>
         <div className="header-1">
@@ -12,7 +12,7 @@ class GraphFindingCompanyPerformance extends Component {
         </div>
         <Row>
           <Col>
-            <div style={{height: this.props.height, transform: 'scale(' + this.props.height/50 + ',' + this.props.height/50 +  1 + ')', transformOrigin: 'top left'}}>
+            <div style={{height: this.props.height, transform: 'scale(' + scale + ',' + scale + ')', transformOrigin: 'top left'}}>
               <div className="d-flex p-1 align-items-center">
                 <i className="fa fa-area-chart bg-primary p-2 font-2xl mr-3"/>
                 <div>
@@ -23,7 +23,7 @@ class GraphFindingCompanyPerformance extends Component {
             </div>
           </Col>
           <Col>
-            <div style={{height: this.props.height, transform: 'scale(' + this.props.height/50 + ',' + this.props.height/50 +  1 + ')', transformOrigin: 'top left'}}>
+            <div style={{height: this.props.height, transform: 'scale(' + scale + ',' + scale +  1 + ')', transformOrigin: 'top left'}}>
               <div className="d-flex p-1 align-items-center">
                 <i className="fa fa-bar-chart bg-primary p-2 font-2xl mr-3"/>
                 <div>
@@ -34,7 +34,7 @@ class GraphFindingCompanyPerformance extends Component {
             </div>
           </Col>
           <Col>
-            <div style={{height: this.props.height, transform: 'scale(' + this.props.height/50 + ',' + this.props.height/50 +  1 + ')', transformOrigin: 'top left'}}>
+            <div style={{height: this.props.height, transform: 'scale(' + scale + ',' + scale +  1 + ')', transformOrigin: 'top left'}}>
               <div className="d-flex p-1 align-items-center">
                 <i className="fa fa-line-chart bg-primary p-2 font-2xl mr-3"/>
                 <div>
@@ -45,7 +45,7 @@ class GraphFindingCompanyPerformance extends Component {
             </div>
           </Col>
           <Col>
-            <div style={{height: this.props.height, transform: 'scale(' + this.props.height/50 + ',' + this.props.height/50 +  1 + ')', transformOrigin: 'top left'}}>
+            <div style={{height: this.props.height, transform: 'scale(' + scale + ',' + scale +  1 + ')', transformOrigin: 'top left'}}>
               <div className="d-flex p-1 align-items-center">
                 <i className="fa fa-pie-chart bg-primary p-2 font-2xl mr-3"/>
                 <div>

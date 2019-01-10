@@ -18,7 +18,7 @@ class Auth {
   }
 
   hasAValidToken() {
-    axios.defaults.headers['X-API-TOKEN'] = localStorage.getItem(this.storageKey);
+    api.setAuthHeader(localStorage.getItem(this.storageKey));
     return api.getSession()
   }
 

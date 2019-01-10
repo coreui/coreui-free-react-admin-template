@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+const AUTH_HEADER = 'X-API-TOKEN';
 class Api {
   constructor({ url }) {
     this.url = url;
@@ -111,6 +112,18 @@ class Api {
     return axios.delete(`${this.url}/data_sensors/${id}`)
   }
 
+  // Auth utils
+  getApiUrl() {
+    return this.url
+  }
+
+  setAuthHeader(token) {
+    axios.defaults.headers[AUTH_HEADER] = token;
+  }
+
+  getAuthHeader() {
+    return {[AUTH_HEADER]: axios.defaults.headers[AUTH_HEADER]};
+}
 
   // Error Utils
   getFormattedErrorNotification(error) {

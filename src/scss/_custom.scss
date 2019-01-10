@@ -1,7 +1,7 @@
 $lightgrey: #3a4149;
 $darkgrey: #23282c;
 
-// Here you can add other styles
+// OVERRIDE OF DEFAULT THEME
 body {
   color: #e4e7ea !important;
   background-color: #2f353a !important;
@@ -286,6 +286,25 @@ ol.breadcrumb {
 
 .modal-footer {
   border-top: 1px solid $darkgrey !important;
+}
+
+//REACT-TABLE OVERRIDE
+ .ReactTable .rt-tr {
+  padding: 8px !important;
+}
+
+.ReactTable .-pagination input, .ReactTable .-pagination select {
+  border: 1px solid #3a4149 !important;
+  background: #3b4149 !important;
+  padding: 5px 7px !important;
+}
+
+.ReactTable .rt-thead .rt-tr {
+  text-align: left !important;
+}
+
+.ReactTable .-pagination * {
+  color: #fff !important;
 }
 
 

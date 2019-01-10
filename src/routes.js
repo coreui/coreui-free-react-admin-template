@@ -40,6 +40,7 @@ const User = React.lazy(() => import('./views/Users/User'));
 const LogOut = React.lazy(() => import('./views/LogOut'));
 const Profile = React.lazy(() => import('./views/Settings/Profile'));
 const Agent = React.lazy(() => import('./views/Metrics/Agent'));
+const Finding = React.lazy(() => import('./views/Metrics/Finding'));
 const Follow = React.lazy(() => import('./views/Configuration/FollowConfiguration'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
@@ -89,6 +90,7 @@ const routes = [
   { path: '/logout', exact: true, name: 'Logout', component: LogOut },
   { path: '/settings/profile', exact: true, name: 'Profile Settings', component: Profile },
   { path: '/metrics/agent', exact: true, name: 'Agents Metrics', component: Agent },
+  { path: '/metrics/finding', exact: true, name: 'Findings Metrics', component: Finding },
   { path: '/configuration/follow', exact: true, name: 'Follow Configuration', component: Follow },
 ];
 

@@ -1,0 +1,159 @@
+/***
+Input icons
+***/
+
+.input-icon {
+  position: relative;
+  left: 0;
+
+  > i {
+    color: #ccc;
+    display: block;
+    position: absolute;
+    margin: 11px 2px 4px 10px;
+    z-index: 3;
+    width: 16px;
+    font-size: 16px;
+    text-align: center;
+    left: 0;
+  }
+
+  &.right {
+    left: auto;
+    right: 0;
+
+    > .form-control {
+      padding-right: 33px;
+      padding-left: 12px;
+    }
+
+    > i {
+      left: auto;
+      right: 8px;
+      float: right;
+    }
+  }
+
+  &.input-icon-lg {
+    > i {
+      margin-top: 16px;
+    }
+  }
+
+  &.input-icon-sm {
+    > i {
+      margin-top: 8px;
+      font-size: 13px;
+    }
+  }
+}
+
+// react-table lib
+.ReactTable .rt-tr {
+  padding: 8px !important;
+}
+
+.ReactTable .-pagination input, .ReactTable .-pagination select {
+  border: 1px solid #3a4149 !important;
+  background: #3b4149 !important;
+  padding: 5px 7px !important;
+}
+
+.ReactTable .rt-thead .rt-tr {
+  text-align: left !important;
+}
+
+.ReactTable .-pagination * {
+  color: #fff !important;
+}
+
+// online status
+.host_status_up {
+  font-weight: 800; color: #6BD873
+}
+
+.host_status_down {
+  font-weight: 800; color: #d12610
+}
+
+// reactivesearch
+.data-filter {
+  h2 {
+    color: #fff !important;
+    font-size: 0.85rem;
+  }
+
+  input {
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: .75rem;
+    white-space: nowrap;
+    border: 1px solid #23282c;
+    border-radius: .25rem;
+    height: 35px;
+  }
+
+  a {
+    color: #23282c !important;
+    background-color: #8ad4ee;
+  }
+
+  a:hover {
+    color: #23282c !important;
+    background-color: #8ad4ee;
+  }
+
+  font-size: 0.75rem;
+  color: #fff !important;
+}
+
+.DayPickerInput {
+  border: none !important;
+}
+
+.DayPickerInput input {
+  padding: .375rem .75rem !important;
+  margin-bottom: 0 !important;
+  font-size: .75rem !important;
+  white-space: nowrap;
+  border: none !important;
+  border-radius: .25rem !important;
+  height: 35px !important;
+}
+
+.DayPickerInput-OverlayWrapper > * {
+  background-color: #fff !important;
+  color: #23282c !important;
+}
+
+.DayPicker-Weekday {
+  color: black !important;
+}
+
+.DayPicker-Day--today {
+  color: #D0021B !important;
+  font-weight: 700;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  position: relative;
+
+  background-color: #20a8d8 !important;
+  color: #F0F8FF;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
+  background-color: #20a8d8 !important;
+  color: #F0F8FF;
+}
+
+.DayPicker-Day--selected:hover{
+  background-color: #20a8d8 !important;
+}
+
+.DayPicker:not(.DayPicker--interactionDisabled)
+.DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  background-color: #F0F8FF !important;
+}
+
+

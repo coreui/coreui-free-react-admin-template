@@ -115,8 +115,7 @@ class FindingDashboard extends Component {
         <ol className="breadcrumb">
           <li className="breadcrumb-item">Home</li>
           <li className="breadcrumb-item">Dashboards</li>
-          <li className="breadcrumb-item">Graph</li>
-          <li className="breadcrumb-item active">{graphDashboardOptions.graphVar}</li>
+          <li className="breadcrumb-item">Finding</li>
           <li className="breadcrumb-menu d-md-down-none">
             <div className="btn-group" role="group" aria-label="Button group">
               <AppAsideToggler className="d-md-down-none" />
@@ -141,19 +140,19 @@ class FindingDashboard extends Component {
                   height={this.props.windowHeight*0.05}
                 />
               </div>
-              <div className={'containerDragAndDrop'} key="2" data-grid={{ w: 4, h: 2, x: 0, y: 0 }}>
+              <div className={'containerDragAndDrop'} key="2" data-grid={{ w: 4, h: 3, x: 0, y: 0 }}>
                 <GraphFindingNumbersLastMinutes
                   findings_count_per_minute={this.state.findings_count_per_minute}
                   height={this.props.windowHeight*0.210}
                 />
               </div>
-              <div className={'containerDragAndDrop'}  key="3" data-grid={{ w: 4, h: 2, x: 0, y: 4 }}>
+              <div className={'containerDragAndDrop'}  key="3" data-grid={{ w: 4, h: 3, x: 0, y: 4 }}>
                 <GraphFindingPercentage
                   findings_percentage={this.state.findings_percentage}
                   height={this.props.windowHeight*0.210}
                 />
               </div>
-              <div className={'containerDragAndDrop'} key="4" data-grid={{ w: 4, h: 2, x: 0, y: 7 }}>
+              <div className={'containerDragAndDrop'} key="4" data-grid={{ w: 4, h: 3, x: 0, y: 7 }}>
                 <GraphFindingNumbersLastMinutesPerHostname
                   findings_count_per_minute={this.state.findings_count_per_minute}
                   height={this.props.windowHeight*0.210}

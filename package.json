@@ -12,6 +12,7 @@
     "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
   },
   "dependencies": {
+    "@appbaseio/reactivesearch": "^2.16.1",
     "@coreui/coreui": "^2.1.1",
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/icons": "0.3.0",
@@ -33,6 +34,7 @@
     "lodash": "^4.17.11",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
+    "moment": "^2.23.0",
     "node-sass": "^4.10.0",
     "progress-tracker": "^1.4.0",
     "prop-types": "^15.6.2",
@@ -43,6 +45,7 @@
     "react-chartjs-2": "^2.7.4",
     "react-cytoscape": "^1.0.6",
     "react-cytoscapejs": "^1.1.0",
+    "react-datepicker": "^2.0.0",
     "react-dom": "^16.6.3",
     "react-draggable": "^3.1.1",
     "react-google-charts": "^3.0.10",

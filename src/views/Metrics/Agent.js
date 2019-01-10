@@ -73,6 +73,7 @@ class Agent extends Component {
                     <Input type="text" onChange={this.handleFilterHostname} placeholder="Filter by hostname" />
                   </div>
                   <ReactTable
+                    style={{fontSize: '0.8rem'}}
                     data={data}
                     columns={[
                       {
@@ -99,14 +100,14 @@ class Agent extends Component {
                           {
                             Header: "Deployed",
                             id: "created_at",
-                            accessor: d => d.created_at,
-                            width: Math.round(width * 0.2)
+                            accessor: d => new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(d.created_at)),
+                            width: Math.round(width * 0.13)
                           },
                           {
                             Header: "Updated",
                             id: "updated_at",
-                            accessor: d => d.updated_at,
-                            width: Math.round(width * 0.2)
+                            accessor: d => new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(d.updated_at)),
+                            width: Math.round(width * 0.13)
                           },
                           {
                             Header: "Features",

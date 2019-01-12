@@ -38,6 +38,10 @@ class Api {
     return axios.get(`${this.url}/findings/count?order_by=created_at&from=${minute}`, {})
   }
 
+  getFindingCountByStatus(minute) {
+    return axios.get(`${this.url}/findings/count?order_by=status&from=${minute}`, {})
+  }
+
   // node controller
   getNodesByGraph(graphId) {
     return axios.get(`${this.url}/graphs/${graphId}/nodes`, {})

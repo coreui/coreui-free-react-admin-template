@@ -8,7 +8,7 @@ class GraphFindingCompanyPerformance extends Component {
     return (
       <div>
         <div className="header-1">
-          <span>Company Performance</span>
+          <span>Company's Performance</span>
         </div>
         <Row>
           <Col>
@@ -16,8 +16,8 @@ class GraphFindingCompanyPerformance extends Component {
               <div className="d-flex p-1 align-items-center">
                 <i className="fa fa-area-chart bg-primary p-2 font-2xl mr-3"/>
                 <div>
-                  <div className="text-value-sm text-primary">$1.999,50</div>
-                  <div className="text-muted text-uppercase font-weight-bold small">Income</div>
+                  <div className="text-value-sm text-primary">{this.props.findings_last_count}</div>
+                  <div className="text-muted text-uppercase font-weight-bold small">Total</div>
                 </div>
               </div>
             </div>
@@ -27,8 +27,8 @@ class GraphFindingCompanyPerformance extends Component {
               <div className="d-flex p-1 align-items-center">
                 <i className="fa fa-bar-chart bg-primary p-2 font-2xl mr-3"/>
                 <div>
-                  <div className="text-value-sm text-primary">$1.999,50</div>
-                  <div className="text-muted text-uppercase font-weight-bold small">Income</div>
+                  <div className="text-value-sm text-primary">{this.props.findings_resolved_last_count}</div>
+                  <div className="text-muted text-uppercase font-weight-bold small">Resolved</div>
                 </div>
               </div>
             </div>
@@ -38,8 +38,8 @@ class GraphFindingCompanyPerformance extends Component {
               <div className="d-flex p-1 align-items-center">
                 <i className="fa fa-line-chart bg-primary p-2 font-2xl mr-3"/>
                 <div>
-                  <div className="text-value-sm text-primary">$1.999,50</div>
-                  <div className="text-muted text-uppercase font-weight-bold small">Income</div>
+                  <div className="text-value-sm text-primary">{this.props.findings_in_progress_last_count}</div>
+                  <div className="text-muted text-uppercase font-weight-bold small">In Progress</div>
                 </div>
               </div>
             </div>
@@ -49,8 +49,8 @@ class GraphFindingCompanyPerformance extends Component {
               <div className="d-flex p-1 align-items-center">
                 <i className="fa fa-pie-chart bg-primary p-2 font-2xl mr-3"/>
                 <div>
-                  <div className="text-value-sm text-primary">$1.999,50</div>
-                  <div className="text-muted text-uppercase font-weight-bold small">Income</div>
+                  <div className="text-value-sm text-primary">{this.props.findings_unresolved_last_count}</div>
+                  <div className="text-muted text-uppercase font-weight-bold small">Unresolved</div>
                 </div>
               </div>
             </div>

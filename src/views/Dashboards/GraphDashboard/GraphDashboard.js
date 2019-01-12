@@ -388,7 +388,7 @@ class GraphDashboard extends Component {
             width={width === undefined ? this.props.windowWidth - 200 : width}
             isDraggable={graphDashboardOptions.isDraggable}
             rowHeight={this.props.windowHeight/3.7}
-            cols={{lg: 3, md: 3, sm: 3, xxs: 3}}
+            cols={{lg: 3, md: 3, sm: 3, xs: 3, xxs: 3}}
           >
             <div key="1" data-grid={{ w: 2, h: 2, x: 0, y: 0 }}>
               <GraphData

@@ -18,15 +18,18 @@ import navigation from '../../_nav';
 // routes config
 import routes from '../../routes';
 import auth from '../../Auth'
-import AppBreadcrumb from "@coreui/react/es/Breadcrumb";
+import GraphAside from "./GraphAside";
+import FindingAside from "./FindingAside";
 
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
+// const GraphAside = React.lazy(() => import('./GraphAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
 class DefaultLayout extends Component {
 
   componentDidMount() {
+    console.log(this.props)
     if (auth.isLoggedIn()) {
       auth.hasAValidToken()
         .then(response => {
@@ -53,19 +56,19 @@ class DefaultLayout extends Component {
     return (
       <div className="app">
         <AppHeader fixed>
-          <Suspense  fallback={this.loading()}>
-            <DefaultHeader onLogout={e=>this.signOut(e)}/>
+          <Suspense fallback={this.loading()}>
+            <DefaultHeader onLogout={e => this.signOut(e)}/>
           </Suspense>
         </AppHeader>
         <div className="app-body">
           <AppSidebar fixed display="lg">
-            <AppSidebarHeader />
-            <AppSidebarForm />
+            <AppSidebarHeader/>
+            <AppSidebarForm/>
             <Suspense>
-            <AppSidebarNav navConfig={navigation} {...this.props} />
+              <AppSidebarNav navConfig={navigation} {...this.props} />
             </Suspense>
-            <AppSidebarFooter />
-            <AppSidebarMinimizer />
+            <AppSidebarFooter/>
+            <AppSidebarMinimizer/>
           </AppSidebar>
           <main className="main">
             <Container fluid>
@@ -80,27 +83,40 @@ class DefaultLayout extends Component {
                         name={route.name}
                         render={props => (
                           <route.component {...props} />
-                        )} />
+                        )}/>
                     ) : (null);
                   })}
-                  <Redirect from="/" to="/" />
+                  <Redirect from="/" to="/"/>
                 </Switch>
               </Suspense>
             </Container>
           </main>
           <AppAside fixed>
             <Suspense fallback={this.loading()}>
-              <DefaultAside/>
+              {whichDefaultAside(this.props.location.pathname)}
             </Suspense>
           </AppAside>
         </div>
         <AppFooter>
           <Suspense fallback={this.loading()}>
-            <DefaultFooter />
+            <DefaultFooter/>
           </Suspense>
         </AppFooter>
       </div>
     );
+
+    function whichDefaultAside(pathname) {
+      if (pathname.startsWith('/dashboards/graph/') && pathname !== '/dashboards/graph/generate') {
+        return <GraphAside />
+      } else {
+        if (pathname.startsWith('/dashboards/finding')) {
+          return <FindingAside />
+        }else {
+          // return DefaultAside
+        }
+      }
+      return '';
+    }
   }
 }
 

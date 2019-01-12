@@ -307,4 +307,11 @@ ol.breadcrumb {
   color: #fff !important;
 }
 
+.ReactTable .rt-thead.-headerGroups {
+  height: 0;
+  border-top: 0 solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 0 solid rgba(0,0,0,0.05);
+}
+
 

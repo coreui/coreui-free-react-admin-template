@@ -11,6 +11,9 @@ RUN npm run build
 
 # production environment
 FROM nginx:1.13.9-alpine
+RUN apk update && \
+    apk upgrade && \
+    apk add bash
 RUN rm -rf /etc/nginx/conf.d
 COPY conf /etc/nginx
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html

@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    working_directory: /home/circleci/damper-frontend
+
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Docker Hub
+          command: |
+            chmod +x ./bin/build.sh && ./bin/build.sh
+            chmod +x ./bin/push.sh && ./bin/push.sh

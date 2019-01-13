@@ -151,6 +151,6 @@ class Api {
 
 }
 
-const api = new Api({ url: 'http://localhost:3000' });
+const api = new Api({ url: process.env.REACT_APP_API_URL });
 
 export default api;

@@ -1,5 +1,8 @@
 # build environment
 FROM node:11.4.0 as builder
+
+ENV REACT_APP_API_URL 'http://localhost:3001'
+
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH

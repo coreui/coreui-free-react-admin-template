@@ -20,4 +20,5 @@ RUN apk update && \
 RUN rm -rf /etc/nginx/conf.d
 COPY conf /etc/nginx
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+COPY bin/generate_config.sh /etc/nginx
 EXPOSE 80

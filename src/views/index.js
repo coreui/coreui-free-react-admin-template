@@ -16,16 +16,16 @@ import {
   Tables,
   Tabs,
   Tooltips,
-} from './Base';
+} from './DefaultTheme/Base';
 
-import { ButtonDropdowns, ButtonGroups, Buttons, BrandButtons } from './Buttons';
-import Charts from './Charts';
+import { ButtonDropdowns, ButtonGroups, Buttons, BrandButtons } from './DefaultTheme/Buttons';
+import Charts from './DefaultTheme/Charts';
 import Dashboard from './Dashboard';
-import { CoreUIIcons, Flags, FontAwesome, SimpleLineIcons } from './Icons';
-import { Alerts, Badges, Modals } from './Notifications';
+import { CoreUIIcons, Flags, FontAwesome, SimpleLineIcons } from './DefaultTheme/Icons';
+import { Alerts, Badges, Modals } from './DefaultTheme/Notifications';
 import { Login, Page404, Page500, Register } from './Pages';
-import { Colors, Typography } from './Theme';
-import Widgets from './Widgets';
+import { Colors, Typography } from './DefaultTheme/Theme';
+import Widgets from './DefaultTheme/Widgets';
 
 export {
   Badges,

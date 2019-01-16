@@ -86,7 +86,7 @@ class DefaultLayout extends Component {
                         )}/>
                     ) : (null);
                   })}
-                  <Redirect from="/" to="/"/>
+                  <Redirect from="/" to="/help/quick_start"/>
                 </Switch>
               </Suspense>
             </Container>

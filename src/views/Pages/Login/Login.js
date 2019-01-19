@@ -188,11 +188,11 @@ class Login extends Component {
                     <CardBody>
                       <Form onSubmit={this.handleSubmit}>
                         <h1>Login</h1>
-                        <p className="text-muted">Sign In to your account</p>
+                        <p className="text-muted" >Sign In to your account</p>
                         <InputGroup className="mb-3">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="icon-user"></i>
+                              <i className="icon-user"/>
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input type="text" name="username" onChange={this.handleChange} placeholder="Username" autoComplete="username" />
@@ -200,7 +200,7 @@ class Login extends Component {
                         <InputGroup className="mb-4">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="icon-lock"></i>
+                              <i className="icon-lock"/>
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input type="password" name="password" onChange={this.handleChange} placeholder="Password" autoComplete="current-password" />

@@ -3,7 +3,7 @@ import {decorate, observable} from "mobx"
 class FindingDashboardOptions {
   // Timer
   isArOn = true;
-  arRefreshTime = 5000;
+  arRefreshTime = 15000;
   chartsArTimer = {};
 
   // Layout

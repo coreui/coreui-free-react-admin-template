@@ -26,6 +26,7 @@ class FindingDashboard extends Component {
     this.state = {
       _notificationSystem: null,
 
+      findings_total: 0,
       findings_last_count: 0,
       findings_resolved_last_count: 0,
       findings_unresolved_last_count: 0,
@@ -183,6 +184,8 @@ class FindingDashboard extends Component {
       )
     }
 
+    const displayCssClassName = this.state.findings_last.length > 0 ? '' : 'loader-in-background-1-16';
+
     return (
       <ReactResizeDetector handleWidth handleHeight>
         <ol className="breadcrumb">
@@ -217,25 +220,25 @@ class FindingDashboard extends Component {
                   findings_in_progress_last_count={this.state.findings_in_progress_last_count}
                 />
               </div>
-              <div className={'containerDragAndDrop'} key="2" data-grid={{ w: 4, h: 3, x: 0, y: 0 }}>
+              <div className={'containerDragAndDrop loader-in-background-1-4'} key="2" data-grid={{ w: 4, h: 3, x: 0, y: 0 }}>
                 <GraphFindingNumbersLastMinutes
                   findings_count_per_minute={this.state.findings_count_per_minute}
                   height={this.props.windowHeight*0.210}
                 />
               </div>
-              <div className={'containerDragAndDrop'}  key="3" data-grid={{ w: 4, h: 3, x: 0, y: 4 }}>
+              <div className={'containerDragAndDrop loader-in-background-1-4'}  key="3" data-grid={{ w: 4, h: 3, x: 0, y: 4 }}>
                 <GraphFindingPercentage
                   findings_percentage={this.state.findings_percentage}
                   height={this.props.windowHeight*0.210}
                 />
               </div>
-              <div className={'containerDragAndDrop'} key="4" data-grid={{ w: 4, h: 3, x: 0, y: 7 }}>
+              <div className={'containerDragAndDrop loader-in-background-1-4'} key="4" data-grid={{ w: 4, h: 3, x: 0, y: 7 }}>
                 <GraphFindingNumbersLastMinutesPerHostname
                   findings_count_per_minute={this.state.findings_count_per_minute}
                   height={this.props.windowHeight*0.210}
                 />
               </div>
-              <div className={'containerDragAndDrop'} key="5" data-grid={{ w: 4, h: 10, x: 5, y: 0 }}>
+              <div className={'containerDragAndDrop ' + displayCssClassName} key="5" data-grid={{ w: 4, h: 10, x: 5, y: 0 }}>
                 <GraphLastFindings
                   last_findings={this.state.findings_last}
                   height={this.props.windowHeight*0.220}

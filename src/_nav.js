@@ -61,8 +61,13 @@ export default    {
     },
     {
       title: true,
-      name: 'Settings',
+      name: '',
       class: 'mt-auto',
+    },
+    {
+      name: 'Quick Start',
+      url: '/help/quick_start',
+      icon: 'icon-question',
     },
     {
       name: 'Profile',

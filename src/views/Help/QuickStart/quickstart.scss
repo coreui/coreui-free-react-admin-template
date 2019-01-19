@@ -1,21 +1,39 @@
 $lightgrey: #3a4149;
 $darkgrey: #23282c;
+$lightblue: #337ab7;
+
+
+.h55 {
+  font-size: 0.95rem;
+  font-weight: bold;
+  display: block;
+}
+
+.code-high {
+  padding: 2px 4px;
+  font-size: 90%;
+  font-weight: 600;
+  color: #c7070c;
+  background-color: #dfdfdf;
+  border-radius: 4px;
+}
 
 .frame {
   white-space: nowrap;
-  text-align: center;
+  //text-align: center;
 }
 
 .helper {
   display: inline-block;
   height: 100%;
   vertical-align: middle;
+  font-size: 1.5rem;
 
   img {
     background: #3A6F9A;
     vertical-align: middle;
-    height: 85px;
-    width: 85px;
+    height: 160px;
+    width: 160px;
   }
 }
 
@@ -43,21 +61,81 @@ $darkgrey: #23282c;
     flex-direction: row;
 }
 
-.progressbar {
-  padding: 0;
-  text-align: left;
+// numbers
+span.circle-blue {
+  background: transparent;
+  border: 3px solid $lightblue;
+  border-radius: 2.8em;
+  -moz-border-radius: 2.8em;
+  -webkit-border-radius: 2.8em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 2.1rem;
+  margin-right: 15px;
+  text-align: center;
+  width: 2.5rem;
 }
 
-.progressbar li {
-  margin-top: 20px;
-  list-style-type: none;
-  width: 5%;
-  //float: left;
-  display:inline-block;
-  font-size: 12px;
-  position: relative;
+//img flex horizontal
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  max-width: 75%;
+  padding: 0 4px;
+  display: flex;
+  justify-content: center;
+
+  .app-depl-active {
+    border-bottom: 10px solid #2a2f34;
+    transform: scale(1.05);
+  }
+
+  span {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:active {
+      border-bottom: 10px solid #2a2f34;
+      transform: scale(1.05);
+    }
+
+    &:hover {
+      border-bottom: 10px solid #2a2f34;
+      transform: scale(1.05);
+    }
+  }
+
+  img {
+    display:block;
+    margin:auto;
+  }
+}
+
+.centered {
+  display: flex;
+  width: 58vw;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-data-message {
   text-align: center;
-  text-transform: uppercase;
-  color: #7d7d7d;
-  -webkit-filter: blur(0.2px);
+  background-color: #343b41 !important;
+  color: red;
+  //font-weight: bold;
+  font-size: 1.0rem;
+  //border: 2px solid red;
+}
+
+.light-blue {
+  color: $lightblue;
 }

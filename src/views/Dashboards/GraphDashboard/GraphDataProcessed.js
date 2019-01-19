@@ -56,7 +56,7 @@ class GraphDataProcessed extends Component {
 
     return (
       <div>
-        <div class="header-1">
+        <div className={'header-1'}>
           <span>Graph Metrics</span>
         </div>
         {chartOrNoChart}

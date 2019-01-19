@@ -8,7 +8,7 @@ class GraphLastFindings extends Component {
   render() {
 
     const last_findings = this.props.last_findings.map(finding => (
-      <tr>
+      <tr key={finding.id}>
         <td>{finding.type_finding}</td>
         <td>{finding.hostname}</td>
         <td>{new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(new Date(finding.created_at))}</td>

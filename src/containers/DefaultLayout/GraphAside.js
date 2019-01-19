@@ -260,18 +260,18 @@ class GraphAside extends Component {
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1" className="p-3">
-            <table id="legend_settings" className="zoom-right-position">
-              <tr>
-                <td>
-                  <h5>Legend</h5>
-                  <div className="note-border-right note-info">
-                    <p>
-                      <img src={'../../assets/img/aside/node-with-agent.png'} className="legend-img" />
-                    </p>
-                  </div>
-                </td>
-              </tr>
-            </table>
+            {/*<table id="legend_settings" className="zoom-right-position">*/}
+              {/*<tr>*/}
+                {/*<td>*/}
+                  {/*<h5>Legend</h5>*/}
+                  {/*<div className="note-border-right note-info">*/}
+                    {/*<p>*/}
+                      {/*<img src={'../../assets/img/aside/node-with-agent.png'} className="legend-img" />*/}
+                    {/*</p>*/}
+                  {/*</div>*/}
+                {/*</td>*/}
+              {/*</tr>*/}
+            {/*</table>*/}
           </TabPane>
           <TabPane tabId="2" className="p-3">
             <h6>Auto Refresh</h6>
@@ -293,7 +293,7 @@ class GraphAside extends Component {
             <h6>Graph Transformation</h6>
             <div className="aside-options">
               <div className="clearfix mt-4">
-                <small>Shuffle</small>
+                <small>Vertical</small>
                 <button onClick={this.handleVerticalRandomizeChange} className="btn btn-transformation float-right">
                   <i className="fa fa-long-arrow-down"/>
                 </button>
@@ -302,7 +302,7 @@ class GraphAside extends Component {
 
             <div className="aside-options">
               <div className="clearfix mt-4">
-                <small>Vertical</small>
+                <small>Shuffle</small>
                 <button onClick={this.handleRandomizeChange} className="btn btn-transformation float-right">
                   <i className="fa fa-random"/>
                 </button>

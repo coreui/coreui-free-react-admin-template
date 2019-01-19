@@ -28,7 +28,6 @@ const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 class DefaultLayout extends Component {
 
   componentDidMount() {
-    console.log(this.props)
     if (auth.isLoggedIn()) {
       auth.hasAValidToken()
         .then(response => {

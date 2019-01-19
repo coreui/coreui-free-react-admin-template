@@ -40,6 +40,7 @@ class FindingDashboard extends Component {
 
     this.startAr = this.startAr.bind(this);
     this.stopAr = this.stopAr.bind(this);
+    this.refreshData = this.refreshData.bind(this);
 
   }
 
@@ -75,73 +76,78 @@ class FindingDashboard extends Component {
     return data_options;
   }
 
+  refreshData(){
+    api.getFindingCountByTime(LAST_MINUTES_FINDINGS)
+      .then(res => {
+        this.setState({
+          findings_count_per_minute: this.getFindingsNumbersLastMinuteChartOptions(res.data.message.findings),
+        });
+      })
+      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+
+    api.getFindingCountByType()
+      .then(res => {
+        let findings_total = 0;
+        res.data.message.findings.forEach(x => findings_total = findings_total + x.count);
+        this.setState({
+          findings_percentage: this.getFindingsPercentageChartOptions(res.data.message.findings),
+          findings_total: findings_total
+        });
+      })
+      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+
+    api.getFindingCountByHostname(LAST_MINUTES_FINDINGS)
+      .then(res => {
+        this.setState({
+          findings_count_per_hostname: this.getFindingsPercentageChartOptions(res.data.message.findings)
+        });
+      })
+      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+
+    api.getFindingCountByStatus(LAST_MINUTES_FINDINGS)
+      .then(res => {
+        let findings = res.data.message.findings.type_counts.buckets;
+        if (findings.length > 0) {
+          let findings_resolved_last_count = 0;
+          let findings_unresolved_last_count = 0;
+          let findings_in_progress_last_count = 0;
+          findings.forEach( x => {
+            if (x.key_as_string === 'false'){
+              findings_unresolved_last_count = x.doc_count
+            }else {
+              if (x.key_as_string === 'true') {
+                findings_resolved_last_count = x.doc_count
+              } else {
+                if (x.key_as_string === 'unresolved') {
+                  findings_in_progress_last_count = x.doc_count
+                }
+              }
+            }
+          });
+          this.setState({
+            findings_last_count: findings_resolved_last_count + findings_unresolved_last_count + findings_in_progress_last_count,
+            findings_resolved_last_count: findings_resolved_last_count,
+            findings_unresolved_last_count: findings_unresolved_last_count,
+            findings_in_progress_last_count: findings_in_progress_last_count
+          })
+        }
+      })
+      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+
+    api.getFindings(LAST_FINDINGS_TO_DISPLAY)
+      .then(res => {
+        this.setState({
+          findings_last: res.data.message.findings
+        });
+      })
+      .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+  }
+
   startAr() {
+    this.refreshData()
     findingDashboardOptions.chartsArTimer = setInterval(() => {
       if (findingDashboardOptions.isArOn) {
-        api.getFindingCountByTime(LAST_MINUTES_FINDINGS)
-          .then(res => {
-            this.setState({
-              findings_count_per_minute: this.getFindingsNumbersLastMinuteChartOptions(res.data.message.findings),
-            });
-          })
-          .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
-
-        api.getFindingCountByType()
-          .then(res => {
-            let findings_total = 0;
-            res.data.message.findings.forEach(x => findings_total = findings_total + x.count);
-            this.setState({
-              findings_percentage: this.getFindingsPercentageChartOptions(res.data.message.findings),
-              findings_total: findings_total
-            });
-          })
-          .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
-
-        api.getFindingCountByHostname(LAST_MINUTES_FINDINGS)
-          .then(res => {
-            this.setState({
-              findings_count_per_hostname: this.getFindingsPercentageChartOptions(res.data.message.findings)
-            });
-          })
-          .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
-
-        api.getFindingCountByStatus(LAST_MINUTES_FINDINGS)
-          .then(res => {
-            let findings = res.data.message.findings.type_counts.buckets;
-            if (findings.length > 0) {
-              let findings_resolved_last_count = 0;
-              let findings_unresolved_last_count = 0;
-              let findings_in_progress_last_count = 0;
-              findings.forEach( x => {
-                if (x.key_as_string === 'false'){
-                  findings_unresolved_last_count = x.doc_count
-                }else {
-                  if (x.key_as_string === 'true') {
-                    findings_resolved_last_count = x.doc_count
-                  } else {
-                    if (x.key_as_string === 'unresolved') {
-                      findings_in_progress_last_count = x.doc_count
-                    }
-                  }
-                }
-              });
-              this.setState({
-                findings_last_count: findings_resolved_last_count + findings_unresolved_last_count + findings_in_progress_last_count,
-                findings_resolved_last_count: findings_resolved_last_count,
-                findings_unresolved_last_count: findings_unresolved_last_count,
-                findings_in_progress_last_count: findings_in_progress_last_count
-              })
-            }
-          })
-          .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
-
-        api.getFindings(LAST_FINDINGS_TO_DISPLAY)
-          .then(res => {
-            this.setState({
-              findings_last: res.data.message.findings
-            });
-          })
-          .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
+        this.refreshData()
       }
     }, findingDashboardOptions.arRefreshTime);
   }
@@ -168,7 +174,6 @@ class FindingDashboard extends Component {
     this.state._notificationSystem = this.refs.notificationSystem;
     this.startAr()
   }
-
 
   componentWillUnmount() {
     this.stopAr();

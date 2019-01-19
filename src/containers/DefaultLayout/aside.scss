@@ -103,18 +103,13 @@ fieldset[disabled] .btn-transformation.focus {
     -webkit-animation: dash-check .9s .35s ease-in-out forwards;
     animation: dash-check .9s .35s ease-in-out forwards;
   }
+}
 
-  p {
-    text-align: center;
-    margin: 20px 0 60px;
-    font-size: 1.25em;
-    &.success {
-      color: #73AF55;
-    }
-    &.error {
-      color: #D06079;
-    }
-  }
+.success {
+  text-align: center;
+  margin: 20px 0 60px;
+  font-size: 1.25em;
+  color: #73AF55;
 }
 
 

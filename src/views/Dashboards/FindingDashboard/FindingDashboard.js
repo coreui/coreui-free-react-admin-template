@@ -178,7 +178,7 @@ class FindingDashboard extends Component {
 
     const { from } = this.props.location.state || { from: { pathname: '/help/quick_start' } };
 
-    if (this.state.findings_total === 0) {
+    if (this.state.findings_total.length === 0) {
       return (
         <Redirect to={from} />
       )

@@ -14,6 +14,7 @@ import './findingdashboard.scss'
 import GraphFindingNumbersLastMinutesPerHostname from "./GraphFindingNumbersLastMinutesPerHostname";
 import GraphLastFindings from "../GraphDashboard/GraphLastFindings";
 import GraphFindingCompanyPerformance from "./GraphFindingCompanyPerformance";
+import {Redirect} from "react-router-dom";
 
 const LAST_FINDINGS_TO_DISPLAY = 20;
 const LAST_MINUTES_FINDINGS = 3800;
@@ -148,8 +149,18 @@ class FindingDashboard extends Component {
     findingDashboardOptions.stopChartsArTimer()
   }
 
-  componentWillUnmount() {
-    this.stopAr();
+  // we don't want to load the dom if no findings
+  componentWillMount() {
+    api.getFindingCountByType()
+      .then(res => {
+        let findings_total = 0;
+        res.data.message.findings.forEach(x => findings_total = findings_total + x.count);
+        this.setState({
+          findings_percentage: this.getFindingsPercentageChartOptions(res.data.message.findings),
+          findings_total: findings_total
+        });
+      })
+      // .catch(error => this.state._notificationSystem.addNotification(api.getFormattedErrorNotification(error)));
   }
 
   async componentDidMount() {
@@ -157,7 +168,21 @@ class FindingDashboard extends Component {
     this.startAr()
   }
 
+
+  componentWillUnmount() {
+    this.stopAr();
+  }
+
   render() {
+
+    const { from } = this.props.location.state || { from: { pathname: '/help/quick_start' } };
+
+    if (this.state.findings_total === 0) {
+      return (
+        <Redirect to={from} />
+      )
+    }
+
     return (
       <ReactResizeDetector handleWidth handleHeight>
         <ol className="breadcrumb">

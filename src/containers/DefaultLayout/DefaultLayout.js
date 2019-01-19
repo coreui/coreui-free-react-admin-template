@@ -21,7 +21,6 @@ import auth from '../../Auth'
 import GraphAside from "./GraphAside";
 import FindingAside from "./FindingAside";
 
-const DefaultAside = React.lazy(() => import('./DefaultAside'));
 // const GraphAside = React.lazy(() => import('./GraphAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('./DefaultHeader'));

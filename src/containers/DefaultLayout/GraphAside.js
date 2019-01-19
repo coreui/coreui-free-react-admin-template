@@ -17,7 +17,7 @@ import classNames from 'classnames';
 import {AppSwitch} from '@coreui/react'
 import {graphDashboardOptions} from "../../views/Dashboards/GraphDashboard/GraphDashboardOptions";
 import {observer} from "mobx-react";
-import './defaultAside.scss'
+import './aside.scss'
 import LockGraphData from "../../views/Dashboards/GraphDashboard/LockGraphData";
 import api from "../../api";
 import '../../../node_modules/progress-tracker/app/styles/progress-tracker.scss'

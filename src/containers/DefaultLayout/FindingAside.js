@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {AppSwitch} from '@coreui/react'
 import {findingDashboardOptions} from "../../views/Dashboards/FindingDashboard/FindingDashboardOptions";
 import {observer} from "mobx-react";
-import './defaultAside.scss'
+import './aside.scss'
 import '../../../node_modules/progress-tracker/app/styles/progress-tracker.scss'
 
 const propTypes = {

@@ -47,7 +47,7 @@ class GraphDataProcessed extends Component {
       axisFontSize : 0
     };
 
-    const chartOrNoChart = this.props.last_edges.length > 0 ? ( <Chart
+    const chartOrNoChart = this.props.last_edges.length > 1 ? ( <Chart
       chartType="AreaChart"
       data={this.props.last_edges}
       options={options}

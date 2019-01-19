@@ -72,11 +72,12 @@ class GraphAside extends Component {
         this.setState({
           steps: 2
         });
+      }else {
+
       }
     } else {
       if (this.state.steps === 2) {
         if (graphDashboardOptions.relationsInLock.length > 0) {
-          console.log(JSON.stringify(graphDashboardOptions.relationsInLock));
           api.createOrUpdateLock(graphDashboardOptions.graphVar, JSON.stringify(graphDashboardOptions.relationsInLock))
             .then(res => {
               this.setState({
@@ -371,7 +372,7 @@ class GraphAside extends Component {
                   <ModalFooter>
                     <Button color="secondary" onClick={this.toggleLockEditor}>{this.state.steps === 3 ? 'Close' : 'Cancel'}</Button>{' '}
                     <Button color="primary" onClick={() => {let steps = this.state.steps; if (steps > 1) { this.setState({steps: steps-1}) }}} disabled={this.state.steps === 1}>Previous</Button>{' '}
-                    <Button color="primary" onClick={this.handleLockSave} disabled={this.state.steps === 3}>Next</Button>
+                    <Button color="primary" onClick={this.handleLockSave} disabled={(this.state.steps === 3 || graphDashboardOptions.relationsInLock.length === 0)}>Next</Button>
                   </ModalFooter>
                 </Modal>
               </div>

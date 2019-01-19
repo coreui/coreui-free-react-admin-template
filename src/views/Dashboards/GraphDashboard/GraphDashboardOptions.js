@@ -45,6 +45,7 @@ class GraphDashboardOptions {
 decorate(GraphDashboardOptions, {
   cy: observable,
   isDragAndDrop: observable,
+  relationsInLock: observable
 });
 
 export const graphDashboardOptions = new GraphDashboardOptions();

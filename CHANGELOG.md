@@ -1,5 +1,22 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.4`
+- maintenance release: fixes #151 #145   
+###### dependencies update
+- update: `@coreui/coreui` to `^2.1.7`
+- update: `@coreui/react` to `^2.1.4`
+- update: `bootstrap` to `^4.3.1`
+- update: `core-js` to `^2.6.5`
+- update: `enzyme` to `^3.9.0`
+- update: `enzyme-adapter-react-16` to `^1.9.1`
+- update: `prop-types` to `^15.7.2`
+- update: `react` to `^16.8.2`
+- update: `react-app-polyfill` to `^0.2.1`
+- update: `react-dom` to `^16.8.2`
+- update: `react-test-renderer` to `^16.8.2`
+- update: `reactstrap` to `^7.1.0`
+- update: `react-scripts` to `2.1.5`
+
 ##### `v2.1.3`
 - fix(Collapse): add `mb-0` to accordion cards
 - fix(ButtonGroups): misplaced dropdownOpen
@@ -42,21 +59,23 @@
   - starting with `@coreui/coreui`, `@coreui/react` version `2.1.0` and up
   - closes #106 
   - item example(`./src/_nav.js`):
-      ```js
-      {
-        name: 'Disabled',
-        url: '/disabled',
-        icon: 'icon-ban',
-        attributes: { disabled: true },
-      },
-      {
-        name: 'Try CoreUI PRO',
-        url: 'https://coreui.io/pro/react/',
-        icon: 'cui-layers icons',
-        variant: 'danger',
-        attributes: { target: '_blank', rel: "noopener" },
-      },
-      ```
+  ```js
+  [
+    {
+      name: 'Disabled',
+      url: '/disabled',
+      icon: 'icon-ban',
+      attributes: { disabled: true },
+    },
+    {
+      name: 'Try CoreUI PRO',
+      url: 'https://coreui.io/pro/react/',
+      icon: 'cui-layers icons',
+      variant: 'danger',
+      attributes: { target: '_blank', rel: "noopener" },
+    }
+  ]
+  ```
 - fix(Cards): `card-header-actions` added to `CardHeader` for `rtl` support
 - feat(Dashboard): new `Suspense` example with Widget03
 - chore: update `@coreui/coreui` to `2.1.0`

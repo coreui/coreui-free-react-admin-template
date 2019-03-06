@@ -1,5 +1,16 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.5`
+- fix: iOS 9 Safari sidebar toggle force issue `@coreui/react@2.1.5`
+
+###### dependencies update
+- update: `@coreui/react` to `^2.1.5`
+- update: `enzyme-adapter-react-16` to `^1.10.0`
+- update: `flag-icon-css` to `^3.3.0`
+- update: `react` to `^16.8.4`
+- update: `react-dom` to `^16.8.4`
+- update: `react-test-renderer` to `^16.8.4`
+
 ##### `v2.1.4`
 - maintenance release: fixes #151 #145   
 ###### dependencies update

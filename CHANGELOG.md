@@ -1,5 +1,26 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.6`
+- fix(App): remove redundant react-loadable - thanks @sergeyt
+- fix(routes) remove circular dependency - thanks @sergeyt
+- refactor(App): change to render in Route
+- fix(routes): add Home to routes - breadcrumb issue
+- refactor(DefaultHeader): move to ReactRouter `NavLink`
+- refactor(Forms): move to `InputGroupButtonDropdown` where applicable 
+
+###### dependencies update
+- update: `@coreui/coreui` to `^2.1.9`
+- update: `@coreui/react` to `~2.1.5`
+- update: `chart.js` to `^2.8.0`
+- update: `enzyme-adapter-react-16` to `^1.11.2`
+- update: `react` to `^16.8.5`
+- update: `react-app-polyfill` to `^0.2.2`
+- update: `react-dom` to `^16.8.5`
+- update: `react-router-config` to `^4.4.0-beta.8`
+- update: `react-router-dom` to `~4.3.1`
+- update: `react-test-renderer` to `^16.8.5`
+- update: `react-scripts` to `^2.1.8`
+
 ##### `v2.1.5`
 - fix: iOS 9 Safari sidebar toggle force issue `@coreui/react@2.1.5`
 

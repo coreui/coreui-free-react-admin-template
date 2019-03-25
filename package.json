@@ -30,7 +30,6 @@
     "react-app-polyfill": "^0.2.1",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.8.4",
-    "react-loadable": "^5.5.0",
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
     "react-test-renderer": "^16.8.4",

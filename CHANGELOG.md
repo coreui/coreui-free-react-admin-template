@@ -1,5 +1,25 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.1.7`
+- maintenance release for use with:
+  - react-router `v4.3.x`
+  - reactstrap `v7.x`
+  - @coreui/react `~2.1.7`
+- chore: add `package-lock.json` with updated `tar` dependency  
+- chore: fix `test:cov` script
+- fix(Popovers): add `trigger="legacy" delay={0}` (breaking change in reactstrap) 
+###### dependencies update
+- update: `@coreui/react` to `~2.1.7`
+- update: `@coreui/coreui-plugin-chartjs-custom-tooltips` to `^1.3.0`
+- update: `enzyme-adapter-react-16` to `^1.13.0`
+- update: `node-sass` to `^4.12.0`
+- update: `react` to `^16.8.6`
+- update: `react-app-polyfill` to `^1.0.1`
+- update: `react-chartjs-2` to `^2.7.6`
+- update: `react-dom` to `^16.8.6`
+- update: `react-test-renderer` to `^16.8.6`
+- update: `react-scripts` to `^3.0.1`
+
 ##### `v2.1.6`
 - fix(App): remove redundant react-loadable - thanks @sergeyt
 - fix(routes) remove circular dependency - thanks @sergeyt

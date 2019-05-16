@@ -1,10 +1,10 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
-  "version": "2.1.7",
+  "version": "2.5.0",
   "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
   "author": "Łukasz Holeczek",
   "homepage": "https://coreui.io",
-  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
+  "copyright": "Copyright 2017-2019 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -15,7 +15,7 @@
     "@coreui/coreui": "^2.1.9",
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.3.0",
     "@coreui/icons": "0.3.0",
-    "@coreui/react": "~2.1.7",
+    "@coreui/react": "~2.5.0",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
@@ -30,8 +30,8 @@
     "react-app-polyfill": "^1.0.1",
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.8.6",
-    "react-router-config": "^4.4.0-beta.8",
-    "react-router-dom": "~4.3.1",
+    "react-router-config": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "react-test-renderer": "^16.8.6",
     "reactstrap": "^7.1.0",
     "simple-line-icons": "^2.4.1"

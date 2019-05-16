@@ -1,5 +1,58 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.5.0`
+- **BREAKING CHANGE** release for use with:
+  - react-router-dom `~5.0.0`
+  - @coreui/react `~2.5.0`
+
+###### dependencies update
+- update: `@coreui/react` to `~2.5.0`
+- update: `react-router-config` to `^5.0.0`
+- update: `react-router-dom` to `^5.0.0`
+
+__BREAKING CHANGES__  :boom: 
+- use React Router `v5`
+- drop 'Breadcrumb' in favour of `Breadcrumb2`
+- drop 'SidebarNav' in favour of `SidebarNav2`
+- __Breadcrumb2__: **mandatory** prop `router` 💥 see > [Breadcrumb](./src/Breadcrumb.md)
+- __SidebarNav2__: **mandatory** prop `router` 💥 see > [SidebarNav](./src/SidebarNav.md) 
+
+React Router v5 uses the new React Context API, which is incompatible with version used in 4.3.
+That's a breaking change. With a raw upgrade to v5, you can encounter an error message: `You should not render a <Route> outside a <Router>` or `You should not use <Link> outside a <Router>` etc... It means that Route, Link etc, can't find the correct context object because `Breadcrumb` and `SidebarNav` components have their own context object.
+ 
+It's important to use the same instance of the `react-router-dom v5` library with template and coreui components. `@coreui/react` version `2.5.0` moves react-router-dom form dependencies to peerDependecies and takes the same library/module from the template/app instead. We have to pass `router` module object as a prop to `<AppSidebarNav>` and `<AppBreadcrumb>`      
+
+#### _migration guide v2.1 -> v2.5_ :boom:
+1. update `dependencies` in `package.json`    
+   - [ ] `@coreui/react` to `~2.5.0`
+   - [ ] `react-router-dom` to `^5.0.0`   
+   - [ ] `react-router-config` to `^5.0.0`
+
+2. modify `DefaultLayout.js`
+   - [ ] import react-router-dom module as an object   
+     ```
+     import * as router from 'react-router-dom';
+     ```
+   - [ ] import new versions of components `AppBreadcrumb2` and `AppSidebarNav2` (alias is optional, just keep consistency with markup)
+     ```jsx
+     import {
+       ... 
+       AppBreadcrumb2 as AppBreadcrumb,
+       AppSidebarNav2 as AppSidebarNav
+       ...
+     } from '@coreui/react';
+     ```
+   - [ ] inject `router` object as a prop to `<AppSidebarNav>` and `<AppBreadcrumb>`
+     ```html
+     <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>  
+     ```  
+    
+     ```html
+     <AppBreadcrumb appRoutes={routes} router={router}/>
+     ```
+
+---
+
 ##### `v2.1.7`
 - maintenance release for use with:
   - react-router `v4.3.x`

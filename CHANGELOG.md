@@ -1,7 +1,7 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
 ##### `v2.5.0`
-- **BREAKING CHANGE** release for use with:
+- release for use with:
   - react-router-dom `~5.0.0`
   - @coreui/react `~2.5.0`
 
@@ -10,6 +10,16 @@
 - update: `react-router-config` to `^5.0.0`
 - update: `react-router-dom` to `^5.0.0`
 
+It turns out this is not such a breaking change, as it seemed at a glance.
+Just update dependencies and you're good.
+
+#### _migration guide v2.1 -> v2.5_ :boom:
+- update `dependencies` in `package.json`  
+   - [ ] `@coreui/react` to `~2.5.0`
+   - [ ] `react-router-dom` to `^5.0.0`   
+   - [ ] `react-router-config` to `^5.0.0`
+
+<del>
 __BREAKING CHANGES__  :boom: 
 - use React Router `v5`
 - drop 'Breadcrumb' in favour of `Breadcrumb2`
@@ -50,7 +60,7 @@ It's important to use the same instance of the `react-router-dom v5` library wit
      ```html
      <AppBreadcrumb appRoutes={routes} router={router}/>
      ```
-
+</del>
 ---
 
 ##### `v2.1.7`

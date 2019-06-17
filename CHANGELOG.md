@@ -1,5 +1,21 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.6.0`
+- move to `reactstrap v8`. Breaking changes and deprecations, see: https://github.com/reactstrap/reactstrap/blob/master/CHANGELOG.md#800-2019-04-03
+- fix(DefaultHeader): replace `AppHeaderDropdown` with `UncontrolledDropdown`
+- refactor: add ie polyfills 
+
+###### dependencies update
+- update: `@coreui/coreui` to `^2.1.12`
+- update: `@coreui/coreui-plugin-chartjs-custom-tooltips` to `^1.3.1`
+- update: `@coreui/react` to `^2.5.1`
+- update: `core-js` to `^3.1.4`
+- update: `enzyme` to `^3.10.0`
+- update: `enzyme-adapter-react-16` to `^1.14.0`
+- update: `react-router-config` to `^5.0.1`
+- update: `react-router-dom` to `^5.0.1`
+- update: `reactstrap` to `^8.0.0`
+
 ##### `v2.5.0`
 - release for use with:
   - react-router-dom `~5.0.0`

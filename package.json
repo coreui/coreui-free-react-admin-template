@@ -1,6 +1,6 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
   "author": "Łukasz Holeczek",
   "homepage": "https://coreui.io",
@@ -12,16 +12,16 @@
     "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
   },
   "dependencies": {
-    "@coreui/coreui": "^2.1.9",
-    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.3.0",
+    "@coreui/coreui": "^2.1.12",
+    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.3.1",
     "@coreui/icons": "0.3.0",
-    "@coreui/react": "~2.5.0",
+    "@coreui/react": "^2.5.1",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
-    "core-js": "^2.6.5",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.0",
+    "core-js": "^3.1.4",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "flag-icon-css": "^3.3.0",
     "font-awesome": "^4.7.0",
     "node-sass": "^4.12.0",
@@ -30,10 +30,10 @@
     "react-app-polyfill": "^1.0.1",
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.8.6",
-    "react-router-config": "^5.0.0",
-    "react-router-dom": "^5.0.0",
+    "react-router-config": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "react-test-renderer": "^16.8.6",
-    "reactstrap": "^7.1.0",
+    "reactstrap": "^8.0.0",
     "simple-line-icons": "^2.4.1"
   },
   "devDependencies": {
@@ -66,5 +66,9 @@
       "!src/serviceWorker.js",
       "!src/polyfill.js"
     ]
+  },
+  "engines": {
+    "node": ">=8.10",
+    "npm": ">=6"
   }
 }

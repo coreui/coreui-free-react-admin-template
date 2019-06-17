@@ -109,7 +109,7 @@ Within the download you'll find the following directories and files, logically g
 CoreUI-React#v2.0.0
 ├── public/          #static files
 │   ├── assets/      #assets
-│   └── index.html   #html temlpate
+│   └── index.html   #html template
 │
 ├── src/             #project root
 │   ├── containers/  #container source

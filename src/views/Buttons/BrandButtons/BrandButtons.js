@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
-class BrandButtons extends Component {
-  render() {
+function BrandButtons() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -319,6 +318,5 @@ class BrandButtons extends Component {
 
     );
   }
-}
 
 export default BrandButtons;

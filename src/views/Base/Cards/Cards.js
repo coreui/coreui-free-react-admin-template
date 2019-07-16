@@ -1,29 +1,22 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Badge, Card, CardBody, CardFooter, CardHeader, Col, Row, Collapse, Fade } from 'reactstrap';
 import { AppSwitch } from '@coreui/react'
 
-class Cards extends Component {
-  constructor(props) {
-    super(props);
+function Cards() {
 
-    this.toggle = this.toggle.bind(this);
-    this.toggleFade = this.toggleFade.bind(this);
-    this.state = {
-      collapse: true,
-      fadeIn: true,
-      timeout: 300
-    };
+  const [collapse, setCollapse] = useState(true)
+  const [fadeIn, setFadeIn] = useState(true)
+  const [timeout, ] = useState(3000)
+
+  function toggle() {
+    setCollapse(!collapse)
   }
 
-  toggle() {
-    this.setState({ collapse: !this.state.collapse });
+  function toggleFade(prevState) {
+    setFadeIn(!prevState)
   }
 
-  toggleFade() {
-    this.setState((prevState) => { return { fadeIn: !prevState }});
-  }
 
-  render() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -383,7 +376,7 @@ class Cards extends Component {
             </Card>
           </Col>
           <Col xs="12" sm="6" md="4">
-            <Fade timeout={this.state.timeout} in={this.state.fadeIn}>
+            <Fade timeout={timeout} in={fadeIn}>
               <Card>
                 <CardHeader>
                   Card actions
@@ -391,12 +384,12 @@ class Cards extends Component {
                     {/*eslint-disable-next-line*/}
                     <a href="#" className="card-header-action btn btn-setting"><i className="icon-settings"></i></a>
                     {/*eslint-disable-next-line*/}
-                    <a className="card-header-action btn btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></a>
+                    <a className="card-header-action btn btn-minimize" data-target="#collapseExample" onClick={toggle}><i className="icon-arrow-up"></i></a>
                     {/*eslint-disable-next-line*/}
-                    <a className="card-header-action btn btn-close" onClick={this.toggleFade}><i className="icon-close"></i></a>
+                    <a className="card-header-action btn btn-close" onClick={toggleFade}><i className="icon-close"></i></a>
                   </div>
                 </CardHeader>
-                <Collapse isOpen={this.state.collapse} id="collapseExample">
+                <Collapse isOpen={collapse} id="collapseExample">
                   <CardBody>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
                     laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
@@ -411,6 +404,5 @@ class Cards extends Component {
       </div>
     );
   }
-}
 
 export default Cards;

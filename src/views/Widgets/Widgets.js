@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { CardGroup, Col, Row } from 'reactstrap';
 import Widget01 from './Widget01';
 import Widget02 from './Widget02';
@@ -59,8 +59,7 @@ const socialChartOpts = {
   },
 };
 
-class Widgets extends Component {
-  render() {
+function Widgets() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -227,6 +226,5 @@ class Widgets extends Component {
       </div>
     );
   }
-}
 
 export default Widgets;

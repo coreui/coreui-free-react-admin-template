@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Nav, NavItem, NavLink, Progress, TabContent, TabPane, ListGroup, ListGroupItem } from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -10,59 +10,48 @@ const propTypes = {
 
 const defaultProps = {};
 
-class DefaultAside extends Component {
+function DefaultAside(props) {
 
-  constructor(props) {
-    super(props);
+  const [activeTab, setActiveTab] = useState(1)
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: '1',
-    };
-  }
-
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab,
-      });
+  function toggle(tab) {
+    if (activeTab !== tab) {
+      setActiveTab(tab)
     }
   }
 
-  render() {
-
     // eslint-disable-next-line
-    const { children, ...attributes } = this.props;
+    const { children, ...attributes } = props;
 
     return (
       <React.Fragment>
         <Nav tabs>
           <NavItem>
-            <NavLink className={classNames({ active: this.state.activeTab === '1' })}
+            <NavLink className={classNames({ active: activeTab === '1' })}
                      onClick={() => {
-                       this.toggle('1');
+                       toggle('1');
                      }}>
               <i className="icon-list"></i>
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink className={classNames({ active: this.state.activeTab === '2' })}
+            <NavLink className={classNames({ active: activeTab === '2' })}
                      onClick={() => {
-                       this.toggle('2');
+                       toggle('2');
                      }}>
               <i className="icon-speech"></i>
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink className={classNames({ active: this.state.activeTab === '3' })}
+            <NavLink className={classNames({ active: activeTab === '3' })}
                      onClick={() => {
-                       this.toggle('3');
+                       toggle('3');
                      }}>
               <i className="icon-settings"></i>
             </NavLink>
           </NavItem>
         </Nav>
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <ListGroup className="list-group-accent" tag={'div'}>
               <ListGroupItem className="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</ListGroupItem>
@@ -309,7 +298,6 @@ class DefaultAside extends Component {
       </React.Fragment>
     );
   }
-}
 
 DefaultAside.propTypes = propTypes;
 DefaultAside.defaultProps = defaultProps;

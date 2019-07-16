@@ -1,4 +1,4 @@
-import React, { Component, lazy, Suspense } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import {
   Badge,
@@ -452,34 +452,19 @@ const mainChartOpts = {
   },
 };
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+function Dashboard() {
 
-    this.toggle = this.toggle.bind(this);
-    this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
+  const [radioSelected, setRadioSelected] = useState(2)
+  const [card1, setCard1] = useState(false)
+  const [card2, setCard2] = useState(false)
+  const [card3, setCard3] = useState(false)
+  const [card4, setCard4] = useState(false)
 
-    this.state = {
-      dropdownOpen: false,
-      radioSelected: 2,
-    };
+  function onRadioBtnClick(radioSelected) {
+    setRadioSelected(radioSelected)
   }
 
-  toggle() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
-    });
-  }
-
-  onRadioBtnClick(radioSelected) {
-    this.setState({
-      radioSelected: radioSelected,
-    });
-  }
-
-  loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
-
-  render() {
+  function loading() { return <div className="animated fadeIn pt-1 text-center">Loading...</div>}
 
     return (
       <div className="animated fadeIn">
@@ -488,7 +473,7 @@ class Dashboard extends Component {
             <Card className="text-white bg-info">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
-                  <ButtonDropdown id='card1' isOpen={this.state.card1} toggle={() => { this.setState({ card1: !this.state.card1 }); }}>
+                  <ButtonDropdown id='card1' isOpen={card1} toggle={() => setCard1(!card1)}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>
@@ -513,7 +498,7 @@ class Dashboard extends Component {
             <Card className="text-white bg-primary">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
-                  <Dropdown id='card2' isOpen={this.state.card2} toggle={() => { this.setState({ card2: !this.state.card2 }); }}>
+                  <Dropdown id='card2' isOpen={card2} toggle={() => setCard2(!card2)}>
                     <DropdownToggle className="p-0" color="transparent">
                       <i className="icon-location-pin"></i>
                     </DropdownToggle>
@@ -537,7 +522,7 @@ class Dashboard extends Component {
             <Card className="text-white bg-warning">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
-                  <Dropdown id='card3' isOpen={this.state.card3} toggle={() => { this.setState({ card3: !this.state.card3 }); }}>
+                  <Dropdown id='card3' isOpen={card3} toggle={() => setCard3(!card3)}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>
@@ -561,7 +546,7 @@ class Dashboard extends Component {
             <Card className="text-white bg-danger">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
-                  <ButtonDropdown id='card4' isOpen={this.state.card4} toggle={() => { this.setState({ card4: !this.state.card4 }); }}>
+                  <ButtonDropdown id='card4' isOpen={card4} toggle={() => setCard4(!card4)}>
                     <DropdownToggle caret className="p-0" color="transparent">
                       <i className="icon-settings"></i>
                     </DropdownToggle>
@@ -594,9 +579,9 @@ class Dashboard extends Component {
                     <Button color="primary" className="float-right"><i className="icon-cloud-download"></i></Button>
                     <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
                       <ButtonGroup className="mr-3" aria-label="First group">
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
+                        <Button color="outline-secondary" onClick={() => onRadioBtnClick(1)} active={radioSelected === 1}>Day</Button>
+                        <Button color="outline-secondary" onClick={() => onRadioBtnClick(2)} active={radioSelected === 2}>Month</Button>
+                        <Button color="outline-secondary" onClick={() => onRadioBtnClick(3)} active={radioSelected === 3}>Year</Button>
                       </ButtonGroup>
                     </ButtonToolbar>
                   </Col>
@@ -640,7 +625,7 @@ class Dashboard extends Component {
 
         <Row>
           <Col xs="6" sm="6" lg="3">
-            <Suspense fallback={this.loading()}>
+            <Suspense fallback={loading()}>
               <Widget03 dataBox={() => ({ variant: 'facebook', friends: '89k', feeds: '459' })} >
                 <div className="chart-wrapper">
                   <Line data={makeSocialBoxData(0)} options={socialChartOpts} height={90} />
@@ -650,7 +635,7 @@ class Dashboard extends Component {
           </Col>
 
           <Col xs="6" sm="6" lg="3">
-            <Suspense fallback={this.loading()}>
+            <Suspense fallback={loading()}>
               <Widget03 dataBox={() => ({ variant: 'twitter', followers: '973k', tweets: '1.792' })} >
                 <div className="chart-wrapper">
                   <Line data={makeSocialBoxData(1)} options={socialChartOpts} height={90} />
@@ -660,7 +645,7 @@ class Dashboard extends Component {
           </Col>
 
           <Col xs="6" sm="6" lg="3">
-            <Suspense fallback={this.loading()}>
+            <Suspense fallback={loading()}>
               <Widget03 dataBox={() => ({ variant: 'linkedin', contacts: '500+', feeds: '292' })} >
                 <div className="chart-wrapper">
                   <Line data={makeSocialBoxData(2)} options={socialChartOpts} height={90} />
@@ -670,7 +655,7 @@ class Dashboard extends Component {
           </Col>
 
           <Col xs="6" sm="6" lg="3">
-            <Suspense fallback={this.loading()}>
+            <Suspense fallback={loading()}>
               <Widget03 dataBox={() => ({ variant: 'google-plus', followers: '894', circles: '92' })} >
                 <div className="chart-wrapper">
                   <Line data={makeSocialBoxData(3)} options={socialChartOpts} height={90} />
@@ -1124,6 +1109,5 @@ class Dashboard extends Component {
       </div>
     );
   }
-}
 
 export default Dashboard;

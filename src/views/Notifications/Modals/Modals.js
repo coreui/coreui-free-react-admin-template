@@ -1,233 +1,303 @@
-import React, { Component } from 'react';
-import { Button, Card, CardBody, CardHeader, Col, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
+import React, { useState } from "react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Row
+} from "reactstrap";
 
-class Modals extends Component {
+function Modals(props) {
+  const [modal, setModal] = useState(false);
+  const [large, setLarge] = useState(false);
+  const [small, setSmall] = useState(false);
+  const [primary, setPrimary] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [warning, setWarning] = useState(false);
+  const [danger, setDanger] = useState(false);
+  const [info, setInfo] = useState(false);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false,
-      large: false,
-      small: false,
-      primary: false,
-      success: false,
-      warning: false,
-      danger: false,
-      info: false,
-    };
-
-    this.toggle = this.toggle.bind(this);
-    this.toggleLarge = this.toggleLarge.bind(this);
-    this.toggleSmall = this.toggleSmall.bind(this);
-    this.togglePrimary = this.togglePrimary.bind(this);
-    this.toggleSuccess = this.toggleSuccess.bind(this);
-    this.toggleWarning = this.toggleWarning.bind(this);
-    this.toggleDanger = this.toggleDanger.bind(this);
-    this.toggleInfo = this.toggleInfo.bind(this);
+  function toggle() {
+    setModal(!modal);
   }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal,
-    });
+  function toggleLarge() {
+    setLarge(!large);
   }
 
-  toggleLarge() {
-    this.setState({
-      large: !this.state.large,
-    });
+  function toggleSmall() {
+    setSmall(!small);
   }
 
-  toggleSmall() {
-    this.setState({
-      small: !this.state.small,
-    });
+  function togglePrimary() {
+    setPrimary(!primary);
   }
 
-  togglePrimary() {
-    this.setState({
-      primary: !this.state.primary,
-    });
+  function toggleSuccess() {
+    setSuccess(!success);
   }
 
-  toggleSuccess() {
-    this.setState({
-      success: !this.state.success,
-    });
+  function toggleWarning() {
+    setWarning(!warning);
   }
 
-  toggleWarning() {
-    this.setState({
-      warning: !this.state.warning,
-    });
+  function toggleDanger() {
+    setDanger(!danger);
   }
 
-  toggleDanger() {
-    this.setState({
-      danger: !this.state.danger,
-    });
+  function toggleInfo() {
+    setInfo(!info);
   }
 
-  toggleInfo() {
-    this.setState({
-      info: !this.state.info,
-    });
-  }
+  return (
+    <div className="animated fadeIn">
+      <Row>
+        <Col>
+          <Card>
+            <CardHeader>
+              <i className="fa fa-align-justify" /> Bootstrap Modals
+            </CardHeader>
+            <CardBody>
+              <Button onClick={toggle} className="mr-1">
+                Launch demo modal
+              </Button>
+              <Modal isOpen={modal} toggle={toggle} className={props.className}>
+                <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onClick={toggle}>
+                    Do Something
+                  </Button>{" "}
+                  <Button color="secondary" onClick={toggle}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-  render() {
-    return (
-      <div className="animated fadeIn">
-        <Row>
-          <Col>
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i> Bootstrap Modals
-              </CardHeader>
-              <CardBody>
-                <Button onClick={this.toggle} className="mr-1">Launch demo modal</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                  <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                  <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
+              <Button onClick={toggleLarge} className="mr-1">
+                Launch large modal
+              </Button>
+              <Modal
+                isOpen={large}
+                toggle={toggleLarge}
+                className={"modal-lg " + props.className}
+              >
+                <ModalHeader toggle={toggleLarge}>Modal title</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onClick={toggleLarge}>
+                    Do Something
+                  </Button>{" "}
+                  <Button color="secondary" onClick={toggleLarge}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-                <Button onClick={this.toggleLarge} className="mr-1">Launch large modal</Button>
-                <Modal isOpen={this.state.large} toggle={this.toggleLarge}
-                       className={'modal-lg ' + this.props.className}>
-                  <ModalHeader toggle={this.toggleLarge}>Modal title</ModalHeader>
-                  <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={this.toggleLarge}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.toggleLarge}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
+              <Button onClick={toggleSmall} className="mr-1">
+                Launch small modal
+              </Button>
+              <Modal
+                isOpen={small}
+                toggle={toggleSmall}
+                className={"modal-sm " + props.className}
+              >
+                <ModalHeader toggle={toggleSmall}>Modal title</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onClick={toggleSmall}>
+                    Do Something
+                  </Button>{" "}
+                  <Button color="secondary" onClick={toggleSmall}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-                <Button onClick={this.toggleSmall} className="mr-1">Launch small modal</Button>
-                <Modal isOpen={this.state.small} toggle={this.toggleSmall}
-                       className={'modal-sm ' + this.props.className}>
-                  <ModalHeader toggle={this.toggleSmall}>Modal title</ModalHeader>
-                  <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={this.toggleSmall}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.toggleSmall}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
+              <hr />
 
-                <hr />
+              <Button color="primary" onClick={togglePrimary} className="mr-1">
+                Primary modal
+              </Button>
+              <Modal
+                isOpen={primary}
+                toggle={togglePrimary}
+                className={"modal-primary " + props.className}
+              >
+                <ModalHeader toggle={togglePrimary}>Modal title</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onClick={togglePrimary}>
+                    Do Something
+                  </Button>{" "}
+                  <Button color="secondary" onClick={togglePrimary}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-                <Button color="primary" onClick={this.togglePrimary} className="mr-1">Primary modal</Button>
-                <Modal isOpen={this.state.primary} toggle={this.togglePrimary}
-                       className={'modal-primary ' + this.props.className}>
-                  <ModalHeader toggle={this.togglePrimary}>Modal title</ModalHeader>
-                  <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={this.togglePrimary}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.togglePrimary}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
+              <Button color="success" onClick={toggleSuccess} className="mr-1">
+                Success modal
+              </Button>
+              <Modal
+                isOpen={success}
+                toggle={toggleSuccess}
+                className={"modal-success " + props.className}
+              >
+                <ModalHeader toggle={toggleSuccess}>Modal title</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="success" onClick={toggleSuccess}>
+                    Do Something
+                  </Button>{" "}
+                  <Button color="secondary" onClick={toggleSuccess}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-                <Button color="success" onClick={this.toggleSuccess} className="mr-1">Success modal</Button>
-                <Modal isOpen={this.state.success} toggle={this.toggleSuccess}
-                       className={'modal-success ' + this.props.className}>
-                  <ModalHeader toggle={this.toggleSuccess}>Modal title</ModalHeader>
-                  <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="success" onClick={this.toggleSuccess}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.toggleSuccess}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
+              <Button color="warning" onClick={toggleWarning} className="mr-1">
+                Warning modal
+              </Button>
+              <Modal
+                isOpen={warning}
+                toggle={toggleWarning}
+                className={"modal-warning " + props.className}
+              >
+                <ModalHeader toggle={toggleWarning}>Modal title</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="warning" onClick={toggleWarning}>
+                    Do Something
+                  </Button>{" "}
+                  <Button color="secondary" onClick={toggleWarning}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-                <Button color="warning" onClick={this.toggleWarning} className="mr-1">Warning modal</Button>
-                <Modal isOpen={this.state.warning} toggle={this.toggleWarning}
-                       className={'modal-warning ' + this.props.className}>
-                  <ModalHeader toggle={this.toggleWarning}>Modal title</ModalHeader>
-                  <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="warning" onClick={this.toggleWarning}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.toggleWarning}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
+              <Button color="danger" onClick={toggleDanger} className="mr-1">
+                Danger modal
+              </Button>
+              <Modal
+                isOpen={danger}
+                toggle={toggleDanger}
+                className={"modal-danger " + props.className}
+              >
+                <ModalHeader toggle={toggleDanger}>Modal title</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="danger" onClick={toggleDanger}>
+                    Do Something
+                  </Button>{" "}
+                  <Button color="secondary" onClick={toggleDanger}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-                <Button color="danger" onClick={this.toggleDanger} className="mr-1">Danger modal</Button>
-                <Modal isOpen={this.state.danger} toggle={this.toggleDanger}
-                       className={'modal-danger ' + this.props.className}>
-                  <ModalHeader toggle={this.toggleDanger}>Modal title</ModalHeader>
-                  <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="danger" onClick={this.toggleDanger}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.toggleDanger}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
-
-                <Button color="info" onClick={this.toggleInfo} className="mr-1">Info modal</Button>
-                <Modal isOpen={this.state.info} toggle={this.toggleInfo}
-                       className={'modal-info ' + this.props.className}>
-                  <ModalHeader toggle={this.toggleInfo}>Modal title</ModalHeader>
-                  <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={this.toggleInfo}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.toggleInfo}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
-
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
+              <Button color="info" onClick={toggleInfo} className="mr-1">
+                Info modal
+              </Button>
+              <Modal
+                isOpen={info}
+                toggle={toggleInfo}
+                className={"modal-info " + props.className}
+              >
+                <ModalHeader toggle={toggleInfo}>Modal title</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onClick={toggleInfo}>
+                    Do Something
+                  </Button>{" "}
+                  <Button color="secondary" onClick={toggleInfo}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Modal>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+    </div>
+  );
 }
 
 export default Modals;

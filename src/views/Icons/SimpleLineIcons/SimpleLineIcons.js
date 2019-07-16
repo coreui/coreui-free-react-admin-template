@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
-class SimpleLineIcons extends Component {
-  render() {
+function SimpleLineIcons(){
     return (
       <div className="animated fadeIn">
         <Card>
@@ -750,6 +749,5 @@ class SimpleLineIcons extends Component {
       </div>
     );
   }
-}
 
 export default SimpleLineIcons;

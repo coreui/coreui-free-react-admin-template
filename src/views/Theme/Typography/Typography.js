@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Typography extends Component {
-  render() {
+function Typography() {
     return (
       <div className="animated fadeIn">
         <div className="card">
@@ -165,6 +164,5 @@ class Typography extends Component {
       </div>
     );
   }
-}
 
 export default Typography;

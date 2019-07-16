@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Badge,
   Button,
@@ -25,28 +25,25 @@ import {
   Row,
 } from 'reactstrap';
 
-class Forms extends Component {
-  constructor(props) {
-    super(props);
+function Forms(){
 
-    this.toggle = this.toggle.bind(this);
-    this.toggleFade = this.toggleFade.bind(this);
-    this.state = {
-      collapse: true,
-      fadeIn: true,
-      timeout: 300
-    };
+  const [collapse, setCollapse] = useState(true)
+  const [fadeIn, setFadeIn] = useState(true)
+  const [timeout, ] = useState(300)
+
+  const [first, setFirst] = useState(true)
+  const [second, setSecond] = useState(true)
+  const [third, setThird] = useState(true)
+  const [fourth, setFourth] = useState(true)
+
+  function toggle() {
+    setCollapse(!collapse)
   }
 
-  toggle() {
-    this.setState({ collapse: !this.state.collapse });
+  function toggleFade(prevState) {
+    setFadeIn(!prevState)
   }
 
-  toggleFade() {
-    this.setState((prevState) => { return { fadeIn: !prevState }});
-  }
-
-  render() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -740,12 +737,12 @@ class Forms extends Component {
                     <Col md="12">
                       <InputGroup>
                         <InputGroupButtonDropdown addonType="prepend"
-                                                  isOpen={this.state.first}
-                                                  toggle={() => { this.setState({ first: !this.state.first }); }}>
+                                                  isOpen={first}
+                                                  toggle={() => setFirst(!first)}>
                           <DropdownToggle caret color="primary">
                             Dropdown
                           </DropdownToggle>
-                          <DropdownMenu className={this.state.first ? 'show' : ''}>
+                          <DropdownMenu className={first ? 'show' : ''}>
                             <DropdownItem>Action</DropdownItem>
                             <DropdownItem>Another Action</DropdownItem>
                             <DropdownItem>Something else here</DropdownItem>
@@ -762,12 +759,12 @@ class Forms extends Component {
                       <InputGroup>
                         <Input type="email" id="input2-group3" name="input2-group3" placeholder="Email" />
                         <InputGroupButtonDropdown addonType="append"
-                                                  isOpen={this.state.second}
-                                                  toggle={() => { this.setState({ second: !this.state.second }); }}>
+                                                  isOpen={second}
+                                                  toggle={() => setSecond(!second)}>
                           <DropdownToggle caret color="primary">
                             Dropdown
                           </DropdownToggle>
-                          <DropdownMenu className={this.state.second ? 'show' : ''}>
+                          <DropdownMenu className={second ? 'show' : ''}>
                             <DropdownItem>Action</DropdownItem>
                             <DropdownItem>Another Action</DropdownItem>
                             <DropdownItem>Something else here</DropdownItem>
@@ -783,10 +780,10 @@ class Forms extends Component {
                       <InputGroup>
                         <InputGroupButtonDropdown
                           addonType="prepend"
-                          isOpen={this.state.third}
-                          toggle={() => { this.setState({ third: !this.state.third }); }}>
+                          isOpen={third}
+                          toggle={() => setThird(!third)}>
                           <DropdownToggle caret color="primary">Action</DropdownToggle>
-                          <DropdownMenu className={this.state.third ? 'show' : ''}>
+                          <DropdownMenu className={third ? 'show' : ''}>
                             <DropdownItem>Action</DropdownItem>
                             <DropdownItem>Another Action</DropdownItem>
                             <DropdownItem>Something else here</DropdownItem>
@@ -796,12 +793,12 @@ class Forms extends Component {
                         </InputGroupButtonDropdown>
                         <Input type="text" id="input3-group3" name="input3-group3" placeholder=".." />
                         <InputGroupButtonDropdown  addonType="append"
-                                                   isOpen={this.state.fourth}
-                                                   toggle={() => { this.setState({ fourth: !this.state.fourth }); }}>
+                                                   isOpen={fourth}
+                                                   toggle={() => setFourth(!fourth)}>
                           <DropdownToggle caret color="primary">
                             Dropdown
                           </DropdownToggle>
-                          <DropdownMenu className={this.state.fourth ? 'show' : ''}>
+                          <DropdownMenu className={fourth ? 'show' : ''}>
                             <DropdownItem>Action</DropdownItem>
                             <DropdownItem>Another Action</DropdownItem>
                             <DropdownItem>Something else here</DropdownItem>
@@ -1068,17 +1065,17 @@ class Forms extends Component {
         </Row>
         <Row>
           <Col xs="12">
-            <Fade timeout={this.state.timeout} in={this.state.fadeIn}>
+            <Fade timeout={timeout} in={fadeIn}>
               <Card>
                 <CardHeader>
                   <i className="fa fa-edit"></i>Form Elements
                   <div className="card-header-actions">
                     <Button color="link" className="card-header-action btn-setting"><i className="icon-settings"></i></Button>
-                    <Button color="link" className="card-header-action btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></Button>
-                    <Button color="link" className="card-header-action btn-close" onClick={this.toggleFade}><i className="icon-close"></i></Button>
+                    <Button color="link" className="card-header-action btn-minimize" data-target="#collapseExample" onClick={toggle}><i className="icon-arrow-up"></i></Button>
+                    <Button color="link" className="card-header-action btn-close" onClick={toggleFade}><i className="icon-close"></i></Button>
                   </div>
                 </CardHeader>
-                <Collapse isOpen={this.state.collapse} id="collapseExample">
+                <Collapse isOpen={collapse} id="collapseExample">
                   <CardBody>
                     <Form className="form-horizontal">
                       <FormGroup>
@@ -1156,6 +1153,5 @@ class Forms extends Component {
       </div>
     );
   }
-}
 
 export default Forms;

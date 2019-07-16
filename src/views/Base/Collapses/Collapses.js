@@ -1,73 +1,55 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Badge, Button, Card, CardBody, CardFooter, CardHeader, Col, Collapse, Fade, Row } from 'reactstrap';
 
-class Collapses extends Component {
+function Collapses() {
 
-  constructor(props) {
-    super(props);
-    this.onEntering = this.onEntering.bind(this);
-    this.onEntered = this.onEntered.bind(this);
-    this.onExiting = this.onExiting.bind(this);
-    this.onExited = this.onExited.bind(this);
-    this.toggle = this.toggle.bind(this);
-    this.toggleAccordion = this.toggleAccordion.bind(this);
-    this.toggleCustom = this.toggleCustom.bind(this);
-    this.toggleFade = this.toggleFade.bind(this);
-    this.state = {
-      collapse: false,
-      accordion: [true, false, false],
-      custom: [true, false],
-      status: 'Closed',
-      fadeIn: true,
-      timeout: 300,
-    };
+  const [collapse, setCollapse] = useState(false)
+  const [accordion, setAccordion] = useState([true, false, false])
+  const [custom, setCustom] = useState([true, false])
+  const [status, setStatus] = useState('Closed')
+  const [fadeIn, setFadeIn] = useState(true)
+  const [timeout, ] = useState(300)
+
+  function onEntering() {
+    setStatus('Opening...')
   }
 
-  onEntering() {
-    this.setState({ status: 'Opening...' });
+  function onEntered() {
+    setStatus('Opened')
   }
 
-  onEntered() {
-    this.setState({ status: 'Opened' });
+  function onExiting() {
+    setStatus('Closing...')
   }
 
-  onExiting() {
-    this.setState({ status: 'Closing...' });
+  function onExited() {
+    setStatus('Closed...')
   }
 
-  onExited() {
-    this.setState({ status: 'Closed' });
+  function toggle() {
+    setCollapse(!collapse)
   }
 
-  toggle() {
-    this.setState({ collapse: !this.state.collapse });
-  }
+  function toggleAccordion(tab) {
 
-  toggleAccordion(tab) {
-
-    const prevState = this.state.accordion;
+    const prevState = accordion;
     const state = prevState.map((x, index) => tab === index ? !x : false);
 
-    this.setState({
-      accordion: state,
-    });
+    setAccordion(state)
   }
 
-  toggleCustom(tab) {
+  function toggleCustom(tab) {
 
-    const prevState = this.state.custom;
+    const prevState = custom;
     const state = prevState.map((x, index) => tab === index ? !x : false);
 
-    this.setState({
-      custom: state,
-    });
+    setCustom(state)
   }
 
-  toggleFade() {
-    this.setState({ fadeIn: !this.state.fadeIn });
+  function toggleFade() {
+    setFadeIn(!fadeIn)
   }
 
-  render() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -81,7 +63,7 @@ class Collapses extends Component {
                   </a>
                 </div>
               </CardHeader>
-              <Collapse isOpen={this.state.collapse} onEntering={this.onEntering} onEntered={this.onEntered} onExiting={this.onExiting} onExited={this.onExited}>
+              <Collapse isOpen={collapse} onEntering={onEntering} onEntered={onEntered} onExiting={onExiting} onExited={onExited}>
                 <CardBody>
                   <p>
                     Anim pariatur cliche reprehenderit,
@@ -103,9 +85,9 @@ class Collapses extends Component {
                 </CardBody>
               </Collapse>
               <CardFooter>
-                <Button color="primary" onClick={this.toggle} className={'mb-1'} id="toggleCollapse1">Toggle</Button>
+                <Button color="primary" onClick={toggle} className={'mb-1'} id="toggleCollapse1">Toggle</Button>
                 <hr/>
-                <h5>Current state: {this.state.status}</h5>
+                <h5>Current state: {status}</h5>
               </CardFooter>
             </Card>
             <Card>
@@ -118,12 +100,12 @@ class Collapses extends Component {
                 </div>
               </CardHeader>
               <CardBody>
-                <Fade timeout={this.state.timeout} in={this.state.fadeIn} tag="h5" className="mt-3">
+                <Fade timeout={timeout} in={fadeIn} tag="h5" className="mt-3">
                   This content will fade in and out as the button is pressed...
                 </Fade>
               </CardBody>
               <CardFooter>
-                <Button color="primary" onClick={this.toggleFade} id="toggleFade1">Toggle Fade</Button>
+                <Button color="primary" onClick={toggleFade} id="toggleFade1">Toggle Fade</Button>
               </CardFooter>
             </Card>
           </Col>
@@ -139,11 +121,11 @@ class Collapses extends Component {
                 <div id="accordion">
                   <Card className="mb-0">
                     <CardHeader id="headingOne">
-                      <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(0)} aria-expanded={this.state.accordion[0]} aria-controls="collapseOne">
+                      <Button block color="link" className="text-left m-0 p-0" onClick={() => toggleAccordion(0)} aria-expanded={accordion[0]} aria-controls="collapseOne">
                         <h5 className="m-0 p-0">Collapsible Group Item #1</h5>
                       </Button>
                     </CardHeader>
-                    <Collapse isOpen={this.state.accordion[0]} data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne">
+                    <Collapse isOpen={accordion[0]} data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne">
                       <CardBody>
                         1. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non
                         cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
@@ -155,11 +137,11 @@ class Collapses extends Component {
                   </Card>
                   <Card className="mb-0">
                     <CardHeader id="headingTwo">
-                      <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(1)} aria-expanded={this.state.accordion[1]} aria-controls="collapseTwo">
+                      <Button block color="link" className="text-left m-0 p-0" onClick={() => toggleAccordion(1)} aria-expanded={accordion[1]} aria-controls="collapseTwo">
                         <h5 className="m-0 p-0">Collapsible Group Item #2</h5>
                       </Button>
                     </CardHeader>
-                    <Collapse isOpen={this.state.accordion[1]} data-parent="#accordion" id="collapseTwo">
+                    <Collapse isOpen={accordion[1]} data-parent="#accordion" id="collapseTwo">
                       <CardBody>
                         2. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non
                         cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
@@ -171,11 +153,11 @@ class Collapses extends Component {
                   </Card>
                   <Card className="mb-0">
                     <CardHeader id="headingThree">
-                      <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(2)} aria-expanded={this.state.accordion[2]} aria-controls="collapseThree">
+                      <Button block color="link" className="text-left m-0 p-0" onClick={() => toggleAccordion(2)} aria-expanded={accordion[2]} aria-controls="collapseThree">
                         <h5 className="m-0 p-0">Collapsible Group Item #3</h5>
                       </Button>
                     </CardHeader>
-                    <Collapse isOpen={this.state.accordion[2]} data-parent="#accordion" id="collapseThree">
+                    <Collapse isOpen={accordion[2]} data-parent="#accordion" id="collapseThree">
                       <CardBody>
                         3. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non
                         cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
@@ -198,10 +180,10 @@ class Collapses extends Component {
               <CardBody>
                 <div id="exampleAccordion" data-children=".item">
                   <div className="item">
-                    <Button className="m-0 p-0" color="link" onClick={() => this.toggleCustom(0)} aria-expanded={this.state.custom[0]} aria-controls="exampleAccordion1">
+                    <Button className="m-0 p-0" color="link" onClick={() => toggleCustom(0)} aria-expanded={custom[0]} aria-controls="exampleAccordion1">
                       Toggle item
                     </Button>
-                    <Collapse isOpen={this.state.custom[0]} data-parent="#exampleAccordion" id="exampleAccordion1">
+                    <Collapse isOpen={custom[0]} data-parent="#exampleAccordion" id="exampleAccordion1">
                       <p className="mb-3">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium lorem non vestibulum scelerisque. Proin a vestibulum sem, eget
                         tristique massa. Aliquam lacinia rhoncus nibh quis ornare.
@@ -209,10 +191,10 @@ class Collapses extends Component {
                     </Collapse>
                   </div>
                   <div className="item">
-                    <Button className="m-0 p-0" color="link" onClick={() => this.toggleCustom(1)} aria-expanded={this.state.custom[1]} aria-controls="exampleAccordion2">
+                    <Button className="m-0 p-0" color="link" onClick={() => toggleCustom(1)} aria-expanded={custom[1]} aria-controls="exampleAccordion2">
                       Toggle item 2
                     </Button>
-                    <Collapse isOpen={this.state.custom[1]} data-parent="#exampleAccordion" id="exampleAccordion2">
+                    <Collapse isOpen={custom[1]} data-parent="#exampleAccordion" id="exampleAccordion2">
                       <p className="mb-3">
                         Donec at ipsum dignissim, rutrum turpis scelerisque, tristique lectus. Pellentesque habitant morbi tristique senectus et netus et
                         malesuada fames ac turpis egestas. Vivamus nec dui turpis. Orci varius natoque penatibus et magnis dis parturient montes,
@@ -228,6 +210,5 @@ class Collapses extends Component {
       </div>
     );
   }
-}
 
 export default Collapses;

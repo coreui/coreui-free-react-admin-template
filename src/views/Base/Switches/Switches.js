@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
 import { AppSwitch } from '@coreui/react'
 
-class Switches extends Component {
-  render() {
+function Switches() {
     return (
       <div className="animated fadeIn">
-
         <Row>
           <Col xs="12" md="6">
             <Card>
@@ -489,6 +487,5 @@ class Switches extends Component {
 
     );
   }
-}
 
 export default Switches;

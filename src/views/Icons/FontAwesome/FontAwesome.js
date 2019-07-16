@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Alert, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
-class FontAwesome extends Component {
-  render() {
+function FontAwesome() {
     return (
       <div className="animated fadeIn">
         <Card id="new47">
@@ -3697,6 +3696,5 @@ class FontAwesome extends Component {
 
     );
   }
-}
 
 export default FontAwesome;

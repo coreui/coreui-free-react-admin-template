@@ -1,26 +1,16 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Row, TabContent, TabPane } from 'reactstrap';
 
-class ListGroups extends Component {
+function ListGroups() {
 
-  constructor(props) {
-    super(props);
+  const [activeTab, setActiveTab] = useState(1)
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: 1
-    };
-  }
-
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab
-      });
+  function toggle(tab) {
+    if (activeTab !== tab) {
+      setActiveTab(tab)
     }
   }
 
-  render() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -180,14 +170,14 @@ class ListGroups extends Component {
                 <Row>
                   <Col xs="4">
                     <ListGroup id="list-tab" role="tablist">
-                      <ListGroupItem onClick={() => this.toggle(0)} action active={this.state.activeTab === 0} >Home</ListGroupItem>
-                      <ListGroupItem onClick={() => this.toggle(1)} action active={this.state.activeTab === 1} >Profile</ListGroupItem>
-                      <ListGroupItem onClick={() => this.toggle(2)} action active={this.state.activeTab === 2} >Messages</ListGroupItem>
-                      <ListGroupItem onClick={() => this.toggle(3)} action active={this.state.activeTab === 3} >Settings</ListGroupItem>
+                      <ListGroupItem onClick={() => toggle(0)} action active={activeTab === 0} >Home</ListGroupItem>
+                      <ListGroupItem onClick={() => toggle(1)} action active={activeTab === 1} >Profile</ListGroupItem>
+                      <ListGroupItem onClick={() => toggle(2)} action active={activeTab === 2} >Messages</ListGroupItem>
+                      <ListGroupItem onClick={() => toggle(3)} action active={activeTab === 3} >Settings</ListGroupItem>
                     </ListGroup>
                   </Col>
                   <Col xs="8">
-                    <TabContent activeTab={this.state.activeTab}>
+                    <TabContent activeTab={activeTab}>
                       <TabPane tabId={0} >
                         <p>Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt
                           nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim
@@ -224,6 +214,5 @@ class ListGroups extends Component {
       </div>
     );
   }
-}
 
 export default ListGroups;

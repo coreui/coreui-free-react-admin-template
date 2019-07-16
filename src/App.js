@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 // import { renderRoutes } from 'react-router-config';
 import './App.scss';
@@ -14,9 +14,8 @@ const Register = React.lazy(() => import('./views/Pages/Register'));
 const Page404 = React.lazy(() => import('./views/Pages/Page404'));
 const Page500 = React.lazy(() => import('./views/Pages/Page500'));
 
-class App extends Component {
+function App(){
 
-  render() {
     return (
       <HashRouter>
           <React.Suspense fallback={loading()}>
@@ -31,6 +30,5 @@ class App extends Component {
       </HashRouter>
     );
   }
-}
 
 export default App;

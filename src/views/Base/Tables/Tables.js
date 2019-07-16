@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 
-class Tables extends Component {
-  render() {
+function Tables() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -388,6 +387,5 @@ class Tables extends Component {
 
     );
   }
-}
 
 export default Tables;

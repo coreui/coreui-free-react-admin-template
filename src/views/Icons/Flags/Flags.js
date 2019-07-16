@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
-class Flags extends Component {
-  render() {
+function Flags() {
     return (
       <div className="animated fadeIn">
         <Card>
@@ -1017,6 +1016,4 @@ class Flags extends Component {
       </div>
     );
   }
-}
-
 export default Flags;

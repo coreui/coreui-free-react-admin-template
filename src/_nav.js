@@ -1,4 +1,24 @@
-export default {
+const nav = {
+  items: [
+    {
+      name: 'Bancos',
+      url: '/bancos',
+      icon: 'icon-speedometer'
+    },
+    {
+      name: 'Clientes',
+      url: '/clientes',
+      icon: 'icon-speedometer'
+    },
+    {
+      name: 'Niños',
+      url: '/niños',
+      icon: 'icon-speedometer'
+    },
+  ]
+}
+
+const navOriginal = {
   items: [
     {
       name: 'Dashboard',
@@ -278,3 +298,5 @@ export default {
     },
   ],
 };
+
+export default nav

@@ -29,7 +29,12 @@ class MyTasks extends Component {
         },
         {
           id: 2,
-          name: "Lol",
+          name: "Уволиться с работы",
+          checked: false,
+        },
+        {
+          id: 3,
+          name: "Выпить блека",
           checked: false,
         }
       ]

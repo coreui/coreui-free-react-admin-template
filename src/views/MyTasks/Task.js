@@ -80,7 +80,7 @@ class Tasks extends Component {
                     {this.props.task.name}
                 </Label>
                 <Button active block className={"buttonRemove"} color="danger" aria-pressed="true" 
-                        hidden={!this.state.focus & this.props.task.id !== this.props.activeId & !this.props.task.checked}>x</Button>
+                        hidden={(!this.state.focus & this.props.task.id !== this.props.activeId & !this.props.task.checked)}>x</Button>
 
             </div>
         );

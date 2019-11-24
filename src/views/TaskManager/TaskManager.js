@@ -10,6 +10,8 @@ class TaskManager extends Component {
   constructor(props) {
     super(props);
     this.editTask = this.editTask.bind(this);
+    this.createTask = this.createTask.bind(this);
+
 
 
     this.state = {
@@ -52,6 +54,20 @@ class TaskManager extends Component {
     
   
   }
+
+  createTask(newTask, name) {
+    const task = newTask;
+    axios.post(
+      server.addr+`/api/task/`,
+      {task},
+      {headers: {"Content-Type": "application/json", 'Authorization': "JWT " + Cookies.get('token') }}
+    ).then(res => {
+      let tasks = this.state.tasks;
+      console.log('ff',tasks);  
+      tasks[newTask['name_job']].push(res.data);
+      this.setState({ tasks: tasks });
+    });
+  }
   
 
   render() {
@@ -61,7 +77,13 @@ class TaskManager extends Component {
         <Row>
         {
            Object.keys(this.state.tasks).map((key) => {
-             return (<UserTasks key={key} name={key} tasks={this.state.tasks[key]} editTask={this.editTask}></UserTasks>)
+            return (
+              <UserTasks key={key} 
+                         name={key} 
+                         tasks={this.state.tasks[key]} 
+                         editTask={this.editTask} 
+                         createTask={this.createTask}/>
+            )
            })          
         }
         </Row>

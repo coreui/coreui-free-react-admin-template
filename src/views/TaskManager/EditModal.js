@@ -87,7 +87,7 @@ class EditModal extends Component {
     console.log(this.props.task)
     return (
         <CardBody>
-        <Form>
+          <Form>
             <FormGroup>
                 <div className={'ml-4'}>
                 <Input type="checkbox" id="cheked"
@@ -110,9 +110,9 @@ class EditModal extends Component {
             <FormGroup>
             <Label htmlFor="task_text">Text</Label>
             <Input type="text" id="task_text" placeholder="Enter task text" 
-                    value={this.state.text}
-                    onChange={(e) => {this.setState({text: e.target.value})}}
-                    />
+                   value={this.state.text}
+                   onChange={(e) => {this.setState({text: e.target.value})}}
+            />
             </FormGroup>
 
             <Button type="submit" size="sm" color="primary" onClick={this.props.create ? this.onCreate : this.onUpdate}><i className="fa fa-dot-circle-o"></i> Submit</Button>

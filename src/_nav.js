@@ -3,7 +3,7 @@ export default {
     {
       name: 'MyTasks',
       url: '/mytasks',
-      icon: 'icon-speedometer',
+      icon: 'icon-puzzle',
       badge: {
         variant: 'info',
       },
@@ -20,7 +20,7 @@ export default {
     {
       name: 'TaskManager',
       url: '/task-manager',
-      icon: 'icon-speedometer',
+      icon: 'icon-pencil',
       badge: {
         variant: 'info',
       },
@@ -34,11 +34,11 @@ export default {
   //     },
   //     class: ''             // optional class names space delimited list for title item ex: "text-center"
   //   },
-  //   {
-  //     name: 'Colors',
-  //     url: '/theme/colors',
-  //     icon: 'icon-drop',
-  //   },
+    {
+      name: 'History',
+      url: '/history',
+      icon: 'icon-book',
+    },
   //   {
   //     name: 'Typography',
   //     url: '/theme/typography',

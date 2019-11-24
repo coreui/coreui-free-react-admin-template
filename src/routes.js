@@ -37,6 +37,8 @@ const Users = React.lazy(() => import('./views/Users/Users'));
 const User = React.lazy(() => import('./views/Users/User'));
 const MyTasks = React.lazy(() => import('./views/MyTasks/MyTasks'));
 const TaskManager = React.lazy(() => import('./views/TaskManager/TaskManager'));
+const History = React.lazy(() => import('./views/TaskManager/History/History'));
+
 
 
 
@@ -45,7 +47,7 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/mytasks', name: 'MyTasks', component: MyTasks },
   { path: '/task-manager', name: 'TaskManager', component: TaskManager },
-
+  { path: '/history', name: 'History', component: History },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/mytasks', name: 'MyTasks', component: MyTasks },
   { path: '/theme', exact: true, name: 'Theme', component: Colors },

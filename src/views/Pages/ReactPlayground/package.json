@@ -1,0 +1,6 @@
+{
+  "name": "ReactPlayground",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ReactPlayground.js"
+}

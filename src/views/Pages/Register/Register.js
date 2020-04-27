@@ -55,6 +55,20 @@ class Register extends Component {
       .catch(() => {});
   }
 
+  isValidForm() {
+    return (
+      this.state.userName &&
+      this.state.password &&
+      this.state.email &&
+      this.state.companyName &&
+      this.state.firstName &&
+      this.state.lastName &&
+      this.state.passwordConfirm.length >= 6 &&
+      this.state.passwordConfirm.length <= 12 &&
+      this.state.password === this.state.passwordConfirm
+    );
+  }
+
   render() {
     const {
       userName,
@@ -193,6 +207,7 @@ class Register extends Component {
                           </InputGroup>
                           <Button
                             color="success"
+                            disabled={loading || !this.isValidForm()}
                             onClick={(event) =>
                               this.handleSubmit(event, signupUser)
                             }

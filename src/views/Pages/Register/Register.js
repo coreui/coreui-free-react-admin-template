@@ -15,7 +15,26 @@ import {
 import { SIGNUP_USER } from "../../../schema/schema";
 import { Mutation } from "react-apollo";
 
+const initialState = {
+  userName: "",
+  password: "",
+  email: "",
+  companyName: "",
+  firstName: "",
+  lastName: "",
+  passwordConfirm: "",
+  error: "",
+  passwordMatch: null,
+};
+
 class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...initialState,
+    };
+  }
+
   handleSubmit(event, signupUser) {
     event.preventDefault();
     signupUser()

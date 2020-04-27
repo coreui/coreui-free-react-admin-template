@@ -18,12 +18,12 @@ export const SIGNUP_USER = gql`
     $lastName: String!
   ) {
     signupUser(
-      userName: "$userName"
-      password: "$password"
-      email: "$email"
-      companyName: "$companyName"
-      firstName: "$firstName"
-      lastName: "$lastName"
+      userName: $userName
+      password: $password
+      email: $email
+      companyName: $companyName
+      firstName: $firstName
+      lastName: $lastName
     ) {
       token
     }

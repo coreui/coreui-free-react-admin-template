@@ -12,6 +12,7 @@ import {
   InputGroupText,
   Row,
 } from "reactstrap";
+import * as Cookies from "es-cookie";
 import { SIGNUP_USER } from "../../../schema/schema";
 import { Mutation } from "react-apollo";
 
@@ -51,8 +52,15 @@ class Register extends Component {
     console.log(this.state);
     event.preventDefault();
     signupUser()
-      .then(async ({ data }) => {})
-      .catch(() => {});
+      .then(async ({ data }) => {
+        Cookies.set("token", data.signupUser.token);
+      })
+      .catch(() => {
+        this.setState({
+          error:
+            "Either your email or username is already taken. Please adjust and try again.",
+        });
+      });
   }
 
   isValidForm() {

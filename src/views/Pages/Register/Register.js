@@ -49,7 +49,6 @@ class Register extends Component {
   }
 
   handleSubmit(event, signupUser) {
-    console.log(this.state);
     event.preventDefault();
     signupUser()
       .then(async ({ data }) => {

@@ -49,6 +49,7 @@ class Login extends Component {
     signinUser()
       .then(async ({ data }) => {
         Cookies.set("token", data.signinUser.token);
+        this.props.history.push("/dashboard");
       })
       .catch(() => {
         this.setState({

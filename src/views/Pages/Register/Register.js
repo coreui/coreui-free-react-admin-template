@@ -53,6 +53,7 @@ class Register extends Component {
     signupUser()
       .then(async ({ data }) => {
         Cookies.set("token", data.signupUser.token);
+        this.props.history.push("/dashboard");
       })
       .catch(() => {
         this.setState({

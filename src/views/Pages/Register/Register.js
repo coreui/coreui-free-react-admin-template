@@ -45,6 +45,7 @@ class Register extends Component {
     const value = event.target.value;
     this.setState({
       [name]: value,
+      error: "",
     });
   }
 
@@ -85,6 +86,7 @@ class Register extends Component {
       companyName,
       firstName,
       lastName,
+      error,
       passwordConfirm,
     } = this.state;
 
@@ -110,7 +112,11 @@ class Register extends Component {
                       return (
                         <Form>
                           <h1>Register</h1>
-                          <p className="text-muted">Create your account</p>
+                          {error !== "" ? (
+                            <p style={{ color: "red" }}>{error}</p>
+                          ) : (
+                            <p className="text-muted">Create your account</p>
+                          )}
                           <InputGroup className="mb-3">
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>

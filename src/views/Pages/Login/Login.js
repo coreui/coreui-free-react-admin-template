@@ -22,6 +22,7 @@ import { Mutation } from "react-apollo";
 const initialState = {
   userName: "",
   password: "",
+  error: "",
 };
 
 class Login extends Component {
@@ -41,6 +42,7 @@ class Login extends Component {
     const value = event.target.value;
     this.setState({
       [name]: value,
+      error: "",
     });
   }
 
@@ -60,7 +62,7 @@ class Login extends Component {
   }
 
   render() {
-    const { userName, password } = this.state;
+    const { userName, password, error } = this.state;
     return (
       <div className="app flex-row align-items-center">
         <Container>
@@ -80,9 +82,13 @@ class Login extends Component {
                         return (
                           <Form>
                             <h1>Login</h1>
-                            <p className="text-muted">
-                              Sign In to your account
-                            </p>
+                            {error !== "" ? (
+                              <p style={{ color: "red" }}>{error}</p>
+                            ) : (
+                              <p className="text-muted">
+                                Sign In to your account
+                              </p>
+                            )}
                             <InputGroup className="mb-3">
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>

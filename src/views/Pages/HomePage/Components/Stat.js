@@ -1,5 +1,5 @@
-import React from 'react';
-import { Col } from 'reactstrap';
+import React from "react";
+import { Col } from "reactstrap";
 
 const Stat = ({ title, text }) => {
   return (

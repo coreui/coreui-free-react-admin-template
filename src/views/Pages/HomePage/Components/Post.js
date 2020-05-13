@@ -1,5 +1,5 @@
-import React from 'react';
-import { Col, Progress, Row } from 'reactstrap';
+import React from "react";
+import { Col, Progress, Row } from "reactstrap";
 
 const Post = ({ image }) => {
   return (
@@ -18,7 +18,7 @@ const Post = ({ image }) => {
               <p className="font-weight-light text-muted  pb-0 mb-0">Rated</p>
             </Col>
             <div
-              style={{ borderLeft: '1px solid lightgrey', height: 30 }}
+              style={{ borderLeft: "1px solid lightgrey", height: 30 }}
             ></div>
             <Col md="4" xs="5">
               <p className="font-weight-bold pb-0 mb-0">$10M</p>

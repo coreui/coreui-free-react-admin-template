@@ -1,7 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Nav, NavItem } from 'reactstrap';
-import { AppSidebar, AppSidebarNav } from '@coreui/react';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Nav, NavItem } from "reactstrap";
+import { AppSidebar, AppSidebarNav } from "@coreui/react";
 const DefaultSidebar = () => {
   return (
     <React.Fragment>
@@ -12,7 +12,7 @@ const DefaultSidebar = () => {
               <NavLink
                 to="/"
                 className="nav-link"
-                activeClassName={'active__header'}
+                activeClassName={"active__header"}
                 exact
               >
                 Home
@@ -22,7 +22,7 @@ const DefaultSidebar = () => {
               <NavLink
                 to="/dashboard"
                 className="nav-link"
-                activeClassName={'active__header'}
+                activeClassName={"active__header"}
                 exact
               >
                 Raise Capital
@@ -32,7 +32,7 @@ const DefaultSidebar = () => {
               <NavLink
                 to="/users"
                 className="nav-link"
-                activeClassName={'active__header'}
+                activeClassName={"active__header"}
                 exact
               >
                 About
@@ -41,7 +41,7 @@ const DefaultSidebar = () => {
             <NavItem>
               <NavLink
                 to="/login"
-                activeClassName={'active__header'}
+                activeClassName={"active__header"}
                 className="nav-link"
                 exact
               >

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Col, Row, Input, Button } from 'reactstrap';
+import React from "react";
+import { Container, Col, Row, Input, Button } from "reactstrap";
 
 const Form = () => {
   return (
@@ -8,13 +8,13 @@ const Form = () => {
         <Col md="8" xs="12">
           <h3
             className="text-center font-weight-bold"
-            style={{ color: 'white' }}
+            style={{ color: "white" }}
           >
             Join 504 investors who funded 365 startups with over $129.5 million
           </h3>
           <h5
             className="text-center"
-            style={{ color: 'white', textDecoration: 'underline' }}
+            style={{ color: "white", textDecoration: "underline" }}
           >
             View Reg D,A+ and Reg CF Breakdown
           </h5>

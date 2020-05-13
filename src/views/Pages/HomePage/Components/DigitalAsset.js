@@ -1,5 +1,5 @@
-import React from 'react';
-import { Col } from 'reactstrap';
+import React from "react";
+import { Col } from "reactstrap";
 const DigitalAsset = ({ image, title, text }) => {
   return (
     <Col xs="12" md="4" className="mb-2">

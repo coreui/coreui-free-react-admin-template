@@ -1,14 +1,14 @@
 import { AppHeader } from "@coreui/react";
 import React from "react";
-import DefaultHeader from "./components/DefaultHeader";
-import DefaultSidebar from "./components/DefaultSidebar";
-import HomeSlider from "./components/HomeSlider";
-import PostsList from "./components/PostsList";
-import AboutComponent from "./components/AboutComponent";
-import StatsList from "./components/StatsList";
-import PartnersList from "./components/PartnersList";
-import Form from "./components/Form";
-import Footer from "./components/Footer";
+import DefaultHeader from "./Components/DefaultHeader";
+import DefaultSidebar from "./Components/DefaultSidebar";
+import HomeSlider from "./Components/HomeSlider";
+import PostsList from "./Components/PostsList";
+import AboutComponent from "./Components/AboutComponent";
+import StatsList from "./Components/StatsList";
+import PartnersList from "./Components/PartnersList";
+import Form from "./Components/Form";
+import Footer from "./Components/Footer";
 
 const HomePage = () => {
   return (

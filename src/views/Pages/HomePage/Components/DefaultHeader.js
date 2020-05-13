@@ -1,6 +1,6 @@
-import { AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { AppNavbarBrand, AppSidebarToggler } from "@coreui/react";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import {
   ButtonDropdown,
   DropdownItem,
@@ -8,8 +8,8 @@ import {
   DropdownToggle,
   Nav,
   NavItem,
-} from 'reactstrap';
-import logo from '../assets/imgs/logo.png';
+} from "reactstrap";
+import logo from "../../../../assets/img/home/logo.png";
 const DefaultHeader = () => {
   const [dropdownOpen, setDropDown] = React.useState(false);
 
@@ -24,15 +24,15 @@ const DefaultHeader = () => {
         className="mt-3 logo__height"
         full={{
           src: logo,
-          width: 'auto',
-          height: '100%',
-          alt: 'Red Block Logo',
+          width: "auto",
+          height: "100%",
+          alt: "Red Block Logo",
         }}
         minimized={{
           src: logo,
           width: 30,
           height: 30,
-          alt: 'Red Block Logo',
+          alt: "Red Block Logo",
         }}
       />
       <Nav className="d-md-down-none mr-5" navbar>
@@ -40,7 +40,7 @@ const DefaultHeader = () => {
           <NavLink
             to="/dashboard"
             className="nav-link"
-            activeClassName={'active__header'}
+            activeClassName={"active__header"}
             exact
           >
             Raise Capital
@@ -50,7 +50,7 @@ const DefaultHeader = () => {
           <NavLink
             to="/users"
             className="nav-link"
-            activeClassName={'active__header'}
+            activeClassName={"active__header"}
             exact
           >
             About
@@ -59,7 +59,7 @@ const DefaultHeader = () => {
         <NavItem className="px-3">
           <NavLink
             to="/login"
-            activeClassName={'active__header'}
+            activeClassName={"active__header"}
             className="nav-link"
             exact
           >
@@ -71,7 +71,7 @@ const DefaultHeader = () => {
           <DropdownToggle className="app__dropdown" caret>
             Languages
           </DropdownToggle>
-          <DropdownMenu style={{ fontSize: '0.85rem' }}>
+          <DropdownMenu style={{ fontSize: "0.85rem" }}>
             <DropdownItem>English</DropdownItem>
             <DropdownItem>Urdu</DropdownItem>
           </DropdownMenu>

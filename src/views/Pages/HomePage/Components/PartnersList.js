@@ -1,6 +1,6 @@
-import React from 'react';
-import { Container, Row } from 'reactstrap';
-import Partners from '../assets/imgs/partners.png';
+import React from "react";
+import { Container, Row } from "reactstrap";
+import Partners from "../../../../assets/img/home/partners.png";
 const PartnersList = () => {
   return (
     <Container className="my-5">

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import Carousel from 'nuka-carousel';
-import Slider1 from '../assets/imgs/slider1.png';
+import Carousel from "nuka-carousel";
+import Slider1 from "../../../../assets/img/home/slider1.png";
 const HomeSlider = () => {
   return (
     <Carousel
@@ -10,19 +10,19 @@ const HomeSlider = () => {
         <i
           className="icon-arrow-left icons font-2xl d-block mt-4 px-1"
           onClick={previousSlide}
-          style={{ color: 'white' }}
+          style={{ color: "white" }}
         ></i>
       )}
       defaultControlsConfig={{
         pagingDotsStyle: {
-          fill: 'white',
+          fill: "white",
         },
       }}
       renderCenterRightControls={({ nextSlide }) => (
         <i
           className="icon-arrow-right icons font-2xl d-block mt-4 px-1"
           onClick={nextSlide}
-          style={{ color: 'white' }}
+          style={{ color: "white" }}
         ></i>
       )}
     >

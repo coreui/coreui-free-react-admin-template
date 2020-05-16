@@ -7,7 +7,6 @@ import PostsList from "./Components/PostsList";
 import AboutComponent from "./Components/AboutComponent";
 import StatsList from "./Components/StatsList";
 import PartnersList from "./Components/PartnersList";
-import Form from "./Components/Form";
 import Footer from "./Components/Footer";
 
 const HomePage = () => {
@@ -24,7 +23,6 @@ const HomePage = () => {
           <AboutComponent />
           <StatsList />
           <PartnersList />
-          <Form />
         </main>
       </div>
       <Footer />

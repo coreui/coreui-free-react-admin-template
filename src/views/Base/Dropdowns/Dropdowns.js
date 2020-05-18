@@ -61,7 +61,7 @@ class Dropdowns extends Component {
                   <DropdownToggle caret>
                     This dropdown's menu is right-aligned
                   </DropdownToggle>
-                  <DropdownMenu right style={{right: 'auto'}}>
+                  <DropdownMenu right>
                     <DropdownItem header>Header</DropdownItem>
                     <DropdownItem disabled>Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>

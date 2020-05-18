@@ -1,5 +1,30 @@
 ## [CoreUI](https://coreui.io/) for [react](./REACT.md) changelog
 
+##### `v2.6.1`
+- fix(Dashboard): `scales.[x/y]Axes.barPercentage` is deprecated, use `dataset.barPercentage` instead
+- fix(Dropdowns): DropdownMenu right
+- refactor(polyfill): cleanup
+
+###### dependencies update
+- update: `@coreui/coreui` to `^2.1.16`
+- update: `@coreui/react` to `^2.5.7`
+- update: `bootstrap` to `^4.5.0`
+- update: `chart.js` to `^2.9.3`
+- update: `core-js` to `^3.6.5`
+- update: `enzyme` to `^3.11.0`
+- update: `enzyme-adapter-react-16` to `^1.15.2`
+- update: `flag-icon-css` to `^3.4.6`
+- update: `node-sass` to `^4.14.1`
+- update: `react` to `^16.13.1`
+- update: `react-app-polyfill` to `^1.0.6`
+- update: `react-chartjs-2` to `^2.9.0`
+- update: `react-dom` to `^16.13.1`
+- update: `react-router-config` to `^5.1.1`
+- update: `react-router-dom` to `^5.2.0`
+- update: `react-test-renderer` to `^16.13.1`
+- update: `reactstrap` to `^8.4.1`
+- update: `react-scripts` to `^3.4.1`
+
 ##### `v2.6.0`
 - move to `reactstrap v8`. Breaking changes and deprecations, see: https://github.com/reactstrap/reactstrap/blob/master/CHANGELOG.md#800-2019-04-03
 - fix(DefaultHeader): replace `AppHeaderDropdown` with `UncontrolledDropdown`

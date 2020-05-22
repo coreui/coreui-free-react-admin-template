@@ -1,7 +1,7 @@
 import React from 'react'
 import { CFooter } from '@coreui/react'
 
-const DefaultFooter = () => {
+const TheFooter = () => {
   return (
     <CFooter fixed={false}>
       <div>
@@ -16,4 +16,4 @@ const DefaultFooter = () => {
   )
 }
 
-export default React.memo(DefaultFooter)
+export default React.memo(TheFooter)

@@ -17,7 +17,7 @@ import {
 } from '@coreui/react'
 import { CIcon } from '@coreui/icons-react'
 
-const DefaultAside = () => {
+const TheAside = () => {
   const show = useSelector(state => state.asideShow)
   const dispatch = useDispatch()
   const setState = (state) => dispatch({type: 'set', asideShow: state})
@@ -239,4 +239,4 @@ const DefaultAside = () => {
   )
 }
 
-export default React.memo(DefaultAside)
+export default React.memo(TheAside)

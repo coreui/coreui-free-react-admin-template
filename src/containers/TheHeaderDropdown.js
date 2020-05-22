@@ -9,7 +9,7 @@ import {
 } from '@coreui/react'
 import { CIcon } from '@coreui/icons-react'
 
-const DefaultHeaderDropdown = () => {
+const TheHeaderDropdown = () => {
   return (
     <CDropdown
       inNav
@@ -57,4 +57,4 @@ const DefaultHeaderDropdown = () => {
   )
 }
 
-export default DefaultHeaderDropdown
+export default TheHeaderDropdown

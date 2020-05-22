@@ -17,14 +17,14 @@ import { CIcon } from '@coreui/icons-react'
 import routes from '../routes'
 
 import { 
-  DefaultHeaderDropdown,
-  DefaultHeaderDropdownMssg,
-  DefaultHeaderDropdownNotif,
-  DefaultHeaderDropdownTasks
+  TheHeaderDropdown,
+  TheHeaderDropdownMssg,
+  TheHeaderDropdownNotif,
+  TheHeaderDropdownTasks
 }  from './index'
 import logo from '../assets/img/brand/coreui-react-neg.svg'
 
-const DefaultHeader = () => {
+const TheHeader = () => {
   const dispatch = useDispatch()
   const asideShow = useSelector(state => state.asideShow)
   const sidebarShow = useSelector(state => state.sidebarShow)
@@ -68,10 +68,10 @@ const DefaultHeader = () => {
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-        <DefaultHeaderDropdownNotif/>
-        <DefaultHeaderDropdownTasks/>
-        <DefaultHeaderDropdownMssg/>
-        <DefaultHeaderDropdown/>
+        <TheHeaderDropdownNotif/>
+        <TheHeaderDropdownTasks/>
+        <TheHeaderDropdownMssg/>
+        <TheHeaderDropdown/>
         <CToggler
           inHeader
           className="d-md-down-none"
@@ -103,4 +103,4 @@ const DefaultHeader = () => {
   )
 }
 
-export default DefaultHeader
+export default TheHeader

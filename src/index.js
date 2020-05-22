@@ -3,11 +3,10 @@ import 'react-app-polyfill/stable';
 import './polyfill'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {freeSet, flagSet, brandSet} from '@coreui/icons';
+import { freeSet, flagSet, brandSet } from '@coreui/icons';
 import { logo } from './assets/icons/logo'
 
 import { Provider } from 'react-redux'

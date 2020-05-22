@@ -21,7 +21,7 @@ import sygnet from '../assets/img/brand/coreui-signet-white.svg'
 // sidebar nav config
 import navigation from './_nav'
 
-const DefaultSidebar = () => {
+const TheSidebar = () => {
   const dispatch = useDispatch()
   const show = useSelector(state => state.sidebarShow)
 
@@ -59,4 +59,4 @@ const DefaultSidebar = () => {
   )
 }
 
-export default React.memo(DefaultSidebar)
+export default React.memo(TheSidebar)

@@ -9,7 +9,7 @@ import {
 } from '@coreui/react'
 import { CIcon } from '@coreui/icons-react'
 
-const DefaultHeaderDropdownTasks = () => {
+const TheHeaderDropdownTasks = () => {
   const itemsCount = 5
   return (
     <CDropdown
@@ -56,4 +56,4 @@ const DefaultHeaderDropdownTasks = () => {
   )
 }
 
-export default DefaultHeaderDropdownTasks
+export default TheHeaderDropdownTasks

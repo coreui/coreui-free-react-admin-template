@@ -15,7 +15,7 @@ const loading = (
   </div>
 )
 
-const DefaultContent = () => {
+const TheContent = () => {
   return (
     <main className="c-main">
       <CContainer fluid>
@@ -43,4 +43,4 @@ const DefaultContent = () => {
   )
 }
 
-export default React.memo(DefaultContent)
+export default React.memo(TheContent)

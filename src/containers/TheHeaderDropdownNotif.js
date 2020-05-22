@@ -9,7 +9,7 @@ import {
 } from '@coreui/react'
 import { CIcon } from '@coreui/icons-react'
 
-const DefaultHeaderDropdownNotif = () => {
+const TheHeaderDropdownNotif = () => {
   const itemsCount = 5
   return (
     <CDropdown
@@ -67,4 +67,4 @@ const DefaultHeaderDropdownNotif = () => {
   )
 }
 
-export default DefaultHeaderDropdownNotif
+export default TheHeaderDropdownNotif

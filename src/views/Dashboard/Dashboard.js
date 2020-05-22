@@ -335,7 +335,7 @@ const Dashboard = () => {
                   <tr>
                     <td className="text-center">
                       <div className="c-avatar">
-                        <img src={'assets/img/avatars/1.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
+                        <img src={'avatars/1.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
                         <span className="c-avatar-status bg-success"></span>
                       </div>
                     </td>
@@ -370,7 +370,7 @@ const Dashboard = () => {
                   <tr>
                     <td className="text-center">
                       <div className="c-avatar">
-                        <img src={'assets/img/avatars/2.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
+                        <img src={'avatars/2.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
                         <span className="c-avatar-status bg-danger"></span>
                       </div>
                     </td>
@@ -406,7 +406,7 @@ const Dashboard = () => {
                   <tr>
                     <td className="text-center">
                       <div className="c-avatar">
-                        <img src={'assets/img/avatars/3.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
+                        <img src={'avatars/3.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
                         <span className="c-avatar-status bg-warning"></span>
                       </div>
                     </td>
@@ -441,7 +441,7 @@ const Dashboard = () => {
                   <tr>
                     <td className="text-center">
                       <div className="c-avatar">
-                        <img src={'assets/img/avatars/4.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
+                        <img src={'avatars/4.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
                         <span className="c-avatar-status bg-secondary"></span>
                       </div>
                     </td>
@@ -476,7 +476,7 @@ const Dashboard = () => {
                   <tr>
                     <td className="text-center">
                       <div className="c-avatar">
-                        <img src={'assets/img/avatars/5.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
+                        <img src={'avatars/5.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
                         <span className="c-avatar-status bg-success"></span>
                       </div>
                     </td>
@@ -511,7 +511,7 @@ const Dashboard = () => {
                   <tr>
                     <td className="text-center">
                       <div className="c-avatar">
-                        <img src={'assets/img/avatars/6.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
+                        <img src={'avatars/6.jpg'} className="c-avatar-img" alt="admin@bootstrapmaster.com" />
                         <span className="c-avatar-status bg-danger"></span>
                       </div>
                     </td>

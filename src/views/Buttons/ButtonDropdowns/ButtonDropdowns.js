@@ -1,290 +1,428 @@
-import React, { Component } from 'react';
-import { Button, ButtonDropdown, Card, CardBody, CardHeader, Col, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'reactstrap';
+import React from 'react'
+import {
+  CButton,
+  CForm,
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CCol,
+  CDropdown,
+  CDropdownDivider,
+  CDropdownHeader,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CRow,
+  CFormGroup,
+  CLabel,
+  CInput,
+  CInputCheckbox
+} from '@coreui/react'
 
-class ButtonDropdowns extends Component {
+const ButtonDropdowns = () => {
+  return (
+    <CRow>
+      <CCol xs="12">
+        <CCard>
+          <CCardHeader>
+            Dropdowns
+            <div className="card-header-actions">
+              <a href="https://coreui.github.io/components/button-dropdown/" rel="noreferrer noopener" target="_blank" className="card-header-action">
+                <small className="text-muted">docs</small>
+              </a>
+            </div>
+          </CCardHeader>
+          <CCardBody>
 
-  constructor(props) {
-    super(props);
+            <CDropdown className="m-1">
+              <CDropdownToggle>
+                Dropdown button
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: new Array(19).fill(false),
-    };
-  }
+            <hr/>
 
-  toggle(i) {
-    const newArray = this.state.dropdownOpen.map((element, index) => { return (index === i ? !element : false); });
-    this.setState({
-      dropdownOpen: newArray,
-    });
-  }
+            <CDropdown className="m-1 btn-group">
+              <CDropdownToggle color="primary">
+                Primary
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1 btn-group">
+              <CDropdownToggle color="secondary">
+                Secondary
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1 btn-group">
+              <CDropdownToggle color="success">
+                Success
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1 btn-group">
+              <CDropdownToggle color="info">
+                Info
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1 btn-group">
+              <CDropdownToggle color="warning">
+                Warning
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1 btn-group">
+              <CDropdownToggle color="danger">
+                Danger
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
 
-  render() {
-    return (
-      <div className="animated fadeIn">
-        <Row>
-          <Col xs="12">
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Button Dropdown</strong>
-                <div className="card-header-actions">
-                  <a href="https://reactstrap.github.io/components/button-dropdown/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                    <small className="text-muted">docs</small>
-                  </a>
-                </div>
-              </CardHeader>
-              <CardBody>
-                <ButtonDropdown isOpen={this.state.dropdownOpen[0]} toggle={() => { this.toggle(0); }}>
-                  <DropdownToggle caret>
-                    Button Dropdown
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Single button dropdowns</strong>
-              </CardHeader>
-              <CardBody>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[1]} toggle={() => { this.toggle(1); }}>
-                  <DropdownToggle caret color="primary">
-                    Primary
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[2]} toggle={() => { this.toggle(2); }}>
-                  <DropdownToggle caret color="secondary">
-                    Secondary
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[3]} toggle={() => { this.toggle(3); }}>
-                  <DropdownToggle caret color="success">
-                    Success
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[4]} toggle={() => { this.toggle(4); }}>
-                  <DropdownToggle caret color="info">
-                    Info
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[5]} toggle={() => { this.toggle(5); }}>
-                  <DropdownToggle caret color="warning">
-                    Warning
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[6]} toggle={() => { this.toggle(6); }}>
-                  <DropdownToggle caret color="danger">
-                    Danger
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Split button dropdowns</strong>
-              </CardHeader>
-              <CardBody>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[7]} toggle={() => { this.toggle(7); }}>
-                  <Button id="caret" color="primary">Primary</Button>
-                  <DropdownToggle caret color="primary" />
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[8]} toggle={() => { this.toggle(8); }}>
-                  <Button id="caret" color="secondary">Secondary</Button>
-                  <DropdownToggle caret color="secondary" />
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[9]} toggle={() => { this.toggle(9); }}>
-                  <Button id="caret" color="success">Success</Button>
-                  <DropdownToggle caret color="success" />
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[10]} toggle={() => { this.toggle(10); }}>
-                  <Button id="caret" color="info">Info</Button>
-                  <DropdownToggle caret color="info" />
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[11]} toggle={() => { this.toggle(11); }}>
-                  <Button id="caret" color="warning">Warning</Button>
-                  <DropdownToggle caret color="warning" />
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[12]} toggle={() => { this.toggle(12); }}>
-                  <Button id="caret" color="danger">Danger</Button>
-                  <DropdownToggle caret color="danger" />
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Dropdown directions</strong>
-              </CardHeader>
-              <CardBody>
-                <ButtonDropdown direction="up" className="mr-1" isOpen={this.state.dropdownOpen[13]} toggle={() => { this.toggle(13); }}>
-                  <DropdownToggle caret size="lg">
-                    Direction Up
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown direction="left" className="mr-1" isOpen={this.state.dropdownOpen[14]} toggle={() => { this.toggle(14); }}>
-                  <DropdownToggle caret size="lg">
-                    Direction Left
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown direction="right" className="mr-1" isOpen={this.state.dropdownOpen[15]} toggle={() => { this.toggle(15); }}>
-                  <DropdownToggle caret size="lg">
-                    Direction Right
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[16]} toggle={() => { this.toggle(16); }}>
-                  <DropdownToggle caret size="lg">
-                    Default Down
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Button Dropdown sizing</strong>
-              </CardHeader>
-              <CardBody>
-                <ButtonDropdown className="mr-1" isOpen={this.state.dropdownOpen[17]} toggle={() => { this.toggle(17); }}>
-                  <DropdownToggle caret size="lg">
-                    Large Button
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-                <ButtonDropdown isOpen={this.state.dropdownOpen[18]} toggle={() => { this.toggle(18); }}>
-                  <DropdownToggle caret size="sm">
-                    Small Button
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action Disabled</DropdownItem>
-                    <DropdownItem>Action</DropdownItem>
-                    <DropdownItem>Another Action</DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
+            <hr/>
+            <CDropdown className="m-1">
+              <CDropdownToggle split color="primary">
+                Primary
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1">
+              <CDropdownToggle split color="secondary">
+                Secondary
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1">
+              <CDropdownToggle split color="success">
+                Success
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1">
+              <CDropdownToggle split color="info">
+                Info
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1">
+              <CDropdownToggle split color="warning">
+                Warning
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1">
+              <CDropdownToggle split color="danger">
+                Danger
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <hr/>
+
+            <CDropdown className="m-1" size="lg">
+              <CDropdownToggle color="secondary">
+                Large button
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            {' '}
+            <CDropdown className="m-1">
+              <CDropdownToggle split color="secondary" size="lg">
+                Large split button
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <hr/>
+
+            <CDropdown className="m-1">
+              <CDropdownToggle color="secondary" size="sm">
+                Small button
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            {' '}
+            <CDropdown className="m-1">
+              <CDropdownToggle color="secondary" size="sm" split>
+                Small split button
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <hr/>
+
+            <CDropdown className="m-1">
+              <CDropdownToggle color="secondary">
+                Dropup button
+              </CDropdownToggle>
+              <CDropdownMenu placement="top">
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown className="m-1">
+              <CDropdownToggle split color="secondary">
+                Split dropup
+              </CDropdownToggle>
+              <CDropdownMenu placement="top">
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+          </CCardBody>
+        </CCard>
+        <CCard>
+          <CCardHeader>
+            Menus
+          </CCardHeader>
+          <CCardBody>
+
+            <CDropdown className="m-1 d-inline-block">
+              <CDropdownToggle color="secondary">
+                Direction Up
+              </CDropdownToggle>
+              <CDropdownMenu placement="top">
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <CDropdown className="m-1 d-inline-block">
+              <CDropdownToggle color="secondary">
+                Direction Left
+              </CDropdownToggle>
+              <CDropdownMenu placement="left">
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <CDropdown className="m-1 d-inline-block">
+              <CDropdownToggle color="secondary">
+                Direction Right
+              </CDropdownToggle>
+              <CDropdownMenu placement="right">
+                <CDropdownHeader>Header</CDropdownHeader>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <CDropdown className="m-1 d-inline-block">
+              <CDropdownToggle color="secondary">
+                Default Down
+              </CDropdownToggle>
+              <CDropdownMenu
+                placement="bottom"
+                modifiers={[{name: 'flip', enabled: false }]}
+              >
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <hr />
+
+            <CDropdown className="m-1">
+              <CDropdownToggle color="secondary">
+                This dropdown{'\''}s menu is right-aligned
+              </CDropdownToggle>
+              <CDropdownMenu placement="right">
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem disabled>Action Disabled</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <hr />
+
+            <CDropdown className="m-1">
+              <CDropdownToggle color="secondary">
+                Dropdown with header
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem header>Header</CDropdownItem>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <hr />
+
+            <CDropdown className="m-1">
+              <CDropdownToggle color="secondary">
+                Dropdown with divider
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem>Another Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <hr />
+
+            <CDropdown className="m-1">
+              <CDropdownToggle color="secondary">
+                Dropdown with disabled item
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem disabled>Disabled Action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+            <hr />
+
+            <CDropdown className="m-1">
+              <CDropdownToggle color="info">
+                Dropdown with form
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CForm className="px-4 py-3" >
+                  <CFormGroup>
+                    <CLabel htmlFor="exampleDropdownFormEmail1">Email address</CLabel>
+                    <CInput className="form-control" id="exampleDropdownFormEmail1" type="email" placeholder="email@example.com" autoComplete="email"/>
+                  </CFormGroup>
+                  <CFormGroup>
+                    <CLabel htmlFor="exampleDropdownFormPassword1">Password</CLabel>
+                    <CInput className="form-control" id="exampleDropdownFormPassword1" type="password" placeholder="Password" autoComplete="current-password"/>
+                  </CFormGroup>
+                  <CFormGroup variant="custom-checkbox" className="form-group">
+                    <CInputCheckbox custom id="exampleDropdownFormCheckbox1" />
+                    <CLabel variant="custom-checkbox" htmlFor="exampleDropdownFormCheckbox1">Remember me</CLabel>
+                  </CFormGroup>
+                  <CFormGroup className="mt-2">
+                    <CButton color="primary" type="submit">Sign in</CButton>
+                  </CFormGroup>
+                </CForm>
+                <CDropdownDivider/>
+                <CDropdownItem to="/register" >Register</CDropdownItem>
+                <CDropdownItem>Forgot password?</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
+  )
 }
 
-export default ButtonDropdowns;
+export default ButtonDropdowns

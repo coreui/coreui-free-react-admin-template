@@ -1,159 +1,311 @@
-import React, { Component } from 'react';
-import { Card, CardBody, CardHeader, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
+import React from 'react'
+import {
+  CRow,
+  CCol,
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CDropdown,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CNav,
+  CNavItem,
+  CNavLink
+} from '@coreui/react'
 
-class Navs extends Component {
+const Navs = () => {
+  return (
+    <>
+      <CRow>
+        <CCol xs="6">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <div className="card-header-actions">
+                <a href="https://coreui.github.io/components/navs/" rel="noreferrer noopener" target="_blank" className="card-header-action">
+                  <small className="text-muted">docs</small>
+                </a>
+              </div>
+            </CCardHeader>
+            <CCardBody>
+              <small>List Based</small>
+              <CNav>
+                <CNavItem>
+                  <CNavLink active>Active</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink disabled>Link</CNavLink>
+                </CNavItem>
+              </CNav>
+              <hr />
+              <small>Link Based</small>
+              <CNav>
+                <CNavLink>Active</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink disabled>Disabled</CNavLink>
+              </CNav>
+              <hr />
+              <small>Link Base</small>
+              <CNav className="justify-content-center">
+                <CNavLink>Active</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink disabled>Disabled</CNavLink>
+              </CNav>
+              <hr />
+              <small>Link Based</small>
+              <CNav className="justify-content-end">
+                <CNavLink>Active</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink disabled>Disabled</CNavLink>
+              </CNav>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol xs="3">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <small> vertical / links</small>
+            </CCardHeader>
+            <CCardBody>
+              <CNav vertical>
+                <CNavLink className="nav-item">Active</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink disabled>Disabled</CNavLink>
+              </CNav>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol xs="3">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <small> vertical / list</small>
+            </CCardHeader>
+            <CCardBody>
+              <CNav vertical>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Another Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink disabled>Disabled Link</CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
 
-  constructor(props) {
-    super(props);
+      <CRow>
+        <CCol xs="6">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <small> tabs</small>
+            </CCardHeader>
+            <CCardBody>
+              <CNav variant="tabs">
+                <CNavLink active>Active</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink>Link</CNavLink>
+                <CNavLink disabled>Disabled</CNavLink>
+              </CNav>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol xs="6">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <small> pills</small>
+            </CCardHeader>
+            <CCardBody>
+              <CNav variant="pills">
+                <CNavItem>
+                  <CNavLink active>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink disabled>Disabled</CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+      <CRow>
+        <CCol xs="12">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <small> fill and justify</small>
+            </CCardHeader>
+            <CCardBody>
+              <CNav fill variant="pills">
+                <CNavItem>
+                  <CNavLink active>Active</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Longer nav link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink disabled>Disabled</CNavLink>
+                </CNavItem>
+              </CNav>
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: [false, false],
-    };
-  }
+              <hr />
 
-  toggle(i) {
-    const newArray = this.state.dropdownOpen.map((element, index) => {
-      return (index === i ? !element : false);
-    });
-    this.setState({
-      dropdownOpen: newArray,
-    });
-  }
+              <CNav fill variant="pills">
+                <CNavLink active className="nav-item">Active</CNavLink>
+                <CNavLink className="nav-item">Link</CNavLink>
+                <CNavLink className="nav-item">Link</CNavLink>
+                <CNavLink className="nav-item" disabled>Disabled</CNavLink>
+              </CNav>
 
-  render() {
-    return (
-      <div className="animated fadeIn">
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Navs</strong>
-            <div className="card-header-actions">
-              <a href="https://reactstrap.github.io/components/navs/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
-          </CardHeader>
-          <CardBody>
-            <p>List Based</p>
-            <Nav>
-              <NavItem>
-                <NavLink href="#">Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#">Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#">Another Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink disabled href="#">Disabled Link</NavLink>
-              </NavItem>
-            </Nav>
-            <hr />
-            <p>Link Based</p>
-            <Nav>
-              <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink> <NavLink href="#">Another Link</NavLink> <NavLink disabled href="#">Disabled
-              Link</NavLink>
-            </Nav>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Navs Tabs</strong>
-          </CardHeader>
-          <CardBody>
-            <Nav tabs>
-              <NavItem>
-                <NavLink href="#" active>Link</NavLink>
-              </NavItem>
-              <Dropdown nav isOpen={this.state.dropdownOpen[0]} toggle={() => {this.toggle(0);}}>
-                <DropdownToggle nav caret>
-                  Dropdown
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem header>Header</DropdownItem>
-                  <DropdownItem disabled>Action</DropdownItem>
-                  <DropdownItem>Another Action</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Another Action</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-              <NavItem>
-                <NavLink href="#">Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#">Another Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink disabled href="#">Disabled Link</NavLink>
-              </NavItem>
-            </Nav>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Navs Pills</strong>
-          </CardHeader>
-          <CardBody>
-            <Nav pills>
-              <NavItem>
-                <NavLink href="#" active>Link</NavLink>
-              </NavItem>
-              <Dropdown nav isOpen={this.state.dropdownOpen[1]} toggle={() => {this.toggle(1);}}>
-                <DropdownToggle nav caret>
-                  Dropdown
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem header>Header</DropdownItem>
-                  <DropdownItem disabled>Action</DropdownItem>
-                  <DropdownItem>Another Action</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Another Action</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-              <NavItem>
-                <NavLink href="#">Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#">Another Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink disabled href="#">Disabled Link</NavLink>
-              </NavItem>
-            </Nav>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Navs Vertical</strong>
-          </CardHeader>
-          <CardBody>
-            <p>List Based</p>
-            <Nav vertical>
-              <NavItem>
-                <NavLink href="#">Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#">Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#">Another Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink disabled href="#">Disabled Link</NavLink>
-              </NavItem>
-            </Nav>
-            <hr />
-            <p>Link based</p>
-            <Nav vertical>
-              <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink> <NavLink href="#">Another Link</NavLink> <NavLink disabled href="#">Disabled
-              Link</NavLink>
-            </Nav>
-          </CardBody>
-        </Card>
-      </div>
-    );
-  }
+              <hr />
+
+              <CNav justified variant="pills">
+                <CNavItem>
+                  <CNavLink active>Active</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Longer nav link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink disabled>Disabled</CNavLink>
+                </CNavItem>
+              </CNav>
+
+              <hr />
+
+              <CNav justified variant="pills">
+                <CNavLink className="nav-item" active>Active</CNavLink>
+                <CNavLink className="nav-item">Link</CNavLink>
+                <CNavLink className="nav-item">Link</CNavLink>
+                <CNavLink className="nav-item" disabled>Disabled</CNavLink>
+              </CNav>
+
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+
+      <CRow>
+        <CCol xs="12">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <small> with flex</small>
+            </CCardHeader>
+            <CCardBody>
+              <CNav variant="pills" className="flex-sm-row">
+                  <CNavLink className="flex-sm-fill text-sm-center" active>Active</CNavLink>
+                  <CNavLink className="flex-sm-fill text-sm-center">Link</CNavLink>
+                  <CNavLink className="flex-sm-fill text-sm-center">Link</CNavLink>
+                  <CNavLink className="flex-sm-fill text-sm-center" disabled>Disabled</CNavLink>
+              </CNav>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+
+      <CRow>
+
+        <CCol xs="6">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <small> tabs with dropdowns</small>
+            </CCardHeader>
+            <CCardBody>
+              <CNav variant="tabs">
+                <CNavItem>
+                  <CNavLink active>Link</CNavLink>
+                </CNavItem>
+                <CDropdown inNav>
+                  <CDropdownToggle caret>
+                    Dropdown
+                  </CDropdownToggle>
+                  <CDropdownMenu>
+                    <CDropdownItem>Action</CDropdownItem>
+                    <CDropdownItem>Another action</CDropdownItem>
+                    <CDropdownItem>Something else here</CDropdownItem>
+                    <CDropdownItem divider />
+                    <CDropdownItem>Separated link</CDropdownItem>
+                  </CDropdownMenu>
+                </CDropdown>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink disabled>Disabled</CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCardBody>
+          </CCard>
+        </CCol>
+
+        <CCol xs="6">
+          <CCard>
+            <CCardHeader>
+              Navs
+              <small> pills with dropdowns</small>
+            </CCardHeader>
+            <CCardBody>
+              <CNav variant="pills">
+                <CNavItem>
+                  <CNavLink active>Link</CNavLink>
+                </CNavItem>
+                <CDropdown inNav>
+                  <CDropdownToggle caret>
+                    Dropdown
+                  </CDropdownToggle>
+                  <CDropdownMenu>
+                    <CDropdownItem>Action</CDropdownItem>
+                    <CDropdownItem>Another action</CDropdownItem>
+                    <CDropdownItem>Something else here</CDropdownItem>
+                    <CDropdownItem divider />
+                    <CDropdownItem>Separated link</CDropdownItem>
+                  </CDropdownMenu>
+                </CDropdown>
+                <CNavItem>
+                  <CNavLink>Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink disabled>Disabled</CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+    </>
+  )
 }
 
-export default Navs;
+export default Navs

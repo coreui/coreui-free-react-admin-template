@@ -1,108 +1,107 @@
-import React, { Component } from 'react';
-import { Button, Card, CardBody, CardHeader, Popover, PopoverBody, PopoverHeader } from 'reactstrap';
+import React from 'react'
+import {
+  CButton,
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CPopover,
+  CRow,
+  CCol,
+  CLink
+} from '@coreui/react'
 
-class PopoverItem extends Component {
-  constructor(props) {
-    super(props);
+const Popovers = () => {
+  const placements = [
+    'top-start', 'top', 'top-end',
+    'bottom-start', 'bottom', 'bottom-end',
+    'right-start', 'right', 'right-end',
+    'left-start', 'left', 'left-end'
+  ]
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      popoverOpen: false,
-    };
-  }
+  return (
+    <>
+      <CCard>
+        <CCardHeader>
+          Popovers
+          <div className="card-header-actions">
+            <a
+              href="https://coreui.github.io/components/popovers/"
+              rel="noreferrer noopener"
+              target="_blank"
+              className="card-header-action"
+            >
+              <small className="text-muted">docs</small>
+            </a>
+          </div>
+        </CCardHeader>
+        <CCardBody>
+          {/*eslint-disable-next-line*/}
 
-  toggle() {
-    this.setState({
-      popoverOpen: !this.state.popoverOpen,
-    });
-  }
+          <p className="text-muted">
+            Hover over the links below to see popover:
+          </p>
 
-  render() {
-    return (
-      <span>
-        <Button className="mr-1" color="secondary" id={'Popover-' + this.props.id} onClick={this.toggle}>
-          {this.props.item.text}
-        </Button>
-        <Popover placement={this.props.item.placement} isOpen={this.state.popoverOpen} target={'Popover-' + this.props.id} toggle={this.toggle} trigger="legacy" delay={0}>
-          <PopoverHeader>Popover Title</PopoverHeader>
-          <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
-        </Popover>
-      </span>
-    );
-  }
+          <p className="muted">
+            Tight pants next level keffiyeh
+            <CPopover header="Popover header" content="Popover text">
+              <CLink> you probably </CLink>
+            </CPopover>
+              haven't heard of them.
+            Photo booth beard raw denim letterpress vegan messenger
+            bag stumptown. Farm-to-table seitan, mcsweeney's fixie
+            sustainable quinoa 8-bit american apparel
+            <CPopover header="Popover header" content="Popover text">
+              <CLink> have a </CLink>
+            </CPopover>
+            terry richardson vinyl chambray. Beard stumptown,
+            cardigans banh mi lomo thundercats. Tofu biodiesel
+            williamsburg marfa, four loko mcsweeney''s cleanse
+            vegan chambray. A really ironic artisan
+            <CPopover header="Popover header" content="Popover text">
+              <CLink> whatever keytar </CLink>
+            </CPopover>
+            scenester farm-to-table banksy Austin
+            <CPopover header="Popover header" content="Popover text">
+              <CLink> twitter handle </CLink>
+            </CPopover>
+
+            freegan cred raw denim single-origin coffee viral.
+          </p>
+        </CCardBody>
+      </CCard>
+
+      <hr/>
+
+      <CCard>
+        <CCardHeader>
+          Popovers
+          <small> placement</small>
+        </CCardHeader>
+        <CCardBody>
+          <div className="my-3">
+            <CRow>
+              {placements.map(placement => {
+                return (<CCol
+                  md="4"
+                  className="py-4 text-center"
+                  key={placement}
+                >
+                  <CPopover header="Popover header"
+                    content={`Popover with placement: ${placement}`}
+                    placement={placement}
+                  >
+                    <CButton color="primary">
+                      { placement }
+                    </CButton>
+                  </CPopover>
+                </CCol>)
+              })}
+            </CRow>
+          </div>
+        </CCardBody>
+      </CCard>
+    </>
+  )
 }
 
-class Popovers extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      popoverOpen: false,
-      popovers: [
-        {
-          placement: 'top',
-          text: 'Top',
-        },
-        {
-          placement: 'bottom',
-          text: 'Bottom',
-        },
-        {
-          placement: 'left',
-          text: 'Left',
-        },
-        {
-          placement: 'right',
-          text: 'Right',
-        },
-      ],
-    };
-  }
-
-  toggle() {
-    this.setState({
-      popoverOpen: !this.state.popoverOpen,
-    });
-  }
-
-  render() {
-    return (
-      <div className="animated fadeIn">
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Popovers</strong>
-            <div className="card-header-actions">
-              <a href="https://reactstrap.github.io/components/popovers/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
-          </CardHeader>
-          <CardBody>
-            <Button id="Popover1" onClick={this.toggle}>
-              Launch Popover
-            </Button>
-            <Popover placement="bottom" isOpen={this.state.popoverOpen} target="Popover1" toggle={this.toggle}>
-              <PopoverHeader>Popover Title</PopoverHeader>
-              <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
-            </Popover>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Popovers</strong>
-            <small> list</small>
-          </CardHeader>
-          <CardBody>
-            {this.state.popovers.map((popover, i) => {
-              return <PopoverItem key={i} item={popover} id={i} />;
-            })}
-          </CardBody>
-        </Card>
-      </div>
-    );
-  }
-}
-
-export default Popovers;
+export default Popovers

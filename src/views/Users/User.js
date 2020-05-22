@@ -1,46 +1,41 @@
-import React, { Component } from 'react';
-import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+import React from 'react'
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
+import { CIcon } from '@coreui/icons-react'
 
 import usersData from './UsersData'
 
-class User extends Component {
+const User = ({match}) => {
+  const user = usersData.find( user => user.id.toString() === match.params.id)
+  const userDetails = user ? Object.entries(user) : 
+    [['id', (<span><CIcon className="text-muted" name="cui-icon-ban" /> Not found</span>)]]
 
-  render() {
-
-    const user = usersData.find( user => user.id.toString() === this.props.match.params.id)
-
-    const userDetails = user ? Object.entries(user) : [['id', (<span><i className="text-muted icon-ban"></i> Not found</span>)]]
-
-    return (
-      <div className="animated fadeIn">
-        <Row>
-          <Col lg={6}>
-            <Card>
-              <CardHeader>
-                <strong><i className="icon-info pr-1"></i>User id: {this.props.match.params.id}</strong>
-              </CardHeader>
-              <CardBody>
-                  <Table responsive striped hover>
-                    <tbody>
-                      {
-                        userDetails.map(([key, value]) => {
-                          return (
-                            <tr key={key}>
-                              <td>{`${key}:`}</td>
-                              <td><strong>{value}</strong></td>
-                            </tr>
-                          )
-                        })
-                      }
-                    </tbody>
-                  </Table>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    )
-  }
+  return (
+    <CRow>
+      <CCol lg={6}>
+        <CCard>
+          <CCardHeader>
+            User id: {match.params.id}
+          </CCardHeader>
+          <CCardBody>
+              <table className="table table-striped table-hover">
+                <tbody>
+                  {
+                    userDetails.map(([key, value], index) => {
+                      return (
+                        <tr key={index.toString()}>
+                          <td>{`${key}:`}</td>
+                          <td><strong>{value}</strong></td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
+  )
 }
 
-export default User;
+export default User

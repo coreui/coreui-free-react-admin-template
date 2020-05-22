@@ -1,134 +1,107 @@
-import React, { Component } from 'react';
-import { Button, Card, CardBody, CardHeader, Tooltip, UncontrolledTooltip } from 'reactstrap';
+import React from 'react'
+import {
+  CButton,
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CTooltip,
+  CRow,
+  CCol,
+  CLink
+} from '@coreui/react'
 
-class TooltipItem extends React.Component {
-  constructor(props) {
-    super(props);
+const Tooltips = () => {
+  const placements = [
+    'top-start', 'top', 'top-end',
+    'bottom-start', 'bottom', 'bottom-end',
+    'right-start', 'right', 'right-end',
+    'left-start', 'left', 'left-end'
+  ]
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      tooltipOpen: false,
-    };
-  }
+  return (
+    <>
+      <CCard>
+        <CCardHeader>
+          Tooltips
+          <div className="card-header-actions">
+            <a
+              href="https://coreui.github.io/components/tooltips/"
+              rel="noreferrer noopener"
+              target="_blank"
+              className="card-header-action"
+            >
+              <small className="text-muted">docs</small>
+            </a>
+          </div>
+        </CCardHeader>
+        <CCardBody>
+          {/*eslint-disable-next-line*/}
 
-  toggle() {
-    this.setState({
-      tooltipOpen: !this.state.tooltipOpen,
-    });
-  }
+          <p className="text-muted">
+            Hover over the links below to see tooltips:
+          </p>
 
-  render() {
-    return (
-      <span>
-        <Button className="mr-1" color="secondary" id={'Tooltip-' + this.props.id}>
-          {this.props.item.text}
-        </Button>
-        <Tooltip placement={this.props.item.placement} isOpen={this.state.tooltipOpen} target={'Tooltip-' + this.props.id} toggle={this.toggle}>
-          Tooltip Content!
-        </Tooltip>
-      </span>
-    );
-  }
-}
+          <p className="muted">
+            Tight pants next level keffiyeh
+            <CTooltip content="Tooltip text">
+              <CLink> you probably </CLink>
+            </CTooltip>
+              haven't heard of them.
+            Photo booth beard raw denim letterpress vegan messenger
+            bag stumptown. Farm-to-table seitan, mcsweeney's fixie
+            sustainable quinoa 8-bit american apparel
+            <CTooltip content="Tooltip text">
+              <CLink> have a </CLink>
+            </CTooltip>
+            terry richardson vinyl chambray. Beard stumptown,
+            cardigans banh mi lomo thundercats. Tofu biodiesel
+            williamsburg marfa, four loko mcsweeney''s cleanse
+            vegan chambray. A really ironic artisan
+            <CTooltip content="Tooltip text">
+              <CLink> whatever keytar </CLink>
+            </CTooltip>
+            scenester farm-to-table banksy Austin
+            <CTooltip content="Tooltip text">
+              <CLink> twitter handle </CLink>
+            </CTooltip>
 
-class Tooltips extends Component {
+            freegan cred raw denim single-origin coffee viral.
+          </p>
+        </CCardBody>
+      </CCard>
 
-  constructor(props) {
-    super(props);
+      <hr/>
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      tooltipOpen: [false, false],
-      tooltips: [
-        {
-          placement: 'top',
-          text: 'Top',
-        },
-        {
-          placement: 'bottom',
-          text: 'Bottom',
-        },
-        {
-          placement: 'left',
-          text: 'Left',
-        },
-        {
-          placement: 'right',
-          text: 'Right',
-        },
-      ],
-    };
-  }
-
-  toggle(i) {
-    const newArray = this.state.tooltipOpen.map((element, index) => {
-      return (index === i ? !element : false);
-    });
-    this.setState({
-      tooltipOpen: newArray,
-    });
-  }
-
-  render() {
-    return (
-      <div className="animated fadeIn">
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Tooltips</strong>
-            <div className="card-header-actions">
-              <a href="https://reactstrap.github.io/components/tooltips/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
-          </CardHeader>
-          <CardBody>
-            {/*eslint-disable-next-line*/}
-            <p>Somewhere in here is a <a href="#" id="TooltipExample">tooltip</a>.</p>
-            <Tooltip placement="right" isOpen={this.state.tooltipOpen[0]} target="TooltipExample" toggle={() => {this.toggle(0);}}>
-              Hello world!
-            </Tooltip>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Tooltip</strong>
-            <small> disable autohide</small>
-          </CardHeader>
-          <CardBody>
-            {/*eslint-disable-next-line*/}
-            <p>Sometimes you need to allow users to select text within a <a href="#" id="DisabledAutoHideExample">tooltip</a>.</p>
-            <Tooltip placement="top" isOpen={this.state.tooltipOpen[1]} autohide={false} target="DisabledAutoHideExample" toggle={() => {this.toggle(1);}}>
-              Try to select this text!
-            </Tooltip>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Tooltip</strong>
-            <small> list</small>
-          </CardHeader>
-          <CardBody>
-            {this.state.tooltips.map((tooltip, i) => {
-              return <TooltipItem key={i} item={tooltip} id={i} />;
-            })}
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            <i className="fa fa-align-justify"></i><strong>Tooltip</strong>
-            <small> uncontrolled</small>
-          </CardHeader>
-          <CardBody>
-            {/*eslint-disable-next-line*/}
-            <p>Somewhere in here is a <a href="#" id="UncontrolledTooltipExample">tooltip</a>.</p>
-            <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
-              Hello world!
-            </UncontrolledTooltip>
-          </CardBody>
-        </Card>
-      </div>
-    );
-  }
+      <CCard>
+        <CCardHeader>
+          Tooltips
+          <small> placement</small>
+        </CCardHeader>
+        <CCardBody>
+          <div className="my-3">
+            <CRow>
+              {placements.map(placement => {
+                return (<CCol
+                  md="4"
+                  className="py-4 text-center"
+                  key={placement}
+                >
+                  <CTooltip
+                    content={`Tooltip with placement: ${placement}`}
+                    placement={placement}
+                  >
+                    <CButton color="primary">
+                      { placement }
+                    </CButton>
+                  </CTooltip>
+                </CCol>)
+              })}
+            </CRow>
+          </div>
+        </CCardBody>
+      </CCard>
+    </>
+  )
 }
 
 export default Tooltips;

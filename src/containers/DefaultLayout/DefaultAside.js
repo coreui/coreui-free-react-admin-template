@@ -1,159 +1,127 @@
-import React, { Component } from 'react';
-import { Nav, NavItem, NavLink, Progress, TabContent, TabPane, ListGroup, ListGroupItem } from 'reactstrap';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { AppSwitch } from '@coreui/react'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  CNav,
+  CNavItem,
+  CNavLink,
+  CTabs,
+  CTabContent,
+  CTabPane,
+  CListGroup,
+  CListGroupItem,
+  CSwitch,
+  CProgress,
+  CSidebar,
+  CImg,
+  CSidebarClose
+} from '@coreui/react'
+import { CIcon } from '@coreui/icons-react'
 
-const propTypes = {
-  children: PropTypes.node,
-};
+const DefaultAside = () => {
+  const show = useSelector(state => state.asideShow)
+  const dispatch = useDispatch()
+  const setState = (state) => dispatch({type: 'set', asideShow: state})
+  
+  return (
+    <CSidebar
+      aside
+      colorScheme='light'
+      size='lg'
+      overlaid
+      show={show}
+      onShowChange={(state) => setState(state)}
+    >
+      <CSidebarClose onClick={() => setState(false) } />
+      <CTabs>
+        <CNav variant='tabs' className='nav-underline nav-underline-primary'>
+          <CNavItem>
+            <CNavLink>
+              <CIcon name="cil-list" alt="CoreUI Icons List" />
+            </CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink>
+              <CIcon name="cil-speech" alt="CoreUI Icons Speech" />
+              </CNavLink>
+            </CNavItem>
+          <CNavItem>
+            <CNavLink>
+              <CIcon name="cil-settings" alt="CoreUI Icons Settings" />
+            </CNavLink>
+          </CNavItem>
+        </CNav>
 
-const defaultProps = {};
+        <CTabContent>
 
-class DefaultAside extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: '1',
-    };
-  }
-
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab,
-      });
-    }
-  }
-
-  render() {
-
-    // eslint-disable-next-line
-    const { children, ...attributes } = this.props;
-
-    return (
-      <React.Fragment>
-        <Nav tabs>
-          <NavItem>
-            <NavLink className={classNames({ active: this.state.activeTab === '1' })}
-                     onClick={() => {
-                       this.toggle('1');
-                     }}>
-              <i className="icon-list"></i>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className={classNames({ active: this.state.activeTab === '2' })}
-                     onClick={() => {
-                       this.toggle('2');
-                     }}>
-              <i className="icon-speech"></i>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className={classNames({ active: this.state.activeTab === '3' })}
-                     onClick={() => {
-                       this.toggle('3');
-                     }}>
-              <i className="icon-settings"></i>
-            </NavLink>
-          </NavItem>
-        </Nav>
-        <TabContent activeTab={this.state.activeTab}>
-          <TabPane tabId="1">
-            <ListGroup className="list-group-accent" tag={'div'}>
-              <ListGroupItem className="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</ListGroupItem>
-              <ListGroupItem action tag="a" href="#" className="list-group-item-accent-warning list-group-item-divider">
-                <div className="avatar float-right">
-                  <img className="img-avatar" src="assets/img/avatars/7.jpg" alt="admin@bootstrapmaster.com"></img>
+          <CTabPane>
+            <CListGroup variant="accent">
+              <CListGroupItem color="secondary" className="bg-light text-center font-weight-bold text-muted text-uppercase small">Today</CListGroupItem>
+              <CListGroupItem accent="warning" href="#" className="list-group-item-divider">
+                <div className="c-avatar float-right">
+                  <CImg
+                    className="c-avatar-img"
+                    src="assets/img/avatars/7.jpg"
+                    alt="admin@bootstrapmaster.com"
+                  />
                 </div>
-                <div>Meeting with <strong>Lucas</strong> </div>
-                <small className="text-muted mr-3">
-                  <i className="icon-calendar"></i>&nbsp; 1 - 3pm
-                </small>
-                <small className="text-muted">
-                  <i className="icon-location-pin"></i> Palo Alto, CA
-                </small>
-              </ListGroupItem>
-              <ListGroupItem action tag="a" href="#" className="list-group-item-accent-info list-group-item-divider">
-                <div className="avatar float-right">
-                  <img className="img-avatar" src="assets/img/avatars/4.jpg" alt="admin@bootstrapmaster.com"></img>
+                <div>Meeting with <strong>Lucas</strong></div>
+                <small className="text-muted mr-3"><CIcon name="cil-calendar" /> 1 - 3pm</small>
+                <small className="text-muted"><CIcon name="cil-location-pin" /> Palo Alto, CA</small>
+              </CListGroupItem>
+              <CListGroupItem accent="info" href="#">
+                <div className="c-avatar float-right">
+                  <CImg
+                    className="c-avatar-img"
+                    src="assets/img/avatars/4.jpg"
+                    alt="admin@bootstrapmaster.com"
+                  />
                 </div>
                 <div>Skype with <strong>Megan</strong></div>
-                <small className="text-muted mr-3">
-                  <i className="icon-calendar"></i>&nbsp; 4 - 5pm
-                </small>
-                <small className="text-muted">
-                  <i className="icon-social-skype"></i> On-line
-                </small>
-              </ListGroupItem>
-              <ListGroupItem className="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Tomorrow</ListGroupItem>
-              <ListGroupItem action tag="a" href="#" className="list-group-item-accent-danger list-group-item-divider">
+                <small className="text-muted mr-3"><CIcon name="cil-calendar" />  4 - 5pm</small>
+                <small className="text-muted"><CIcon name="cib-skype" />  On-line</small>
+              </CListGroupItem>
+              <hr className="transparent mx-3 my-0" />
+              <CListGroupItem color="secondary" className="bg-light text-center font-weight-bold text-muted text-uppercase small">Tomorrow</CListGroupItem>
+              <CListGroupItem accent="danger" href="#" className="list-group-item-divider">
                 <div>New UI Project - <strong>deadline</strong></div>
-                <small className="text-muted mr-3"><i className="icon-calendar"></i>&nbsp; 10 - 11pm</small>
-                <small className="text-muted"><i className="icon-home"></i>&nbsp; creativeLabs HQ</small>
-                <div className="avatars-stack mt-2">
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/2.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/3.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/4.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/5.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
+                <small className="text-muted mr-3"><CIcon name="cil-calendar" /> 10 - 11pm</small>
+                <small className="text-muted"><CIcon name="cil-home" /> creativeLabs HQ</small>
+                <div className="c-avatars-stack mt-2">
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/2.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/3.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/4.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/5.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/6.jpg" alt="admin@bootstrapmaster.com" /></div>
                 </div>
-              </ListGroupItem>
-              <ListGroupItem action tag="a" href="#" className="list-group-item-accent-success list-group-item-divider">
+              </CListGroupItem>
+              <CListGroupItem accent="success" href="#" className="c-list-group-item-divider">
                 <div><strong>#10 Startups.Garden</strong> Meetup</div>
-                <small className="text-muted mr-3"><i className="icon-calendar"></i>&nbsp; 1 - 3pm</small>
-                <small className="text-muted"><i className="icon-location-pin"></i>&nbsp; Palo Alto, CA</small>
-              </ListGroupItem>
-              <ListGroupItem action tag="a" href="#" className="list-group-item-accent-primary list-group-item-divider">
+                <small className="text-muted mr-3"><CIcon name="cil-calendar" /> 1 - 3pm</small>
+                <small className="text-muted"><CIcon name="cil-location-pin" /> Palo Alto, CA</small>
+              </CListGroupItem>
+              <CListGroupItem accent="primary" href="#" className="c-list-group-item-divider">
                 <div><strong>Team meeting</strong></div>
-                <small className="text-muted mr-3"><i className="icon-calendar"></i>&nbsp; 4 - 6pm</small>
-                <small className="text-muted"><i className="icon-home"></i>&nbsp; creativeLabs HQ</small>
-                <div className="avatars-stack mt-2">
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/2.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/3.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/4.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/5.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/7.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
-                  <div className="avatar avatar-xs">
-                    <img src={'assets/img/avatars/8.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  </div>
+                <small className="text-muted mr-3"><CIcon name="cil-calendar" /> 4 - 6pm</small>
+                <small className="text-muted"><CIcon name="cil-home" /> creativeLabs HQ</small>
+                <div className="c-avatars-stack mt-2">
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/2.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/3.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/4.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/5.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/6.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/7.jpg" alt="admin@bootstrapmaster.com" /></div>
+                  <div className="c-avatar c-avatar-xs"><CImg className="c-avatar-img" src="assets/img/avatars/8.jpg" alt="admin@bootstrapmaster.com" /></div>
                 </div>
-              </ListGroupItem>
-            </ListGroup>
-          </TabPane>
-          <TabPane tabId="2" className="p-3">
+              </CListGroupItem>
+            </CListGroup>
+          </CTabPane>
+
+          <CTabPane className="p-3">
             <div className="message">
               <div className="py-3 pb-5 mr-3 float-left">
-                <div className="avatar">
-                  <img src={'assets/img/avatars/7.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  <span className="avatar-status badge-success"></span>
+                <div className="c-avatar">
+                  <CImg className="c-avatar-img" src="assets/img/avatars/7.jpg" alt="admin@bootstrapmaster.com" />
+                  <span className="c-avatar-status bg-success"></span>
                 </div>
               </div>
               <div>
@@ -161,16 +129,14 @@ class DefaultAside extends Component {
                 <small className="text-muted float-right mt-1">1:52 PM</small>
               </div>
               <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt...
-              </small>
+              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
             </div>
             <hr />
             <div className="message">
               <div className="py-3 pb-5 mr-3 float-left">
-                <div className="avatar">
-                  <img src={'assets/img/avatars/7.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  <span className="avatar-status badge-success"></span>
+                <div className="c-avatar">
+                  <CImg className="c-avatar-img" src="assets/img/avatars/7.jpg" alt="admin@bootstrapmaster.com" />
+                  <span className="c-avatar-status bg-success"></span>
                 </div>
               </div>
               <div>
@@ -178,16 +144,14 @@ class DefaultAside extends Component {
                 <small className="text-muted float-right mt-1">1:52 PM</small>
               </div>
               <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt...
-              </small>
+              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
             </div>
             <hr />
             <div className="message">
               <div className="py-3 pb-5 mr-3 float-left">
-                <div className="avatar">
-                  <img src={'assets/img/avatars/7.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  <span className="avatar-status badge-success"></span>
+                <div className="c-avatar">
+                  <CImg className="c-avatar-img" src="assets/img/avatars/7.jpg" alt="admin@bootstrapmaster.com" />
+                  <span className="c-avatar-status bg-success"></span>
                 </div>
               </div>
               <div>
@@ -195,16 +159,14 @@ class DefaultAside extends Component {
                 <small className="text-muted float-right mt-1">1:52 PM</small>
               </div>
               <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt...
-              </small>
+              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
             </div>
             <hr />
             <div className="message">
               <div className="py-3 pb-5 mr-3 float-left">
-                <div className="avatar">
-                  <img src={'assets/img/avatars/7.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  <span className="avatar-status badge-success"></span>
+                <div className="c-avatar">
+                  <CImg className="c-avatar-img" src="assets/img/avatars/7.jpg" alt="admin@bootstrapmaster.com" />
+                  <span className="c-avatar-status bg-success"></span>
                 </div>
               </div>
               <div>
@@ -212,16 +174,14 @@ class DefaultAside extends Component {
                 <small className="text-muted float-right mt-1">1:52 PM</small>
               </div>
               <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt...
-              </small>
+              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
             </div>
             <hr />
             <div className="message">
               <div className="py-3 pb-5 mr-3 float-left">
-                <div className="avatar">
-                  <img src={'assets/img/avatars/7.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
-                  <span className="avatar-status badge-success"></span>
+                <div className="c-avatar">
+                  <CImg className="c-avatar-img" src="assets/img/avatars/7.jpg" alt="admin@bootstrapmaster.com" />
+                  <span className="c-avatar-status bg-success"></span>
                 </div>
               </div>
               <div>
@@ -229,89 +189,54 @@ class DefaultAside extends Component {
                 <small className="text-muted float-right mt-1">1:52 PM</small>
               </div>
               <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt...
-              </small>
+              <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
             </div>
-          </TabPane>
-          <TabPane tabId="3" className="p-3">
+          </CTabPane>
+
+          <CTabPane className="p-3">
             <h6>Settings</h6>
-
-            <div className="aside-options">
-              <div className="clearfix mt-4">
-                <small><b>Option 1</b></small>
-                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} defaultChecked size={'sm'}/>
+            <div>
+              <div className="clearfix mt-4"><small><b>Option 1</b></small>
+                <CSwitch className="float-right" shape="pill" variant="opposite" color="success" size="sm" labelOn="on" labelOff="off" defaultChecked />
               </div>
-              <div>
-                <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
-                </small>
+              <div><small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></div>
+            </div>
+            <div>
+              <div className="clearfix mt-3"><small><b>Option 2</b></small>
+                <CSwitch className="float-right" shape="pill" variant="opposite" color="success" size="sm" labelOn="on" labelOff="off" />
+              </div>
+              <div><small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></div>
+            </div>
+            <div>
+              <div className="clearfix mt-3"><small><b>Option 3</b></small>
+                <CSwitch className="float-right" shape="pill" variant="opposite" color="success" size="sm" labelOn="on" labelOff="off" />
               </div>
             </div>
-
-            <div className="aside-options">
-              <div className="clearfix mt-3">
-                <small><b>Option 2</b></small>
-                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} size={'sm'}/>
-              </div>
-              <div>
-                <small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
-                </small>
+            <div>
+              <div className="clearfix mt-3"><small><b>Option 4</b></small>
+                <CSwitch className="float-right" shape="pill" variant="opposite" color="success" size="sm" labelOn="on" labelOff="off" defaultChecked />
               </div>
             </div>
-
-            <div className="aside-options">
-              <div className="clearfix mt-3">
-                <small><b>Option 3</b></small>
-                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} defaultChecked size={'sm'} disabled/>
-                <div>
-                  <small className="text-muted">Option disabled.</small>
-                </div>
-              </div>
-            </div>
-
-            <div className="aside-options">
-              <div className="clearfix mt-3">
-                <small><b>Option 4</b></small>
-                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} defaultChecked size={'sm'} />
-              </div>
-            </div>
-
             <hr />
             <h6>System Utilization</h6>
-
-            <div className="text-uppercase mb-1 mt-4">
-              <small><b>CPU Usage</b></small>
-            </div>
-            <Progress className="progress-xs" color="info" value="25" />
+            <div className="text-uppercase mb-1 mt-4"><small><b>CPU Usage</b></small></div>
+            <CProgress size="xs" color="info" value={25} />
             <small className="text-muted">348 Processes. 1/4 Cores.</small>
-
-            <div className="text-uppercase mb-1 mt-2">
-              <small><b>Memory Usage</b></small>
-            </div>
-            <Progress className="progress-xs" color="warning" value="70" />
+            <div className="text-uppercase mb-1 mt-2"><small><b>Memory Usage</b></small></div>
+            <CProgress size="xs" color="warning" value={70} />
             <small className="text-muted">11444GB/16384MB</small>
-
-            <div className="text-uppercase mb-1 mt-2">
-              <small><b>SSD 1 Usage</b></small>
-            </div>
-            <Progress className="progress-xs" color="danger" value="95" />
+            <div className="text-uppercase mb-1 mt-2"><small><b>SSD 1 Usage</b></small></div>
+            <CProgress size="xs" color="danger" value={95} />
             <small className="text-muted">243GB/256GB</small>
-
-            <div className="text-uppercase mb-1 mt-2">
-              <small><b>SSD 2 Usage</b></small>
-            </div>
-            <Progress className="progress-xs" color="success" value="10" />
+            <div className="text-uppercase mb-1 mt-2"><small><b>SSD 2 Usage</b></small></div>
+            <CProgress size="xs" color="success" value={10} />
             <small className="text-muted">25GB/256GB</small>
-          </TabPane>
-        </TabContent>
-      </React.Fragment>
-    );
-  }
+          </CTabPane>
+
+        </CTabContent>
+      </CTabs>
+    </CSidebar>
+  )
 }
 
-DefaultAside.propTypes = propTypes;
-DefaultAside.defaultProps = defaultProps;
-
-export default DefaultAside;
+export default React.memo(DefaultAside)

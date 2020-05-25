@@ -17,23 +17,6 @@ const Collapses = () => {
   const [collapseMulti, setCollapseMulti] = useState([false, false])
   const [accordion, setAccordion] = useState(1)
   const [fade, setFade] = useState(true)
-  const [status, setStatus] = useState('Closed')
-
-  const onEntering = () => {
-    setStatus('Opening...')
-  }
-
-  const onEntered = () => {
-    setStatus('Opened')
-  }
-
-  const onExiting = () => {
-    setStatus('Closing...')
-  }
-
-  const onExited = () => {
-    setStatus('Closed')
-  }
 
   const toggle = (e) => {
     setCollapse(!collapse)
@@ -74,13 +57,7 @@ const Collapses = () => {
               </a>
             </div>
           </CCardHeader>
-          <CCollapse
-            show={collapse}
-            onEntering={onEntering}
-            onEntered={onEntered}
-            onExiting={onExiting}
-            onExited={onExited}
-          >
+          <CCollapse show={collapse}>
             <CCardBody>
               <p>
                 Anim pariatur cliche reprehenderit,
@@ -107,8 +84,6 @@ const Collapses = () => {
               onClick={toggle}
               className={'mb-1'}
             >Toggling button</CButton>
-            <hr/>
-            <h5>Current state: {status}</h5>
           </CCardFooter>
         </CCard>
 
@@ -180,7 +155,12 @@ const Collapses = () => {
             <div id="accordion">
               <CCard className="mb-0">
                 <CCardHeader id="headingOne">
-                  <CButton block color="link" className="text-left m-0 p-0" onClick={() => setAccordion(0)}>
+                  <CButton 
+                    block 
+                    color="link" 
+                    className="text-left m-0 p-0" 
+                    onClick={() => setAccordion(accordion === 0 ? null : 0)}
+                  >
                     <h5 className="m-0 p-0">Collapsible Group Item #1</h5>
                   </CButton>
                 </CCardHeader>
@@ -196,7 +176,12 @@ const Collapses = () => {
               </CCard>
               <CCard className="mb-0">
                 <CCardHeader id="headingTwo">
-                  <CButton block color="link" className="text-left m-0 p-0" onClick={() => setAccordion(1)}>
+                  <CButton 
+                    block 
+                    color="link" 
+                    className="text-left m-0 p-0" 
+                    onClick={() => setAccordion(accordion === 1 ? null : 1)}
+                  >
                     <h5 className="m-0 p-0">Collapsible Group Item #2</h5>
                   </CButton>
                 </CCardHeader>
@@ -212,7 +197,12 @@ const Collapses = () => {
               </CCard>
               <CCard className="mb-0">
                 <CCardHeader id="headingThree">
-                  <CButton block color="link" className="text-left m-0 p-0" onClick={() => setAccordion(2)}>
+                  <CButton 
+                    block 
+                    color="link" 
+                    className="text-left m-0 p-0" 
+                    onClick={() => setAccordion(accordion === 2 ? null : 2)}
+                  >
                     <h5 className="m-0 p-0">Collapsible Group Item #3</h5>
                   </CButton>
                 </CCardHeader>

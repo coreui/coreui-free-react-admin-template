@@ -15,7 +15,7 @@
 [npm-next]: https://img.shields.io/npm/v/@coreui/react/next.png?style=flat-square
 [npm]: https://www.npmjs.com/package/@coreui/react
 
-# CoreUI Pro v3 React Admin Template
+# CoreUI Free React Admin Template v3
 
 CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
 
@@ -46,7 +46,6 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 ## CoreUI Pro
 
 * 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/pro/)
-* 💪  [CoreUI Pro Bootstrap Admin Template (Ajax)](https://coreui.io/pro/)
 * 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/pro/angular)
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
@@ -55,11 +54,11 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ### Clone repo
 
-**Only customers with [Membership Plan](https://coreui.io/pro/#buy) have access to private github repository.**
+**Only customers with [Enterrise Membership Plan](https://coreui.io/pro/#buy) have access to private github repository.**
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/coreui/coreui-pro-react-admin-template.git my-project
+$ git clone https://github.com/coreui/coreui-free-react-admin-template.git my-project
 
 # go into app's directory
 $ cd my-project
@@ -104,29 +103,6 @@ Run `build` to build the project. The build artifacts will be stored in the `bui
 $ npm run build
 ```
 
-## What's included
-
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
-
-```
-CoreUI-React#v2.0.0
-├── public/          #static files
-│   ├── assets/      #assets
-│   └── index.html   #html template
-│
-├── src/             #project root
-│   ├── containers/  #container source
-│   ├── scss/        #user scss/css source
-│   ├── views/       #views source
-│   ├── App.js
-│   ├── App.test.js
-│   ├── index.js
-│   ├── _nav.js      #sidebar config
-│   └── routes.js    #routes config
-│
-└── package.json
-```
-
 ## Documentation
 
 The documentation for the CoreUI  Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
@@ -134,9 +110,9 @@ The documentation for the CoreUI  Admin Template is hosted at our website [CoreU
 
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Pro Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
+For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
-See [the Releases section of our project](https://github.com/coreui/coreui-pro-react-admin-template/releases) for changelogs for each release version.
+See [the Releases section of our project](https://github.com/coreui/coreui-free-react-admin-template/releases) for changelogs for each release version.
 
 ## Creators
 
@@ -144,8 +120,8 @@ See [the Releases section of our project](https://github.com/coreui/coreui-pro-r
 * <https://twitter.com/lukaszholeczek>
 * <https://github.com/mrholek>
 
-**Andrzej Kopański**
-* <https://github.com/xidedix>
+**CoreUI team**
+* https://github.com/orgs/coreui/people
 
 ## Community
 
@@ -157,4 +133,4 @@ Get updates on CoreUI's development and chat with the project maintainers and co
 
 ## Copyright and License
 
-copyright 2018 creativeLabs Łukasz Holeczek. 
+copyright 2020 creativeLabs Łukasz Holeczek. 

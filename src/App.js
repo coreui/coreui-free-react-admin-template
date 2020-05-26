@@ -21,6 +21,7 @@ const ReactPlayground = React.lazy(() =>
 // const HomePage = React.lazy(() => import("./views/Pages/HomePage"));
 const HomePage = React.lazy(() => import("./pages/homePage"));
 const AssetsDetail = React.lazy(() => import("./pages/assetsDetail"));
+const AboutUs = React.lazy(() => import("./pages/aboutUs"));
 
 class App extends Component {
   render() {
@@ -69,6 +70,12 @@ class App extends Component {
               path="/assets-detail"
               name="Assets Detail"
               render={(props) => <AssetsDetail {...props} />}
+            />
+            <Route
+              exact
+              path="/about-us"
+              name="About Us"
+              render={(props) => <AboutUs {...props} />}
             />
             <Route
               path="/"

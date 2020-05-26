@@ -1,0 +1,245 @@
+.video-container {
+  width: 100%;
+  padding-top: 56.25%;
+  height: 0px;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px 10px 0 0;
+  border: none;
+  outline: none;
+}
+
+.media-play-main {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-play-body {
+  width: 150px;
+}
+
+.media-play-body:hover {
+  cursor: pointer;
+}
+
+.video-bottom-description {
+  background: rgba(220, 221, 216, 0.26);
+  margin: 0px !important;
+  height: 75px;
+  border-radius: 0 0 10px 10px;
+}
+
+.assets-price-main {
+  flex-direction: column;
+  box-shadow: 0px 2px 10px #00000029;
+  border-radius: 10px;
+  padding: 0 15px;
+}
+
+.assets-price-body {
+  border-bottom: 1px solid #dcddd8;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.assets-coming-soon-main {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.round-lightred-btn {
+  background: #e65642;
+  height: 50px;
+  width: 270px;
+  font-size: 18px;
+  color: white;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-transform 0.15s ease-in-out;
+}
+
+.round-lightred-btn:hover {
+  background: #e45341;
+  webkit-transform: translateY(-0.3333333333rem);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.round-lightred-btn-sm {
+  border: none;
+  outline: none !important;
+  background: #e65642;
+  height: 50px;
+  width: 210px;
+  font-size: 16px;
+  color: white;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-transform 0.15s ease-in-out;
+}
+
+.round-lightred-btn-sm:hover {
+  background: #e45341;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.line-heigh-5 {
+  line-height: 1.5;
+}
+
+.red-border-left-bg {
+  background: #e65642;
+  height: 23px;
+  width: 3px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.red-border-left-sm {
+  background: #e65642;
+  height: 19px;
+  width: 3px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.slider-img-body {
+  width: 100%;
+  padding-top: 50%;
+  border-radius: 10px;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.navigate-btn {
+  width: 40px;
+  height: 50px;
+  background: white;
+  border: 1px solid #dcddd8;
+  border-radius: 15px;
+  outline: none !important;
+}
+
+.navigate-btn:hover {
+  background: #dcddd8;
+}
+
+.navigate-btn .lightred {
+  font-size: 25px;
+}
+
+.nav-download-btn-main {
+  justify-content: space-between;
+}
+
+@media (max-width: 1440px) {
+  .round-lightred-btn {
+    width: 100%;
+    height: 45px;
+  }
+
+  .assets-price-body {
+    height: 18%;
+  }
+
+  .assets-coming-soon-main p {
+    margin-bottom: 0px;
+  }
+  .assets-coming-soon-main {
+    height: 46%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .assets-price-body {
+    height: 15%;
+  }
+
+  .assets-price-body h3 {
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .assets-coming-soon-main {
+    height: 55%;
+  }
+
+  .assets-coming-soon-main p {
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 992px) {
+  .assets-price-main {
+    margin-top: 30px;
+  }
+
+  .assets-price-body {
+    padding-top: 20px;
+    height: initial;
+  }
+
+  .assets-price-body h3 {
+    font-size: 22px;
+  }
+
+  .assets-coming-soon-main {
+    height: initial;
+    padding: 20px 0;
+  }
+
+  .video-bottom-description {
+    height: 80px;
+    padding-bottom: 10px;
+  }
+
+  .round-lightred-btn {
+    width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-bottom-description {
+    height: 120px;
+  }
+}
+
+@media (max-width: 515px) {
+  .round-lightred-btn-sm {
+    width: 150px;
+    height: 45px;
+  }
+
+  .navigate-btn {
+    height: 45px;
+    width: 40px;
+  }
+
+  .media-play-body {
+    width: 80px;
+  }
+}

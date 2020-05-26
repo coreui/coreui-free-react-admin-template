@@ -7,6 +7,8 @@ import 'react-sliding-pane/dist/react-sliding-pane.css';
 
 import LogoHeader from "./../../../../assets/img/logo-header.png";
 
+import './../index.css';
+
 export class TopHeader extends Component {
   constructor(props) {
     super(props);

@@ -13,7 +13,7 @@ const DefaultLayout = React.lazy(() => import("./containers/DefaultLayout"));
 
 // Pages
 const Login = React.lazy(() => import("./views/Pages/Login"));
-const Register = React.lazy(() => import("./views/Pages/Register"));
+// const Register = React.lazy(() => import("./views/Pages/Register"));
 const Page404 = React.lazy(() => import("./views/Pages/Page404"));
 const Page500 = React.lazy(() => import("./views/Pages/Page500"));
 const ReactPlayground = React.lazy(() =>
@@ -23,6 +23,7 @@ const ReactPlayground = React.lazy(() =>
 const HomePage = React.lazy(() => import("./pages/homePage"));
 const AssetsDetail = React.lazy(() => import("./pages/assetsDetail"));
 const AboutUs = React.lazy(() => import("./pages/aboutUs"));
+const Register = React.lazy(() => import("./pages/register"));
 
 class App extends Component {
   render() {

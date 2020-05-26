@@ -18,7 +18,8 @@ const Page500 = React.lazy(() => import("./views/Pages/Page500"));
 const ReactPlayground = React.lazy(() =>
   import("./views/Pages/ReactPlayground")
 );
-const HomePage = React.lazy(() => import("./views/Pages/HomePage"));
+// const HomePage = React.lazy(() => import("./views/Pages/HomePage"));
+const HomePage = React.lazy(() => import("./pages/homePage"));
 
 class App extends Component {
   render() {

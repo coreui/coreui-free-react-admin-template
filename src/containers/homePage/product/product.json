@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "url": "images/figur1.png",
+    "title": "Why you may want to",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "store": "by Mike",
+    "percent": "60%",
+    "total_raise": "6000",
+    "min_invest": "6",
+    "currency": "$"
+  },
+  {
+    "id": 2,
+    "url": "images/figur2.png",
+    "title": "Why you may want to",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "store": "by Mike",
+    "percent": "30%",
+    "total_raise": "6000",
+    "min_invest": "6",
+    "currency": "$"
+  },
+  {
+    "id": 3,
+    "url": "images/figur2.png",
+    "title": "Why you may want to",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "store": "by Mike",
+    "percent": "90%",
+    "total_raise": "6000",
+    "min_invest": "6",
+    "currency": "$"
+  },
+  {
+    "id": 4,
+    "url": "images/figur1.png",
+    "title": "Why you may want to",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "store": "by Mike",
+    "percent": "20%",
+    "total_raise": "6000",
+    "min_invest": "6",
+    "currency": "$"
+  },
+  {
+    "id": 5,
+    "url": "images/figur2.png",
+    "title": "Why you may want to",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "store": "by Mike",
+    "percent": "80%",
+    "total_raise": "6000",
+    "min_invest": "6",
+    "currency": "$"
+  },
+  {
+    "id": 6,
+    "url": "images/figur1.png",
+    "title": "Why you may want to",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "store": "by Mike",
+    "percent": "50%",
+    "total_raise": "6000",
+    "min_invest": "6",
+    "currency": "$"
+  }
+]

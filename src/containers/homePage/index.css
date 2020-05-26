@@ -1,0 +1,137 @@
+body {
+  font-family: Lato, sans-serif;
+  position: relative;
+  background: #ffffff;
+  font-size: 14px;
+  overflow-x: hidden;
+  /* letter-spacing: 0.8px; */
+}
+
+.home-content {
+  margin-bottom: 30px;
+}
+
+.content-header h1 {
+  padding: 0 10px;
+}
+
+.content-header .product-header-description {
+  padding: 0 10px;
+}
+
+.product-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-body .product-one {
+  width: 33.33%;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.product-one-content {
+  border-radius: 10px;
+  box-shadow: rgba(25, 28, 31, 0.08) 0px 14px 32px,
+    rgba(25, 28, 31, 0.04) 0px 8px 16px, rgba(25, 28, 31, 0.04) 0px -1px 0px;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-transform 0.15s ease-in-out;
+}
+
+.product-one-content:hover {
+  webkit-transform: translateY(-0.3333333333rem);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 2rem 0 rgba(31, 45, 65, 0.25);
+  cursor: pointer;
+}
+
+.product-one .product-image-div {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 10px 10px 0 0;
+  background-size: cover !important;
+}
+
+.product-one-content .product-store {
+  font-weight: bold;
+}
+
+.product-one-content .product-description {
+  padding: 15px;
+}
+
+.product-description h4 {
+  font-size: 30px;
+}
+
+.product-description p {
+  font-size: 18px;
+}
+
+.product-body .progress-bar {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  border-radius: 50px;
+  background: gray;
+}
+
+.filter {
+  height: 100%;
+  border-radius: inherit;
+  background: #e65642;
+  transition: width 0.2s ease-in;
+}
+
+.percent-tooltip {
+  width: 40px;
+  height: 20px;
+  background: #e65642;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.percent-tooltip::before {
+  content: "\25BC";
+  position: absolute;
+  bottom: -8px;
+  left: 33%;
+  font-size: 14px;
+  line-height: 14px;
+  color: #e65642;
+  text-shadow: none;
+  display: block;
+}
+
+.product-price-body {
+  display: flex;
+  padding-top: 20px;
+}
+
+.product-price-body h5 {
+  font-weight: bold;
+}
+
+.product-price-body .product-total-raise {
+  width: 50%;
+}
+
+.product-price-body .product-min-invest {
+  width: 50%;
+}
+
+@media (max-width: 1024px) {
+  .product-body .product-one {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-body .product-one {
+    width: 100%;
+  }
+}

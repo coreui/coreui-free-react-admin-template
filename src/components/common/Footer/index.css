@@ -1,0 +1,81 @@
+.nav-fixed {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 9999;
+}
+
+.footer-items {
+  background: #1e2c36;
+  padding: 50px 0;
+}
+
+.logo-footer-img {
+  width: 80%;
+  padding-top: 96%;
+  background-size: cover !important;
+}
+
+.footer-sub-items {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.footer-sub-items li {
+  color: #b0b2b3;
+  padding: 5px 0;
+  letter-spacing: 1.1px;
+  font-size: 16px;
+}
+
+.footer-sub-items li:first-child {
+  color: white;
+}
+
+.footer-description {
+  background: #19262f;
+  color: #b0b2b3;
+}
+
+.footer-description-content {
+  padding: 30px 0;
+  max-width: 800px;
+}
+
+.footer-italic-desc {
+  font-style: italic;
+}
+
+@media (max-width: 992px) {
+  .footer-logo-body {
+    margin-bottom: 20px;
+  }
+  .footer-sub-items {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-items-content {
+    padding-left: 50px;
+  }
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+/* scroll top css */
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.arrow-btn-main {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  display: none;
+}
+
+.scroll-btn {
+  background: transparent;
+  border: none;
+  outline: none !important;
+}

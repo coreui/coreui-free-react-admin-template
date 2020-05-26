@@ -1,0 +1,76 @@
+.join-form-body {
+  background: #e65642;
+  padding: 50px 0;
+}
+
+.join_form_subbody {
+  text-align: center;
+}
+
+.join-title {
+  color: white;
+}
+
+.join-contain {
+  color: white;
+  font-size: 20px;
+}
+
+.join-contain p {
+  letter-spacing: 1.5px;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.join-email {
+  width: 400px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  margin: 5px auto;
+  font-size: 14px;
+}
+.join-password {
+  margin: 5px auto;
+  width: 400px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+}
+.join-sign-up {
+  background: white;
+  margin: 5px auto;
+  width: 200px;
+  height: 45px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  color: #8d969d;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-transform 0.15s ease-in-out;
+}
+
+.join-sign-up:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 2rem 0 rgba(161, 123, 132, 0.25);
+}
+
+/* Responsive css */
+@media (max-width: 500px) {
+  .join-contain p {
+    font-size: 14px;
+  }
+  .join-email {
+    width: 280px;
+  }
+  .join-password {
+    width: 280px;
+  }
+}

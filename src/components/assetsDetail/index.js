@@ -8,6 +8,11 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 
 import Video from './../../assets/video/1.mp4';
 import PlayCircle from './../../assets/img/play-circle.png';
+import SliderPic1 from './../../assets/img/slider-1.png';
+import SliderPic2 from './../../assets/img/slider-2.jpg';
+import SliderPic3 from './../../assets/img/slider-3.jpg';
+import SliderPic4 from './../../assets/img/slider-4.jpg';
+import SliderPic5 from './../../assets/img/slider-5.jpg';
 
 import "./index.css";
 
@@ -214,31 +219,31 @@ export class AssetsDetailContent extends Component {
             >
               <div>
                 <div
-                  style={{ backgroundImage: "url('./images/slider-1.png')" }}
+                  style={{ backgroundImage: `url(${SliderPic1})` }}
                   className="slider-img-body"
                 ></div>
               </div>
               <div>
                 <div
-                  style={{ background: "url('./images/slider-2.jpg')" }}
+                  style={{ background: `url(${SliderPic2})` }}
                   className="slider-img-body"
                 ></div>
               </div>
               <div>
                 <div
-                  style={{ background: "url('./images/slider-3.jpg')" }}
+                  style={{ background: `url(${SliderPic3})` }}
                   className="slider-img-body"
                 ></div>
               </div>{" "}
               <div>
                 <div
-                  style={{ background: "url('./images/slider-4.jpg')" }}
+                  style={{ background: `url(${SliderPic4})` }}
                   className="slider-img-body"
                 ></div>
               </div>{" "}
               <div>
                 <div
-                  style={{ background: "url('./images/slider-5.jpg')" }}
+                  style={{ background: `url(${SliderPic5})` }}
                   className="slider-img-body"
                 ></div>
               </div>

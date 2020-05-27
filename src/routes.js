@@ -7,7 +7,7 @@ const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumb
 const Cards = React.lazy(() => import('./views/base/cards/Cards'));
 const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'));
 const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'));
-const BasicForms = React.lazy(() => import('./views/base/basic-forms/BasicForms'));
+const BasicForms = React.lazy(() => import('./views/base/forms/BasicForms'));
 
 const Jumbotrons = React.lazy(() => import('./views/base/jumbotrons/Jumbotrons'));
 const ListGroups = React.lazy(() => import('./views/base/list-groups/ListGroups'));

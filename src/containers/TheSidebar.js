@@ -14,10 +14,6 @@ import {
 
 import { CIcon } from '@coreui/icons-react'
 
-//logo
-import logo from '../assets/img/brand/coreui-react-neg.svg'
-import sygnet from '../assets/img/brand/coreui-signet-white.svg'
-
 // sidebar nav config
 import navigation from './_nav'
 
@@ -33,12 +29,12 @@ const TheSidebar = () => {
       <CSidebarBrand className="d-md-down-none" to="/">
         <CIcon
           className="c-sidebar-brand-full"
-          src={logo}
+          name="logo-negative"
           height={35}
         />
         <CIcon
           className="c-sidebar-brand-minimized"
-          src={sygnet}
+          name="sygnet"
           height={35}
         />
       </CSidebarBrand>

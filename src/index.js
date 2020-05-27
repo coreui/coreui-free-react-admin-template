@@ -7,12 +7,20 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { freeSet, flagSet, brandSet } from '@coreui/icons';
-import { logo } from './assets/icons/logo'
+import { logo, logoNegative, sygnet } from './assets/icons'
 
 import { Provider } from 'react-redux'
 import store from './store'
 
-React.icons = {...freeSet, ...flagSet, ...brandSet, logo}
+React.icons = {
+  ...freeSet,
+  ...flagSet,
+  ...brandSet,
+  logo,
+  logoNegative,
+  sygnet
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <App/>

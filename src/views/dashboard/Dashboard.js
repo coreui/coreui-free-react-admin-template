@@ -360,7 +360,7 @@ const Dashboard = () => {
                       <CProgress className="progress-xs" color="success" value="50" />
                     </td>
                     <td className="text-center">
-                      <CIcon height={25} name="cib-mastercard" />
+                      <CIcon height={25} name="cib-cc-mastercard" />
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>
@@ -396,7 +396,7 @@ const Dashboard = () => {
                       <CProgress className="progress-xs" color="info" value="10" />
                     </td>
                     <td className="text-center">
-                      <CIcon height={25} name="cib-visa" />
+                      <CIcon height={25} name="cib-cc-visa" />
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>
@@ -501,7 +501,7 @@ const Dashboard = () => {
                       <CProgress className="progress-xs" color="info" value="22" />
                     </td>
                     <td className="text-center">
-                      <CIcon height={25} name="cil-wallet"/>
+                      <CIcon height={25} name="cib-google-pay"/>
                     </td>
                     <td>
                       <div className="small text-muted">Last login</div>

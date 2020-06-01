@@ -1,28 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { CCharts } from '@coreui/react-chartjs'
-import { getColor, hexToRgba } from '@coreui/utils/src'
+import { CChartLine } from '@coreui/react-chartjs'
+import { getStyle, hexToRgba } from '@coreui/utils/src'
 
-const MainChartExample = props => {
+const brandSuccess = getStyle('success') || '#4dbd74'
+const brandInfo = getStyle('info') || '#20a8d8'
+const brandDanger = getStyle('danger') || '#f86c6b'
 
-  const {
-    borderColor,
-    backgroundColor,
-    pointHoverBackgroundColor,
-    dataPoints,
-    label,
-    pointed,
-    ...attributes
-  } = props
-
+const MainChartExample = attributes => {
   const random = (min, max)=>{
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
   const defaultDatasets = (()=>{
-    const brandSuccess = getColor('success') || '#4dbd74'
-    const brandInfo = getColor('info') || '#20a8d8'
-    const brandDanger = getColor('danger') || '#f86c6b'
     let elements = 27
     const data1 = []
     const data2 = []
@@ -99,34 +88,14 @@ const MainChartExample = props => {
 
   // render
   return (
-    <CCharts
+    <CChartLine
       {...attributes}
-      type="line"
       datasets={defaultDatasets}
       options={defaultOptions}
       labels={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
     />
   )
-
 }
 
-MainChartExample.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  //
-  borderColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  pointHoverBackgroundColor: PropTypes.string,
-  dataPoints: PropTypes.array,
-  label: PropTypes.string,
-  pointed: PropTypes.bool
-};
-
-MainChartExample.defaultProps = {
-  borderColor: 'rgba(255,255,255,.55)',
-  backgroundColor: 'transparent',
-  dataPoints: [10, 22, 34, 46, 58, 70, 46, 23, 45, 78, 34, 12],
-  label: 'Sales'
-};
 
 export default MainChartExample

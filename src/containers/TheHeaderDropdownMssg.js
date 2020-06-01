@@ -7,7 +7,7 @@ import {
   CDropdownToggle,
   CImg
 } from '@coreui/react'
-import { CIcon } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 
 const TheHeaderDropdownMssg = () => {
   const itemsCount = 4

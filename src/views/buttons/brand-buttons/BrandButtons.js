@@ -7,7 +7,7 @@ import {
   CCol,
   CRow
 } from '@coreui/react'
-import { CIcon } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 
 const BrandButtons = () => {
   return (

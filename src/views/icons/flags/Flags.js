@@ -7,7 +7,7 @@ const CoreUIIcons = () => {
   return (
     <CCard>
       <CCardHeader>
-        Flag Icons / as CIconRaw{' '}
+        Flag Icons / as CIcon{' '}
         <div className="card-header-actions">
           <a href="https://github.com/coreui/coreui-icons" rel="noreferrer noopener" target="_blank" className="card-header-action">
             <small className="text-muted">Github</small>

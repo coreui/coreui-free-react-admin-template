@@ -19,7 +19,7 @@ import {
   CButton,
   CImg
 } from '@coreui/react'
-// import { CIcon } from '@coreui/icons-react'
+// import CIcon from '@coreui/icons-react'
 
 const CNavbars = () => {
   const [isOpen, setIsOpen] = useState(false)

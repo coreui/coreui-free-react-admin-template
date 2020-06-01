@@ -12,7 +12,7 @@ import {
   CSwitch,
   CLink
 } from  '@coreui/react'
-import { CIcon } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 
 const Cards = () => {
   const [collapsed, setCollapsed] = React.useState(true)

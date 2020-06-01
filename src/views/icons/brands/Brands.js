@@ -1,6 +1,6 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
-import { CIconRaw } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 import { brandSet } from '@coreui/icons'
 
 const toKebabCase = (str) => {
@@ -10,7 +10,7 @@ const toKebabCase = (str) => {
 export const getIconsView = iconset => {
   return Object.entries(iconset).map(([name, value]) => (
     <CCol className="mb-5" xs="6" sm="4" md="3" xl="2" key={name}>
-      <CIconRaw content={value} size="2xl"/>
+      <CIcon content={value} size="2xl"/>
       <div>{toKebabCase(name)}</div>
     </CCol>
   ))
@@ -20,7 +20,7 @@ const CoreUIIcons = () => {
   return (
     <CCard>
       <CCardHeader>
-        Brand Icons / as CIconRaw{' '}
+        Brand Icons / as CIcon{' '}
         <div className="card-header-actions">
           <a href="https://github.com/coreui/coreui-icons" rel="noreferrer noopener" target="_blank" className="card-header-action">
             <small className="text-muted">Github</small>

@@ -17,7 +17,7 @@ import WidgetsDropdown from './WidgetsDropdown'
 import ChartLineSimple from '../charts/ChartLineSimple'
 import ChartBarSimple from '../charts/ChartBarSimple'
 
-import { CIcon } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 
 const Widgets = () => {
   return (

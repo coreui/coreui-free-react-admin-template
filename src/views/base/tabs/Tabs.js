@@ -12,9 +12,7 @@ import {
   CTabs,
   CCardHeader
 } from '@coreui/react'
-import {
-  CIcon
-} from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 
 const Tabs = () => {
   const [active, setActive] = useState(1)

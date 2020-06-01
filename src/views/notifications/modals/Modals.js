@@ -36,6 +36,12 @@ const Modals = () => {
               onClick={() => setModal(!modal)} 
               className="mr-1"
             >Launch demo modal</CButton>
+            <CButton onClick={() => setLarge(!large)} className="mr-1">
+              Launch large modal
+            </CButton>
+            <CButton onClick={() => setSmall(!large)} className="mr-1">
+              Launch small modal
+            </CButton>
             <CModal 
               show={modal} 
               onClose={setModal}
@@ -59,9 +65,7 @@ const Modals = () => {
               </CModalFooter>
             </CModal>
 
-            <CButton onClick={() => setLarge(!large)} className="mr-1">
-              Launch large modal
-            </CButton>
+
             <CModal 
               show={large} 
               onClose={() => setLarge(!large)}
@@ -83,9 +87,6 @@ const Modals = () => {
               </CModalFooter>
             </CModal>
 
-            <CButton onClick={() => setLarge(!large)} className="mr-1">
-              Launch small modal
-            </CButton>
             <CModal 
               show={small} 
               onClose={() => setSmall(!small)}
@@ -112,6 +113,11 @@ const Modals = () => {
             <CButton color="primary" onClick={() => setPrimary(!primary)} className="mr-1">
               Primary modal
             </CButton>
+            <CButton color="success" onClick={() => setSuccess(!success)} className="mr-1">Success modal</CButton>
+            <CButton color="warning" onClick={() => setWarning(!warning)} className="mr-1">Warning modal</CButton>
+            <CButton color="danger" onClick={() => setDanger(!danger)} className="mr-1">Danger modal</CButton>
+            <CButton color="info" onClick={() => setInfo(!info)} className="mr-1">Info modal</CButton>
+
             <CModal 
               show={primary} 
               onClose={() => setPrimary(!primary)}
@@ -137,7 +143,6 @@ const Modals = () => {
               </CModalFooter>
             </CModal>
 
-            <CButton color="success" onClick={() => setSuccess(!success)} className="mr-1">Success modal</CButton>
             <CModal 
               show={success} 
               onClose={() => setSuccess(!success)}
@@ -159,7 +164,6 @@ const Modals = () => {
               </CModalFooter>
             </CModal>
 
-            <CButton color="warning" onClick={() => setWarning(!warning)} className="mr-1">Warning modal</CButton>
             <CModal 
               show={warning} 
               onClose={() => setWarning(!warning)}
@@ -181,7 +185,6 @@ const Modals = () => {
               </CModalFooter>
             </CModal>
 
-            <CButton color="danger" onClick={() => setDanger(!danger)} className="mr-1">Danger modal</CButton>
             <CModal 
               show={danger} 
               onClose={() => setDanger(!danger)}
@@ -203,7 +206,6 @@ const Modals = () => {
               </CModalFooter>
             </CModal>
 
-            <CButton color="info" onClick={() => setInfo(!info)} className="mr-1">Info modal</CButton>
             <CModal 
               show={info} 
               onClose={() => setInfo(!info)}

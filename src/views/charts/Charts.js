@@ -5,7 +5,14 @@ import {
   CCardGroup,
   CCardHeader
 } from '@coreui/react'
-import { CCharts } from '@coreui/react-chartjs'
+import {
+  CChartBar,
+  CChartLine,
+  CChartDoughnut,
+  CChartRadar,
+  CChartPie,
+  CChartPolarArea
+} from '@coreui/react-chartjs'
 
 const Charts = () => {
 
@@ -21,7 +28,7 @@ const Charts = () => {
           </div>
         </CCardHeader>
         <CCardBody>
-          <CCharts
+          <CChartBar
             type="bar"
             datasets={[
               {
@@ -45,7 +52,7 @@ const Charts = () => {
           Doughnut Chart
         </CCardHeader>
         <CCardBody>
-          <CCharts
+          <CChartDoughnut
             type="doughnut"
             datasets={[
               {
@@ -73,7 +80,7 @@ const Charts = () => {
           Line Chart
         </CCardHeader>
         <CCardBody>
-          <CCharts
+          <CChartLine
             type="line"
             datasets={[
               {
@@ -102,7 +109,7 @@ const Charts = () => {
           Pie Chart
         </CCardHeader>
         <CCardBody>
-          <CCharts
+          <CChartPie
             type="pie"
             datasets={[
               {
@@ -130,7 +137,7 @@ const Charts = () => {
           Polar Area Chart
         </CCardHeader>
         <CCardBody>
-          <CCharts
+          <CChartPolarArea
             type="polarArea"
             datasets={[
               {
@@ -171,7 +178,7 @@ const Charts = () => {
           Radar Chart
         </CCardHeader>
         <CCardBody>
-          <CCharts
+          <CChartRadar
             type="radar"
             datasets={[
               {

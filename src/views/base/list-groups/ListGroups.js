@@ -7,8 +7,6 @@ import {
   CCol,
   CListGroup,
   CListGroupItem,
-  CListGroupItemHeading,
-  CListGroupItemText,
   CRow,
   CTabContent,
   CTabPane
@@ -189,27 +187,27 @@ const ListGroups = () => {
 
               <CListGroup>
                 <CListGroupItem action active>
-                  <CListGroupItemHeading className="d-flex w-100 justify-content-between">
+                  <h5 className="d-flex w-100 justify-content-between">
                     List group item heading
                     <small>3 days ago</small>
-                  </CListGroupItemHeading>
-                  <CListGroupItemText className="mb-1">
+                  </h5>
+                  <div className="mb-1">
                     Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
                     <small>Donec id elit non mi porta.</small>
-                  </CListGroupItemText>
+                  </div>
                 </CListGroupItem>
                 <CListGroupItem action>
-                  <CListGroupItemHeading>List group item heading</CListGroupItemHeading>
-                  <CListGroupItemText>
+                  <h5>List group item heading</h5>
+                  <div>
                     Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-                  </CListGroupItemText>
+                  </div>
                   <small>Small.</small>
                 </CListGroupItem>
                 <CListGroupItem action>
-                  <CListGroupItemHeading>List group item heading</CListGroupItemHeading>
-                  <CListGroupItemText>
+                  <h5>List group item heading</h5>
+                  <div>
                     Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-                  </CListGroupItemText>
+                  </div>
                   <small>Small.</small>
                 </CListGroupItem>
               </CListGroup>

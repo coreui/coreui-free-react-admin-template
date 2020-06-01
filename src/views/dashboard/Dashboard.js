@@ -12,7 +12,7 @@ import {
   CRow,
   CCallout
 } from '@coreui/react'
-import { CIcon } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 
 import MainChartExample from '../charts/MainChartExample.js'
 

@@ -29,7 +29,7 @@ const BrandButtons = () => {
               <CButton size="sm" className="btn-tumblr btn-brand mr-1 mb-1"><CIcon name="cib-tumblr" /><span>Tumblr</span></CButton>
               <CButton size="sm" className="btn-xing btn-brand mr-1 mb-1"><CIcon name="cib-xing" /><span>Xing</span></CButton>
               <CButton size="sm" className="btn-github btn-brand mr-1 mb-1"><CIcon name="cib-github" /><span>Github</span></CButton>
-              <CButton size="sm" className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stack-overflow" /><span>StackOverflow</span></CButton>
+              <CButton size="sm" className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stackoverflow" /><span>StackOverflow</span></CButton>
               <CButton size="sm" className="btn-youtube btn-brand mr-1 mb-1"><CIcon name="cib-youtube" /><span>YouTube</span></CButton>
               <CButton size="sm" className="btn-dribbble btn-brand mr-1 mb-1"><CIcon name="cib-dribbble" /><span>Dribbble</span></CButton>
               <CButton size="sm" className="btn-instagram btn-brand mr-1 mb-1"><CIcon name="cib-instagram" /><span>Instagram</span></CButton>
@@ -49,7 +49,7 @@ const BrandButtons = () => {
               <CButton className="btn-tumblr btn-brand mr-1 mb-1"><CIcon name="cib-tumblr" /><span>Tumblr</span></CButton>
               <CButton className="btn-xing btn-brand mr-1 mb-1"><CIcon name="cib-xing" /><span>Xing</span></CButton>
               <CButton className="btn-github btn-brand mr-1 mb-1"><CIcon name="cib-github" /><span>Github</span></CButton>
-              <CButton className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stack-overflow" /><span>StackOverflow</span></CButton>
+              <CButton className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stackoverflow" /><span>StackOverflow</span></CButton>
               <CButton className="btn-youtube btn-brand mr-1 mb-1"><CIcon name="cib-youtube" /><span>YouTube</span></CButton>
               <CButton className="btn-dribbble btn-brand mr-1 mb-1"><CIcon name="cib-dribbble" /><span>Dribbble</span></CButton>
               <CButton className="btn-instagram btn-brand mr-1 mb-1"><CIcon name="cib-instagram" /><span>Instagram</span></CButton>
@@ -71,7 +71,7 @@ const BrandButtons = () => {
               <CButton size="lg" className="btn-tumblr btn-brand mr-1 mb-1"><CIcon name="cib-tumblr" /><span>Tumblr</span></CButton>
               <CButton size="lg" className="btn-xing btn-brand mr-1 mb-1"><CIcon name="cib-xing" /><span>Xing</span></CButton>
               <CButton size="lg" className="btn-github btn-brand mr-1 mb-1"><CIcon name="cib-github" /><span>Github</span></CButton>
-              <CButton size="lg" className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stack-overflow" /><span>StackOverflow</span></CButton>
+              <CButton size="lg" className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stackoverflow" /><span>StackOverflow</span></CButton>
               <CButton size="lg" className="btn-youtube btn-brand mr-1 mb-1"><CIcon name="cib-youtube" /><span>YouTube</span></CButton>
               <CButton size="lg" className="btn-dribbble btn-brand mr-1 mb-1"><CIcon name="cib-dribbble" /><span>Dribbble</span></CButton>
               <CButton size="lg" className="btn-instagram btn-brand mr-1 mb-1"><CIcon name="cib-instagram" /><span>Instagram</span></CButton>
@@ -104,7 +104,7 @@ const BrandButtons = () => {
               <CButton size="sm" className="btn-tumblr btn-brand mr-1 mb-1"><CIcon name="cib-tumblr" /></CButton>
               <CButton size="sm" className="btn-xing btn-brand mr-1 mb-1"><CIcon name="cib-xing" /></CButton>
               <CButton size="sm" className="btn-github btn-brand mr-1 mb-1"><CIcon name="cib-github" /></CButton>
-              <CButton size="sm" className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stack-overflow" /></CButton>
+              <CButton size="sm" className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stackoverflow" /></CButton>
               <CButton size="sm" className="btn-youtube btn-brand mr-1 mb-1"><CIcon name="cib-youtube" /></CButton>
               <CButton size="sm" className="btn-dribbble btn-brand mr-1 mb-1"><CIcon name="cib-dribbble" /></CButton>
               <CButton size="sm" className="btn-instagram btn-brand mr-1 mb-1"><CIcon name="cib-instagram" /></CButton>
@@ -124,7 +124,7 @@ const BrandButtons = () => {
               <CButton className="btn-tumblr btn-brand mr-1 mb-1"><CIcon name="cib-tumblr" /></CButton>
               <CButton className="btn-xing btn-brand mr-1 mb-1"><CIcon name="cib-xing" /></CButton>
               <CButton className="btn-github btn-brand mr-1 mb-1"><CIcon name="cib-github" /></CButton>
-              <CButton className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stack-overflow" /></CButton>
+              <CButton className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stackoverflow" /></CButton>
               <CButton className="btn-youtube btn-brand mr-1 mb-1"><CIcon name="cib-youtube" /></CButton>
               <CButton className="btn-dribbble btn-brand mr-1 mb-1"><CIcon name="cib-dribbble" /></CButton>
               <CButton className="btn-instagram btn-brand mr-1 mb-1"><CIcon name="cib-instagram" /></CButton>
@@ -146,7 +146,7 @@ const BrandButtons = () => {
               <CButton size="lg" className="btn-tumblr btn-brand mr-1 mb-1"><CIcon name="cib-tumblr" /></CButton>
               <CButton size="lg" className="btn-xing btn-brand mr-1 mb-1"><CIcon name="cib-xing" /></CButton>
               <CButton size="lg" className="btn-github btn-brand mr-1 mb-1"><CIcon name="cib-github" /></CButton>
-              <CButton size="lg" className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stack-overflow" /></CButton>
+              <CButton size="lg" className="btn-stack-overflow btn-brand mr-1 mb-1"><CIcon name="cib-stackoverflow" /></CButton>
               <CButton size="lg" className="btn-youtube btn-brand mr-1 mb-1"><CIcon name="cib-youtube" /></CButton>
               <CButton size="lg" className="btn-dribbble btn-brand mr-1 mb-1"><CIcon name="cib-dribbble" /></CButton>
               <CButton size="lg" className="btn-instagram btn-brand mr-1 mb-1"><CIcon name="cib-instagram" /></CButton>

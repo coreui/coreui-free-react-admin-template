@@ -34,14 +34,13 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ## Versions
 
-* [CoreUI Pro Bootstrap Admin Template](https://github.com/coreui/coreui-pro-bootstrap-admin-template)
-* [CoreUI Pro Bootstrap Admin Template (Ajax)](https://github.com/coreui/coreui-pro-bootstrap-admin-template-ajax)
-* [CoreUI Pro Angular 2+ Admin Template](https://github.com/coreui/coreui-pro-angular-admin-template)
-* 🚧 CoreUI Pro .NET Core 2 Admin Template (Available Soon)
-* [CoreUI Pro React.js Admin Template](https://github.com/coreui/coreui-pro-react-admin-template)
-* [CoreUI Pro Vue.js Admin Template](https://github.com/coreui/coreui-pro-vue-admin-template)
-
-**Only customers with [Membership Plan](https://coreui.io/pro/#buy) have access to private github repositories.**
+* [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
+* [CoreUI Free Bootstrap Admin Template (Ajax)](https://github.com/coreui/coreui-free-bootstrap-admin-template-ajax)
+* [CoreUI Free Angular 2+ Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
+* [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
+* [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
+* [CoreUI Free Laravel Admin Template](https://github.com/coreui/coreui-free-laravel-admin-template)
+* [CoreUI Free Vue.js + Laravel Admin Template](https://github.com/coreui/coreui-free-vue-laravel-admin-template)
 
 ## CoreUI Pro
 
@@ -49,12 +48,14 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/pro/angular)
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
+* 💪  [CoreUI Pro Laravel Admin Template](https://coreui.io/pro/laravel/)
+* 💪  [CoreUI Pro Vue.js + Laravel Admin Template](https://coreui.io/pro/vue-laravel/)
 
 ## Installation
 
 ### Clone repo
 
-**Only customers with [Enterrise Membership Plan](https://coreui.io/pro/#buy) have access to private github repository.**
+**Only customers with [Enterpise Membership Plan](https://coreui.io/pro/#buy) have access to private github repository.**
 
 ``` bash
 # clone the repo
@@ -83,12 +84,12 @@ $ npm install
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 see also:
-[User Guide](CRA.md)
+[CRA docs](https://create-react-app.dev/docs/getting-started)
 
 ### Basic usage
 
 ``` bash
-# dev server  with hot reload at http://localhost:3000
+# dev server with hot reload at http://localhost:3000
 $ npm start
 ```
 
@@ -103,9 +104,35 @@ Run `build` to build the project. The build artifacts will be stored in the `bui
 $ npm run build
 ```
 
+## What's included
+
+Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
+
+```
+CoreUI-React#v3.0.0
+├── public/          #static files
+│   └── index.html   #html template
+│
+├── src/             #project root
+│   ├── assets/      #assets - js icons object
+│   ├── containers/  #container source - template layout
+|   │   ├── _nav.js  #sidebar config
+|   │   └── ...      
+│   ├── scss/        #user scss/css source
+│   ├── views/       #views source
+│   ├── App.js
+│   ├── App.test.js
+│   ├── polyfill.js
+│   ├── index.js
+│   ├── routes.js    #routes config
+│   └── store.js     #template state example 
+│
+└── package.json
+```
+
 ## Documentation
 
-The documentation for the CoreUI  Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
+The documentation for the CoreUI Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
 
 
 ## Versioning
@@ -119,6 +146,7 @@ See [the Releases section of our project](https://github.com/coreui/coreui-free-
 **Łukasz Holeczek**
 * <https://twitter.com/lukaszholeczek>
 * <https://github.com/mrholek>
+* <https://github.com/coreui>
 
 **CoreUI team**
 * https://github.com/orgs/coreui/people

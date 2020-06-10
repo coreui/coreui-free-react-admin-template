@@ -35,8 +35,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 ## Versions
 
 * [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
-* [CoreUI Free Bootstrap Admin Template (Ajax)](https://github.com/coreui/coreui-free-bootstrap-admin-template-ajax)
-* [CoreUI Free Angular 2+ Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
+* [CoreUI Free Angular 9+ Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
 * [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
 * [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
 * [CoreUI Free Laravel Admin Template](https://github.com/coreui/coreui-free-laravel-admin-template)
@@ -44,8 +43,10 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ## CoreUI Pro
 
+**Only customers with [Enterpise Membership Plan](https://coreui.io/pro/#buy) have access to private github CoreUI Pro repository.**
+
 * 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/pro/)
-* 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/pro/angular)
+* 💪  [CoreUI Pro Angular 9+ Admin Template](https://coreui.io/pro/angular)
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
 * 💪  [CoreUI Pro Laravel Admin Template](https://coreui.io/pro/laravel/)
@@ -54,8 +55,6 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 ## Installation
 
 ### Clone repo
-
-**Only customers with [Enterpise Membership Plan](https://coreui.io/pro/#buy) have access to private github repository.**
 
 ``` bash
 # clone the repo

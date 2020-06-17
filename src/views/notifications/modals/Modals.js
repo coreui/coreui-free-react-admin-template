@@ -35,11 +35,20 @@ const Modals = () => {
             <CButton 
               onClick={() => setModal(!modal)} 
               className="mr-1"
+              color="secondary"
             >Launch demo modal</CButton>
-            <CButton onClick={() => setLarge(!large)} className="mr-1">
+            <CButton 
+              onClick={() => setLarge(!large)} 
+              className="mr-1" 
+              color="secondary"
+            >
               Launch large modal
             </CButton>
-            <CButton onClick={() => setSmall(!large)} className="mr-1">
+            <CButton 
+              onClick={() => setSmall(!large)} 
+              className="mr-1" 
+              color="secondary"
+            >
               Launch small modal
             </CButton>
             <CModal 

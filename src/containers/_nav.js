@@ -16,7 +16,7 @@ export default [
   {
     _tag: 'CSidebarNavItem',
     name: 'Loads',
-    to: '/dispatch',
+    to: '/dispatch/Loadboard',
     icon: 'cil-pencil',
   },
   {

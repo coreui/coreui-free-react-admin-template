@@ -1,30 +1,16 @@
 import React, { lazy } from 'react'
-import {
-  CBadge,
-  CButton,
-  CButtonGroup,
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCardHeader,
-  CCol,
-  CProgress,
-  CRow,
-  CCallout
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+
+const CreateStore = lazy(() => import('../../views/dispatch/createstore.js'))
+const WidgetsDropdown = lazy(() => import('../../views/widgets/WidgetsDropdown.js'))
 
 
-const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
-
-
-const Dashboard = () => {
+const Store = () => {
   return (
     <>
       <WidgetsDropdown />
-     
+        <CreateStore/>
     </>
   )
 }
 
-export default Dashboard
+export default Store

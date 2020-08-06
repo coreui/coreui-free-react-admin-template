@@ -80,7 +80,7 @@ const routes = [
   { path: '/widgets', name: 'Widgets', component: Widgets },
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
-  { path: '/dispatch', name: 'Loadboard', component: Loadboard }
+  { path: '/dispatch/', name: 'Loadboard', component: Loadboard }
 ];
 
 export default routes;

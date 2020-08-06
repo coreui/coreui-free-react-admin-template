@@ -11,6 +11,16 @@ export default [
   },
   {
     _tag: 'CSidebarNavTitle',
+    _children: ['LOADBOARD']
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Loads',
+    to: '/dispatch/Loadboard',
+    icon: 'cil-pencil',
+  },
+  {
+    _tag: 'CSidebarNavTitle',
     _children: ['Theme']
   },
   {
@@ -19,6 +29,7 @@ export default [
     to: '/theme/colors',
     icon: 'cil-drop',
   },
+ 
   {
     _tag: 'CSidebarNavItem',
     name: 'Typography',

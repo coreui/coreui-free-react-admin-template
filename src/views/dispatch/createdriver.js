@@ -1,16 +1,19 @@
-import React, { component } from 'react';
+import React, { Component } from 'react'
 import Drivers from '../../utils/drivers/driverlist'
 import './createdriver.css'
 
-let driver = [...Drivers]
+let drivers = [...Drivers]
 
 class CreateDriver extends Component {
     constructor(){
         super();
-        this.state = driver;
+        this.state = drivers;
     }
-    render() {
-        return <h1>Hello Driver!</h1>
+render() {
+    let driver = this.state.driver
+        return <div class="driver-div">
+                {drivers.map(driver => <div class="driver-div__content" draggable="true"><span>{driver.name}</span></div>)}
+        </div>
     }
 }
 export default CreateDriver

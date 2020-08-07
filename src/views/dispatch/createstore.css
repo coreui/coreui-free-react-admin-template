@@ -1,18 +1,13 @@
-* {
-    margin:0;
+body {
     padding: 0;
 }
-body {
-    box-sizing: border-box;
-    
-}
-.store-div{
-border:1px solid grey;
+.store-div {
+    background-color: grey;
 }
 .store-div__content {
-border:1px solid white;
-background-color: cadetblue;
-color: white;
-width:100px;
-padding: 2px 3px;
+    background-color: cadetblue;
+    margin:3px 5px;
+    padding: 3px 5px;
+    color: white;
 }
+

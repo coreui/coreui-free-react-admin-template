@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: bo
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main-container {
+    position: relative;
+    background-color: rgb(215, 226, 245);
+    margin-left:2px;
+}
+.store-driver-div {
+    display: flex;
+    flex-direction: row;
+    position:absolute;
+    align-items: stretch;
+    margin-right: 5px;
+    margin-top: 0px;
+   
+}

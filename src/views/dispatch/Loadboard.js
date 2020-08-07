@@ -1,10 +1,11 @@
 import React, { lazy } from 'react'
 
 const CreateStore = lazy(() => import('../../views/dispatch/createstore.js'))
+const CreateDriver = lazy(() => import('../../views/dispatch/createdriver.js'))
 const WidgetsDropdown = lazy(() => import('../../views/widgets/WidgetsDropdown.js'))
 
 
-const Store = () => {
+const Loadboard = () => {
   return (
     <>
       <WidgetsDropdown />
@@ -13,4 +14,4 @@ const Store = () => {
   )
 }
 
-export default Store
+export default Loadboard

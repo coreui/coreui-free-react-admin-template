@@ -1,32 +1,19 @@
 import React, { Component } from 'react'
 import Stores from '../../utils/stores/storelist.js'
-
+import './createstore.css'
 
 let stores= [...Stores]
 
 class CreateStore extends Component{
-
-constructor(props) {
-    super(props)
-
-    let store =[];
-    for(let i=0;i<stores.length;i++){
-        store.push({
-            store:stores.store
-        })
+    constructor(){
+        super();
+        this.state = stores
     }
-    this.state = { store }
-}
-
-
-render() {
-    return (
-        <div>
-      {this.state.store.map((store, index) => (
-            <span>{stores.id}</span>
-      ))}
-        </div>
-    )
+render(){
+    let store = this.state.store
+   return <div class="store-div">
+       {stores.map(store => <div class="store-div__content"><span>{store.id}</span></div>)}
+   </div>
 }
 }
 export default CreateStore

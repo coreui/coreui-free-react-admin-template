@@ -14,6 +14,7 @@ body {
     margin-left:2px;
 }
 .store-driver-div {
+    width: 100%;
     display: flex;
     flex-direction: row;
     position:absolute;

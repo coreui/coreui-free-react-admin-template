@@ -10,6 +10,8 @@ class CreateStore extends Component{
         super();
         this.state = stores;
     }
+
+  divEl = document.getElementById('#draggable'); 
 render(){
     let store = this.state.store
    return <div className="store-div" id="draggable">

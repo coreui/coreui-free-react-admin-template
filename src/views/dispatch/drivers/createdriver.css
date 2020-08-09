@@ -3,7 +3,10 @@
     display: flex;
     flex-direction: column;
     background-color: gray;
+<<<<<<< HEAD
     margin: 0px 3px;
+=======
+>>>>>>> 9cdccde266401b7af99dfa635374814e9024c738
     padding:0;
     color: white;
 }
@@ -16,11 +19,18 @@
     min-width: 100px;
     padding-right: 150px;
 }
+.driver-div__content span{
+  padding:0px 0px;
+}
 .driver-load-div {
     align-items: stretch;
     margin: 3px 5px;
     background-color: cadetblue;
     color:white;
     padding: 0px 50px;
+<<<<<<< HEAD
     margin-top:0px
+=======
+    margin-top:3px
+>>>>>>> 9cdccde266401b7af99dfa635374814e9024c738
 }

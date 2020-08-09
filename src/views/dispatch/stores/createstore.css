@@ -5,8 +5,9 @@ body {
     background-color: grey;
 }
 .store-div__content {
+    display: flex;
     background-color: cadetblue;
-    margin:3px 5px;
+    margin:2px 3px;
     padding: 3px 5px;
     color: white;
     width: 200px;

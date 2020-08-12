@@ -18,6 +18,7 @@ import {
   CInput,
   CInputCheckbox
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
 
 const ButtonDropdowns = () => {
   return (
@@ -26,11 +27,7 @@ const ButtonDropdowns = () => {
         <CCard>
           <CCardHeader>
             Dropdowns
-            <div className="card-header-actions">
-              <a href="https://coreui.github.io/components/button-dropdown/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
+            <DocsLink name="CDropdown"/>
           </CCardHeader>
           <CCardBody>
 

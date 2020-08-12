@@ -1,7 +1,15 @@
 import React, { useEffect, useState, createRef } from 'react'
 import classNames from 'classnames'
-import { CRow, CCol } from '@coreui/react'
+import {
+  CRow,
+  CCol,
+  CCard,
+  CCardHeader,
+  CCardBody
+} from '@coreui/react'
 import { rgbToHex } from '@coreui/utils'
+import { DocsLink } from 'src/reusable'
+
 
 const ThemeView = () => {
   const [color, setColor] = useState('rgb(255, 255, 255)')
@@ -43,11 +51,12 @@ const ThemeColor = ({className, children}) => {
 const Colors = () => {
   return (
     <>
-      <div className="card">
-        <div className="card-header">
+      <CCard>
+        <CCardHeader>
           Theme colors
-        </div>
-        <div className="card-body">
+          <DocsLink href="https://coreui.io/docs/utilities/colors/"/>
+        </CCardHeader>
+        <CCardBody>
           <CRow>
             <ThemeColor className="bg-primary">
               <h6>Brand Primary Color</h6>
@@ -74,13 +83,13 @@ const Colors = () => {
               <h6>Brand Dark Color</h6>
             </ThemeColor>
           </CRow>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-header">
+        </CCardBody>
+      </CCard>
+      <CCard>
+        <CCardHeader>
           Grays
-        </div>
-        <div className="card-body">
+        </CCardHeader>
+        <CCardBody>
           <CRow className="mb-3">
             <ThemeColor className="bg-gray-100">
               <h6>Gray 100 Color</h6>
@@ -110,8 +119,8 @@ const Colors = () => {
               <h6>Gray 900 Color</h6>
             </ThemeColor>
           </CRow>
-        </div>
-      </div>
+        </CCardBody>
+      </CCard>
     </>
   )
 }

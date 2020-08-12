@@ -48,7 +48,6 @@ const ChartBarSimple = props => {
   return (
     <CChartBar
       {...attributes}
-      type="bar"
       datasets={defaultDatasets}
       options={defaultOptions}
       labels={label}

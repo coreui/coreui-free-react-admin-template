@@ -6,6 +6,7 @@ import {
   CProgress,
   CProgressBar
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
 
 const ProgressBar = () => {
   return (
@@ -13,11 +14,7 @@ const ProgressBar = () => {
       <CCard>
         <CCardHeader>
           Progress
-          <div className="card-header-actions">
-            <a href="https://coreui.github.io/components/progress/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-              <small className="text-muted">docs</small>
-            </a>
-          </div>
+          <DocsLink name="CProgressBar"/>
         </CCardHeader>
         <CCardBody>
           <CProgress className="mb-3" />

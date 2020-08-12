@@ -13,6 +13,7 @@ import {
   CNavItem,
   CNavLink
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
 
 const Navs = () => {
   return (
@@ -22,11 +23,7 @@ const Navs = () => {
           <CCard>
             <CCardHeader>
               Navs
-              <div className="card-header-actions">
-                <a href="https://coreui.github.io/components/navs/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                  <small className="text-muted">docs</small>
-                </a>
-              </div>
+              <DocsLink name="CNav"/>
             </CCardHeader>
             <CCardBody>
               <small>List Based</small>

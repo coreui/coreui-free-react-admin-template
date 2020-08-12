@@ -12,6 +12,7 @@ import {
   CModalTitle,
   CRow
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
 
 const Modals = () => {
 
@@ -30,25 +31,17 @@ const Modals = () => {
         <CCard>
           <CCardHeader>
             Bootstrap Modals
+            <DocsLink name="CModal"/>
           </CCardHeader>
           <CCardBody>
             <CButton 
               onClick={() => setModal(!modal)} 
               className="mr-1"
-              color="secondary"
             >Launch demo modal</CButton>
-            <CButton 
-              onClick={() => setLarge(!large)} 
-              className="mr-1" 
-              color="secondary"
-            >
+            <CButton onClick={() => setLarge(!large)} className="mr-1">
               Launch large modal
             </CButton>
-            <CButton 
-              onClick={() => setSmall(!large)} 
-              className="mr-1" 
-              color="secondary"
-            >
+            <CButton onClick={() => setSmall(!large)} className="mr-1">
               Launch small modal
             </CButton>
             <CModal 

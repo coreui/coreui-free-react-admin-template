@@ -7,6 +7,7 @@ import {
   CRow,
   CSwitch
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
 
 const Switches = () => {
   return (
@@ -15,6 +16,7 @@ const Switches = () => {
         <CCard>
           <CCardHeader>
             3d Switch
+            <DocsLink name="CSwitch"/>
           </CCardHeader>
           <CCardBody>
             <CSwitch className={'mx-1'} variant={'3d'} color={'primary'} defaultChecked onChange={(e)=>console.log(e.target.checked)}/>

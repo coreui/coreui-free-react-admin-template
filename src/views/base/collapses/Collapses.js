@@ -10,6 +10,7 @@ import {
   CFade,
   CRow 
 } from '@coreui/react';
+import { DocsLink } from 'src/reusable'
 
 const Collapses = () => {
 
@@ -51,11 +52,7 @@ const Collapses = () => {
         <CCard>
           <CCardHeader>
             Collapse
-            <div className="card-header-actions">
-              <a href="https://coreui.github.io/components/collapse/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
+            <DocsLink name="CCollapse"/>
           </CCardHeader>
           <CCollapse show={collapse}>
             <CCardBody>
@@ -129,11 +126,7 @@ const Collapses = () => {
         <CCard>
           <CCardHeader>
             Fade
-            <div className="card-header-actions">
-              <a href="https://coreui.github.io/components/fade/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
+            <DocsLink name="CFade"/>
           </CCardHeader>
           <CCardBody>
             <CFade timeout={300} in={fade} tag="h5" className="mt-3">

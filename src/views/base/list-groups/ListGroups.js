@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   CBadge,
   CCard,
@@ -10,7 +10,9 @@ import {
   CRow,
   CTabContent,
   CTabPane
-} from '@coreui/react';
+} from '@coreui/react'
+import { DocsLink } from 'src/reusable'
+
 
 const ListGroups = () => {
   const [activeTab, setActiveTab] = useState(1)
@@ -23,11 +25,7 @@ const ListGroups = () => {
           <CCard>
             <CCardHeader>
               List group
-              <div className="card-header-actions">
-                <a href="https://coreui.github.io/components/listgroup/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                  <small className="text-muted">docs</small>
-                </a>
-              </div>
+              <DocsLink name="CListGroup"/>
             </CCardHeader>
             <CCardBody>
               <CListGroup>

@@ -9,6 +9,7 @@ import {
   CCol,
   CLink
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
 
 const Popovers = () => {
   const placements = [
@@ -23,16 +24,7 @@ const Popovers = () => {
       <CCard>
         <CCardHeader>
           Popovers
-          <div className="card-header-actions">
-            <a
-              href="https://coreui.github.io/components/popovers/"
-              rel="noreferrer noopener"
-              target="_blank"
-              className="card-header-action"
-            >
-              <small className="text-muted">docs</small>
-            </a>
-          </div>
+          <DocsLink name="CPopover"/>
         </CCardHeader>
         <CCardBody>
           {/*eslint-disable-next-line*/}

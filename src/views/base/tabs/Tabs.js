@@ -13,6 +13,7 @@ import {
   CCardHeader
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { DocsLink } from 'src/reusable'
 
 const Tabs = () => {
   const [active, setActive] = useState(1)
@@ -24,6 +25,7 @@ const Tabs = () => {
         <CCard>
           <CCardHeader>
             Index indentifiers
+            <DocsLink name="CTabs"/>
           </CCardHeader>
           <CCardBody>
             <CTabs>

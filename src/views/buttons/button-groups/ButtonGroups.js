@@ -18,6 +18,7 @@ import {
   CRow,
   CCallout
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
 
 const ButtonGroups = () => {
   return (
@@ -26,11 +27,7 @@ const ButtonGroups = () => {
         <CCard>
           <CCardHeader>
             Callout
-            <div className="card-header-actions">
-              <a href="https://coreui.github.io/components/button-group/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
+            <DocsLink name="CCallout"/>
           </CCardHeader>
           <CCardBody>
             <CCallout color="primary">
@@ -42,11 +39,7 @@ const ButtonGroups = () => {
         <CCard>
           <CCardHeader>
             Button Group
-            <div className="card-header-actions">
-              <a href="https://coreui.github.io/components/button-group/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
+            <DocsLink name="-Button/#CButtonGroup"/>
           </CCardHeader>
           <CCardBody>
             <CButtonGroup>

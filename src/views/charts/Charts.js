@@ -13,6 +13,7 @@ import {
   CChartPie,
   CChartPolarArea
 } from '@coreui/react-chartjs'
+import { DocsLink } from 'src/reusable'
 
 const Charts = () => {
 
@@ -21,15 +22,10 @@ const Charts = () => {
       <CCard>
         <CCardHeader>
           Bar Chart
-          <div className="card-header-actions">
-            <a href="http://www.chartjs.org" className="card-header-action">
-              <small className="text-muted">docs</small>
-            </a>
-          </div>
+          <DocsLink href="http://www.chartjs.org"/>
         </CCardHeader>
         <CCardBody>
           <CChartBar
-            type="bar"
             datasets={[
               {
                 label: 'GitHub Commits',
@@ -53,7 +49,6 @@ const Charts = () => {
         </CCardHeader>
         <CCardBody>
           <CChartDoughnut
-            type="doughnut"
             datasets={[
               {
                 backgroundColor: [
@@ -81,7 +76,6 @@ const Charts = () => {
         </CCardHeader>
         <CCardBody>
           <CChartLine
-            type="line"
             datasets={[
               {
                 label: 'Data One',
@@ -110,7 +104,6 @@ const Charts = () => {
         </CCardHeader>
         <CCardBody>
           <CChartPie
-            type="pie"
             datasets={[
               {
                 backgroundColor: [
@@ -138,7 +131,6 @@ const Charts = () => {
         </CCardHeader>
         <CCardBody>
           <CChartPolarArea
-            type="polarArea"
             datasets={[
               {
                 label: 'My First dataset',
@@ -179,7 +171,6 @@ const Charts = () => {
         </CCardHeader>
         <CCardBody>
           <CChartRadar
-            type="radar"
             datasets={[
               {
                 label: '2019',

@@ -10,6 +10,7 @@ import {
   CCol,
   CRow
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
 import routes from '../../../routes'
 
 const Breadcrumbs = () => {
@@ -19,16 +20,7 @@ const Breadcrumbs = () => {
         <CCard>
           <CCardHeader>
             Bootstrap Breadcrumb
-            <div className="card-header-actions">
-              <a 
-                href="https://coreui.github.io/components/breadcrumbs/" 
-                rel="noreferrer noopener" 
-                target="_blank" 
-                className="card-header-action"
-              >
-                <small className="text-muted">docs</small>
-              </a>
-            </div>
+            <DocsLink name="CBreadcrumb"/>
           </CCardHeader>
           <CCardBody>
             <h6>CBreadcrumbRouter wrapper component</h6>

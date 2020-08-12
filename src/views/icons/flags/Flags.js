@@ -2,17 +2,14 @@ import React from 'react'
 import { CCard, CCardBody, CCardHeader, CRow } from '@coreui/react'
 import { getIconsView } from '../brands/Brands.js'
 import { flagSet } from '@coreui/icons'
+import { DocsLink } from 'src/reusable'
 
 const CoreUIIcons = () => {
   return (
     <CCard>
       <CCardHeader>
-        Flag Icons / as CIcon{' '}
-        <div className="card-header-actions">
-          <a href="https://github.com/coreui/coreui-icons" rel="noreferrer noopener" target="_blank" className="card-header-action">
-            <small className="text-muted">Github</small>
-          </a>
-        </div>
+        Flag Icons
+        <DocsLink href="https://github.com/coreui/coreui-icons" text="GitHub"/>
       </CCardHeader>
       <CCardBody>
         <CRow className="text-center">

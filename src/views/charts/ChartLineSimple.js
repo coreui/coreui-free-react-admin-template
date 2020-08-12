@@ -123,7 +123,6 @@ const ChartLineSimple = props => {
   return (
     <CChartLine
       {...attributes}
-      type="line"
       datasets={computedDatasets}
       options={computedOptions}
       labels={label}

@@ -5,6 +5,8 @@ import {
   CCardHeader,
   CPagination
 } from '@coreui/react'
+import { DocsLink } from 'src/reusable'
+
 
 const Paginations = () => {
   const [currentPage, setCurrentPage] = useState(2)
@@ -14,11 +16,7 @@ const Paginations = () => {
       <CCard>
         <CCardHeader>
           Pagination
-          <div className="card-header-actions">
-            <a href="https://coreui.github.io/components/pagination/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-              <small className="text-muted">docs</small>
-            </a>
-          </div>
+          <DocsLink name="CPagination"/>
         </CCardHeader>
         <CCardBody>
           <h6>Default</h6>

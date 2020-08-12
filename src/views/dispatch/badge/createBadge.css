@@ -1,3 +1,8 @@
 .badge-div {
-    display: flex;
+    display: inline;
+}
+.badgeStyle:hover {
+    height: 50px;
+    width: 50px;
+    transition: height .2s, width .2s;
 }

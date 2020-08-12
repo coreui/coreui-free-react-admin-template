@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Stores from '../../../utils/stores/storelist.js'
-import {CBadge} from '@coreui/react'
 import shortid from 'shortid'
 import './createstore.css'
 let stores= [...Stores]
@@ -13,10 +12,10 @@ class CreateStore extends Component{
 
   divEl = document.getElementById('#draggable'); 
 render(){
-    let store = this.state.store
+    let store = this.state
    return <div className="store-div" id="draggable">
        
-       {stores.map(store => <div class="store-div__content" draggable="true"><span>{store.storeID }</span></div>)}
+       {stores.map(store => <div className="store-div__content" draggable="true"><span>{store.storeID }</span></div>)}
   
    </div>
 }

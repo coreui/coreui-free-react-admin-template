@@ -44,7 +44,8 @@
     "redux": "4.0.5"
   },
   "devDependencies": {
-    "react-scripts": "^3.4.2"
+    "react-scripts": "^3.4.2",
+    "auto-changelog": "2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,7 +53,8 @@
     "test": "react-scripts test",
     "test:cov": "npm test -- --coverage --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "changelog": "auto-changelog --starting-version 3.0.0-beta.0 --commit-limit false --hide-credit"
   },
   "bugs": {
     "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"

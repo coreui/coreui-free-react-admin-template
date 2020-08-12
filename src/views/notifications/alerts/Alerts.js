@@ -163,7 +163,7 @@ const Alerts = () => {
                 />
               </CAlert>
 
-              <CButton onClick={() => setVisible(10)}>
+              <CButton color="primary" onClick={() => setVisible(10)}>
                 Reset timer
               </CButton>
             </CCardBody>

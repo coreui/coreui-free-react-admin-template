@@ -28,7 +28,8 @@ import {
   CInputGroupText,
   CLabel,
   CSelect,
-  CRow
+  CRow,
+  CSwitch
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { DocsLink } from 'src/reusable'
@@ -283,6 +284,50 @@ const BasicForms = () => {
                       <option value="2">Option #2</option>
                       <option value="3">Option #3</option>
                     </CSelect>
+                  </CCol>
+                </CFormGroup>
+                <CFormGroup row>
+                  <CCol tag="label" sm="3" className="col-form-label">
+                    Switch checkboxes
+                  </CCol>
+                  <CCol sm="9">
+                    <CSwitch
+                      className="mr-1"
+                      color="primary"
+                      defaultChecked
+                    />
+                    <CSwitch
+                      className="mr-1"
+                      color="success"
+                      defaultChecked
+                      variant="outline"
+                    />
+                    <CSwitch
+                      className="mr-1"
+                      color="warning"
+                      defaultChecked
+                      variant="opposite"
+                    />
+                    <CSwitch
+                      className="mr-1"
+                      color="danger"
+                      defaultChecked
+                      shape="pill"
+                    />
+                    <CSwitch
+                      className="mr-1"
+                      color="info"
+                      defaultChecked
+                      shape="pill"
+                      variant="outline"
+                    />
+                    <CSwitch
+                      className="mr-1"
+                      color="dark"
+                      defaultChecked
+                      shape="pill"
+                      variant="opposite"
+                    />
                   </CCol>
                 </CFormGroup>
                 <CFormGroup row>

@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: gray;
+    background-color: #d8d9da;
 
     margin: 0px 3px;
     padding:0;
@@ -10,21 +10,31 @@
 }
 .driver-div__content {
     display: inline-flex;
-    background-color:cadetblue;
-    margin: 1px 3px;
-    padding:3px 5px;
-    color: white;
+    background-color: #F5F6F8;
+    margin:1px 3px;
+    padding: 3px 5px;
+    color: rgb(127, 127, 134);
     min-width: 100px;
     padding-right: 150px;
+    font-size: large;
+    font-weight: 700;
+}
+.driver-div__content:hover {
+    background-color: #dddada;;
 }
 .driver-div__content span{
   padding:0px 0px;
+  width:200px;
 }
 .driver-load-div {
     align-items: stretch;
-    margin: 3px 5px;
-    background-color: cadetblue;
-    color:white;
+    margin: 0px 5px;
+    background-color: #F5F6F8;
+    color: rgb(127, 127, 134);
     padding: 0px 50px;
     margin-top:0px
 }
+.driver-load-div:hover {
+  background-color: #d8d4da;
+}
+

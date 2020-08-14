@@ -12,7 +12,7 @@ class CreateDriver extends Component {
 render() {
     let driver = this.state.driver
         return <div className="driver-div">
-                {drivers.map(driver => <div className="driver-div__content" draggable="true"><span>{driver.name}</span>
+                {drivers.map(driver => <div className="driver-div__content" draggable="true"><span className="driver-span">{driver.name}</span>
                     <div className="driver-load-div driver-load-div-1">Load1</div>
                     <div className="driver-load-div driver-load-div-2">Load2</div>
                     <div className="driver-load-div driver-load-div-3">Load3</div>

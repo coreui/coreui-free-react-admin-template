@@ -13,11 +13,11 @@ render() {
     let driver = this.state.driver
         return <div className="driver-div">
                 {drivers.map(driver => <div className="driver-div__content" draggable="true"><span className="driver-span">{driver.name}</span>
-                    <div className="driver-load-div driver-load-div-1">Load1</div>
-                    <div className="driver-load-div driver-load-div-2">Load2</div>
-                    <div className="driver-load-div driver-load-div-3">Load3</div>
-                    <div className="driver-load-div driver-load-div-4">Load4</div>
-                    <div className="driver-load-div driver-load-div-5">Load5</div>
+                    <div className="driver-load-div driver-load-div-1"><span>Load1</span><span class="material-icons">create</span></div>
+                    <div className="driver-load-div driver-load-div-2"><span>Load2</span><span class="material-icons">create</span></div>
+                    <div className="driver-load-div driver-load-div-3"><span>Load3</span><span class="material-icons">create</span></div>
+                    <div className="driver-load-div driver-load-div-4"><span>Load4</span><span class="material-icons">create</span></div>
+                    <div className="driver-load-div driver-load-div-5"><span>Load5</span><span class="material-icons">create</span></div>
                 </div>)}
         </div>
        

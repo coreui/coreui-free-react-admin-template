@@ -11,7 +11,7 @@
 .driver-div__content {
     display: flex;
     background-color: #F5F6F8;
-    margin:1px 3px;
+    margin:1px 1px;
     padding: 3px 5px;
     color: rgb(127, 127, 134);
     min-width: 100px;

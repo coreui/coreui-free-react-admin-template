@@ -1,7 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: bo
+    box-sizing: border-box;
+ 
 }
 body {
     margin: 0;

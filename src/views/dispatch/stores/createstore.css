@@ -12,13 +12,16 @@ body {
     position: relative;
     background-color: #F5F6F8;
     border-left: 6px solid #3297FA;
-    margin:3px 3px;
+    margin:1px 1px;
     padding: 5px 5px;
     color: rgb(127, 127, 134);
     height:31px;
     width: 120px;
     font-size: large;
     font-weight: 700;
+}
+.current {
+    background-color: #3297FA;
 }
 .store-div__content:hover {
     background-color:#dddada;

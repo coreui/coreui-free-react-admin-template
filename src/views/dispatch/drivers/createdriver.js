@@ -7,7 +7,7 @@ let drivers = [...Drivers]
 class CreateDriver extends Component {
     constructor(){
         super();
-        this.state = drivers;
+        this.state = {drivers};
     }
 
     drag_handler= (ev) => {
@@ -15,11 +15,26 @@ class CreateDriver extends Component {
         console.log('Dropped')
         ev.currentTarget.style.background = "yellow";
     }
+    onDragEnter_handler = (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        console.log("I'm Being Dragged Over")
+    }
+    onDrop_handler = (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        console.log("Dropped!")
+    }
+    onDragOver_handler = (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        ev.currentTarget.style.background = "green"
+    }
 render() {
-    let driver = this.state.driver
-        return <div className="driver-div">
+
+        return <div className="driver-div" onDragEnter={e => this.onDragEnter_handler(e)}>
                 {drivers.map(driver => 
-                    <div className="driver-div__content" draggable="true" onDragStart={this.drag_handler}><span className="driver-span">{driver.name}</span>
+                    <div className="driver-div__content" key={driver.id} draggable="true" onDragStart={this.drag_handler} onDragOver={e => this.onDragOver_handler(e)} onDrop={this.onDrop_handler}><span className="driver-span">{driver.name}</span>
                    
                 </div>)}
         </div>

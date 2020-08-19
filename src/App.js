@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import './scss/style.scss';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -21,6 +23,7 @@ class App extends Component {
 
   render() {
     return (
+      <DndProvider backend={HTML5Backend}>
       <HashRouter>
           <React.Suspense fallback={loading}>
             <Switch>
@@ -32,6 +35,8 @@ class App extends Component {
             </Switch>
           </React.Suspense>
       </HashRouter>
+      </DndProvider>
+
     );
   }
 }

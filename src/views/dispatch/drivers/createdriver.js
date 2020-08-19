@@ -9,15 +9,18 @@ class CreateDriver extends Component {
         super();
         this.state = drivers;
     }
+
+    drag_handler= (ev) => {
+        ev.preventDefault();
+        console.log('Dropped')
+        ev.currentTarget.style.background = "yellow";
+    }
 render() {
     let driver = this.state.driver
         return <div className="driver-div">
-                {drivers.map(driver => <div className="driver-div__content" draggable="true"><span className="driver-span">{driver.name}</span>
-                    <div className="driver-load-div driver-load-div-1"><span>Load1</span><span class="material-icons">create</span></div>
-                    <div className="driver-load-div driver-load-div-2"><span>Load2</span><span class="material-icons">create</span></div>
-                    <div className="driver-load-div driver-load-div-3"><span>Load3</span><span class="material-icons">create</span></div>
-                    <div className="driver-load-div driver-load-div-4"><span>Load4</span><span class="material-icons">create</span></div>
-                    <div className="driver-load-div driver-load-div-5"><span>Load5</span><span class="material-icons">create</span></div>
+                {drivers.map(driver => 
+                    <div className="driver-div__content" draggable="true" onDragStart={this.drag_handler}><span className="driver-span">{driver.name}</span>
+                   
                 </div>)}
         </div>
        

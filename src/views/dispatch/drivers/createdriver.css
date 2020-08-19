@@ -9,7 +9,7 @@
     color: white;
 }
 .driver-div__content {
-    display: inline-flex;
+    display: flex;
     background-color: #F5F6F8;
     margin:1px 3px;
     padding: 3px 5px;
@@ -27,7 +27,6 @@
   width:200px;
 }
 .driver-load-div {
-    align-items: stretch;
     margin: 0px 5px;
     background-color: #F5F6F8;
     color: rgb(127, 127, 134);

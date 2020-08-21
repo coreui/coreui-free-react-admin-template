@@ -15,10 +15,9 @@ const Loadboard = () => {
     <WidgetsDropdown />
 
       <div className="store-driver-div">
-        <StoreContainer/>
-        <StoreLoadCount/>
-
+        <CreateStore/>
         <CreateDriver/>
+
       </div>
     </div>
     </React.Fragment>

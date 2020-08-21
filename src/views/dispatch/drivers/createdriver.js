@@ -9,7 +9,7 @@ const CreateDriver = ()=> (
         .map(driver => (
            
         <div className="driver-container-content">
-            {driver.name}
+            {driver.name} ({driver.tractor})
         </div>
     
     ))}

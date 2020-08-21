@@ -4,73 +4,88 @@ import { useDrag, UseDrop } from 'react-dnd'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import './createstore.css'
-let stores= [...Stores]
+import { ItemTypes } from '../../../utils/items/items.js'
+import {
+    CContainer,
+    CBadge,
+    CCard,
+    CCardBody,
+    CCardFooter,
+    CCardHeader,
+    CCol,
+    CRow,
+    CCollapse,
+    CFade,
+    CSwitch,
+    CLink
+  } from  '@coreui/react'
+  import CIcon from '@coreui/icons-react'
 
 
-const createStore = ({ item, index,moveItem, status}) => {
-        const ref = useRef(null);
-        const [, drop] = useDrop({
-            accept: ITEM_TYPE,
-            hover(item, monitor) {
-                if(!ref.current) {
-                    return;
-                }
-                const dragIndex = item.index;
-                const hoverIndex = index;
 
-                if(dragIndex === hoverIndex) {
-                    return;
-                }
-
-                const hoveredRect = ref.current.getBoundClientRect();
-                const hoverMiddleY = (hoverRect.bottom - hoverRect.top) / 2;
-                const mousePosition = monitor.getClientOffset();
-                const hoverClientY = mousePosition.y - hoverRect.top;
-
-                if(dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-                    return;
-                }
-
-                if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-                    return;
-                }
-
-                moveItem(dragIndex, HoverIndex);
-                item.index = hoverIndex;
-            }
+const StoreContainer = () => {
+    const [{ isDragging }, drag] = useDrag({
+        item: {
+            type:ItemTypes.CARD
+        },
+        collect: monitor({
+            isDragging: !!monitor.isDragging()
         })
+    })
 
-        const [{ isDragging }, drag] = useDrag({
-            item: { type: ITEM_TYPE, ...item, index },
-            collect: monitor =>({
-                isDragging: monitor.isDragging()
-            })
-        })
-        const [show, setShow] = useState(false);
-        const onOpen = () => setShow(true);
-        const onClose = ()=> setShow(false);
+return (
+    <div
+    className="store-div"
+    ref={drag}
+    opacity={isDragging? '0.5':'1'}
+    >
 
-        drag(drop(ref));
-
-        return (
-            <DndProvider>
-            <Fragment>
-                <div 
-                ref={ref}
-                style={{ opacity: isDragging ? 0: 1 }}
-                className= {"item"}
-                onClick={onOpen}
-                    >
-                    <div classNmae={"color-bar"} style={{ backgroundcolor: status.color}}></div>
-                    <p className={"item-title"}>{ item.content }</p>
-                    <p className={"item-status"}>{ item.icon }</p>
+<CContainer fluid>
+    <CRow>
+    <CCol xs="12" sm="6" md="4">
+          <CCard color="gradient-secondary">
+            <CCardHeader>
+              Card title - gradient
+              <CBadge color="info" className="mfs-auto">42</CBadge>
+            </CCardHeader>
+            <CCardBody>
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol xs="12" sm="6" md="4">
+          <CFade in={showCard}>
+            <CCard>
+              <CCardHeader>
+                Card actions
+                <div className="card-header-actions">
+                  <CLink className="card-header-action">
+                    <CIcon name="cil-settings" />
+                  </CLink>
+                  <CLink className="card-header-action" onClick={() => setCollapsed(!collapsed)}>
+                    <CIcon name={collapsed ? 'cil-chevron-bottom':'cil-chevron-top'} />
+                  </CLink>
+                  <CLink className="card-header-action" onClick={() => setShowCard(false)}>
+                    <CIcon name="cil-x-circle" />
+                  </CLink>
                 </div>
-                <window 
-                    item= {item}
-                    onClose={onClose}
-                    show={show}
-                />
-            </Fragment>
-            </DndProvider>
-        )
+              </CCardHeader>
+              <CCollapse show={collapsed}>
+                <CCardBody>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                  laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+                  ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                </CCardBody>
+              </CCollapse>
+            </CCard>
+          </CFade>
+        </CCol>
+    </CRow>
+    </CContainer>
+    </div>
+)
+
 }
+export default StoreContainer

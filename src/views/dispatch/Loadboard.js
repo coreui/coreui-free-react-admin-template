@@ -1,5 +1,6 @@
 import React, { lazy } from 'react'
 import './Loadboard.css'
+import StoreContainer from './stores/createstore'
 const CreateStore = lazy(() => import('../../views/dispatch/stores/createstore.js'))
 const StoreLoadCount = lazy(() => import('../../utils/stores/storeLoadCount.js'))
 const CreateBadge = lazy( () => import('../../views/dispatch/badge/createBadge.js'))
@@ -12,11 +13,11 @@ const Loadboard = () => {
     <React.Fragment>
     <div className="main-container">
     <WidgetsDropdown />
-    
+
       <div className="store-driver-div">
-        <CreateStore/>
+        <StoreContainer/>
         <StoreLoadCount/>
-        <CreateBadge />
+
         <CreateDriver/>
       </div>
     </div>

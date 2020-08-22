@@ -20,11 +20,18 @@ display: inline;
   font-weight:bold;
   color:black;
 }
-.expand-icon-div {
-  padding: 0px;
-float: right;
-margin-right: 2425px;
+.driver-container-label::before{
+  content:'';
+  width:30px;
+  height:30px;
 }
+.driver-container-label::after{
+  content:'';
+  width:30px;
+  height:30px;
+}
+
+
 .driver-container-content {
   background-color: #7bbdd1;
   width:100%;

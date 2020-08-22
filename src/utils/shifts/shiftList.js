@@ -1,4 +1,4 @@
-export default  Shifts = [
+let Shifts = [
     {shift:"8am"},
     {shift:"9am"},
     {shift:"11am"},
@@ -23,3 +23,4 @@ export default  Shifts = [
     {shift:"6am"},
     {shift:"7am"}
 ]
+export default Shifts

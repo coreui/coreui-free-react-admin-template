@@ -1,28 +1,40 @@
 .driver-container {
+  display: flex;
+  flex-direction: column;
   background-color: #d8d9da;
   padding: 3px 5px;
   margin:0;
   height: 30px;
-  overflow: hidden;
-  transition: 1s ease-in-out;
+  /* overflow: hidden;
+  transition: 1s ease-in-out; */
 }
-.driver-container:hover{
+/* .driver-container:hover{
  overflow: visible;
  transition: 0.5ms ease-in-out;
 
-}
-.driver-container-label>span {
-  text-align: center;
+} */
+
+.driver-container-label {
+display: inline;
   font-size: large;
   font-weight:bold;
-  color:white;
+  color:black;
+}
+.expand-icon-div {
+  padding: 0px;
+float: right;
+margin-right: 2425px;
 }
 .driver-container-content {
-  background-color: #2C89DC;
+  background-color: #7bbdd1;
+  width:100%;
     border-radius: 0px;
     padding:3px 5px;
     margin: 3px;
     text-align: Left;
     color:white;
+    overflow:auto;
+    white-space: nowrap;
 }
+
 

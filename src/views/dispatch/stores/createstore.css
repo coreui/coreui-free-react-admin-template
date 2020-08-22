@@ -10,20 +10,24 @@ body {
 
 }
 .store-container {
+    display: inline;
     background-color: #d8d9da;
     padding: 3px 5px;
     margin:0;
 }
 .store-container-content {
-    background-color: #2C89DC;
+    display: inline-block;
+    width:100px;
+    height: 45px;
+    background-color: #3C4B64;
     border-radius: 0px;
+    font-size: x-large;
     padding:3px 5px;
     margin: 3px;
     text-align: center;
 }
 .store-container-content span{
     color:white;
-    background-color: #2C89DC;
     border-radius: 0px;
     padding:2px 3px;
 }

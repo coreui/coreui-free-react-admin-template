@@ -5,7 +5,7 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import './createstore.css'
 
-import { ItemTypes } from '../../../utils/items/items.js'
+import { ItemTypes } from '../../../utils/DnD/items.js'
 import {
         CContainer,
         CBadge,

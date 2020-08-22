@@ -1,15 +1,25 @@
-export default  Shifts = [[
-     {
-        driver:"Terrel Thompson",
-        driverID:530902,
-        truck:828
-    },
-    {
-        driver:"Jeff Givens",
-        driverID: 623018,
-        truck:869
-    }
-],
-[{
-
-}]]
+export default  Shifts = [
+    {shift:"8am"},
+    {shift:"9am"},
+    {shift:"11am"},
+    {shift:"12pm"},
+    {shift:"1pm"},
+    {shift:"2pm"},
+    {shift:"3pm"},
+    {shift:"4pm"},
+    {shift:"5pm"},
+    {shift:"6pm"},
+    {shift:"7pm"},
+    {shift:"730pm"},
+    {shift:"830pm"},
+    {shift:"930pm"},
+    {shift:"11pm"},
+    {shift:"015am"},
+    {shift:"230am"},
+    {shift:"3am"},
+    {shift:"330am"},
+    {shift:"4am"},
+    {shift:"5am"},
+    {shift:"6am"},
+    {shift:"7am"}
+]

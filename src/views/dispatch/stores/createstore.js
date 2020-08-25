@@ -20,20 +20,6 @@ import {
 import CIcon from '@coreui/icons-react'
 
 
-// // const CreateStore = () => {
-// //     const [storeList, setStoreList] = useState(storeList);
-
-
-// //     return <div>
-// //             {Stores.map((store) =>(
-// //                 <div>store.storeID</div>))}
-// //         </div>
-// }
-
-
-
-
-
 const CreateStore = (props) => {
         const [{ isDragging }, drag] = useDrag({
                 item: {

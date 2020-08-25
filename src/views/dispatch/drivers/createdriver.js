@@ -1,16 +1,35 @@
 import React, { Component } from 'react'
+import { FaSortDown } from 'react-icons/fa';
 import Drivers from '../../../utils/drivers/driverlist'
+import { ItemTypes } from '../../../utils/DnD/items.js'
 import './createdriver.css'
+import { useDrop } from 'react-dnd';
 
-const CreateDriver = () => (
+const CreateDriver = props => {
+    
+    const [{ isOver }, drop] = useDrop({
+                accept: ItemTypes.CARD,
+                        id: props.id
+                ,
+                collect: monitor => ({
+                        isOver: !!monitor.isOver()
+                })
+        });
+
+    return(
     <div className="driver-container">
         <React.Fragment>
             <div className="driver-container-label"><h3>8am</h3>
                 {Drivers.filter(driver => driver.shift === "8am")
                     .map(driver => (
 
-                        <div className="driver-container-content">
+                        <div 
+                            ref={drop} 
+                            opacity={isOver ? alert('green') : 'red'}
+                            className="driver-container-content">
+                       
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -22,6 +41,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -32,6 +52,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -42,6 +63,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -52,6 +74,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -62,6 +85,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -72,6 +96,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -82,6 +107,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -92,6 +118,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -102,6 +129,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -112,6 +140,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -122,6 +151,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -132,6 +162,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -142,6 +173,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -152,6 +184,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -162,6 +195,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -172,6 +206,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -182,6 +217,7 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
@@ -192,13 +228,15 @@ const CreateDriver = () => (
 
                         <div className="driver-container-content">
                             {driver.name} ({driver.tractor})
+                            <FaSortDown className="sortDown"/>
                         </div>
 
                     ))}
             </div>
     </React.Fragment>
 </div>
-)
+    )}
+
 
 
 

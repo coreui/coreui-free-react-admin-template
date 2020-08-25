@@ -11,12 +11,22 @@ export default [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['LOADBOARD']
+    _children: ['Driver Dispatch']
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Loads',
-    to: '/dispatch/Loadboard',
+    name: 'Driver Loads',
+    to: '/dispatch/DriverDispatch',
+    icon: 'cil-pencil',
+  },
+  {
+    _tag: 'CSidebarNavTitle',
+    _children: ['AS400']
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'DRY As400',
+    to: '/dispatch/ssw/SSW',
     icon: 'cil-pencil',
   },
   {

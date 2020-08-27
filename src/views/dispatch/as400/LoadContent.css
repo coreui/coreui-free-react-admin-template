@@ -25,6 +25,9 @@ justify-content: space-between;
     background-color: #000103;
     color:white;
 }
+.load-content:hover {
+   background-color:#1a1f29
+}
 .load-content-children {
     display: flex;
     margin: 3px 5px;

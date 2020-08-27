@@ -81,8 +81,9 @@ const routes = [
   { path: '/widgets', name: 'Widgets', component: Widgets },
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
+  { path: '/dispatch/ssw', name: 'Dry Loads', component: SSW },
   { path: '/dispatch', name: 'Driver Dispatch', component: DriverDispatch },
-  { path: '/dispatch/ssw', name: 'Dry Loads', component: SSW }
+  
 ];
 
 export default routes;

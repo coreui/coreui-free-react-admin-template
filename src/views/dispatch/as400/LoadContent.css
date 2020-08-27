@@ -1,0 +1,15 @@
+.load-container {
+display: flex;
+flex-direction: row;
+}
+.load-header {
+display: flex;
+}
+.load-header-content {
+    background-color: #3C4B64;
+    margin: 3px 5px;
+    padding:3px 15px;
+}
+.load-content {
+display: flex;
+}

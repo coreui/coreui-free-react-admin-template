@@ -1,0 +1,16 @@
+.container {
+    background-color: #7bbdd1;
+    color:white;
+}
+.load-content-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #3C4B64;
+    margin: 5px 3px;
+    font-size: larger;
+    padding: 3px 5px;
+    
+}
+.load-content {
+
+}

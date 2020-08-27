@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { FaSortDown } from 'react-icons/fa';
 import Drivers from '../../../utils/drivers/driverlist'
 import { ItemTypes } from '../../../utils/DnD/items.js'

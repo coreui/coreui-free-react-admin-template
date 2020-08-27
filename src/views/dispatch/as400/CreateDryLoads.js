@@ -1,13 +1,17 @@
 import React from 'react';
 import Loads from '../../../utils/loads/loads'
+import './CreateDryLoads.css'
+import LoadContent from './LoadContent';
 
 const CreateDryLoads = () => {
     return (
-        <div  className="load-container">
+        <div  className="container">
         {Loads.map(load => (
-            <div className="load-content">
-                {load.Warehouse}
-            </div>
+            
+            <LoadContent>
+            {load.Warehouse}{load.Time} {load.Date} {load.status} {load.load}  {load.Trailer} {load.Seal}
+                </LoadContent> 
+            
         ))}
         </div>
     );

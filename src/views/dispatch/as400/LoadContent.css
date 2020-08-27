@@ -8,22 +8,25 @@ margin:0;
 }
 .load-header {
 display: flex;
+justify-content: space-between;
 }
 .load-header-content {
+    font-size: x-large;
     background-color: #3C4B64;
     margin: 0px 5px;
     padding:0px 15px;
 }
 .load-content {
+    font-size: x-large;
     display: flex;
-    margin: 0px;
+    margin: 3px 5px;
     padding:0px;
     font-size: x-large;
-    background-color: #3C4B64;
+    background-color: #000103;
     color:white;
 }
 .load-content-children {
     display: flex;
-    margin: 0px 5px;
+    margin: 3px 5px;
     padding:0px 15px;
 }

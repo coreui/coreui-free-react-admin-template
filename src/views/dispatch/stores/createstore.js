@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Stores from '../../../utils/stores/storelist.js'
+import DryLoadCount from '../../../utils/loads/DryLoadCount.js'
 import { useDrag } from 'react-dnd'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -34,13 +35,15 @@ const CreateStore = (props) => {
         return (
         <div className="store-container">
         {Stores.map(store => (
-                                <div 
-                                       
-                                        className="store-container-content"
+                                <div className="store-container-content"
                                         opacity={isDragging ? '0.5' : '1'}>
-                                        <span
+                                        <span id="store-number"
                                          ref={drag}
                                          >{store.storeID}</span>
+                                                 <span class="badge  badge-danger">{DryLoadCount}</span>
+                                                 <span class="badge  badge-primary">W</span>
+                                                 <span class="badge  badge-warning">H</span>
+                                         
                                 </div>
                  
 

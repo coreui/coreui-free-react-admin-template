@@ -11,12 +11,13 @@ const DriverDispatch = () => {
     <div className="main-container">
     <WidgetsDropdown />
 
-      <div className="store-driver-div">
+      <div className="store-div">
         <CreateStore/>
+        </div>
+        <div className="driver-div">
         <CreateDriver/>
-
+        </div>
       </div>
-    </div>
     </React.Fragment>
   )
 }

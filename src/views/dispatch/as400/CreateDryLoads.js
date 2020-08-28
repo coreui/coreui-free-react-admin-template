@@ -21,8 +21,8 @@ const CreateDryLoads = () => {
             <div className="load-content-children">{load.Warehouse}</div>
             <div className="load-content-children">{load.Time} </div>
             <div className="load-content-children">{load.Date} </div>
-            <div className="load-content-children">{load.status} </div>
-            <div className="load-content-children">{load.load} </div> 
+            <div className="load-content-children">{load.Status} </div>
+            <div className="load-content-children">{load.LoadNumber} </div> 
             <div className="load-content-children">{load.Seal}</div>
             <div className="load-content-children">{load.Trailer} </div>
             <div className="load-content-children">{load.Seal}</div>

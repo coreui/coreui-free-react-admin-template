@@ -8,19 +8,18 @@ margin:0;
 }
 .load-header {
 display: flex;
-justify-content: space-between;
+height: 50px;
+align-items: center;
 }
 .load-header-content {
     font-size: x-large;
     background-color: #3C4B64;
-    margin: 0px 5px;
-    padding:0px 15px;
+    flex-grow: 1;
 }
 .load-content {
-    font-size: x-large;
     display: flex;
+    height:45px;
     margin: 3px 5px;
-    padding:0px;
     font-size: x-large;
     background-color: #000103;
     color:white;
@@ -32,4 +31,10 @@ justify-content: space-between;
     display: flex;
     margin: 3px 5px;
     padding:0px 15px;
+    flex-grow: 1;
+    align-items: center;
+
+}
+.load-content-children + .load-content-children {
+    margin-left: 10%;
 }

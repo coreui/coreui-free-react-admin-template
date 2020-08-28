@@ -10,27 +10,30 @@ body {
 
 }
 .store-container {
-    display: inline;
-    background-color: #d8d9da;
+    display:flex;
+    flex-direction: row;
+    background-color: #0574e2;
     padding: 3px 5px;
     margin:0;
 }
 .store-container-content {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     width:100px;
-    height: 45px;
+    height: 150px;
     background-color: #3C4B64;
-    border-radius: 0px;
     font-size: x-large;
     padding:3px 5px;
     margin: 3px;
     text-align: center;
 }
-.store-container-content span{
+#store-number{
     color:white;
-    border-radius: 0px;
     padding:2px 3px;
+    margin: 5px 5px;
 }
+
+
 
 
 

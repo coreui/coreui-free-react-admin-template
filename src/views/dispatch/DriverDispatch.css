@@ -15,13 +15,18 @@ body {
     background-color: rgb(225, 230, 230);
     margin-left:2px;
 }
-.store-driver-div {
-    width: 100%;
+.store-div {
     display: flex;
     flex-direction: column;
-    position:absolute;
-    align-items: stretch;
     margin-right: 5px;
-    margin-top: 0px;
+    margin-top: 3px;
+    flex-wrap: wrap;
+   
+}
+.driver-div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+    margin-top: 3px;
    
 }

@@ -40,9 +40,9 @@ const CreateStore = (props) => {
                                         <span id="store-number"
                                          ref={drag}
                                          >{store.storeID}</span>
-                                                 <span class="badge  badge-danger">{DryLoadCount}</span>
-                                                 <span class="badge  badge-primary">W</span>
-                                                 <span class="badge  badge-warning">H</span>
+                                                 <span class="badge  badge-danger">150</span>
+                                                 <span class="badge  badge-primary">132</span>
+                                                 <span class="badge  badge-warning">71</span>
                                          
                                 </div>
                  

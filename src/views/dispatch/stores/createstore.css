@@ -12,25 +12,30 @@ body {
 .store-container {
     display:flex;
     flex-direction: row;
-    background-color: #0574e2;
+    background-color: #3C4B64;
     padding: 3px 5px;
     margin:0;
 }
 .store-container-content {
     display: flex;
     flex-direction: column;
+    flex-direction: column;
     width:100px;
-    height: 150px;
+    height: 180px;
     background-color: #3C4B64;
     font-size: x-large;
     padding:3px 5px;
-    margin: 3px;
+    margin: 5px;
     text-align: center;
 }
 #store-number{
     color:white;
     padding:2px 3px;
     margin: 5px 5px;
+}
+.badge-container {
+    
+    margin: 5px;
 }
 
 

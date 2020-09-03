@@ -30,7 +30,11 @@ const CreateDriver = props => {
                             className="driver-container-content">
                        
                             {driver.name} ({driver.tractor})
-                            <FaSortDown className="sortDown"/>
+                            <input 
+                                className="switch-checkbox" 
+                                id="chkbx"
+                                type="checkbox"/>
+                               <label className="switch-label" htmlFor="chkbx">&#x2193; </label> 
                         </div>
 
                     ))}

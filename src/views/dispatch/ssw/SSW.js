@@ -1,7 +1,6 @@
 import React, { lazy } from 'react'
 import './SSW.css'
 const CreateDryLoads = lazy(() => import('../as400/CreateDryLoads.js'))
-const WidgetsDropdown = lazy(() => import('../../widgets/WidgetsDropdown.js'))
 
 
 const DryLoads = () => {

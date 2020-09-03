@@ -19,12 +19,13 @@ const CreateDriver = props => {
     return(
     <div className="driver-container">
         <React.Fragment>
-            <div className="driver-container-label"><h3>8am</h3>
+            <div className="driver-container-label" key={Drivers.id}><h3>8am</h3>
                 {Drivers.filter(driver => driver.shift === "8am")
                     .map(driver => (
 
                         <div 
                             ref={drop} 
+                            key={driver.id}
                             opacity={isOver ? alert('green') : 'red'}
                             className="driver-container-content">
                        

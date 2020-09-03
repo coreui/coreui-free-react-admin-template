@@ -1,9 +1,9 @@
 import Loads from '../loads/loads'
 
-const DryLoadCount = Loads.map(load => {
-    load.filter(load()=> load==222)
-    
-})
+const CountLoadOcurrences = () => {
 
+    return Object.keys(Loads);
+    console.log(Object.keys(Loads))
+}
 
-export default DryLoadCount
+export default CountLoadOcurrences

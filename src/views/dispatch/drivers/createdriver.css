@@ -22,31 +22,48 @@ display: inline;
 }
 .driver-container-label::before{
   content:'';
+  margin-left: 30px;
   width:30px;
   height:30px;
 }
 .driver-container-label::after{
   content:'';
+  margin-left: 30px;
   width:30px;
   height:30px;
 }
 
 
 .driver-container-content {
-  background-color: #7bbdd1;
-  width:100%;
+    background-color: #7bbdd1;
+    width:100%;
     border-radius: 0px;
     padding:3px 5px;
     margin: 3px;
+    padding-right: 20px;
     text-align: Left;
     color:white;
     overflow:auto;
     white-space: nowrap;
+}
+.sortDown {
+  margin-left: 20px;
+  align-content: center;
+  border: 1px solid white;
+  border-radius:3px;
 }
 
 .driver-container-content:hover {
   background-color: #67a3b6;
   
 }
+.driver-load-container {
+  position: absolute;
+  transform: translateX(-200%);
+  display: block;
+  background-color:#3C4B64;
+
+}
+
 
 

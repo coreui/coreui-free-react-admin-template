@@ -2,7 +2,7 @@ import React, { lazy } from 'react'
 import './DriverDispatch.css'
 const WhseCount = lazy(() => import('../../../src/utils/WhseCount'))
 const CreateDriver = lazy(() => import('./drivers/createdriver.js'))
-import CreateWetModal from './modal/CreateWetModal'
+const CreateDryModal = lazy(() => import('./modal/CreateDryModal'))
 
 
 const DriverDispatch = () => {
@@ -11,7 +11,9 @@ const DriverDispatch = () => {
     <div className="main-container">
 
       <div className="store-div">
-        <WhseCount/>
+        <WhseCount>
+        <CreateDryModal/>
+        </WhseCount>
         </div>
         <div className="driver-div">
         <CreateDriver/>

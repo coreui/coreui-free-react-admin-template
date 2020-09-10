@@ -49,10 +49,9 @@ const Whse_1415 = As400.filter(load => load.Warehouse === "1415").length
 
 
 
-const WhseCount = () => {
+const WhseCount = (props) => {
 
     return (
-
         <React.Fragment>
         <div className="whse-container">
         <div className="whse-item__container"><div className="whse-item">222</div><div className="whse-count">{Whse_222}</div></div>

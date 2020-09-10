@@ -13,12 +13,12 @@ return (
     <CButton
       onClick={toggle}
       className="mr-1"
-    >Create Wet Load</CButton>
+    >Create Dry Load</CButton>
     <CModal
       show={modal}
       onClose={toggle}
     >
-      <CModalHeader closeButton>Add Wet Load</CModalHeader>
+      <CModalHeader closeButton>Add Dry Load</CModalHeader>
       <CModalBody>
         Lorem ipsum dolor...
       </CModalBody>

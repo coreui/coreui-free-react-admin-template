@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@mdi/react": "^1.4.0",
+    "eslint-plugin-react-hooks": "^4.1.0",
     "react-scripts": "^3.4.3"
   },
   "scripts": {

@@ -1,6 +1,6 @@
 import React, { lazy } from 'react'
 import './DriverDispatch.css'
-const WhseCount = lazy(() => import('../../../src/utils/WhseCount'))
+const WhseCount = lazy(() => import('../../utils/stores/WhseCount.js'))
 const CreateDriver = lazy(() => import('./drivers/createdriver.js'))
 const CreateDryModal = lazy(() => import('./modal/CreateDryModal'))
 

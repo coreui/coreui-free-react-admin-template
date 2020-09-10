@@ -1,5 +1,5 @@
 import React from 'react'
-import As400 from './As400'
+import As400 from '../../utils/As400'
 import './WhseCount.css'
 
 const Whse_222 = As400.filter(load => load.Warehouse === "222").length

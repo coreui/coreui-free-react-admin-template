@@ -2,6 +2,7 @@ import React, { lazy } from 'react'
 import './DriverDispatch.css'
 const WhseCount = lazy(() => import('../../../src/utils/WhseCount'))
 const CreateDriver = lazy(() => import('./drivers/createdriver.js'))
+import CreateWetModal from './modal/CreateWetModal'
 
 
 const DriverDispatch = () => {

@@ -53,10 +53,27 @@
     white-space: nowrap;
 }
 .driver-info {
+  display: flex;
   width:400px;
   padding:3px 15px;
   font-size: x-large;
   margin: 0 1px;
+  color: #13191b;
+  background-color: rgb(250, 248, 248);
+}
+.driver-info-content {
+  display: flex;
+  width:400px;
+  padding:3px 15px;
+  font-size: x-large;
+  margin: 0 1px;
+  color: #13191b;
+  background-color: rgb(250, 248, 248);
+}
+.driver-info-speech {
+  display: flex;
+  width:400px;
+  justify-content: flex-end;
   color: #13191b;
   background-color: rgb(250, 248, 248);
 }

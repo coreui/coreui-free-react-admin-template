@@ -1,0 +1,37 @@
+.whse-container-wet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-items: center;
+    width:100%;
+    
+    flex-flow: wrap;
+    background-color: rgb(47, 49, 49);
+    
+}
+.whse-item__container-wet {
+    background-color: rgb(47, 49, 49);
+    text-align: center;
+}
+.whse-item-wet {
+    
+    height: 30px;
+    width:85px;
+    padding: 5px 5px;
+    margin: 3px 5px;
+    font-weight: 500;
+    font-size: larger;
+    color:white;
+    background-color: rgb(52, 62, 65);
+}
+.whse-count-wet {
+    justify-content: center;
+    text-align: center;
+    height:25px;
+    width:25px;
+    font-size:larger;
+    color: white;
+    margin: 3px 5px;
+    background-color: rgb(7, 138, 245);
+}

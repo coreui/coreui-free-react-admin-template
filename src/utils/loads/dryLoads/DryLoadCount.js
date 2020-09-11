@@ -1,6 +1,6 @@
 import React from 'react'
-import As400 from '../../utils/As400'
-import './WhseCount.css'
+import As400 from '../As400'
+import './DryLoadCount.css'
 
 const Whse_222 = As400.filter(load => load.Warehouse === "222").length
 const Whse_226 = As400.filter(load => load.Warehouse === "226").length
@@ -49,7 +49,7 @@ const Whse_1415 = As400.filter(load => load.Warehouse === "1415").length
 
 
 
-const WhseCount = (props) => {
+const DryLoadCount = (props) => {
 
     return (
         <React.Fragment>
@@ -105,4 +105,4 @@ const WhseCount = (props) => {
 }
 
 
-export default WhseCount
+export default DryLoadCount

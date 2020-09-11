@@ -1,5 +1,5 @@
 import React from 'react';
-import Loads from '../../../utils/loads/loads'
+import Loads from '../../../../src/utils/loads/As400'
 import './CreateDryLoads.css'
 import LoadContent from './LoadContent';
 

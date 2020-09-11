@@ -98,6 +98,7 @@ const Whse_1334_wet = WetLoads.filter(load => load.Wets === 1334).length
 const Whse_1415_wet = WetLoads.filter(load => load.Wets === 1415).length
 
 //Held loads
+
 const Whse_222_held = HeldLoads.filter(load => load.Wets === 222).length
 const Whse_226_held = HeldLoads.filter(load => load.Wets === 226).length
 const Whse_230_held = HeldLoads.filter(load => load.Wets === 230).length

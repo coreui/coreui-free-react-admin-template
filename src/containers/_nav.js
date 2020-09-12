@@ -1,3 +1,4 @@
+
 export default [
   {
     _tag: 'CSidebarNavItem',
@@ -18,6 +19,12 @@ export default [
     name: 'Driver Loads',
     to: '/dispatch/DriverDispatch',
     icon: 'cil-pencil',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Driver Schedule',
+    to: '/dispatch/DriverSchedule',
+    icon: 'cil-calendar',
   },
   {
     _tag: 'CSidebarNavTitle',

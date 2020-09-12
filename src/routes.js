@@ -38,6 +38,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const DriverDispatch = React.lazy(() => import('./views/dispatch/DriverDispatch'));
+const DriverSchedule = React.lazy(() => import('./views/dispatch/drivers/DriverSchedule'));
 const SSW = React.lazy(() => import('./views/dispatch/ssw/SSW'));
 
 const routes = [
@@ -82,6 +83,7 @@ const routes = [
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   { path: '/dispatch/ssw', name: 'Dry Loads', component: SSW },
+  { path: '/dispatch/drivers', name: 'Driver Schedule', component: DriverSchedule },
   { path: '/dispatch', name: 'Driver Dispatch', component: DriverDispatch },
   
 ];

@@ -12,7 +12,7 @@
     
 }
 .whse-id__container {
-    background-color: rgb(38, 65, 65);
+    background-color: rgb(25, 26, 26);
     width:auto;
     margin:5px 5px;
     padding:1px;
@@ -27,7 +27,7 @@
     text-align: center;
     
     color:white;
-    background-color: rgb(52, 62, 65);
+    background-color: rgb(25, 26, 26);
 }
 .whse-loadCount-container {
     display: flex;

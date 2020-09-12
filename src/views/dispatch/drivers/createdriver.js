@@ -35,6 +35,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -58,6 +63,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -80,6 +90,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -102,6 +117,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -124,6 +144,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -146,6 +171,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -168,6 +198,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -190,6 +225,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -212,6 +252,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -234,6 +279,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -256,6 +306,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -278,6 +333,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -300,6 +360,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -322,6 +387,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -344,6 +414,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -366,6 +441,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -388,6 +468,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -410,6 +495,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 
@@ -432,6 +522,11 @@ const CreateDriver = props => {
                                             <div className="driver-subItem-icon-items">1</div>
                                         </div>
                                         <div className="driver-status">Status</div>
+                                        <div className="driver-status">Load 1</div>
+                                        <div className="driver-status">Load 2</div>
+                                        <div className="driver-status">Load 3</div>
+                                        <div className="driver-status">Load 4</div>
+                                        <div className="driver-status">Load 5</div>
                                     </div>
 
 

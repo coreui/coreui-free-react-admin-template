@@ -2,6 +2,7 @@ import React from 'react'
 import As400 from '../As400'
 import WetLoads from '../wetLoads/WetLoads'
 import HeldLoads from '../heldLoads/HeldLoads'
+import { TiArrowUnsorted } from 'react-icons/ti';
 import './WhseLoadCount.css'
 
 //dry Loads

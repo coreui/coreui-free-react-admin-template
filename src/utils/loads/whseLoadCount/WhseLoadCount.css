@@ -6,10 +6,20 @@
     justify-content: space-evenly;
     justify-items: center;
     width:100%;
-    
     flex-flow: wrap;
     background-color: rgb(25, 26, 26);
-    
+
+}
+.whse-container::before {
+    content: "<TiArrowUnsorted/>";
+    font-family:'react-icons';
+    top:0;
+    left: 0;
+   position: absolute;
+   background-color: aqua;
+   width: auto;
+   height: 40px;
+
 }
 .whse-id__container {
     background-color: rgb(25, 26, 26);
@@ -25,7 +35,7 @@
     font-weight: 500;
     font-size: x-large;
     text-align: center;
-    
+
     color:white;
     background-color: rgb(25, 26, 26);
 }
@@ -51,14 +61,14 @@
     justify-content: space-evenly;
     justify-items: center;
     width:100%;
-    
+
     flex-flow: wrap;
     background-color: rgb(47, 49, 49);
-    
+
 }
 
 .whse-item-wet {
-    
+
     height: 30px;
     width:85px;
     padding: 5px 5px;

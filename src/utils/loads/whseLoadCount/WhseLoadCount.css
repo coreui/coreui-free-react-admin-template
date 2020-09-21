@@ -10,16 +10,10 @@
     background-color: rgb(25, 26, 26);
 
 }
-.whse-container::before {
-    content: "<TiArrowUnsorted/>";
-    font-family:'react-icons';
-    top:0;
-    left: 0;
-   position: absolute;
-   background-color: aqua;
-   width: auto;
-   height: 40px;
-
+arrow-unsrtd {
+    position: relative;
+    display: flex;
+    width: 100%;
 }
 .whse-id__container {
     background-color: rgb(25, 26, 26);

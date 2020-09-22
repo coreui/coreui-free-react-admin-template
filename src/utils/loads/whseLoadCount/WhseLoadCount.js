@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import As400 from '../As400'
 import WetLoads from '../wetLoads/WetLoads'
 import HeldLoads from '../heldLoads/HeldLoads'
 import { TiArrowUnsorted } from 'react-icons/ti';
+import { TiArrowSortedUp } from 'react-icons/ti'
 import './WhseLoadCount.css'
 
 //dry Loads
@@ -145,15 +146,16 @@ const Whse_1236_held = HeldLoads.filter(load => load.Wets === 1236).length
 const Whse_1334_held = HeldLoads.filter(load => load.Wets === 1334).length
 const Whse_1415_held = HeldLoads.filter(load => load.Wets === 1415).length
 
-const hideLoadCount = () => {
+function hideLoadCount()  {
     let arrow = document.querySelector(".whse-container");
     arrow.classList.add("hideLoadCount");
 }
-const WhseLoadCount = () => {
+function WhseLoadCount (){
+    const [loadCount, setloadCount] = useState(true)
     return (
         <React.Fragment>
-            <div className="unsrtd" onClick={hideLoadCount}><TiArrowUnsorted size={32}/></div>
-        <div className="whse-container">
+            <div className="unsrtd" onClick={()=> setloadCount(!loadCount)}>{loadCount ? <TiArrowSortedUp size={32}/>:<TiArrowUnsorted size={32} show More/>}</div>
+        <div className={loadCount ? 'whse-container':'hideLoadCount'}>
         <div className="whse-id__container"><div className="whse-id">222</div><div className="whse-loadCount-container"><div className="whse-count">{Whse_222}</div><div className="whse-count-wet">{Whse_222_wet}</div><div className="whse-count-held">{Whse_222_held}</div></div></div>
         <div className="whse-id__container"><div className="whse-id">226</div><div className="whse-loadCount-container"><div className="whse-count">{Whse_226}</div><div className="whse-count-wet">{Whse_226_wet}</div><div className="whse-count-held">{Whse_226_held}</div></div></div>
         <div className="whse-id__container"><div className="whse-id">230</div><div className="whse-loadCount-container"><div className="whse-count">{Whse_230}</div><div className="whse-count-wet">{Whse_230_wet}</div><div className="whse-count-held">{Whse_230_held}</div></div></div>

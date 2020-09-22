@@ -18,6 +18,7 @@
 .hideLoadCount {
     position: absolute;
     display: none;
+    transition: ease-in-out 0.5 ms;
 }
 .whse-id__container {
     background-color: rgb(25, 26, 26);

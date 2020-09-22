@@ -145,10 +145,14 @@ const Whse_1236_held = HeldLoads.filter(load => load.Wets === 1236).length
 const Whse_1334_held = HeldLoads.filter(load => load.Wets === 1334).length
 const Whse_1415_held = HeldLoads.filter(load => load.Wets === 1415).length
 
+const hideLoadCount = () => {
+    let arrow = document.querySelector(".whse-container");
+    arrow.classList.add("hideLoadCount");
+}
 const WhseLoadCount = () => {
     return (
         <React.Fragment>
-            <div className="arrow-unsrtd"><TiArrowUnsorted/></div>
+            <div className="unsrtd" onClick={hideLoadCount}><TiArrowUnsorted size={32}/></div>
         <div className="whse-container">
         <div className="whse-id__container"><div className="whse-id">222</div><div className="whse-loadCount-container"><div className="whse-count">{Whse_222}</div><div className="whse-count-wet">{Whse_222_wet}</div><div className="whse-count-held">{Whse_222_held}</div></div></div>
         <div className="whse-id__container"><div className="whse-id">226</div><div className="whse-loadCount-container"><div className="whse-count">{Whse_226}</div><div className="whse-count-wet">{Whse_226_wet}</div><div className="whse-count-held">{Whse_226_held}</div></div></div>

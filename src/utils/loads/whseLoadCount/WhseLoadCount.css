@@ -10,10 +10,14 @@
     background-color: rgb(25, 26, 26);
 
 }
-arrow-unsrtd {
+.unsrtd {
     position: relative;
     display: flex;
     width: 100%;
+}
+.hideLoadCount {
+    position: absolute;
+    display: none;
 }
 .whse-id__container {
     background-color: rgb(25, 26, 26);

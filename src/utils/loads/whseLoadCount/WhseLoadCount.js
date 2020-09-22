@@ -154,7 +154,7 @@ function WhseLoadCount (){
     const [loadCount, setloadCount] = useState(true)
     return (
         <React.Fragment>
-            <div className="unsrtd" onClick={()=> setloadCount(!loadCount)}>{loadCount ? <TiArrowSortedUp size={32}/>:<TiArrowUnsorted size={32} show More/>}</div>
+            <div className="unsrtd" onClick={()=> setloadCount(!loadCount)}>{loadCount ? <TiArrowSortedUp size={32}/>:<TiArrowUnsorted size={32}/>}{loadCount ? 'Show Less':'Show More'}</div>
         <div className={loadCount ? 'whse-container':'hideLoadCount'}>
         <div className="whse-id__container"><div className="whse-id">222</div><div className="whse-loadCount-container"><div className="whse-count">{Whse_222}</div><div className="whse-count-wet">{Whse_222_wet}</div><div className="whse-count-held">{Whse_222_held}</div></div></div>
         <div className="whse-id__container"><div className="whse-id">226</div><div className="whse-loadCount-container"><div className="whse-count">{Whse_226}</div><div className="whse-count-wet">{Whse_226_wet}</div><div className="whse-count-held">{Whse_226_held}</div></div></div>

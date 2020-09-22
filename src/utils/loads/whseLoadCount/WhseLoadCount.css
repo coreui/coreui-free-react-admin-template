@@ -8,6 +8,9 @@
     width:100%;
     flex-flow: wrap;
     background-color: rgb(25, 26, 26);
+    transform-origin: left;
+    transform: translateX(0px);
+    transition: transform ease-in 1s;
 
 }
 .unsrtd {
@@ -17,8 +20,9 @@
 }
 .hideLoadCount {
     position: absolute;
-    display: none;
-    transition: ease-in-out 0.5 ms;
+    transform-origin: left;
+    transform: translateX(-999px);
+    transition: transform ease-in 1s;
 }
 .whse-id__container {
     background-color: rgb(25, 26, 26);

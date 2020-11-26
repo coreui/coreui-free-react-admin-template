@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.1.1](https://github.com/coreui/coreui-free-react-admin-template/compare/3.1.0...3.1.1)
+
+> 26 November 2020
+
+- chore: dependencies update [`5b70904`](https://github.com/coreui/coreui-free-react-admin-template/commit/5b70904d8f22f61a71def3306ea96ad640573c39)
+- chore: add changelog [`de605cc`](https://github.com/coreui/coreui-free-react-admin-template/commit/de605cc1aadec9fb066625c6bc7b656590efc7bb)
+- chore: limit changelog to version 3 [`6ac9a1d`](https://github.com/coreui/coreui-free-react-admin-template/commit/6ac9a1d094d4d293ddacb3f3562216a98be8e129)
+- chore: add migration docs [`b661344`](https://github.com/coreui/coreui-free-react-admin-template/commit/b661344485a38404b8c2b1326e3a4258009b071c)
+- chore: .gitignore cleanup [`ba21e00`](https://github.com/coreui/coreui-free-react-admin-template/commit/ba21e001944322fb48e43264719b94368c589732)
+- chore: 3.1.1 release [`081b957`](https://github.com/coreui/coreui-free-react-admin-template/commit/081b957291a8020e3d2e3b42c1f0a1455a49c524)
+
 #### [3.1.0](https://github.com/coreui/coreui-free-react-admin-template/compare/3.0.0...3.1.0)
 
 > 12 August 2020

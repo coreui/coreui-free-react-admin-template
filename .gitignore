@@ -2,23 +2,16 @@
 
 # dependencies
 /node_modules
-/src/coreui-new
-/src/coreui-icons
-/src/coreui-charts
+package-lock.json
 
 # testing
 /coverage
-/src/coreui-new
-/src/coreui-icons
-/src/coreui-charts
 
 # production
 /build
-/src/coreui-new
-/src/coreui-icons
-/src/coreui-charts
 
 # misc
+.eslintcache
 .DS_Store
 .idea
 .env.local

@@ -1,33 +1,31 @@
 /*
 * required polyfills
 */
-import "core-js";
-import 'core-js/features/set/map';
-import 'core-js/features/map';
 
 /** IE9, IE10 and IE11 requires all of the following polyfills. **/
-// import 'core-js/es6/symbol'
-// import 'core-js/es6/object'
-// import 'core-js/es6/function'
-// import 'core-js/es6/parse-int'
-// import 'core-js/es6/parse-float'
-// import 'core-js/es6/number'
-// import 'core-js/es6/math'
-// import 'core-js/es6/string'
-// import 'core-js/es6/date'
-// import 'core-js/es6/array'
-// import 'core-js/es6/regexp'
-// import 'core-js/es6/map'
-// import 'core-js/es6/weak-map'
-// import 'core-js/es6/set'
-// import 'core-js/es7/object'
+// import "core-js";
+// import 'core-js/features/symbol'
+// import 'core-js/features/object'
+// import 'core-js/features/function'
+// import 'core-js/features/parse-int'
+// import 'core-js/features/parse-float'
+// import 'core-js/features/number'
+// import 'core-js/features/math'
+// import 'core-js/features/string'
+// import 'core-js/features/date'
+// import 'core-js/features/array'
+// import 'core-js/features/regexp'
+// import 'core-js/features/map'
+// import 'core-js/features/weak-map'
+// import 'core-js/features/set'
+// import 'core-js/features/set/map';
 
 /** IE10 and IE11 requires the following for the Reflect API. */
-// import 'core-js/es6/reflect'
+// import 'core-js/features/reflect';
 
 /** Evergreen browsers require these. **/
 // Used for reflect-metadata in JIT. If you use AOT (and only Angular decorators), you can remove.
-// import 'core-js/es7/reflect'
+// import 'core-js/features/reflect'
 
 // CustomEvent() constructor functionality in IE9, IE10, IE11
 (function () {
@@ -45,3 +43,21 @@ import 'core-js/features/map';
 
   window.CustomEvent = CustomEvent
 })()
+
+if (!Element.prototype.matches) {
+  Element.prototype.matches =
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.webkitMatchesSelector;
+}
+
+if (!Element.prototype.closest) {
+  Element.prototype.closest = function(s) {
+    var el = this;
+
+    do {
+      if (Element.prototype.matches.call(el, s)) return el;
+      el = el.parentElement || el.parentNode;
+    } while (el !== null && el.nodeType === 1);
+    return null;
+  };
+}

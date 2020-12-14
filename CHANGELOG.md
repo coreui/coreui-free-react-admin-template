@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.2.0](https://github.com/coreui/coreui-free-react-admin-template/compare/3.1.1...3.2.0)
+
+> 14 December 2020
+
+- fix(BrandButtons): minor temp fixes with stylings [`f0c0585`](https://github.com/coreui/coreui-free-react-admin-template/commit/f0c05858329430c9487bdcfcf36d0aa98f60776d)
+- refactor: polyfills cleanup [`9522ade`](https://github.com/coreui/coreui-free-react-admin-template/commit/9522ade1f1eb2c5a26d5208fe6e44be803123bd2)
+- test: refactor, import temp update [`f3f91c5`](https://github.com/coreui/coreui-free-react-admin-template/commit/f3f91c5d721754a2dac26143f312415c94c7ed68)
+- chore: React 17 and dependencies update [`f6a710f`](https://github.com/coreui/coreui-free-react-admin-template/commit/f6a710ffd6996c9b6b026b8eebed6ff390757fe1)
+- fix(_nav): no anonymous default export [`ed83c9a`](https://github.com/coreui/coreui-free-react-admin-template/commit/ed83c9a3d4199b8c6566a6e01396cdcbca80cf42)
+
 #### [3.1.1](https://github.com/coreui/coreui-free-react-admin-template/compare/3.1.0...3.1.1)
 
 > 26 November 2020
@@ -10,6 +20,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: add changelog [`de605cc`](https://github.com/coreui/coreui-free-react-admin-template/commit/de605cc1aadec9fb066625c6bc7b656590efc7bb)
 - chore: limit changelog to version 3 [`6ac9a1d`](https://github.com/coreui/coreui-free-react-admin-template/commit/6ac9a1d094d4d293ddacb3f3562216a98be8e129)
 - chore: add migration docs [`b661344`](https://github.com/coreui/coreui-free-react-admin-template/commit/b661344485a38404b8c2b1326e3a4258009b071c)
+- chore: changelog update [`f9f1927`](https://github.com/coreui/coreui-free-react-admin-template/commit/f9f19274f046cf5f11f68d6c7eb7ae04c553f219)
 - chore: .gitignore cleanup [`ba21e00`](https://github.com/coreui/coreui-free-react-admin-template/commit/ba21e001944322fb48e43264719b94368c589732)
 - chore: 3.1.1 release [`081b957`](https://github.com/coreui/coreui-free-react-admin-template/commit/081b957291a8020e3d2e3b42c1f0a1455a49c524)
 

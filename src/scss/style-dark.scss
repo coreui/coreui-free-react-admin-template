@@ -1,11 +1,11 @@
 // If you want to override variables do it here
-// @import "light/variables";
+@import "dark/variables";
 
 // Import CoreUI styles
 @import "~@coreui/coreui/scss/coreui.scss";
 
 // Some temp fixes
-// @import "light/fixes";
+@import "dark/fixes";
 
 // If you want to add something do it here
 @import "dark/custom";

@@ -1,0 +1,45 @@
+
+// Brand Colors
+
+$facebook:        #3b5998 !default;
+$twitter:         #00aced !default;
+$linkedin:        #4875b4 !default;
+$flickr:          #ff0084 !default;
+$tumblr:          #32506d !default;
+$xing:            #026466 !default;
+$github:          #4183c4 !default;
+$stack-overflow:  #fe7a15 !default;
+$youtube:         #b00 !default;
+$dribbble:        #ea4c89 !default;
+$instagram:       #517fa4 !default;
+$pinterest:       #cb2027 !default;
+$vk:              #45668e !default;
+$yahoo:           #400191 !default;
+$behance:         #1769ff !default;
+$reddit:          #ff4500 !default;
+$vimeo:           #aad450 !default;
+
+$brands-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$brands-colors: map-merge(
+  (
+    "facebook":        $facebook,
+    "twitter":         $twitter,
+    "linkedin":        $linkedin,
+    "flickr":          $flickr,
+    "tumblr":          $tumblr,
+    "xing":            $xing,
+    "github":          $github,
+    "stack-overflow":  $stack-overflow,
+    "youtube":         $youtube,
+    "dribbble":        $dribbble,
+    "instagram":       $instagram,
+    "pinterest":       $pinterest,
+    "vk":              $vk,
+    "yahoo":           $yahoo,
+    "behance":         $behance,
+    "reddit":          $reddit,
+    "vimeo":           $vimeo
+  ),
+  $brands-colors
+);

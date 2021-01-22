@@ -9,7 +9,8 @@ import {
   CHeaderNavLink,
   CSubheader,
   CBreadcrumbRouter,
-  CLink
+  CLink,
+  CSwitch
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
@@ -26,6 +27,7 @@ import {
 const TheHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector(state => state.sidebarShow)
+  let theme = localStorage.getItem('theme')
 
   const toggleSidebar = () => {
     const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
@@ -66,6 +68,13 @@ const TheHeader = () => {
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
+        Dark <CSwitch width={'1000px'} className={'mx-1'} shape={'pill'} color={'primary'}
+            defaultChecked={theme !== 'c-dark-theme'}
+            onChange={ (e)=> {
+            localStorage.setItem('theme', e.target.checked ? 'c-light-theme' : 'c-dark-theme')
+            document.body.classList.value = localStorage.getItem('theme');
+            console.log(localStorage.getItem('theme'))
+          }}/> Light
         <TheHeaderDropdownNotif/>
         <TheHeaderDropdownTasks/>
         <TheHeaderDropdownMssg/>

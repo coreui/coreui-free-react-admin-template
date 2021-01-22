@@ -1,0 +1,59 @@
+//
+// CoreUI default gradients
+//
+
+$primary-gradient: (
+  "start":  #4638c2,
+  "stop":   #1f1498
+) !default;
+
+$secondary-gradient: (
+  "start":  #c8d2dc,
+  "stop":    $white
+) !default;
+
+$light-gradient: (
+  "start":  #e3e8ed,
+  "stop":    $white
+) !default;
+
+$dark-gradient: (
+  "start":  #2c2c34,
+  "stop":   #212333
+) !default;
+
+$danger-gradient: (
+  "start":  #e55353,
+  "stop":   #d93737
+) !default;
+
+$warning-gradient: (
+  "start":  #f9b115,
+  "stop":   #f6960b
+) !default;
+
+$success-gradient: (
+  "start":  #45a164,
+  "stop":   #1b9e3e
+) !default;
+
+$info-gradient: (
+  "start":  #39f,
+  "stop":   #2982cc
+) !default;
+
+$theme-gradients: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-gradients: map-merge(
+  (
+    "primary":    $primary-gradient,
+    "secondary":  $secondary-gradient,
+    "success":    $success-gradient,
+    "info":       $info-gradient,
+    "warning":    $warning-gradient,
+    "danger":     $danger-gradient,
+    "light":      $light-gradient,
+    "dark":       $dark-gradient
+  ),
+  $theme-gradients
+);

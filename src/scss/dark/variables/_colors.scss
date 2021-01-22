@@ -1,0 +1,144 @@
+//
+// CoreUI default colors
+//
+
+$white:  #fff !default;
+$black:  #000015 !default;
+
+$gray-base:  #2c2c34 !default;
+$gray-100:   #20202a !default;
+$gray-200:   #d8dbe0 !default;
+$gray-300:   #c4c9d0 !default;
+$gray-400:   #b1b7c1 !default;
+$gray-500:   #9da5b1 !default;
+$gray-600:   #8a93a2 !default;
+$gray-700:   #768192 !default;
+$gray-800:   #181924 !default;
+$gray-900:   #171718 !default;
+
+$grays: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+  (
+    "100":  $gray-100,
+    "200":  $gray-200,
+    "300":  $gray-300,
+    "400":  $gray-400,
+    "500":  $gray-500,
+    "600":  $gray-600,
+    "700":  $gray-700,
+    "800":  $gray-800,
+    "900":  $gray-900
+  ),
+  $grays
+);
+
+$primary-base:  #4638c2 !default;
+$primary-100:   #eae9fb !default;
+$primary-200:   #d6d2fb !default;
+$primary-300:   #c1bcf4 !default;
+$primary-400:   #ada5f1 !default;
+$primary-500:   #988fed !default;
+$primary-600:   #8478ea !default;
+$primary-700:   #6f62e6 !default;
+$primary-800:   #5b4ce2 !default;
+$primary-900:   #4635df !default;
+
+$primary-dark:  #1f1498 !default;
+$primary:       #4638c2 !default;
+$primary-50:    #988fed !default;
+$primary-25:    #ccc7f6 !default;
+
+
+$secondary-base:  #2c2c34 !default;
+
+$secondary-100:   #20202a !default;
+$secondary-200:   #d8dbe0 !default;
+$secondary-300:   #c4c9d0 !default;
+$secondary-400:   #b1b7c1 !default;
+$secondary-500:   #9da5b1 !default;
+$secondary-600:   #8a93a2 !default;
+$secondary-700:   #768192 !default;
+$secondary-800:   #181924 !default;
+$secondary-900:   #4f5d73 !default;
+
+$secondary-dark:  #212233 !default;
+$secondary:       #2c2c34 !default;
+$secondary-50:    #9da5b1 !default;
+$secondary-25:    #4c4f54 !default;
+
+
+$danger-dark:  #d93737 !default;
+$danger:       #e55353 !default;
+$danger-50:    #f2a9a9 !default;
+$danger-25:    #f9d4d4 !default;
+
+$info-dark:  #2982cc !default;
+$info:       #39f !default;
+$info-50:    #80c6ff !default;
+$info-25:    #c0e6ff !default;
+
+$success-dark:  #1b9e3e !default;
+$success:       #45a164 !default;
+$success-50:    #96dbad !default;
+$success-25:    #cbedd6 !default;
+
+$warning-dark:  #f6960b !default;
+$warning:       #f9b115 !default;
+$warning-50:    #fcd88a !default;
+$warning-25:    #feecc5 !default;
+
+$light:  $gray-100 !default;
+$dark:   $gray-800 !default;
+
+$pink:  #e83e8c !default;
+
+// scss-docs-start theme-colors-map
+$theme-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary-25,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);
+// scss-docs-end theme-colors-map
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval:  8% !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold:  150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark:   $gray-900 !default;
+$yiq-text-light:  $white !default;
+
+$yiq-theme-map: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$yiq-theme-map: map-merge(
+  (
+    default: (
+      "yiq-text-dark":  $yiq-text-dark,
+      "yiq-text-light":  $yiq-text-light
+    )
+  ),
+  $yiq-theme-map
+);
+
+// TODO: Move to better place
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (
+  ("<","%3c"),
+  (">","%3e"),
+  ("#","%23"),
+  ("(","%28"),
+  (")","%29"),
+) !default;

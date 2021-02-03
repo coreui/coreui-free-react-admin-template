@@ -1,0 +1,18 @@
+# NodeJS
+node_modules/
+package-lock.json
+
+# Editor
+.editorconfig
+
+# ReactJS
+.eslintcache
+
+# Git
+.gitignore
+
+# ANN Shop
+compose/reactjs/Dockerfile
+docker-compose.yml
+REACT.md
+README.md

@@ -1,9 +1,9 @@
 {
-  "short_name": "CoreUI-React",
-  "name": "CoreUI-React sample",
+  "short_name": "ANN Shop",
+  "name": "Hệ thống shop ANN",
   "icons": [
     {
-      "src": "./assets/img/favicon.png",
+      "src": "./assets/images/ann-logo.png",
       "sizes": "100x100",
       "type": "image/png"
     }

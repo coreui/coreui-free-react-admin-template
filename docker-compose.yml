@@ -1,0 +1,14 @@
+# https://docs.docker.com/compose/
+version: "3.9"
+
+services:
+  reactjs:
+    container_name: "ann-shop-reactjs"
+    build:
+      context: .
+      dockerfile: ./compose/reactjs/Dockerfile
+    command: /start.sh
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app

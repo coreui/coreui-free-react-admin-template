@@ -1,5 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# VS code
+/.vscode
+
 # dependencies
 /node_modules
 package-lock.json

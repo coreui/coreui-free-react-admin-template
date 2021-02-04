@@ -1,18 +1,21 @@
-# NodeJS
-node_modules/
-package-lock.json
-
-# Editor
-.editorconfig
-
-# ReactJS
-.eslintcache
+# VS code
+/.vscode
 
 # Git
 .gitignore
 
+# Editor
+.editorconfig
+
+# NodeJS
+/node_modules
+package-lock.json
+
+# ReactJS
+.eslintcache
+
 # ANN Shop
-compose/reactjs/Dockerfile
+/compose/reactjs/Dockerfile
 docker-compose.yml
 REACT.md
 README.md

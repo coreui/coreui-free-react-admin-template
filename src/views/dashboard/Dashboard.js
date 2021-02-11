@@ -110,7 +110,7 @@ const Dashboard = () => {
       <WidgetsBrand withCharts/>
 
       <CRow>
-        <CCol>
+        <CCol xs>
           <CCard>
             <CCardHeader>
               Traffic {' & '} Sales

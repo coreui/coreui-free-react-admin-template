@@ -18,7 +18,7 @@ const Jumbotrons = () => {
   return (
     <>
       <CRow>
-        <CCol>
+        <CCol xs>
           <CCard>
             <CCardHeader>
               Jumbotron
@@ -38,7 +38,7 @@ const Jumbotrons = () => {
             </CCardBody>
           </CCard>
         </CCol>
-        <CCol>
+        <CCol xs>
           <CCard>
             <CCardHeader>
               Jumbotron
@@ -56,7 +56,7 @@ const Jumbotrons = () => {
         </CCol>
       </CRow>
       <CRow>
-        <CCol>
+        <CCol xs>
           <CCard>
             <CCardHeader>
               Embed

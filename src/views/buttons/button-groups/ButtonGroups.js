@@ -3,7 +3,6 @@ import {
   CButton,
   CDropdown,
   CButtonGroup,
-  CButtonToolbar,
   CCard,
   CCardBody,
   CCardHeader,
@@ -11,11 +10,14 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
+  CRow,
+} from '@coreui/react-ts'
+import {
+  CButtonToolbar,
   CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
-  CRow,
   CCallout
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'

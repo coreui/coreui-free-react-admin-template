@@ -1,3 +1,34 @@
+# Migration from version 3
+
+## Badges
+
+- variant="pill" --> shape="rounded-pill"
+- variant="square" --> shape="rounded-0"
+
+## List Group
+
+- Depracated prop `action` Use `component="a"` or `component="b"` instead of `action`.
+
+## Modal
+
+- Depracated prop `show` Use `visible` instead of.
+
+## Popover
+
+- Depracated prop `header` Use `title` instead of.
+
+## Progress Bar
+
+- Depracated prop `precision`
+- Depracated prop `showLabel`
+- Depracated prop `showPercentage`
+- Depracated prop `showValue`
+
+## Tabs
+
+- Deprecated component `<CTabs>` use `<CNav variant="tabs">` without wrapper component `<CTabs>`
+
+
 # Migration from version 2
 
 Migration from version 2 must be performed manually because the components library `@coreui/coreui-react` has been completely rewritten.

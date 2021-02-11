@@ -8,10 +8,9 @@ import {
   CCol,
   CRow,
   CCollapse,
-  CFade,
-  CSwitch,
   CLink
-} from  '@coreui/react'
+} from  '@coreui/react-ts'
+import { CFade, CSwitch } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { DocsLink } from 'src/reusable'
 

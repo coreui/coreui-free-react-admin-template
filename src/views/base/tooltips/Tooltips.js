@@ -7,6 +7,8 @@ import {
   CTooltip,
   CRow,
   CCol,
+} from '@coreui/react-ts'
+import {
   CLink
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'

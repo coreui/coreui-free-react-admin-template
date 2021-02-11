@@ -7,8 +7,8 @@ import {
   CPopover,
   CRow,
   CCol,
-  CLink
-} from '@coreui/react'
+} from '@coreui/react-ts'
+import { CLink } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const Popovers = () => {
@@ -35,25 +35,25 @@ const Popovers = () => {
 
           <p className="muted">
             Tight pants next level keffiyeh
-            <CPopover header="Popover header" content="Popover text">
+            <CPopover title="Popover header" content="Popover text">
               <CLink> you probably </CLink>
             </CPopover>
               haven't heard of them.
             Photo booth beard raw denim letterpress vegan messenger
             bag stumptown. Farm-to-table seitan, mcsweeney's fixie
             sustainable quinoa 8-bit american apparel
-            <CPopover header="Popover header" content="Popover text">
+            <CPopover title="Popover header" content="Popover text">
               <CLink> have a </CLink>
             </CPopover>
             terry richardson vinyl chambray. Beard stumptown,
             cardigans banh mi lomo thundercats. Tofu biodiesel
             williamsburg marfa, four loko mcsweeney''s cleanse
             vegan chambray. A really ironic artisan
-            <CPopover header="Popover header" content="Popover text">
+            <CPopover title="Popover header" content="Popover text">
               <CLink> whatever keytar </CLink>
             </CPopover>
             scenester farm-to-table banksy Austin
-            <CPopover header="Popover header" content="Popover text">
+            <CPopover title="Popover header" content="Popover text">
               <CLink> twitter handle </CLink>
             </CPopover>
 
@@ -78,10 +78,9 @@ const Popovers = () => {
                   className="py-4 text-center"
                   key={placement}
                 >
-                  <CPopover header="Popover header"
+                  <CPopover title="Popover header"
                     content={`Popover with placement: ${placement}`}
                     placement={placement}
-                    interactive={true}
                     trigger="click"
                   >
                     <CButton color="primary">

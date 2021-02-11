@@ -1,15 +1,18 @@
 import React from 'react'
 import {
+  CLink,
+} from '@coreui/react'
+import {
   CAlert,
+  CAlertHeading,
   CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
-  CLink,
   CProgress,
-  CRow
-} from '@coreui/react'
+  CRow,
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const Alerts = () => {
@@ -120,7 +123,7 @@ const Alerts = () => {
             </CCardHeader>
             <CCardBody>
               <CAlert color="success">
-                <h4 className="alert-heading">Well done!</h4>
+                <CAlertHeading>Well done!</CAlertHeading>
                 <p>
                   Aww yeah, you successfully read this important alert message. This example text is going
                   to run a bit longer so that you can see how spacing within an alert works with this kind
@@ -143,7 +146,7 @@ const Alerts = () => {
             <CCardBody>
               <CAlert
                 color="info"
-                closeButton
+                dismissible
               >
                 I am an dismissible alert!
               </CAlert>

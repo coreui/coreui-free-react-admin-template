@@ -6,10 +6,10 @@ import {
   CCard,
   CCardBody,
   CCardHeader,
-  CLink,
   CCol,
-  CRow
-} from '@coreui/react'
+  CRow,
+  CLink
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 import routes from '../../../routes'
 
@@ -28,31 +28,31 @@ const Breadcrumbs = () => {
             <h6>Manual</h6>
             <CBreadcrumb>
               <CBreadcrumbItem>
-                <CLink>Home</CLink>
+                <CLink href="#">Home</CLink>
               </CBreadcrumbItem>
               <CBreadcrumbItem active>Library</CBreadcrumbItem>
             </CBreadcrumb>
             <CBreadcrumb>
               <CBreadcrumbItem>
-                <CLink>Home</CLink>
+                <CLink href="#">Home</CLink>
               </CBreadcrumbItem>
               <CBreadcrumbItem>
-                <CLink>Library</CLink>
+                <CLink href="#">Library</CLink>
               </CBreadcrumbItem>
               <CBreadcrumbItem active>Data</CBreadcrumbItem>
             </CBreadcrumb>
             <CBreadcrumb>
               <CBreadcrumbItem>
-                <CLink>Home</CLink>
+                <CLink href="#">Home</CLink>
               </CBreadcrumbItem>
               <CBreadcrumbItem>
-                <CLink>Library</CLink>
+                <CLink href="#">Library</CLink>
               </CBreadcrumbItem>
               <CBreadcrumbItem>
-                <CLink>Data</CLink>
+                <CLink href="#">Data</CLink>
               </CBreadcrumbItem>
               <CBreadcrumbItem active>
-                <span>Bootstrap</span>
+                Bootstrap
               </CBreadcrumbItem>
             </CBreadcrumb>
           </CCardBody>

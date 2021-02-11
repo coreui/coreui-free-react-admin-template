@@ -12,7 +12,7 @@ import {
   CNav,
   CNavItem,
   CNavLink
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const Navs = () => {
@@ -244,8 +244,8 @@ const Navs = () => {
                 <CNavItem>
                   <CNavLink active>Link</CNavLink>
                 </CNavItem>
-                <CDropdown inNav>
-                  <CDropdownToggle caret>
+                <CDropdown variant="nav-item">
+                  <CDropdownToggle>
                     Dropdown
                   </CDropdownToggle>
                   <CDropdownMenu>
@@ -278,8 +278,8 @@ const Navs = () => {
                 <CNavItem>
                   <CNavLink active>Link</CNavLink>
                 </CNavItem>
-                <CDropdown inNav>
-                  <CDropdownToggle caret>
+                <CDropdown variant="nav-item">
+                  <CDropdownToggle>
                     Dropdown
                   </CDropdownToggle>
                   <CDropdownMenu>

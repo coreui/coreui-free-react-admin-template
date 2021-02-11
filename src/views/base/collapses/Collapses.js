@@ -8,7 +8,7 @@ import {
   CCol,
   CCollapse,
   CFade,
-  CRow 
+  CRow
 } from '@coreui/react';
 import { DocsLink } from 'src/reusable'
 
@@ -99,7 +99,7 @@ const Collapses = () => {
                   Both</CButton>{' '}
               </p>
               <CRow>
-                <CCol>
+                <CCol xs>
                   <CCollapse show={collapseMulti[0]}>
                     <CCard>
                       <CCardBody>
@@ -148,10 +148,10 @@ const Collapses = () => {
             <div id="accordion">
               <CCard className="mb-0">
                 <CCardHeader id="headingOne">
-                  <CButton 
-                    block 
-                    color="link" 
-                    className="text-left m-0 p-0" 
+                  <CButton
+                    block
+                    color="link"
+                    className="text-left m-0 p-0"
                     onClick={() => setAccordion(accordion === 0 ? null : 0)}
                   >
                     <h5 className="m-0 p-0">Collapsible Group Item #1</h5>
@@ -169,10 +169,10 @@ const Collapses = () => {
               </CCard>
               <CCard className="mb-0">
                 <CCardHeader id="headingTwo">
-                  <CButton 
-                    block 
-                    color="link" 
-                    className="text-left m-0 p-0" 
+                  <CButton
+                    block
+                    color="link"
+                    className="text-left m-0 p-0"
                     onClick={() => setAccordion(accordion === 1 ? null : 1)}
                   >
                     <h5 className="m-0 p-0">Collapsible Group Item #2</h5>
@@ -190,10 +190,10 @@ const Collapses = () => {
               </CCard>
               <CCard className="mb-0">
                 <CCardHeader id="headingThree">
-                  <CButton 
-                    block 
-                    color="link" 
-                    className="text-left m-0 p-0" 
+                  <CButton
+                    block
+                    color="link"
+                    className="text-left m-0 p-0"
                     onClick={() => setAccordion(accordion === 2 ? null : 2)}
                   >
                     <h5 className="m-0 p-0">Collapsible Group Item #3</h5>

@@ -145,7 +145,7 @@ const Tables = () => {
       </CRow>
 
       <CRow>
-        <CCol>
+        <CCol xs>
           <CCard>
             <CCardHeader>
               Combined All Table
@@ -176,7 +176,7 @@ const Tables = () => {
         </CCol>
       </CRow>
         <CRow>
-        <CCol>
+        <CCol xs>
           <CCard>
             <CCardHeader>
               Combined All dark Table

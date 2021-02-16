@@ -22,7 +22,7 @@ const ListGroups = () => {
       <CRow>
         <CCol sm="12" xl="6">
 
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group
               <DocsLink name="CListGroup"/>
@@ -40,7 +40,7 @@ const ListGroups = () => {
 
         </CCol>
         <CCol sm="12" xl="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group links
               <small> with first item active and last item disabled</small>
@@ -61,7 +61,7 @@ const ListGroups = () => {
       <CRow>
         <CCol sm="12" xl="6">
 
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group
               <small> contextual classes</small>
@@ -84,7 +84,7 @@ const ListGroups = () => {
         </CCol>
         <CCol sm="12" xl="6">
 
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group
               <small> contextual classes with .action</small>
@@ -108,7 +108,7 @@ const ListGroups = () => {
       </CRow>
       <CRow>
         <CCol sm="12" xl="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group
               <small> accent</small>
@@ -128,7 +128,7 @@ const ListGroups = () => {
           </CCard>
         </CCol>
         <CCol sm="12" xl="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group
               <small> accent with color</small>
@@ -150,7 +150,7 @@ const ListGroups = () => {
       </CRow>
       <CRow>
         <CCol sm="12" xl="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group
               <small> with badges</small>
@@ -159,15 +159,15 @@ const ListGroups = () => {
               <CListGroup>
                 <CListGroupItem className="justify-content-between">
                   Cras justo odio
-                  <CBadge className="float-right" shape="pill" color="primary">14</CBadge>
+                  <CBadge className="float-end" shape="pill" color="primary">14</CBadge>
                 </CListGroupItem>
                 <CListGroupItem className="justify-content-between">
                   Dapibus ac facilisis in
-                  <CBadge className="float-right" shape="pill" color="primary">2</CBadge>
+                  <CBadge className="float-end" shape="pill" color="primary">2</CBadge>
                 </CListGroupItem>
                 <CListGroupItem className="justify-content-between">
                   Morbi leo risus
-                  <CBadge className="float-right" shape="pill" color="primary">1</CBadge>
+                  <CBadge className="float-end" shape="pill" color="primary">1</CBadge>
                 </CListGroupItem>
               </CListGroup>
             </CCardBody>
@@ -176,7 +176,7 @@ const ListGroups = () => {
         </CCol>
         <CCol sm="12" xl="6">
 
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group
               <small> custom content</small>
@@ -216,7 +216,7 @@ const ListGroups = () => {
       </CRow>
       <CRow>
         <CCol xs>
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               List group
               <small> tab Javascript plugin</small>

@@ -47,7 +47,7 @@ const Toaster = () => {
 
   const addToast = () => {
     setToasts([
-      ...toasts, 
+      ...toasts,
       { position, autohide: autohide && autohideValue, closeButton, fade }
     ])
   }
@@ -63,7 +63,7 @@ const Toaster = () => {
 
 
   return (
-    <CCard>
+    <CCard className="mb-4">
       <CCardHeader>
         Toasts.
         <DocsLink name="-Toast"/>
@@ -138,7 +138,7 @@ const Toaster = () => {
                 </CFormGroup>
 
                 <CButton
-                  className="mr-1 w-25"
+                  className="me-1 w-25"
                   color="success"
                   onClick={addToast}
                 >

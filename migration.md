@@ -1,9 +1,26 @@
 # Migration from version 3
 
+## CSS
+
+- `ml-*` to `ms-*`
+- `mfs-*` to `ms-*`
+- `mr-*` to `me-*`
+- `mfe-*` to `me-*`
+- `pl-*` to `ps-*`
+- `pr-*` to `pe-*`
+- `float-left` to `float-start`
+- `float-right` to `float-end`
+
 ## Badges
 
 - variant="pill" --> shape="rounded-pill"
 - variant="square" --> shape="rounded-0"
+
+## Header
+
+- Deprecated pro `withSubheader`
+- Deprecated component `CHeaderNavItem`, use `CNavItem` instead of.
+- Deprecated component `CHeaderNavLink`, use `CNavLink` instead of.
 
 ## List Group
 

@@ -3,8 +3,8 @@ import {
   CCardFooter,
   CCol,
   CRow,
-  CProgress,
-} from '@coreui/react'
+  CProgress
+} from '@coreui/react-ts'
 
 import {
   CCardGroup,
@@ -12,8 +12,7 @@ import {
   CWidgetProgress,
   CWidgetIcon,
   CWidgetProgressIcon,
-  CWidgetSimple,
-
+  CWidgetSimple
 } from '@coreui/react'
 import WidgetsBrand from './WidgetsBrand'
 import WidgetsDropdown from './WidgetsDropdown'
@@ -125,7 +124,7 @@ const Widgets = () => {
                   target="_blank"
                 >
                   View more
-                  <CIcon name="cil-arrow-right" className="float-right" width="16"/>
+                  <CIcon name="cil-arrow-right" className="float-end" width="16"/>
                 </CLink>
               </CCardFooter>
             }

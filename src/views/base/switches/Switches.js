@@ -13,7 +13,7 @@ const Switches = () => {
   return (
     <CRow>
       <CCol xs="12" md="12">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             3d Switch
             <DocsLink name="CSwitch"/>
@@ -32,7 +32,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch default
           </CCardHeader>
@@ -47,7 +47,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch default - pills
           </CCardHeader>
@@ -67,7 +67,7 @@ const Switches = () => {
       </CCol>
 
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch outline
 
@@ -83,7 +83,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch outline pills
 
@@ -104,7 +104,7 @@ const Switches = () => {
       </CCol>
 
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch outline alternative
 
@@ -120,7 +120,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch outline alternative - pills
 
@@ -141,7 +141,7 @@ const Switches = () => {
       </CCol>
 
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text
 
@@ -157,7 +157,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text pills
 
@@ -173,7 +173,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text outline
 
@@ -189,7 +189,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text outline pills
 
@@ -205,7 +205,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text outline alternative
 
@@ -221,7 +221,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text outline alternative pills
 
@@ -242,7 +242,7 @@ const Switches = () => {
       </CCol>
 
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text
 
@@ -258,7 +258,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text pills
 
@@ -274,7 +274,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text outline
 
@@ -290,7 +290,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text outline pills
 
@@ -306,7 +306,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text outline alternative
 
@@ -322,7 +322,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Switch with text outline alternative pills
 
@@ -343,7 +343,7 @@ const Switches = () => {
       </CCol>
 
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             3d Switch
           </CCardHeader>
@@ -362,7 +362,7 @@ const Switches = () => {
       </CCol>
 
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             3d Switch
           </CCardHeader>
@@ -385,7 +385,7 @@ const Switches = () => {
       </CCol>
 
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             3d Switch
           </CCardHeader>
@@ -403,7 +403,7 @@ const Switches = () => {
         </CCard>
       </CCol>
       <CCol xs="12" md="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             3d Switch
           </CCardHeader>
@@ -426,7 +426,7 @@ const Switches = () => {
       </CCol>
 
       <CCol xs="12">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Sizes
           </CCardHeader>

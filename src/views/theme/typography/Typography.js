@@ -9,7 +9,7 @@ import { DocsLink } from 'src/reusable'
 const Typography = () => {
   return (
     <>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Headings
           <DocsLink href="https://coreui.io/docs/content/typography/"/>
@@ -64,15 +64,15 @@ const Typography = () => {
           </table>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Headings
         </CCardHeader>
         <CCardBody>
-          <p><code className="highlighter-rouge">.h1</code> through 
-          <code className="highlighter-rouge">.h6</code> 
+          <p><code className="highlighter-rouge">.h1</code> through
+          <code className="highlighter-rouge">.h6</code>
           classes are also available, for when you
-          want to match the font styling of a heading but cannot use the 
+          want to match the font styling of a heading but cannot use the
           associated HTML element.</p>
           <div className="bd-example">
             <p className="h1">h1. Bootstrap heading</p>
@@ -84,7 +84,7 @@ const Typography = () => {
           </div>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <div className="card-header">
           Display headings
         </div>
@@ -111,7 +111,7 @@ const Typography = () => {
           </div>
         </div>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Inline text elements
         </CCardHeader>
@@ -136,7 +136,7 @@ const Typography = () => {
           </div>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Description list alignment
         </CCardHeader>

@@ -20,7 +20,7 @@ const Navs = () => {
     <>
       <CRow>
         <CCol xs="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <DocsLink name="CNav"/>
@@ -66,7 +66,7 @@ const Navs = () => {
           </CCard>
         </CCol>
         <CCol xs="3">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <small> vertical / links</small>
@@ -82,7 +82,7 @@ const Navs = () => {
           </CCard>
         </CCol>
         <CCol xs="3">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <small> vertical / list</small>
@@ -109,7 +109,7 @@ const Navs = () => {
 
       <CRow>
         <CCol xs="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <small> tabs</small>
@@ -125,7 +125,7 @@ const Navs = () => {
           </CCard>
         </CCol>
         <CCol xs="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <small> pills</small>
@@ -151,7 +151,7 @@ const Navs = () => {
       </CRow>
       <CRow>
         <CCol xs="12">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <small> fill and justify</small>
@@ -214,7 +214,7 @@ const Navs = () => {
 
       <CRow>
         <CCol xs="12">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <small> with flex</small>
@@ -234,7 +234,7 @@ const Navs = () => {
       <CRow>
 
         <CCol xs="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <small> tabs with dropdowns</small>
@@ -268,7 +268,7 @@ const Navs = () => {
         </CCol>
 
         <CCol xs="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Navs
               <small> pills with dropdowns</small>

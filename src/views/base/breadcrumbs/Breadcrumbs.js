@@ -17,7 +17,7 @@ const Breadcrumbs = () => {
   return (
     <CRow>
       <CCol xs="12">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Bootstrap Breadcrumb
             <DocsLink name="CBreadcrumb"/>

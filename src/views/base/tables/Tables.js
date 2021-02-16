@@ -28,7 +28,7 @@ const Tables = () => {
     <>
       <CRow>
         <CCol xs="12" lg="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Simple Table
               <DocsLink name="CModal"/>
@@ -56,7 +56,7 @@ const Tables = () => {
         </CCol>
 
         <CCol xs="12" lg="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Striped Table
             </CCardHeader>
@@ -87,7 +87,7 @@ const Tables = () => {
       <CRow>
 
         <CCol xs="12" lg="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Condensed Table
             </CCardHeader>
@@ -115,7 +115,7 @@ const Tables = () => {
         </CCol>
 
         <CCol xs="12" lg="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Bordered Table
             </CCardHeader>
@@ -146,7 +146,7 @@ const Tables = () => {
 
       <CRow>
         <CCol xs>
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Combined All Table
             </CCardHeader>
@@ -177,7 +177,7 @@ const Tables = () => {
       </CRow>
         <CRow>
         <CCol xs>
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Combined All dark Table
             </CCardHeader>

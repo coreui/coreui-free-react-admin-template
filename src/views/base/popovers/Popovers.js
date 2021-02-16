@@ -21,7 +21,7 @@ const Popovers = () => {
 
   return (
     <>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Popovers
           <DocsLink name="CPopover"/>
@@ -64,7 +64,7 @@ const Popovers = () => {
 
       <hr/>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Popovers
           <small> placement</small>

@@ -13,7 +13,7 @@ import { DocsLink } from 'src/reusable'
 const Buttons = () => {
   return (
     <>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Standard Buttons
           <DocsLink name="-Button"/>
@@ -117,7 +117,7 @@ const Buttons = () => {
           </CRow>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           layout="outline" Buttons
         </CCardHeader>
@@ -217,7 +217,7 @@ const Buttons = () => {
           </CRow>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           layout="ghost" Buttons
         </CCardHeader>
@@ -317,7 +317,7 @@ const Buttons = () => {
           </CRow>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Square Buttons
         </CCardHeader>
@@ -423,7 +423,7 @@ const Buttons = () => {
           </CRow>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Pill Buttons
         </CCardHeader>
@@ -530,7 +530,7 @@ const Buttons = () => {
         </CCardBody>
       </CCard>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Sizes
         </CCardHeader>
@@ -599,7 +599,7 @@ const Buttons = () => {
         </CCardBody>
       </CCard>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           With Icons
         </CCardHeader>
@@ -635,7 +635,7 @@ const Buttons = () => {
       </CCard>
       <CRow>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Level Buttons
             </CCardHeader>
@@ -652,7 +652,7 @@ const Buttons = () => {
           </CCard>
         </CCol>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Level Buttons
             </CCardHeader>

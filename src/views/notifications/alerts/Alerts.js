@@ -22,7 +22,7 @@ const Alerts = () => {
     <>
       <CRow>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Alerts
               <DocsLink name="CAlert"/>
@@ -56,7 +56,7 @@ const Alerts = () => {
           </CCard>
         </CCol>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Alerts
               <small> use <code>.alert-link</code> to provide links</small>
@@ -116,7 +116,7 @@ const Alerts = () => {
       </CRow>
       <CRow>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Alerts
               <small> additional content</small>
@@ -138,7 +138,7 @@ const Alerts = () => {
           </CCard>
         </CCol>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Alerts
               <small> dismissing</small>

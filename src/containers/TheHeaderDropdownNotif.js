@@ -6,15 +6,14 @@ import {
   CDropdownMenu,
   CDropdownToggle,
   CProgress
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
 const TheHeaderDropdownNotif = () => {
   const itemsCount = 5
   return (
     <CDropdown
-      inNav
-      className="c-header-nav-item mx-2"
+      variant="nav-item"
     >
       <CDropdownToggle className="c-header-nav-link" caret={false}>
         <CIcon name="cil-bell"/>
@@ -29,11 +28,11 @@ const TheHeaderDropdownNotif = () => {
         >
           <strong>You have {itemsCount} notifications</strong>
         </CDropdownItem>
-        <CDropdownItem><CIcon name="cil-user-follow" className="mr-2 text-success" /> New user registered</CDropdownItem>
-        <CDropdownItem><CIcon name="cil-user-unfollow" className="mr-2 text-danger" /> User deleted</CDropdownItem>
-        <CDropdownItem><CIcon name="cil-chart-pie" className="mr-2 text-info" /> Sales report is ready</CDropdownItem>
-        <CDropdownItem><CIcon name="cil-basket" className="mr-2 text-primary" /> New client</CDropdownItem>
-        <CDropdownItem><CIcon name="cil-speedometer" className="mr-2 text-warning" /> Server overloaded</CDropdownItem>
+        <CDropdownItem><CIcon name="cil-user-follow" className="me-2 text-success" /> New user registered</CDropdownItem>
+        <CDropdownItem><CIcon name="cil-user-unfollow" className="me-2 text-danger" /> User deleted</CDropdownItem>
+        <CDropdownItem><CIcon name="cil-chart-pie" className="me-2 text-info" /> Sales report is ready</CDropdownItem>
+        <CDropdownItem><CIcon name="cil-basket" className="me-2 text-primary" /> New client</CDropdownItem>
+        <CDropdownItem><CIcon name="cil-speedometer" className="me-2 text-warning" /> Server overloaded</CDropdownItem>
         <CDropdownItem
           header
           tag="div"

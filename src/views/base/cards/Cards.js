@@ -23,7 +23,7 @@ const Cards = () => {
     <>
       <CRow>
         <CCol xs="12" sm="6" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Card title
               <DocsLink name="CCard"/>
@@ -36,7 +36,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardBody>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
               laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
@@ -46,11 +46,11 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Card with icon
               <div className="card-header-actions">
-                <CIcon name="cil-check" className="float-right"/>
+                <CIcon name="cil-check" className="float-end"/>
               </div>
             </CCardHeader>
             <CCardBody>
@@ -61,11 +61,11 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Card with switch
               <div className="card-header-actions">
-                <CSwitch className={'float-right mb-0'} color={'info'} defaultChecked size={'sm'} tabIndex="0" />
+                <CSwitch className={'float-end mb-0'} color={'info'} defaultChecked size={'sm'} tabIndex="0" />
               </div>
             </CCardHeader>
             <CCardBody>
@@ -76,11 +76,11 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Card with label
               <div className="card-header-actions">
-                <CBadge color="success" className="float-right">Success</CBadge>
+                <CBadge color="success" className="float-end">Success</CBadge>
               </div>
             </CCardHeader>
             <CCardBody>
@@ -91,11 +91,11 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Card with label
               <div className="card-header-actions">
-                <CBadge shape="pill" color="danger" className="float-right">42</CBadge>
+                <CBadge shape="pill" color="danger" className="float-end">42</CBadge>
               </div>
             </CCardHeader>
             <CCardBody>
@@ -380,7 +380,7 @@ const Cards = () => {
         </CCol>
         <CCol xs="12" sm="6" md="4">
           <CFade in={showCard}>
-            <CCard>
+            <CCard className="mb-4">
               <CCardHeader>
                 Card actions
                 <div className="card-header-actions">

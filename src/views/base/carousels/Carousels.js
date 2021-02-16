@@ -10,7 +10,7 @@ import {
   CCarouselInner,
   CCarouselItem,
   CCol,
-  CRow 
+  CRow
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
@@ -26,7 +26,7 @@ const Carousels = () => {
   return (
     <CRow>
       <CCol xs="12" xl="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Carousel with controls
             <DocsLink name="CCarousel"/>
@@ -51,7 +51,7 @@ const Carousels = () => {
         </CCard>
       </CCol>
       <CCol xs="12" xl="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Carousel with controls, indicators and caption
           </CCardHeader>
@@ -79,7 +79,7 @@ const Carousels = () => {
         </CCard>
       </CCol>
       <CCol xs="12" xl="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Carousel animation
           </CCardHeader>
@@ -107,7 +107,7 @@ const Carousels = () => {
         </CCard>
       </CCol>
       <CCol xs="12" xl="6">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Carousel animation with autoSlide
           </CCardHeader>

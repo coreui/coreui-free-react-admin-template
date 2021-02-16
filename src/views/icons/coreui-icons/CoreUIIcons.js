@@ -6,7 +6,7 @@ import { DocsLink } from 'src/reusable'
 
 const CoreUIIcons = () => {
   return (
-    <CCard>
+    <CCard className="mb-4">
       <CCardHeader>
         Free Icons / as CIcon{' '}
         <DocsLink href="https://github.com/coreui/coreui-icons" text="GitHub"/>

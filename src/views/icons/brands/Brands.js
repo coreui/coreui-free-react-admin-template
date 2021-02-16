@@ -19,7 +19,7 @@ export const getIconsView = iconset => {
 
 const CoreUIIcons = () => {
   return (
-    <CCard>
+    <CCard className="mb-4">
       <CCardHeader>
         Brand Icons
         <DocsLink href="https://github.com/coreui/coreui-icons" text="GitHub"/>

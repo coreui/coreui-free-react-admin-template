@@ -13,8 +13,7 @@ const TheHeaderDropdownMssg = () => {
   const itemsCount = 4
   return (
     <CDropdown
-      inNav
-      className="c-header-nav-item mx-2"
+      variant="nav-item"
       direction="down"
     >
       <CDropdownToggle className="c-header-nav-link" caret={false}>
@@ -30,7 +29,7 @@ const TheHeaderDropdownMssg = () => {
         </CDropdownItem>
         <CDropdownItem href="#">
           <div className="message">
-            <div className="pt-3 mr-3 float-left">
+            <div className="pt-3 me-3 float-start">
               <div className="c-avatar">
                 <CImg
                   src={'avatars/7.jpg'}
@@ -42,7 +41,7 @@ const TheHeaderDropdownMssg = () => {
             </div>
             <div>
               <small className="text-muted">John Doe</small>
-              <small className="text-muted float-right mt-1">Just now</small>
+              <small className="text-muted float-end mt-1">Just now</small>
             </div>
             <div className="text-truncate font-weight-bold">
               <span className="fa fa-exclamation text-danger"></span> Important message
@@ -55,7 +54,7 @@ const TheHeaderDropdownMssg = () => {
 
         <CDropdownItem href="#">
           <div className="message">
-            <div className="pt-3 mr-3 float-left">
+            <div className="pt-3 me-3 float-start">
               <div className="c-avatar">
                 <CImg
                   src={'avatars/6.jpg'}
@@ -67,7 +66,7 @@ const TheHeaderDropdownMssg = () => {
             </div>
             <div>
               <small className="text-muted">Jane Dovve</small>
-              <small className="text-muted float-right mt-1">5 minutes ago</small>
+              <small className="text-muted float-end mt-1">5 minutes ago</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
             <div className="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
@@ -77,7 +76,7 @@ const TheHeaderDropdownMssg = () => {
 
         <CDropdownItem href="#">
           <div className="message">
-            <div className="pt-3 mr-3 float-left">
+            <div className="pt-3 me-3 float-start">
               <div className="c-avatar">
                 <CImg
                   src={'avatars/5.jpg'}
@@ -89,7 +88,7 @@ const TheHeaderDropdownMssg = () => {
             </div>
             <div>
               <small className="text-muted">Janet Doe</small>
-              <small className="text-muted float-right mt-1">1:52 PM</small>
+              <small className="text-muted float-end mt-1">1:52 PM</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
             <div className="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
@@ -99,7 +98,7 @@ const TheHeaderDropdownMssg = () => {
 
         <CDropdownItem href="#">
           <div className="message">
-            <div className="pt-3 mr-3 float-left">
+            <div className="pt-3 me-3 float-start">
               <div className="c-avatar">
                 <CImg
                   src={'avatars/4.jpg'}
@@ -111,7 +110,7 @@ const TheHeaderDropdownMssg = () => {
             </div>
             <div>
               <small className="text-muted">Joe Doe</small>
-              <small className="text-muted float-right mt-1">4:03 AM</small>
+              <small className="text-muted float-end mt-1">4:03 AM</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
             <div className="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...

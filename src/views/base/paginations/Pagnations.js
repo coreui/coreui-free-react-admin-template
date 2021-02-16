@@ -13,7 +13,7 @@ const Paginations = () => {
 
   return (
     <>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Pagination
           <DocsLink name="CPagination"/>
@@ -50,7 +50,7 @@ const Paginations = () => {
           <div>currentPage: {currentPage}</div>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           <strong> Pagination </strong>
           <small>alignment</small>

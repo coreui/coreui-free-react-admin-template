@@ -51,7 +51,7 @@ const ThemeColor = ({className, children}) => {
 const Colors = () => {
   return (
     <>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Theme colors
           <DocsLink href="https://coreui.io/docs/utilities/colors/"/>
@@ -85,7 +85,7 @@ const Colors = () => {
           </CRow>
         </CCardBody>
       </CCard>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Grays
         </CCardHeader>

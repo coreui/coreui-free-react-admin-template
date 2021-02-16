@@ -19,7 +19,7 @@ const Charts = () => {
 
   return (
     <CCardGroup columns className = "cols-2" >
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Bar Chart
           <DocsLink href="http://www.chartjs.org"/>
@@ -43,7 +43,7 @@ const Charts = () => {
         </CCardBody>
       </CCard>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Doughnut Chart
         </CCardHeader>
@@ -70,7 +70,7 @@ const Charts = () => {
         </CCardBody>
       </CCard>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Line Chart
         </CCardHeader>
@@ -98,7 +98,7 @@ const Charts = () => {
         </CCardBody>
       </CCard>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Pie Chart
         </CCardHeader>
@@ -125,7 +125,7 @@ const Charts = () => {
         </CCardBody>
       </CCard>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Polar Area Chart
         </CCardHeader>
@@ -165,7 +165,7 @@ const Charts = () => {
         </CCardBody>
       </CCard>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Radar Chart
         </CCardHeader>

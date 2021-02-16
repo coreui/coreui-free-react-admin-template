@@ -9,11 +9,11 @@ import {
 const TheLayout = () => {
 
   return (
-    <div className="c-app c-default-layout">
+    <div className="d-flex">
       <TheSidebar/>
-      <div className="c-wrapper">
+      <div className="wrapper">
         <TheHeader/>
-        <div className="c-body">
+        <div className="body">
           <TheContent/>
         </div>
         <TheFooter/>

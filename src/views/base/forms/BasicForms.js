@@ -42,7 +42,7 @@ const BasicForms = () => {
     <>
       <CRow>
         <CCol xs="12" sm="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Credit Card
               <small> Form</small>
@@ -113,7 +113,7 @@ const BasicForms = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Company
               <small> Form</small>
@@ -155,7 +155,7 @@ const BasicForms = () => {
       </CRow>
       <CRow>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Basic Form
               <small> Elements</small>
@@ -218,11 +218,11 @@ const BasicForms = () => {
                     <CLabel htmlFor="textarea-input">Textarea</CLabel>
                   </CCol>
                   <CCol xs="12" md="9">
-                    <CTextarea 
-                      name="textarea-input" 
-                      id="textarea-input" 
+                    <CTextarea
+                      name="textarea-input"
+                      id="textarea-input"
                       rows="9"
-                      placeholder="Content..." 
+                      placeholder="Content..."
                     />
                   </CCol>
                 </CFormGroup>
@@ -272,11 +272,11 @@ const BasicForms = () => {
                     <CLabel htmlFor="disabledSelect">Disabled Select</CLabel>
                   </CCol>
                   <CCol xs="12" md="9">
-                    <CSelect 
-                      custom 
-                      name="disabledSelect" 
-                      id="disabledSelect" 
-                      disabled 
+                    <CSelect
+                      custom
+                      name="disabledSelect"
+                      id="disabledSelect"
+                      disabled
                       autoComplete="name"
                     >
                       <option value="0">Please select</option>
@@ -292,37 +292,37 @@ const BasicForms = () => {
                   </CCol>
                   <CCol sm="9">
                     <CSwitch
-                      className="mr-1"
+                      className="me-1"
                       color="primary"
                       defaultChecked
                     />
                     <CSwitch
-                      className="mr-1"
+                      className="me-1"
                       color="success"
                       defaultChecked
                       variant="outline"
                     />
                     <CSwitch
-                      className="mr-1"
+                      className="me-1"
                       color="warning"
                       defaultChecked
                       variant="opposite"
                     />
                     <CSwitch
-                      className="mr-1"
+                      className="me-1"
                       color="danger"
                       defaultChecked
                       shape="pill"
                     />
                     <CSwitch
-                      className="mr-1"
+                      className="me-1"
                       color="info"
                       defaultChecked
                       shape="pill"
                       variant="outline"
                     />
                     <CSwitch
-                      className="mr-1"
+                      className="me-1"
                       color="dark"
                       defaultChecked
                       shape="pill"
@@ -372,10 +372,10 @@ const BasicForms = () => {
                   <CCol md="3"><CLabel>Checkboxes</CLabel></CCol>
                   <CCol md="9">
                     <CFormGroup variant="checkbox" className="checkbox">
-                      <CInputCheckbox 
-                        id="checkbox1" 
-                        name="checkbox1" 
-                        value="option1" 
+                      <CInputCheckbox
+                        id="checkbox1"
+                        name="checkbox1"
+                        value="option1"
                       />
                       <CLabel variant="checkbox" className="form-check-label" htmlFor="checkbox1">Option 1</CLabel>
                     </CFormGroup>
@@ -395,11 +395,11 @@ const BasicForms = () => {
                   </CCol>
                   <CCol md="9">
                     <CFormGroup variant="custom-checkbox" inline>
-                      <CInputCheckbox 
-                        custom 
-                        id="inline-checkbox1" 
-                        name="inline-checkbox1" 
-                        value="option1" 
+                      <CInputCheckbox
+                        custom
+                        id="inline-checkbox1"
+                        name="inline-checkbox1"
+                        value="option1"
                       />
                       <CLabel variant="custom-checkbox" htmlFor="inline-checkbox1">One</CLabel>
                     </CFormGroup>
@@ -424,9 +424,9 @@ const BasicForms = () => {
                     <CLabel>Multiple File input</CLabel>
                   </CCol>
                   <CCol xs="12" md="9">
-                    <CInputFile 
-                      id="file-multiple-input" 
-                      name="file-multiple-input" 
+                    <CInputFile
+                      id="file-multiple-input"
+                      name="file-multiple-input"
                       multiple
                       custom
                     />
@@ -451,19 +451,19 @@ const BasicForms = () => {
               <CButton type="reset" size="sm" color="danger"><CIcon name="cil-ban" /> Reset</CButton>
             </CCardFooter>
           </CCard>
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Inline
               <small> Form</small>
             </CCardHeader>
             <CCardBody>
               <CForm action="" method="post" inline>
-                <CFormGroup className="pr-1">
-                  <CLabel htmlFor="exampleInputName2" className="pr-1">Name</CLabel>
+                <CFormGroup className="pe-1">
+                  <CLabel htmlFor="exampleInputName2" className="pe-1">Name</CLabel>
                   <CInput id="exampleInputName2" placeholder="Jane Doe" required />
                 </CFormGroup>
-                <CFormGroup className="pr-1">
-                  <CLabel htmlFor="exampleInputEmail2" className="pr-1">Email</CLabel>
+                <CFormGroup className="pe-1">
+                  <CLabel htmlFor="exampleInputEmail2" className="pe-1">Email</CLabel>
                   <CInput type="email" id="exampleInputEmail2" placeholder="jane.doe@example.com" required />
                 </CFormGroup>
               </CForm>
@@ -475,7 +475,7 @@ const BasicForms = () => {
           </CCard>
         </CCol>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Horizontal
               <small> Form</small>
@@ -506,7 +506,7 @@ const BasicForms = () => {
               <CButton type="submit" size="sm" color="primary"><CIcon name="cil-scrubber" /> Submit</CButton> <CButton type="reset" size="sm" color="danger"><CIcon name="cil-ban" /> Reset</CButton>
             </CCardFooter>
           </CCard>
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Normal
               <small> Form</small>
@@ -529,7 +529,7 @@ const BasicForms = () => {
               <CButton type="submit" size="sm" color="primary"><CIcon name="cil-scrubber" /> Submit</CButton> <CButton type="reset" size="sm" color="danger"><CIcon name="cil-ban" /> Reset</CButton>
             </CCardFooter>
           </CCard>
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Input
               <small> Grid</small>
@@ -592,7 +592,7 @@ const BasicForms = () => {
               <CButton type="submit" size="sm" color="primary"><CIcon name="cil-user" /> Login</CButton> <CButton type="reset" size="sm" color="danger"><CIcon name="cil-ban" /> Reset</CButton>
             </CCardFooter>
           </CCard>
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Input
               <small> Sizes</small>
@@ -628,7 +628,7 @@ const BasicForms = () => {
       </CRow>
       <CRow>
         <CCol xs="12" sm="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Form
               <small> validation feedback</small>
@@ -648,7 +648,7 @@ const BasicForms = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Validation feedback Form
             </CCardHeader>
@@ -674,7 +674,7 @@ const BasicForms = () => {
       </CRow>
       <CRow>
         <CCol xs="12" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Icon/Text Groups
             </CCardHeader>
@@ -728,7 +728,7 @@ const BasicForms = () => {
           </CCard>
         </CCol>
         <CCol xs="12" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Button Groups
             </CCardHeader>
@@ -776,7 +776,7 @@ const BasicForms = () => {
           </CCard>
         </CCol>
         <CCol xs="12" md="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Dropdowns Groups
             </CCardHeader>
@@ -860,7 +860,7 @@ const BasicForms = () => {
       </CRow>
       <CRow>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Use the grid for big devices!
               <small> <code>.col-lg-*</code> <code>.col-md-*</code> <code>.col-sm-*</code></small>
@@ -919,7 +919,7 @@ const BasicForms = () => {
           </CCard>
         </CCol>
         <CCol xs="12" md="6">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Input Grid for small devices!
               <small> <code>.col-*</code></small>
@@ -980,7 +980,7 @@ const BasicForms = () => {
       </CRow>
       <CRow>
         <CCol xs="12" sm="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Example Form
             </CCardHeader>
@@ -1027,7 +1027,7 @@ const BasicForms = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Example Form
             </CCardHeader>
@@ -1065,7 +1065,7 @@ const BasicForms = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="4">
-          <CCard>
+          <CCard className="mb-4">
             <CCardHeader>
               Example Form
             </CCardHeader>
@@ -1106,23 +1106,23 @@ const BasicForms = () => {
       <CRow>
         <CCol xs="12">
           <CFade timeout={300} in={showElements} unmountOnExit={true}>
-            <CCard>
+            <CCard className="mb-4">
               <CCardHeader>
                 Form Elements
                 <div className="card-header-actions">
                   <CButton color="link" className="card-header-action btn-setting">
                     <CIcon name="cil-settings" />
                   </CButton>
-                  <CButton 
-                    color="link" 
-                    className="card-header-action btn-minimize" 
+                  <CButton
+                    color="link"
+                    className="card-header-action btn-minimize"
                     onClick={() => setCollapsed(!collapsed)}
                   >
                     <CIcon name={ collapsed ? "cil-arrow-top" : "cil-arrow-bottom"} />
                   </CButton>
-                  <CButton 
-                    color="link" 
-                    className="card-header-action btn-close" 
+                  <CButton
+                    color="link"
+                    className="card-header-action btn-close"
                     onClick={() => setShowElements(false)}
                   >
                     <CIcon name="cil-x" />

@@ -24,7 +24,7 @@ const ButtonDropdowns = () => {
   return (
     <CRow>
       <CCol xs="12">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Dropdowns
             <DocsLink name="CDropdown"/>
@@ -276,7 +276,7 @@ const ButtonDropdowns = () => {
 
           </CCardBody>
         </CCard>
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Menus
           </CCardHeader>

@@ -2,15 +2,18 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CCreateElement,
-  CSidebar,
-  CSidebarBrand,
-  CSidebarNav,
   CSidebarNavDivider,
   CSidebarNavTitle,
   CSidebarMinimizer,
   CSidebarNavDropdown,
   CSidebarNavItem,
 } from '@coreui/react'
+
+import {
+  CSidebar,
+  CSidebarBrand,
+  CSidebarNav,
+} from '@coreui/react-ts'
 
 import CIcon from '@coreui/icons-react'
 

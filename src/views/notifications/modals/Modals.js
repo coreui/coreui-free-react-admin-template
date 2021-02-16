@@ -28,7 +28,7 @@ const Modals = () => {
   return (
     <CRow>
       <CCol xs>
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Bootstrap Modals
             <DocsLink name="CModal"/>
@@ -36,12 +36,12 @@ const Modals = () => {
           <CCardBody>
             <CButton
               onClick={() => setModal(!modal)}
-              className="mr-1"
+              className="me-1"
             >Launch demo modal</CButton>
-            <CButton onClick={() => setLarge(!large)} className="mr-1">
+            <CButton onClick={() => setLarge(!large)} className="me-1">
               Launch large modal
             </CButton>
-            <CButton onClick={() => setSmall(!large)} className="mr-1">
+            <CButton onClick={() => setSmall(!large)} className="me-1">
               Launch small modal
             </CButton>
             <CModal
@@ -112,13 +112,13 @@ const Modals = () => {
 
             <hr />
 
-            <CButton color="primary" onClick={() => setPrimary(!primary)} className="mr-1">
+            <CButton color="primary" onClick={() => setPrimary(!primary)} className="me-1">
               Primary modal
             </CButton>
-            <CButton color="success" onClick={() => setSuccess(!success)} className="mr-1">Success modal</CButton>
-            <CButton color="warning" onClick={() => setWarning(!warning)} className="mr-1">Warning modal</CButton>
-            <CButton color="danger" onClick={() => setDanger(!danger)} className="mr-1">Danger modal</CButton>
-            <CButton color="info" onClick={() => setInfo(!info)} className="mr-1">Info modal</CButton>
+            <CButton color="success" onClick={() => setSuccess(!success)} className="me-1">Success modal</CButton>
+            <CButton color="warning" onClick={() => setWarning(!warning)} className="me-1">Warning modal</CButton>
+            <CButton color="danger" onClick={() => setDanger(!danger)} className="me-1">Danger modal</CButton>
+            <CButton color="info" onClick={() => setInfo(!info)} className="me-1">Info modal</CButton>
 
             <CModal
               visible={primary}

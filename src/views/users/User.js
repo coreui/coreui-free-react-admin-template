@@ -6,13 +6,13 @@ import usersData from './UsersData'
 
 const User = ({match}) => {
   const user = usersData.find( user => user.id.toString() === match.params.id)
-  const userDetails = user ? Object.entries(user) : 
+  const userDetails = user ? Object.entries(user) :
     [['id', (<span><CIcon className="text-muted" name="cui-icon-ban" /> Not found</span>)]]
 
   return (
     <CRow>
       <CCol lg={6}>
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             User id: {match.params.id}
           </CCardHeader>

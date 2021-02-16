@@ -40,7 +40,7 @@ const Users = () => {
   return (
     <CRow>
       <CCol xl={6}>
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Users
             <small className="text-muted"> example</small>
@@ -73,7 +73,7 @@ const Users = () => {
             activePage={page}
             onActivePageChange={pageChange}
             pages={5}
-            doubleArrows={false} 
+            doubleArrows={false}
             align="center"
           />
           </CCardBody>

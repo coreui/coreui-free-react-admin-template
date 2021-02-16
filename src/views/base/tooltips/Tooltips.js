@@ -23,7 +23,7 @@ const Tooltips = () => {
 
   return (
     <>
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Tooltips
           <DocsLink name="CTooltip"/>
@@ -66,7 +66,7 @@ const Tooltips = () => {
 
       <hr/>
 
-      <CCard>
+      <CCard className="mb-4">
         <CCardHeader>
           Tooltips
           <small> placement</small>

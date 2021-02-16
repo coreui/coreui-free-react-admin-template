@@ -23,7 +23,7 @@ const Tabs = () => {
   return (
     <CRow>
       <CCol xs="12" md="6" className="mb-4">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>
             Index indentifiers
             <DocsLink name="CTabs" />
@@ -49,7 +49,7 @@ const Tabs = () => {
         </CCard>
       </CCol>
       {/* <CCol xs="12" md="6" className="mb-4">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>Id indentifiers</CCardHeader>
           <CCardBody>
             <CTabs activeTab="home">
@@ -75,7 +75,7 @@ const Tabs = () => {
       </CCol>
 
       <CCol xs="12" md="6" className="mb-4">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>No fade animation tabs</CCardHeader>
           <CCardBody>
             <CTabs>
@@ -107,7 +107,7 @@ const Tabs = () => {
       </CCol>
 
       <CCol xs="12" md="6" className="mb-4">
-        <CCard>
+        <CCard className="mb-4">
           <CCardHeader>Controlled tabs</CCardHeader>
           <CCardBody>
             <CTabs

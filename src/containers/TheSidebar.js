@@ -1,18 +1,19 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
-  CCreateElement,
-  CSidebarNavDivider,
-  CSidebarNavTitle,
+  // CCreateElement,
+  // CSidebarNavDivider,
+  // CSidebarNavTitle,
   CSidebarMinimizer,
-  CSidebarNavDropdown,
-  CSidebarNavItem,
+  // CSidebarNavDropdown,
+  // CSidebarNavItem,
 } from '@coreui/react'
 
 import {
   CSidebar,
   CSidebarBrand,
   CSidebarNav,
+  CSidebarNavGenerator,
 } from '@coreui/react-ts'
 
 import CIcon from '@coreui/icons-react'
@@ -43,14 +44,14 @@ const TheSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
 
-        <CCreateElement
+        <CSidebarNavGenerator
           items={navigation}
-          components={{
-            CSidebarNavDivider,
-            CSidebarNavDropdown,
-            CSidebarNavItem,
-            CSidebarNavTitle
-          }}
+          // components={{
+          //   CSidebarNavDivider,
+          //   CSidebarNavDropdown,
+          //   CSidebarNavItem,
+          //   CSidebarNavTitle
+          // }}
         />
       </CSidebarNav>
       <CSidebarMinimizer className="c-d-md-down-none"/>

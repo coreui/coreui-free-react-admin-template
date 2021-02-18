@@ -49,9 +49,7 @@ const Cards = () => {
           <CCard className="mb-4">
             <CCardHeader>
               Card with icon
-              <div className="card-header-actions">
-                <CIcon name="cil-check" className="float-end"/>
-              </div>
+              <CIcon name="cil-check" className="float-end"/>
             </CCardHeader>
             <CCardBody>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
@@ -64,9 +62,7 @@ const Cards = () => {
           <CCard className="mb-4">
             <CCardHeader>
               Card with switch
-              <div className="card-header-actions">
-                <CSwitch className={'float-end mb-0'} color={'info'} defaultChecked size={'sm'} tabIndex="0" />
-              </div>
+              <CSwitch className={'float-end mb-0'} color={'info'} defaultChecked size={'sm'} tabIndex="0" />
             </CCardHeader>
             <CCardBody>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
@@ -79,9 +75,7 @@ const Cards = () => {
           <CCard className="mb-4">
             <CCardHeader>
               Card with label
-              <div className="card-header-actions">
-                <CBadge color="success" className="float-end">Success</CBadge>
-              </div>
+              <CBadge color="success" className="float-end">Success</CBadge>
             </CCardHeader>
             <CCardBody>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
@@ -94,9 +88,7 @@ const Cards = () => {
           <CCard className="mb-4">
             <CCardHeader>
               Card with label
-              <div className="card-header-actions">
-                <CBadge shape="pill" color="danger" className="float-end">42</CBadge>
-              </div>
+              <CBadge shape="pill" color="danger" className="float-end">42</CBadge>
             </CCardHeader>
             <CCardBody>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
@@ -108,7 +100,7 @@ const Cards = () => {
       </CRow>
       <CRow>
         <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="primary">
+          <CCard className="mb-4 border-primary">
             <CCardHeader>
               Card outline primary
             </CCardHeader>
@@ -120,7 +112,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="secondary">
+          <CCard className="mb-4 border-secondary">
             <CCardHeader>
               Card outline secondary
             </CCardHeader>
@@ -132,7 +124,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="success">
+          <CCard className="mb-4 border-success">
             <CCardHeader>
               Card outline success
             </CCardHeader>
@@ -144,7 +136,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="info">
+          <CCard className="mb-4 border-info">
             <CCardHeader>
               Card outline info
             </CCardHeader>
@@ -156,7 +148,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="warning">
+          <CCard className="mb-4 border-warning">
             <CCardHeader>
               Card outline warning
             </CCardHeader>
@@ -168,7 +160,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard borderColor="danger">
+          <CCard className="mb-4 border-danger">
             <CCardHeader>
               Card outline danger
             </CCardHeader>
@@ -183,7 +175,7 @@ const Cards = () => {
 
       <CRow>
         <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="primary">
+          <CCard className="border-top-primary border-top-3 mb-4">
             <CCardHeader>
               Card with accent
             </CCardHeader>
@@ -195,7 +187,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="secondary">
+          <CCard className="border-top-secondary border-top-3 mb-4">
             <CCardHeader>
               Card with accent
             </CCardHeader>
@@ -207,7 +199,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="success">
+          <CCard className="border-top-success border-top-3 mb-4">
             <CCardHeader>
               Card with accent
             </CCardHeader>
@@ -219,7 +211,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="info">
+          <CCard className="border-top-info border-top-3 mb-4">
             <CCardHeader>
               Card with accent
             </CCardHeader>
@@ -231,7 +223,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="warning">
+          <CCard className="border-top-warning border-top-3 mb-4">
             <CCardHeader>
               Card with accent
             </CCardHeader>
@@ -243,7 +235,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard accentColor="danger">
+          <CCard className="border-top-danger border-top-3 mb-4">
             <CCardHeader>
               Card with accent
             </CCardHeader>
@@ -257,7 +249,7 @@ const Cards = () => {
       </CRow>
       <CRow>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="primary" className="text-white text-center">
+          <CCard color="primary" className="text-white text-center mb-4">
             <CCardBody>
               <blockquote className="card-bodyquote">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -267,7 +259,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="success" className="text-white text-center">
+          <CCard color="success" className="text-white text-center mb-4">
             <CCardBody>
               <blockquote className="card-bodyquote">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -277,7 +269,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="info" className="text-white text-center">
+          <CCard color="info" className="text-white text-center mb-4">
             <CCardBody>
               <blockquote className="card-bodyquote">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -287,7 +279,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="warning" className="text-white text-center">
+          <CCard color="warning" className="text-white text-center mb-4">
             <CCardBody>
               <blockquote className="card-bodyquote">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -297,7 +289,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="danger" className="text-white text-center">
+          <CCard color="danger" className="text-white text-center mb-4">
             <CCardBody>
               <blockquote className="card-bodyquote">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -307,7 +299,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="primary" className="text-white text-center">
+          <CCard color="primary" className="text-white text-center mb-4">
             <CCardBody>
               <blockquote className="card-bodyquote">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -319,7 +311,7 @@ const Cards = () => {
       </CRow>
       <CRow>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="primary" className="text-white">
+          <CCard color="primary" className="text-white mb-4">
             <CCardHeader>
               Card title
             </CCardHeader>
@@ -331,7 +323,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="success" className="text-white">
+          <CCard color="success" className="text-white mb-4">
             <CCardHeader>
               Card title
             </CCardHeader>
@@ -343,7 +335,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="info" className="text-white">
+          <CCard color="info" className="text-white mb-4">
             <CCardHeader>
               Card title
             </CCardHeader>
@@ -355,7 +347,7 @@ const Cards = () => {
           </CCard>
         </CCol>
         <CCol xs="12" sm="6" md="4">
-          <CCard color="warning" className="text-white">
+          <CCard color="warning" className="text-white mb-4">
             <CCardHeader>
               Card title
             </CCardHeader>
@@ -365,45 +357,6 @@ const Cards = () => {
               ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
             </CCardBody>
           </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CCard color="gradient-secondary">
-            <CCardHeader>
-              Card title - gradient
-            </CCardHeader>
-            <CCardBody>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-              ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" sm="6" md="4">
-          <CFade in={showCard}>
-            <CCard className="mb-4">
-              <CCardHeader>
-                Card actions
-                <div className="card-header-actions">
-                  <CLink className="card-header-action">
-                    <CIcon name="cil-settings" />
-                  </CLink>
-                  <CLink className="card-header-action" onClick={() => setCollapsed(!collapsed)}>
-                    <CIcon name={collapsed ? 'cil-chevron-bottom':'cil-chevron-top'} />
-                  </CLink>
-                  <CLink className="card-header-action" onClick={() => setShowCard(false)}>
-                    <CIcon name="cil-x-circle" />
-                  </CLink>
-                </div>
-              </CCardHeader>
-              <CCollapse show={collapsed}>
-                <CCardBody>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                  laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                  ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                </CCardBody>
-              </CCollapse>
-            </CCard>
-          </CFade>
         </CCol>
       </CRow>
     </>

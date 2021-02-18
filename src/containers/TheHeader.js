@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { CToggler, CBreadcrumbRouter, CLink } from "@coreui/react";
+import { CToggler, CBreadcrumbRouter } from "@coreui/react";
 import {
   CContainer,
   CHeader,
@@ -91,7 +91,7 @@ const TheHeader = () => {
           className="border-0 c-subheader-nav m-0 px-0 px-md-3"
           routes={routes}
         />
-        <CHeaderNav>
+        {/* <CHeaderNav>
           <CNavItem>
             <CNavLink href="#">
               <CIcon name="cil-speech" alt="Settings" />
@@ -107,7 +107,7 @@ const TheHeader = () => {
               <CIcon name="cil-settings" alt="Settings" />&nbsp;Settings
             </CNavLink>
           </CNavItem>
-        </CHeaderNav>
+        </CHeaderNav> */}
       </CContainer>
     </CHeader>
   );

@@ -11,13 +11,13 @@ const DocsLink = props => {
   const href = name ? `https://coreui.io/react/docs/components/${name}` : props.href
 
   return (
-    <div className="card-header-actions">
-      <CLink 
+    <div className="float-end">
+      <CLink
         {...rest}
         href={href}
-        rel="noreferrer noopener" 
-        target="_blank" 
-        className="card-header-action"  
+        rel="noreferrer noopener"
+        target="_blank"
+        className="card-header-action"
       >
         <small className="text-muted">{ text || 'docs' }</small>
       </CLink>

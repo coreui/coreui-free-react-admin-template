@@ -13,7 +13,7 @@ import {
   CSidebar,
   CSidebarBrand,
   CSidebarNav,
-  CSidebarNavGenerator,
+  CCreateNavItem,
 } from '@coreui/react-ts'
 
 import CIcon from '@coreui/icons-react'
@@ -27,8 +27,9 @@ const TheSidebar = () => {
 
   return (
     <CSidebar
-      show={show}
-      onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
+      position="sticky"
+      selfHiding="md"
+      // onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
         <CIcon
@@ -44,7 +45,7 @@ const TheSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
 
-        <CSidebarNavGenerator
+        <CCreateNavItem
           items={navigation}
           // components={{
           //   CSidebarNavDivider,

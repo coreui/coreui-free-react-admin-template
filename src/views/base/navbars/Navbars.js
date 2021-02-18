@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
 import {
+  CToggler,
+  CForm,
+  CInput,
+  CImg
+} from '@coreui/react'
+import {
   CCard,
   CCardBody,
   CCardHeader,
@@ -11,14 +17,10 @@ import {
   CNavbarNav,
   CNavbarBrand,
   CNavbarText,
-  CToggler,
   CNavLink,
   CDropdown,
-  CForm,
-  CInput,
   CButton,
-  CImg
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const CNavbars = () => {

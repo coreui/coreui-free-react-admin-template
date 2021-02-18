@@ -6,7 +6,7 @@ const _nav =  [
   {
     _component: 'CNavItem',
     as: NavLink,
-    anchorText: 'Dashboard',
+    anchor: 'Dashboard',
     to: '/dashboard',
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
     badge: {
@@ -14,217 +14,245 @@ const _nav =  [
       text: 'NEW',
     }
   },
-  // {
-  //   _component: 'CSidebarNavTitle',
-  //   items: ['Theme']
-  // },
+  {
+    _component: 'CNavTitle',
+    anchor: 'Theme'
+  },
   {
     _component: 'CNavItem',
     as: NavLink,
-    anchorText: 'Colors',
+    anchor: 'Colors',
     to: '/theme/colors',
     icon: 'cil-drop',
   },
   {
     _component: 'CNavItem',
     as: NavLink,
-    anchorText: 'Typography',
+    anchor: 'Typography',
     to: '/theme/typography',
     icon: 'cil-pencil',
   },
-  // {
-  //   _component: 'CSidebarNavTitle',
-  //   items: ['Components']
-  // },
+  {
+    _component: 'CNavTitle',
+    anchor: 'Components'
+  },
   {
     _component: 'CNavGroup',
-    anchorText: 'Base',
-    route: '/base',
+    as: NavLink,
+    anchor: 'Base',
+    to: '/to',
     icon: 'cil-puzzle',
     items: [
       {
         _component: 'CNavItem',
         as: NavLink,
-        anchorText: 'Breadcrumb',
+        anchor: 'Breadcrumb',
         to: '/base/breadcrumbs',
       },
       {
         _component: 'CNavItem',
         as: NavLink,
-        anchorText: 'Cards',
+        anchor: 'Cards',
         to: '/base/cards',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Carousel',
+        as: NavLink,
+        anchor: 'Carousel',
         to: '/base/carousels',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Collapse',
+        as: NavLink,
+        anchor: 'Collapse',
         to: '/base/collapses',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Forms',
+        as: NavLink,
+        anchor: 'Forms',
         to: '/base/forms',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Jumbotron',
+        as: NavLink,
+        anchor: 'Jumbotron',
         to: '/base/jumbotrons',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'List group',
+        as: NavLink,
+        anchor: 'List group',
         to: '/base/list-groups',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Navs',
+        as: NavLink,
+        anchor: 'Navs',
         to: '/base/navs',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Navbars',
+        as: NavLink,
+        anchor: 'Navbars',
         to: '/base/navbars',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Pagination',
+        as: NavLink,
+        anchor: 'Pagination',
         to: '/base/paginations',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Popovers',
+        as: NavLink,
+        anchor: 'Popovers',
         to: '/base/popovers',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Progress',
+        as: NavLink,
+        anchor: 'Progress',
         to: '/base/progress-bar',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Switches',
+        as: NavLink,
+        anchor: 'Switches',
         to: '/base/switches',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Tables',
+        as: NavLink,
+        anchor: 'Tables',
         to: '/base/tables',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Tabs',
+        as: NavLink,
+        anchor: 'Tabs',
         to: '/base/tabs',
       },
       {
         _component: 'CNavItem',
-        anchorText: 'Tooltips',
+        as: NavLink,
+        anchor: 'Tooltips',
         to: '/base/tooltips',
       },
     ],
   },
-  // {
-  //   _component: 'CNavGroup',
-  //   anchorText: 'Buttons',
-  //   route: '/buttons',
-  //   icon: 'cil-cursor',
-  //   items: [
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'Buttons',
-  //       to: '/buttons/buttons',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'Brand buttons',
-  //       to: '/buttons/brand-buttons',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'Buttons groups',
-  //       to: '/buttons/button-groups',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'Dropdowns',
-  //       to: '/buttons/button-dropdowns',
-  //     }
-  //   ],
-  // },
-  // {
-  //   _component: 'CNavItem',
-  //   anchorText: 'Charts',
-  //   to: '/charts',
-  //   icon: 'cil-chart-pie'
-  // },
-  // {
-  //   _component: 'CNavGroup',
-  //   anchorText: 'Icons',
-  //   route: '/icons',
-  //   icon: 'cil-star',
-  //   items: [
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'CoreUI Free',
-  //       to: '/icons/coreui-icons',
-  //       badge: {
-  //         color: 'success',
-  //         text: 'NEW',
-  //       },
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'CoreUI Flags',
-  //       to: '/icons/flags',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'CoreUI Brands',
-  //       to: '/icons/brands',
-  //     },
-  //   ],
-  // },
-  // {
-  //   _component: 'CNavGroup',
-  //   anchorText: 'Notifications',
-  //   route: '/notifications',
-  //   icon: 'cil-bell',
-  //   items: [
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'Alerts',
-  //       to: '/notifications/alerts',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'Badges',
-  //       to: '/notifications/badges',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'Modal',
-  //       to: '/notifications/modals',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchorText: 'Toaster',
-  //       to: '/notifications/toaster'
-  //     }
-  //   ]
-  // },
-  // {
-  //   _component: 'CNavItem',
-  //   anchorText: 'Widgets',
-  //   to: '/widgets',
-  //   icon: 'cil-calculator',
-  //   badge: {
-  //     color: 'info',
-  //     text: 'NEW',
-  //   },
-  // },
+  {
+    _component: 'CNavGroup',
+    anchor: 'Buttons',
+    // route: '/buttons',
+    icon: 'cil-cursor',
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Buttons',
+        to: '/buttons/buttons',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Brand buttons',
+        to: '/buttons/brand-buttons',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Buttons groups',
+        to: '/buttons/button-groups',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Dropdowns',
+        to: '/buttons/button-dropdowns',
+      }
+    ],
+  },
+  {
+    _component: 'CNavItem',
+    as: NavLink,
+    anchor: 'Charts',
+    to: '/charts',
+    icon: 'cil-chart-pie'
+  },
+  {
+    _component: 'CNavGroup',
+    anchor: 'Icons',
+    // route: '/icons',
+    icon: 'cil-star',
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'CoreUI Free',
+        to: '/icons/coreui-icons',
+        badge: {
+          color: 'success',
+          text: 'NEW',
+        },
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'CoreUI Flags',
+        to: '/icons/flags',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'CoreUI Brands',
+        to: '/icons/brands',
+      },
+    ],
+  },
+  {
+    _component: 'CNavGroup',
+    anchor: 'Notifications',
+    // route: '/notifications',
+    icon: 'cil-bell',
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Alerts',
+        to: '/notifications/alerts',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Badges',
+        to: '/notifications/badges',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Modal',
+        to: '/notifications/modals',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Toaster',
+        to: '/notifications/toaster'
+      }
+    ]
+  },
+  {
+    _component: 'CNavItem',
+    as: NavLink,
+    anchor: 'Widgets',
+    to: '/widgets',
+    icon: 'cil-calculator',
+    badge: {
+      color: 'info',
+      text: 'NEW',
+    },
+  },
   // {
   //   _component: 'CSidebarNavDivider'
   // },
@@ -234,35 +262,35 @@ const _nav =  [
   // },
   // {
   //   _component: 'CNavGroup',
-  //   anchorText: 'Pages',
+  //   anchor: 'Pages',
   //   route: '/pages',
   //   icon: 'cil-star',
   //   items: [
   //     {
   //       _component: 'CNavItem',
-  //       anchorText: 'Login',
+  //       anchor: 'Login',
   //       to: '/login',
   //     },
   //     {
   //       _component: 'CNavItem',
-  //       anchorText: 'Register',
+  //       anchor: 'Register',
   //       to: '/register',
   //     },
   //     {
   //       _component: 'CNavItem',
-  //       anchorText: 'Error 404',
+  //       anchor: 'Error 404',
   //       to: '/404',
   //     },
   //     {
   //       _component: 'CNavItem',
-  //       anchorText: 'Error 500',
+  //       anchor: 'Error 500',
   //       to: '/500',
   //     },
   //   ],
   // },
   // {
   //   _component: 'CNavItem',
-  //   anchorText: 'Disabled',
+  //   anchor: 'Disabled',
   //   icon: 'cil-ban',
   //   badge: {
   //     color: 'secondary',
@@ -273,7 +301,7 @@ const _nav =  [
   // },
   // {
   //   _component: 'CSidebarNavDivider',
-  //   classanchorText: 'm-2'
+  //   classanchor: 'm-2'
   // },
   // {
   //   _component: 'CSidebarNavTitle',
@@ -281,37 +309,37 @@ const _nav =  [
   // },
   // {
   //   _component: 'CNavItem',
-  //   anchorText: 'Label danger',
+  //   anchor: 'Label danger',
   //   to: '',
   //   icon: {
-  //     anchorText: 'cil-star',
-  //     classanchorText: 'text-danger'
+  //     anchor: 'cil-star',
+  //     classanchor: 'text-danger'
   //   },
   //   label: true
   // },
   // {
   //   _component: 'CNavItem',
-  //   anchorText: 'Label info',
+  //   anchor: 'Label info',
   //   to: '',
   //   icon: {
-  //     anchorText: 'cil-star',
-  //     classanchorText: 'text-info'
+  //     anchor: 'cil-star',
+  //     classanchor: 'text-info'
   //   },
   //   label: true
   // },
   // {
   //   _component: 'CNavItem',
-  //   anchorText: 'Label warning',
+  //   anchor: 'Label warning',
   //   to: '',
   //   icon: {
-  //     anchorText: 'cil-star',
-  //     classanchorText: 'text-warning'
+  //     anchor: 'cil-star',
+  //     classanchor: 'text-warning'
   //   },
   //   label: true
   // },
   // {
   //   _component: 'CSidebarNavDivider',
-  //   classanchorText: 'm-2'
+  //   classanchor: 'm-2'
   // }
 ]
 

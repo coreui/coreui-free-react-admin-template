@@ -154,7 +154,7 @@ const Alerts = () => {
                 color="warning"
                 show={visible}
                 closeButton
-                onShowChange={setVisible}
+                visible={setVisible}
               >
                 I will be closed in {visible} seconds!
                 <CProgress

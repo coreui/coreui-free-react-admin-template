@@ -16,6 +16,16 @@
 - variant="pill" --> shape="rounded-pill"
 - variant="square" --> shape="rounded-0"
 
+## Forms
+
+- `CInput` => `CFormControl`
+- `CLabel` => `CFormLabel`
+- `CSelect` => `CFormSelect`
+
+- Deprecated component `CFormGroup`
+- Deprecated component `CInputGroupAppend`
+- Deprecated component `CInputGroupPrepend`
+
 ## Header
 
 - Deprecated pro `withSubheader`

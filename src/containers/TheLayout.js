@@ -9,7 +9,7 @@ import {
 const TheLayout = () => {
 
   return (
-    <div className="d-flex">
+    <div className="d-flex bg-light">
       <TheSidebar/>
       <div className="wrapper">
         <TheHeader/>

@@ -3,7 +3,6 @@ import {
   CFade,
   CValidFeedback,
   CInvalidFeedback,
-  CTextarea,
   CSwitch
 } from '@coreui/react'
 import {
@@ -18,27 +17,15 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  // CFade,
   CForm,
   CFormCheck,
   CFormControl,
   CFormLabel,
   CFormText,
   CFormSelect,
-  // CValidFeedback,
-  // CInvalidFeedback,
-  // CTextarea,
-  // CInput,
-  // CInputFile,
-  // CInputRadio,
   CInputGroup,
-  // CInputGroupAppend,
-  // CInputGroupPrepend,
   CInputGroupText,
-  // CLabel,
-  // CSelect,
   CRow,
-  // CSwitch
 } from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 import { DocsLink } from 'src/reusable'
@@ -227,7 +214,8 @@ const BasicForms = () => {
                     <CFormLabel htmlFor="textarea-input">Textarea</CFormLabel>
                   </CCol>
                   <CCol xs="12" md="9">
-                    <CTextarea
+                    <CFormControl
+                      component="textarea"
                       name="textarea-input"
                       id="textarea-input"
                       rows="9"
@@ -759,10 +747,10 @@ const BasicForms = () => {
                 <CRow className="mb-3">
                   <CCol md="12">
                     <CInputGroup className="mb-3">
-                      <CDropdown className="input-group-prepend">
-                          <CDropdownToggle caret color="primary">
-                            Dropdown
-                          </CDropdownToggle>
+                      <CDropdown>
+                        <CDropdownToggle caret color="primary">
+                          Dropdown
+                        </CDropdownToggle>
                         <CDropdownMenu>
                           <CDropdownItem>Action</CDropdownItem>
                           <CDropdownItem>Another Action</CDropdownItem>

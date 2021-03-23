@@ -13,11 +13,10 @@ import {
   CDropdownMenu,
   CDropdownToggle,
   CRow,
-  CFormGroup,
-  CLabel,
-  CInput,
-  CInputCheckbox
-} from '@coreui/react'
+  CFormLabel,
+  CFormControl,
+  CFormCheck
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const ButtonDropdowns = () => {
@@ -393,24 +392,23 @@ const ButtonDropdowns = () => {
               </CDropdownToggle>
               <CDropdownMenu>
                 <CForm className="px-4 py-3" >
-                  <CFormGroup>
-                    <CLabel htmlFor="exampleDropdownFormEmail1">Email address</CLabel>
-                    <CInput className="form-control" id="exampleDropdownFormEmail1" type="email" placeholder="email@example.com" autoComplete="email"/>
-                  </CFormGroup>
-                  <CFormGroup>
-                    <CLabel htmlFor="exampleDropdownFormPassword1">Password</CLabel>
-                    <CInput className="form-control" id="exampleDropdownFormPassword1" type="password" placeholder="Password" autoComplete="current-password"/>
-                  </CFormGroup>
-                  <CFormGroup variant="custom-checkbox" className="form-group">
-                    <CInputCheckbox custom id="exampleDropdownFormCheckbox1" />
-                    <CLabel variant="custom-checkbox" htmlFor="exampleDropdownFormCheckbox1">Remember me</CLabel>
-                  </CFormGroup>
-                  <CFormGroup className="mt-2">
+                  <div className="mb-3">
+                    <CFormLabel htmlFor="exampleDropdownFormEmail1">Email address</CFormLabel>
+                    <CFormControl id="exampleDropdownFormEmail1" type="email" placeholder="email@example.com" autoComplete="email"/>
+                  </div>
+                  <div className="mb-3">
+                    <CFormLabel htmlFor="exampleDropdownFormPassword1">Password</CFormLabel>
+                    <CFormControl id="exampleDropdownFormPassword1" type="password" placeholder="Password" autoComplete="current-password"/>
+                  </div>
+                  <div className="mb-3">
+                    <CFormCheck custom id="exampleDropdownFormCheckbox1" label="Remember me"/>
+                  </div>
+                  <div className="mb-3">
                     <CButton color="primary" type="submit">Sign in</CButton>
-                  </CFormGroup>
+                  </div>
                 </CForm>
                 <CDropdownDivider/>
-                <CDropdownItem to="/register" >Register</CDropdownItem>
+                <CDropdownItem href="#/pages/register" >Register</CDropdownItem>
                 <CDropdownItem>Forgot password?</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>

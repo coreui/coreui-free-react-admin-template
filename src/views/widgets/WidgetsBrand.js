@@ -12,11 +12,14 @@ const WidgetsBrand = ({withCharts})=>{
   <CRow>
     <CCol sm="6" lg="3">
       <CWidgetBrand
-        color="facebook"
+        className="mb-4"
         rightHeader="89k"
         rightFooter="friends"
         leftHeader="459"
         leftFooter="feeds"
+        style={{
+          "--cui-card-cap-bg": "#3b5998"
+        }}
       >
         <CIcon
           name="cib-facebook"
@@ -35,11 +38,14 @@ const WidgetsBrand = ({withCharts})=>{
 
     <CCol sm="6" lg="3">
       <CWidgetBrand
-        color="twitter"
+        className="mb-4"
         rightHeader="973k"
         rightFooter="followers"
         leftHeader="1.792"
         leftFooter="tweets"
+        style={{
+          "--cui-card-cap-bg": "#00aced"
+        }}
       >
         <CIcon
           name="cib-twitter"
@@ -58,11 +64,14 @@ const WidgetsBrand = ({withCharts})=>{
 
     <CCol sm="6" lg="3">
       <CWidgetBrand
-        color="linkedin"
+        className="mb-4"
         rightHeader="500+"
         rightFooter="contracts"
         leftHeader="292"
         leftFooter="feeds"
+        style={{
+          "--cui-card-cap-bg": "#4875b4"
+        }}
       >
         <CIcon
           name="cib-linkedin"
@@ -77,15 +86,16 @@ const WidgetsBrand = ({withCharts})=>{
           labels="months"
         />
       </CWidgetBrand>
-    </CCol> 
+    </CCol>
 
     <CCol sm="6" lg="3">
       <CWidgetBrand
+        className="mb-4"
         rightHeader="12"
         rightFooter="events"
         leftHeader="4"
         leftFooter="meetings"
-        color="gradient-warning"
+        color="warning"
       >
         <CIcon
           name="cil-calendar"
@@ -102,15 +112,18 @@ const WidgetsBrand = ({withCharts})=>{
       </CWidgetBrand>
     </CCol>
   </CRow> :
-  
+
   <CRow>
     <CCol sm="6" lg="3">
       <CWidgetBrand
-        color="facebook"
+        className="mb-4"
         rightHeader="89k"
         rightFooter="friends"
         leftHeader="459"
         leftFooter="feeds"
+        style={{
+          "--cui-card-cap-bg": "#3b5998"
+        }}
       >
         <CIcon
           name="cib-facebook"
@@ -122,11 +135,14 @@ const WidgetsBrand = ({withCharts})=>{
 
     <CCol sm="6" lg="3">
       <CWidgetBrand
-        color="twitter"
+        className="mb-4"
         rightHeader="973k"
         rightFooter="followers"
         leftHeader="1.792"
         leftFooter="tweets"
+        style={{
+          "--cui-card-cap-bg": "#00aced"
+        }}
       >
         <CIcon
           name="cib-twitter"
@@ -138,11 +154,14 @@ const WidgetsBrand = ({withCharts})=>{
 
     <CCol sm="6" lg="3">
       <CWidgetBrand
-        color="linkedin"
+        className="mb-4"
         rightHeader="500+"
         rightFooter="contracts"
         leftHeader="292"
         leftFooter="feeds"
+        style={{
+          "--cui-card-cap-bg": "#4875b4"
+        }}
       >
         <CIcon
           name="cib-linkedin"
@@ -154,11 +173,12 @@ const WidgetsBrand = ({withCharts})=>{
 
     <CCol sm="6" lg="3">
       <CWidgetBrand
+        className="mb-4"
         rightHeader="12"
         rightFooter="events"
         leftHeader="4"
         leftFooter="meetings"
-        color="gradient-warning"
+        color="warning"
       >
         <CIcon
           name="cil-calendar"

@@ -17,7 +17,7 @@ const WidgetsDropdown = () => {
   return (
     <CRow>
       <CCol sm="6" lg="3">
-        <CWidgetDropdown
+        <CWidgetDropdown className="mb-4"
           color="primary"
           header="9.823"
           text="Members online"
@@ -48,7 +48,7 @@ const WidgetsDropdown = () => {
       </CCol>
 
       <CCol sm="6" lg="3">
-        <CWidgetDropdown
+        <CWidgetDropdown className="mb-4"
           color="info"
           header="9.823"
           text="Members online"
@@ -80,7 +80,7 @@ const WidgetsDropdown = () => {
       </CCol>
 
       <CCol sm="6" lg="3">
-        <CWidgetDropdown
+        <CWidgetDropdown className="mb-4"
           color="warning"
           header="9.823"
           text="Members online"
@@ -112,7 +112,7 @@ const WidgetsDropdown = () => {
       </CCol>
 
       <CCol sm="6" lg="3">
-        <CWidgetDropdown
+        <CWidgetDropdown className="mb-4"
           color="danger"
           header="9.823"
           text="Members online"

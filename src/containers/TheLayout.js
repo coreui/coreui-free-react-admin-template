@@ -9,9 +9,9 @@ import {
 const TheLayout = () => {
 
   return (
-    <div className="d-flex bg-light">
+    <div>
       <TheSidebar/>
-      <div className="wrapper">
+      <div className="wrapper d-flex flex-column min-vh-100 bg-light">
         <TheHeader/>
         <div className="body">
           <TheContent/>

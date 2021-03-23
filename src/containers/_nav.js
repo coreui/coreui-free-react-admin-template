@@ -1,6 +1,6 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 
 const _nav =  [
   {
@@ -256,38 +256,41 @@ const _nav =  [
   // {
   //   _component: 'CSidebarNavDivider'
   // },
-  // {
-  //   _component: 'CSidebarNavTitle',
-  //   items: ['Extras'],
-  // },
-  // {
-  //   _component: 'CNavGroup',
-  //   anchor: 'Pages',
-  //   route: '/pages',
-  //   icon: 'cil-star',
-  //   items: [
-  //     {
-  //       _component: 'CNavItem',
-  //       anchor: 'Login',
-  //       to: '/login',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchor: 'Register',
-  //       to: '/register',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchor: 'Error 404',
-  //       to: '/404',
-  //     },
-  //     {
-  //       _component: 'CNavItem',
-  //       anchor: 'Error 500',
-  //       to: '/500',
-  //     },
-  //   ],
-  // },
+  {
+    _component: 'CNavTitle',
+    anchor: 'Extras',
+  },
+  {
+    _component: 'CNavGroup',
+    anchor: 'Pages',
+    icon: 'cil-star',
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Login',
+        to: '/pages/login',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Register',
+        to: '/pages/register',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Error 404',
+        to: '/pages/404',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Error 500',
+        to: '/pages/500',
+      },
+    ],
+  },
   // {
   //   _component: 'CNavItem',
   //   anchor: 'Disabled',
@@ -304,7 +307,7 @@ const _nav =  [
   //   classanchor: 'm-2'
   // },
   // {
-  //   _component: 'CSidebarNavTitle',
+  //   _component: 'CNavTitle',
   //   items: ['Labels']
   // },
   // {

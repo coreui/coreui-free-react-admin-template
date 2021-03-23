@@ -28,33 +28,30 @@ const Widgets = () => {
       <WidgetsDropdown />
       <CRow>
         <CCol xs="12" sm="6" lg="3">
-          <CWidgetProgress color="success" header="89.9%" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
+          <CWidgetProgress className="mb-4" color="success" header="89.9%" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
         </CCol>
         <CCol xs="12" sm="6" lg="3">
-          <CWidgetProgress color="info" header="12.124" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
+          <CWidgetProgress className="mb-4" color="info" header="12.124" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
         </CCol>
         <CCol xs="12" sm="6" lg="3">
-          <CWidgetProgress color="warning" header="$98.111,00" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
+          <CWidgetProgress className="mb-4" color="warning" header="$98.111,00" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
         </CCol>
         <CCol xs="12" sm="6" lg="3">
-          <CWidgetProgress header="2 TB" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim.">
-            <CProgress color="danger" animated size="xs" className="my-3" value={75}/>
-          </CWidgetProgress>
+          <CWidgetProgress className="mb-4" header="2 TB" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim." />
         </CCol>
 
         <CCol xs="12" sm="6" lg="3">
-          <CWidgetProgress inverse color="success" variant="inverse" header="89.9%" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
+          <CWidgetProgress className="mb-4" inverse color="success" variant="inverse" header="89.9%" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
         </CCol>
         <CCol xs="12" sm="6" lg="3">
-          <CWidgetProgress inverse color="info" variant="inverse" header="12.124" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
+          <CWidgetProgress className="mb-4" inverse color="info" variant="inverse" header="12.124" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
         </CCol>
         <CCol xs="12" sm="6" lg="3">
-          <CWidgetProgress inverse color="warning" variant="inverse" header="$98.111,00" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
+          <CWidgetProgress className="mb-4" inverse color="warning" variant="inverse" header="$98.111,00" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
         </CCol>
         <CCol xs="12" sm="6" lg="3">
-          <CWidgetProgress inverse color="danger" variant="inverse" value={95} header="2 TB" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
+          <CWidgetProgress className="mb-4" inverse color="danger" variant="inverse" value={95} header="2 TB" text="Lorem ipsum..." footer="Lorem ipsum dolor sit amet enim."/>
         </CCol>
-
       </CRow>
 
       <CRow>
@@ -118,7 +115,7 @@ const Widgets = () => {
             footerSlot={
               <CCardFooter className="card-footer px-3 py-2">
                 <CLink
-                  className="font-weight-bold font-xs btn-block text-muted"
+                 className="font-weight-bold font-xs btn-block text-muted"
                   href="https://coreui.io/"
                   rel="noopener norefferer"
                   target="_blank"
@@ -139,21 +136,21 @@ const Widgets = () => {
         <CWidgetProgressIcon
           header="87.500"
           text="Visitors"
-          color="gradient-info"
+          color="info"
         >
           <CIcon name="cil-people" height="36"/>
         </CWidgetProgressIcon>
         <CWidgetProgressIcon
           header="385"
           text="New Clients"
-          color="gradient-success"
+          color="success"
         >
           <CIcon name="cil-userFollow" height="36"/>
         </CWidgetProgressIcon>
         <CWidgetProgressIcon
           header="1238"
           text="Products sold"
-          color="gradient-warning"
+          color="warning"
         >
           <CIcon name="cil-basket" height="36"/>
         </CWidgetProgressIcon>
@@ -166,7 +163,7 @@ const Widgets = () => {
         <CWidgetProgressIcon
           header="5:34:11"
           text="Avg. Time"
-          color="gradient-danger"
+          color="danger"
           progressSlot={
             <CProgress color="danger" size="xs" value={75} animated className="my-3"
           />}
@@ -178,7 +175,7 @@ const Widgets = () => {
         <CWidgetProgressIcon
           header="87.500"
           text="Visitors"
-          color="gradient-info"
+          color="info"
           inverse
         >
           <CIcon name="cil-people" height="36"/>
@@ -186,7 +183,7 @@ const Widgets = () => {
         <CWidgetProgressIcon
           header="385"
           text="New Clients"
-          color="gradient-success"
+          color="success"
           inverse
         >
           <CIcon name="cil-userFollow" height="36"/>
@@ -194,7 +191,7 @@ const Widgets = () => {
         <CWidgetProgressIcon
           header="1238"
           text="Products sold"
-          color="gradient-warning"
+          color="warning"
           inverse
         >
           <CIcon name="cil-basket" height="36"/>
@@ -202,7 +199,7 @@ const Widgets = () => {
         <CWidgetProgressIcon
           header="28%"
           text="Returning Visitors"
-          color="gradient-primary"
+          color="primary"
           inverse
         >
           <CIcon name="cil-chartPie" height="36"/>
@@ -210,7 +207,7 @@ const Widgets = () => {
         <CWidgetProgressIcon
           header="5:34:11"
           text="Avg. Time"
-          color="gradient-danger"
+          color="danger"
           inverse
         >
           <CIcon name="cil-speedometer" height="36"/>
@@ -221,7 +218,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="87.500"
             text="Visitors"
-            color="gradient-info"
+            color="info"
           >
             <CIcon name="cil-people" height="36"/>
           </CWidgetProgressIcon>
@@ -230,7 +227,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="385"
             text="New Clients"
-            color="gradient-success"
+            color="success"
           >
             <CIcon name="cil-userFollow" height="36"/>
           </CWidgetProgressIcon>
@@ -239,7 +236,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="1238"
             text="Products sold"
-            color="gradient-warning"
+            color="warning"
           >
             <CIcon name="cil-basket" height="36"/>
           </CWidgetProgressIcon>
@@ -248,7 +245,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="28%"
             text="Returning Visitors"
-            color="gradient-primary"
+            color="primary"
           >
             <CIcon name="cil-chartPie" height="36"/>
           </CWidgetProgressIcon>
@@ -257,7 +254,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="5:34:11"
             text="Avg. Time"
-            color="gradient-danger"
+            color="danger"
           >
             <CIcon name="cil-speedometer" height="36"/>
           </CWidgetProgressIcon>
@@ -266,7 +263,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="972"
             text="comments"
-            color="gradient-info"
+            color="info"
           >
             <CIcon name="cil-speech" height="36"/>
           </CWidgetProgressIcon>
@@ -277,7 +274,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="87.500"
             text="Visitors"
-            color="gradient-info"
+            color="info"
             inverse
           >
             <CIcon name="cil-people" height="36"/>
@@ -287,7 +284,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="385"
             text="New Clients"
-            color="gradient-success"
+            color="success"
             inverse
           >
             <CIcon name="cil-userFollow" height="36"/>
@@ -297,7 +294,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="1238"
             text="Products sold"
-            color="gradient-warning"
+            color="warning"
             inverse
           >
             <CIcon name="cil-basket" height="36"/>
@@ -307,7 +304,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="28%"
             text="Returning Visitors"
-            color="gradient-primary"
+            color="primary"
             inverse
           >
             <CIcon name="cil-chartPie" height="36"/>
@@ -317,7 +314,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="5:34:11"
             text="Avg. Time"
-            color="gradient-danger"
+            color="danger"
             inverse
           >
             <CIcon name="cil-speedometer" height="36"/>
@@ -327,7 +324,7 @@ const Widgets = () => {
           <CWidgetProgressIcon
             header="972"
             text="comments"
-            color="gradient-info"
+            color="info"
             inverse
           >
             <CIcon name="cil-speech" height="36"/>

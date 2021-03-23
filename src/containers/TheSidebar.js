@@ -27,7 +27,7 @@ const TheSidebar = () => {
 
   return (
     <CSidebar
-      position="sticky"
+      position="fixed"
       selfHiding="md"
       // onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >

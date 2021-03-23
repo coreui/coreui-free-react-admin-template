@@ -10,14 +10,13 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
+  CFormControl,
+  CInputGroup,
+  CInputGroupText,
   CRow,
 } from '@coreui/react-ts'
 import {
   CButtonToolbar,
-  CInput,
-  CInputGroup,
-  CInputGroupPrepend,
-  CInputGroupText,
   CCallout
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
@@ -82,10 +81,8 @@ const ButtonGroups = () => {
                 <CButton color="secondary">4</CButton>
               </CButtonGroup>
               <CInputGroup>
-                <CInputGroupPrepend>
-                  <CInputGroupText>@</CInputGroupText>
-                </CInputGroupPrepend>
-                <CInput placeholder="Input group example" />
+                <CInputGroupText>@</CInputGroupText>
+                <CFormControl placeholder="Input group example" />
               </CInputGroup>
             </CButtonToolbar>
             <CButtonToolbar justify="between">
@@ -96,10 +93,8 @@ const ButtonGroups = () => {
                 <CButton color="secondary">4</CButton>
               </CButtonGroup>
               <CInputGroup>
-                <CInputGroupPrepend>
-                  <CInputGroupText>@</CInputGroupText>
-                </CInputGroupPrepend>
-                <CInput placeholder="Input group example" />
+                <CInputGroupText>@</CInputGroupText>
+                <CFormControl placeholder="Input group example" />
               </CInputGroup>
             </CButtonToolbar>
           </CCardBody>

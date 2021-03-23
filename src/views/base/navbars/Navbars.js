@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import {
   CToggler,
-  CForm,
-  CInput,
   CImg
 } from '@coreui/react'
 import {
@@ -13,6 +11,8 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
+  CForm,
+  CFormControl,
   CNavbar,
   CNavbarNav,
   CNavbarBrand,
@@ -48,8 +48,8 @@ const CNavbars = () => {
                 <CNavLink>Link</CNavLink>
               </CNavbarNav>
               <CNavbarNav className="ms-auto">
-                <CForm inline>
-                  <CInput
+                <CForm className="d-flex">
+                  <CFormControl
                     className="me-sm-2"
                     placeholder="Search"
                     size="sm"
@@ -171,8 +171,8 @@ const CNavbars = () => {
         </CCardHeader>
         <CCardBody>
           <CNavbar light color="light">
-            <CForm inline>
-              <CInput
+            <CForm className="d-flex">
+              <CFormControl
                 className="me-sm-2"
                 placeholder="Search"
                 size="sm"
@@ -189,8 +189,8 @@ const CNavbars = () => {
         </CCardHeader>
         <CCardBody>
           <CNavbar light color="light">
-            <CForm inline>
-              <CInput
+            <CForm className="d-flex">
+              <CFormControl
                 className="me-sm-2"
                 placeholder="Username"
               />

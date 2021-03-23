@@ -7,12 +7,11 @@ import {
   CCol,
   CContainer,
   CForm,
-  CInput,
+  CFormControl,
   CInputGroup,
-  CInputGroupPrepend,
   CInputGroupText,
   CRow
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
 const Register = () => {
@@ -27,34 +26,26 @@ const Register = () => {
                   <h1>Register</h1>
                   <p className="text-muted">Create your account</p>
                   <CInputGroup className="mb-3">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>
-                        <CIcon name="cil-user" />
-                      </CInputGroupText>
-                    </CInputGroupPrepend>
-                    <CInput type="text" placeholder="Username" autoComplete="username" />
+                    <CInputGroupText>
+                      <CIcon name="cil-user" />
+                    </CInputGroupText>
+                    <CFormControl placeholder="Username" autoComplete="username" />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>@</CInputGroupText>
-                    </CInputGroupPrepend>
-                    <CInput type="text" placeholder="Email" autoComplete="email" />
+                    <CInputGroupText>@</CInputGroupText>
+                    <CFormControl placeholder="Email" autoComplete="email" />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>
-                        <CIcon name="cil-lock-locked" />
-                      </CInputGroupText>
-                    </CInputGroupPrepend>
-                    <CInput type="password" placeholder="Password" autoComplete="new-password" />
+                    <CInputGroupText>
+                      <CIcon name="cil-lock-locked" />
+                    </CInputGroupText>
+                    <CFormControl type="password" placeholder="Password" autoComplete="new-password" />
                   </CInputGroup>
                   <CInputGroup className="mb-4">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>
-                        <CIcon name="cil-lock-locked" />
-                      </CInputGroupText>
-                    </CInputGroupPrepend>
-                    <CInput type="password" placeholder="Repeat password" autoComplete="new-password" />
+                    <CInputGroupText>
+                      <CIcon name="cil-lock-locked" />
+                    </CInputGroupText>
+                    <CFormControl type="password" placeholder="Repeat password" autoComplete="new-password" />
                   </CInputGroup>
                   <CButton color="success" block>Create Account</CButton>
                 </CForm>

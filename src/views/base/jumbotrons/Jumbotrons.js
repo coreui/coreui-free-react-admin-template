@@ -1,16 +1,18 @@
 import React from 'react'
 import {
+  CJumbotron,
+  CEmbed,
+  CEmbedItem
+} from '@coreui/react'
+import {
   CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
   CContainer,
-  CJumbotron,
   CRow,
-  CEmbed,
-  CEmbedItem
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const Jumbotrons = () => {

@@ -8,7 +8,7 @@ const _nav =  [
     as: NavLink,
     anchor: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
+    icon: <CIcon name="cil-speedometer" customClasses="nav-icon"/>,
     badge: {
       color: 'info',
       text: 'NEW',
@@ -23,14 +23,14 @@ const _nav =  [
     as: NavLink,
     anchor: 'Colors',
     to: '/theme/colors',
-    icon: 'cil-drop',
+    icon: <CIcon name="cil-drop" customClasses="nav-icon"/>,
   },
   {
     _component: 'CNavItem',
     as: NavLink,
     anchor: 'Typography',
     to: '/theme/typography',
-    icon: 'cil-pencil',
+    icon: <CIcon name="cil-pencil" customClasses="nav-icon"/>,
   },
   {
     _component: 'CNavTitle',
@@ -41,7 +41,7 @@ const _nav =  [
     as: NavLink,
     anchor: 'Base',
     to: '/to',
-    icon: 'cil-puzzle',
+    icon: <CIcon name="cil-puzzle" customClasses="nav-icon"/>,
     items: [
       {
         _component: 'CNavItem',
@@ -145,7 +145,7 @@ const _nav =  [
     _component: 'CNavGroup',
     anchor: 'Buttons',
     // route: '/buttons',
-    icon: 'cil-cursor',
+    icon: <CIcon name="cil-cursor" customClasses="nav-icon"/>,
     items: [
       {
         _component: 'CNavItem',
@@ -178,13 +178,13 @@ const _nav =  [
     as: NavLink,
     anchor: 'Charts',
     to: '/charts',
-    icon: 'cil-chart-pie'
+    icon: <CIcon name="cil-chart-pie" customClasses="nav-icon"/>
   },
   {
     _component: 'CNavGroup',
     anchor: 'Icons',
     // route: '/icons',
-    icon: 'cil-star',
+    icon: <CIcon name="cil-star" customClasses="nav-icon"/>,
     items: [
       {
         _component: 'CNavItem',
@@ -214,7 +214,7 @@ const _nav =  [
     _component: 'CNavGroup',
     anchor: 'Notifications',
     // route: '/notifications',
-    icon: 'cil-bell',
+    icon: <CIcon name="cil-bell" customClasses="nav-icon"/>,
     items: [
       {
         _component: 'CNavItem',
@@ -247,7 +247,7 @@ const _nav =  [
     as: NavLink,
     anchor: 'Widgets',
     to: '/widgets',
-    icon: 'cil-calculator',
+    icon: <CIcon name="cil-calculator" customClasses="nav-icon"/>,
     badge: {
       color: 'info',
       text: 'NEW',
@@ -263,7 +263,7 @@ const _nav =  [
   {
     _component: 'CNavGroup',
     anchor: 'Pages',
-    icon: 'cil-star',
+    icon: <CIcon name="cil-star" customClasses="nav-icon"/>,
     items: [
       {
         _component: 'CNavItem',
@@ -294,7 +294,7 @@ const _nav =  [
   // {
   //   _component: 'CNavItem',
   //   anchor: 'Disabled',
-  //   icon: 'cil-ban',
+  //   icon: <CIcon name="cil-ban" customClasses="nav-icon"/>,
   //   badge: {
   //     color: 'secondary',
   //     text: 'NEW',
@@ -315,7 +315,7 @@ const _nav =  [
   //   anchor: 'Label danger',
   //   to: '',
   //   icon: {
-  //     anchor: 'cil-star',
+  //     anchor: <CIcon name="cil-star" customClasses="nav-icon"/>,
   //     classanchor: 'text-danger'
   //   },
   //   label: true
@@ -325,7 +325,7 @@ const _nav =  [
   //   anchor: 'Label info',
   //   to: '',
   //   icon: {
-  //     anchor: 'cil-star',
+  //     anchor: <CIcon name="cil-star" customClasses="nav-icon"/>,
   //     classanchor: 'text-info'
   //   },
   //   label: true
@@ -335,7 +335,7 @@ const _nav =  [
   //   anchor: 'Label warning',
   //   to: '',
   //   icon: {
-  //     anchor: 'cil-star',
+  //     anchor: <CIcon name="cil-star" customClasses="nav-icon"/>,
   //     classanchor: 'text-warning'
   //   },
   //   label: true

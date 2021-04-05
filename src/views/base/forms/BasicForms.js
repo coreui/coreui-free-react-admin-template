@@ -309,20 +309,20 @@ const BasicForms = () => {
                       className="me-1"
                       color="danger"
                       defaultChecked
-                      shape="pill"
+                      shape="rounded-pill"
                     />
                     <CSwitch
                       className="me-1"
                       color="info"
                       defaultChecked
-                      shape="pill"
+                      shape="rounded-pill"
                       variant="outline"
                     />
                     <CSwitch
                       className="me-1"
                       color="dark"
                       defaultChecked
-                      shape="pill"
+                      shape="rounded-pill"
                       variant="opposite"
                     />
                   </CCol>

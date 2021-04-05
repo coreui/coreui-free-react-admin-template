@@ -88,7 +88,7 @@ const Cards = () => {
           <CCard className="mb-4">
             <CCardHeader>
               Card with label
-              <CBadge shape="pill" color="danger" className="float-end">42</CBadge>
+              <CBadge shape="rounded-pill" color="danger" className="float-end">42</CBadge>
             </CCardHeader>
             <CCardBody>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut

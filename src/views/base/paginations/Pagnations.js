@@ -3,8 +3,9 @@ import {
   CCard,
   CCardBody,
   CCardHeader,
-  CPagination
-} from '@coreui/react'
+  CPagination,
+  CPaginationItem
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 
@@ -20,11 +21,13 @@ const Paginations = () => {
         </CCardHeader>
         <CCardBody>
           <h6>Default</h6>
-          <CPagination
-            activePage={currentPage}
-            pages={10}
-            onActivePageChange={setCurrentPage}
-          />
+          <CPagination>
+            <CPaginationItem>Previous</CPaginationItem>
+            <CPaginationItem>1</CPaginationItem>
+            <CPaginationItem>2</CPaginationItem>
+            <CPaginationItem>3</CPaginationItem>
+            <CPaginationItem>Next</CPaginationItem>
+          </CPagination>
           <br></br>
 
           <h6>Small</h6>

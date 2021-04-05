@@ -159,15 +159,15 @@ const ListGroups = () => {
               <CListGroup>
                 <CListGroupItem className="justify-content-between">
                   Cras justo odio
-                  <CBadge className="float-end" shape="pill" color="primary">14</CBadge>
+                  <CBadge className="float-end" shape="rounded-pill" color="primary">14</CBadge>
                 </CListGroupItem>
                 <CListGroupItem className="justify-content-between">
                   Dapibus ac facilisis in
-                  <CBadge className="float-end" shape="pill" color="primary">2</CBadge>
+                  <CBadge className="float-end" shape="rounded-pill" color="primary">2</CBadge>
                 </CListGroupItem>
                 <CListGroupItem className="justify-content-between">
                   Morbi leo risus
-                  <CBadge className="float-end" shape="pill" color="primary">1</CBadge>
+                  <CBadge className="float-end" shape="rounded-pill" color="primary">1</CBadge>
                 </CListGroupItem>
               </CListGroup>
             </CCardBody>

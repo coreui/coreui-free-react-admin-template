@@ -4,7 +4,7 @@ import {
   CCardBody,
   CCardGroup,
   CCardHeader
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import {
   CChartBar,
   CChartLine,

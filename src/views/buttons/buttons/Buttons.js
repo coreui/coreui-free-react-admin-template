@@ -436,31 +436,31 @@ const Buttons = () => {
               Normal
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="primary">Primary</CButton>
+              <CButton shape="rounded-pill" color="primary">Primary</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="secondary">Secondary</CButton>
+              <CButton shape="rounded-pill" color="secondary">Secondary</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="success">Success</CButton>
+              <CButton shape="rounded-pill" color="success">Success</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="warning">Warning</CButton>
+              <CButton shape="rounded-pill" color="warning">Warning</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="danger">Danger</CButton>
+              <CButton shape="rounded-pill" color="danger">Danger</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="info">Info</CButton>
+              <CButton shape="rounded-pill" color="info">Info</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="light">Light</CButton>
+              <CButton shape="rounded-pill" color="light">Light</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="dark">Dark</CButton>
+              <CButton shape="rounded-pill" color="dark">Dark</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="link">Link</CButton>
+              <CButton shape="rounded-pill" color="link">Link</CButton>
             </CCol>
           </CRow>
           <CRow className="align-items-center mt-3">
@@ -468,31 +468,31 @@ const Buttons = () => {
               Active State
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="primary" aria-pressed="true">Primary</CButton>
+              <CButton active shape="rounded-pill" color="primary" aria-pressed="true">Primary</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="secondary" aria-pressed="true">Secondary</CButton>
+              <CButton active shape="rounded-pill" color="secondary" aria-pressed="true">Secondary</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="success" aria-pressed="true">Success</CButton>
+              <CButton active shape="rounded-pill" color="success" aria-pressed="true">Success</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="warning" aria-pressed="true">Warning</CButton>
+              <CButton active shape="rounded-pill" color="warning" aria-pressed="true">Warning</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="danger" aria-pressed="true">Danger</CButton>
+              <CButton active shape="rounded-pill" color="danger" aria-pressed="true">Danger</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="info" aria-pressed="true">Info</CButton>
+              <CButton active shape="rounded-pill" color="info" aria-pressed="true">Info</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="light" aria-pressed="true">Light</CButton>
+              <CButton active shape="rounded-pill" color="light" aria-pressed="true">Light</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="dark" aria-pressed="true">Dark</CButton>
+              <CButton active shape="rounded-pill" color="dark" aria-pressed="true">Dark</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton active shape="pill" color="link" aria-pressed="true">Link</CButton>
+              <CButton active shape="rounded-pill" color="link" aria-pressed="true">Link</CButton>
             </CCol>
           </CRow>
           <CRow className="align-items-center mt-3">
@@ -500,31 +500,31 @@ const Buttons = () => {
               Disabled
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="primary" disabled>Primary</CButton>
+              <CButton shape="rounded-pill" color="primary" disabled>Primary</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="secondary" disabled>Secondary</CButton>
+              <CButton shape="rounded-pill" color="secondary" disabled>Secondary</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="success" disabled>Success</CButton>
+              <CButton shape="rounded-pill" color="success" disabled>Success</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="warning" disabled>Warning</CButton>
+              <CButton shape="rounded-pill" color="warning" disabled>Warning</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="danger" disabled>Danger</CButton>
+              <CButton shape="rounded-pill" color="danger" disabled>Danger</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="info" disabled>Info</CButton>
+              <CButton shape="rounded-pill" color="info" disabled>Info</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="light" disabled>Light</CButton>
+              <CButton shape="rounded-pill" color="light" disabled>Light</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="dark" disabled>Dark</CButton>
+              <CButton shape="rounded-pill" color="dark" disabled>Dark</CButton>
             </CCol>
             <CCol col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
-              <CButton shape="pill" color="link" disabled>Link</CButton>
+              <CButton shape="rounded-pill" color="link" disabled>Link</CButton>
             </CCol>
           </CRow>
         </CCardBody>
@@ -553,7 +553,7 @@ const Buttons = () => {
               <CButton shape="square" color="warning" size="sm">Square Button</CButton>
             </CCol>
             <CCol col="2" className="mb-3 mb-xl-0 text-center">
-              <CButton shape="pill" color="danger" size="sm">Pill Button</CButton>
+              <CButton shape="rounded-pill" color="danger" size="sm">Pill Button</CButton>
             </CCol>
           </CRow>
           <CRow className="align-items-center mt-3">
@@ -573,7 +573,7 @@ const Buttons = () => {
               <CButton shape="square" color="warning">Square Button</CButton>
             </CCol>
             <CCol col="2" className="mb-3 mb-xl-0 text-center">
-              <CButton shape="pill" color="danger">Pill Button</CButton>
+              <CButton shape="rounded-pill" color="danger">Pill Button</CButton>
             </CCol>
           </CRow>
           <CRow className="align-items-center mt-3">
@@ -593,7 +593,7 @@ const Buttons = () => {
               <CButton shape="square" color="warning" size="lg">Square Button</CButton>
             </CCol>
             <CCol col="2" className="mb-3 mb-xl-0 text-center">
-              <CButton shape="pill" color="danger" size="lg">Pill Button</CButton>
+              <CButton shape="rounded-pill" color="danger" size="lg">Pill Button</CButton>
             </CCol>
           </CRow>
         </CCardBody>
@@ -626,7 +626,7 @@ const Buttons = () => {
               </CButton>
             </CCol>
             <CCol col="2" className="text-center mt-3">
-              <CButton shape="pill" color="danger">
+              <CButton shape="rounded-pill" color="danger">
                 <CIcon name="cil-lightbulb" />Pill Button
               </CButton>
             </CCol>

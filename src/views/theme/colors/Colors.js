@@ -6,7 +6,7 @@ import {
   CCard,
   CCardHeader,
   CCardBody
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import { rgbToHex } from '@coreui/utils'
 import { DocsLink } from 'src/reusable'
 

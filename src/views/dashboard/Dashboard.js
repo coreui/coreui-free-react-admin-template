@@ -1,13 +1,11 @@
 import React, { lazy } from 'react'
-import {
-  CCallout
-} from '@coreui/react'
 
 import {
   CAvatar,
   CBadge,
   CButton,
   CButtonGroup,
+  CCallout,
   CCard,
   CCardBody,
   CCardFooter,
@@ -221,10 +219,10 @@ const Dashboard = () => {
                   </div>
                   <div className="legend text-center">
                     <small>
-                      <sup className="px-1"><CBadge shape="pill" color="info">&nbsp;</CBadge></sup>
+                      <sup className="px-1"><CBadge shape="rounded-pill" color="info">&nbsp;</CBadge></sup>
                       New clients
                       &nbsp;
-                      <sup className="px-1"><CBadge shape="pill" color="danger">&nbsp;</CBadge></sup>
+                      <sup className="px-1"><CBadge shape="rounded-pill" color="danger">&nbsp;</CBadge></sup>
                       Recurring clients
                     </small>
                   </div>

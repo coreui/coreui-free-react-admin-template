@@ -1,14 +1,14 @@
 import React from 'react'
 import {
   CCardFooter,
+  CCardGroup,
   CCol,
+  CLink,
   CRow,
   CProgress
 } from '@coreui/react-ts'
 
 import {
-  CCardGroup,
-  CLink,
   CWidgetProgress,
   CWidgetIcon,
   CWidgetProgressIcon,

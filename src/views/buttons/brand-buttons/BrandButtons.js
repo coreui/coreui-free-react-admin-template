@@ -6,7 +6,7 @@ import {
   CCardHeader,
   CCol,
   CRow
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
 const BrandButtons = () => {

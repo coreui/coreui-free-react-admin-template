@@ -3,7 +3,7 @@ import {
   CCard,
   CCardHeader,
   CCardBody
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const Typography = () => {

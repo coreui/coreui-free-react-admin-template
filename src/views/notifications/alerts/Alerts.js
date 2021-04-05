@@ -1,8 +1,5 @@
 import React from 'react'
 import {
-  CLink,
-} from '@coreui/react'
-import {
   CAlert,
   CAlertHeading,
   CButton,
@@ -10,6 +7,7 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
+  CLink,
   CProgress,
   CRow,
 } from '@coreui/react-ts'

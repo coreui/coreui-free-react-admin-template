@@ -11,7 +11,7 @@ import {
   CCarouselItem,
   CCol,
   CRow
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const slides = [

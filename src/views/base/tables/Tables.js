@@ -1,13 +1,15 @@
 import React from 'react'
 import {
+  CDataTable,
+} from '@coreui/react'
+import {
   CBadge,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
-  CDataTable,
   CRow
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 import usersData from '../../users/UsersData'

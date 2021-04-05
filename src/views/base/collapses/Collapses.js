@@ -7,8 +7,10 @@ import {
   CCardHeader,
   CCol,
   CCollapse,
-  CFade,
   CRow
+} from '@coreui/react-ts';
+import {
+  CFade,
 } from '@coreui/react';
 import { DocsLink } from 'src/reusable'
 

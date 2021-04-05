@@ -3,13 +3,11 @@ import {
   CButton,
   CCol,
   CContainer,
-  CInput,
+  CFormControl,
   CInputGroup,
-  CInputGroupAppend,
-  CInputGroupPrepend,
   CInputGroupText,
   CRow
-} from '@coreui/react'
+} from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
 const Page500 = () => {
@@ -24,15 +22,13 @@ const Page500 = () => {
               <p className="text-muted float-start">The page you are looking for is temporarily unavailable.</p>
             </span>
             <CInputGroup className="input-prepend">
-              <CInputGroupPrepend>
-                <CInputGroupText>
-                  <CIcon name="cil-magnifying-glass" />
-                </CInputGroupText>
-              </CInputGroupPrepend>
-              <CInput size="16" type="text" placeholder="What are you looking for?" />
-              <CInputGroupAppend>
+              <CInputGroupText>
+                <CIcon name="cil-magnifying-glass" />
+              </CInputGroupText>
+              <CFormControl size="16" type="text" placeholder="What are you looking for?" />
+              <CInputGroupText>
                 <CButton color="info">Search</CButton>
-              </CInputGroupAppend>
+              </CInputGroupText>
             </CInputGroup>
           </CCol>
         </CRow>

@@ -1,8 +1,10 @@
 import React from 'react'
 import {
   CButton,
+  CCallout,
   CDropdown,
   CButtonGroup,
+  CButtonToolbar,
   CCard,
   CCardBody,
   CCardHeader,
@@ -15,10 +17,6 @@ import {
   CInputGroupText,
   CRow,
 } from '@coreui/react-ts'
-import {
-  CButtonToolbar,
-  CCallout
-} from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const ButtonGroups = () => {

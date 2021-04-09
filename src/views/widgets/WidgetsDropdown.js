@@ -1,12 +1,12 @@
 import React from 'react'
-import { CWidgetDropdown } from '@coreui/react'
 import {
   CRow,
   CCol,
   CDropdown,
   CDropdownMenu,
   CDropdownItem,
-  CDropdownToggle
+  CDropdownToggle,
+  CWidgetDropdown
 } from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 import ChartLineSimple from '../charts/ChartLineSimple'
@@ -19,12 +19,26 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown className="mb-4"
           color="primary"
-          header="9.823"
-          text="Members online"
-          footerSlot={
+          value="9.823"
+          title="Members online"
+          action={
+            <CDropdown>
+              <CDropdownToggle color="transparent" caret={false}>
+                <CIcon name="cil-options" className="text-high-emphasis-inverse"/>
+              </CDropdownToggle>
+              {/* TODO: placement doesn't work */}
+              <CDropdownMenu placement="bottom-end">
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another action</CDropdownItem>
+                <CDropdownItem>Something else here...</CDropdownItem>
+                <CDropdownItem disabled>Disabled action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+          }
+          chart={
             <ChartLineSimple
               pointed
-              className="c-chart-wrapper mt-3 mx-3"
+              className="chart-wrapper mt-3 mx-3"
               style={{height: '70px'}}
               dataPoints={[65, 59, 84, 84, 51, 55, 40]}
               pointHoverBackgroundColor="primary"
@@ -32,27 +46,28 @@ const WidgetsDropdown = () => {
               labels="months"
             />
           }
-        >
-          <CDropdown>
-            <CDropdownToggle color="transparent">
-              <CIcon name="cil-settings"/>
-            </CDropdownToggle>
-            <CDropdownMenu placement="bottom-end">
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here...</CDropdownItem>
-              <CDropdownItem disabled>Disabled action</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
-        </CWidgetDropdown>
+        />
       </CCol>
 
       <CCol sm="6" lg="3">
         <CWidgetDropdown className="mb-4"
           color="info"
-          header="9.823"
-          text="Members online"
-          footerSlot={
+          value="9.823"
+          title="Members online"
+          action={
+            <CDropdown>
+              <CDropdownToggle color="transparent" caret={false}>
+                <CIcon name="cil-options" className="text-high-emphasis-inverse"/>
+              </CDropdownToggle>
+              <CDropdownMenu placement="bottom-end">
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another action</CDropdownItem>
+                <CDropdownItem>Something else here...</CDropdownItem>
+                <CDropdownItem disabled>Disabled action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+          }
+          chart={
             <ChartLineSimple
               pointed
               className="mt-3 mx-3"
@@ -64,27 +79,28 @@ const WidgetsDropdown = () => {
               labels="months"
             />
           }
-        >
-          <CDropdown>
-            <CDropdownToggle caret={false} color="transparent">
-              <CIcon name="cil-location-pin"/>
-            </CDropdownToggle>
-            <CDropdownMenu placement="bottom-end">
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here...</CDropdownItem>
-              <CDropdownItem disabled>Disabled action</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
-        </CWidgetDropdown>
+        />
       </CCol>
 
       <CCol sm="6" lg="3">
         <CWidgetDropdown className="mb-4"
           color="warning"
-          header="9.823"
-          text="Members online"
-          footerSlot={
+          value="9.823"
+          title="Members online"
+          action={
+            <CDropdown>
+              <CDropdownToggle color="transparent" caret={false}>
+                <CIcon name="cil-options" className="text-high-emphasis-inverse"/>
+              </CDropdownToggle>
+              <CDropdownMenu placement="bottom-end">
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another action</CDropdownItem>
+                <CDropdownItem>Something else here...</CDropdownItem>
+                <CDropdownItem disabled>Disabled action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+          }
+          chart={
             <ChartLineSimple
               className="mt-3"
               style={{height: '70px'}}
@@ -96,27 +112,28 @@ const WidgetsDropdown = () => {
               labels="months"
             />
           }
-        >
-          <CDropdown>
-            <CDropdownToggle color="transparent">
-              <CIcon name="cil-settings"/>
-            </CDropdownToggle>
-            <CDropdownMenu placement="bottom-end">
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here...</CDropdownItem>
-              <CDropdownItem disabled>Disabled action</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
-        </CWidgetDropdown>
+        />
       </CCol>
 
       <CCol sm="6" lg="3">
         <CWidgetDropdown className="mb-4"
           color="danger"
-          header="9.823"
-          text="Members online"
-          footerSlot={
+          value="9.823"
+          title="Members online"
+          action={
+            <CDropdown>
+              <CDropdownToggle color="transparent" caret={false}>
+                <CIcon name="cil-options" className="text-high-emphasis-inverse"/>
+              </CDropdownToggle>
+              <CDropdownMenu placement="bottom-end">
+                <CDropdownItem>Action</CDropdownItem>
+                <CDropdownItem>Another action</CDropdownItem>
+                <CDropdownItem>Something else here...</CDropdownItem>
+                <CDropdownItem disabled>Disabled action</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+          }
+          chart={
             <ChartBarSimple
               className="mt-3 mx-3"
               style={{height: '70px'}}
@@ -125,19 +142,7 @@ const WidgetsDropdown = () => {
               labels="months"
             />
           }
-        >
-          <CDropdown>
-            <CDropdownToggle caret className="text-white" color="transparent">
-              <CIcon name="cil-settings"/>
-            </CDropdownToggle>
-            <CDropdownMenu placement="bottom-end">
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here...</CDropdownItem>
-              <CDropdownItem disabled>Disabled action</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
-        </CWidgetDropdown>
+        />
       </CCol>
     </CRow>
   )

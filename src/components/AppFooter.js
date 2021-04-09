@@ -1,7 +1,7 @@
 import React from 'react'
 import { CFooter } from '@coreui/react-ts'
 
-const TheFooter = () => {
+const AppFooter = () => {
   return (
     <CFooter>
       <div>
@@ -16,4 +16,4 @@ const TheFooter = () => {
   )
 }
 
-export default React.memo(TheFooter)
+export default React.memo(AppFooter)

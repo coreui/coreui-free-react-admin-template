@@ -1,17 +1,16 @@
 import React from 'react'
 import {
+  CAvatar,
   CBadge,
   CDropdown,
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
+  CImage
 } from '@coreui/react-ts'
-import {
-  CImg
-} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
-const TheHeaderDropdownMssg = () => {
+const AppHeaderDropdownMssg = () => {
   const itemsCount = 4
   return (
     <CDropdown
@@ -32,14 +31,7 @@ const TheHeaderDropdownMssg = () => {
         <CDropdownItem href="#">
           <div className="message">
             <div className="pt-3 me-3 float-start">
-              <div className="c-avatar">
-                <CImg
-                  src={'avatars/7.jpg'}
-                  className="c-avatar-img"
-                  alt="admin@bootstrapmaster.com"
-                />
-                <span className="c-avatar-status bg-success"></span>
-              </div>
+              <CAvatar image={'avatars/7.jpg'} status="success" />
             </div>
             <div>
               <small className="text-muted">John Doe</small>
@@ -57,14 +49,7 @@ const TheHeaderDropdownMssg = () => {
         <CDropdownItem href="#">
           <div className="message">
             <div className="pt-3 me-3 float-start">
-              <div className="c-avatar">
-                <CImg
-                  src={'avatars/6.jpg'}
-                  className="c-avatar-img"
-                  alt="admin@bootstrapmaster.com"
-                />
-                <span className="c-avatar-status bg-warning"></span>
-              </div>
+              <CAvatar image={'avatars/6.jpg'} status="warning" />
             </div>
             <div>
               <small className="text-muted">Jane Dovve</small>
@@ -79,14 +64,7 @@ const TheHeaderDropdownMssg = () => {
         <CDropdownItem href="#">
           <div className="message">
             <div className="pt-3 me-3 float-start">
-              <div className="c-avatar">
-                <CImg
-                  src={'avatars/5.jpg'}
-                  className="c-avatar-img"
-                  alt="admin@bootstrapmaster.com"
-                />
-                <span className="c-avatar-status bg-danger"></span>
-              </div>
+              <CAvatar image={'avatars/5.jpg'} status="danger" />
             </div>
             <div>
               <small className="text-muted">Janet Doe</small>
@@ -101,14 +79,7 @@ const TheHeaderDropdownMssg = () => {
         <CDropdownItem href="#">
           <div className="message">
             <div className="pt-3 me-3 float-start">
-              <div className="c-avatar">
-                <CImg
-                  src={'avatars/4.jpg'}
-                  className="c-avatar-img"
-                  alt="admin@bootstrapmaster.com"
-                />
-                <span className="c-avatar-status bg-info"></span>
-              </div>
+              <CAvatar image={'avatars/4.jpg'} status="info" />
             </div>
             <div>
               <small className="text-muted">Joe Doe</small>
@@ -125,4 +96,4 @@ const TheHeaderDropdownMssg = () => {
   )
 }
 
-export default TheHeaderDropdownMssg
+export default AppHeaderDropdownMssg

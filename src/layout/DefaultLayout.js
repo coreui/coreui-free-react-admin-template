@@ -1,25 +1,25 @@
 import React from 'react'
 import {
   TheContent,
-  TheSidebar,
-  TheFooter,
-  TheHeader
-} from './index'
+  AppSidebar,
+  AppFooter,
+  AppHeader
+} from '../containers/index'
 
-const TheLayout = () => {
+const DefaultLayout = () => {
 
   return (
     <div>
-      <TheSidebar/>
+      <AppSidebar/>
       <div className="wrapper d-flex flex-column min-vh-100 bg-light">
-        <TheHeader/>
+        <AppHeader/>
         <div className="body">
           <TheContent/>
         </div>
-        <TheFooter/>
+        <AppFooter/>
       </div>
     </div>
   )
 }
 
-export default TheLayout
+export default DefaultLayout

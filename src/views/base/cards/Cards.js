@@ -6,11 +6,9 @@ import {
   CCardFooter,
   CCardHeader,
   CCol,
+  CFormCheck,
   CRow,
-  CCollapse,
-  CLink
 } from  '@coreui/react-ts'
-import { CFade, CSwitch } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { DocsLink } from 'src/reusable'
 
@@ -62,7 +60,7 @@ const Cards = () => {
           <CCard className="mb-4">
             <CCardHeader>
               Card with switch
-              <CSwitch className={'float-end mb-0'} color={'info'} defaultChecked size={'sm'} tabIndex="0" />
+              <CFormCheck switch className="float-end" id="formSwitchCheckDefault"/>
             </CCardHeader>
             <CCardBody>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut

@@ -11,7 +11,7 @@ import {
 } from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
-const TheHeaderDropdown = () => {
+const AppHeaderDropdown = () => {
   return (
     <CDropdown
       variant="nav-item"
@@ -73,4 +73,4 @@ const TheHeaderDropdown = () => {
   )
 }
 
-export default TheHeaderDropdown
+export default AppHeaderDropdown

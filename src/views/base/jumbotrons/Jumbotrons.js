@@ -1,10 +1,5 @@
 import React from 'react'
 import {
-  CJumbotron,
-  CEmbed,
-  CEmbedItem
-} from '@coreui/react'
-import {
   CButton,
   CCard,
   CCardBody,
@@ -19,58 +14,35 @@ const Jumbotrons = () => {
 
   return (
     <>
-      <CRow>
-        <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>
-              Jumbotron
-              <DocsLink name="CJumbotron"/>
-            </CCardHeader>
-            <CCardBody>
-              <CJumbotron className="border">
-                <h1 className="display-3">Hello, world!</h1>
-                <p className="lead">This is a simple hero unit, a simple Jumbotron - style component for calling extra
-                  attention to featured content or information.</p>
-                <hr className="my-2" />
-                <p>It uses utility classes for typgraphy and spacing to space content out within the larger container.</p>
-                <p className="lead">
-                  <CButton color="primary" size="lg">Learn More</CButton>
-                </p>
-              </CJumbotron>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>
-              Jumbotron
-              <small> fluid</small>
-            </CCardHeader>
-            <CCardBody>
-              <CJumbotron fluid>
-                <CContainer fluid>
-                  <h1 className="display-3">Fluid jumbotron</h1>
-                  <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                </CContainer>
-              </CJumbotron>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>
-              Embed
-            </CCardHeader>
-            <CCardBody>
-              <CEmbed>
-                <CEmbedItem src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"/>
-              </CEmbed>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
+      <CCard className="mb-4">
+        <CCardHeader>
+          Jumbotron
+          <DocsLink name="CJumbotron"/>
+        </CCardHeader>
+        <CCardBody>
+          <CContainer className="py-5" fluid>
+            <h1 className="display-5 fw-bold">Custom jumbotron</h1>
+            <p className="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+            <CButton size="lg">Example button</CButton>
+          </CContainer>
+          <CRow className="align-items-md-stretch">
+            <CCol md="6">
+              <div className="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>Change the background</h2>
+                <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
+                <CButton color="light" variant="outline">Example button</CButton>
+              </div>
+            </CCol>
+            <CCol md="6">
+              <div className="h-100 p-5 bg-light border rounded-3">
+                <h2>Add borders</h2>
+                <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+                <CButton color="secondary" variant="outline">Example button</CButton>
+              </div>
+            </CCol>
+          </CRow>
+        </CCardBody>
+      </CCard>
     </>
   )
 }

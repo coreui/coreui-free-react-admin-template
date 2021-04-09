@@ -4,8 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import { CFade } from '@coreui/react'
-import { CContainer } from '@coreui/react-ts'
+import { CContainer, CFade } from '@coreui/react-ts'
 
 // routes config
 import routes from '../routes'
@@ -19,7 +18,7 @@ const loading = (
 const TheContent = () => {
   return (
     <main className="c-main">
-      <CContainer fluid>
+      <CContainer>
         <Suspense fallback={loading}>
           <Switch>
             {routes.map((route, idx) => {

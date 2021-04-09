@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
 import {
-  CToggler,
-  CImg
-} from '@coreui/react'
-import {
   CCard,
   CCardBody,
   CCardHeader,
@@ -13,10 +9,12 @@ import {
   CDropdownToggle,
   CForm,
   CFormControl,
+  CImage,
   CNavbar,
   CNavbarNav,
   CNavbarBrand,
   CNavbarText,
+  CNavbarToggler,
   CNavLink,
   CDropdown,
   CButton,
@@ -24,13 +22,12 @@ import {
 import { DocsLink } from 'src/reusable'
 
 const CNavbars = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [isOpenDropdown, setIsOpenDropdown] = useState(false)
   const [navbarText, setNavbarText] = useState(false)
 
   return (
     <>
-
       <CCard className="mb-4">
         <CCardHeader>
           CNavbar
@@ -38,11 +35,11 @@ const CNavbars = () => {
         </CCardHeader>
         <CCardBody>
           <CNavbar expandable="sm" color="info" >
-            <CToggler inNavbar onClick={() => setIsOpen(!isOpen)}/>
+            <CNavbarToggler onClick={() => setVisible(!visible)} />
             <CNavbarBrand>
               NavbarBrand
             </CNavbarBrand>
-            <CCollapse show={isOpen} navbar>
+            <CCollapse show={visible} navbar>
               <CNavbarNav>
                 <CNavLink>Home</CNavLink>
                 <CNavLink>Link</CNavLink>
@@ -93,7 +90,7 @@ const CNavbars = () => {
         <CCardBody>
           <CNavbar color="faded" light>
             <CNavbarBrand>
-              <CImg
+              <CImage
                 src="https://placekitten.com/g/30/30"
                 className="d-inline-block align-top"
                 alt="CoreuiVue"
@@ -110,7 +107,7 @@ const CNavbars = () => {
         </CCardHeader>
         <CCardBody>
           <CNavbar toggleable="sm" light color="light">
-            <CToggler
+            <CNavbarToggler
               inNavbar
               onClick={()=>{ setNavbarText(!navbarText)}}
             />
@@ -130,7 +127,7 @@ const CNavbars = () => {
         </CCardHeader>
         <CCardBody>
           <CNavbar expandable="false" color="primary" >
-            <CToggler inNavbar onClick={()=>{setIsOpenDropdown(!isOpenDropdown)}} />
+            <CNavbarToggler inNavbar onClick={()=>{setIsOpenDropdown(!isOpenDropdown)}} />
             <CCollapse show={isOpenDropdown} navbar>
               <CNavbarNav>
                 <CNavLink>Home</CNavLink>

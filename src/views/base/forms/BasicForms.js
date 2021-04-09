@@ -1,11 +1,5 @@
 import React from 'react'
 import {
-  CFade,
-  CValidFeedback,
-  CInvalidFeedback,
-  CSwitch
-} from '@coreui/react'
-import {
   CButton,
   CCard,
   CCardBody,
@@ -17,9 +11,11 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
+  CFade,
   CForm,
   CFormCheck,
   CFormControl,
+  CFormFeedback,
   CFormLabel,
   CFormText,
   CFormSelect,
@@ -181,7 +177,7 @@ const BasicForms = () => {
                   </CCol>
                   <CCol xs="12" md="9">
                     <CFormControl type="email" id="email-input" name="email-input" placeholder="Enter Email" autoComplete="email"/>
-                    <CFormText className="help-block">Please enter your email</CFormText>
+                    <CFormText>Please enter your email</CFormText>
                   </CCol>
                 </CRow>
                 <CRow className="mb-3">
@@ -190,7 +186,7 @@ const BasicForms = () => {
                   </CCol>
                   <CCol xs="12" md="9">
                     <CFormControl type="password" id="password-input" name="password-input" placeholder="Password" autoComplete="new-password" />
-                    <CFormText className="help-block">Please enter a complex password</CFormText>
+                    <CFormText>Please enter a complex password</CFormText>
                   </CCol>
                 </CRow>
                 <CRow className="mb-3">
@@ -288,43 +284,10 @@ const BasicForms = () => {
                     Switch checkboxes
                   </CCol>
                   <CCol sm="9">
-                    <CSwitch
-                      className="me-1"
-                      color="primary"
-                      defaultChecked
-                    />
-                    <CSwitch
-                      className="me-1"
-                      color="success"
-                      defaultChecked
-                      variant="outline"
-                    />
-                    <CSwitch
-                      className="me-1"
-                      color="warning"
-                      defaultChecked
-                      variant="opposite"
-                    />
-                    <CSwitch
-                      className="me-1"
-                      color="danger"
-                      defaultChecked
-                      shape="rounded-pill"
-                    />
-                    <CSwitch
-                      className="me-1"
-                      color="info"
-                      defaultChecked
-                      shape="rounded-pill"
-                      variant="outline"
-                    />
-                    <CSwitch
-                      className="me-1"
-                      color="dark"
-                      defaultChecked
-                      shape="rounded-pill"
-                      variant="opposite"
-                    />
+                    <CFormCheck switch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
+                    <CFormCheck switch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked/>
+                    <CFormCheck switch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled/>
+                    <CFormCheck switch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
                   </CCol>
                 </CRow>
                 <CRow className="mb-3">
@@ -466,7 +429,7 @@ const BasicForms = () => {
                   </CCol>
                   <CCol xs="12" md="9">
                     <CFormControl type="email" id="hf-email" name="hf-email" placeholder="Enter Email..." autoComplete="email" />
-                    <CFormText className="help-block">Please enter your email</CFormText>
+                    <CFormText>Please enter your email</CFormText>
                   </CCol>
                 </CRow>
                 <CRow className="mb-3">
@@ -475,7 +438,7 @@ const BasicForms = () => {
                   </CCol>
                   <CCol xs="12" md="9">
                     <CFormControl type="password" id="hf-password" name="hf-password" placeholder="Enter Password..." autoComplete="current-password"/>
-                    <CFormText className="help-block">Please enter your password</CFormText>
+                    <CFormText>Please enter your password</CFormText>
                   </CCol>
                 </CRow>
               </CForm>
@@ -494,12 +457,12 @@ const BasicForms = () => {
                 <div className="mb-3">
                   <CFormLabel htmlFor="nf-email">Email</CFormLabel>
                   <CFormControl type="email" id="nf-email" name="nf-email" placeholder="Enter Email.." autoComplete="email"/>
-                  <CFormText className="help-block">Please enter your email</CFormText>
+                  <CFormText>Please enter your email</CFormText>
                 </div>
                 <div className="mb-3">
                   <CFormLabel htmlFor="nf-password">Password</CFormLabel>
                   <CFormControl type="password" id="nf-password" name="nf-password" placeholder="Enter Password.." autoComplete="current-password"/>
-                  <CFormText className="help-block">Please enter your password</CFormText>
+                  <CFormText>Please enter your password</CFormText>
                 </div>
               </CForm>
             </CCardBody>
@@ -615,12 +578,12 @@ const BasicForms = () => {
               <div className="mb-3">
                 <CFormLabel htmlFor="inputIsValid">Input is valid</CFormLabel>
                 <CFormControl valid id="inputIsValid" />
-                <CValidFeedback>Cool! Input is valid</CValidFeedback>
+                <CFormFeedback valid>Cool! Input is valid</CFormFeedback>
               </div>
               <div className="mb-3">
                 <CFormLabel htmlFor="inputIsInvalid">Input is invalid</CFormLabel>
                 <CFormControl invalid id="inputIsInvalid" />
-                <CInvalidFeedback>Houston, we have a problem...</CInvalidFeedback>
+                <CFormFeedback invalid>Houston, we have a problem...</CFormFeedback>
               </div>
             </CCardBody>
           </CCard>
@@ -634,16 +597,16 @@ const BasicForms = () => {
               <CForm className="was-validated">
                 <div className="mb-3">
                   <CFormLabel htmlFor="inputSuccess2i">Non-required input</CFormLabel>
-                  <CFormControl className="form-control-success" id="inputSuccess2i" />
-                  <CValidFeedback>Non-required</CValidFeedback>
+                  <CFormControl id="inputSuccess2i" />
+                  <CFormFeedback valid>Non-required</CFormFeedback>
                 </div>
                 <div className="mb-3">
                   <CFormLabel htmlFor="inputWarning2i">Required input</CFormLabel>
-                  <CFormControl className="form-control-warning" id="inputWarning2i" required />
-                  <CInvalidFeedback className="help-block">
+                  <CFormControl id="inputWarning2i" required />
+                  <CFormFeedback invalid>
                     Please provide a valid information
-                  </CInvalidFeedback>
-                  <CValidFeedback className="help-block">Input provided</CValidFeedback>
+                  </CFormFeedback>
+                  <CFormFeedback valid>Input provided</CFormFeedback>
                 </div>
               </CForm>
             </CCardBody>
@@ -1077,7 +1040,7 @@ const BasicForms = () => {
                           <CInputGroupText>@</CInputGroupText>
                           <CFormControl id="prependedInput" size="16" type="text" />
                         </CInputGroup>
-                        <p className="help-block">Here's some help text</p>
+                        <p>Here's some help text</p>
                       </div>
                     </div>
                     <div className="mb-3">
@@ -1087,7 +1050,7 @@ const BasicForms = () => {
                           <CFormControl id="appendedInput" size="16" type="text" />
                           <CInputGroupText>.00</CInputGroupText>
                         </CInputGroup>
-                        <span className="help-block">Here's more help text</span>
+                        <span>Here's more help text</span>
                       </div>
                     </div>
                     <div className="mb-3">

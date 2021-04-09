@@ -1,29 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { CToggler, CBreadcrumbRouter } from "@coreui/react";
 import {
   CContainer,
   CHeader,
   CHeaderBrand,
   CHeaderDivider,
   CHeaderNav,
+  CHeaderToggler,
   CNavLink,
   CNavItem,
 } from "@coreui/react-ts";
 import CIcon from "@coreui/icons-react";
 
-// routes config
-import routes from "../routes";
-
 import {
-  TheHeaderDropdown,
-  TheHeaderDropdownMssg,
-  TheHeaderDropdownNotif,
-  TheHeaderDropdownTasks,
-} from "./index";
+  AppBreadcrumb,
+  AppHeaderDropdown,
+  AppHeaderDropdownMssg,
+  AppHeaderDropdownNotif,
+  AppHeaderDropdownTasks,
+} from "../containers/index";
 
-const TheHeader = () => {
+const AppHeader = () => {
   const dispatch = useDispatch();
   const sidebarShow = useSelector((state) => state.sidebarShow);
 
@@ -44,12 +42,12 @@ const TheHeader = () => {
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
-        <CToggler
+        <CHeaderToggler
           inHeader
           className="ms-md-3 d-lg-none"
           onClick={toggleSidebarMobile}
         />
-        <CToggler
+        <CHeaderToggler
           inHeader
           className="ms-3 d-md-down-none"
           onClick={toggleSidebar}
@@ -79,38 +77,18 @@ const TheHeader = () => {
         </CHeaderNav>
 
         <CHeaderNav>
-          <TheHeaderDropdownNotif />
-          <TheHeaderDropdownTasks />
-          <TheHeaderDropdownMssg />
-          <TheHeaderDropdown />
+          <AppHeaderDropdownNotif />
+          <AppHeaderDropdownTasks />
+          <AppHeaderDropdownMssg />
+          <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>
       <CHeaderDivider />
       <CContainer fluid>
-        <CBreadcrumbRouter
-          className="border-0 c-subheader-nav m-0 px-0 px-md-3"
-          routes={routes}
-        />
-        {/* <CHeaderNav>
-          <CNavItem>
-            <CNavLink href="#">
-              <CIcon name="cil-speech" alt="Settings" />
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink to="/users" component={NavLink} activeClassName="active">
-              <CIcon name="cil-graph" alt="Dashboard" />&nbsp;Dashboard
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">
-              <CIcon name="cil-settings" alt="Settings" />&nbsp;Settings
-            </CNavLink>
-          </CNavItem>
-        </CHeaderNav> */}
+        <AppBreadcrumb/>
       </CContainer>
     </CHeader>
   );
 };
 
-export default TheHeader;
+export default AppHeader

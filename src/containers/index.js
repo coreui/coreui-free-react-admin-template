@@ -1,21 +1,23 @@
+import AppBreadcrumb from '../components/AppBreadcrumb'
 import TheContent from './TheContent'
-import TheFooter from './TheFooter'
-import TheHeader from './TheHeader'
-import TheHeaderDropdown from './TheHeaderDropdown'
-import TheHeaderDropdownMssg from './TheHeaderDropdownMssg'
-import TheHeaderDropdownNotif from './TheHeaderDropdownNotif'
-import TheHeaderDropdownTasks from './TheHeaderDropdownTasks'
-import TheLayout from './TheLayout'
-import TheSidebar from './TheSidebar'
+import AppFooter from '../components/AppFooter'
+import AppHeader from '../components/AppHeader'
+import AppHeaderDropdown from '../components/header/AppHeaderDropdown'
+import AppHeaderDropdownMssg from '../components/header/AppHeaderDropdownMssg'
+import AppHeaderDropdownNotif from '../components/header/AppHeaderDropdownNotif'
+import AppHeaderDropdownTasks from '../components/header/AppHeaderDropdownTasks'
+import DefaultLayout from '../layout/DefaultLayout'
+import AppSidebar from '../components/AppSidebar'
 
 export {
+  AppBreadcrumb,
   TheContent,
-  TheFooter,
-  TheHeader,
-  TheHeaderDropdown,
-  TheHeaderDropdownMssg,
-  TheHeaderDropdownNotif,
-  TheHeaderDropdownTasks,
-  TheLayout,
-  TheSidebar
+  AppFooter,
+  AppHeader,
+  AppHeaderDropdown,
+  AppHeaderDropdownMssg,
+  AppHeaderDropdownNotif,
+  AppHeaderDropdownTasks,
+  DefaultLayout,
+  AppSidebar
 }

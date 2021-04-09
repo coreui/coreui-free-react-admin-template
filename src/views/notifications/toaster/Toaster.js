@@ -3,43 +3,43 @@ import {
   CCard,
   CCardHeader,
   CCardBody,
-  CToast,
-  CToastBody,
-  CToastHeader,
-  CToaster,
   CForm,
-  CInput,
-  CInputCheckbox,
+  CFormControl,
+  CFormCheck,
+  CFormSelect,
   CButton,
   CContainer,
   CRow,
   CCol,
-  CFormGroup,
-  CLabel
-} from '@coreui/react'
+  CFormLabel,
+  CToast,
+  CToastBody,
+  CToastHeader,
+  CToaster
+} from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const Toaster = () => {
 
-  const positions = [
-    'static',
-    'top-left',
+  const placements = [
+    'top-start',
     'top-center',
-    'top-right',
-    'top-full',
-    'bottom-left',
+    'top-end',
+    'middle-start',
+    'middle-center',
+    'middle-end',
+    'bottom-start',
     'bottom-center',
-    'bottom-right',
-    'bottom-full'
+    'bottom-end'
   ]
 
   const [toasts, setToasts] = useState([
-    { position: 'static'},
-    { position: 'static'},
-    { position: 'top-right', autohide: 3000 }
+    { placement: 'static'},
+    { placement: 'static'},
+    { placement: 'top-right', autohide: 3000 }
   ])
 
-  const [position, setPosition] = useState('top-right')
+  const [placement, setPlacement] = useState('top-right')
   const [autohide, setAutohide] = useState(true)
   const [autohideValue, setAutohideValue] = useState(5000)
   const [closeButton, setCloseButton] = useState(true)
@@ -48,15 +48,15 @@ const Toaster = () => {
   const addToast = () => {
     setToasts([
       ...toasts,
-      { position, autohide: autohide && autohideValue, closeButton, fade }
+      { placement, autohide: autohide && autohideValue, closeButton, fade }
     ])
   }
 
 
   const toasters = (()=>{
     return toasts.reduce((toasters, toast) => {
-      toasters[toast.position] = toasters[toast.position] || []
-      toasters[toast.position].push(toast)
+      toasters[toast.placement] = toasters[toast.placement] || []
+      toasters[toast.placement].push(toast)
       return toasters
     }, {})
   })()
@@ -75,67 +75,67 @@ const Toaster = () => {
               <CForm>
                 <h5>Add toast with following props:</h5>
 
-                <CFormGroup variant="custom-checkbox" className="my-2 mt-4">
-                  <CInputCheckbox
+                <div variant="custom-checkbox" className="my-2 mt-4">
+                  <CFormCheck
                     id="autohide"
                     checked={autohide}
                     onChange={e => { setAutohide(e.target.checked) }}
                     custom
                   />
-                  <CLabel variant="custom-checkbox" htmlFor="autohide">
+                  <CFormLabel variant="custom-checkbox" htmlFor="autohide">
                     Autohide of the toast
-                  </CLabel>
-                </CFormGroup>
+                  </CFormLabel>
+                </div>
                 {
                   autohide &&
-                  <CFormGroup className="my-2">
-                    <CLabel htmlFor="ccyear">Time to autohide</CLabel>
-                    <CInput
+                  <div className="my-2">
+                    <CFormLabel htmlFor="ccyear">Time to autohide</CFormLabel>
+                    <CFormControl
                       type="number"
                       value={autohideValue}
                       onChange={e => {
                         setAutohideValue(Number(e.target.value))
                       }}
                     />
-                  </CFormGroup>
+                  </div>
                 }
 
-                <CFormGroup className="my-2">
-                  <CLabel htmlFor="ccyear">Position</CLabel>
-                  <select
+                <div className="my-2">
+                  <CFormLabel htmlFor="ccyear">Placement</CFormLabel>
+                  <CFormSelect
                     className="form-control"
-                    value={position}
-                    onChange={e => {setPosition(e.target.value)}}
+                    value={placement}
+                    onChange={e => {setPlacement(e.target.value)}}
                   >
                     {
-                      positions.map((position, i)=>(
-                        <option key={i}>{position}</option>
+                      placements.map((placement, i)=>(
+                        <option key={i}>{placement}</option>
                       ))
                     }
-                  </select>
-                </CFormGroup>
+                  </CFormSelect>
+                </div>
 
-                <CFormGroup variant="custom-checkbox" className="my-2">
-                  <CInputCheckbox
+                <div variant="custom-checkbox" className="my-2">
+                  <CFormCheck
                     id="fade"
                     checked={fade}
                     onChange={e => { setFade(e.target.checked) }}
                     custom
                   />
-                  <CLabel variant="custom-checkbox" htmlFor="fade">fade</CLabel>
-                </CFormGroup>
+                  <CFormLabel variant="custom-checkbox" htmlFor="fade">fade</CFormLabel>
+                </div>
 
-                <CFormGroup variant="custom-checkbox" className="my-2">
-                  <CInputCheckbox
+                <div variant="custom-checkbox" className="my-2">
+                  <CFormCheck
                     id="close"
                     custom
                     checked={closeButton}
                     onChange={e=> { setCloseButton(e.target.checked) }}
                   />
-                  <CLabel variant="custom-checkbox" htmlFor="close">
+                  <CFormLabel variant="custom-checkbox" htmlFor="close">
                     closeButton
-                  </CLabel>
-                </CFormGroup>
+                  </CFormLabel>
+                </div>
 
                 <CButton
                   className="me-1 w-25"
@@ -150,7 +150,7 @@ const Toaster = () => {
             <CCol sm="12" lg="6">
               {Object.keys(toasters).map((toasterKey) => (
                 <CToaster
-                  position={toasterKey}
+                  placement={toasterKey}
                   key={'toaster' + toasterKey}
                 >
                   {
@@ -158,17 +158,38 @@ const Toaster = () => {
                     return(
                       <CToast
                         key={'toast' + key}
-                        show={true}
+                        icon={
+                          <svg
+                            className="rounded me-2"
+                            width="20"
+                            height="20"
+                            xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false"
+                            role="img"
+                          >
+                            <rect width="100%" height="100%" fill="#007aff"></rect>
+                          </svg>
+                        }
+                        title="CoreUI for React.js"
+                        time="7 min ago"
                         autohide={toast.autohide}
-                        fade={toast.fade}
                       >
-                        <CToastHeader closeButton={toast.closeButton}>
-                          Toast title
-                        </CToastHeader>
-                        <CToastBody>
-                          {`This is a toast in ${toasterKey} positioned toaster number ${key + 1}.`}
-                        </CToastBody>
+                        {`Hello, ${toasterKey} world! This is a toast ${toasterKey} message.`}
                       </CToast>
+                      // <CToast
+                      //   key={'toast' + key}
+                      //   show={true}
+                      //   autohide={toast.autohide}
+                      //   fade={toast.fade}
+                      // >
+                      //   <CToastHeader closeButton={toast.closeButton}>
+                      //     Toast title
+                      //   </CToastHeader>
+                      //   <CToastBody>
+                      //     {`This is a toast in ${toasterKey} positioned toaster number ${key + 1}.`}
+                      //   </CToastBody>
+                      // </CToast>
                     )
                   })
                   }

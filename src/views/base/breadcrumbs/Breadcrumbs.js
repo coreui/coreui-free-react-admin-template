@@ -9,9 +9,7 @@ import {
   CRow,
   CLink,
 } from "@coreui/react-ts";
-import { CBreadcrumbRouter } from '@coreui/react'
 import { DocsLink } from "src/reusable";
-import routes from "../../../routes";
 
 const Breadcrumbs = () => {
   return (
@@ -23,9 +21,6 @@ const Breadcrumbs = () => {
             <DocsLink name="CBreadcrumb" />
           </CCardHeader>
           <CCardBody>
-            <h6>CBreadcrumbRouter wrapper component</h6>
-            <CBreadcrumbRouter routes={routes} />
-            <h6>Manual</h6>
             <CBreadcrumb>
               <CBreadcrumbItem>
                 <CLink href="#">Home</CLink>

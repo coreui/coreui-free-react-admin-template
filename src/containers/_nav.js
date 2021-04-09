@@ -118,12 +118,6 @@ const _nav =  [
       {
         _component: 'CNavItem',
         as: NavLink,
-        anchor: 'Switches',
-        to: '/base/switches',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
         anchor: 'Tables',
         to: '/base/tables',
       },

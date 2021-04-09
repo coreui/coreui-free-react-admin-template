@@ -1,63 +1,52 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-  // CCreateElement,
-  // CSidebarNavDivider,
-  // CSidebarNavTitle,
-  CSidebarMinimizer,
-  // CSidebarNavDropdown,
-  // CSidebarNavItem,
-} from '@coreui/react'
 
 import {
   CSidebar,
   CSidebarBrand,
   CSidebarNav,
+  CSidebarToggler,
   CCreateNavItem,
 } from '@coreui/react-ts'
 
 import CIcon from '@coreui/icons-react'
 
 // sidebar nav config
-import navigation from './_nav'
+import navigation from '../containers/_nav'
 
-const TheSidebar = () => {
+const AppSidebar = () => {
   const dispatch = useDispatch()
-  const show = useSelector(state => state.sidebarShow)
+  const unfoldable = useSelector(state => state.sidebarUnfoldable)
+  // const visible = useSelector(state => state.sidebarUnfoldable)
 
   return (
     <CSidebar
       position="fixed"
       selfHiding="md"
+      unfoldable={unfoldable}
+      // show={show}
       // onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
         <CIcon
-          className="c-sidebar-brand-full"
+          className="sidebar-brand-full"
           name="logo-negative"
           height={35}
         />
         <CIcon
-          className="c-sidebar-brand-minimized"
+          className="sidebar-brand-narrow"
           name="sygnet"
           height={35}
         />
       </CSidebarBrand>
       <CSidebarNav>
-
         <CCreateNavItem
           items={navigation}
-          // components={{
-          //   CSidebarNavDivider,
-          //   CSidebarNavDropdown,
-          //   CSidebarNavItem,
-          //   CSidebarNavTitle
-          // }}
         />
       </CSidebarNav>
-      <CSidebarMinimizer className="c-d-md-down-none"/>
+      <CSidebarToggler className="c-d-md-down-none" onClick={() => dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })}/>
     </CSidebar>
   )
 }
 
-export default React.memo(TheSidebar)
+export default React.memo(AppSidebar)

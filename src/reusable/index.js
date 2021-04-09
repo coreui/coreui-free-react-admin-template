@@ -1,5 +1,3 @@
 import DocsLink from './DocsLink'
 
-export {
-  DocsLink
-}
+export { DocsLink }

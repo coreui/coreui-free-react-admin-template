@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CPagination,
-  CPaginationItem
-} from '@coreui/react-ts'
+import { CCard, CCardBody, CCardHeader, CPagination, CPaginationItem } from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
-
 
 const Paginations = () => {
   const [currentPage, setCurrentPage] = useState(2)
@@ -17,7 +10,7 @@ const Paginations = () => {
       <CCard className="mb-4">
         <CCardHeader>
           Pagination
-          <DocsLink name="CPagination"/>
+          <DocsLink name="CPagination" />
         </CCardHeader>
         <CCardBody>
           <h6>Default</h6>
@@ -60,11 +53,7 @@ const Paginations = () => {
         </CCardHeader>
         <CCardBody>
           <h6>Left alignment (default)</h6>
-          <CPagination
-            activePage={currentPage}
-            pages={10}
-            onActivePageChange={setCurrentPage}
-          />
+          <CPagination activePage={currentPage} pages={10} onActivePageChange={setCurrentPage} />
           <br></br>
 
           <h6>Center alignment</h6>

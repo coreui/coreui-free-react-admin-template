@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CProgress,
-  CProgressBar
-} from '@coreui/react-ts'
+import { CCard, CCardBody, CCardHeader, CProgress, CProgressBar } from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const ProgressBar = () => {
@@ -14,7 +8,7 @@ const ProgressBar = () => {
       <CCard className="mb-4">
         <CCardHeader>
           Progress
-          <DocsLink name="CProgressBar"/>
+          <DocsLink name="CProgressBar" />
         </CCardHeader>
         <CCardBody>
           <CProgress className="mb-3" />
@@ -30,9 +24,9 @@ const ProgressBar = () => {
           <small> labels</small>
         </CCardHeader>
         <CCardBody>
-          <CProgress value={25.3746472} className="mb-3"/>
-          <CProgress value={50.45} className="mb-3"/>
-          <CProgress value={15} max={20} className="mb-3"/>
+          <CProgress value={25.3746472} className="mb-3" />
+          <CProgress value={50.45} className="mb-3" />
+          <CProgress value={15} max={20} className="mb-3" />
         </CCardBody>
       </CCard>
       <CCard className="mb-4">
@@ -41,8 +35,8 @@ const ProgressBar = () => {
           <small> heights</small>
         </CCardHeader>
         <CCardBody>
-          <CProgress value={25} className="mb-3" height="3"/>
-          <CProgress value={25} className="mb-3" height="30"/>
+          <CProgress value={25} className="mb-3" height="3" />
+          <CProgress value={25} className="mb-3" height="30" />
         </CCardBody>
       </CCard>
       <CCard className="mb-4">
@@ -64,9 +58,9 @@ const ProgressBar = () => {
         </CCardHeader>
         <CCardBody>
           <CProgress size="xs">
-            <CProgressBar value={10}/>
-            <CProgressBar color="success" value={30}/>
-            <CProgressBar color="danger" value={20}/>
+            <CProgressBar value={10} />
+            <CProgressBar color="success" value={30} />
+            <CProgressBar color="danger" value={20} />
           </CProgress>
         </CCardBody>
       </CCard>

@@ -19,5 +19,5 @@ export {
   AppHeaderDropdownNotif,
   AppHeaderDropdownTasks,
   DefaultLayout,
-  AppSidebar
+  AppSidebar,
 }

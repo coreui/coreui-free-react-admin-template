@@ -9,12 +9,10 @@ const CoreUIIcons = () => {
     <CCard className="mb-4">
       <CCardHeader>
         Flag Icons
-        <DocsLink href="https://github.com/coreui/coreui-icons" text="GitHub"/>
+        <DocsLink href="https://github.com/coreui/coreui-icons" text="GitHub" />
       </CCardHeader>
       <CCardBody>
-        <CRow className="text-center">
-          {getIconsView(flagSet)}
-        </CRow>
+        <CRow className="text-center">{getIconsView(flagSet)}</CRow>
       </CCardBody>
     </CCard>
   )

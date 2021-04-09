@@ -15,12 +15,11 @@ import {
   CToast,
   CToastBody,
   CToastHeader,
-  CToaster
+  CToaster,
 } from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const Toaster = () => {
-
   const placements = [
     'top-start',
     'top-center',
@@ -30,13 +29,13 @@ const Toaster = () => {
     'middle-end',
     'bottom-start',
     'bottom-center',
-    'bottom-end'
+    'bottom-end',
   ]
 
   const [toasts, setToasts] = useState([
-    { placement: 'static'},
-    { placement: 'static'},
-    { placement: 'top-right', autohide: 3000 }
+    { placement: 'static' },
+    { placement: 'static' },
+    { placement: 'top-right', autohide: 3000 },
   ])
 
   const [placement, setPlacement] = useState('top-right')
@@ -46,14 +45,10 @@ const Toaster = () => {
   const [fade, setFade] = useState(true)
 
   const addToast = () => {
-    setToasts([
-      ...toasts,
-      { placement, autohide: autohide && autohideValue, closeButton, fade }
-    ])
+    setToasts([...toasts, { placement, autohide: autohide && autohideValue, closeButton, fade }])
   }
 
-
-  const toasters = (()=>{
+  const toasters = (() => {
     return toasts.reduce((toasters, toast) => {
       toasters[toast.placement] = toasters[toast.placement] || []
       toasters[toast.placement].push(toast)
@@ -61,12 +56,11 @@ const Toaster = () => {
     }, {})
   })()
 
-
   return (
     <CCard className="mb-4">
       <CCardHeader>
         Toasts.
-        <DocsLink name="-Toast"/>
+        <DocsLink name="-Toast" />
       </CCardHeader>
       <CCardBody>
         <CContainer>
@@ -79,39 +73,40 @@ const Toaster = () => {
                   <CFormCheck
                     id="autohide"
                     checked={autohide}
-                    onChange={e => { setAutohide(e.target.checked) }}
+                    onChange={(e) => {
+                      setAutohide(e.target.checked)
+                    }}
                     custom
                   />
                   <CFormLabel variant="custom-checkbox" htmlFor="autohide">
                     Autohide of the toast
                   </CFormLabel>
                 </div>
-                {
-                  autohide &&
+                {autohide && (
                   <div className="my-2">
                     <CFormLabel htmlFor="ccyear">Time to autohide</CFormLabel>
                     <CFormControl
                       type="number"
                       value={autohideValue}
-                      onChange={e => {
+                      onChange={(e) => {
                         setAutohideValue(Number(e.target.value))
                       }}
                     />
                   </div>
-                }
+                )}
 
                 <div className="my-2">
                   <CFormLabel htmlFor="ccyear">Placement</CFormLabel>
                   <CFormSelect
                     className="form-control"
                     value={placement}
-                    onChange={e => {setPlacement(e.target.value)}}
+                    onChange={(e) => {
+                      setPlacement(e.target.value)
+                    }}
                   >
-                    {
-                      placements.map((placement, i)=>(
-                        <option key={i}>{placement}</option>
-                      ))
-                    }
+                    {placements.map((placement, i) => (
+                      <option key={i}>{placement}</option>
+                    ))}
                   </CFormSelect>
                 </div>
 
@@ -119,10 +114,14 @@ const Toaster = () => {
                   <CFormCheck
                     id="fade"
                     checked={fade}
-                    onChange={e => { setFade(e.target.checked) }}
+                    onChange={(e) => {
+                      setFade(e.target.checked)
+                    }}
                     custom
                   />
-                  <CFormLabel variant="custom-checkbox" htmlFor="fade">fade</CFormLabel>
+                  <CFormLabel variant="custom-checkbox" htmlFor="fade">
+                    fade
+                  </CFormLabel>
                 </div>
 
                 <div variant="custom-checkbox" className="my-2">
@@ -130,32 +129,25 @@ const Toaster = () => {
                     id="close"
                     custom
                     checked={closeButton}
-                    onChange={e=> { setCloseButton(e.target.checked) }}
+                    onChange={(e) => {
+                      setCloseButton(e.target.checked)
+                    }}
                   />
                   <CFormLabel variant="custom-checkbox" htmlFor="close">
                     closeButton
                   </CFormLabel>
                 </div>
 
-                <CButton
-                  className="me-1 w-25"
-                  color="success"
-                  onClick={addToast}
-                >
+                <CButton className="me-1 w-25" color="success" onClick={addToast}>
                   Add toast
                 </CButton>
-
               </CForm>
             </CCol>
             <CCol sm="12" lg="6">
               {Object.keys(toasters).map((toasterKey) => (
-                <CToaster
-                  placement={toasterKey}
-                  key={'toaster' + toasterKey}
-                >
-                  {
-                    toasters[toasterKey].map((toast, key)=>{
-                    return(
+                <CToaster placement={toasterKey} key={'toaster' + toasterKey}>
+                  {toasters[toasterKey].map((toast, key) => {
+                    return (
                       <CToast
                         key={'toast' + key}
                         icon={
@@ -177,22 +169,8 @@ const Toaster = () => {
                       >
                         {`Hello, ${toasterKey} world! This is a toast ${toasterKey} message.`}
                       </CToast>
-                      // <CToast
-                      //   key={'toast' + key}
-                      //   show={true}
-                      //   autohide={toast.autohide}
-                      //   fade={toast.fade}
-                      // >
-                      //   <CToastHeader closeButton={toast.closeButton}>
-                      //     Toast title
-                      //   </CToastHeader>
-                      //   <CToastBody>
-                      //     {`This is a toast in ${toasterKey} positioned toaster number ${key + 1}.`}
-                      //   </CToastBody>
-                      // </CToast>
                     )
-                  })
-                  }
+                  })}
                 </CToaster>
               ))}
             </CCol>

@@ -26,19 +26,17 @@ const ButtonGroups = () => {
         <CCard className="mb-4">
           <CCardHeader>
             Callout
-            <DocsLink name="CCallout"/>
+            <DocsLink name="CCallout" />
           </CCardHeader>
           <CCardBody>
-            <CCallout color="primary">
-              Callout
-            </CCallout>
+            <CCallout color="primary">Callout</CCallout>
           </CCardBody>
         </CCard>
 
         <CCard className="mb-4">
           <CCardHeader>
             Button Group
-            <DocsLink name="-Button/#CButtonGroup"/>
+            <DocsLink name="-Button/#CButtonGroup" />
           </CCardHeader>
           <CCardBody>
             <CButtonGroup>
@@ -111,10 +109,8 @@ const ButtonGroups = () => {
             </CButtonGroup>
           </CCardBody>
         </CCard>
-
       </CCol>
       <CCol md={6}>
-
         <CCard className="mb-4">
           <CCardHeader>
             Button Group
@@ -126,13 +122,15 @@ const ButtonGroups = () => {
               <CButton color="secondary">Middle</CButton>
               <CButton color="secondary">Right</CButton>
             </CButtonGroup>
-            <br /><br />
+            <br />
+            <br />
             <CButtonGroup>
               <CButton color="secondary">Left</CButton>
               <CButton color="secondary">Middle</CButton>
               <CButton color="secondary">Right</CButton>
             </CButtonGroup>
-            <br /><br />
+            <br />
+            <br />
             <CButtonGroup size="sm">
               <CButton color="secondary">Left</CButton>
               <CButton color="secondary">Middle</CButton>

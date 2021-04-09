@@ -1,6 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
   CHeader,
@@ -10,8 +10,8 @@ import {
   CHeaderToggler,
   CNavLink,
   CNavItem,
-} from "@coreui/react-ts";
-import CIcon from "@coreui/icons-react";
+} from '@coreui/react-ts'
+import CIcon from '@coreui/icons-react'
 
 import {
   AppBreadcrumb,
@@ -19,57 +19,39 @@ import {
   AppHeaderDropdownMssg,
   AppHeaderDropdownNotif,
   AppHeaderDropdownTasks,
-} from "../containers/index";
+} from '../containers/index'
 
 const AppHeader = () => {
-  const dispatch = useDispatch();
-  const sidebarShow = useSelector((state) => state.sidebarShow);
+  const dispatch = useDispatch()
+  const sidebarShow = useSelector((state) => state.sidebarShow)
 
   const toggleSidebar = () => {
-    const val = [true, "responsive"].includes(sidebarShow)
-      ? false
-      : "responsive";
-    dispatch({ type: "set", sidebarShow: val });
-  };
+    const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
+    dispatch({ type: 'set', sidebarShow: val })
+  }
 
   const toggleSidebarMobile = () => {
-    const val = [false, "responsive"].includes(sidebarShow)
-      ? true
-      : "responsive";
-    dispatch({ type: "set", sidebarShow: val });
-  };
+    const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
+    dispatch({ type: 'set', sidebarShow: val })
+  }
 
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
-        <CHeaderToggler
-          inHeader
-          className="ms-md-3 d-lg-none"
-          onClick={toggleSidebarMobile}
-        />
-        <CHeaderToggler
-          inHeader
-          className="ms-3 d-md-down-none"
-          onClick={toggleSidebar}
-        />
+        <CHeaderToggler inHeader className="ms-md-3 d-lg-none" onClick={toggleSidebarMobile} />
+        <CHeaderToggler inHeader className="ms-3 d-md-down-none" onClick={toggleSidebar} />
         <CHeaderBrand className="mx-auto d-lg-none" to="/">
           <CIcon name="logo" height="48" alt="Logo" />
         </CHeaderBrand>
 
         <CHeaderNav className="d-md-down-none me-auto">
           <CNavItem>
-            <CNavLink
-              to="/dashboard"
-              component={NavLink}
-              activeClassName="active"
-            >
+            <CNavLink to="/dashboard" component={NavLink} activeClassName="active">
               Dashboard
             </CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink to="/users" component={NavLink} activeClassName="active">
-              Users
-            </CNavLink>
+            <CNavLink>Users</CNavLink>
           </CNavItem>
           <CNavItem>
             <CNavLink>Settings</CNavLink>
@@ -85,10 +67,10 @@ const AppHeader = () => {
       </CContainer>
       <CHeaderDivider />
       <CContainer fluid>
-        <AppBreadcrumb/>
+        <AppBreadcrumb />
       </CContainer>
     </CHeader>
-  );
-};
+  )
+}
 
 export default AppHeader

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   CCol,
   CNav,
@@ -10,15 +10,13 @@ import {
   CCard,
   CCardBody,
   CCardHeader,
-} from "@coreui/react-ts";
-import CIcon from "@coreui/icons-react";
-import { DocsLink } from "src/reusable";
+} from '@coreui/react-ts'
+import { DocsLink } from 'src/reusable'
 
 const Tabs = () => {
   const [activeKey, setActiveKey] = useState(1)
-  const [active, setActive] = useState(1);
   const lorem =
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.";
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.'
 
   return (
     <CRow>
@@ -31,13 +29,19 @@ const Tabs = () => {
           <CCardBody>
             <CNav variant="tabs">
               <CNavItem>
-                <CNavLink active={activeKey === 1} onClick={() => setActiveKey(1)}>Home</CNavLink>
+                <CNavLink active={activeKey === 1} onClick={() => setActiveKey(1)}>
+                  Home
+                </CNavLink>
               </CNavItem>
               <CNavItem>
-                <CNavLink active={activeKey === 2} onClick={() => setActiveKey(2)}>Profile</CNavLink>
+                <CNavLink active={activeKey === 2} onClick={() => setActiveKey(2)}>
+                  Profile
+                </CNavLink>
               </CNavItem>
               <CNavItem>
-                <CNavLink active={activeKey === 3} onClick={() => setActiveKey(3)}>Messages</CNavLink>
+                <CNavLink active={activeKey === 3} onClick={() => setActiveKey(3)}>
+                  Messages
+                </CNavLink>
               </CNavItem>
             </CNav>
             <CTabContent>
@@ -144,7 +148,7 @@ const Tabs = () => {
         </CCard>
       </CCol> */}
     </CRow>
-  );
-};
+  )
+}
 
-export default Tabs;
+export default Tabs

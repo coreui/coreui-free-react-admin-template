@@ -1,6 +1,6 @@
 /*
-* required polyfills
-*/
+ * required polyfills
+ */
 
 /** IE9, IE10 and IE11 requires all of the following polyfills. **/
 // import "core-js";
@@ -28,14 +28,13 @@
 // import 'core-js/features/reflect'
 
 // CustomEvent() constructor functionality in IE9, IE10, IE11
-(function () {
+;(function () {
+  if (typeof window.CustomEvent === 'function') return false
 
-  if ( typeof window.CustomEvent === "function" ) return false
-
-  function CustomEvent ( event, params ) {
+  function CustomEvent(event, params) {
     params = params || { bubbles: false, cancelable: false, detail: undefined }
-    var evt = document.createEvent( 'CustomEvent' )
-    evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail )
+    var evt = document.createEvent('CustomEvent')
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail)
     return evt
   }
 
@@ -46,18 +45,17 @@
 
 if (!Element.prototype.matches) {
   Element.prototype.matches =
-    Element.prototype.msMatchesSelector ||
-    Element.prototype.webkitMatchesSelector;
+    Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector
 }
 
 if (!Element.prototype.closest) {
-  Element.prototype.closest = function(s) {
-    var el = this;
+  Element.prototype.closest = function (s) {
+    var el = this
 
     do {
-      if (Element.prototype.matches.call(el, s)) return el;
-      el = el.parentElement || el.parentNode;
-    } while (el !== null && el.nodeType === 1);
-    return null;
-  };
+      if (Element.prototype.matches.call(el, s)) return el
+      el = el.parentElement || el.parentNode
+    } while (el !== null && el.nodeType === 1)
+    return null
+  }
 }

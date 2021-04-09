@@ -1,15 +1,8 @@
 import React, { useEffect, useState, createRef } from 'react'
 import classNames from 'classnames'
-import {
-  CRow,
-  CCol,
-  CCard,
-  CCardHeader,
-  CCardBody
-} from '@coreui/react-ts'
+import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react-ts'
 import { rgbToHex } from '@coreui/utils'
 import { DocsLink } from 'src/reusable'
-
 
 const ThemeView = () => {
   const [color, setColor] = useState('rgb(255, 255, 255)')
@@ -24,26 +17,26 @@ const ThemeView = () => {
   return (
     <table className="table w-100" ref={ref}>
       <tbody>
-      <tr>
-        <td className="text-muted">HEX:</td>
-        <td className="font-weight-bold">{ rgbToHex(color) }</td>
-      </tr>
-      <tr>
-        <td className="text-muted">RGB:</td>
-        <td className="font-weight-bold">{ color }</td>
-      </tr>
+        <tr>
+          <td className="text-muted">HEX:</td>
+          <td className="font-weight-bold">{rgbToHex(color)}</td>
+        </tr>
+        <tr>
+          <td className="text-muted">RGB:</td>
+          <td className="font-weight-bold">{color}</td>
+        </tr>
       </tbody>
     </table>
   )
 }
 
-const ThemeColor = ({className, children}) => {
+const ThemeColor = ({ className, children }) => {
   const classes = classNames(className, 'theme-color w-75 rounded mb-3')
   return (
     <CCol xl="2" md="4" sm="6" xs="12" className="mb-4">
-      <div className={classes} style={{paddingTop: '75%'}}></div>
+      <div className={classes} style={{ paddingTop: '75%' }}></div>
       {children}
-      <ThemeView/>
+      <ThemeView />
     </CCol>
   )
 }
@@ -54,7 +47,7 @@ const Colors = () => {
       <CCard className="mb-4">
         <CCardHeader>
           Theme colors
-          <DocsLink href="https://coreui.io/docs/utilities/colors/"/>
+          <DocsLink href="https://coreui.io/docs/utilities/colors/" />
         </CCardHeader>
         <CCardBody>
           <CRow>
@@ -86,9 +79,7 @@ const Colors = () => {
         </CCardBody>
       </CCard>
       <CCard className="mb-4">
-        <CCardHeader>
-          Grays
-        </CCardHeader>
+        <CCardHeader>Grays</CCardHeader>
         <CCardBody>
           <CRow className="mb-3">
             <ThemeColor className="bg-gray-100">

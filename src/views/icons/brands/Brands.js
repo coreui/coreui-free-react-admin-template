@@ -8,10 +8,10 @@ const toKebabCase = (str) => {
   return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()
 }
 
-export const getIconsView = iconset => {
+export const getIconsView = (iconset) => {
   return Object.entries(iconset).map(([name, value]) => (
     <CCol className="mb-5" xs="6" sm="4" md="3" xl="2" key={name}>
-      <CIcon content={value} size="2xl"/>
+      <CIcon content={value} size="2xl" />
       <div>{toKebabCase(name)}</div>
     </CCol>
   ))
@@ -22,12 +22,10 @@ const CoreUIIcons = () => {
     <CCard className="mb-4">
       <CCardHeader>
         Brand Icons
-        <DocsLink href="https://github.com/coreui/coreui-icons" text="GitHub"/>
+        <DocsLink href="https://github.com/coreui/coreui-icons" text="GitHub" />
       </CCardHeader>
       <CCardBody>
-        <CRow className="text-center">
-          {getIconsView(brandSet)}
-        </CRow>
+        <CRow className="text-center">{getIconsView(brandSet)}</CRow>
       </CCardBody>
     </CCard>
   )

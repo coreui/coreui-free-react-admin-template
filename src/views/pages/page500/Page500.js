@@ -6,7 +6,7 @@ import {
   CFormControl,
   CInputGroup,
   CInputGroupText,
-  CRow
+  CRow,
 } from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
@@ -19,7 +19,9 @@ const Page500 = () => {
             <span className="clearfix">
               <h1 className="float-start display-3 me-4">500</h1>
               <h4 className="pt-3">Houston, we have a problem!</h4>
-              <p className="text-muted float-start">The page you are looking for is temporarily unavailable.</p>
+              <p className="text-muted float-start">
+                The page you are looking for is temporarily unavailable.
+              </p>
             </span>
             <CInputGroup className="input-prepend">
               <CInputGroupText>

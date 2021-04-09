@@ -15,7 +15,7 @@ import {
   CRow,
   CFormLabel,
   CFormControl,
-  CFormCheck
+  CFormCheck,
 } from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
@@ -26,14 +26,11 @@ const ButtonDropdowns = () => {
         <CCard className="mb-4">
           <CCardHeader>
             Dropdowns
-            <DocsLink name="CDropdown"/>
+            <DocsLink name="CDropdown" />
           </CCardHeader>
           <CCardBody>
-
             <CDropdown className="m-1">
-              <CDropdownToggle>
-                Dropdown button
-              </CDropdownToggle>
+              <CDropdownToggle>Dropdown button</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -42,13 +39,9 @@ const ButtonDropdowns = () => {
                 <CDropdownItem>Another Action</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
-
-            <hr/>
-
+            <hr />
             <CDropdown className="m-1 btn-group">
-              <CDropdownToggle color="primary">
-                Primary
-              </CDropdownToggle>
+              <CDropdownToggle color="primary">Primary</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -58,9 +51,7 @@ const ButtonDropdowns = () => {
               </CDropdownMenu>
             </CDropdown>
             <CDropdown className="m-1 btn-group">
-              <CDropdownToggle color="secondary">
-                Secondary
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Secondary</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -70,9 +61,7 @@ const ButtonDropdowns = () => {
               </CDropdownMenu>
             </CDropdown>
             <CDropdown className="m-1 btn-group">
-              <CDropdownToggle color="success">
-                Success
-              </CDropdownToggle>
+              <CDropdownToggle color="success">Success</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -82,9 +71,7 @@ const ButtonDropdowns = () => {
               </CDropdownMenu>
             </CDropdown>
             <CDropdown className="m-1 btn-group">
-              <CDropdownToggle color="info">
-                Info
-              </CDropdownToggle>
+              <CDropdownToggle color="info">Info</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -94,9 +81,7 @@ const ButtonDropdowns = () => {
               </CDropdownMenu>
             </CDropdown>
             <CDropdown className="m-1 btn-group">
-              <CDropdownToggle color="warning">
-                Warning
-              </CDropdownToggle>
+              <CDropdownToggle color="warning">Warning</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -106,9 +91,7 @@ const ButtonDropdowns = () => {
               </CDropdownMenu>
             </CDropdown>
             <CDropdown className="m-1 btn-group">
-              <CDropdownToggle color="danger">
-                Danger
-              </CDropdownToggle>
+              <CDropdownToggle color="danger">Danger</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -117,8 +100,7 @@ const ButtonDropdowns = () => {
                 <CDropdownItem>Another Action</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
-
-            <hr/>
+            <hr />
             <CDropdown className="m-1">
               <CDropdownToggle split color="primary">
                 Primary
@@ -191,13 +173,9 @@ const ButtonDropdowns = () => {
                 <CDropdownItem>Another Action</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
-
-            <hr/>
-
+            <hr />
             <CDropdown className="m-1" size="lg">
-              <CDropdownToggle color="secondary">
-                Large button
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Large button</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -205,8 +183,7 @@ const ButtonDropdowns = () => {
                 <CDropdownDivider />
                 <CDropdownItem>Another Action</CDropdownItem>
               </CDropdownMenu>
-            </CDropdown>
-            {' '}
+            </CDropdown>{' '}
             <CDropdown className="m-1">
               <CDropdownToggle split color="secondary" size="lg">
                 Large split button
@@ -219,9 +196,7 @@ const ButtonDropdowns = () => {
                 <CDropdownItem>Another Action</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
-
-            <hr/>
-
+            <hr />
             <CDropdown className="m-1">
               <CDropdownToggle color="secondary" size="sm">
                 Small button
@@ -233,8 +208,7 @@ const ButtonDropdowns = () => {
                 <CDropdownDivider />
                 <CDropdownItem>Another Action</CDropdownItem>
               </CDropdownMenu>
-            </CDropdown>
-            {' '}
+            </CDropdown>{' '}
             <CDropdown className="m-1">
               <CDropdownToggle color="secondary" size="sm" split>
                 Small split button
@@ -247,13 +221,9 @@ const ButtonDropdowns = () => {
                 <CDropdownItem>Another Action</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
-
-            <hr/>
-
+            <hr />
             <CDropdown className="m-1">
-              <CDropdownToggle color="secondary">
-                Dropup button
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Dropup button</CDropdownToggle>
               <CDropdownMenu placement="top">
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -272,19 +242,13 @@ const ButtonDropdowns = () => {
                 <CDropdownItem>Another Action</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
-
           </CCardBody>
         </CCard>
         <CCard className="mb-4">
-          <CCardHeader>
-            Menus
-          </CCardHeader>
+          <CCardHeader>Menus</CCardHeader>
           <CCardBody>
-
             <CDropdown className="m-1 d-inline-block">
-              <CDropdownToggle color="secondary">
-                Direction Up
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Direction Up</CDropdownToggle>
               <CDropdownMenu placement="top">
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -294,9 +258,7 @@ const ButtonDropdowns = () => {
             </CDropdown>
 
             <CDropdown className="m-1 d-inline-block">
-              <CDropdownToggle color="secondary">
-                Direction Left
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Direction Left</CDropdownToggle>
               <CDropdownMenu placement="left">
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -306,9 +268,7 @@ const ButtonDropdowns = () => {
             </CDropdown>
 
             <CDropdown className="m-1 d-inline-block">
-              <CDropdownToggle color="secondary">
-                Direction Right
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Direction Right</CDropdownToggle>
               <CDropdownMenu placement="right">
                 <CDropdownHeader>Header</CDropdownHeader>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
@@ -318,13 +278,8 @@ const ButtonDropdowns = () => {
             </CDropdown>
 
             <CDropdown className="m-1 d-inline-block">
-              <CDropdownToggle color="secondary">
-                Default Down
-              </CDropdownToggle>
-              <CDropdownMenu
-                placement="bottom"
-                modifiers={[{name: 'flip', enabled: false }]}
-              >
+              <CDropdownToggle color="secondary">Default Down</CDropdownToggle>
+              <CDropdownMenu placement="bottom" modifiers={[{ name: 'flip', enabled: false }]}>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem disabled>Action Disabled</CDropdownItem>
                 <CDropdownItem>Action</CDropdownItem>
@@ -336,7 +291,7 @@ const ButtonDropdowns = () => {
 
             <CDropdown className="m-1">
               <CDropdownToggle color="secondary">
-                This dropdown{'\''}s menu is right-aligned
+                This dropdown{"'"}s menu is right-aligned
               </CDropdownToggle>
               <CDropdownMenu placement="right">
                 <CDropdownItem header>Header</CDropdownItem>
@@ -349,9 +304,7 @@ const ButtonDropdowns = () => {
             <hr />
 
             <CDropdown className="m-1">
-              <CDropdownToggle color="secondary">
-                Dropdown with header
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Dropdown with header</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem header>Header</CDropdownItem>
                 <CDropdownItem>Action</CDropdownItem>
@@ -362,9 +315,7 @@ const ButtonDropdowns = () => {
             <hr />
 
             <CDropdown className="m-1">
-              <CDropdownToggle color="secondary">
-                Dropdown with divider
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Dropdown with divider</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
                 <CDropdownDivider />
@@ -375,9 +326,7 @@ const ButtonDropdowns = () => {
             <hr />
 
             <CDropdown className="m-1">
-              <CDropdownToggle color="secondary">
-                Dropdown with disabled item
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Dropdown with disabled item</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
                 <CDropdownItem disabled>Disabled Action</CDropdownItem>
@@ -387,32 +336,41 @@ const ButtonDropdowns = () => {
             <hr />
 
             <CDropdown className="m-1">
-              <CDropdownToggle color="info">
-                Dropdown with form
-              </CDropdownToggle>
+              <CDropdownToggle color="info">Dropdown with form</CDropdownToggle>
               <CDropdownMenu>
-                <CForm className="px-4 py-3" >
+                <CForm className="px-4 py-3">
                   <div className="mb-3">
                     <CFormLabel htmlFor="exampleDropdownFormEmail1">Email address</CFormLabel>
-                    <CFormControl id="exampleDropdownFormEmail1" type="email" placeholder="email@example.com" autoComplete="email"/>
+                    <CFormControl
+                      id="exampleDropdownFormEmail1"
+                      type="email"
+                      placeholder="email@example.com"
+                      autoComplete="email"
+                    />
                   </div>
                   <div className="mb-3">
                     <CFormLabel htmlFor="exampleDropdownFormPassword1">Password</CFormLabel>
-                    <CFormControl id="exampleDropdownFormPassword1" type="password" placeholder="Password" autoComplete="current-password"/>
+                    <CFormControl
+                      id="exampleDropdownFormPassword1"
+                      type="password"
+                      placeholder="Password"
+                      autoComplete="current-password"
+                    />
                   </div>
                   <div className="mb-3">
-                    <CFormCheck custom id="exampleDropdownFormCheckbox1" label="Remember me"/>
+                    <CFormCheck custom id="exampleDropdownFormCheckbox1" label="Remember me" />
                   </div>
                   <div className="mb-3">
-                    <CButton color="primary" type="submit">Sign in</CButton>
+                    <CButton color="primary" type="submit">
+                      Sign in
+                    </CButton>
                   </div>
                 </CForm>
-                <CDropdownDivider/>
-                <CDropdownItem href="#/pages/register" >Register</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem href="#/pages/register">Register</CDropdownItem>
                 <CDropdownItem>Forgot password?</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
-
           </CCardBody>
         </CCard>
       </CCol>

@@ -6,26 +6,22 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  CImage
+  CImage,
 } from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
 const AppHeaderDropdownMssg = () => {
   const itemsCount = 4
   return (
-    <CDropdown
-      variant="nav-item"
-      direction="down"
-    >
+    <CDropdown variant="nav-item" direction="down">
       <CDropdownToggle className="c-header-nav-link" caret={false}>
-        <CIcon name="cil-envelope-open" /><CBadge shape="rounded-pill" color="info">{itemsCount}</CBadge>
+        <CIcon name="cil-envelope-open" />
+        <CBadge shape="rounded-pill" color="info">
+          {itemsCount}
+        </CBadge>
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownItem
-          header
-          tag="div"
-          color="light"
-        >
+        <CDropdownItem header tag="div" color="light">
           <strong>You have {itemsCount} messages</strong>
         </CDropdownItem>
         <CDropdownItem href="#">
@@ -41,7 +37,8 @@ const AppHeaderDropdownMssg = () => {
               <span className="fa fa-exclamation text-danger"></span> Important message
             </div>
             <div className="small text-muted text-truncate">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...
             </div>
           </div>
         </CDropdownItem>
@@ -56,7 +53,9 @@ const AppHeaderDropdownMssg = () => {
               <small className="text-muted float-end mt-1">5 minutes ago</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <div className="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+            <div className="small text-muted text-truncate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...
             </div>
           </div>
         </CDropdownItem>
@@ -71,7 +70,9 @@ const AppHeaderDropdownMssg = () => {
               <small className="text-muted float-end mt-1">1:52 PM</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <div className="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+            <div className="small text-muted text-truncate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...
             </div>
           </div>
         </CDropdownItem>
@@ -86,11 +87,15 @@ const AppHeaderDropdownMssg = () => {
               <small className="text-muted float-end mt-1">4:03 AM</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <div className="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...
+            <div className="small text-muted text-truncate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...
             </div>
           </div>
         </CDropdownItem>
-        <CDropdownItem href="#" className="text-center border-top"><strong>View all messages</strong></CDropdownItem>
+        <CDropdownItem href="#" className="text-center border-top">
+          <strong>View all messages</strong>
+        </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
   )

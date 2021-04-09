@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { getColor, deepObjectsMerge } from '@coreui/utils'
 import { CChartLine } from '@coreui/react-chartjs'
 
-const ChartLineSimple = props => {
-
+const ChartLineSimple = (props) => {
   const {
     borderColor,
     backgroundColor,
@@ -15,7 +14,7 @@ const ChartLineSimple = props => {
     ...attributes
   } = props
 
-  const pointHoverColor = (()=>{
+  const pointHoverColor = (() => {
     if (pointHoverBackgroundColor) {
       return pointHoverBackgroundColor
     } else if (backgroundColor !== 'transparent') {
@@ -24,7 +23,7 @@ const ChartLineSimple = props => {
     return borderColor
   })()
 
-  const defaultDatasets = (()=>{
+  const defaultDatasets = (() => {
     return [
       {
         data: dataPoints,
@@ -32,12 +31,12 @@ const ChartLineSimple = props => {
         backgroundColor: getColor(backgroundColor),
         pointBackgroundColor: getColor(pointHoverColor),
         pointHoverBackgroundColor: getColor(pointHoverColor),
-        label
-      }
+        label,
+      },
     ]
   })()
 
-  const pointedOptions = (()=>{
+  const pointedOptions = (() => {
     return {
       scales: {
         xAxes: [
@@ -45,13 +44,13 @@ const ChartLineSimple = props => {
             offset: true,
             gridLines: {
               color: 'transparent',
-              zeroLineColor: 'transparent'
+              zeroLineColor: 'transparent',
             },
             ticks: {
               fontSize: 2,
-              fontColor: 'transparent'
-            }
-          }
+              fontColor: 'transparent',
+            },
+          },
         ],
         yAxes: [
           {
@@ -59,55 +58,59 @@ const ChartLineSimple = props => {
             ticks: {
               display: false,
               min: Math.min.apply(Math, dataPoints) - 5,
-              max: Math.max.apply(Math, dataPoints) + 5
-            }
-          }
-        ]
+              max: Math.max.apply(Math, dataPoints) + 5,
+            },
+          },
+        ],
       },
       elements: {
         line: {
-          borderWidth: 1
+          borderWidth: 1,
         },
         point: {
           radius: 4,
           hitRadius: 10,
-          hoverRadius: 4
-        }
-      }
+          hoverRadius: 4,
+        },
+      },
     }
   })()
 
-  const straightOptions = (()=>{
+  const straightOptions = (() => {
     return {
       scales: {
-        xAxes: [{
-          display: false
-        }],
-        yAxes: [{
-          display: false
-        }]
+        xAxes: [
+          {
+            display: false,
+          },
+        ],
+        yAxes: [
+          {
+            display: false,
+          },
+        ],
       },
       elements: {
         line: {
-          borderWidth: 2
+          borderWidth: 2,
         },
         point: {
           radius: 0,
           hitRadius: 10,
-          hoverRadius: 4
-        }
-      }
+          hoverRadius: 4,
+        },
+      },
     }
   })()
 
-  const defaultOptions = (()=>{
+  const defaultOptions = (() => {
     const options = pointed ? pointedOptions : straightOptions
-      return Object.assign({}, options, {
-        maintainAspectRatio: false,
-        legend: {
-          display: false
-        }
-      })
+    return Object.assign({}, options, {
+      maintainAspectRatio: false,
+      legend: {
+        display: false,
+      },
+    })
   })()
 
   const computedDatasets = (() => {
@@ -139,14 +142,14 @@ ChartLineSimple.propTypes = {
   pointHoverBackgroundColor: PropTypes.string,
   dataPoints: PropTypes.array,
   label: PropTypes.string,
-  pointed: PropTypes.bool
-};
+  pointed: PropTypes.bool,
+}
 
 ChartLineSimple.defaultProps = {
   borderColor: 'rgba(255,255,255,.55)',
   backgroundColor: 'transparent',
   dataPoints: [10, 22, 34, 46, 58, 70, 46, 23, 45, 78, 34, 12],
-  label: 'Sales'
-};
+  label: 'Sales',
+}
 
 export default ChartLineSimple

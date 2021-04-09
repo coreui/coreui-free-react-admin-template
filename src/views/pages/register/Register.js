@@ -10,7 +10,7 @@ import {
   CFormControl,
   CInputGroup,
   CInputGroupText,
-  CRow
+  CRow,
 } from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
@@ -39,24 +39,38 @@ const Register = () => {
                     <CInputGroupText>
                       <CIcon name="cil-lock-locked" />
                     </CInputGroupText>
-                    <CFormControl type="password" placeholder="Password" autoComplete="new-password" />
+                    <CFormControl
+                      type="password"
+                      placeholder="Password"
+                      autoComplete="new-password"
+                    />
                   </CInputGroup>
                   <CInputGroup className="mb-4">
                     <CInputGroupText>
                       <CIcon name="cil-lock-locked" />
                     </CInputGroupText>
-                    <CFormControl type="password" placeholder="Repeat password" autoComplete="new-password" />
+                    <CFormControl
+                      type="password"
+                      placeholder="Repeat password"
+                      autoComplete="new-password"
+                    />
                   </CInputGroup>
-                  <CButton color="success" block>Create Account</CButton>
+                  <CButton color="success" block>
+                    Create Account
+                  </CButton>
                 </CForm>
               </CCardBody>
               <CCardFooter className="p-4">
                 <CRow>
                   <CCol xs="12" sm="6">
-                    <CButton className="btn-facebook mb-1" block><span>facebook</span></CButton>
+                    <CButton className="btn-facebook mb-1" block>
+                      <span>facebook</span>
+                    </CButton>
                   </CCol>
                   <CCol xs="12" sm="6">
-                    <CButton className="btn-twitter mb-1" block><span>twitter</span></CButton>
+                    <CButton className="btn-twitter mb-1" block>
+                      <span>twitter</span>
+                    </CButton>
                   </CCol>
                 </CRow>
               </CCardFooter>

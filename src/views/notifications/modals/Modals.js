@@ -10,12 +10,11 @@ import {
   CModalFooter,
   CModalHeader,
   CModalTitle,
-  CRow
+  CRow,
 } from '@coreui/react-ts'
 import { DocsLink } from 'src/reusable'
 
 const Modals = () => {
-
   const [modal, setModal] = useState(true)
   const [large, setLarge] = useState(false)
   const [small, setSmall] = useState(false)
@@ -31,82 +30,79 @@ const Modals = () => {
         <CCard className="mb-4">
           <CCardHeader>
             Bootstrap Modals
-            <DocsLink name="CModal"/>
+            <DocsLink name="CModal" />
           </CCardHeader>
           <CCardBody>
-            <CButton
-              onClick={() => setModal(!modal)}
-              className="me-1"
-            >Launch demo modal</CButton>
+            <CButton onClick={() => setModal(!modal)} className="me-1">
+              Launch demo modal
+            </CButton>
             <CButton onClick={() => setLarge(!large)} className="me-1">
               Launch large modal
             </CButton>
             <CButton onClick={() => setSmall(!large)} className="me-1">
               Launch small modal
             </CButton>
-            <CModal
-              visible={modal}
-              onClose={setModal}
-            >
+            <CModal visible={modal} onClose={setModal}>
               <CModalHeader closeButton>
                 <CModalTitle>Modal title</CModalTitle>
               </CModalHeader>
               <CModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </CModalBody>
               <CModalFooter>
                 <CButton color="primary">Do Something</CButton>{' '}
-                <CButton
-                  color="secondary"
-                  onClick={() => setModal(false)}
-                >Cancel</CButton>
+                <CButton color="secondary" onClick={() => setModal(false)}>
+                  Cancel
+                </CButton>
               </CModalFooter>
             </CModal>
 
-
-            <CModal
-              visible={large}
-              onClose={() => setLarge(!large)}
-              size="lg"
-            >
+            <CModal visible={large} onClose={() => setLarge(!large)} size="lg">
               <CModalHeader closeButton>
                 <CModalTitle>Modal title</CModalTitle>
               </CModalHeader>
               <CModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </CModalBody>
               <CModalFooter>
-                <CButton color="primary" onClick={() => setLarge(!large)}>Do Something</CButton>{' '}
-                <CButton color="secondary" onClick={() => setLarge(!large)}>Cancel</CButton>
+                <CButton color="primary" onClick={() => setLarge(!large)}>
+                  Do Something
+                </CButton>{' '}
+                <CButton color="secondary" onClick={() => setLarge(!large)}>
+                  Cancel
+                </CButton>
               </CModalFooter>
             </CModal>
 
-            <CModal
-              visible={small}
-              onClose={() => setSmall(!small)}
-              size="sm"
-            >
+            <CModal visible={small} onClose={() => setSmall(!small)} size="sm">
               <CModalHeader closeButton>
                 <CModalTitle>Modal title</CModalTitle>
               </CModalHeader>
               <CModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </CModalBody>
               <CModalFooter>
-                <CButton color="primary" onClick={() => setSmall(!small)}>Do Something</CButton>{' '}
-                <CButton color="secondary" onClick={() => setSmall(!small)}>Cancel</CButton>
+                <CButton color="primary" onClick={() => setSmall(!small)}>
+                  Do Something
+                </CButton>{' '}
+                <CButton color="secondary" onClick={() => setSmall(!small)}>
+                  Cancel
+                </CButton>
               </CModalFooter>
             </CModal>
 
@@ -115,25 +111,30 @@ const Modals = () => {
             <CButton color="primary" onClick={() => setPrimary(!primary)} className="me-1">
               Primary modal
             </CButton>
-            <CButton color="success" onClick={() => setSuccess(!success)} className="me-1">Success modal</CButton>
-            <CButton color="warning" onClick={() => setWarning(!warning)} className="me-1">Warning modal</CButton>
-            <CButton color="danger" onClick={() => setDanger(!danger)} className="me-1">Danger modal</CButton>
-            <CButton color="info" onClick={() => setInfo(!info)} className="me-1">Info modal</CButton>
+            <CButton color="success" onClick={() => setSuccess(!success)} className="me-1">
+              Success modal
+            </CButton>
+            <CButton color="warning" onClick={() => setWarning(!warning)} className="me-1">
+              Warning modal
+            </CButton>
+            <CButton color="danger" onClick={() => setDanger(!danger)} className="me-1">
+              Danger modal
+            </CButton>
+            <CButton color="info" onClick={() => setInfo(!info)} className="me-1">
+              Info modal
+            </CButton>
 
-            <CModal
-              visible={primary}
-              onClose={() => setPrimary(!primary)}
-              color="primary"
-            >
+            <CModal visible={primary} onClose={() => setPrimary(!primary)} color="primary">
               <CModalHeader closeButton>
                 <CModalTitle>Modal title</CModalTitle>
               </CModalHeader>
               <CModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </CModalBody>
               <CModalFooter>
                 <CButton color="primary" onClick={() => setPrimary(!primary)}>
@@ -145,90 +146,93 @@ const Modals = () => {
               </CModalFooter>
             </CModal>
 
-            <CModal
-              visible={success}
-              onClose={() => setSuccess(!success)}
-              color="success"
-            >
+            <CModal visible={success} onClose={() => setSuccess(!success)} color="success">
               <CModalHeader closeButton>
                 <CModalTitle>Modal title</CModalTitle>
               </CModalHeader>
               <CModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </CModalBody>
               <CModalFooter>
-                <CButton color="success" onClick={() => setSuccess(!success)}>Do Something</CButton>{' '}
-                <CButton color="secondary" onClick={() => setSuccess(!success)}>Cancel</CButton>
+                <CButton color="success" onClick={() => setSuccess(!success)}>
+                  Do Something
+                </CButton>{' '}
+                <CButton color="secondary" onClick={() => setSuccess(!success)}>
+                  Cancel
+                </CButton>
               </CModalFooter>
             </CModal>
 
-            <CModal
-              visible={warning}
-              onClose={() => setWarning(!warning)}
-              color="warning"
-            >
+            <CModal visible={warning} onClose={() => setWarning(!warning)} color="warning">
               <CModalHeader closeButton>
                 <CModalTitle>Modal title</CModalTitle>
               </CModalHeader>
               <CModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </CModalBody>
               <CModalFooter>
-                <CButton color="warning" onClick={() => setWarning(!warning)}>Do Something</CButton>{' '}
-                <CButton color="secondary" onClick={() => setWarning(!warning)}>Cancel</CButton>
+                <CButton color="warning" onClick={() => setWarning(!warning)}>
+                  Do Something
+                </CButton>{' '}
+                <CButton color="secondary" onClick={() => setWarning(!warning)}>
+                  Cancel
+                </CButton>
               </CModalFooter>
             </CModal>
 
-            <CModal
-              visible={danger}
-              onClose={() => setDanger(!danger)}
-              color="danger"
-            >
+            <CModal visible={danger} onClose={() => setDanger(!danger)} color="danger">
               <CModalHeader closeButton>
                 <CModalTitle>Modal title</CModalTitle>
               </CModalHeader>
               <CModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </CModalBody>
               <CModalFooter>
-                <CButton color="danger" onClick={() => setDanger(!danger)}>Do Something</CButton>{' '}
-                <CButton color="secondary" onClick={() => setDanger(!danger)}>Cancel</CButton>
+                <CButton color="danger" onClick={() => setDanger(!danger)}>
+                  Do Something
+                </CButton>{' '}
+                <CButton color="secondary" onClick={() => setDanger(!danger)}>
+                  Cancel
+                </CButton>
               </CModalFooter>
             </CModal>
 
-            <CModal
-              visible={info}
-              onClose={() => setInfo(!info)}
-              color="info"
-            >
+            <CModal visible={info} onClose={() => setInfo(!info)} color="info">
               <CModalHeader closeButton>
                 <CModalTitle>Modal title</CModalTitle>
               </CModalHeader>
               <CModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </CModalBody>
               <CModalFooter>
-                <CButton color="secondary" onClick={() => setInfo(!info)}>Cancel</CButton>
-                <CButton color="info" onClick={() => setInfo(!info)}>Do Something</CButton>{' '}
+                <CButton color="secondary" onClick={() => setInfo(!info)}>
+                  Cancel
+                </CButton>
+                <CButton color="info" onClick={() => setInfo(!info)}>
+                  Do Something
+                </CButton>{' '}
               </CModalFooter>
             </CModal>
-
           </CCardBody>
         </CCard>
       </CCol>

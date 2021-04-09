@@ -11,7 +11,7 @@ import {
   CFormControl,
   CInputGroup,
   CInputGroupText,
-  CRow
+  CRow,
 } from '@coreui/react-ts'
 import CIcon from '@coreui/icons-react'
 
@@ -37,14 +37,22 @@ const Login = () => {
                       <CInputGroupText>
                         <CIcon name="cil-lock-locked" />
                       </CInputGroupText>
-                      <CFormControl type="password" placeholder="Password" autoComplete="current-password" />
+                      <CFormControl
+                        type="password"
+                        placeholder="Password"
+                        autoComplete="current-password"
+                      />
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton color="primary" className="px-4">Login</CButton>
+                        <CButton color="primary" className="px-4">
+                          Login
+                        </CButton>
                       </CCol>
                       <CCol xs="6" className="text-right">
-                        <CButton color="link" className="px-0">Forgot password?</CButton>
+                        <CButton color="link" className="px-0">
+                          Forgot password?
+                        </CButton>
                       </CCol>
                     </CRow>
                   </CForm>
@@ -54,10 +62,14 @@ const Login = () => {
                 <CCardBody className="text-center">
                   <div>
                     <h2>Sign up</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.</p>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
                     <Link to="/register">
-                      <CButton color="primary" className="mt-3" active tabIndex={-1}>Register Now!</CButton>
+                      <CButton color="primary" className="mt-3" active tabIndex={-1}>
+                        Register Now!
+                      </CButton>
                     </Link>
                   </div>
                 </CCardBody>

@@ -17,14 +17,19 @@ import navigation from '../containers/_nav'
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
-  // const visible = useSelector(state => state.sidebarUnfoldable)
+  const sidebarShow = useSelector((state) => state.sidebarShow)
 
   return (
     <CSidebar
       position="fixed"
       selfHiding="md"
       unfoldable={unfoldable}
-      // show={show}
+      show={sidebarShow}
+      onShow={() => console.log('show')}
+      onHide={() => {
+        console.log('hide')
+        dispatch({ type: 'set', sidebarShow: false })
+      }}
       // onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">

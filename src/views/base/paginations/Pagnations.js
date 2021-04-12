@@ -13,7 +13,6 @@ const Paginations = () => {
           <DocsLink name="CPagination" />
         </CCardHeader>
         <CCardBody>
-          <h6>Default</h6>
           <CPagination>
             <CPaginationItem>Previous</CPaginationItem>
             <CPaginationItem>1</CPaginationItem>
@@ -21,61 +20,98 @@ const Paginations = () => {
             <CPaginationItem>3</CPaginationItem>
             <CPaginationItem>Next</CPaginationItem>
           </CPagination>
-          <br></br>
-
-          <h6>Small</h6>
-          <CPagination
-            size="sm"
-            activePage={currentPage}
-            pages={10}
-            onActivePageChange={setCurrentPage}
-          />
-          <br></br>
-
-          <div className="d-md-down-none">
-            <h6>Large</h6>
-            <CPagination
-              size="lg"
-              activePage={currentPage}
-              pages={10}
-              onActivePageChange={setCurrentPage}
-            />
-            <br></br>
-          </div>
-
-          <div>currentPage: {currentPage}</div>
         </CCardBody>
       </CCard>
       <CCard className="mb-4">
         <CCardHeader>
-          <strong> Pagination </strong>
+          Pagination
+          <small>with icons</small>
+        </CCardHeader>
+        <CCardBody>
+          <CPagination>
+            <CPaginationItem aria-label="previous">
+              <span aria-hidden="true">&laquo;</span>
+            </CPaginationItem>
+            <CPaginationItem>1</CPaginationItem>
+            <CPaginationItem>2</CPaginationItem>
+            <CPaginationItem>3</CPaginationItem>
+            <CPaginationItem aria-label="next">
+              <span aria-hidden="true">&raquo;</span>
+            </CPaginationItem>
+          </CPagination>
+        </CCardBody>
+      </CCard>
+      <CCard className="mb-4">
+        <CCardHeader>
+          Pagination
+          <small>with icons</small>
+        </CCardHeader>
+        <CCardBody>
+          <CPagination ariaLabel="Page navigation example">
+            <CPaginationItem ariaLabel="Previous" disabled>
+              <span aria-hidden="true">&laquo;</span>
+            </CPaginationItem>
+            <CPaginationItem active>1</CPaginationItem>
+            <CPaginationItem>2</CPaginationItem>
+            <CPaginationItem>3</CPaginationItem>
+            <CPaginationItem ariaLabel="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </CPaginationItem>
+          </CPagination>
+        </CCardBody>
+      </CCard>
+      <CCard className="mb-4">
+        <CCardHeader>
+          Pagination
+          <small>sizing</small>
+        </CCardHeader>
+        <CCardBody>
+          <CPagination size="lg" ariaLabel="Page navigation example">
+            <CPaginationItem>Previous</CPaginationItem>
+            <CPaginationItem>1</CPaginationItem>
+            <CPaginationItem>2</CPaginationItem>
+            <CPaginationItem>3</CPaginationItem>
+            <CPaginationItem>Next</CPaginationItem>
+          </CPagination>
+          <hr />
+          <CPagination size="sm" ariaLabel="Page navigation example">
+            <CPaginationItem>Previous</CPaginationItem>
+            <CPaginationItem>1</CPaginationItem>
+            <CPaginationItem>2</CPaginationItem>
+            <CPaginationItem>3</CPaginationItem>
+            <CPaginationItem>Next</CPaginationItem>
+          </CPagination>
+        </CCardBody>
+      </CCard>
+      <CCard className="mb-4">
+        <CCardHeader>
+          Pagination
           <small>alignment</small>
         </CCardHeader>
         <CCardBody>
-          <h6>Left alignment (default)</h6>
-          <CPagination activePage={currentPage} pages={10} onActivePageChange={setCurrentPage} />
-          <br></br>
-
-          <h6>Center alignment</h6>
-          <CPagination
-            align="center"
-            addListClass="some-class"
-            activePage={currentPage}
-            pages={10}
-            onActivePageChange={setCurrentPage}
-          />
-          <br></br>
-
-          <h6>Right (end) alignment</h6>
-          <CPagination
-            align="end"
-            activePage={currentPage}
-            pages={10}
-            onActivePageChange={setCurrentPage}
-          />
-          <br></br>
-
-          <div>currentPage: {currentPage}</div>
+          <CPagination className="justify-content-start" ariaLabel="Page navigation example">
+            <CPaginationItem disabled>Previous</CPaginationItem>
+            <CPaginationItem>1</CPaginationItem>
+            <CPaginationItem>2</CPaginationItem>
+            <CPaginationItem>3</CPaginationItem>
+            <CPaginationItem>Next</CPaginationItem>
+          </CPagination>
+          <hr />
+          <CPagination className="justify-content-center" ariaLabel="Page navigation example">
+            <CPaginationItem disabled>Previous</CPaginationItem>
+            <CPaginationItem>1</CPaginationItem>
+            <CPaginationItem>2</CPaginationItem>
+            <CPaginationItem>3</CPaginationItem>
+            <CPaginationItem>Next</CPaginationItem>
+          </CPagination>
+          <hr />
+          <CPagination className="justify-content-end" ariaLabel="Page navigation example">
+            <CPaginationItem disabled>Previous</CPaginationItem>
+            <CPaginationItem>1</CPaginationItem>
+            <CPaginationItem>2</CPaginationItem>
+            <CPaginationItem>3</CPaginationItem>
+            <CPaginationItem>Next</CPaginationItem>
+          </CPagination>
         </CCardBody>
       </CCard>
     </>

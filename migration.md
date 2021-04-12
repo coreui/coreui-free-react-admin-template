@@ -11,47 +11,57 @@
 - `float-left` to `float-start`
 - `float-right` to `float-end`
 
-## Badges
+## Components
 
-- variant="pill" --> shape="rounded-pill"
-- variant="square" --> shape="rounded-0"
+- Deprecated component `CEmbed`
+- Deprecated component `CJumbotron`
 
-## Forms
+### Badges
+
+- variant="pill" => shape="rounded-pill"
+- variant="square" => shape="rounded-0"
+
+### Forms
 
 - `CInput` => `CFormControl`
+- `CInputCheckbox` => `CFormCheck`
 - `CLabel` => `CFormLabel`
 - `CSelect` => `CFormSelect`
+- `CValidFeedback` => `CFormFeedback valid`
+- `CInvalidFeedback` => `CFormFeedback invalid`
 
 - Deprecated component `CFormGroup`
 - Deprecated component `CInputGroupAppend`
 - Deprecated component `CInputGroupPrepend`
+- Depreacted component `CSwitch`, use `CFormCheck switch` instead of.
+- Deprecated `.help-block`
 
-## Header
+### Header
 
 - Deprecated pro `withSubheader`
 - Deprecated component `CHeaderNavItem`, use `CNavItem` instead of.
 - Deprecated component `CHeaderNavLink`, use `CNavLink` instead of.
 
-## List Group
+### List Group
 
 - Depracated prop `action` Use `component="a"` or `component="b"` instead of `action`.
 
-## Modal
+### Modal
 
 - Depracated prop `show` Use `visible` instead of.
 
-## Popover
+### Popover
 
 - Depracated prop `header` Use `title` instead of.
 
-## Progress Bar
+### Progress Bar
 
 - Depracated prop `precision`
 - Depracated prop `showLabel`
 - Depracated prop `showPercentage`
 - Depracated prop `showValue`
 
-## Tabs
+### Tabs
 
 - Deprecated component `<CTabs>` use `<CNav variant="tabs">` without wrapper component `<CTabs>`
 

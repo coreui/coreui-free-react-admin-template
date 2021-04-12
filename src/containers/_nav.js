@@ -150,12 +150,6 @@ const _nav = [
       {
         _component: 'CNavItem',
         as: NavLink,
-        anchor: 'Brand buttons',
-        to: '/buttons/brand-buttons',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
         anchor: 'Buttons groups',
         to: '/buttons/button-groups',
       },

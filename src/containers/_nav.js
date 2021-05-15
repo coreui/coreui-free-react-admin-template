@@ -46,6 +46,12 @@ const _nav = [
       {
         _component: 'CNavItem',
         as: NavLink,
+        anchor: 'Accordion',
+        to: '/base/accordion',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
         anchor: 'Breadcrumb',
         to: '/base/breadcrumbs',
       },

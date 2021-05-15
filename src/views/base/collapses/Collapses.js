@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CRow } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+import { DocsLink, Example } from 'src/reusable'
 
 const Collapses = () => {
   const [visible, setVisible] = useState(false)
@@ -9,76 +9,82 @@ const Collapses = () => {
 
   return (
     <CRow>
-      <CCol xl="6">
+      <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
-            Collapse
-            <DocsLink name="CCollapse" />
+            <strong>React Collapse</strong>
           </CCardHeader>
           <CCardBody>
-            <CButton
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-                setVisible(!visible)
-              }}
-            >
-              Link
-            </CButton>
-            <CButton onClick={() => setVisible(!visible)}>Button</CButton>
-            <CCollapse visible={visible}>
-              <CCard className="mt-3">
-                <CCardBody>
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                  richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                  cred nesciunt sapiente ea proident.
-                </CCardBody>
-              </CCard>
-            </CCollapse>
+            <p class="text-medium-emphasis small">You can use a link or a button component.</p>
+            <Example href="https://coreui.io/react/docs/4.0/components/collapse">
+              <CButton
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setVisible(!visible)
+                }}
+              >
+                Link
+              </CButton>
+              <CButton onClick={() => setVisible(!visible)}>Button</CButton>
+              <CCollapse visible={visible}>
+                <CCard className="mt-3">
+                  <CCardBody>
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                    richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                    anderson cred nesciunt sapiente ea proident.
+                  </CCardBody>
+                </CCard>
+              </CCollapse>
+            </Example>
           </CCardBody>
         </CCard>
       </CCol>
-      <CCol xl="6">
+      <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
-            Collapse
-            <small> multi target</small>
+            <strong>React Collapse</strong> <small> multi target</small>
           </CCardHeader>
           <CCardBody>
-            <CButton onClick={() => setVisibleA(!visibleA)}>Toggle first element</CButton>
-            <CButton onClick={() => setVisibleB(!visibleB)}>Toggle second element</CButton>
-            <CButton
-              onClick={() => {
-                setVisibleA(!visibleA)
-                setVisibleB(!visibleB)
-              }}
-            >
-              Toggle both elements
-            </CButton>
-            <CRow>
-              <CCol xs="6">
-                <CCollapse visible={visibleA}>
-                  <CCard className="mt-3">
-                    <CCardBody>
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                      richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                      anderson cred nesciunt sapiente ea proident.
-                    </CCardBody>
-                  </CCard>
-                </CCollapse>
-              </CCol>
-              <CCol xs="6">
-                <CCollapse visible={visibleB}>
-                  <CCard className="mt-3">
-                    <CCardBody>
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                      richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                      anderson cred nesciunt sapiente ea proident.
-                    </CCardBody>
-                  </CCard>
-                </CCollapse>
-              </CCol>
-            </CRow>
+            <p class="text-medium-emphasis small">
+              A <code class="css-0">&lt;CButton&gt;</code> can show and hide multiple elements.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/collapse#multiple-targets">
+              <CButton onClick={() => setVisibleA(!visibleA)}>Toggle first element</CButton>
+              <CButton onClick={() => setVisibleB(!visibleB)}>Toggle second element</CButton>
+              <CButton
+                onClick={() => {
+                  setVisibleA(!visibleA)
+                  setVisibleB(!visibleB)
+                }}
+              >
+                Toggle both elements
+              </CButton>
+              <CRow>
+                <CCol xs="6">
+                  <CCollapse visible={visibleA}>
+                    <CCard className="mt-3">
+                      <CCardBody>
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                        anderson cred nesciunt sapiente ea proident.
+                      </CCardBody>
+                    </CCard>
+                  </CCollapse>
+                </CCol>
+                <CCol xs="6">
+                  <CCollapse visible={visibleB}>
+                    <CCard className="mt-3">
+                      <CCardBody>
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                        anderson cred nesciunt sapiente ea proident.
+                      </CCardBody>
+                    </CCard>
+                  </CCollapse>
+                </CCol>
+              </CRow>
+            </Example>
           </CCardBody>
         </CCard>
       </CCol>

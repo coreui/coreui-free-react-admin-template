@@ -3,6 +3,7 @@ import React from 'react'
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'))
 const Tables = React.lazy(() => import('./views/base/tables/Tables'))
 
+const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
 const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'))
 const Cards = React.lazy(() => import('./views/base/cards/Cards'))
 const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'))
@@ -44,6 +45,7 @@ const routes = [
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
   { path: '/base', name: 'Base', component: Cards, exact: true },
+  { path: '/base/accordion', name: 'Accordion', component: Accordion },
   { path: '/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
   { path: '/base/cards', name: 'Cards', component: Cards },
   { path: '/base/carousels', name: 'Carousel', component: Carousels },

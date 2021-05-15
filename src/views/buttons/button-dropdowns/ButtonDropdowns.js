@@ -16,7 +16,7 @@ import {
   CFormLabel,
   CFormControl,
   CFormCheck,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const ButtonDropdowns = () => {

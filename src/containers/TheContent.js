@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import { CContainer, CFade } from '@coreui/react-ts'
+import { CContainer, CFade } from '@coreui/react'
 
 // routes config
 import routes from '../routes'
@@ -14,7 +14,7 @@ const loading = (
 const TheContent = () => {
   return (
     <main className="c-main">
-      <CContainer>
+      <CContainer lg>
         <Suspense fallback={loading}>
           <Switch>
             {routes.map((route, idx) => {

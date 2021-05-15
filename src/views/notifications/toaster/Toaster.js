@@ -13,10 +13,8 @@ import {
   CCol,
   CFormLabel,
   CToast,
-  CToastBody,
-  CToastHeader,
   CToaster,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const Toaster = () => {
@@ -35,10 +33,10 @@ const Toaster = () => {
   const [toasts, setToasts] = useState([
     { placement: 'static' },
     { placement: 'static' },
-    { placement: 'top-right', autohide: 3000 },
+    { placement: 'top-end', autohide: 3000 },
   ])
 
-  const [placement, setPlacement] = useState('top-right')
+  const [placement, setPlacement] = useState('top-end')
   const [autohide, setAutohide] = useState(true)
   const [autohideValue, setAutohideValue] = useState(5000)
   const [closeButton, setCloseButton] = useState(true)

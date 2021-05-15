@@ -7,7 +7,7 @@ import {
   CSidebarNav,
   CSidebarToggler,
   CCreateNavItem,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 
 import CIcon from '@coreui/icons-react'
 
@@ -27,10 +27,8 @@ const AppSidebar = () => {
       show={sidebarShow}
       onShow={() => console.log('show')}
       onHide={() => {
-        console.log('hide')
         dispatch({ type: 'set', sidebarShow: false })
       }}
-      // onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
         <CIcon className="sidebar-brand-full" name="logo-negative" height={35} />

@@ -8,7 +8,7 @@ import {
   CCol,
   CFormCheck,
   CRow,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { DocsLink } from 'src/reusable'
 

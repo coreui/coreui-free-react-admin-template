@@ -1,14 +1,5 @@
 import React from 'react'
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CLink,
-  CPopover,
-  CRow,
-  CCol,
-} from '@coreui/react-ts'
+import { CButton, CCard, CCardBody, CCardHeader, CLink, CPopover, CRow, CCol } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const Popovers = () => {

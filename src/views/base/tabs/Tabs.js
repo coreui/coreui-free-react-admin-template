@@ -10,7 +10,7 @@ import {
   CCard,
   CCardBody,
   CCardHeader,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const Tabs = () => {

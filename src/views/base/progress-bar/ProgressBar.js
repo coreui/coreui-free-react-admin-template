@@ -1,5 +1,5 @@
 import React from 'react'
-import { CCard, CCardBody, CCardHeader, CProgress, CProgressBar } from '@coreui/react-ts'
+import { CCard, CCardBody, CCardHeader, CProgress, CProgressBar } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const ProgressBar = () => {

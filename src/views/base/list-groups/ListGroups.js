@@ -10,7 +10,7 @@ import {
   CRow,
   CTabContent,
   CTabPane,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const ListGroups = () => {

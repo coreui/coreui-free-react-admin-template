@@ -10,7 +10,7 @@ import {
   CHeaderToggler,
   CNavLink,
   CNavItem,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 import {

@@ -12,7 +12,7 @@ import {
   CNav,
   CNavItem,
   CNavLink,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const Navs = () => {

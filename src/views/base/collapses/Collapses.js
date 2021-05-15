@@ -1,15 +1,5 @@
 import React, { useState } from 'react'
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCardHeader,
-  CCol,
-  CCollapse,
-  CFade,
-  CRow,
-} from '@coreui/react-ts'
+import { CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CRow } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const Collapses = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createRef } from 'react'
 import classNames from 'classnames'
-import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react-ts'
+import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react'
 import { rgbToHex } from '@coreui/utils'
 import { DocsLink } from 'src/reusable'
 

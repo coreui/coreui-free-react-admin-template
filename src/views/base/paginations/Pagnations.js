@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-import { CCard, CCardBody, CCardHeader, CPagination, CPaginationItem } from '@coreui/react-ts'
+import React from 'react'
+import { CCard, CCardBody, CCardHeader, CPagination, CPaginationItem } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 
 const Paginations = () => {
-  const [currentPage, setCurrentPage] = useState(2)
-
   return (
     <>
       <CCard className="mb-4">

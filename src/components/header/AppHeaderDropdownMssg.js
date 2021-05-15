@@ -6,8 +6,7 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  CImage,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 const AppHeaderDropdownMssg = () => {

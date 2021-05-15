@@ -6,7 +6,7 @@ import {
   CDropdownMenu,
   CDropdownToggle,
   CProgress,
-} from '@coreui/react-ts'
+} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 const AppHeaderDropdownTasks = () => {

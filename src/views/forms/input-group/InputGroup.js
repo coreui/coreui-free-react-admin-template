@@ -18,7 +18,7 @@ import {
   CInputGroupText,
   CRow,
 } from '@coreui/react'
-import { DocsLink, Example } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const Select = () => {
   return (
@@ -29,10 +29,10 @@ const Select = () => {
             <strong>React Input group</strong> <small>Basic example</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Place one add-on or button on either side of an input. You may also place one on both
-              sides of an input. Remember to place <code class="css-0">&lt;CFormLabel&gt;</code>s
-              outside the input group.
+              sides of an input. Remember to place <code>&lt;CFormLabel&gt;</code>s outside the
+              input group.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/input-group">
               <CInputGroup className="mb-3">
@@ -80,10 +80,10 @@ const Select = () => {
             <strong>React Input group</strong> <small>Wrapping</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Input groups wrap by default via <code class="css-0">flex-wrap: wrap</code> in order
-              to accommodate custom form field validation within an input group. You may disable
-              this with <code class="css-0">.flex-nowrap</code>.
+            <p className="text-medium-emphasis small">
+              Input groups wrap by default via <code>flex-wrap: wrap</code> in order to accommodate
+              custom form field validation within an input group. You may disable this with{' '}
+              <code>.flex-nowrap</code>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/input-group#wrapping">
               <CInputGroup className="flex-nowrap">
@@ -104,16 +104,13 @@ const Select = () => {
             <strong>React Input group</strong> <small>Sizing</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Add the relative form sizing classes to the{' '}
-              <code class="css-0">&lt;CInputGroup&gt;</code> itself and contents within will
-              automatically resize—no need for repeating the form control size classes on each
-              element.
+            <p className="text-medium-emphasis small">
+              Add the relative form sizing classes to the <code>&lt;CInputGroup&gt;</code> itself
+              and contents within will automatically resize—no need for repeating the form control
+              size classes on each element.
             </p>
-            <p class="text-medium-emphasis small">
-              <strong class="css-0">
-                Sizing on the individual input group elements isn't supported.
-              </strong>
+            <p className="text-medium-emphasis small">
+              <strong>Sizing on the individual input group elements isn't supported.</strong>
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/input-group#sizing">
               <CInputGroup size="sm" className="mb-3">
@@ -147,7 +144,7 @@ const Select = () => {
             <strong>React Input group</strong> <small>Checkboxes and radios</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Place any checkbox or radio option within an input group's addon instead of text.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/input-group#checkboxes-and-radios">
@@ -181,10 +178,10 @@ const Select = () => {
             <strong>React Input group</strong> <small>Multiple inputs</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              While multiple <code class="css-0">&lt;CFormControl&gt;</code>s are supported
-              visually, validation styles are only available for input groups with a single{' '}
-              <code class="css-0">&lt;CFormControl&gt;</code>.
+            <p className="text-medium-emphasis small">
+              While multiple <code>&lt;CFormControl&gt;</code>s are supported visually, validation
+              styles are only available for input groups with a single{' '}
+              <code>&lt;CFormControl&gt;</code>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/input-group#multiple-inputs">
               <CInputGroup>
@@ -202,7 +199,7 @@ const Select = () => {
             <strong>React Input group</strong> <small>Multiple addons</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Multiple add-ons are supported and can be mixed with checkbox and radio input
               versions..
             </p>
@@ -227,7 +224,7 @@ const Select = () => {
             <strong>React Input group</strong> <small>Button addons</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Multiple add-ons are supported and can be mixed with checkbox and radio input
               versions..
             </p>

@@ -7,7 +7,7 @@ const Example = (props) => {
   // const href = name ? `https://coreui.io/react/docs/components/${name}` : props.href
 
   return (
-    <>
+    <div className="example">
       <CNav variant="tabs">
         <CNavItem>
           <CNavLink href="#" active>
@@ -20,10 +20,12 @@ const Example = (props) => {
           </CNavLink>
         </CNavItem>
       </CNav>
-      <CTabContent>
-        <CTabPane visible>{children}</CTabPane>
+      <CTabContent className="rounded-bottom">
+        <CTabPane className="p-3 preview" visible>
+          {children}
+        </CTabPane>
       </CTabContent>
-    </>
+    </div>
   )
 }
 

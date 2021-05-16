@@ -1,6 +1,6 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CCol, CFormCheck, CRow } from '@coreui/react'
-import { DocsLink, Example } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const ChecksRadios = () => {
   return (
@@ -24,10 +24,10 @@ const ChecksRadios = () => {
             <strong>React Checkbox</strong> <small>Disabled</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Add the <code class="css-0">disabled</code> attribute and the associated{' '}
-              <code class="css-0">&lt;label&gt;</code>s are automatically styled to match with a
-              lighter color to help indicate the input's state.
+            <p className="text-medium-emphasis small">
+              Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s
+              are automatically styled to match with a lighter color to help indicate the input's
+              state.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#disabled">
               <CFormCheck label="Disabled checkbox" disabled />
@@ -42,10 +42,10 @@ const ChecksRadios = () => {
             <strong>React Radio</strong>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Add the <code class="css-0">disabled</code> attribute and the associated{' '}
-              <code class="css-0">&lt;label&gt;</code>s are automatically styled to match with a
-              lighter color to help indicate the input's state.
+            <p className="text-medium-emphasis small">
+              Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s
+              are automatically styled to match with a lighter color to help indicate the input's
+              state.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#radios">
               <CFormCheck
@@ -97,10 +97,10 @@ const ChecksRadios = () => {
             <strong>React Switches</strong>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              A switch has the markup of a custom checkbox but uses the{' '}
-              <code class="css-0">switch</code> boolean properly to render a toggle switch. Switches
-              also support the <code class="css-0">disabled</code> attribute.
+            <p className="text-medium-emphasis small">
+              A switch has the markup of a custom checkbox but uses the <code>switch</code> boolean
+              properly to render a toggle switch. Switches also support the <code>disabled</code>{' '}
+              attribute.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#switches">
               <CFormCheck
@@ -165,7 +165,7 @@ const ChecksRadios = () => {
             <strong>React Checks and Radios</strong> <small>Default layout (stacked)</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               By default, any number of checkboxes and radios that are immediate sibling will be
               vertically stacked and appropriately spaced.
             </p>
@@ -207,10 +207,9 @@ const ChecksRadios = () => {
             <strong>React Checks and Radios</strong> <small>Inline</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Group checkboxes or radios on the same horizontal row by adding{' '}
-              <code class="css-0">inline</code> boolean property to any{' '}
-              <code class="css-0">&lt;CFormCheck&gt;</code>.
+            <p className="text-medium-emphasis small">
+              Group checkboxes or radios on the same horizontal row by adding <code>inline</code>{' '}
+              boolean property to any <code>&lt;CFormCheck&gt;</code>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#inline">
               <CFormCheck inline id="inlineCheckbox1" value="option1" label="1" />
@@ -259,9 +258,9 @@ const ChecksRadios = () => {
             <strong>React Checks and Radios</strong> <small>Without labels</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Remember to still provide some form of accessible name for assistive technologies (for
-              instance, using <code class="css-0">aria-label</code>).
+              instance, using <code>aria-label</code>).
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#without-labels">
               <div>
@@ -286,10 +285,9 @@ const ChecksRadios = () => {
             <strong>Toggle buttons</strong>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Create button-like checkboxes and radio buttons by using{' '}
-              <code class="css-0">button</code> boolean property on the{' '}
-              <code class="css-0">&lt;CFormCheck&gt;</code> component. These toggle buttons can
+            <p className="text-medium-emphasis small">
+              Create button-like checkboxes and radio buttons by using <code>button</code> boolean
+              property on the <code>&lt;CFormCheck&gt;</code> component. These toggle buttons can
               further be grouped in a button group if needed.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#toggle-buttons">
@@ -349,7 +347,7 @@ const ChecksRadios = () => {
               />
             </Example>
             <h3>Outlined styles</h3>
-            <p class="css-0">
+            <p className="text-medium-emphasis small">
               Different variants of button, such at the various outlined styles, are supported.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#toggle-buttons">

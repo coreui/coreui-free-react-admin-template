@@ -13,301 +13,384 @@ import {
   CNavItem,
   CNavLink,
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const Navs = () => {
   return (
-    <>
-      <CRow>
-        <CCol xs="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <DocsLink name="CNav" />
-            </CCardHeader>
-            <CCardBody>
-              <small>List Based</small>
+    <CRow>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Base navs</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              The base <code>.nav</code> component is built with flexbox and provide a strong
+              foundation for building all types of navigation components. It includes some style
+              overrides (for working with lists), some link padding for larger hit areas, and basic
+              disabled styling.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#base-nav">
               <CNav>
                 <CNavItem>
-                  <CNavLink active>Active</CNavLink>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink>Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink disabled>Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
                 </CNavItem>
               </CNav>
-              <hr />
-              <small>Link Based</small>
-              <CNav>
-                <CNavLink>Active</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink disabled>Disabled</CNavLink>
+            </Example>
+            <p className="text-medium-emphasis small">
+              Classes are used throughout, so your markup can be super flexible. Use{' '}
+              <code>&lt;ul&gt;</code>s like above, <code>&lt;ol&gt;</code> if the order of your
+              items is important, or roll your own with a <code>&lt;nav&gt;</code> element. Because
+              the .nav uses display: flex, the nav links behave the same as nav items would, but
+              without the extra markup.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#base-nav">
+              <CNav component="nav">
+                <CNavLink href="#" active>
+                  Active
+                </CNavLink>
+                <CNavLink href="#">Link</CNavLink>
+                <CNavLink href="#">Link</CNavLink>
+                <CNavLink href="#" disabled>
+                  Disabled
+                </CNavLink>
               </CNav>
-              <hr />
-              <small>Link Base</small>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Horizontal alignment</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Change the horizontal alignment of your nav with{' '}
+              <a href="https://coreui.io/docs/layout/grid/#horizontal-alignment">
+                flexbox utilities
+              </a>
+              . By default, navs are left-aligned, but you can easily change them to center or right
+              aligned.
+            </p>
+            <p className="text-medium-emphasis small">
+              Centered with <code>.justify-content-center</code>:
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#horizontal-alignment">
               <CNav className="justify-content-center">
-                <CNavLink>Active</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink disabled>Disabled</CNavLink>
+                <CNavItem>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
+                </CNavItem>
               </CNav>
-              <hr />
-              <small>Link Based</small>
+            </Example>
+            <p className="text-medium-emphasis small">
+              Right-aligned with <code>.justify-content-end</code>:
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#base-nav">
               <CNav className="justify-content-end">
-                <CNavLink>Active</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink disabled>Disabled</CNavLink>
-              </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="3">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <small> vertical / links</small>
-            </CCardHeader>
-            <CCardBody>
-              <CNav vertical>
-                <CNavLink className="nav-item">Active</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink disabled>Disabled</CNavLink>
-              </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="3">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <small> vertical / list</small>
-            </CCardHeader>
-            <CCardBody>
-              <CNav vertical>
                 <CNavItem>
-                  <CNavLink>Link</CNavLink>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink>Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink>Another Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink disabled>Disabled Link</CNavLink>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
                 </CNavItem>
               </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-
-      <CRow>
-        <CCol xs="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <small> tabs</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Vertical</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Stack your navigation by changing the flex item direction with the{' '}
+              <code>.flex-column</code> utility. Need to stack them on some viewports but not
+              others? Use the responsive versions (e.g., <code>.flex-sm-column</code>).
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#vertical">
+              <CNav className="flex-column">
+                <CNavItem>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
+                </CNavItem>
+              </CNav>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Tabs</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Takes the basic nav from above and adds the <code>variant="tabs"</code> class to
+              generate a tabbed interface
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#tabs">
               <CNav variant="tabs">
-                <CNavLink active>Active</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink>Link</CNavLink>
-                <CNavLink disabled>Disabled</CNavLink>
+                <CNavItem>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
+                </CNavItem>
               </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <small> pills</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Pills</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Take that same HTML, but use <code>variant="pills"</code> instead:
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#pills">
               <CNav variant="pills">
                 <CNavItem>
-                  <CNavLink active>Link</CNavLink>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink>Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink>Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink disabled>Disabled</CNavLink>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
                 </CNavItem>
               </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol xs="12">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <small> fill and justify</small>
-            </CCardHeader>
-            <CCardBody>
-              <CNav fill variant="pills">
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Fill and justify</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Force your <code>.nav</code>'s contents to extend the full available width one of two
+              modifier classes. To proportionately fill all available space with your{' '}
+              <code>.nav-item</code>s, use <code>layout="fill"</code>. Notice that all horizontal
+              space is occupied, but not every nav item has the same width.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#fill-and-justify">
+              <CNav variant="pills" layout="fill">
                 <CNavItem>
-                  <CNavLink active>Active</CNavLink>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink>Longer nav link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink>Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink disabled>Disabled</CNavLink>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
                 </CNavItem>
               </CNav>
-
-              <hr />
-
-              <CNav fill variant="pills">
-                <CNavLink active className="nav-item">
+            </Example>
+            <p className="text-medium-emphasis small">
+              For equal-width elements, use <code>layout="justified"</code>. All horizontal space
+              will be occupied by nav links, but unlike the .nav-fill above, every nav item will be
+              the same width.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#fill-and-justify">
+              <CNav variant="pills" layout="justified">
+                <CNavItem>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
+                </CNavItem>
+              </CNav>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Working with flex utilities</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              If you need responsive nav variations, consider using a series of{' '}
+              <a href="https://coreui.io/docs/utilities/flex">flexbox utilities</a>. While more
+              verbose, these utilities offer greater customization across responsive breakpoints. In
+              the example below, our nav will be stacked on the lowest breakpoint, then adapt to a
+              horizontal layout that fills the available width starting from the small breakpoint.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#working-with-flex-utilities">
+              <CNav component="nav" variant="pills" className="flex-column flex-sm-row">
+                <CNavLink href="#" active>
                   Active
                 </CNavLink>
-                <CNavLink className="nav-item">Link</CNavLink>
-                <CNavLink className="nav-item">Link</CNavLink>
-                <CNavLink className="nav-item" disabled>
+                <CNavLink href="#">Link</CNavLink>
+                <CNavLink href="#">Link</CNavLink>
+                <CNavLink href="#" disabled>
                   Disabled
                 </CNavLink>
               </CNav>
-
-              <hr />
-
-              <CNav justified variant="pills">
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Tabs with dropdowns</small>
+          </CCardHeader>
+          <CCardBody>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#tabs-with-dropdowns">
+              <CNav>
                 <CNavItem>
-                  <CNavLink active>Active</CNavLink>
-                </CNavItem>
-                <CNavItem>
-                  <CNavLink>Longer nav link</CNavLink>
-                </CNavItem>
-                <CNavItem>
-                  <CNavLink>Link</CNavLink>
-                </CNavItem>
-                <CNavItem>
-                  <CNavLink disabled>Disabled</CNavLink>
-                </CNavItem>
-              </CNav>
-
-              <hr />
-
-              <CNav justified variant="pills">
-                <CNavLink className="nav-item" active>
-                  Active
-                </CNavLink>
-                <CNavLink className="nav-item">Link</CNavLink>
-                <CNavLink className="nav-item">Link</CNavLink>
-                <CNavLink className="nav-item" disabled>
-                  Disabled
-                </CNavLink>
-              </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-
-      <CRow>
-        <CCol xs="12">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <small> with flex</small>
-            </CCardHeader>
-            <CCardBody>
-              <CNav variant="pills" className="flex-sm-row">
-                <CNavLink className="flex-sm-fill text-sm-center" active>
-                  Active
-                </CNavLink>
-                <CNavLink className="flex-sm-fill text-sm-center">Link</CNavLink>
-                <CNavLink className="flex-sm-fill text-sm-center">Link</CNavLink>
-                <CNavLink className="flex-sm-fill text-sm-center" disabled>
-                  Disabled
-                </CNavLink>
-              </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-
-      <CRow>
-        <CCol xs="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <small> tabs with dropdowns</small>
-            </CCardHeader>
-            <CCardBody>
-              <CNav variant="tabs">
-                <CNavItem>
-                  <CNavLink active>Link</CNavLink>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
                 </CNavItem>
                 <CDropdown variant="nav-item">
-                  <CDropdownToggle>Dropdown</CDropdownToggle>
+                  <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
                   <CDropdownMenu>
-                    <CDropdownItem>Action</CDropdownItem>
-                    <CDropdownItem>Another action</CDropdownItem>
-                    <CDropdownItem>Something else here</CDropdownItem>
-                    <CDropdownItem divider />
-                    <CDropdownItem>Separated link</CDropdownItem>
+                    <CDropdownItem href="#">Action</CDropdownItem>
+                    <CDropdownItem href="#">Another action</CDropdownItem>
+                    <CDropdownItem href="#">Something else here</CDropdownItem>
                   </CDropdownMenu>
                 </CDropdown>
                 <CNavItem>
-                  <CNavLink>Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink disabled>Disabled</CNavLink>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
                 </CNavItem>
               </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-
-        <CCol xs="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Navs
-              <small> pills with dropdowns</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Navs</strong> <small>Pills with dropdowns</small>
+          </CCardHeader>
+          <CCardBody>
+            <Example href="https://coreui.io/react/docs/4.0/components/nav#pills-with-dropdowns">
               <CNav variant="pills">
                 <CNavItem>
-                  <CNavLink active>Link</CNavLink>
+                  <CNavLink href="#" active>
+                    Active
+                  </CNavLink>
                 </CNavItem>
                 <CDropdown variant="nav-item">
-                  <CDropdownToggle>Dropdown</CDropdownToggle>
+                  <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
                   <CDropdownMenu>
-                    <CDropdownItem>Action</CDropdownItem>
-                    <CDropdownItem>Another action</CDropdownItem>
-                    <CDropdownItem>Something else here</CDropdownItem>
-                    <CDropdownItem divider />
-                    <CDropdownItem>Separated link</CDropdownItem>
+                    <CDropdownItem href="#">Action</CDropdownItem>
+                    <CDropdownItem href="#">Another action</CDropdownItem>
+                    <CDropdownItem href="#">Something else here</CDropdownItem>
                   </CDropdownMenu>
                 </CDropdown>
                 <CNavItem>
-                  <CNavLink>Link</CNavLink>
+                  <CNavLink href="#">Link</CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink disabled>Disabled</CNavLink>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
                 </CNavItem>
               </CNav>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-    </>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
   )
 }
 

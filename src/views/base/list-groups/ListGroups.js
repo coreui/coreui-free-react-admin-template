@@ -5,27 +5,27 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
+  CFormCheck,
   CListGroup,
   CListGroupItem,
   CRow,
-  CTabContent,
-  CTabPane,
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const ListGroups = () => {
-  const [activeTab, setActiveTab] = useState(1)
-
   return (
-    <>
-      <CRow>
-        <CCol sm="12" xl="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group
-              <DocsLink name="CListGroup" />
-            </CCardHeader>
-            <CCardBody>
+    <CRow>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Basic example</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              The default list group is an unordered list with items and the proper CSS classes.
+              Build upon it with the options that follow, or with your CSS as required.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group">
               <CListGroup>
                 <CListGroupItem>Cras justo odio</CListGroupItem>
                 <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
@@ -33,320 +33,312 @@ const ListGroups = () => {
                 <CListGroupItem>Porta ac consectetur ac</CListGroupItem>
                 <CListGroupItem>Vestibulum at eros</CListGroupItem>
               </CListGroup>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol sm="12" xl="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group links
-              <small> with first item active and last item disabled</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Active items</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Add <code>active</code> boolean property to a <code>&lt;CListGroupItem&gt;</code> to
+              show the current active selection.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#active-items">
               <CListGroup>
-                <CListGroupItem href="#" active>
+                <CListGroupItem active>Cras justo odio</CListGroupItem>
+                <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
+                <CListGroupItem>Morbi leo risus</CListGroupItem>
+                <CListGroupItem>Porta ac consectetur ac</CListGroupItem>
+                <CListGroupItem>Vestibulum at eros</CListGroupItem>
+              </CListGroup>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Disabled items</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Add <code>disabled</code> boolean property to a <code>&lt;CListGroupItem&gt;</code> to
+              make it appear disabled.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#disabled-items">
+              <CListGroup>
+                <CListGroupItem disabled>Cras justo odio</CListGroupItem>
+                <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
+                <CListGroupItem>Morbi leo risus</CListGroupItem>
+                <CListGroupItem>Porta ac consectetur ac</CListGroupItem>
+                <CListGroupItem>Vestibulum at eros</CListGroupItem>
+              </CListGroup>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Links and buttons</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Use <code>&lt;a&gt;</code>s or <code>&lt;button&gt;</code>s to create{' '}
+              <em>actionable</em> list group items with hover, disabled, and active states by adding{' '}
+              <code>component="a|button"</code>. We separate these pseudo-classes to ensure list
+              groups made of non-interactive elements (like <code>&lt;li&gt;</code>s or{' '}
+              <code>&lt;div&gt;</code>
+              s) don't provide a click or tap affordance.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#links-and-buttons">
+              <CListGroup>
+                <CListGroupItem component="a" href="#" active>
                   Cras justo odio
                 </CListGroupItem>
-                <CListGroupItem href="#">Dapibus ac facilisis in</CListGroupItem>
-                <CListGroupItem href="#">Morbi leo risus</CListGroupItem>
-                <CListGroupItem href="#">Porta ac consectetur ac</CListGroupItem>
-                <CListGroupItem href="#" disabled>
+                <CListGroupItem component="a" href="#">
+                  Dapibus ac facilisis in
+                </CListGroupItem>
+                <CListGroupItem component="a" href="#">
+                  Morbi leo risus
+                </CListGroupItem>
+                <CListGroupItem component="a" href="#">
+                  Porta ac consectetur ac
+                </CListGroupItem>
+                <CListGroupItem component="a" href="#" disabled>
                   Vestibulum at eros
                 </CListGroupItem>
               </CListGroup>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-
-      <CRow>
-        <CCol sm="12" xl="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group
-              <small> contextual classes</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Flush</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Add <code>flush</code> boolean property to remove some borders and rounded corners to
+              render list group items edge-to-edge in a parent container (e.g., cards).
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#flush">
+              <CListGroup flush>
+                <CListGroupItem>Cras justo odio</CListGroupItem>
+                <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
+                <CListGroupItem>Morbi leo risus</CListGroupItem>
+                <CListGroupItem>Porta ac consectetur ac</CListGroupItem>
+                <CListGroupItem>Vestibulum at eros</CListGroupItem>
+              </CListGroup>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Horizontal</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Add <code>layout="horizontal"</code> to change the layout of list group items from
+              vertical to horizontal across all breakpoints. Alternatively, choose a responsive
+              variant <code>.layout="horizontal-&#123;sm | md | lg | xl | xxl&#125;"</code> to make
+              a list group horizontal starting at that breakpoint's <code>min-width</code>.
+              Currently{' '}
+              <strong>horizontal list groups cannot be combined with flush list groups.</strong>
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#flush">
+              {['', '-sm', '-md', '-lg', '-xl', '-xxl'].map((breakpoint, index) => (
+                <CListGroup className="mb-2" layout={`horizontal${breakpoint}`} key={index}>
+                  <CListGroupItem>Cras justo odio</CListGroupItem>
+                  <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
+                  <CListGroupItem>Morbi leo risus</CListGroupItem>
+                </CListGroup>
+              ))}
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Contextual classes</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Use contextual classes to style list items with a stateful background and color.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#contextual-classes">
               <CListGroup>
                 <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
-                <CListGroupItem color="primary">This is a primary list group item</CListGroupItem>
-                <CListGroupItem color="secondary">
-                  This is a secondary list group item
-                </CListGroupItem>
-                <CListGroupItem color="success">This is a success list group item</CListGroupItem>
-                <CListGroupItem color="danger">This is a danger list group item</CListGroupItem>
-                <CListGroupItem color="warning">This is a warning list group item</CListGroupItem>
-                <CListGroupItem color="info">This is a info list group item</CListGroupItem>
-                <CListGroupItem color="light">This is a light list group item</CListGroupItem>
-                <CListGroupItem color="dark">This is a dark list group item</CListGroupItem>
+                {[
+                  'primary',
+                  'secondary',
+                  'success',
+                  'danger',
+                  'warning',
+                  'info',
+                  'light',
+                  'dark',
+                ].map((color, index) => (
+                  <CListGroupItem color={color} key={index}>
+                    A simple {color} list group item
+                  </CListGroupItem>
+                ))}
               </CListGroup>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol sm="12" xl="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group
-              <small> contextual classes with .action</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+            <p className="text-medium-emphasis small">
+              Contextual classes also work with <code>&lt;a&gt;</code>s or{' '}
+              <code>&lt;button&gt;</code>s. Note the addition of the hover styles here not present
+              in the previous example. Also supported is the <code>active</code> state; apply it to
+              indicate an active selection on a contextual list group item.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#contextual-classes">
               <CListGroup>
-                <CListGroupItem component="button">Dapibus ac facilisis in</CListGroupItem>
-                <CListGroupItem component="button" color="primary">
-                  This is a primary list group item
+                <CListGroupItem component="a" href="#">
+                  Dapibus ac facilisis in
                 </CListGroupItem>
-                <CListGroupItem component="button" color="secondary">
-                  This is a secondary list group item
-                </CListGroupItem>
-                <CListGroupItem component="button" color="success">
-                  This is a success list group item
-                </CListGroupItem>
-                <CListGroupItem component="button" color="danger">
-                  This is a danger list group item
-                </CListGroupItem>
-                <CListGroupItem component="button" color="warning">
-                  This is a warning list group item
-                </CListGroupItem>
-                <CListGroupItem component="button" color="info">
-                  This is a info list group item
-                </CListGroupItem>
-                <CListGroupItem component="button" color="light">
-                  This is a light list group item
-                </CListGroupItem>
-                <CListGroupItem component="button" color="dark">
-                  This is a dark list group item
-                </CListGroupItem>
+                {[
+                  'primary',
+                  'secondary',
+                  'success',
+                  'danger',
+                  'warning',
+                  'info',
+                  'light',
+                  'dark',
+                ].map((color, index) => (
+                  <CListGroupItem component="a" href="#" color={color} key={index}>
+                    A simple {color} list group item
+                  </CListGroupItem>
+                ))}
               </CListGroup>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol sm="12" xl="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group
-              <small> accent</small>
-            </CCardHeader>
-            <CCardBody>
-              <CListGroup accent>
-                <CListGroupItem accent="primary">This is a primary list group item</CListGroupItem>
-                <CListGroupItem accent="secondary">
-                  This is a secondary list group item
-                </CListGroupItem>
-                <CListGroupItem accent="success">This is a success list group item</CListGroupItem>
-                <CListGroupItem accent="danger">This is a danger list group item</CListGroupItem>
-                <CListGroupItem accent="warning">This is a warning list group item</CListGroupItem>
-                <CListGroupItem accent="info">This is a info list group item</CListGroupItem>
-                <CListGroupItem accent="light">This is a light list group item</CListGroupItem>
-                <CListGroupItem accent="dark">This is a dark list group item</CListGroupItem>
-              </CListGroup>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol sm="12" xl="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group
-              <small> accent with color</small>
-            </CCardHeader>
-            <CCardBody>
-              <CListGroup accent>
-                <CListGroupItem accent="primary" color="primary">
-                  This is a primary list group item
-                </CListGroupItem>
-                <CListGroupItem accent="secondary" color="secondary">
-                  This is a secondary list group item
-                </CListGroupItem>
-                <CListGroupItem accent="success" color="success">
-                  This is a success list group item
-                </CListGroupItem>
-                <CListGroupItem accent="danger" color="danger">
-                  This is a danger list group item
-                </CListGroupItem>
-                <CListGroupItem accent="warning" color="warning">
-                  This is a warning list group item
-                </CListGroupItem>
-                <CListGroupItem accent="info" color="info">
-                  This is a info list group item
-                </CListGroupItem>
-                <CListGroupItem accent="light" color="light">
-                  This is a light list group item
-                </CListGroupItem>
-                <CListGroupItem accent="dark" color="dark">
-                  This is a dark list group item
-                </CListGroupItem>
-              </CListGroup>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol sm="12" xl="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group
-              <small> with badges</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>With badges</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Add badges to any list group item to show unread counts, activity, and more.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#with-badges">
               <CListGroup>
-                <CListGroupItem className="justify-content-between">
+                <CListGroupItem className="d-flex justify-content-between align-items-center">
                   Cras justo odio
-                  <CBadge className="float-end" shape="rounded-pill" color="primary">
+                  <CBadge color="primary" shape="rounded-pill">
                     14
                   </CBadge>
                 </CListGroupItem>
-                <CListGroupItem className="justify-content-between">
+                <CListGroupItem className="d-flex justify-content-between align-items-center">
                   Dapibus ac facilisis in
-                  <CBadge className="float-end" shape="rounded-pill" color="primary">
+                  <CBadge color="primary" shape="rounded-pill">
                     2
                   </CBadge>
                 </CListGroupItem>
-                <CListGroupItem className="justify-content-between">
+                <CListGroupItem className="d-flex justify-content-between align-items-center">
                   Morbi leo risus
-                  <CBadge className="float-end" shape="rounded-pill" color="primary">
+                  <CBadge color="primary" shape="rounded-pill">
                     1
                   </CBadge>
                 </CListGroupItem>
               </CListGroup>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol sm="12" xl="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group
-              <small> custom content</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Custom content</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Add nearly any HTML within, even for linked list groups like the one below, with the
+              help of <a href="https://coreui.io/docs/utilities/flex/">flexbox utilities</a>.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#custom-content">
               <CListGroup>
-                <CListGroupItem component="a" active>
-                  <h5 className="d-flex w-100 justify-content-between">
-                    List group item heading
+                <CListGroupItem component="a" href="#" active>
+                  <div className="d-flex w-100 justify-content-between">
+                    <h5 className="mb-1">List group item heading</h5>
                     <small>3 days ago</small>
-                  </h5>
-                  <div className="mb-1">
+                  </div>
+                  <p className="mb-1">
                     Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                     varius blandit.
-                    <small>Donec id elit non mi porta.</small>
-                  </div>
+                  </p>
+                  <small>Donec id elit non mi porta.</small>
                 </CListGroupItem>
-                <CListGroupItem component="a">
-                  <h5>List group item heading</h5>
-                  <div>
+                <CListGroupItem component="a" href="#">
+                  <div className="d-flex w-100 justify-content-between">
+                    <h5 className="mb-1">List group item heading</h5>
+                    <small className="text-muted">3 days ago</small>
+                  </div>
+                  <p className="mb-1">
                     Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                     varius blandit.
-                  </div>
-                  <small>Small.</small>
+                  </p>
+                  <small className="text-muted">Donec id elit non mi porta.</small>
                 </CListGroupItem>
-                <CListGroupItem component="a">
-                  <h5>List group item heading</h5>
-                  <div>
+                <CListGroupItem component="a" href="#">
+                  <div className="d-flex w-100 justify-content-between">
+                    <h5 className="mb-1">List group item heading</h5>
+                    <small className="text-muted">3 days ago</small>
+                  </div>
+                  <p className="mb-1">
                     Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                     varius blandit.
-                  </div>
-                  <small>Small.</small>
+                  </p>
+                  <small className="text-muted">Donec id elit non mi porta.</small>
                 </CListGroupItem>
               </CListGroup>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>
-              List group
-              <small> tab Javascript plugin</small>
-            </CCardHeader>
-            <CCardBody>
-              <CRow>
-                <CCol xs="4">
-                  <CListGroup id="list-tab" role="tablist">
-                    <CListGroupItem
-                      onClick={() => setActiveTab(0)}
-                      component="button"
-                      active={activeTab === 0}
-                    >
-                      Home
-                    </CListGroupItem>
-                    <CListGroupItem
-                      onClick={() => setActiveTab(1)}
-                      component="button"
-                      active={activeTab === 1}
-                    >
-                      Profile
-                    </CListGroupItem>
-                    <CListGroupItem
-                      onClick={() => setActiveTab(2)}
-                      component="button"
-                      active={activeTab === 2}
-                    >
-                      Messages
-                    </CListGroupItem>
-                    <CListGroupItem
-                      onClick={() => setActiveTab(3)}
-                      component="button"
-                      active={activeTab === 3}
-                    >
-                      Settings
-                    </CListGroupItem>
-                  </CListGroup>
-                </CCol>
-                <CCol xs="8">
-                  <CTabContent>
-                    <CTabPane visible={activeTab === 0}>
-                      <p>
-                        Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing
-                        exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat
-                        proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim
-                        tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat
-                        aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor.
-                        Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam
-                        minim.
-                      </p>
-                    </CTabPane>
-                    <CTabPane visible={activeTab === 1}>
-                      <p>
-                        Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur
-                        consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore
-                        sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt
-                        laboris deserunt anim aute dolor incididunt veniam aute dolore do
-                        exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris
-                        ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt
-                        veniam ad.
-                      </p>
-                    </CTabPane>
-                    <CTabPane visible={activeTab === 2}>
-                      <p>
-                        Ut ut do pariatur aliquip aliqua aliquip exercitation do nostrud commodo
-                        reprehenderit aute ipsum voluptate. Irure Lorem et laboris nostrud amet
-                        cupidatat cupidatat anim do ut velit mollit consequat enim tempor.
-                        Consectetur est minim nostrud nostrud consectetur irure labore voluptate
-                        irure. Ipsum id Lorem sit sint voluptate est pariatur eu ad cupidatat et
-                        deserunt culpa sit eiusmod deserunt. Consectetur et fugiat anim do eiusmod
-                        aliquip nulla laborum elit adipisicing pariatur cillum.
-                      </p>
-                    </CTabPane>
-                    <CTabPane visible={activeTab === 3}>
-                      <p>
-                        Irure enim occaecat labore sit qui aliquip reprehenderit amet velit.
-                        Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat
-                        laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua
-                        labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation
-                        irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet
-                        qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt
-                        dolor eiusmod eu pariatur culpa mollit in irure.
-                      </p>
-                    </CTabPane>
-                  </CTabContent>
-                </CCol>
-              </CRow>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-    </>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React List Group</strong> <small>Checkboxes and radios</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Place CoreUI's checkboxes and radios within list group items and customize as needed.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/list-group/#checkboxes-and-radios">
+              <CListGroup>
+                <CListGroupItem>
+                  <CFormCheck label="Cras justo odio" />
+                </CListGroupItem>
+                <CListGroupItem>
+                  <CFormCheck label="Dapibus ac facilisis in" defaultChecked />
+                </CListGroupItem>
+                <CListGroupItem>
+                  <CFormCheck label="Morbi leo risus" defaultChecked />
+                </CListGroupItem>
+                <CListGroupItem>
+                  <CFormCheck label="orta ac consectetur ac" />
+                </CListGroupItem>
+                <CListGroupItem>
+                  <CFormCheck label="Vestibulum at eros" />
+                </CListGroupItem>
+              </CListGroup>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
   )
 }
 

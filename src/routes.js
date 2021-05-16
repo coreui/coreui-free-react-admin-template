@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'))
+const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 const Tables = React.lazy(() => import('./views/base/tables/Tables'))
 
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
@@ -8,15 +8,14 @@ const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumb
 const Cards = React.lazy(() => import('./views/base/cards/Cards'))
 const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'))
 const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'))
-const BasicForms = React.lazy(() => import('./views/base/forms/BasicForms'))
 
 const Jumbotrons = React.lazy(() => import('./views/base/jumbotrons/Jumbotrons'))
 const ListGroups = React.lazy(() => import('./views/base/list-groups/ListGroups'))
 const Navbars = React.lazy(() => import('./views/base/navbars/Navbars'))
 const Navs = React.lazy(() => import('./views/base/navs/Navs'))
-const Paginations = React.lazy(() => import('./views/base/paginations/Pagnations'))
+const Paginations = React.lazy(() => import('./views/base/paginations/Paginations'))
 const Popovers = React.lazy(() => import('./views/base/popovers/Popovers'))
-const ProgressBar = React.lazy(() => import('./views/base/progress-bar/ProgressBar'))
+const Progress = React.lazy(() => import('./views/base/progress/Progress'))
 
 const Tabs = React.lazy(() => import('./views/base/tabs/Tabs'))
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'))
@@ -35,6 +34,14 @@ const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
+const ChecksRadios = React.lazy(() => import('./views/forms/checks-radios/ChecksRadios'))
+const FormControl = React.lazy(() => import('./views/forms/form-control/FormControl'))
+const InputGroup = React.lazy(() => import('./views/forms/input-group/InputGroup'))
+const Layout = React.lazy(() => import('./views/forms/layout/Layout'))
+const Range = React.lazy(() => import('./views/forms/range/Range'))
+const Select = React.lazy(() => import('./views/forms/select/Select'))
+const Validation = React.lazy(() => import('./views/forms/validation/Validation'))
+
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 
@@ -50,14 +57,13 @@ const routes = [
   { path: '/base/cards', name: 'Cards', component: Cards },
   { path: '/base/carousels', name: 'Carousel', component: Carousels },
   { path: '/base/collapses', name: 'Collapse', component: Collapses },
-  { path: '/base/forms', name: 'Forms', component: BasicForms },
   { path: '/base/jumbotrons', name: 'Jumbotrons', component: Jumbotrons },
   { path: '/base/list-groups', name: 'List Groups', component: ListGroups },
   { path: '/base/navbars', name: 'Navbars', component: Navbars },
   { path: '/base/navs', name: 'Navs', component: Navs },
   { path: '/base/paginations', name: 'Paginations', component: Paginations },
   { path: '/base/popovers', name: 'Popovers', component: Popovers },
-  { path: '/base/progress-bar', name: 'Progress Bar', component: ProgressBar },
+  { path: '/base/progress', name: 'Progress', component: Progress },
   { path: '/base/tables', name: 'Tables', component: Tables },
   { path: '/base/tabs', name: 'Tabs', component: Tabs },
   { path: '/base/tooltips', name: 'Tooltips', component: Tooltips },
@@ -66,6 +72,14 @@ const routes = [
   { path: '/buttons/button-dropdowns', name: 'Dropdowns', component: ButtonDropdowns },
   { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
   { path: '/charts', name: 'Charts', component: Charts },
+  { path: '/forms', name: 'Forms', component: FormControl, exact: true },
+  { path: '/forms/form-control', name: 'Form Control', component: FormControl },
+  { path: '/forms/select', name: 'Select', component: Select },
+  { path: '/forms/checks-radios', name: 'Checks & Radios', component: ChecksRadios },
+  { path: '/forms/range', name: 'Range', component: Range },
+  { path: '/forms/input-group', name: 'Input Group', component: InputGroup },
+  { path: '/forms/layout', name: 'Layout', component: Layout },
+  { path: '/forms/validation', name: 'Validation', component: Validation },
   { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
   { path: '/icons/flags', name: 'Flags', component: Flags },
@@ -74,7 +88,7 @@ const routes = [
   { path: '/notifications/alerts', name: 'Alerts', component: Alerts },
   { path: '/notifications/badges', name: 'Badges', component: Badges },
   { path: '/notifications/modals', name: 'Modals', component: Modals },
-  { path: '/notifications/toaster', name: 'Toaster', component: Toaster },
+  { path: '/notifications/toasts', name: 'Toasts', component: Toasts },
   { path: '/pages/login', name: 'Login', component: Login },
   { path: '/pages/register', name: 'Register', component: Register },
   { path: '/widgets', name: 'Widgets', component: Widgets },

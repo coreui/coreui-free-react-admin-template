@@ -12,7 +12,7 @@ import {
   CAccordionHeader,
   CAccordionItem,
 } from '@coreui/react'
-import { DocsLink, Example } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const Accordion = () => {
   const [activeKey, setActiveKey] = useState(0)
@@ -26,7 +26,7 @@ const Accordion = () => {
             <strong>React Accordion</strong>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Click the accordions below to expand/collapse the accordion content.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/accordion">
@@ -103,10 +103,10 @@ const Accordion = () => {
             <strong>React Accordion</strong> <small>Flush</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Add <code class="css-0">flush</code> to remove the default{' '}
-              <code class="css-0">background-color</code>, some borders, and some rounded corners to
-              render accordions edge-to-edge with their parent container.
+            <p className="text-medium-emphasis small">
+              Add <code>flush</code> to remove the default <code>background-color</code>, some
+              borders, and some rounded corners to render accordions edge-to-edge with their parent
+              container.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/accordion">
               <CAccordion flush>

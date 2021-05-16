@@ -15,7 +15,7 @@ import {
   CInputGroupText,
   CRow,
 } from '@coreui/react'
-import { DocsLink, Example } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const CustomStyles = () => {
   const [validated, setValidated] = useState(false)
@@ -261,17 +261,16 @@ const Validation = () => {
             <strong>Validation</strong> <small>Custom styles</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               For custom CoreUI form validation messages, you'll need to add the{' '}
-              <code class="css-0">noValidate</code> boolean property to your{' '}
-              <code class="css-0">&lt;CForm&gt;</code>. This disables the browser default feedback
-              tooltips, but still provides access to the form validation APIs in JavaScript. Try to
-              submit the form below; our JavaScript will intercept the submit button and relay
-              feedback to you. When attempting to submit, you'll see the{' '}
-              <code class="css-0">:invalid</code> and <code class="css-0">:valid</code> styles
-              applied to your form controls.
+              <code>noValidate</code> boolean property to your <code>&lt;CForm&gt;</code>. This
+              disables the browser default feedback tooltips, but still provides access to the form
+              validation APIs in JavaScript. Try to submit the form below; our JavaScript will
+              intercept the submit button and relay feedback to you. When attempting to submit,
+              you'll see the <code>:invalid</code> and <code>:valid</code> styles applied to your
+              form controls.
             </p>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Custom feedback styles apply custom colors, borders, focus styles, and background
               icons to better communicate feedback.{' '}
             </p>
@@ -287,13 +286,13 @@ const Validation = () => {
             <strong>Validation</strong> <small>Browser defaults</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Not interested in custom validation feedback messages or writing JavaScript to change
               form behaviors? All good, you can use the browser defaults. Try submitting the form
               below. Depending on your browser and OS, you'll see a slightly different style of
               feedback.
             </p>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               While these feedback styles cannot be styled with CSS, you can still customize the
               feedback text through JavaScript.
             </p>
@@ -309,17 +308,16 @@ const Validation = () => {
             <strong>Validation</strong> <small>Server side</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               We recommend using client-side validation, but in case you require server-side
-              validation, you can indicate invalid and valid form fields with{' '}
-              <code class="css-0">isInvalid</code> and <code class="css-0">isValid</code> boolean
-              properties.
+              validation, you can indicate invalid and valid form fields with <code>isInvalid</code>{' '}
+              and <code>isValid</code> boolean properties.
             </p>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               For invalid fields, ensure that the invalid feedback/error message is associated with
-              the relevant form field using <code class="css-0">aria-describedby</code> (noting that
-              this attribute allows more than one <code class="css-0">id</code> to be referenced, in
-              case the field already points to additional form text).
+              the relevant form field using <code>aria-describedby</code> (noting that this
+              attribute allows more than one <code>id</code> to be referenced, in case the field
+              already points to additional form text).
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/validation#server-side">
               <CForm className="row g-3 needs-validation">
@@ -394,24 +392,24 @@ const Validation = () => {
             <strong>Validation</strong> <small>Supported elements</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               Validation styles are available for the following form controls and components:
             </p>
-            <ul class="css-0">
-              <li class="css-0">
-                <code class="css-0">&lt;CFormControl&gt;</code>s
+            <ul>
+              <li>
+                <code>&lt;CFormControl&gt;</code>s
               </li>
-              <li class="css-0">
-                <code class="css-0">&lt;CFormSelect&gt;</code>s
+              <li>
+                <code>&lt;CFormSelect&gt;</code>s
               </li>
-              <li class="css-0">
-                <code class="css-0">&lt;CFormCheck&gt;</code>s
+              <li>
+                <code>&lt;CFormCheck&gt;</code>s
               </li>
             </ul>
             <Example href="https://coreui.io/react/docs/4.0/forms/validation#supported-elements">
               <CForm validated={true}>
-                <div class="mb-3">
-                  <CFormLabel for="validationTextarea" class="form-label">
+                <div className="mb-3">
+                  <CFormLabel for="validationTextarea" className="form-label">
                     Textarea
                   </CFormLabel>
                   <CFormControl
@@ -449,7 +447,7 @@ const Validation = () => {
                 />
                 <CFormFeedback invalid>More example invalid feedback text</CFormFeedback>
 
-                <div class="mb-3">
+                <div className="mb-3">
                   <CFormSelect required aria-label="select example">
                     <option value="">Open this select menu</option>
                     <option value="1">One</option>
@@ -459,7 +457,7 @@ const Validation = () => {
                   <CFormFeedback invalid>Example invalid select feedback</CFormFeedback>
                 </div>
 
-                <div class="mb-3">
+                <div className="mb-3">
                   <CFormControl
                     type="file"
                     id="validationTextarea"
@@ -469,7 +467,7 @@ const Validation = () => {
                   <CFormFeedback invalid>Example invalid form file feedback</CFormFeedback>
                 </div>
 
-                <div class="mb-3">
+                <div className="mb-3">
                   <CButton type="submit" color="primary" disabled>
                     Submit form
                   </CButton>
@@ -485,12 +483,12 @@ const Validation = () => {
             <strong>Validation</strong> <small>Tooltips</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               If your form layout allows it, you can swap the text for the tooltip to display
               validation feedback in a styled tooltip. Be sure to have a parent with{' '}
-              <code class="css-0">position: relative</code> on it for tooltip positioning. In the
-              example below, our column classes have this already, but your project may require an
-              alternative setup.
+              <code>position: relative</code> on it for tooltip positioning. In the example below,
+              our column classes have this already, but your project may require an alternative
+              setup.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/validation#tooltips">
               {Tooltips()}

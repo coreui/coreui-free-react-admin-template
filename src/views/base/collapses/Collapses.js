@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CRow } from '@coreui/react'
-import { DocsLink, Example } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const Collapses = () => {
   const [visible, setVisible] = useState(false)
@@ -15,7 +15,7 @@ const Collapses = () => {
             <strong>React Collapse</strong>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">You can use a link or a button component.</p>
+            <p className="text-medium-emphasis small">You can use a link or a button component.</p>
             <Example href="https://coreui.io/react/docs/4.0/components/collapse">
               <CButton
                 href="#"
@@ -46,8 +46,8 @@ const Collapses = () => {
             <strong>React Collapse</strong> <small> multi target</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              A <code class="css-0">&lt;CButton&gt;</code> can show and hide multiple elements.
+            <p className="text-medium-emphasis small">
+              A <code>&lt;CButton&gt;</code> can show and hide multiple elements.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/collapse#multiple-targets">
               <CButton onClick={() => setVisibleA(!visibleA)}>Toggle first element</CButton>

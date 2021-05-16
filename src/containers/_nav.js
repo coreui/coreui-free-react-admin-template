@@ -76,12 +76,6 @@ const _nav = [
       {
         _component: 'CNavItem',
         as: NavLink,
-        anchor: 'Forms',
-        to: '/base/forms',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
         anchor: 'Jumbotron',
         to: '/base/jumbotrons',
       },
@@ -119,7 +113,7 @@ const _nav = [
         _component: 'CNavItem',
         as: NavLink,
         anchor: 'Progress',
-        to: '/base/progress-bar',
+        to: '/base/progress',
       },
       {
         _component: 'CNavItem',
@@ -164,6 +158,55 @@ const _nav = [
         as: NavLink,
         anchor: 'Dropdowns',
         to: '/buttons/button-dropdowns',
+      },
+    ],
+  },
+  {
+    _component: 'CNavGroup',
+    anchor: 'Forms',
+    icon: <CIcon name="cil-note" customClasses="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Form Control',
+        to: '/forms/form-control',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Select',
+        to: '/forms/select',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Checks & Radios',
+        to: '/forms/checks-radios',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Range',
+        to: '/forms/range',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Input Group',
+        to: '/forms/input-group',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Layout',
+        to: '/forms/layout',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Validation',
+        to: '/forms/validation',
       },
     ],
   },
@@ -231,8 +274,8 @@ const _nav = [
       {
         _component: 'CNavItem',
         as: NavLink,
-        anchor: 'Toaster',
-        to: '/notifications/toaster',
+        anchor: 'Toasts',
+        to: '/notifications/toasts',
       },
     ],
   },

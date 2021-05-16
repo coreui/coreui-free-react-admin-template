@@ -1,6 +1,6 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CCol, CFormSelect, CRow } from '@coreui/react'
-import { DocsLink, Example } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const Select = () => {
   return (
@@ -28,7 +28,7 @@ const Select = () => {
             <strong>React Select</strong> <small>Sizing</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               You may also choose from small and large custom selects to match our similarly sized
               text inputs.
             </p>
@@ -46,8 +46,8 @@ const Select = () => {
                 <option value="3">Three</option>
               </CFormSelect>
             </Example>
-            <p class="text-medium-emphasis small">
-              The <code class="css-0">multiple</code> attribute is also supported:
+            <p className="text-medium-emphasis small">
+              The <code>multiple</code> attribute is also supported:
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/select#sizing">
               <CFormSelect size="lg" multiple aria-label="Multiple select example">
@@ -57,8 +57,8 @@ const Select = () => {
                 <option value="3">Three</option>
               </CFormSelect>
             </Example>
-            <p class="text-medium-emphasis small">
-              As is the <code class="css-0">htmlSize</code> property:
+            <p className="text-medium-emphasis small">
+              As is the <code>htmlSize</code> property:
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/select#sizing">
               <CFormSelect size="lg" multiple aria-label="Multiple select example">
@@ -77,9 +77,9 @@ const Select = () => {
             <strong>React Select</strong> <small>Disabled</small>
           </CCardHeader>
           <CCardBody>
-            <p class="css-0">
-              Add the <code class="css-0">disabled</code> boolean attribute on a select to give it a
-              grayed out appearance and remove pointer events.
+            <p className="text-medium-emphasis small">
+              Add the <code>disabled</code> boolean attribute on a select to give it a grayed out
+              appearance and remove pointer events.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/select#disabled">
               <CFormSelect aria-label="Disabled select example" disabled>

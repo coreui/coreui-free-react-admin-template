@@ -2,105 +2,108 @@ import React from 'react'
 import {
   CAlert,
   CAlertHeading,
-  CButton,
+  CAlertLink,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
-  CLink,
-  CProgress,
   CRow,
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const Alerts = () => {
   const [visible, setVisible] = React.useState(10)
 
   return (
-    <>
-      <CRow>
-        <CCol xs="12" md="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Alerts
-              <DocsLink name="CAlert" />
-            </CCardHeader>
-            <CCardBody>
-              <CAlert color="primary">This is a primary alert — check it out!</CAlert>
-              <CAlert color="secondary">This is a secondary alert — check it out!</CAlert>
-              <CAlert color="success">This is a success alert — check it out!</CAlert>
-              <CAlert color="danger">This is a danger alert — check it out!</CAlert>
-              <CAlert color="warning">This is a warning alert — check it out!</CAlert>
-              <CAlert color="info">This is a info alert — check it out!</CAlert>
-              <CAlert color="light">This is a light alert — check it out!</CAlert>
-              <CAlert color="dark">This is a dark alert — check it out!</CAlert>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" md="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Alerts
-              <small>
-                {' '}
-                use <code>.alert-link</code> to provide links
-              </small>
-            </CCardHeader>
-            <CCardBody>
+    <CRow>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Alert</strong>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              React Alert is prepared for any length of text, as well as an optional close button.
+              For a styling, use one of the <strong>required</strong> contextual <code>color</code>{' '}
+              props (e.g., <code>primary</code>). For inline dismissal, use the{' '}
+              <a href="https://coreui.io/react/docs/4.0/components/alert#dismissing">
+                dismissing prop
+              </a>
+              .
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/alert">
+              <CAlert color="primary">A simple primary alert—check it out!</CAlert>
+              <CAlert color="secondary">A simple secondary alert—check it out!</CAlert>
+              <CAlert color="success">A simple success alert—check it out!</CAlert>
+              <CAlert color="danger">A simple danger alert—check it out!</CAlert>
+              <CAlert color="warning">A simple warning alert—check it out!</CAlert>
+              <CAlert color="info">A simple info alert—check it out!</CAlert>
+              <CAlert color="light">A simple light alert—check it out!</CAlert>
+              <CAlert color="dark">A simple dark alert—check it out!</CAlert>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Alert</strong> <small>Link color</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Use the <code>&lt;CAlertLink&gt;</code> component to immediately give matching colored
+              links inside any alert.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/alert#link-color">
               <CAlert color="primary">
-                {/*eslint-disable-next-line*/}
-                This is a primary alert with&nbsp;
-                <CLink className="alert-link">an example link</CLink>. Give it a click if you like.
+                A simple primary alert with <CAlertLink href="#">an example link</CAlertLink>. Give
+                it a click if you like.
               </CAlert>
               <CAlert color="secondary">
-                {/*eslint-disable-next-line*/}
-                This is a secondary alert with&nbsp;
-                <CLink className="alert-link">an example link</CLink>. Give it a click if you like.
+                A simple secondary alert with <CAlertLink href="#">an example link</CAlertLink>.
+                Give it a click if you like.
               </CAlert>
               <CAlert color="success">
-                {/*eslint-disable-next-line*/}
-                This is a success alert with&nbsp;
-                <CLink className="alert-link">an example link</CLink>. Give it a click if you like.
+                A simple success alert with <CAlertLink href="#">an example link</CAlertLink>. Give
+                it a click if you like.
               </CAlert>
               <CAlert color="danger">
-                {/*eslint-disable-next-line*/}
-                This is a danger alert with&nbsp;
-                <CLink className="alert-link">an example link</CLink>. Give it a click if you like.
+                A simple danger alert with <CAlertLink href="#">an example link</CAlertLink>. Give
+                it a click if you like.
               </CAlert>
               <CAlert color="warning">
-                {/*eslint-disable-next-line*/}
-                This is a warning alert with&nbsp;
-                <CLink className="alert-link">an example link</CLink>. Give it a click if you like.
+                A simple warning alert with <CAlertLink href="#">an example link</CAlertLink>. Give
+                it a click if you like.
               </CAlert>
               <CAlert color="info">
-                {/*eslint-disable-next-line*/}
-                This is a info alert with&nbsp;
-                <CLink className="alert-link">an example link</CLink>. Give it a click if you like.
+                A simple info alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
+                a click if you like.
               </CAlert>
               <CAlert color="light">
-                {/*eslint-disable-next-line*/}
-                This is a light alert with&nbsp;
-                <CLink className="alert-link">an example link</CLink>. Give it a click if you like.
+                A simple light alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
+                a click if you like.
               </CAlert>
               <CAlert color="dark">
-                {/*eslint-disable-next-line*/}
-                This is a dark alert with&nbsp;
-                <CLink className="alert-link">an example link</CLink>. Give it a click if you like.
+                A simple dark alert with <CAlertLink href="#">an example link</CAlertLink>. Give it
+                a click if you like.
               </CAlert>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol xs="12" md="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Alerts
-              <small> additional content</small>
-            </CCardHeader>
-            <CCardBody>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Alert</strong> <small>Additional content</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Alert can also incorporate supplementary components &amp; elements like heading,
+              paragraph, and divider.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/alert#additional-content">
               <CAlert color="success">
-                <CAlertHeading>Well done!</CAlertHeading>
+                <CAlertHeading tag="h4">Well done!</CAlertHeading>
                 <p>
                   Aww yeah, you successfully read this important alert message. This example text is
                   going to run a bit longer so that you can see how spacing within an alert works
@@ -112,38 +115,34 @@ const Alerts = () => {
                   tidy.
                 </p>
               </CAlert>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        <CCol xs="12" md="6">
-          <CCard className="mb-4">
-            <CCardHeader>
-              Alerts
-              <small> dismissing</small>
-            </CCardHeader>
-            <CCardBody>
-              <CAlert color="info" dismissible>
-                I am an dismissible alert!
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Alert</strong> <small>Dismissing</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Alerts can also be easily dismissed. Just add the <code>dismissible</code> prop.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/alert#dismissing">
+              <CAlert
+                color="warning"
+                dismissible
+                onDismissed={() => {
+                  alert('👋 Well, hi there! Thanks for dismissing me.')
+                }}
+              >
+                <strong>Go right ahead</strong> and click that dimiss over there on the right.
               </CAlert>
-              <CAlert color="warning" show={visible} closeButton visible={setVisible}>
-                I will be closed in {visible} seconds!
-                <CProgress
-                  striped
-                  color="warning"
-                  value={Number(visible) * 10}
-                  size="xs"
-                  className="mb-3"
-                />
-              </CAlert>
-
-              <CButton color="primary" onClick={() => setVisible(10)}>
-                Reset timer
-              </CButton>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-    </>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
   )
 }
 

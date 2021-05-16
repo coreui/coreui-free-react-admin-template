@@ -10,7 +10,7 @@ import {
   CFormLabel,
   CRow,
 } from '@coreui/react'
-import { DocsLink, Example } from 'src/reusable'
+import { Example } from 'src/reusable'
 
 const FormControl = () => {
   return (
@@ -50,9 +50,9 @@ const FormControl = () => {
             <strong>React Form Control</strong> <small>Sizing</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Set heights using <code class="css-0">size</code> property like{' '}
-              <code class="css-0">size="lg"</code> and <code class="css-0">size="sm"</code>.
+            <p className="text-medium-emphasis small">
+              Set heights using <code>size</code> property like <code>size="lg"</code> and{' '}
+              <code>size="sm"</code>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/form-control#sizing">
               <CFormControl
@@ -84,9 +84,9 @@ const FormControl = () => {
             <strong>React Form Control</strong> <small>Disabled</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Add the <code class="css-0">disabled</code> boolean attribute on an input to give it a
-              grayed out appearance and remove pointer events.
+            <p className="text-medium-emphasis small">
+              Add the <code>disabled</code> boolean attribute on an input to give it a grayed out
+              appearance and remove pointer events.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/form-control#disabled">
               <CFormControl
@@ -114,10 +114,10 @@ const FormControl = () => {
             <strong>React Form Control</strong> <small>Readonly</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              Add the <code class="css-0">readOnly</code> boolean attribute on an input to prevent
-              modification of the input's value. Read-only inputs appear lighter (just like disabled
-              inputs), but retain the standard cursor.
+            <p className="text-medium-emphasis small">
+              Add the <code>readOnly</code> boolean attribute on an input to prevent modification of
+              the input's value. Read-only inputs appear lighter (just like disabled inputs), but
+              retain the standard cursor.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/form-control#readonly">
               <CFormControl
@@ -136,11 +136,10 @@ const FormControl = () => {
             <strong>React Form Control</strong> <small>Readonly plain text</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
-              If you want to have <code class="css-0">&lt;input readonly&gt;</code> elements in your
-              form styled as plain text, use the <code class="css-0">plainText</code> boolean
-              property to remove the default form field styling and preserve the correct margin and
-              padding.
+            <p className="text-medium-emphasis small">
+              If you want to have <code>&lt;input readonly&gt;</code> elements in your form styled
+              as plain text, use the <code>plainText</code> boolean property to remove the default
+              form field styling and preserve the correct margin and padding.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/accordion">
               <CRow className="mb-3">
@@ -167,8 +166,8 @@ const FormControl = () => {
               </CRow>
             </Example>
             <Example href="https://coreui.io/react/docs/4.0/components/accordion">
-              <CForm class="row g-3">
-                <div class="col-auto">
+              <CForm className="row g-3">
+                <div className="col-auto">
                   <CFormLabel htmlFor="staticEmail2" className="visually-hidden">
                     Email
                   </CFormLabel>
@@ -180,13 +179,13 @@ const FormControl = () => {
                     plainText
                   />
                 </div>
-                <div class="col-auto">
+                <div className="col-auto">
                   <CFormLabel htmlFor="inputPassword2" className="visually-hidden">
                     Password
                   </CFormLabel>
                   <CFormControl type="password" id="inputPassword2" placeholder="Password" />
                 </div>
-                <div class="col-auto">
+                <div className="col-auto">
                   <CButton type="submit" className="mb-3">
                     Confirm identity
                   </CButton>
@@ -203,19 +202,19 @@ const FormControl = () => {
           </CCardHeader>
           <CCardBody>
             <Example href="https://coreui.io/react/docs/4.0/forms/form-control#file-input">
-              <div class="mb-3">
+              <div className="mb-3">
                 <CFormLabel htmlFor="formFile">Default file input example</CFormLabel>
                 <CFormControl type="file" id="formFile" />
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <CFormLabel htmlFor="formFileMultiple">Multiple files input example</CFormLabel>
                 <CFormControl type="file" id="formFileMultiple" multiple />
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <CFormLabel htmlFor="formFileDisabled">Disabled file input example</CFormLabel>
                 <CFormControl type="file" id="formFileDisabled" disabled />
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <CFormLabel htmlFor="formFileSm">Small file input example</CFormLabel>
                 <CFormControl type="file" size="sm" id="formFileSm" />
               </div>

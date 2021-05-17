@@ -9,16 +9,20 @@ import {
   CWidgetProgressIcon,
   CWidgetSimple,
 } from '@coreui/react'
+import { getStyle } from '@coreui/utils'
+import { CChart } from '@coreui/react-chartjs'
 
 import WidgetsBrand from './WidgetsBrand'
 import WidgetsDropdown from './WidgetsDropdown'
 
-import ChartLineSimple from '../charts/ChartLineSimple'
-import ChartBarSimple from '../charts/ChartBarSimple'
+// import ChartLineSimple from '../charts/ChartLineSimple'
+// import ChartBarSimple from '../charts/ChartBarSimple'
 
 import CIcon from '@coreui/icons-react'
 
 const Widgets = () => {
+  const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+
   return (
     <>
       <WidgetsDropdown />
@@ -442,32 +446,332 @@ const Widgets = () => {
       <CRow>
         <CCol sm="4" lg="2">
           <CWidgetSimple title="title" value="1,123">
-            <ChartLineSimple style={{ height: '40px' }} borderColor="danger" />
+            <CChart
+              type="bar"
+              style={{ height: '40px' }}
+              data={{
+                labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M'],
+                datasets: [
+                  {
+                    backgroundColor: getStyle('--cui-danger'),
+                    borderColor: 'transparent',
+                    borderWidth: 1,
+                    data: [
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                    ],
+                  },
+                ],
+              }}
+              options={{
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                },
+                scales: {
+                  x: {
+                    display: false,
+                  },
+                  y: {
+                    display: false,
+                  },
+                },
+              }}
+            />
           </CWidgetSimple>
         </CCol>
         <CCol sm="4" lg="2">
           <CWidgetSimple title="title" value="1,123">
-            <ChartLineSimple style={{ height: '40px' }} borderColor="primary" />
+            <CChart
+              type="bar"
+              style={{ height: '40px' }}
+              data={{
+                labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M'],
+                datasets: [
+                  {
+                    backgroundColor: getStyle('--cui-primary'),
+                    borderColor: 'transparent',
+                    borderWidth: 1,
+                    data: [
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                    ],
+                  },
+                ],
+              }}
+              options={{
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                },
+                scales: {
+                  x: {
+                    display: false,
+                  },
+                  y: {
+                    display: false,
+                  },
+                },
+              }}
+            />
           </CWidgetSimple>
         </CCol>
         <CCol sm="4" lg="2">
           <CWidgetSimple title="title" value="1,123">
-            <ChartLineSimple style={{ height: '40px' }} borderColor="success" />
+            <CChart
+              type="bar"
+              style={{ height: '40px' }}
+              data={{
+                labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M'],
+                datasets: [
+                  {
+                    backgroundColor: getStyle('--cui-success'),
+                    borderColor: 'transparent',
+                    borderWidth: 1,
+                    data: [
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                    ],
+                  },
+                ],
+              }}
+              options={{
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                },
+                scales: {
+                  x: {
+                    display: false,
+                  },
+                  y: {
+                    display: false,
+                  },
+                },
+              }}
+            />
           </CWidgetSimple>
         </CCol>
         <CCol sm="4" lg="2">
           <CWidgetSimple title="title" value="1,123">
-            <ChartBarSimple style={{ height: '40px' }} backgroundColor="danger" />
+            <CChart
+              type="line"
+              style={{ height: '40px' }}
+              data={{
+                labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M'],
+                datasets: [
+                  {
+                    backgroundColor: 'transparent',
+                    borderColor: getStyle('--cui-danger'),
+                    borderWidth: 2,
+                    data: [
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                    ],
+                  },
+                ],
+              }}
+              options={{
+                maintainAspectRatio: false,
+                elements: {
+                  line: {
+                    tension: 0.4,
+                  },
+                  point: {
+                    radius: 0,
+                  },
+                },
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                },
+                scales: {
+                  x: {
+                    display: false,
+                  },
+                  y: {
+                    display: false,
+                  },
+                },
+              }}
+            />
           </CWidgetSimple>
         </CCol>
         <CCol sm="4" lg="2">
           <CWidgetSimple title="title" value="1,123">
-            <ChartBarSimple style={{ height: '40px' }} backgroundColor="primary" />
+            <CChart
+              type="line"
+              style={{ height: '40px' }}
+              data={{
+                labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M'],
+                datasets: [
+                  {
+                    backgroundColor: 'transparent',
+                    borderColor: getStyle('--cui-success'),
+                    borderWidth: 2,
+                    data: [
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                    ],
+                  },
+                ],
+              }}
+              options={{
+                maintainAspectRatio: false,
+                elements: {
+                  line: {
+                    tension: 0.4,
+                  },
+                  point: {
+                    radius: 0,
+                  },
+                },
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                },
+                scales: {
+                  x: {
+                    display: false,
+                  },
+                  y: {
+                    display: false,
+                  },
+                },
+              }}
+            />
           </CWidgetSimple>
         </CCol>
         <CCol sm="4" lg="2">
           <CWidgetSimple title="title" value="1,123">
-            <ChartBarSimple style={{ height: '40px' }} backgroundColor="success" />
+            <CChart
+              type="line"
+              style={{ height: '40px' }}
+              data={{
+                labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M'],
+                datasets: [
+                  {
+                    backgroundColor: 'transparent',
+                    borderColor: getStyle('--cui-info'),
+                    borderWidth: 2,
+                    data: [
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                      random(40, 100),
+                    ],
+                  },
+                ],
+              }}
+              options={{
+                maintainAspectRatio: false,
+                elements: {
+                  line: {
+                    tension: 0.4,
+                  },
+                  point: {
+                    radius: 0,
+                  },
+                },
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                },
+                scales: {
+                  x: {
+                    display: false,
+                  },
+                  y: {
+                    display: false,
+                  },
+                },
+              }}
+            />
           </CWidgetSimple>
         </CCol>
       </CRow>

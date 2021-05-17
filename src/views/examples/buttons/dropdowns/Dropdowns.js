@@ -1,0 +1,345 @@
+import React from 'react'
+import {
+  CButton,
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CCol,
+  CDropdown,
+  CDropdownDivider,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CRow,
+} from '@coreui/react'
+import { Example } from 'src/reusable'
+
+const Dropdowns = () => {
+  return (
+    <CRow>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Dropdown</strong> <small>Single button</small>
+          </CCardHeader>
+          <CCardBody>
+            <p class="css-0">
+              Here's how you can put them to work with either{' '}
+              <code class="css-0">&lt;button&gt;</code> elements:
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#single-button">
+              <CDropdown>
+                <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </Example>
+            <p class="css-0">The best part is you can do this with any button variant, too:</p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#single-button">
+              <>
+                {['primary', 'secondary', 'success', 'info', 'warning', 'danger'].map(
+                  (color, index) => (
+                    <CDropdown variant="btn-group" key={index}>
+                      <CDropdownToggle color={color}>{color}</CDropdownToggle>
+                      <CDropdownMenu>
+                        <CDropdownItem href="#">Action</CDropdownItem>
+                        <CDropdownItem href="#">Another action</CDropdownItem>
+                        <CDropdownItem href="#">Something else here</CDropdownItem>
+                        <CDropdownDivider />
+                        <CDropdownItem href="#">Separated link</CDropdownItem>
+                      </CDropdownMenu>
+                    </CDropdown>
+                  ),
+                )}
+              </>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Dropdown</strong> <small>Split button</small>
+          </CCardHeader>
+          <CCardBody>
+            <p class="css-0">
+              Similarly, create split button dropdowns with virtually the same markup as single
+              button dropdowns, but with the addition of boolean prop{' '}
+              <code class="css-0">split</code> for proper spacing around the dropdown caret.
+            </p>
+            <p class="css-0">
+              We use this extra class to reduce the horizontal <code class="css-0">padding</code> on
+              either side of the caret by 25% and remove the <code class="css-0">margin-left</code>{' '}
+              that's attached for normal button dropdowns. Those additional changes hold the caret
+              centered in the split button and implement a more properly sized hit area next to the
+              main button.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#split-button">
+              <>
+                {['primary', 'secondary', 'success', 'info', 'warning', 'danger'].map(
+                  (color, index) => (
+                    <CDropdown variant="btn-group" key={index}>
+                      <CButton color={color}>{color}</CButton>
+                      <CDropdownToggle color={color} split />
+                      <CDropdownMenu>
+                        <CDropdownItem href="#">Action</CDropdownItem>
+                        <CDropdownItem href="#">Another action</CDropdownItem>
+                        <CDropdownItem href="#">Something else here</CDropdownItem>
+                        <CDropdownDivider />
+                        <CDropdownItem href="#">Separated link</CDropdownItem>
+                      </CDropdownMenu>
+                    </CDropdown>
+                  ),
+                )}
+              </>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Dropdown</strong> <small>Sizing</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">
+              Button dropdowns work with buttons of all sizes, including default and split dropdown
+              buttons.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#sizing">
+              <CDropdown variant="btn-group">
+                <CDropdownToggle color="secondary" size="lg">
+                  Large button
+                </CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+              <CDropdown variant="btn-group">
+                <CButton color="secondary" size="lg">
+                  Large split button
+                </CButton>
+                <CDropdownToggle color="secondary" size="lg" split />
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </Example>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#sizing">
+              <CDropdown variant="btn-group">
+                <CDropdownToggle color="secondary" size="sm">
+                  Small button
+                </CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+              <CDropdown variant="btn-group">
+                <CButton color="secondary" size="sm">
+                  Small split button
+                </CButton>
+                <CDropdownToggle color="secondary" size="sm" split />
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Dropdown</strong> <small>Single button</small>
+          </CCardHeader>
+          <CCardBody>
+            <p class="css-0">
+              Opt into darker dropdowns to match a dark navbar or custom style by set{' '}
+              <code class="css-0">dark</code> property. No changes are required to the dropdown
+              items.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dark-dropdowns">
+              <CDropdown dark>
+                <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </Example>
+            <p class="css-0">And putting it to use in a navbar:</p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dark-dropdowns">
+              <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div className="container-fluid">
+                  <a className="navbar-brand" href="#">
+                    Navbar
+                  </a>
+                  <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-coreui-toggle="collapse"
+                    data-coreui-target="#navbarNavDarkDropdown"
+                    aria-controls="navbarNavDarkDropdown"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+                  <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul className="navbar-nav">
+                      <CDropdown dark component="li" variant="nav-item">
+                        <CDropdownToggle>Dropdown</CDropdownToggle>
+                        <CDropdownMenu>
+                          <CDropdownItem href="#">Action</CDropdownItem>
+                          <CDropdownItem href="#">Another action</CDropdownItem>
+                          <CDropdownItem href="#">Something else here</CDropdownItem>
+                          <CDropdownDivider />
+                          <CDropdownItem href="#">Separated link</CDropdownItem>
+                        </CDropdownMenu>
+                      </CDropdown>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Dropdown</strong> <small>Dropup</small>
+          </CCardHeader>
+          <CCardBody>
+            <p class="css-0">
+              Trigger dropdown menus above elements by adding{' '}
+              <code class="css-0">direction="dropup"</code> to the{' '}
+              <code class="css-0">&lt;CDropdown&gt;</code> component.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dropup">
+              <CDropdown variant="btn-group" direction="dropup">
+                <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+              <CDropdown variant="btn-group" direction="dropup">
+                <CButton color="secondary">Small split button</CButton>
+                <CDropdownToggle color="secondary" split />
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Dropdown</strong> <small>Dropright</small>
+          </CCardHeader>
+          <CCardBody>
+            <p class="css-0">
+              Trigger dropdown menus at the right of the elements by adding{' '}
+              <code class="css-0">direction="dropend"</code> to the{' '}
+              <code class="css-0">&lt;CDropdown&gt;</code> component.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dropright">
+              <CDropdown variant="btn-group" direction="dropend">
+                <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+              <CDropdown variant="btn-group" direction="dropend">
+                <CButton color="secondary">Small split button</CButton>
+                <CDropdownToggle color="secondary" split />
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Dropdown</strong> <small>Dropleft</small>
+          </CCardHeader>
+          <CCardBody>
+            <p class="css-0">
+              Trigger dropdown menus at the left of the elements by adding{' '}
+              <code class="css-0">direction="dropstart"</code> to the{' '}
+              <code class="css-0">&lt;CDropdown&gt;</code> component.
+            </p>
+            <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dropleft">
+              <CDropdown variant="btn-group" direction="dropstart">
+                <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+              <CDropdown variant="btn-group" direction="dropstart">
+                <CDropdownToggle color="secondary" split />
+                <CButton color="secondary">Small split button</CButton>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Separated link</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </Example>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
+  )
+}
+
+export default Dropdowns

@@ -6,6 +6,7 @@ $enable-rtl: true;
 
 // Import styles
 @import "@coreui/coreui/scss/coreui";
+@import "@coreui/chartjs/dist/css/coreui-chartjs.css";
 
 @import "layout";
 @import "example";

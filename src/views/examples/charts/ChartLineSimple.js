@@ -1,7 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getColor, deepObjectsMerge } from '@coreui/utils'
-import { CChartLine } from '@coreui/react-chartjs'
+import { getColor, getStyle, hexToRgba, deepObjectsMerge } from '@coreui/utils'
+
+import { CChart } from '@coreui/react-chartjs'
+
+const brandSuccess = getStyle('success') || '#4dbd74'
+const brandInfo = getStyle('info') || '#20a8d8'
+const brandDanger = getStyle('danger') || '#f86c6b'
 
 const ChartLineSimple = (props) => {
   const {
@@ -38,34 +43,36 @@ const ChartLineSimple = (props) => {
 
   const pointedOptions = (() => {
     return {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      maintainAspectRatio: false,
       scales: {
-        xAxes: [
-          {
-            offset: true,
-            gridLines: {
-              color: 'transparent',
-              zeroLineColor: 'transparent',
-            },
-            ticks: {
-              fontSize: 2,
-              fontColor: 'transparent',
-            },
-          },
-        ],
-        yAxes: [
-          {
+        x: {
+          grid: {
             display: false,
-            ticks: {
-              display: false,
-              min: Math.min.apply(Math, dataPoints) - 5,
-              max: Math.max.apply(Math, dataPoints) + 5,
-            },
+            drawBorder: false,
           },
-        ],
+          ticks: {
+            display: false,
+          },
+        },
+        y: {
+          display: false,
+          grid: {
+            display: false,
+          },
+          ticks: {
+            display: false,
+          },
+        },
       },
       elements: {
         line: {
           borderWidth: 1,
+          tension: 0.4,
         },
         point: {
           radius: 4,
@@ -78,21 +85,24 @@ const ChartLineSimple = (props) => {
 
   const straightOptions = (() => {
     return {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      maintainAspectRatio: false,
       scales: {
-        xAxes: [
-          {
-            display: false,
-          },
-        ],
-        yAxes: [
-          {
-            display: false,
-          },
-        ],
+        x: {
+          display: false,
+        },
+        y: {
+          display: false,
+        },
       },
       elements: {
         line: {
           borderWidth: 2,
+          tension: 0.4,
         },
         point: {
           radius: 0,
@@ -124,7 +134,8 @@ const ChartLineSimple = (props) => {
   // render
 
   return (
-    <CChartLine
+    <CChart
+      type="line"
       {...attributes}
       datasets={computedDatasets}
       options={computedOptions}

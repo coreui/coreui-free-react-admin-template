@@ -76,26 +76,14 @@ const _nav = [
       {
         _component: 'CNavItem',
         as: NavLink,
-        anchor: 'Jumbotron',
-        to: '/base/jumbotrons',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
         anchor: 'List group',
         to: '/base/list-groups',
       },
       {
         _component: 'CNavItem',
         as: NavLink,
-        anchor: 'Navs',
+        anchor: 'Navs & Tabs',
         to: '/base/navs',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Navbars',
-        to: '/base/navbars',
       },
       {
         _component: 'CNavItem',
@@ -120,12 +108,6 @@ const _nav = [
         as: NavLink,
         anchor: 'Tables',
         to: '/base/tables',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Tabs',
-        to: '/base/tabs',
       },
       {
         _component: 'CNavItem',

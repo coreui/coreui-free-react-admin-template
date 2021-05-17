@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { getColor } from '@coreui/utils'
-import { CChartBar } from '@coreui/react-chartjs'
+import { CChart } from '@coreui/react-chartjs'
 
 const ChartBarSimple = (props) => {
   const {
@@ -13,8 +13,8 @@ const ChartBarSimple = (props) => {
     ...attributes
   } = props
 
-  const defaultDatasets = (() => {
-    return [
+  const defaultDatasets = {
+    datasets: [
       {
         data: dataPoints,
         backgroundColor: getColor(backgroundColor),
@@ -23,33 +23,48 @@ const ChartBarSimple = (props) => {
         barPercentage: 0.5,
         categoryPercentage: 1,
       },
-    ]
-  })()
+    ],
+  }
 
-  const defaultOptions = (() => {
-    return {
-      maintainAspectRatio: false,
+  const defaultOptions = {
+    maintainAspectRatio: false,
+    plugins: {
       legend: {
         display: false,
       },
-      scales: {
-        xAxes: [
-          {
-            display: false,
-          },
-        ],
-        yAxes: [
-          {
-            display: false,
-          },
-        ],
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+          drawTicks: false,
+        },
+        ticks: {
+          display: false,
+        },
       },
-    }
-  })()
+      y: {
+        grid: {
+          display: false,
+          drawBorder: false,
+          drawTicks: false,
+        },
+        ticks: {
+          display: false,
+        },
+      },
+    },
+  }
 
   // render
   return (
-    <CChartBar {...attributes} datasets={defaultDatasets} options={defaultOptions} labels={label} />
+    <CChart
+      type="bar"
+      {...attributes}
+      data={defaultDatasets}
+      options={defaultOptions}
+      labels={label}
+    />
   )
 }
 

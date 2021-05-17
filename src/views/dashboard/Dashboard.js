@@ -2,7 +2,6 @@ import React, { lazy } from 'react'
 
 import {
   CAvatar,
-  CBadge,
   CButton,
   CButtonGroup,
   CCallout,
@@ -13,15 +12,21 @@ import {
   CCol,
   CProgress,
   CRow,
-} from '@coreui/react-ts'
+} from '@coreui/react'
+import { CChart } from '@coreui/react-chartjs'
+import { getStyle, hexToRgba } from '@coreui/utils'
 import CIcon from '@coreui/icons-react'
 
-import MainChartExample from '../charts/MainChartExample.js'
+import MainChartExample from '../examples/charts/MainChartExample.js'
 
-const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
-const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
+const WidgetsDropdown = lazy(() => import('../examples/widgets/WidgetsDropdown.js'))
+const WidgetsBrand = lazy(() => import('../examples/widgets/WidgetsBrand.js'))
 
 const Dashboard = () => {
+  const random = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
   return (
     <>
       <WidgetsDropdown />
@@ -32,7 +37,7 @@ const Dashboard = () => {
               <h4 id="traffic" className="card-title mb-0">
                 Traffic
               </h4>
-              <div className="small text-muted">November 2017</div>
+              <div className="small text-muted">January - July 2021</div>
             </CCol>
             <CCol sm="7" className="d-none d-md-block">
               <CButton color="primary" className="float-end">
@@ -52,7 +57,91 @@ const Dashboard = () => {
               </CButtonGroup>
             </CCol>
           </CRow>
-          <MainChartExample style={{ height: '300px', marginTop: '40px' }} />
+          <CChart
+            type="line"
+            style={{ height: '300px', marginTop: '40px' }}
+            data={{
+              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              datasets: [
+                {
+                  label: 'My First dataset',
+                  backgroundColor: hexToRgba(getStyle('--cui-info'), 10),
+                  borderColor: getStyle('--cui-info'),
+                  pointHoverBackgroundColor: getStyle('--cui-info'),
+                  borderWidth: 2,
+                  data: [
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                  ],
+                  fill: true,
+                },
+                {
+                  label: 'My Second dataset',
+                  backgroundColor: 'transparent',
+                  borderColor: getStyle('--cui-success'),
+                  pointHoverBackgroundColor: getStyle('--cui-success'),
+                  borderWidth: 2,
+                  data: [
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                  ],
+                },
+                {
+                  label: 'My Third dataset',
+                  backgroundColor: 'transparent',
+                  borderColor: getStyle('--cui-danger'),
+                  pointHoverBackgroundColor: getStyle('--cui-danger'),
+                  borderWidth: 1,
+                  borderDash: [8, 5],
+                  data: [65, 65, 65, 65, 65, 65, 65],
+                },
+              ],
+            }}
+            options={{
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false,
+                },
+              },
+              scales: {
+                x: {
+                  grid: {
+                    drawOnChartArea: false,
+                  },
+                },
+                y: {
+                  ticks: {
+                    beginAtZero: true,
+                    maxTicksLimit: 5,
+                    stepSize: Math.ceil(250 / 5),
+                    max: 250,
+                  },
+                },
+              },
+              elements: {
+                line: {
+                  tension: 0.4,
+                },
+                point: {
+                  radius: 0,
+                  hitRadius: 10,
+                  hoverRadius: 4,
+                  hoverBorderWidth: 3,
+                },
+              },
+            }}
+          />
         </CCardBody>
         <CCardFooter>
           <CRow className="text-center">
@@ -96,18 +185,16 @@ const Dashboard = () => {
                 <CCol xs="12" md="6" xl="6">
                   <CRow>
                     <CCol sm="6">
-                      <CCallout color="info">
-                        <small className="text-muted">New Clients</small>
-                        <br />
-                        <strong className="h4">9,123</strong>
-                      </CCallout>
+                      <div className="border-start border-start-3 border-start-info py-1 px-3">
+                        <div className="text-medium-emphasis small">New Clients</div>
+                        <div className="fs-3 fw-semibold">9,123</div>
+                      </div>
                     </CCol>
                     <CCol sm="6">
-                      <CCallout color="danger">
-                        <small className="text-muted">Recurring Clients</small>
-                        <br />
-                        <strong className="h4">22,643</strong>
-                      </CCallout>
+                      <div className="border-start border-start-3 border-start-danger py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Recurring Clients</div>
+                        <div className="fs-3 fw-semibold">22,643</div>
+                      </div>
                     </CCol>
                   </CRow>
 
@@ -181,18 +268,16 @@ const Dashboard = () => {
                 <CCol xs="12" md="6" xl="6">
                   <CRow>
                     <CCol sm="6">
-                      <CCallout color="warning">
-                        <small className="text-muted">Pageviews</small>
-                        <br />
-                        <strong className="h4">78,623</strong>
-                      </CCallout>
+                      <div className="border-start border-start-3 border-start-warning py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Pageviews</div>
+                        <div className="fs-3 fw-semibold">78,623</div>
+                      </div>
                     </CCol>
                     <CCol sm="6">
-                      <CCallout color="success">
-                        <small className="text-muted">Organic</small>
-                        <br />
-                        <strong className="h4">49,123</strong>
-                      </CCallout>
+                      <div className="border-start border-start-3 border-start-success py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Organic</div>
+                        <div className="fs-3 fw-semibold">49,123</div>
+                      </div>
                     </CCol>
                   </CRow>
 

@@ -14,16 +14,13 @@ const ChartBarSimple = (props) => {
   } = props
 
   const defaultDatasets = {
-    datasets: [
-      {
-        data: dataPoints,
-        backgroundColor: getColor(backgroundColor),
-        pointHoverBackgroundColor: getColor(pointHoverBackgroundColor),
-        label: label,
-        barPercentage: 0.5,
-        categoryPercentage: 1,
-      },
-    ],
+
+    data: dataPoints,
+    backgroundColor: getColor(backgroundColor),
+    pointHoverBackgroundColor: getColor(pointHoverBackgroundColor),
+    label: label,
+    barPercentage: 0.5,
+    categoryPercentage: 1,
   }
 
   const defaultOptions = {
@@ -62,8 +59,8 @@ const ChartBarSimple = (props) => {
       type="bar"
       {...attributes}
       data={defaultDatasets}
-      options={defaultOptions}
-      labels={label}
+      // options={defaultOptions}
+      // labels={label}
     />
   )
 }

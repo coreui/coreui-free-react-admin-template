@@ -4,7 +4,6 @@ import {
   CAvatar,
   CButton,
   CButtonGroup,
-  CCallout,
   CCard,
   CCardBody,
   CCardFooter,
@@ -12,6 +11,12 @@ import {
   CCol,
   CProgress,
   CRow,
+  CTable,
+  CTableBody,
+  CTableDataCell,
+  CTableHead,
+  CTableHeaderCell,
+  CTableRow,
 } from '@coreui/react'
 import { CChart } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
@@ -37,7 +42,7 @@ const Dashboard = () => {
               <h4 id="traffic" className="card-title mb-0">
                 Traffic
               </h4>
-              <div className="small text-muted">January - July 2021</div>
+              <div className="small text-medium-emphasis">January - July 2021</div>
             </CCol>
             <CCol sm="7" className="d-none d-md-block">
               <CButton color="primary" className="float-end">
@@ -146,27 +151,27 @@ const Dashboard = () => {
         <CCardFooter>
           <CRow className="text-center">
             <CCol md sm="12" className="mb-sm-2 mb-0">
-              <div className="text-muted">Visits</div>
+              <div className="text-medium-emphasis">Visits</div>
               <strong>29.703 Users (40%)</strong>
               <CProgress className="progress-xs mt-2" precision={1} color="success" value={40} />
             </CCol>
-            <CCol md sm="12" className="mb-sm-2 mb-0 d-md-down-none">
-              <div className="text-muted">Unique</div>
+            <CCol md sm="12" className="mb-sm-2 mb-0">
+              <div className="text-medium-emphasis">Unique</div>
               <strong>24.093 Users (20%)</strong>
               <CProgress className="progress-xs mt-2" precision={1} color="info" value={40} />
             </CCol>
             <CCol md sm="12" className="mb-sm-2 mb-0">
-              <div className="text-muted">Pageviews</div>
+              <div className="text-medium-emphasis">Pageviews</div>
               <strong>78.706 Views (60%)</strong>
               <CProgress className="progress-xs mt-2" precision={1} color="warning" value={40} />
             </CCol>
             <CCol md sm="12" className="mb-sm-2 mb-0">
-              <div className="text-muted">New Users</div>
+              <div className="text-medium-emphasis">New Users</div>
               <strong>22.123 Users (80%)</strong>
               <CProgress className="progress-xs mt-2" precision={1} color="danger" value={40} />
             </CCol>
-            <CCol md sm="12" className="mb-sm-2 mb-0 d-md-down-none">
-              <div className="text-muted">Bounce Rate</div>
+            <CCol md sm="12" className="mb-sm-2 mb-0">
+              <div className="text-medium-emphasis">Bounce Rate</div>
               <strong>Average Rate (40.15%)</strong>
               <CProgress className="progress-xs mt-2" precision={1} value={40} />
             </CCol>
@@ -185,13 +190,13 @@ const Dashboard = () => {
                 <CCol xs="12" md="6" xl="6">
                   <CRow>
                     <CCol sm="6">
-                      <div className="border-start border-start-3 border-start-info py-1 px-3">
+                      <div className="border-start border-start-4 border-start-info py-1 px-3">
                         <div className="text-medium-emphasis small">New Clients</div>
                         <div className="fs-3 fw-semibold">9,123</div>
                       </div>
                     </CCol>
                     <CCol sm="6">
-                      <div className="border-start border-start-3 border-start-danger py-1 px-3 mb-3">
+                      <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Recurring Clients</div>
                         <div className="fs-3 fw-semibold">22,643</div>
                       </div>
@@ -268,13 +273,13 @@ const Dashboard = () => {
                 <CCol xs="12" md="6" xl="6">
                   <CRow>
                     <CCol sm="6">
-                      <div className="border-start border-start-3 border-start-warning py-1 px-3 mb-3">
+                      <div className="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Pageviews</div>
                         <div className="fs-3 fw-semibold">78,623</div>
                       </div>
                     </CCol>
                     <CCol sm="6">
-                      <div className="border-start border-start-3 border-start-success py-1 px-3 mb-3">
+                      <div className="border-start border-start-4 border-start-success py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Organic</div>
                         <div className="fs-3 fw-semibold">49,123</div>
                       </div>
@@ -309,7 +314,7 @@ const Dashboard = () => {
                       <CIcon className="icon icon-lg me-2" name="cib-google" />
                       <span>Organic Search</span>
                       <span className="ms-auto font-semibold">
-                        191,235 <span className="text-muted small">(56%)</span>
+                        191,235 <span className="text-medium-emphasis small">(56%)</span>
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -321,7 +326,7 @@ const Dashboard = () => {
                       <CIcon name="cib-facebook" className="icon icon-lg me-2" />
                       <span>Facebook</span>
                       <span className="ms-auto font-semibold">
-                        51,223 <span className="text-muted small">(15%)</span>
+                        51,223 <span className="text-medium-emphasis small">(15%)</span>
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -333,7 +338,7 @@ const Dashboard = () => {
                       <CIcon name="cib-twitter" className="icon icon-lg me-2" />
                       <span>Twitter</span>
                       <span className="ms-auto font-semibold">
-                        37,564 <span className="text-muted small">(11%)</span>
+                        37,564 <span className="text-medium-emphasis small">(11%)</span>
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -345,7 +350,7 @@ const Dashboard = () => {
                       <CIcon name="cib-linkedin" className="icon icon-lg me-2" />
                       <span>LinkedIn</span>
                       <span className="ms-auto font-semibold">
-                        27,319 <span className="text-muted small">(8%)</span>
+                        27,319 <span className="text-medium-emphasis small">(8%)</span>
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -357,214 +362,226 @@ const Dashboard = () => {
 
               <br />
 
-              <table className="table table-hover table-outline mb-0 d-none d-sm-table">
-                <thead className="thead-light">
-                  <tr>
-                    <th className="text-center">
+              <CTable hover responsive className="mb-0 border">
+                <CTableHead color="light">
+                  <CTableRow>
+                    <CTableHeaderCell className="text-center">
                       <CIcon name="cil-people" />
-                    </th>
-                    <th>User</th>
-                    <th className="text-center">Country</th>
-                    <th>Usage</th>
-                    <th className="text-center">Payment Method</th>
-                    <th>Activity</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="text-center">
-                      <CAvatar image="avatars/1.jpg" status="success" />
-                    </td>
-                    <td>
+                    </CTableHeaderCell>
+                    <CTableHeaderCell>User</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
+                    <CTableHeaderCell>Usage</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Payment Method</CTableHeaderCell>
+                    <CTableHeaderCell>Activity</CTableHeaderCell>
+                  </CTableRow>
+                </CTableHead>
+                <CTableBody>
+                  <CTableRow>
+                    <CTableDataCell className="text-center">
+                      <CAvatar size="md" src="avatars/1.jpg" status="success" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div>Yiorgos Avraamu</div>
-                      <div className="small text-muted">
+                      <div className="small text-medium-emphasis">
                         <span>New</span> | Registered: Jan 1, 2015
                       </div>
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cif-us" title="us" id="us" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cif-us" title="us" id="us" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div className="clearfix">
                         <div className="float-start">
                           <strong>50%</strong>
                         </div>
                         <div className="float-end">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                          <small className="text-medium-emphasis">
+                            Jun 11, 2015 - Jul 10, 2015
+                          </small>
                         </div>
                       </div>
                       <CProgress className="progress-xs" color="success" value="50" />
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cib-cc-mastercard" />
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cib-cc-mastercard" />
+                    </CTableDataCell>
+                    <CTableDataCell>
+                      <div className="small text-medium-emphasis">Last login</div>
                       <strong>10 sec ago</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <CAvatar image="avatars/2.jpg" status="danger" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                  </CTableRow>
+                  <CTableRow>
+                    <CTableDataCell className="text-center">
+                      <CAvatar size="md" src="avatars/2.jpg" status="danger" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div>Avram Tarasios</div>
-                      <div className="small text-muted">
+                      <div className="small text-medium-emphasis">
                         <span>Recurring</span> | Registered: Jan 1, 2015
                       </div>
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cif-br" title="br" id="br" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cif-br" title="br" id="br" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div className="clearfix">
                         <div className="float-start">
                           <strong>10%</strong>
                         </div>
                         <div className="float-end">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                          <small className="text-medium-emphasis">
+                            Jun 11, 2015 - Jul 10, 2015
+                          </small>
                         </div>
                       </div>
                       <CProgress className="progress-xs" color="info" value="10" />
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cib-cc-visa" />
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cib-cc-visa" />
+                    </CTableDataCell>
+                    <CTableDataCell>
+                      <div className="small text-medium-emphasis">Last login</div>
                       <strong>5 minutes ago</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <CAvatar image="avatars/3.jpg" status="warning" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                  </CTableRow>
+                  <CTableRow>
+                    <CTableDataCell className="text-center">
+                      <CAvatar size="md" src="avatars/3.jpg" status="warning" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div>Quintin Ed</div>
-                      <div className="small text-muted">
+                      <div className="small text-medium-emphasis">
                         <span>New</span> | Registered: Jan 1, 2015
                       </div>
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cif-in" title="in" id="in" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cif-in" title="in" id="in" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div className="clearfix">
                         <div className="float-start">
                           <strong>74%</strong>
                         </div>
                         <div className="float-end">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                          <small className="text-medium-emphasis">
+                            Jun 11, 2015 - Jul 10, 2015
+                          </small>
                         </div>
                       </div>
                       <CProgress className="progress-xs" color="warning" value="74" />
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cib-stripe" />
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cib-stripe" />
+                    </CTableDataCell>
+                    <CTableDataCell>
+                      <div className="small text-medium-emphasis">Last login</div>
                       <strong>1 hour ago</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <CAvatar image="avatars/4.jpg" status="secondary" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                  </CTableRow>
+                  <CTableRow>
+                    <CTableDataCell className="text-center">
+                      <CAvatar size="md" src="avatars/4.jpg" status="secondary" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div>Enéas Kwadwo</div>
-                      <div className="small text-muted">
+                      <div className="small text-medium-emphasis">
                         <span>New</span> | Registered: Jan 1, 2015
                       </div>
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cif-fr" title="fr" id="fr" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cif-fr" title="fr" id="fr" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div className="clearfix">
                         <div className="float-start">
                           <strong>98%</strong>
                         </div>
                         <div className="float-end">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                          <small className="text-medium-emphasis">
+                            Jun 11, 2015 - Jul 10, 2015
+                          </small>
                         </div>
                       </div>
                       <CProgress className="progress-xs" color="danger" value="98" />
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cib-paypal" />
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cib-paypal" />
+                    </CTableDataCell>
+                    <CTableDataCell>
+                      <div className="small text-medium-emphasis">Last login</div>
                       <strong>Last month</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <CAvatar image="avatars/5.jpg" status="success" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                  </CTableRow>
+                  <CTableRow>
+                    <CTableDataCell className="text-center">
+                      <CAvatar size="md" src="avatars/5.jpg" status="success" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div>Agapetus Tadeáš</div>
-                      <div className="small text-muted">
+                      <div className="small text-medium-emphasis">
                         <span>New</span> | Registered: Jan 1, 2015
                       </div>
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cif-es" title="es" id="es" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cif-es" title="es" id="es" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div className="clearfix">
                         <div className="float-start">
                           <strong>22%</strong>
                         </div>
                         <div className="float-end">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                          <small className="text-medium-emphasis">
+                            Jun 11, 2015 - Jul 10, 2015
+                          </small>
                         </div>
                       </div>
                       <CProgress className="progress-xs" color="info" value="22" />
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cib-google-pay" />
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cib-google-pay" />
+                    </CTableDataCell>
+                    <CTableDataCell>
+                      <div className="small text-medium-emphasis">Last login</div>
                       <strong>Last week</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-center">
-                      <CAvatar image="avatars/6.jpg" status="danger" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                  </CTableRow>
+                  <CTableRow>
+                    <CTableDataCell className="text-center">
+                      <CAvatar size="md" src="avatars/6.jpg" status="danger" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div>Friderik Dávid</div>
-                      <div className="small text-muted">
+                      <div className="small text-medium-emphasis">
                         <span>New</span> | Registered: Jan 1, 2015
                       </div>
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cif-pl" title="pl" id="pl" />
-                    </td>
-                    <td>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cif-pl" title="pl" id="pl" />
+                    </CTableDataCell>
+                    <CTableDataCell>
                       <div className="clearfix">
                         <div className="float-start">
                           <strong>43%</strong>
                         </div>
                         <div className="float-end">
-                          <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                          <small className="text-medium-emphasis">
+                            Jun 11, 2015 - Jul 10, 2015
+                          </small>
                         </div>
                       </div>
                       <CProgress className="progress-xs" color="success" value="43" />
-                    </td>
-                    <td className="text-center">
-                      <CIcon height={25} name="cib-cc-amex" />
-                    </td>
-                    <td>
-                      <div className="small text-muted">Last login</div>
+                    </CTableDataCell>
+                    <CTableDataCell className="text-center">
+                      <CIcon size="xl" name="cib-cc-amex" />
+                    </CTableDataCell>
+                    <CTableDataCell>
+                      <div className="small text-medium-emphasis">Last login</div>
                       <strong>Yesterday</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    </CTableDataCell>
+                  </CTableRow>
+                </CTableBody>
+              </CTable>
             </CCardBody>
           </CCard>
         </CCol>

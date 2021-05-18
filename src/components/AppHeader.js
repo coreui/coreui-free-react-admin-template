@@ -42,13 +42,13 @@ const AppHeader = () => {
           className="ms-md-3 d-lg-none"
           onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
         >
-          <CIcon name="cil-menu" />
+          <CIcon name="cil-menu" size="lg" />
         </CHeaderToggler>
-        <CHeaderBrand className="mx-auto d-lg-none" to="/">
+        <CHeaderBrand className="mx-auto d-md-none" to="/">
           <CIcon name="logo" height="48" alt="Logo" />
         </CHeaderBrand>
 
-        <CHeaderNav className="d-md-down-none me-auto">
+        <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
             <CNavLink to="/dashboard" component={NavLink} activeClassName="active">
               Dashboard
@@ -63,9 +63,23 @@ const AppHeader = () => {
         </CHeaderNav>
 
         <CHeaderNav>
-          <AppHeaderDropdownNotif />
-          <AppHeaderDropdownTasks />
-          <AppHeaderDropdownMssg />
+          <CNavItem>
+            <CNavLink>
+              <CIcon name="cil-bell" size="lg" />
+            </CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink>
+              <CIcon name="cil-list" size="lg" />
+            </CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink>
+              <CIcon name="cil-envelope-open" size="lg" />
+            </CNavLink>
+          </CNavItem>
+        </CHeaderNav>
+        <CHeaderNav>
           <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>

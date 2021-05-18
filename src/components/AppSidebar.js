@@ -30,7 +30,7 @@ const AppSidebar = () => {
         dispatch({ type: 'set', sidebarShow: false })
       }}
     >
-      <CSidebarBrand className="d-md-down-none" to="/">
+      <CSidebarBrand className="d-none d-md-flex" to="/">
         <CIcon className="sidebar-brand-full" name="logo-negative" height={35} />
         <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} />
       </CSidebarBrand>
@@ -38,7 +38,7 @@ const AppSidebar = () => {
         <CCreateNavItem items={navigation} />
       </CSidebarNav>
       <CSidebarToggler
-        className="c-d-md-down-none"
+        className="d-none d-lg-flex"
         onClick={() => dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })}
       />
     </CSidebar>

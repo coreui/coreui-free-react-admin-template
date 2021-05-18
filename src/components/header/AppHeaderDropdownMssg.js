@@ -26,16 +26,16 @@ const AppHeaderDropdownMssg = () => {
         <CDropdownItem href="#">
           <div className="message">
             <div className="pt-3 me-3 float-start">
-              <CAvatar image={'avatars/7.jpg'} status="success" />
+              <CAvatar src={'avatars/7.jpg'} status="success" />
             </div>
             <div>
-              <small className="text-muted">John Doe</small>
-              <small className="text-muted float-end mt-1">Just now</small>
+              <small className="text-medium-emphasis">John Doe</small>
+              <small className="text-medium-emphasis float-end mt-1">Just now</small>
             </div>
             <div className="text-truncate font-weight-bold">
               <span className="fa fa-exclamation text-danger"></span> Important message
             </div>
-            <div className="small text-muted text-truncate">
+            <div className="small text-medium-emphasis text-truncate">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
               incididunt...
             </div>
@@ -45,14 +45,14 @@ const AppHeaderDropdownMssg = () => {
         <CDropdownItem href="#">
           <div className="message">
             <div className="pt-3 me-3 float-start">
-              <CAvatar image={'avatars/6.jpg'} status="warning" />
+              <CAvatar src={'avatars/6.jpg'} status="warning" />
             </div>
             <div>
-              <small className="text-muted">Jane Dovve</small>
-              <small className="text-muted float-end mt-1">5 minutes ago</small>
+              <small className="text-medium-emphasis">Jane Dovve</small>
+              <small className="text-medium-emphasis float-end mt-1">5 minutes ago</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <div className="small text-muted text-truncate">
+            <div className="small text-medium-emphasis text-truncate">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
               incididunt...
             </div>
@@ -62,14 +62,14 @@ const AppHeaderDropdownMssg = () => {
         <CDropdownItem href="#">
           <div className="message">
             <div className="pt-3 me-3 float-start">
-              <CAvatar image={'avatars/5.jpg'} status="danger" />
+              <CAvatar src={'avatars/5.jpg'} status="danger" />
             </div>
             <div>
-              <small className="text-muted">Janet Doe</small>
-              <small className="text-muted float-end mt-1">1:52 PM</small>
+              <small className="text-medium-emphasis">Janet Doe</small>
+              <small className="text-medium-emphasis float-end mt-1">1:52 PM</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <div className="small text-muted text-truncate">
+            <div className="small text-medium-emphasis text-truncate">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
               incididunt...
             </div>
@@ -79,14 +79,14 @@ const AppHeaderDropdownMssg = () => {
         <CDropdownItem href="#">
           <div className="message">
             <div className="pt-3 me-3 float-start">
-              <CAvatar image={'avatars/4.jpg'} status="info" />
+              <CAvatar src={'avatars/4.jpg'} status="info" />
             </div>
             <div>
-              <small className="text-muted">Joe Doe</small>
-              <small className="text-muted float-end mt-1">4:03 AM</small>
+              <small className="text-medium-emphasis">Joe Doe</small>
+              <small className="text-medium-emphasis float-end mt-1">4:03 AM</small>
             </div>
             <div className="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <div className="small text-muted text-truncate">
+            <div className="small text-medium-emphasis text-truncate">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
               incididunt...
             </div>

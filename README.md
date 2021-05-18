@@ -161,7 +161,7 @@ Get updates on CoreUI's development and chat with the project maintainers and co
 
 ## Copyright and License
 
-copyright 2020 creativeLabs Łukasz Holeczek.   
+copyright 2021 creativeLabs Łukasz Holeczek.   
 
  
 Code released under [the MIT license](https://github.com/coreui/coreui-free-react-admin-template/blob/master/LICENSE).

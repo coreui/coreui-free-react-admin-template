@@ -16,7 +16,7 @@ import CIcon from '@coreui/icons-react'
 
 const Register = () => {
   return (
-    <div className="c-app c-default-layout flex-row align-items-center">
+    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md="9" lg="7" xl="6">
@@ -24,7 +24,7 @@ const Register = () => {
               <CCardBody className="p-4">
                 <CForm>
                   <h1>Register</h1>
-                  <p className="text-muted">Create your account</p>
+                  <p className="text-medium-emphasis">Create your account</p>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
                       <CIcon name="cil-user" />

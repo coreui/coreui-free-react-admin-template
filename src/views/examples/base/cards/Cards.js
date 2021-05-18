@@ -115,7 +115,7 @@ const Cards = () => {
               <CCard style={{ width: '18rem' }}>
                 <CCardBody>
                   <CCardTitle>Card title</CCardTitle>
-                  <CCardSubtitle className="mb-2 text-muted">Card subtitle</CCardSubtitle>
+                  <CCardSubtitle className="mb-2 text-medium-emphasis">Card subtitle</CCardSubtitle>
                   <CCardText>
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -329,7 +329,7 @@ const Cards = () => {
                   </CCardText>
                   <CButton href="#">Go somewhere</CButton>
                 </CCardBody>
-                <CCardFooter className="text-muted">2 days ago</CCardFooter>
+                <CCardFooter className="text-medium-emphasis">2 days ago</CCardFooter>
               </CCard>
             </Example>
           </CCardBody>
@@ -572,7 +572,7 @@ const Cards = () => {
                         additional content. This content is a little bit longer.
                       </CCardText>
                       <CCardText>
-                        <small className="text-muted">Last updated 3 mins ago</small>
+                        <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                       </CCardText>
                     </CCardBody>
                   </CCard>
@@ -586,7 +586,7 @@ const Cards = () => {
                         additional content. This content is a little bit longer.
                       </CCardText>
                       <CCardText>
-                        <small className="text-muted">Last updated 3 mins ago</small>
+                        <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                       </CCardText>
                     </CCardBody>
                     <CCardImage
@@ -777,7 +777,7 @@ const Cards = () => {
                       additional content. This content is a little bit longer.
                     </CCardText>
                     <CCardText>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardText>
                   </CCardBody>
                 </CCard>
@@ -807,7 +807,7 @@ const Cards = () => {
                       content.
                     </CCardText>
                     <CCardText>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardText>
                   </CCardBody>
                 </CCard>
@@ -838,7 +838,7 @@ const Cards = () => {
                       that equal height action.
                     </CCardText>
                     <CCardText>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardText>
                   </CCardBody>
                 </CCard>
@@ -876,7 +876,7 @@ const Cards = () => {
                     </CCardText>
                   </CCardBody>
                   <CCardFooter>
-                    <small className="text-muted">Last updated 3 mins ago</small>
+                    <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                   </CCardFooter>
                 </CCard>
                 <CCard>
@@ -906,7 +906,7 @@ const Cards = () => {
                     </CCardText>
                   </CCardBody>
                   <CCardFooter>
-                    <small className="text-muted">Last updated 3 mins ago</small>
+                    <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                   </CCardFooter>
                 </CCard>
                 <CCard>
@@ -937,7 +937,7 @@ const Cards = () => {
                     </CCardText>
                   </CCardBody>
                   <CCardFooter>
-                    <small className="text-muted">Last updated 3 mins ago</small>
+                    <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                   </CCardFooter>
                 </CCard>
               </CCardGroup>
@@ -989,7 +989,7 @@ const Cards = () => {
                       </CCardText>
                     </CCardBody>
                     <CCardFooter>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardFooter>
                   </CCard>
                 </CCol>
@@ -1021,7 +1021,7 @@ const Cards = () => {
                       </CCardText>
                     </CCardBody>
                     <CCardFooter>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardFooter>
                   </CCard>
                 </CCol>
@@ -1053,7 +1053,7 @@ const Cards = () => {
                       </CCardText>
                     </CCardBody>
                     <CCardFooter>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardFooter>
                   </CCard>
                 </CCol>
@@ -1085,7 +1085,7 @@ const Cards = () => {
                       </CCardText>
                     </CCardBody>
                     <CCardFooter>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardFooter>
                   </CCard>
                 </CCol>
@@ -1125,7 +1125,7 @@ const Cards = () => {
                       </CCardText>
                     </CCardBody>
                     <CCardFooter>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardFooter>
                   </CCard>
                 </CCol>
@@ -1157,7 +1157,7 @@ const Cards = () => {
                       </CCardText>
                     </CCardBody>
                     <CCardFooter>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardFooter>
                   </CCard>
                 </CCol>
@@ -1189,7 +1189,7 @@ const Cards = () => {
                       </CCardText>
                     </CCardBody>
                     <CCardFooter>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardFooter>
                   </CCard>
                 </CCol>
@@ -1221,7 +1221,7 @@ const Cards = () => {
                       </CCardText>
                     </CCardBody>
                     <CCardFooter>
-                      <small className="text-muted">Last updated 3 mins ago</small>
+                      <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                     </CCardFooter>
                   </CCard>
                 </CCol>

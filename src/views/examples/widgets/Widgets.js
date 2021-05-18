@@ -168,7 +168,7 @@ const Widgets = () => {
             color="primary"
             footer={
               <CLink
-                className="font-weight-bold font-xs btn-block text-muted"
+                className="font-weight-bold font-xs btn-block text-medium-emphasis"
                 href="https://coreui.io/"
                 rel="noopener norefferer"
                 target="_blank"
@@ -189,7 +189,7 @@ const Widgets = () => {
             color="info"
             footer={
               <CLink
-                className="font-weight-bold font-xs btn-block text-muted"
+                className="font-weight-bold font-xs btn-block text-medium-emphasis"
                 href="https://coreui.io/"
                 rel="noopener norefferer"
                 target="_blank"
@@ -210,7 +210,7 @@ const Widgets = () => {
             color="warning"
             footer={
               <CLink
-                className="font-weight-bold font-xs btn-block text-muted"
+                className="font-weight-bold font-xs btn-block text-medium-emphasis"
                 href="https://coreui.io/"
                 rel="noopener norefferer"
                 target="_blank"
@@ -231,7 +231,7 @@ const Widgets = () => {
             color="danger"
             footer={
               <CLink
-                className="font-weight-bold font-xs btn-block text-muted"
+                className="font-weight-bold font-xs btn-block text-medium-emphasis"
                 href="https://coreui.io/"
                 rel="noopener norefferer"
                 target="_blank"

@@ -15,7 +15,7 @@ const DocsLink = (props) => {
         target="_blank"
         className="card-header-action"
       >
-        <small className="text-muted">{text || 'docs'}</small>
+        <small className="text-medium-emphasis">{text || 'docs'}</small>
       </CLink>
     </div>
   )

@@ -54,7 +54,7 @@ const Tooltips = () => {
                 freegan cred raw denim single-origin coffee viral.
               </p>
             </Example>
-            <p class="css-0">
+            <p className="text-medium-emphasis small">
               Hover over the buttons below to see the four tooltips directions: top, right, bottom,
               and left. Directions are mirrored when using CoreUI in RTL.
             </p>

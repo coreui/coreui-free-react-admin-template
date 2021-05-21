@@ -210,8 +210,8 @@ const Dashboard = () => {
                       <span className="text-medium-emphasis small">Monday</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="info" value="34" />
-                      <CProgress className="progress-xs" color="danger" value="78" />
+                      <CProgress className="progress-xs" color="info" value={34} />
+                      <CProgress className="progress-xs" color="danger" value={78} />
                     </div>
                   </div>
                   <div className="progress-group mb-4">
@@ -219,8 +219,8 @@ const Dashboard = () => {
                       <span className="text-medium-emphasis small">Tuesday</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="info" value="56" />
-                      <CProgress className="progress-xs" color="danger" value="94" />
+                      <CProgress className="progress-xs" color="info" value={56} />
+                      <CProgress className="progress-xs" color="danger" value={94} />
                     </div>
                   </div>
                   <div className="progress-group mb-4">
@@ -228,8 +228,8 @@ const Dashboard = () => {
                       <span className="text-medium-emphasis small">Wednesday</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="info" value="12" />
-                      <CProgress className="progress-xs" color="danger" value="67" />
+                      <CProgress className="progress-xs" color="info" value={12} />
+                      <CProgress className="progress-xs" color="danger" value={67} />
                     </div>
                   </div>
                   <div className="progress-group mb-4">
@@ -237,8 +237,8 @@ const Dashboard = () => {
                       <span className="text-medium-emphasis small">Thursday</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="info" value="43" />
-                      <CProgress className="progress-xs" color="danger" value="91" />
+                      <CProgress className="progress-xs" color="info" value={43} />
+                      <CProgress className="progress-xs" color="danger" value={91} />
                     </div>
                   </div>
                   <div className="progress-group mb-4">
@@ -246,8 +246,8 @@ const Dashboard = () => {
                       <span className="text-medium-emphasis small">Friday</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="info" value="22" />
-                      <CProgress className="progress-xs" color="danger" value="73" />
+                      <CProgress className="progress-xs" color="info" value={22} />
+                      <CProgress className="progress-xs" color="danger" value={73} />
                     </div>
                   </div>
                   <div className="progress-group mb-4">
@@ -255,8 +255,8 @@ const Dashboard = () => {
                       <span className="text-medium-emphasis small">Saturday</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="info" value="53" />
-                      <CProgress className="progress-xs" color="danger" value="82" />
+                      <CProgress className="progress-xs" color="info" value={53} />
+                      <CProgress className="progress-xs" color="danger" value={82} />
                     </div>
                   </div>
                   <div className="progress-group mb-4">
@@ -264,8 +264,8 @@ const Dashboard = () => {
                       <span className="text-medium-emphasis small">Sunday</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="info" value="9" />
-                      <CProgress className="progress-xs" color="danger" value="69" />
+                      <CProgress className="progress-xs" color="info" value={9} />
+                      <CProgress className="progress-xs" color="danger" value={69} />
                     </div>
                   </div>
                 </CCol>
@@ -295,7 +295,7 @@ const Dashboard = () => {
                       <span className="ms-auto font-semibold">43%</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="warning" value="43" />
+                      <CProgress className="progress-xs" color="warning" value={43} />
                     </div>
                   </div>
                   <div className="progress-group mb-5">
@@ -305,7 +305,7 @@ const Dashboard = () => {
                       <span className="ms-auto font-semibold">37%</span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="warning" value="37" />
+                      <CProgress className="progress-xs" color="warning" value={37} />
                     </div>
                   </div>
 
@@ -318,7 +318,7 @@ const Dashboard = () => {
                       </span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="success" value="56" />
+                      <CProgress className="progress-xs" color="success" value={56} />
                     </div>
                   </div>
                   <div className="progress-group">
@@ -330,7 +330,7 @@ const Dashboard = () => {
                       </span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="success" value="15" />
+                      <CProgress className="progress-xs" color="success" value={15} />
                     </div>
                   </div>
                   <div className="progress-group">
@@ -342,7 +342,7 @@ const Dashboard = () => {
                       </span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="success" value="11" />
+                      <CProgress className="progress-xs" color="success" value={11} />
                     </div>
                   </div>
                   <div className="progress-group">
@@ -354,7 +354,7 @@ const Dashboard = () => {
                       </span>
                     </div>
                     <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="success" value="8" />
+                      <CProgress className="progress-xs" color="success" value={8} />
                     </div>
                   </div>
                 </CCol>
@@ -362,7 +362,7 @@ const Dashboard = () => {
 
               <br />
 
-              <CTable hover responsive className="mb-0 border">
+              <CTable hover responsive align="middle" className="mb-0 border">
                 <CTableHead color="light">
                   <CTableRow>
                     <CTableHeaderCell className="text-center">
@@ -400,7 +400,7 @@ const Dashboard = () => {
                           </small>
                         </div>
                       </div>
-                      <CProgress className="progress-xs" color="success" value="50" />
+                      <CProgress className="progress-xs" color="success" value={50} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
                       <CIcon size="xl" name="cib-cc-mastercard" />
@@ -434,7 +434,7 @@ const Dashboard = () => {
                           </small>
                         </div>
                       </div>
-                      <CProgress className="progress-xs" color="info" value="10" />
+                      <CProgress className="progress-xs" color="info" value={10} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
                       <CIcon size="xl" name="cib-cc-visa" />
@@ -468,10 +468,10 @@ const Dashboard = () => {
                           </small>
                         </div>
                       </div>
-                      <CProgress className="progress-xs" color="warning" value="74" />
+                      <CProgress className="progress-xs" color="warning" value={74} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" name="cib-stripe" />
+                      <CIcon size="xl" name="cib-cc-stripe" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>
@@ -502,10 +502,10 @@ const Dashboard = () => {
                           </small>
                         </div>
                       </div>
-                      <CProgress className="progress-xs" color="danger" value="98" />
+                      <CProgress className="progress-xs" color="danger" value={98} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" name="cib-paypal" />
+                      <CIcon size="xl" name="cib-cc-paypal" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>
@@ -536,10 +536,10 @@ const Dashboard = () => {
                           </small>
                         </div>
                       </div>
-                      <CProgress className="progress-xs" color="info" value="22" />
+                      <CProgress className="progress-xs" color="info" value={22} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" name="cib-google-pay" />
+                      <CIcon size="xl" name="cib-cc-apple-pay" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>
@@ -570,7 +570,7 @@ const Dashboard = () => {
                           </small>
                         </div>
                       </div>
-                      <CProgress className="progress-xs" color="success" value="43" />
+                      <CProgress className="progress-xs" color="success" value={43} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
                       <CIcon size="xl" name="cib-cc-amex" />

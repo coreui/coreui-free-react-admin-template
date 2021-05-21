@@ -90,7 +90,7 @@ const Layout = () => {
                 <CCol md="4">
                   <CFormLabel htmlFor="inputState">State</CFormLabel>
                   <CFormSelect id="inputState">
-                    <option selected>Choose...</option>
+                    <option>Choose...</option>
                     <option>...</option>
                   </CFormSelect>
                 </CCol>
@@ -303,7 +303,7 @@ const Layout = () => {
                     Preference
                   </CFormLabel>
                   <CFormSelect id="autoSizingSelect">
-                    <option selected>Choose...</option>
+                    <option>Choose...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -342,7 +342,7 @@ const Layout = () => {
                     Preference
                   </CFormLabel>
                   <CFormSelect id="specificSizeSelect">
-                    <option selected>Choose...</option>
+                    <option>Choose...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -388,7 +388,7 @@ const Layout = () => {
                     Preference
                   </CFormLabel>
                   <CFormSelect id="inlineFormSelectPref">
-                    <option selected>Choose...</option>
+                    <option>Choose...</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>

@@ -114,21 +114,21 @@ const ButtonGroups = () => {
                   button
                   buttonVariant="outline"
                   id="btncheck1"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Checkbox 1"
                 />
                 <CFormCheck
                   button
                   buttonVariant="outline"
                   id="btncheck2"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Checkbox 2"
                 />
                 <CFormCheck
                   button
                   buttonVariant="outline"
                   id="btncheck3"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Checkbox 3"
                 />
               </CButtonGroup>
@@ -141,7 +141,7 @@ const ButtonGroups = () => {
                   buttonVariant="outline"
                   name="btnradio"
                   id="btnradio1"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Radio 1"
                 />
                 <CFormCheck
@@ -150,7 +150,7 @@ const ButtonGroups = () => {
                   buttonVariant="outline"
                   name="btnradio"
                   id="btnradio2"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Radio 2"
                 />
                 <CFormCheck
@@ -159,7 +159,7 @@ const ButtonGroups = () => {
                   buttonVariant="outline"
                   name="btnradio"
                   id="btnradio3"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Radio 3"
                 />
               </CButtonGroup>
@@ -415,9 +415,9 @@ const ButtonGroups = () => {
                   buttonVariant="outline"
                   name="vbtnradio"
                   id="vbtnradio1"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Radio 1"
-                  checked
+                  defaultChecked
                 />
                 <CFormCheck
                   type="radio"
@@ -426,7 +426,7 @@ const ButtonGroups = () => {
                   buttonVariant="outline"
                   name="vbtnradio"
                   id="vbtnradio2"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Radio 2"
                 />
                 <CFormCheck
@@ -436,7 +436,7 @@ const ButtonGroups = () => {
                   buttonVariant="outline"
                   name="vbtnradio"
                   id="vbtnradio3"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Radio 3"
                 />
               </CButtonGroup>

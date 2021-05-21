@@ -23,10 +23,11 @@ import {
   cibVimeo,
   cibCcMastercard,
   cibCcVisa,
-  cibStripe,
-  cibPaypal,
-  cibGooglePay,
+  cibCcStripe,
+  cibCcPaypal,
+  cibCcApplePay,
   cibCcAmex,
+  cibGoogle,
 } from '@coreui/icons'
 import { cifUs, cifBr, cifIn, cifFr, cifEs, cifPl } from '@coreui/icons'
 import {
@@ -254,9 +255,10 @@ export const icons = Object.assign(
     cibVimeo,
     cibCcMastercard,
     cibCcVisa,
-    cibStripe,
-    cibPaypal,
-    cibGooglePay,
+    cibCcStripe,
+    cibCcPaypal,
+    cibCcApplePay,
     cibCcAmex,
+    cibGoogle,
   },
 )

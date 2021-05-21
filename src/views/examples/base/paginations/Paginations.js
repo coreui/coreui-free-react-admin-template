@@ -34,7 +34,7 @@ const Paginations = () => {
               could be <code>aria-label="Search results pages"</code>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/pagination">
-              <CPagination ariaLabel="Page navigation example">
+              <CPagination aria-label="Page navigation example">
                 <CPaginationItem>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
@@ -56,14 +56,14 @@ const Paginations = () => {
               to provide proper screen reader support with <code>aria</code> attributes.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/pagination#working-with-icons">
-              <CPagination ariaLabel="Page navigation example">
-                <CPaginationItem ariaLabel="Previous">
+              <CPagination aria-label="Page navigation example">
+                <CPaginationItem aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
                 </CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
                 <CPaginationItem>3</CPaginationItem>
-                <CPaginationItem ariaLabel="Next">
+                <CPaginationItem aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                 </CPaginationItem>
               </CPagination>
@@ -90,14 +90,14 @@ const Paginations = () => {
               to fully disable their functionality.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/pagination#disabled-and-active-states">
-              <CPagination ariaLabel="Page navigation example">
-                <CPaginationItem ariaLabel="Previous" disabled>
+              <CPagination aria-label="Page navigation example">
+                <CPaginationItem aria-label="Previous" disabled>
                   <span aria-hidden="true">&laquo;</span>
                 </CPaginationItem>
                 <CPaginationItem active>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
                 <CPaginationItem>3</CPaginationItem>
-                <CPaginationItem ariaLabel="Next">
+                <CPaginationItem aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                 </CPaginationItem>
               </CPagination>
@@ -116,7 +116,7 @@ const Paginations = () => {
               <code>size="sm"</code> for additional sizes.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/pagination#sizing">
-              <CPagination size="lg" ariaLabel="Page navigation example">
+              <CPagination size="lg" aria-label="Page navigation example">
                 <CPaginationItem>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
@@ -125,7 +125,7 @@ const Paginations = () => {
               </CPagination>
             </Example>
             <Example href="https://coreui.io/react/docs/4.0/components/pagination#sizing">
-              <CPagination size="sm" ariaLabel="Page navigation example">
+              <CPagination size="sm" aria-label="Page navigation example">
                 <CPaginationItem>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
@@ -147,7 +147,7 @@ const Paginations = () => {
               <a href="https://coreui.io/docs/utilities/flex/">flexbox utilities</a>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/pagination#aligment">
-              <CPagination className="justify-content-center" ariaLabel="Page navigation example">
+              <CPagination className="justify-content-center" aria-label="Page navigation example">
                 <CPaginationItem disabled>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
@@ -156,7 +156,7 @@ const Paginations = () => {
               </CPagination>
             </Example>
             <Example href="https://coreui.io/react/docs/4.0/components/pagination#aligment">
-              <CPagination className="justify-content-end" ariaLabel="Page navigation example">
+              <CPagination className="justify-content-end" aria-label="Page navigation example">
                 <CPaginationItem disabled>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>

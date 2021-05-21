@@ -150,7 +150,7 @@ const FormControl = () => {
                   <CFormControl
                     type="text"
                     id="staticEmail"
-                    value="email@example.com"
+                    defaultValue="email@example.com"
                     readOnly
                     plainText
                   />
@@ -174,7 +174,7 @@ const FormControl = () => {
                   <CFormControl
                     type="text"
                     id="staticEmail2"
-                    value="email@example.com"
+                    defaultValue="email@example.com"
                     readOnly
                     plainText
                   />
@@ -237,7 +237,7 @@ const FormControl = () => {
               <CFormControl
                 type="color"
                 id="exampleColorInput"
-                value="#563d7c"
+                defaultValue="#563d7c"
                 title="Choose your color"
               />
             </Example>

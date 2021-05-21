@@ -36,12 +36,12 @@ const CustomStyles = () => {
     >
       <CCol md="4">
         <CFormLabel htmlFor="validationCustom01">Email</CFormLabel>
-        <CFormControl type="text" id="validationCustom01" value="Mark" required />
+        <CFormControl type="text" id="validationCustom01" defaultValue="Mark" required />
         <CFormFeedback valid>Looks good!</CFormFeedback>
       </CCol>
       <CCol md="4">
         <CFormLabel htmlFor="validationCustom02">Email</CFormLabel>
-        <CFormControl type="text" id="validationCustom02" value="Otto" required />
+        <CFormControl type="text" id="validationCustom02" defaultValue="Otto" required />
         <CFormFeedback valid>Looks good!</CFormFeedback>
       </CCol>
       <CCol md="4">
@@ -51,7 +51,7 @@ const CustomStyles = () => {
           <CFormControl
             type="text"
             id="validationCustomUsername"
-            value=""
+            defaultValue=""
             aria-describedby="inputGroupPrepend"
             required
           />
@@ -66,9 +66,7 @@ const CustomStyles = () => {
       <CCol md="3">
         <CFormLabel htmlFor="validationCustom04">City</CFormLabel>
         <CFormSelect id="validationCustom04">
-          <option selected disabled>
-            Choose...
-          </option>
+          <option disabled>Choose...</option>
           <option>...</option>
         </CFormSelect>
         <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
@@ -110,12 +108,12 @@ const BrowserDefaults = () => {
     <CForm className="row g-3 needs-validation" validated={validated} onSubmit={handleSubmit}>
       <CCol md="4">
         <CFormLabel htmlFor="validationDefault01">Email</CFormLabel>
-        <CFormControl type="text" id="validationDefault01" value="Mark" required />
+        <CFormControl type="text" id="validationDefault01" defaultValue="Mark" required />
         <CFormFeedback valid>Looks good!</CFormFeedback>
       </CCol>
       <CCol md="4">
         <CFormLabel htmlFor="validationDefault02">Email</CFormLabel>
-        <CFormControl type="text" id="validationDefault02" value="Otto" required />
+        <CFormControl type="text" id="validationDefault02" defaultValue="Otto" required />
         <CFormFeedback valid>Looks good!</CFormFeedback>
       </CCol>
       <CCol md="4">
@@ -125,7 +123,7 @@ const BrowserDefaults = () => {
           <CFormControl
             type="text"
             id="validationDefaultUsername"
-            value=""
+            defaultValue=""
             aria-describedby="inputGroupPrepend02"
             required
           />
@@ -140,9 +138,7 @@ const BrowserDefaults = () => {
       <CCol md="3">
         <CFormLabel htmlFor="validationDefault04">City</CFormLabel>
         <CFormSelect id="validationDefault04">
-          <option selected disabled>
-            Choose...
-          </option>
+          <option disabled>Choose...</option>
           <option>...</option>
         </CFormSelect>
         <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
@@ -189,14 +185,14 @@ const Tooltips = () => {
     >
       <CCol md="4" className="position-relative">
         <CFormLabel htmlFor="validationTooltip01">Email</CFormLabel>
-        <CFormControl type="text" id="validationTooltip01" value="Mark" required />
+        <CFormControl type="text" id="validationTooltip01" defaultValue="Mark" required />
         <CFormFeedback tooltip valid>
           Looks good!
         </CFormFeedback>
       </CCol>
       <CCol md="4" className="position-relative">
         <CFormLabel htmlFor="validationTooltip02">Email</CFormLabel>
-        <CFormControl type="text" id="validationTooltip02" value="Otto" required />
+        <CFormControl type="text" id="validationTooltip02" defaultValue="Otto" required />
         <CFormFeedback tooltip valid>
           Looks good!
         </CFormFeedback>
@@ -208,7 +204,7 @@ const Tooltips = () => {
           <CFormControl
             type="text"
             id="validationTooltipUsername"
-            value=""
+            defaultValue=""
             aria-describedby="inputGroupPrepend"
             required
           />
@@ -227,7 +223,7 @@ const Tooltips = () => {
       <CCol md="3" className="position-relative">
         <CFormLabel htmlFor="validationTooltip04">City</CFormLabel>
         <CFormSelect id="validationTooltip04" required>
-          <option selected disabled value="">
+          <option disabled defaultValue="">
             Choose...
           </option>
           <option>...</option>
@@ -310,8 +306,8 @@ const Validation = () => {
           <CCardBody>
             <p className="text-medium-emphasis small">
               We recommend using client-side validation, but in case you require server-side
-              validation, you can indicate invalid and valid form fields with <code>isInvalid</code>{' '}
-              and <code>isValid</code> boolean properties.
+              validation, you can indicate invalid and valid form fields with <code>invalid</code>{' '}
+              and <code>valid</code> boolean properties.
             </p>
             <p className="text-medium-emphasis small">
               For invalid fields, ensure that the invalid feedback/error message is associated with
@@ -323,12 +319,24 @@ const Validation = () => {
               <CForm className="row g-3 needs-validation">
                 <CCol md="4">
                   <CFormLabel htmlFor="validationServer01">Email</CFormLabel>
-                  <CFormControl type="text" id="validationServer01" value="Mark" isValid required />
+                  <CFormControl
+                    type="text"
+                    id="validationServer01"
+                    defaultValue="Mark"
+                    valid
+                    required
+                  />
                   <CFormFeedback valid>Looks good!</CFormFeedback>
                 </CCol>
                 <CCol md="4">
                   <CFormLabel htmlFor="validationServer02">Email</CFormLabel>
-                  <CFormControl type="text" id="validationServer02" value="Otto" isValid required />
+                  <CFormControl
+                    type="text"
+                    id="validationServer02"
+                    defaultValue="Otto"
+                    valid
+                    required
+                  />
                   <CFormFeedback valid>Looks good!</CFormFeedback>
                 </CCol>
                 <CCol md="4">
@@ -338,9 +346,9 @@ const Validation = () => {
                     <CFormControl
                       type="text"
                       id="validationServerUsername"
-                      value=""
+                      defaultValue=""
                       aria-describedby="inputGroupPrepend03"
-                      isInvalid
+                      invalid
                       required
                     />
                     <CFormFeedback invalid>Please choose a username.</CFormFeedback>
@@ -348,22 +356,20 @@ const Validation = () => {
                 </CCol>
                 <CCol md="6">
                   <CFormLabel htmlFor="validationServer03">City</CFormLabel>
-                  <CFormControl type="text" id="validationServer03" isInvalid required />
+                  <CFormControl type="text" id="validationServer03" invalid required />
                   <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
                 </CCol>
                 <CCol md="3">
                   <CFormLabel htmlFor="validationServer04">City</CFormLabel>
-                  <CFormSelect id="validationServer04" isInvalid>
-                    <option selected disabled>
-                      Choose...
-                    </option>
+                  <CFormSelect id="validationServer04" invalid>
+                    <option disabled>Choose...</option>
                     <option>...</option>
                   </CFormSelect>
                   <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
                 </CCol>
                 <CCol md="3">
                   <CFormLabel htmlFor="validationServer05">City</CFormLabel>
-                  <CFormControl type="text" id="validationServer05" isInvalid required />
+                  <CFormControl type="text" id="validationServer05" invalid required />
                   <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
                 </CCol>
                 <CCol xs="12">
@@ -371,7 +377,7 @@ const Validation = () => {
                     type="checkbox"
                     id="invalidCheck"
                     label="Agree to terms and conditions"
-                    isInvalid
+                    invalid
                     required
                   />
                   <CFormFeedback invalid>You must agree before submitting.</CFormFeedback>
@@ -409,14 +415,14 @@ const Validation = () => {
             <Example href="https://coreui.io/react/docs/4.0/forms/validation#supported-elements">
               <CForm validated={true}>
                 <div className="mb-3">
-                  <CFormLabel for="validationTextarea" className="form-label">
+                  <CFormLabel htmlFor="validationTextarea" className="form-label">
                     Textarea
                   </CFormLabel>
                   <CFormControl
                     component="textarea"
                     id="validationTextarea"
                     placeholder="Required example textarea"
-                    isInvalid
+                    invalid
                     required
                   ></CFormControl>
                   <CFormFeedback invalid>Please enter a message in the textarea.</CFormFeedback>
@@ -449,7 +455,7 @@ const Validation = () => {
 
                 <div className="mb-3">
                   <CFormSelect required aria-label="select example">
-                    <option value="">Open this select menu</option>
+                    <option>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>

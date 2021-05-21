@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   CButton,
+  CButtonGroup,
   CCard,
   CCardBody,
   CCardHeader,
@@ -23,9 +24,8 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Single button</small>
           </CCardHeader>
           <CCardBody>
-            <p class="css-0">
-              Here's how you can put them to work with either{' '}
-              <code class="css-0">&lt;button&gt;</code> elements:
+            <p className="text-medium-emphasis small">
+              Here's how you can put them to work with either <code>&lt;button&gt;</code> elements:
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/dropdown#single-button">
               <CDropdown>
@@ -37,7 +37,9 @@ const Dropdowns = () => {
                 </CDropdownMenu>
               </CDropdown>
             </Example>
-            <p class="css-0">The best part is you can do this with any button variant, too:</p>
+            <p className="text-medium-emphasis small">
+              The best part is you can do this with any button variant, too:
+            </p>
             <Example href="https://coreui.io/react/docs/4.0/components/dropdown#single-button">
               <>
                 {['primary', 'secondary', 'success', 'info', 'warning', 'danger'].map(
@@ -65,17 +67,16 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Split button</small>
           </CCardHeader>
           <CCardBody>
-            <p class="css-0">
+            <p className="text-medium-emphasis small">
               Similarly, create split button dropdowns with virtually the same markup as single
-              button dropdowns, but with the addition of boolean prop{' '}
-              <code class="css-0">split</code> for proper spacing around the dropdown caret.
+              button dropdowns, but with the addition of boolean prop <code>split</code> for proper
+              spacing around the dropdown caret.
             </p>
-            <p class="css-0">
-              We use this extra class to reduce the horizontal <code class="css-0">padding</code> on
-              either side of the caret by 25% and remove the <code class="css-0">margin-left</code>{' '}
-              that's attached for normal button dropdowns. Those additional changes hold the caret
-              centered in the split button and implement a more properly sized hit area next to the
-              main button.
+            <p className="text-medium-emphasis small">
+              We use this extra class to reduce the horizontal <code>padding</code> on either side
+              of the caret by 25% and remove the <code>margin-left</code> that's attached for normal
+              button dropdowns. Those additional changes hold the caret centered in the split button
+              and implement a more properly sized hit area next to the main button.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/dropdown#split-button">
               <>
@@ -172,10 +173,9 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Single button</small>
           </CCardHeader>
           <CCardBody>
-            <p class="css-0">
+            <p className="text-medium-emphasis small">
               Opt into darker dropdowns to match a dark navbar or custom style by set{' '}
-              <code class="css-0">dark</code> property. No changes are required to the dropdown
-              items.
+              <code>dark</code> property. No changes are required to the dropdown items.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dark-dropdowns">
               <CDropdown dark>
@@ -189,7 +189,7 @@ const Dropdowns = () => {
                 </CDropdownMenu>
               </CDropdown>
             </Example>
-            <p class="css-0">And putting it to use in a navbar:</p>
+            <p className="text-medium-emphasis small">And putting it to use in a navbar:</p>
             <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dark-dropdowns">
               <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
@@ -233,10 +233,9 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Dropup</small>
           </CCardHeader>
           <CCardBody>
-            <p class="css-0">
-              Trigger dropdown menus above elements by adding{' '}
-              <code class="css-0">direction="dropup"</code> to the{' '}
-              <code class="css-0">&lt;CDropdown&gt;</code> component.
+            <p className="text-medium-emphasis small">
+              Trigger dropdown menus above elements by adding <code>direction="dropup"</code> to the{' '}
+              <code>&lt;CDropdown&gt;</code> component.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dropup">
               <CDropdown variant="btn-group" direction="dropup">
@@ -270,10 +269,9 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Dropright</small>
           </CCardHeader>
           <CCardBody>
-            <p class="css-0">
+            <p className="text-medium-emphasis small">
               Trigger dropdown menus at the right of the elements by adding{' '}
-              <code class="css-0">direction="dropend"</code> to the{' '}
-              <code class="css-0">&lt;CDropdown&gt;</code> component.
+              <code>direction="dropend"</code> to the <code>&lt;CDropdown&gt;</code> component.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dropright">
               <CDropdown variant="btn-group" direction="dropend">
@@ -307,33 +305,24 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Dropleft</small>
           </CCardHeader>
           <CCardBody>
-            <p class="css-0">
+            <p className="text-medium-emphasis small">
               Trigger dropdown menus at the left of the elements by adding{' '}
-              <code class="css-0">direction="dropstart"</code> to the{' '}
-              <code class="css-0">&lt;CDropdown&gt;</code> component.
+              <code>direction="dropstart"</code> to the <code>&lt;CDropdown&gt;</code> component.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/dropdown#dropleft">
-              <CDropdown variant="btn-group" direction="dropstart">
-                <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
-                <CDropdownMenu>
-                  <CDropdownItem href="#">Action</CDropdownItem>
-                  <CDropdownItem href="#">Another action</CDropdownItem>
-                  <CDropdownItem href="#">Something else here</CDropdownItem>
-                  <CDropdownDivider />
-                  <CDropdownItem href="#">Separated link</CDropdownItem>
-                </CDropdownMenu>
-              </CDropdown>
-              <CDropdown variant="btn-group" direction="dropstart">
-                <CDropdownToggle color="secondary" split />
+              <CButtonGroup>
+                <CDropdown variant="btn-group" direction="dropstart">
+                  <CDropdownToggle color="secondary" split />
+                  <CDropdownMenu>
+                    <CDropdownItem href="#">Action</CDropdownItem>
+                    <CDropdownItem href="#">Another action</CDropdownItem>
+                    <CDropdownItem href="#">Something else here</CDropdownItem>
+                    <CDropdownDivider />
+                    <CDropdownItem href="#">Separated link</CDropdownItem>
+                  </CDropdownMenu>
+                </CDropdown>
                 <CButton color="secondary">Small split button</CButton>
-                <CDropdownMenu>
-                  <CDropdownItem href="#">Action</CDropdownItem>
-                  <CDropdownItem href="#">Another action</CDropdownItem>
-                  <CDropdownItem href="#">Something else here</CDropdownItem>
-                  <CDropdownDivider />
-                  <CDropdownItem href="#">Separated link</CDropdownItem>
-                </CDropdownMenu>
-              </CDropdown>
+              </CButtonGroup>
             </Example>
           </CCardBody>
         </CCard>

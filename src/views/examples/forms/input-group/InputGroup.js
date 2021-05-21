@@ -282,7 +282,7 @@ const Select = () => {
           <CCardBody>
             <Example href="https://coreui.io/react/docs/4.0/forms/input-group#buttons-with-dropdowns">
               <CInputGroup className="mb-3">
-                <CDropdown>
+                <CDropdown variant="input-group">
                   <CDropdownToggle color="secondary" variant="outline">
                     Dropdown
                   </CDropdownToggle>
@@ -298,7 +298,7 @@ const Select = () => {
               </CInputGroup>
               <CInputGroup className="mb-3">
                 <CFormControl aria-label="Text input with dropdown button" />
-                <CDropdown alignment="end">
+                <CDropdown alignment="end" variant="input-group">
                   <CDropdownToggle color="secondary" variant="outline">
                     Dropdown
                   </CDropdownToggle>
@@ -312,7 +312,7 @@ const Select = () => {
                 </CDropdown>
               </CInputGroup>
               <CInputGroup>
-                <CDropdown>
+                <CDropdown variant="input-group">
                   <CDropdownToggle color="secondary" variant="outline">
                     Dropdown
                   </CDropdownToggle>
@@ -325,7 +325,7 @@ const Select = () => {
                   </CDropdownMenu>
                 </CDropdown>
                 <CFormControl aria-label="Text input with 2 dropdown buttons" />
-                <CDropdown alignment="end">
+                <CDropdown alignment="end" variant="input-group">
                   <CDropdownToggle color="secondary" variant="outline">
                     Dropdown
                   </CDropdownToggle>
@@ -350,7 +350,7 @@ const Select = () => {
           <CCardBody>
             <Example href="https://coreui.io/react/docs/4.0/forms/input-group#segmented-buttons">
               <CInputGroup className="mb-3">
-                <CDropdown>
+                <CDropdown variant="input-group">
                   <CButton type="button" color="secondary" variant="outline">
                     Action
                   </CButton>
@@ -367,7 +367,7 @@ const Select = () => {
               </CInputGroup>
               <CInputGroup>
                 <CFormControl aria-label="Text input with segmented dropdown button" />
-                <CDropdown alignment="end">
+                <CDropdown alignment="end" variant="input-group">
                   <CButton type="button" color="secondary" variant="outline">
                     Action
                   </CButton>
@@ -397,7 +397,7 @@ const Select = () => {
                   Options
                 </CInputGroupText>
                 <CFormSelect id="inputGroupSelect01">
-                  <option selected>Choose...</option>
+                  <option>Choose...</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -405,7 +405,7 @@ const Select = () => {
               </CInputGroup>
               <CInputGroup className="mb-3">
                 <CFormSelect id="inputGroupSelect02">
-                  <option selected>Choose...</option>
+                  <option>Choose...</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -419,7 +419,7 @@ const Select = () => {
                   Button
                 </CButton>
                 <CFormSelect id="inputGroupSelect03" aria-label="Example select with button addon">
-                  <option selected>Choose...</option>
+                  <option>Choose...</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -427,7 +427,7 @@ const Select = () => {
               </CInputGroup>
               <CInputGroup>
                 <CFormSelect id="inputGroupSelect04" aria-label="Example select with button addon">
-                  <option selected>Choose...</option>
+                  <option>Choose...</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>

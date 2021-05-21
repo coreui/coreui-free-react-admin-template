@@ -26,7 +26,8 @@
   }
 
   // Components examples
-  .preview {
+  .preview,
+  .preview .col {
     + p {
       margin-top: 2rem;
     }

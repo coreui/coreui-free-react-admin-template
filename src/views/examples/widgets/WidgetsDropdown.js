@@ -23,12 +23,11 @@ const WidgetsDropdown = () => {
           value="9.823"
           title="Members online"
           action={
-            <CDropdown>
-              <CDropdownToggle color="transparent" caret={false}>
+            <CDropdown alignment="end">
+              <CDropdownToggle color="transparent" caret={false} className="p-0">
                 <CIcon name="cil-options" className="text-high-emphasis-inverse" />
               </CDropdownToggle>
-              {/* TODO: placement doesn't work */}
-              <CDropdownMenu placement="bottom-end">
+              <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
                 <CDropdownItem>Another action</CDropdownItem>
                 <CDropdownItem>Something else here...</CDropdownItem>
@@ -106,11 +105,11 @@ const WidgetsDropdown = () => {
           value="9.823"
           title="Members online"
           action={
-            <CDropdown>
-              <CDropdownToggle color="transparent" caret={false}>
+            <CDropdown alignment="end">
+              <CDropdownToggle color="transparent" caret={false} className="p-0">
                 <CIcon name="cil-options" className="text-high-emphasis-inverse" />
               </CDropdownToggle>
-              <CDropdownMenu placement="bottom-end">
+              <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
                 <CDropdownItem>Another action</CDropdownItem>
                 <CDropdownItem>Something else here...</CDropdownItem>
@@ -187,11 +186,11 @@ const WidgetsDropdown = () => {
           value="9.823"
           title="Members online"
           action={
-            <CDropdown>
-              <CDropdownToggle color="transparent" caret={false}>
+            <CDropdown alignment="end">
+              <CDropdownToggle color="transparent" caret={false} className="p-0">
                 <CIcon name="cil-options" className="text-high-emphasis-inverse" />
               </CDropdownToggle>
-              <CDropdownMenu placement="bottom-end">
+              <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
                 <CDropdownItem>Another action</CDropdownItem>
                 <CDropdownItem>Something else here...</CDropdownItem>
@@ -255,11 +254,11 @@ const WidgetsDropdown = () => {
           value="9.823"
           title="Members online"
           action={
-            <CDropdown>
-              <CDropdownToggle color="transparent" caret={false}>
+            <CDropdown alignment="end">
+              <CDropdownToggle color="transparent" caret={false} className="p-0">
                 <CIcon name="cil-options" className="text-high-emphasis-inverse" />
               </CDropdownToggle>
-              <CDropdownMenu placement="bottom-end">
+              <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
                 <CDropdownItem>Another action</CDropdownItem>
                 <CDropdownItem>Something else here...</CDropdownItem>

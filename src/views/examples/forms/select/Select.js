@@ -13,7 +13,7 @@ const Select = () => {
           <CCardBody>
             <Example href="https://coreui.io/react/docs/4.0/forms/select">
               <CFormSelect aria-label="Default select example">
-                <option selected>Open this select menu</option>
+                <option>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -34,13 +34,13 @@ const Select = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/select#sizing">
               <CFormSelect size="lg" className="mb-3" aria-label="Large select example">
-                <option selected>Open this select menu</option>
+                <option>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </CFormSelect>
               <CFormSelect size="sm" className="mb-3" aria-label="Small select example">
-                <option selected>Open this select menu</option>
+                <option>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -51,7 +51,7 @@ const Select = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/select#sizing">
               <CFormSelect size="lg" multiple aria-label="Multiple select example">
-                <option selected>Open this select menu</option>
+                <option>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -62,7 +62,7 @@ const Select = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/select#sizing">
               <CFormSelect size="lg" multiple aria-label="Multiple select example">
-                <option selected>Open this select menu</option>
+                <option>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -83,7 +83,7 @@ const Select = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/select#disabled">
               <CFormSelect aria-label="Disabled select example" disabled>
-                <option selected>Open this select menu</option>
+                <option>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>

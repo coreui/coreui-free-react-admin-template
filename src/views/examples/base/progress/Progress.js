@@ -21,19 +21,19 @@ const Progress = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/progress">
               <CProgress className="mb-3">
-                <CProgressBar value="0" />
+                <CProgressBar value={0} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar value="25" />
+                <CProgressBar value={25} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar value="50" />
+                <CProgressBar value={50} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar value="75" />
+                <CProgressBar value={75} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar value="100" />
+                <CProgressBar value={100} />
               </CProgress>
             </Example>
           </CCardBody>
@@ -51,7 +51,7 @@ const Progress = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/progress#labels">
               <CProgress className="mb-3">
-                <CProgressBar value="25">25%</CProgressBar>
+                <CProgressBar value={25}>25%</CProgressBar>
               </CProgress>
             </Example>
           </CCardBody>
@@ -69,11 +69,11 @@ const Progress = () => {
               resize accordingly.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/progress#height">
-              <CProgress height="1" className="mb-3">
-                <CProgressBar value="25"></CProgressBar>
+              <CProgress height={1} className="mb-3">
+                <CProgressBar value={25}></CProgressBar>
               </CProgress>
-              <CProgress height="20" className="mb-3">
-                <CProgressBar value="25"></CProgressBar>
+              <CProgress height={20} className="mb-3">
+                <CProgressBar value={25}></CProgressBar>
               </CProgress>
             </Example>
           </CCardBody>
@@ -90,16 +90,16 @@ const Progress = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/progress#backgrounds">
               <CProgress className="mb-3">
-                <CProgressBar color="success" value="25" />
+                <CProgressBar color="success" value={25} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="info" value="50" />
+                <CProgressBar color="info" value={50} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="warning" value="75" />
+                <CProgressBar color="warning" value={75} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="danger" value="100" />
+                <CProgressBar color="danger" value={100} />
               </CProgress>
             </Example>
           </CCardBody>
@@ -116,9 +116,9 @@ const Progress = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/progress#multiple-bars">
               <CProgress className="mb-3">
-                <CProgressBar value="15" />
-                <CProgressBar color="success" value="30" />
-                <CProgressBar color="info" value="20" />
+                <CProgressBar value={15} />
+                <CProgressBar color="success" value={30} />
+                <CProgressBar color="info" value={20} />
               </CProgress>
             </Example>
           </CCardBody>
@@ -136,16 +136,16 @@ const Progress = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/progress#striped">
               <CProgress className="mb-3">
-                <CProgressBar color="success" variant="striped" value="25" />
+                <CProgressBar color="success" variant="striped" value={25} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="info" variant="striped" value="50" />
+                <CProgressBar color="info" variant="striped" value={50} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="warning" variant="striped" value="75" />
+                <CProgressBar color="warning" variant="striped" value={75} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="danger" variant="striped" value="100" />
+                <CProgressBar color="danger" variant="striped" value={100} />
               </CProgress>
             </Example>
           </CCardBody>
@@ -164,16 +164,16 @@ const Progress = () => {
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/progress#animated-stripes">
               <CProgress className="mb-3">
-                <CProgressBar color="success" variant="striped" animated value="25" />
+                <CProgressBar color="success" variant="striped" animated value={25} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="info" variant="striped" animated value="50" />
+                <CProgressBar color="info" variant="striped" animated value={50} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="warning" variant="striped" animated value="75" />
+                <CProgressBar color="warning" variant="striped" animated value={75} />
               </CProgress>
               <CProgress className="mb-3">
-                <CProgressBar color="danger" variant="striped" animated value="100" />
+                <CProgressBar color="danger" variant="striped" animated value={100} />
               </CProgress>
             </Example>
           </CCardBody>

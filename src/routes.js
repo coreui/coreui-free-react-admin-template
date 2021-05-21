@@ -15,6 +15,7 @@ const Navs = React.lazy(() => import('./views/examples/base/navs/Navs'))
 const Paginations = React.lazy(() => import('./views/examples/base/paginations/Paginations'))
 const Popovers = React.lazy(() => import('./views/examples/base/popovers/Popovers'))
 const Progress = React.lazy(() => import('./views/examples/base/progress/Progress'))
+const Spinners = React.lazy(() => import('./views/examples/base/spinners/Spinners'))
 const Tables = React.lazy(() => import('./views/examples/base/tables/Tables'))
 const Tooltips = React.lazy(() => import('./views/examples/base/tooltips/Tooltips'))
 
@@ -23,6 +24,9 @@ const ButtonGroups = React.lazy(() => import('./views/examples/buttons/button-gr
 const Dropdowns = React.lazy(() => import('./views/examples/buttons/dropdowns/Dropdowns'))
 
 const ChecksRadios = React.lazy(() => import('./views/examples/forms/checks-radios/ChecksRadios'))
+const FloatingLabels = React.lazy(() =>
+  import('./views/examples/forms/floating-labels/FloatingLabels'),
+)
 const FormControl = React.lazy(() => import('./views/examples/forms/form-control/FormControl'))
 const InputGroup = React.lazy(() => import('./views/examples/forms/input-group/InputGroup'))
 const Layout = React.lazy(() => import('./views/examples/forms/layout/Layout'))
@@ -39,10 +43,10 @@ const Badges = React.lazy(() => import('./views/examples/notifications/badges/Ba
 const Modals = React.lazy(() => import('./views/examples/notifications/modals/Modals'))
 const Toasts = React.lazy(() => import('./views/examples/notifications/toasts/Toasts'))
 
-const Login = React.lazy(() => import('./views/examples/pages/login/Login'))
-const Register = React.lazy(() => import('./views/examples/pages/register/Register'))
-const Page404 = React.lazy(() => import('./views/examples/pages/page404/Page404'))
-const Page500 = React.lazy(() => import('./views/examples/pages/page500/Page500'))
+// const Login = React.lazy(() => import('./views/examples/pages/login/Login'))
+// const Register = React.lazy(() => import('./views/examples/pages/register/Register'))
+// const Page404 = React.lazy(() => import('./views/examples/pages/page404/Page404'))
+// const Page500 = React.lazy(() => import('./views/examples/pages/page500/Page500'))
 
 const Widgets = React.lazy(() => import('./views/examples/widgets/Widgets'))
 
@@ -66,6 +70,7 @@ const routes = [
   { path: '/base/paginations', name: 'Paginations', component: Paginations },
   { path: '/base/popovers', name: 'Popovers', component: Popovers },
   { path: '/base/progress', name: 'Progress', component: Progress },
+  { path: '/base/spinners', name: 'Spinners', component: Spinners },
   { path: '/base/tables', name: 'Tables', component: Tables },
   { path: '/base/tooltips', name: 'Tooltips', component: Tooltips },
   { path: '/buttons', name: 'Buttons', component: Buttons, exact: true },
@@ -79,6 +84,7 @@ const routes = [
   { path: '/forms/checks-radios', name: 'Checks & Radios', component: ChecksRadios },
   { path: '/forms/range', name: 'Range', component: Range },
   { path: '/forms/input-group', name: 'Input Group', component: InputGroup },
+  { path: '/forms/floating-labels', name: 'Floating Labels', component: FloatingLabels },
   { path: '/forms/layout', name: 'Layout', component: Layout },
   { path: '/forms/validation', name: 'Validation', component: Validation },
   { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },

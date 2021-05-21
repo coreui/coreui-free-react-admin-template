@@ -25,8 +25,8 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              Using the most basic table CoreUI, here's how{' '}
-              <code class="css-0">&lt;CTable&gt;</code>-based tables look in CoreUI.
+              Using the most basic table CoreUI, here's how <code>&lt;CTable&gt;</code>-based tables
+              look in CoreUI.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table">
               <CTable>
@@ -53,7 +53,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -139,8 +139,8 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              Use <code class="css-0">striped</code> property to add zebra-striping to any table row
-              within the <code class="css-0">&lt;CTableBody&gt;</code>.
+              Use <code>striped</code> property to add zebra-striping to any table row within the{' '}
+              <code>&lt;CTableBody&gt;</code>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#striped-rows">
               <CTable striped>
@@ -167,7 +167,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -201,7 +201,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -232,7 +232,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -248,8 +248,8 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              Use <code class="css-0">hover</code> property to enable a hover state on table rows
-              within a <code class="css-0">&lt;CTableBody&gt;</code>.
+              Use <code>hover</code> property to enable a hover state on table rows within a{' '}
+              <code>&lt;CTableBody&gt;</code>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#hoverable-rows">
               <CTable hover>
@@ -276,7 +276,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -307,7 +307,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -338,7 +338,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -378,7 +378,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2" active>
+                    <CTableDataCell colSpan="2" active>
                       Larry the Bird
                     </CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
@@ -411,7 +411,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2" active>
+                    <CTableDataCell colSpan="2" active>
                       Larry the Bird
                     </CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
@@ -429,8 +429,7 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              Add <code class="css-0">bordered</code> property for borders on all sides of the table
-              and cells.
+              Add <code>bordered</code> property for borders on all sides of the table and cells.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#bordered-tables">
               <CTable bordered>
@@ -457,14 +456,14 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
               </CTable>
             </Example>
             <p className="text-medium-emphasis small">
-              <a href="https://coreui.io/docs/4.0/utilities/borders#border-color" class="css-0">
+              <a href="https://coreui.io/docs/4.0/utilities/borders#border-color">
                 Border color utilities
               </a>{' '}
               can be added to change colors:
@@ -494,7 +493,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -510,7 +509,7 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              Add <code class="css-0">borderless</code> property for a table without borders.
+              Add <code>borderless</code> property for a table without borders.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#tables-without-borders">
               <CTable borderless>
@@ -537,7 +536,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -568,7 +567,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -584,9 +583,8 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              Add <code class="css-0">small</code> property to make any{' '}
-              <code class="css-0">&lt;CTable&gt;</code> more compact by cutting all cell{' '}
-              <code class="css-0">padding</code> in half.
+              Add <code>small</code> property to make any <code>&lt;CTable&gt;</code> more compact
+              by cutting all cell <code>padding</code> in half.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#small-tables">
               <CTable small>
@@ -613,7 +611,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -629,13 +627,13 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              Table cells of <code class="css-0">&lt;CTableHead&gt;</code> are always vertical
-              aligned to the bottom. Table cells in <code class="css-0">&lt;CTableBody&gt;</code>{' '}
-              inherit their alignment from <code class="css-0">&lt;CTable&gt;</code> and are aligned
-              to the the top by default. Use the align property to re-align where needed.
+              Table cells of <code>&lt;CTableHead&gt;</code> are always vertical aligned to the
+              bottom. Table cells in <code>&lt;CTableBody&gt;</code> inherit their alignment from{' '}
+              <code>&lt;CTable&gt;</code> and are aligned to the the top by default. Use the align
+              property to re-align where needed.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#vertical-alignment">
-              <CTable align="middle" reponsive>
+              <CTable align="middle" responsive>
                 <CTableHead>
                   <CTableRow>
                     <CTableHeaderCell scope="col" className="w-25">
@@ -732,7 +730,7 @@ const Tables = () => {
                     <CTableDataCell>@mdo</CTableDataCell>
                   </CTableRow>
                   <CTableRow>
-                    <CTableHeaderCell colspan="4">
+                    <CTableHeaderCell colSpan="4">
                       <CTable>
                         <CTableHead>
                           <CTableRow>
@@ -763,7 +761,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -779,9 +777,9 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              Similar to tables and dark tables, use the modifier prop{' '}
-              <code class="css-0">color="light"</code> or <code class="css-0">color="dark"</code> to
-              make <code class="css-0">&lt;CTableHead&gt;</code>s appear light or dark gray.
+              Similar to tables and dark tables, use the modifier prop <code>color="light"</code> or{' '}
+              <code>color="dark"</code> to make <code>&lt;CTableHead&gt;</code>s appear light or
+              dark gray.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#table-head">
               <CTable>
@@ -840,7 +838,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -880,7 +878,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -904,9 +902,9 @@ const Tables = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">
-              A <code class="css-0">&lt;CTableCaption&gt;</code> functions like a heading for a
-              table. It helps users with screen readers to find a table and understand what it's
-              about and decide if they want to read it.
+              A <code>&lt;CTableCaption&gt;</code> functions like a heading for a table. It helps
+              users with screen readers to find a table and understand what it's about and decide if
+              they want to read it.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#captions">
               <CTable>
@@ -942,8 +940,8 @@ const Tables = () => {
               </CTable>
             </Example>
             <p className="text-medium-emphasis small">
-              You can also put the <code class="css-0">&lt;CTableCaption&gt;</code> on the top of
-              the table with <code class="css-0">caption="top"</code>.
+              You can also put the <code>&lt;CTableCaption&gt;</code> on the top of the table with{' '}
+              <code>caption="top"</code>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/table#captions">
               <CTable caption="top">

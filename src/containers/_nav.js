@@ -106,6 +106,12 @@ const _nav = [
       {
         _component: 'CNavItem',
         as: NavLink,
+        anchor: 'Spinners',
+        to: '/base/spinners',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
         anchor: 'Tables',
         to: '/base/tables',
       },
@@ -177,6 +183,12 @@ const _nav = [
         as: NavLink,
         anchor: 'Input Group',
         to: '/forms/input-group',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Floating Labels',
+        to: '/forms/floating-labels',
       },
       {
         _component: 'CNavItem',

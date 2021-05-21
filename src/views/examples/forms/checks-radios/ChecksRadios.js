@@ -291,19 +291,19 @@ const ChecksRadios = () => {
               further be grouped in a button group if needed.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#toggle-buttons">
-              <CFormCheck button id="btn-check" autocomplete="off" label="Single toggle" />
+              <CFormCheck button id="btn-check" autoComplete="off" label="Single toggle" />
             </Example>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#toggle-buttons">
               <CFormCheck
                 button
                 id="btn-check-2"
-                autocomplete="off"
+                autoComplete="off"
                 label="Checked"
                 defaultChecked
               />
             </Example>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#toggle-buttons">
-              <CFormCheck button id="btn-check-3" autocomplete="off" label="Disabled" disabled />
+              <CFormCheck button id="btn-check-3" autoComplete="off" label="Disabled" disabled />
             </Example>
             <h3>Radio toggle buttons</h3>
             <Example href="https://coreui.io/react/docs/4.0/forms/checks-radios#toggle-buttons">
@@ -313,7 +313,7 @@ const ChecksRadios = () => {
                 type="radio"
                 name="options"
                 id="option1"
-                autocomplete="off"
+                autoComplete="off"
                 label="Checked"
                 defaultChecked
               />
@@ -323,7 +323,7 @@ const ChecksRadios = () => {
                 type="radio"
                 name="options"
                 id="option2"
-                autocomplete="off"
+                autoComplete="off"
                 label="Radio"
               />
               <CFormCheck
@@ -332,7 +332,7 @@ const ChecksRadios = () => {
                 type="radio"
                 name="options"
                 id="option3"
-                autocomplete="off"
+                autoComplete="off"
                 label="Radio"
                 disabled
               />
@@ -342,7 +342,7 @@ const ChecksRadios = () => {
                 type="radio"
                 name="options"
                 id="option4"
-                autocomplete="off"
+                autoComplete="off"
                 label="Radio"
               />
             </Example>
@@ -357,7 +357,7 @@ const ChecksRadios = () => {
                   buttonColor="primary"
                   buttonVariant="outline"
                   id="btn-check-outlined"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Single toggle"
                 />
               </div>
@@ -367,7 +367,7 @@ const ChecksRadios = () => {
                   buttonColor="secondary"
                   buttonVariant="outline"
                   id="btn-check-2-outlined"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Checked"
                   defaultChecked
                 />
@@ -380,7 +380,7 @@ const ChecksRadios = () => {
                   type="radio"
                   name="options-outlined"
                   id="success-outlined"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Radio"
                   defaultChecked
                 />
@@ -391,7 +391,7 @@ const ChecksRadios = () => {
                   type="radio"
                   name="options-outlined"
                   id="danger-outlined"
-                  autocomplete="off"
+                  autoComplete="off"
                   label="Radio"
                 />
               </div>

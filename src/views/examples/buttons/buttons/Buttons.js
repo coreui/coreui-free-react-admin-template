@@ -58,7 +58,7 @@ const Buttons = () => {
             <strong>React Button</strong> <small>with icons</small>
           </CCardHeader>
           <CCardBody>
-            <p class="text-medium-emphasis small">
+            <p className="text-medium-emphasis small">
               You can combine button with our <a href="https://icons.coreui.io/">CoreUI Icons</a>.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/buttons">
@@ -347,7 +347,7 @@ const Buttons = () => {
               Create buttons that span the full width of a parent—by using utilities.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/buttons#block-buttons">
-              <div class="d-grid gap-2">
+              <div className="d-grid gap-2">
                 <CButton color="primary">Button</CButton>
                 <CButton color="primary">Button</CButton>
               </div>
@@ -359,7 +359,7 @@ const Buttons = () => {
               your browser to see them change.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/buttons#block-buttons">
-              <div class="d-grid gap-2 d-md-block">
+              <div className="d-grid gap-2 d-md-block">
                 <CButton color="primary">Button</CButton>
                 <CButton color="primary">Button</CButton>
               </div>
@@ -370,7 +370,7 @@ const Buttons = () => {
               horizontally with <code>.mx-auto</code>, too.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/buttons#block-buttons">
-              <div class="d-grid gap-2 col-6 mx-auto">
+              <div className="d-grid gap-2 col-6 mx-auto">
                 <CButton color="primary">Button</CButton>
                 <CButton color="primary">Button</CButton>
               </div>
@@ -382,7 +382,7 @@ const Buttons = () => {
               stacked.
             </p>
             <Example href="https://coreui.io/react/docs/4.0/components/buttons#block-buttons">
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                 <CButton color="primary" className="me-md-2">
                   Button
                 </CButton>

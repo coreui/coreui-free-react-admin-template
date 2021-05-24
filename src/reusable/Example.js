@@ -3,8 +3,12 @@ import React from 'react'
 import { CNav, CNavItem, CNavLink, CTabContent, CTabPane } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
+import packageJson from '../../package.json'
+
 const Example = (props) => {
   const { children, href } = props
+
+  const _href = `https://coreui.io/react/docs/${packageJson.config.coreui_library_short_version}/${href}`
 
   return (
     <div className="example">
@@ -16,7 +20,7 @@ const Example = (props) => {
           </CNavLink>
         </CNavItem>
         <CNavItem>
-          <CNavLink href={href} target="_blank">
+          <CNavLink href={_href} target="_blank">
             <CIcon name="cil-code" className="me-2" />
             Code
           </CNavLink>

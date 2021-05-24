@@ -126,7 +126,6 @@ const _nav = [
   {
     _component: 'CNavGroup',
     anchor: 'Buttons',
-    // route: '/buttons',
     icon: <CIcon name="cil-cursor" customClasses="nav-icon" />,
     items: [
       {
@@ -214,7 +213,6 @@ const _nav = [
   {
     _component: 'CNavGroup',
     anchor: 'Icons',
-    // route: '/icons',
     icon: <CIcon name="cil-star" customClasses="nav-icon" />,
     items: [
       {
@@ -244,7 +242,6 @@ const _nav = [
   {
     _component: 'CNavGroup',
     anchor: 'Notifications',
-    // route: '/notifications',
     icon: <CIcon name="cil-bell" customClasses="nav-icon" />,
     items: [
       {
@@ -284,9 +281,6 @@ const _nav = [
       text: 'NEW',
     },
   },
-  // {
-  //   _component: 'CSidebarNavDivider'
-  // },
   {
     _component: 'CNavTitle',
     anchor: 'Extras',
@@ -322,59 +316,6 @@ const _nav = [
       },
     ],
   },
-  // {
-  //   _component: 'CNavItem',
-  //   anchor: 'Disabled',
-  //   icon: <CIcon name="cil-ban" customClasses="nav-icon"/>,
-  //   badge: {
-  //     color: 'secondary',
-  //     text: 'NEW',
-  //   },
-  //   addLinkClass: 'c-disabled',
-  //   'disabled': true
-  // },
-  // {
-  //   _component: 'CSidebarNavDivider',
-  //   classanchor: 'm-2'
-  // },
-  // {
-  //   _component: 'CNavTitle',
-  //   items: ['Labels']
-  // },
-  // {
-  //   _component: 'CNavItem',
-  //   anchor: 'Label danger',
-  //   to: '',
-  //   icon: {
-  //     anchor: <CIcon name="cil-star" customClasses="nav-icon"/>,
-  //     classanchor: 'text-danger'
-  //   },
-  //   label: true
-  // },
-  // {
-  //   _component: 'CNavItem',
-  //   anchor: 'Label info',
-  //   to: '',
-  //   icon: {
-  //     anchor: <CIcon name="cil-star" customClasses="nav-icon"/>,
-  //     classanchor: 'text-info'
-  //   },
-  //   label: true
-  // },
-  // {
-  //   _component: 'CNavItem',
-  //   anchor: 'Label warning',
-  //   to: '',
-  //   icon: {
-  //     anchor: <CIcon name="cil-star" customClasses="nav-icon"/>,
-  //     classanchor: 'text-warning'
-  //   },
-  //   label: true
-  // },
-  // {
-  //   _component: 'CSidebarNavDivider',
-  //   classanchor: 'm-2'
-  // }
 ]
 
 export default _nav

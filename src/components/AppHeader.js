@@ -31,7 +31,6 @@ const AppHeader = () => {
         <CHeaderBrand className="mx-auto d-md-none" to="/">
           <CIcon name="logo" height="48" alt="Logo" />
         </CHeaderBrand>
-
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
             <CNavLink to="/dashboard" component={NavLink} activeClassName="active">
@@ -45,7 +44,6 @@ const AppHeader = () => {
             <CNavLink>Settings</CNavLink>
           </CNavItem>
         </CHeaderNav>
-
         <CHeaderNav>
           <CNavItem>
             <CNavLink>
@@ -63,7 +61,7 @@ const AppHeader = () => {
             </CNavLink>
           </CNavItem>
         </CHeaderNav>
-        <CHeaderNav>
+        <CHeaderNav className="ms-3">
           <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>

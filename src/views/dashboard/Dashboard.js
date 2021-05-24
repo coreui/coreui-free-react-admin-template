@@ -18,14 +18,12 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from '@coreui/react'
-import { CChart } from '@coreui/react-chartjs'
+import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
 import CIcon from '@coreui/icons-react'
 
-import MainChartExample from '../examples/charts/MainChartExample.js'
-
-const WidgetsDropdown = lazy(() => import('../examples/widgets/WidgetsDropdown.js'))
-const WidgetsBrand = lazy(() => import('../examples/widgets/WidgetsBrand.js'))
+const WidgetsDropdown = lazy(() => import('../components/widgets/WidgetsDropdown.js'))
+const WidgetsBrand = lazy(() => import('../components/widgets/WidgetsBrand.js'))
 
 const Dashboard = () => {
   const random = (min, max) => {
@@ -62,8 +60,7 @@ const Dashboard = () => {
               </CButtonGroup>
             </CCol>
           </CRow>
-          <CChart
-            type="line"
+          <CChartLine
             style={{ height: '300px', marginTop: '40px' }}
             data={{
               labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -192,13 +189,13 @@ const Dashboard = () => {
                     <CCol sm="6">
                       <div className="border-start border-start-4 border-start-info py-1 px-3">
                         <div className="text-medium-emphasis small">New Clients</div>
-                        <div className="fs-3 fw-semibold">9,123</div>
+                        <div className="fs-5 fw-semibold">9,123</div>
                       </div>
                     </CCol>
                     <CCol sm="6">
                       <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Recurring Clients</div>
-                        <div className="fs-3 fw-semibold">22,643</div>
+                        <div className="fs-5 fw-semibold">22,643</div>
                       </div>
                     </CCol>
                   </CRow>
@@ -275,13 +272,13 @@ const Dashboard = () => {
                     <CCol sm="6">
                       <div className="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Pageviews</div>
-                        <div className="fs-3 fw-semibold">78,623</div>
+                        <div className="fs-5 fw-semibold">78,623</div>
                       </div>
                     </CCol>
                     <CCol sm="6">
                       <div className="border-start border-start-4 border-start-success py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Organic</div>
-                        <div className="fs-3 fw-semibold">49,123</div>
+                        <div className="fs-5 fw-semibold">49,123</div>
                       </div>
                     </CCol>
                   </CRow>

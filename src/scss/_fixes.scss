@@ -1,6 +1,7 @@
 // todo: disabled button styles
 button {
   &:disabled {
+    
     cursor: default;
   }
   &.disabled {

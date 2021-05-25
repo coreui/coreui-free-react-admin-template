@@ -12,115 +12,21 @@ const _nav =  [
       text: 'NEW',
     }
   },
-  {
-    _tag: 'CSidebarNavTitle',
-    _children: ['Theme']
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: 'cil-drop',
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: 'cil-pencil',
-  },
-  {
-    _tag: 'CSidebarNavTitle',
-    _children: ['Components']
-  },
+
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Base',
-    route: '/base',
+    name: 'Studentet',
+    route: '/studentet',
     icon: 'cil-puzzle',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'Breadcrumb',
-        to: '/base/breadcrumbs',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Cards',
-        to: '/base/cards',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Carousel',
-        to: '/base/carousels',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Collapse',
-        to: '/base/collapses',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Forms',
-        to: '/base/forms',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Jumbotron',
-        to: '/base/jumbotrons',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'List group',
-        to: '/base/list-groups',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Navs',
-        to: '/base/navs',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Navbars',
-        to: '/base/navbars',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Pagination',
-        to: '/base/paginations',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Popovers',
-        to: '/base/popovers',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Progress',
-        to: '/base/progress-bar',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Switches',
-        to: '/base/switches',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Tables',
-        to: '/base/tables',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Tabs',
-        to: '/base/tabs',
-      },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Tooltips',
-        to: '/base/tooltips',
+        name: 'Te Gjithe Studentet',
+        to: '/studentet/student',
       },
     ],
   },
-  {
+  /*{
     _tag: 'CSidebarNavDropdown',
     name: 'Buttons',
     route: '/buttons',
@@ -306,7 +212,7 @@ const _nav =  [
   {
     _tag: 'CSidebarNavDivider',
     className: 'm-2'
-  }
+  } */
 ]
 
 export default _nav

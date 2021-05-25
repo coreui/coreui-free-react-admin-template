@@ -10,7 +10,7 @@ import {
   CCol,
   CRow
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 import routes from '../../../routes'
 
 const Breadcrumbs = () => {
@@ -20,7 +20,7 @@ const Breadcrumbs = () => {
         <CCard>
           <CCardHeader>
             Bootstrap Breadcrumb
-            <DocsLink name="CBreadcrumb"/>
+            
           </CCardHeader>
           <CCardBody>
             <h6>CBreadcrumbRouter wrapper component</h6>

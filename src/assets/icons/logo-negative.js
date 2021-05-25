@@ -28,3 +28,4 @@ export const logoNegative = ['608 134', `
     </g>
   </g>
 `]
+//s

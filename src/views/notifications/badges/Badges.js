@@ -9,7 +9,7 @@ import {
   CCol,
   CRow
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 
 const Badges = () => {
   return (
@@ -18,7 +18,7 @@ const Badges = () => {
         <CCard>
           <CCardHeader>
             Badges
-            <DocsLink name="CBadge"/>
+            
           </CCardHeader>
           <CCardBody>
             <h1>Example heading <CBadge color="secondary">New</CBadge></h1>

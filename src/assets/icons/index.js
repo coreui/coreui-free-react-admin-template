@@ -1,7 +1,7 @@
 import { sygnet } from './sygnet'
 import { logo } from './logo'
 import { logoNegative } from './logo-negative'
-
+//s
 import {
   cibSkype,
   cibFacebook,

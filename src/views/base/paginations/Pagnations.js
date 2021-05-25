@@ -5,7 +5,7 @@ import {
   CCardHeader,
   CPagination
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 
 
 const Paginations = () => {
@@ -16,7 +16,7 @@ const Paginations = () => {
       <CCard>
         <CCardHeader>
           Pagination
-          <DocsLink name="CPagination"/>
+          
         </CCardHeader>
         <CCardBody>
           <h6>Default</h6>

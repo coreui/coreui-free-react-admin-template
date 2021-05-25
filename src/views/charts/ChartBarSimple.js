@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { getColor } from '@coreui/utils'
 import { CChartBar } from '@coreui/react-chartjs'
 
+
 const ChartBarSimple = props => {
 
   const {

@@ -4,6 +4,7 @@ import { getColor, deepObjectsMerge } from '@coreui/utils'
 import { CChartLine } from '@coreui/react-chartjs'
 
 const ChartLineSimple = props => {
+  
 
   const {
     borderColor,

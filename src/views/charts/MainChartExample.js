@@ -10,6 +10,7 @@ const MainChartExample = attributes => {
   const random = (min, max)=>{
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
+  
 
   const defaultDatasets = (()=>{
     let elements = 27

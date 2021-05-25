@@ -4,7 +4,7 @@ import {
   CCardHeader,
   CCardBody
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 
 const Typography = () => {
   return (
@@ -12,7 +12,7 @@ const Typography = () => {
       <CCard>
         <CCardHeader>
           Headings
-          <DocsLink href="https://coreui.io/docs/content/typography/"/>
+          
         </CCardHeader>
         <CCardBody>
           <p>Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.</p>

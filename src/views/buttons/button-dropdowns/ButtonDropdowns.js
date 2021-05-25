@@ -18,7 +18,7 @@ import {
   CInput,
   CInputCheckbox
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 
 const ButtonDropdowns = () => {
   return (
@@ -27,7 +27,7 @@ const ButtonDropdowns = () => {
         <CCard>
           <CCardHeader>
             Dropdowns
-            <DocsLink name="CDropdown"/>
+            
           </CCardHeader>
           <CCardBody>
 

@@ -19,7 +19,7 @@ import {
   CButton,
   CImg
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 
 const CNavbars = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -32,7 +32,7 @@ const CNavbars = () => {
       <CCard>
         <CCardHeader>
           CNavbar
-          <DocsLink name="CNavbar"/>
+          
         </CCardHeader>
         <CCardBody>
           <CNavbar expandable="sm" color="info" >

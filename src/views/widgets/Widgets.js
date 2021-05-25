@@ -19,6 +19,7 @@ import ChartBarSimple from '../charts/ChartBarSimple'
 
 import CIcon from '@coreui/icons-react'
 
+
 const Widgets = () => {
   return (
     <>

@@ -17,3 +17,4 @@ const TheFooter = () => {
 }
 
 export default React.memo(TheFooter)
+//s

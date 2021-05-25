@@ -5,6 +5,7 @@ import CIcon from '@coreui/icons-react';
 import ChartLineSimple from '../charts/ChartLineSimple';
 
 const WidgetsBrand = ({withCharts})=>{
+  
 
   // render
 

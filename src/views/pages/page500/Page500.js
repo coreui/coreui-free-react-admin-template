@@ -12,6 +12,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
+
 const Page500 = () => {
   return (
     <div className="c-app c-default-layout flex-row align-items-center">

@@ -76,7 +76,7 @@ const Dashboard = () => {
             </CCol>
             <CCol md sm="12" className="mb-sm-2 mb-0">
               <div className="text-muted">Pageviews</div>
-              <strong>78.706 Views (60%)</strong>
+              <strong>78.706 Views (61%)</strong>
               <CProgress
                 className="progress-xs mt-2"
                 precision={1}

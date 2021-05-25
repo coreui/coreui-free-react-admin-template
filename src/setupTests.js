@@ -13,3 +13,4 @@ if (global.document) {
     },
   });
 }
+

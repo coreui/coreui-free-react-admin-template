@@ -19,3 +19,4 @@ it('mounts Charts without crashing', () => {
   const wrapper = shallow(<ChartLineSimple/> )
   wrapper.unmount()
 })
+

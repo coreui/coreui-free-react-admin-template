@@ -66,8 +66,8 @@ const WidgetsDropdown = () => {
           }
         >
           <CDropdown>
-            <CDropdownToggle caret={false} color="transparent">
-              <CIcon name="cil-location-pin"/>
+            <CDropdownToggle color="transparent">
+              <CIcon name="cil-settings"/>
             </CDropdownToggle>
             <CDropdownMenu className="pt-0" placement="bottom-end">
               <CDropdownItem>Action</CDropdownItem>

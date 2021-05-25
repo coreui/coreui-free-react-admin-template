@@ -11,7 +11,7 @@ import {
   CEmbed,
   CEmbedItem
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 
 const Jumbotrons = () => {
 
@@ -22,7 +22,7 @@ const Jumbotrons = () => {
           <CCard>
             <CCardHeader>
               Jumbotron
-              <DocsLink name="CJumbotron"/>
+              
             </CCardHeader>
             <CCardBody>
               <CJumbotron className="border">

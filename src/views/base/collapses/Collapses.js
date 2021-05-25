@@ -10,7 +10,7 @@ import {
   CFade,
   CRow 
 } from '@coreui/react';
-import { DocsLink } from 'src/reusable'
+
 
 const Collapses = () => {
 
@@ -52,7 +52,7 @@ const Collapses = () => {
         <CCard>
           <CCardHeader>
             Collapse
-            <DocsLink name="CCollapse"/>
+            
           </CCardHeader>
           <CCollapse show={collapse}>
             <CCardBody>
@@ -126,7 +126,7 @@ const Collapses = () => {
         <CCard>
           <CCardHeader>
             Fade
-            <DocsLink name="CFade"/>
+            
           </CCardHeader>
           <CCardBody>
             <CFade timeout={300} in={fade} tag="h5" className="mt-3">

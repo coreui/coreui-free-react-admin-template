@@ -11,7 +11,7 @@ import {
   CTabContent,
   CTabPane
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 
 
 const ListGroups = () => {
@@ -25,7 +25,7 @@ const ListGroups = () => {
           <CCard>
             <CCardHeader>
               List group
-              <DocsLink name="CListGroup"/>
+              
             </CCardHeader>
             <CCardBody>
               <CListGroup>

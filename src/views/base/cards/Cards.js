@@ -13,7 +13,7 @@ import {
   CLink
 } from  '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { DocsLink } from 'src/reusable'
+
 
 
 const Cards = () => {
@@ -27,7 +27,7 @@ const Cards = () => {
           <CCard>
             <CCardHeader>
               Card title
-              <DocsLink name="CCard"/>
+             
             </CCardHeader>
             <CCardBody>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut

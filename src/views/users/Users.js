@@ -13,6 +13,7 @@ import {
 
 import usersData from './UsersData'
 
+
 const getBadge = status => {
   switch (status) {
     case 'Active': return 'success'

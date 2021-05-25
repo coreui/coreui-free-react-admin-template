@@ -10,7 +10,7 @@ import {
   CProgress,
   CRow
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+
 
 const Alerts = () => {
   const [visible, setVisible] = React.useState(10)
@@ -22,7 +22,7 @@ const Alerts = () => {
           <CCard>
             <CCardHeader>
               Alerts
-              <DocsLink name="CAlert"/>
+              
             </CCardHeader>
             <CCardBody>
               <CAlert color="primary">

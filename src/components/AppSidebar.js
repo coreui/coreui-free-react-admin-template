@@ -11,6 +11,9 @@ import {
 
 import CIcon from '@coreui/icons-react'
 
+import SimpleBar from 'simplebar-react'
+import 'simplebar/dist/simplebar.min.css'
+
 // sidebar nav config
 import navigation from '../_nav'
 
@@ -35,7 +38,9 @@ const AppSidebar = () => {
         <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} />
       </CSidebarBrand>
       <CSidebarNav>
-        <CCreateNavItem items={navigation} />
+        <SimpleBar>
+          <CCreateNavItem items={navigation} />
+        </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
         className="d-none d-lg-flex"

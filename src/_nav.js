@@ -14,6 +14,31 @@ const _nav = [
       text: 'NEW',
     },
   },
+
+  {
+    _component: 'CNavTitle',
+    anchor: 'Contact ManageMent',
+  },
+
+  {
+    _component: 'CNavGroup',
+    anchor: 'Contact Details',
+    icon: <CIcon name="cil-star" customClasses="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'ContactList',
+        to: '/details',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add Contact',
+        to: '/add',
+      },
+    ],
+  },
   {
     _component: 'CNavTitle',
     anchor: 'Theme',

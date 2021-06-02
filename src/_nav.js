@@ -316,6 +316,18 @@ const _nav = [
       },
     ],
   },
+
+  {
+    _component: 'CNavItem',
+    as: NavLink,
+    anchor: 'FAQ',
+    to: '/faq',
+    icon: <CIcon name="cil-star" customClasses="nav-icon" />,
+    badge: {
+      color: 'info',
+      text: 'NEW',
+    },
+  },
 ]
 
 export default _nav

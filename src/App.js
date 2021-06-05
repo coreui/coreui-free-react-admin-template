@@ -29,7 +29,6 @@ const EditContact = React.lazy(() => import('./ContactComponents/EditContact'))
 
 const AddBrand = React.lazy(() => import('./views/pages/Brand/AddBrand')) 
 const BrandList = React.lazy(() => import('./views/pages/Brand/BrandList')) 
-const BrandDetail = React.lazy(() => import('./views/pages/Brand/BrandDetail')) 
 const EditBrand = React.lazy(() => import('./views/pages/Brand/EditBrand')) 
 
 function App() {
@@ -122,7 +121,7 @@ function App() {
       return brand.id !== id;
     });
 
-    setBrands(newBrandList);
+    setBrands(newBrandtList);
   };
 
   useEffect(() => {
@@ -170,7 +169,6 @@ function App() {
             render={(props) => <AddBrand {...props} addBrandHandler={addBrandHandler} />}
           />
 
-          <Route path="/brand/:id" component={BrandDetail} />
 
            
 

@@ -3,22 +3,21 @@ import React from "react";
 class EditBrand extends React.Component {
   constructor(props) {
     super(props);
-    const { id, name, email } = props.location.state.brand;
+    const { id, name} = props.location.state.brand;
     this.state = {
       id,
       name,
-      email,
     };
   }
 
   update = (e) => {
     e.preventDefault();
-    if (this.state.name === "" || this.state.email === "") {
-      alert("ALl the fields are mandatory!");
+    if (this.state.name === "") {
+      alert(" fields is mandatory!");
       return;
     }
     this.props.updateBrandHandler(this.state);
-    this.setState({ name: "", email: "" });
+    this.setState({ name: ""});
     this.props.history.push("/");
   };
   render() {
@@ -34,16 +33,6 @@ class EditBrand extends React.Component {
               placeholder="Name"
               value={this.state.name}
               onChange={(e) => this.setState({ name: e.target.value })}
-            />
-          </div>
-          <div className="field">
-            <label>Email</label>
-            <input
-              type="text"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={(e) => this.setState({ email: e.target.value })}
             />
           </div>
           <button className="ui button blue">Update</button>

@@ -2,18 +2,17 @@ import React from "react";
 
 class AddBrand extends React.Component {
   state = {
-    name: "",
-    email: "",
+    name: ""
   };
 
   add = (e) => {
     e.preventDefault();
-    if (this.state.name === "" || this.state.email === "") {
-      alert("ALl the fields are mandatory!");
+    if (this.state.name === "") {
+      alert("fields is mandatory!");
       return;
     }
     this.props.addBrandHandler(this.state);
-    this.setState({ name: "", email: "" });
+    this.setState({ name: ""});
   };
   render() {
     return (
@@ -28,16 +27,6 @@ class AddBrand extends React.Component {
               placeholder="Name"
               value={this.state.name}
               onChange={(e) => this.setState({ name: e.target.value })}
-            />
-          </div>
-          <div className="field">
-            <label>Email</label>
-            <input
-              type="text"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={(e) => this.setState({ email: e.target.value })}
             />
           </div>
           <button className="ui button blue">Add</button>

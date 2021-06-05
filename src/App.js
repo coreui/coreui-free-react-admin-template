@@ -27,6 +27,11 @@ const ContactList = React.lazy(() => import('./ContactComponents/ContactList'))
 const ContactDetail = React.lazy(() => import('./ContactComponents/ContactDetail')) 
 const EditContact = React.lazy(() => import('./ContactComponents/EditContact')) 
 
+const AddBrand = React.lazy(() => import('./views/pages/Brand/AddBrand')) 
+const BrandList = React.lazy(() => import('./views/pages/Brand/BrandList')) 
+const BrandDetail = React.lazy(() => import('./views/pages/Brand/BrandDetail')) 
+const EditBrand = React.lazy(() => import('./views/pages/Brand/EditBrand')) 
+
 function App() {
 
     const LOCAL_STORAGE_KEY = "contacts";
@@ -80,13 +85,94 @@ function App() {
     getAllCOntacts();
   }, []);
 
+  
+  const [brands, setBrands] = useState([]);
+
+  //Retrieve Brands
+  const retrieveBrands = async () => {
+    const response = await api.get("/brands");
+    return response.data;
+  };
+
+  const addBrandHandler = async (brand) => {
+    console.log(brand);
+    const request = {
+      id: uuid(),
+      ...brand,
+    };
+
+    const response = await api.post("/brands", request);
+    console.log(response);
+    setContacts([...brands, response.data]);
+  };
+
+  const updateBrandHandler = async (brand) => {
+    const response = await api.put(`/brands/${brand.id}`, brand);
+    const { id, name, email } = response.data;
+    setBrands(
+      brands.map((brands) => {
+        return brand.id === id ? { ...response.data } : brand;
+      })
+    );
+  };
+
+  const removeBrandHandler = async (id) => {
+    await api.delete(`/brands/${id}`);
+    const newBrandtList = brands.filter((brand) => {
+      return brand.id !== id;
+    });
+
+    setBrands(newBrandList);
+  };
+
+  useEffect(() => {
+    // const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    // if (retriveContacts) setContacts(retriveContacts);
+    const getAllBrands = async () => {
+      const allBrands = await retrieveBrands();
+      if (allBrands) setBrands(allBrands);
+    };
+
+    getAllBrands();
+  }, []);
+
   useEffect(() => {
     //localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-  }, [contacts]);
+  }, [brands]);
     return (
       <HashRouter>
         <React.Suspense fallback={loading}>
           <Switch>
+
+          <Route
+            exact path="/brand_details"
+            
+            render={(props) => (
+              <BrandList
+                {...props}
+                brands={brands}
+                getBrandId={removeBrandHandler}
+              />
+            )}
+          />
+
+          <Route
+            path="/edit_brand"
+            render={(props) => (
+              <EditBrand
+                {...props}
+                updateBrandHandler={updateBrandHandler}
+              />
+            )}
+          />
+           <Route
+            path="/add_brand"
+            render={(props) => <AddBrand {...props} addBrandHandler={addBrandHandler} />}
+          />
+
+          <Route path="/brand/:id" component={BrandDetail} />
+
+           
 
           <Route
             exact path="/details"
@@ -115,6 +201,11 @@ function App() {
           />
 
           <Route path="/contact/:id" component={ContactDetail} />
+
+
+
+
+
             <Route exact path="/login" name="Login Page" render={(props) => <Login {...props} />} />
             <Route
               exact

@@ -39,6 +39,34 @@ const _nav = [
       },
     ],
   },
+
+  
+  {
+    _component: 'CNavTitle',
+    anchor: 'Brand Details',
+  },
+
+  {
+    _component: 'CNavGroup',
+    anchor: 'Brand Details',
+    icon: <CIcon name="cil-star" customClasses="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Brand List',
+        to: '/brand_details',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add Brand',
+        to: '/add_brand',
+      },
+    ],
+  },
+
+
   {
     _component: 'CNavTitle',
     anchor: 'Theme',

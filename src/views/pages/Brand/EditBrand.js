@@ -4,6 +4,7 @@ class EditBrand extends React.Component {
   constructor(props) {
     super(props);
     const { id, name} = props.location.state.brand;
+    console.log(props)
     this.state = {
       id,
       name,

@@ -43,7 +43,7 @@ const _nav = [
   
   {
     _component: 'CNavTitle',
-    anchor: 'Brand Details',
+    anchor: 'Brand Category Food',
   },
 
   {
@@ -62,6 +62,26 @@ const _nav = [
         as: NavLink,
         anchor: 'Add Brand',
         to: '/add_brand',
+      },
+    ],
+  },
+
+  {
+    _component: 'CNavGroup',
+    anchor: 'Category Details',
+    icon: <CIcon name="cil-star" customClasses="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Category List',
+        to: '/category_details',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add Category',
+        to: '/add_category',
       },
     ],
   },

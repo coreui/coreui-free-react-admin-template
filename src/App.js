@@ -21,7 +21,7 @@ const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
-const Header =  React.lazy(() => import('./ContactComponents/Header')) 
+
 const AddContact = React.lazy(() => import('./ContactComponents/AddContact')) 
 const ContactList = React.lazy(() => import('./ContactComponents/ContactList')) 
 const ContactDetail = React.lazy(() => import('./ContactComponents/ContactDetail')) 
@@ -30,6 +30,11 @@ const EditContact = React.lazy(() => import('./ContactComponents/EditContact'))
 const AddBrand = React.lazy(() => import('./views/pages/Brand/AddBrand')) 
 const BrandList = React.lazy(() => import('./views/pages/Brand/BrandList')) 
 const EditBrand = React.lazy(() => import('./views/pages/Brand/EditBrand')) 
+
+
+const AddCategory = React.lazy(() => import('./views/pages/Category/AddCategory')) 
+const CategoryList = React.lazy(() => import('./views/pages/Category/CategoryList')) 
+const EditCategory = React.lazy(() => import('./views/pages/Category/EditCategory')) 
 
 function App() {
 
@@ -102,10 +107,11 @@ function App() {
 
     const response = await api.post("/brands", request);
     console.log(response);
-    setContacts([...brands, response.data]);
+    setBrands([...brands, response.data]);
   };
 
   const updateBrandHandler = async (brand) => {
+    console.log("brand coming", brand)
     const response = await api.put(`/brands/${brand.id}`, brand);
     const { id, name, email } = response.data;
     setBrands(
@@ -117,11 +123,11 @@ function App() {
 
   const removeBrandHandler = async (id) => {
     await api.delete(`/brands/${id}`);
-    const newBrandtList = brands.filter((brand) => {
+    const newBrandList = brands.filter((brand) => {
       return brand.id !== id;
     });
 
-    setBrands(newBrandtList);
+    setBrands(newBrandList);
   };
 
   useEffect(() => {
@@ -138,6 +144,66 @@ function App() {
   useEffect(() => {
     //localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [brands]);
+
+
+
+  //retrive Category
+
+  const [categorys, setCategorys] = useState([]);
+
+   const retrieveCategory = async () => {
+    const response = await api.get("/categorys");
+    return response.data;
+  };
+
+  const addCategoryHandler = async (category) => {
+    console.log(category);
+    const request = {
+      id: uuid(),
+      ...category,
+    };
+
+    const response = await api.post("/categorys", request);
+    console.log(response);
+    setCategorys([...categorys, response.data]);
+  };
+
+  const updateCategoryHandler = async (category) => {
+    console.log("what's came up ",category)
+    const response = await api.put(`/categorys/${category.id}`, category);
+    const { id, name, img } = response.data;
+    setCategorys(
+      categorys.map((category) => {
+        return category.id === id ? { ...response.data } : category;
+      })
+    );
+  };
+
+  const removeCategoryHandler = async (id) => {
+    await api.delete(`/categorys/${id}`);
+    const newCategoryList = categorys.filter((category) => {
+      return category.id !== id;
+    });
+
+    setCategorys(newCategoryList);
+  };
+
+  useEffect(() => {
+    // const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    // if (retriveContacts) setContacts(retriveContacts);
+    const getAllCategory = async () => {
+      const allCategory = await retrieveCategory();
+      if (allCategory) setCategorys(allCategory);
+    };
+
+    getAllCategory();
+  }, []);
+
+  useEffect(() => {
+    //localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+  }, [categorys]);
+
+  
     return (
       <HashRouter>
         <React.Suspense fallback={loading}>
@@ -169,6 +235,31 @@ function App() {
             render={(props) => <AddBrand {...props} addBrandHandler={addBrandHandler} />}
           />
 
+        <Route
+            exact path="/Category_details"
+            
+            render={(props) => (
+              <CategoryList
+                {...props}
+                categorys={categorys}
+                getCategoryId={removeCategoryHandler}
+              />
+            )}
+          />
+
+          <Route
+            path="/edit_category"
+            render={(props) => (
+              <EditCategory
+                {...props}
+                updateCategoryHandler={updateCategoryHandler}
+              />
+            )}
+          />
+           <Route
+            path="/add_category"
+            render={(props) => <AddCategory {...props} addCategoryHandler={addCategoryHandler} />}
+          />
 
            
 

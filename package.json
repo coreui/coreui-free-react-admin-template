@@ -36,7 +36,7 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
     "chart.js": "^3.1.0",
     "classnames": "^2.3.1",
-    "core-js": "^3.10.1",
+    "core-js": "^3.15.1",
     "enzyme": "^3.11.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

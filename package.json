@@ -48,7 +48,7 @@
     "simplebar-react": "^2.3.4"
   },
   "devDependencies": {
-    "auto-changelog": "~2.2.1",
+    "auto-changelog": "~2.3.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.3.1",

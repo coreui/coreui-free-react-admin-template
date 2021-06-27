@@ -1248,10 +1248,10 @@
     "@coreui/chartjs" "^3.0.0-rc.0"
     chart.js "^3.2.1"
 
-"@coreui/react@4.0.0-alpha.1":
-  version "4.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@coreui/react/-/react-4.0.0-alpha.1.tgz#5affea231014f4646da77111024c2448c0fd0df0"
-  integrity sha512-p3pDqb5V2iIiJElAny/4KmFyCzt35H5xhzH5N/CerV4Zo5skMBP99KGAQXgdzCrDVyeQZ6Zuuf87YVMLydMZpA==
+"@coreui/react@4.0.0-alpha.3":
+  version "4.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@coreui/react/-/react-4.0.0-alpha.3.tgz#08a324730ca2631d85b438dace05221ee91b845f"
+  integrity sha512-1x3VsKj2Mc+dRiGFfc/rhZizzD2ToOvfgXU504i9H95SdvdpzZf0C34FxtHIaRwfGvo76cFYZ6KVdymi3FKkSQ==
 
 "@coreui/utils@^1.3.1":
   version "1.3.1"

@@ -19,8 +19,13 @@ const WidgetsDropdown = () => {
         <CWidgetDropdown
           className="mb-4"
           color="primary"
-          value="9.823"
-          title="Members online"
+          value="26K"
+          change={
+            <>
+              (-12.4% <CIcon name="cil-arrow-bottom" />)
+            </>
+          }
+          title="Users"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -99,8 +104,13 @@ const WidgetsDropdown = () => {
         <CWidgetDropdown
           className="mb-4"
           color="info"
-          value="9.823"
-          title="Members online"
+          value="$6.200"
+          change={
+            <>
+              (40.9% <CIcon name="cil-arrow-top" />)
+            </>
+          }
+          title="Income"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -129,6 +139,21 @@ const WidgetsDropdown = () => {
                     data: [1, 18, 9, 17, 34, 22, 11],
                   },
                 ],
+              }}
+              getDatasetAtEvent={(dataset, event) => {
+                console.log('init1')
+                console.log(dataset)
+                console.log(event)
+              }}
+              getElementAtEvent={(element, event) => {
+                console.log('init2')
+                console.log(element)
+                console.log(event)
+              }}
+              getElementsAtEvent={(element, event) => {
+                console.log('init3')
+                console.log(element)
+                console.log(event)
               }}
               options={{
                 plugins: {
@@ -178,8 +203,13 @@ const WidgetsDropdown = () => {
         <CWidgetDropdown
           className="mb-4"
           color="warning"
-          value="9.823"
-          title="Members online"
+          value="2.49%"
+          change={
+            <>
+              (84.7% <CIcon name="cil-arrow-top" />)
+            </>
+          }
+          title="Conversion Rate"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -244,8 +274,13 @@ const WidgetsDropdown = () => {
         <CWidgetDropdown
           className="mb-4"
           color="danger"
-          value="9.823"
-          title="Members online"
+          value="44K"
+          change={
+            <>
+              (-23.6% <CIcon name="cil-arrow-bottom" />)
+            </>
+          }
+          title="Sessions"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">

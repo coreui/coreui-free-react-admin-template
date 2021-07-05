@@ -146,28 +146,28 @@ const Dashboard = () => {
           />
         </CCardBody>
         <CCardFooter>
-          <CRow className="text-center">
-            <CCol md sm="12" className="mb-sm-2 mb-0">
+          <CRow xs={{ cols: 1 }} md={{ cols: 5 }} className="text-center">
+            <CCol className="mb-sm-2 mb-0">
               <div className="text-medium-emphasis">Visits</div>
               <strong>29.703 Users (40%)</strong>
               <CProgress thin className="mt-2" precision={1} color="success" value={40} />
             </CCol>
-            <CCol md sm="12" className="mb-sm-2 mb-0">
+            <CCol className="mb-sm-2 mb-0">
               <div className="text-medium-emphasis">Unique</div>
               <strong>24.093 Users (20%)</strong>
               <CProgress thin className="mt-2" precision={1} color="info" value={40} />
             </CCol>
-            <CCol md sm="12" className="mb-sm-2 mb-0">
+            <CCol className="mb-sm-2 mb-0">
               <div className="text-medium-emphasis">Pageviews</div>
               <strong>78.706 Views (60%)</strong>
               <CProgress thin className="mt-2" precision={1} color="warning" value={40} />
             </CCol>
-            <CCol md sm="12" className="mb-sm-2 mb-0">
+            <CCol className="mb-sm-2 mb-0">
               <div className="text-medium-emphasis">New Users</div>
               <strong>22.123 Users (80%)</strong>
               <CProgress thin className="mt-2" precision={1} color="danger" value={40} />
             </CCol>
-            <CCol md sm="12" className="mb-sm-2 mb-0">
+            <CCol className="mb-sm-2 mb-0">
               <div className="text-medium-emphasis">Bounce Rate</div>
               <strong>Average Rate (40.15%)</strong>
               <CProgress thin className="mt-2" precision={1} value={40} />
@@ -375,7 +375,7 @@ const Dashboard = () => {
                 <CTableBody>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="avatars/1.jpg" status="success" />
+                      <CAvatar size="md" src="/avatars/1.jpg" status="success" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Yiorgos Avraamu</div>
@@ -409,7 +409,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="avatars/2.jpg" status="danger" />
+                      <CAvatar size="md" src="/avatars/2.jpg" status="danger" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Avram Tarasios</div>
@@ -443,7 +443,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="avatars/3.jpg" status="warning" />
+                      <CAvatar size="md" src="/avatars/3.jpg" status="warning" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Quintin Ed</div>
@@ -477,7 +477,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="avatars/4.jpg" status="secondary" />
+                      <CAvatar size="md" src="/avatars/4.jpg" status="secondary" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Enéas Kwadwo</div>
@@ -511,7 +511,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="avatars/5.jpg" status="success" />
+                      <CAvatar size="md" src="/avatars/5.jpg" status="success" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Agapetus Tadeáš</div>
@@ -545,7 +545,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="avatars/6.jpg" status="danger" />
+                      <CAvatar size="md" src="/avatars/6.jpg" status="danger" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Friderik Dávid</div>

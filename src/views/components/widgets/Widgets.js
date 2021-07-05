@@ -117,7 +117,7 @@ const Widgets = () => {
         <CCol xs="12" sm="6" lg="3">
           <CWidgetIcon
             className="mb-3"
-            icon={<CIcon width={24} name="cil-settings" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-settings" size="xl" />}
             iconPadding={3}
             title="income"
             value="$1.999,50"
@@ -127,7 +127,7 @@ const Widgets = () => {
         <CCol xs="12" sm="6" lg="3">
           <CWidgetIcon
             className="mb-3"
-            icon={<CIcon width={24} name="cil-user" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-user" size="xl" />}
             iconPadding={3}
             title="income"
             value="$1.999,50"
@@ -137,7 +137,7 @@ const Widgets = () => {
         <CCol xs="12" sm="6" lg="3">
           <CWidgetIcon
             className="mb-3"
-            icon={<CIcon width={24} name="cil-moon" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-moon" size="xl" />}
             iconPadding={3}
             title="income"
             value="$1.999,50"
@@ -147,7 +147,7 @@ const Widgets = () => {
         <CCol xs="12" sm="6" lg="3">
           <CWidgetIcon
             className="mb-3"
-            icon={<CIcon width={24} name="cil-bell" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-bell" size="xl" />}
             iconPadding={3}
             title="income"
             value="$1.999,50"
@@ -157,7 +157,7 @@ const Widgets = () => {
         <CCol xs="12" sm="6" lg="3">
           <CWidgetIcon
             className="mb-3"
-            icon={<CIcon width={24} name="cil-settings" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-settings" size="xl" />}
             iconPadding={3}
             title="income"
             value="$1.999,50"
@@ -178,7 +178,7 @@ const Widgets = () => {
         <CCol xs="12" sm="6" lg="3">
           <CWidgetIcon
             className="mb-3"
-            icon={<CIcon width={24} name="cil-laptop" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-laptop" size="xl" />}
             iconPadding={3}
             title="income"
             value="$1.999,50"
@@ -199,7 +199,7 @@ const Widgets = () => {
         <CCol xs="12" sm="6" lg="3">
           <CWidgetIcon
             className="mb-3"
-            icon={<CIcon width={24} name="cil-moon" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-moon" size="xl" />}
             iconPadding={3}
             title="income"
             value="$1.999,50"
@@ -220,7 +220,7 @@ const Widgets = () => {
         <CCol xs="12" sm="6" lg="3">
           <CWidgetIcon
             className="mb-3"
-            icon={<CIcon width={24} name="cil-bell" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-bell" size="xl" />}
             iconPadding={3}
             title="income"
             value="$1.999,50"
@@ -242,7 +242,7 @@ const Widgets = () => {
           <CWidgetIcon
             className="mb-3"
             padding={0}
-            icon={<CIcon width={24} name="cil-settings" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-settings" size="xl" />}
             iconPadding={4}
             title="income"
             value="$1.999,50"
@@ -253,7 +253,7 @@ const Widgets = () => {
           <CWidgetIcon
             className="mb-3"
             padding={0}
-            icon={<CIcon width={24} name="cil-user" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-user" size="xl" />}
             iconPadding={4}
             title="income"
             value="$1.999,50"
@@ -264,7 +264,7 @@ const Widgets = () => {
           <CWidgetIcon
             className="mb-3"
             padding={0}
-            icon={<CIcon width={24} name="cil-moon" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-moon" size="xl" />}
             iconPadding={4}
             title="income"
             value="$1.999,50"
@@ -275,7 +275,7 @@ const Widgets = () => {
           <CWidgetIcon
             className="mb-3"
             padding={0}
-            icon={<CIcon width={24} name="cil-bell" className="icon icon-xl" />}
+            icon={<CIcon width={24} name="cil-bell" size="xl" />}
             iconPadding={4}
             title="income"
             value="$1.999,50"
@@ -287,34 +287,34 @@ const Widgets = () => {
       <WidgetsBrand withCharts />
       <CCardGroup className="mb-4">
         <CWidgetProgressIcon
-          icon={<CIcon name="cil-people" className="icon icon-2xl" />}
+          icon={<CIcon name="cil-people" height="36" />}
           value="87.500"
           title="Visitors"
           progressColor="info"
           progressValue={75}
         />
         <CWidgetProgressIcon
-          icon={<CIcon name="cil-userFollow" className="icon icon-2xl" />}
+          icon={<CIcon name="cil-userFollow" height="36" />}
           value="385"
           title="New Clients"
           progressColor="success"
           progressValue={75}
         />
         <CWidgetProgressIcon
-          icon={<CIcon name="cil-basket" className="icon icon-2xl" />}
+          icon={<CIcon name="cil-basket" height="36" />}
           value="1238"
           title="Products sold"
           progressColor="warning"
           progressValue={75}
         />
         <CWidgetProgressIcon
-          icon={<CIcon name="cil-chartPie" className="icon icon-2xl" />}
+          icon={<CIcon name="cil-chartPie" height="36" />}
           value="28%"
           title="Returning Visitors"
           progressValue={75}
         />
         <CWidgetProgressIcon
-          icon={<CIcon name="cil-speedometer" className="icon icon-2xl" />}
+          icon={<CIcon name="cil-speedometer" height="36" />}
           value="5:34:11"
           title="Avg. Time"
           progressColor="danger"

@@ -174,4 +174,5 @@ CoreUI is an MIT licensed open source project and completely free to use. Howeve
 We're also open to conversations regarding custom sponsorship / consulting arrangements. Get in touch on [Twitter](https://twitter.com/lukaszholeczek).
  -->
 ## Components' url:
-![image](https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src__nav_anchor.png)
+<img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src__nav_anchor.png" width='40' length='60'>
+<!-- ![image](https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src__nav_anchor.png) -->

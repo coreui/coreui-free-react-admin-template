@@ -130,13 +130,13 @@ CoreUI-React#v3.0.0
 ```
 
 ## Components' url:
-<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src__nav_anchor.png" width='160' height='260' style='float:left;'>&emsp;src__nav_anchor</div>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src__nav_anchor.png" width='200' height='375' style='float:left;'>&emsp;src__nav_anchor</div>
   <hr>
 <div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_components_widgets_WidgetDropDown.png" width='260' height='180' style='float:left;'>&emsp;src_views_components_widgets_WidgetDropDown</div>
   <hr>
 <div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppBreadcrumb_CBreadcrumbItem.png" width='300' height='100' style='float:left;'>&emsp;src_components_AppBreadcrumb_CBreadcrumbItem</div>
   <hr>
-<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppFooter_CFooter.png" width='400' height='70' style='float:left;'>&emsp;src_components_AppFooter_CFooter</div>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppFooter_CFooter.png" width='400' height='50' style='float:left;'>&emsp;src_components_AppFooter_CFooter</div>
   <hr>
 <div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppHeader_CIcon.png" width='260' height='100' style='float:left;'>&emsp;src_components_AppHeader_CIcon</div>
   <hr>
@@ -170,4 +170,5 @@ CoreUI-React#v3.0.0
   <hr>
 <div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_pages_register_Register_CForm.png" width='260' height='260' style='float:left;'>&emsp;src_views_pages_register_Register_CForm</div>
   <hr>
+
 

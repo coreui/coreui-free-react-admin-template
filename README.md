@@ -1,4 +1,4 @@
-[![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
+<!-- [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
 [![NPM downloads][npm-coreui-download]][npm-coreui]  
 [![@coreui react](https://img.shields.io/badge/@coreui%20-react-lightgrey.svg?style=flat-square)](https://github.com/coreui/react)
@@ -50,7 +50,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
 * 💪  [CoreUI Pro Laravel Admin Template](https://coreui.io/pro/laravel/)
-* 💪  [CoreUI Pro Vue.js + Laravel Admin Template](https://coreui.io/pro/vue-laravel/)
+* 💪  [CoreUI Pro Vue.js + Laravel Admin Template](https://coreui.io/pro/vue-laravel/) -->
 
 ## Installation
 
@@ -129,7 +129,7 @@ CoreUI-React#v3.0.0
 └── package.json
 ```
 
-## Documentation
+<!-- ## Documentation
 
 The documentation for the CoreUI Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
 
@@ -172,3 +172,6 @@ There is only one limitation you can't can’t re-distribute the CoreUI as stock
 CoreUI is an MIT licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by buying [CoreUI Pro Version](https://coreui.io/pro/).
 
 We're also open to conversations regarding custom sponsorship / consulting arrangements. Get in touch on [Twitter](https://twitter.com/lukaszholeczek).
+ -->
+## Components' url:
+(https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src__nav_anchor.png)

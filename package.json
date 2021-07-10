@@ -1,7 +1,10 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
-  "version": "3.2.1",
-  "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
+  "description": "CoreUI Free React Admin Template",
+  "version": "4.0.0-beta.0",
+  "config": {
+    "coreui_library_short_version": "4.0"
+  },
   "author": {
     "name": "CoreUI",
     "url": "https://coreui.io",
@@ -15,7 +18,7 @@
     }
   ],
   "homepage": ".",
-  "copyright": "Copyright 2017-2020 creativeLabs Łukasz Holeczek",
+  "copyright": "Copyright 2017-2021 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -23,34 +26,40 @@
     "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
   },
   "dependencies": {
-    "@coreui/chartjs": "^2.0.0",
-    "@coreui/coreui": "^3.4.0",
-    "@coreui/icons": "^2.0.0",
-    "@coreui/icons-react": "^1.1.0",
-    "@coreui/react": "^3.4.6",
-    "@coreui/react-chartjs": "^1.1.0",
+    "@coreui/chartjs": "3.0.0",
+    "@coreui/coreui": "4.0.0",
+    "@coreui/icons": "^2.0.1",
+    "@coreui/icons-react": "^2.0.0-rc.0",
+    "@coreui/react": "4.0.0-beta.2",
+    "@coreui/react-chartjs": "2.0.0-rc.0",
     "@coreui/utils": "^1.3.1",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
-    "classnames": "^2.2.6",
-    "core-js": "^3.9.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
+    "chart.js": "^3.4.1",
+    "classnames": "^2.3.1",
+    "core-js": "^3.15.2",
     "enzyme": "^3.11.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.3",
+    "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "sass": "^1.32.8"
+    "redux": "4.1.0",
+    "simplebar-react": "^2.3.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "auto-changelog": "~2.2.1",
-    "react-scripts": "^4.0.3"
+    "auto-changelog": "~2.3.0",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "2.3.2",
+    "react-scripts": "^4.0.3",
+    "sass": "^1.35.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint \"src/**/*.js\"",
     "test": "react-scripts test",
     "test:cov": "npm test -- --coverage --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand",
@@ -60,15 +69,6 @@
   "bugs": {
     "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 10",
-    "not op_mini all"
-  ],
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",

@@ -1,11 +1,17 @@
 // If you want to override variables do it here
 @import "variables";
 
-// Import CoreUI styles
-@import "~@coreui/coreui/scss/coreui.scss";
+$enable-ltr: true;
+$enable-rtl: true;
 
-// Some temp fixes
-@import "fixes";
+// Import CoreUI for React components library
+@import "@coreui/coreui/scss/coreui";
 
-// If you want to add something do it here
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+@import "layout";
+@import "example";
+
+// If you want to add custom CSS you can put it here.
 @import "custom";

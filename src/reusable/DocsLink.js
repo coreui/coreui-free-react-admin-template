@@ -1,28 +1,31 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { CLink } from '@coreui/react'
 
-const DocsLink = props => {
-  const {
-    name,
-    text,
-    ...rest
-  } = props
+const DocsLink = (props) => {
+  const { href, name, text, ...rest } = props
 
-  const href = name ? `https://coreui.io/react/docs/components/${name}` : props.href
+  const _href = name ? `https://coreui.io/react/docs/components/${name}` : href
 
   return (
-    <div className="card-header-actions">
-      <CLink 
+    <div className="float-end">
+      <CLink
         {...rest}
-        href={href}
-        rel="noreferrer noopener" 
-        target="_blank" 
-        className="card-header-action"  
+        href={_href}
+        rel="noreferrer noopener"
+        target="_blank"
+        className="card-header-action"
       >
-        <small className="text-muted">{ text || 'docs' }</small>
+        <small className="text-medium-emphasis">{text || 'docs'}</small>
       </CLink>
     </div>
   )
+}
+
+DocsLink.propTypes = {
+  href: PropTypes.string,
+  name: PropTypes.string,
+  text: PropTypes.string,
 }
 
 export default React.memo(DocsLink)

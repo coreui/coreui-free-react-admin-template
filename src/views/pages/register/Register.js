@@ -21,7 +21,8 @@ const Register = () => {
           <CCol md="9" lg="7" xl="6">
             <CCard className="mx-4">
               <CCardBody className="p-4">
-                <CForm>
+                <h1>src/views/pages/register/Register/CForm</h1>
+                {/* <CForm>
                   <h1>Register</h1>
                   <p className="text-medium-emphasis">Create your account</p>
                   <CInputGroup className="mb-3">
@@ -57,7 +58,7 @@ const Register = () => {
                   <CButton color="success" block>
                     Create Account
                   </CButton>
-                </CForm>
+                </CForm> */}
               </CCardBody>
             </CCard>
           </CCol>

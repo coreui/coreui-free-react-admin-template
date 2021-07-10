@@ -1,5 +1,4 @@
 import React from 'react'
-
 // examples
 
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))

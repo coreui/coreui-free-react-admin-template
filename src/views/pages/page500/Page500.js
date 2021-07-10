@@ -14,7 +14,8 @@ const Page500 = () => {
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
-        <CRow className="justify-content-center">
+        <h1>src/views/pages/page500/Page500/CContainer</h1>
+        {/* <CRow className="justify-content-center">
           <CCol md="6">
             <span className="clearfix">
               <h1 className="float-start display-3 me-4">500</h1>
@@ -31,7 +32,7 @@ const Page500 = () => {
               <CButton color="info">Search</CButton>
             </CInputGroup>
           </CCol>
-        </CRow>
+        </CRow> */}
       </CContainer>
     </div>
   )

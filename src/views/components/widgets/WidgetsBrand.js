@@ -35,13 +35,14 @@ const WidgetsBrand = ({ withCharts }) => {
 
   return (
     <CRow>
-      <CCol sm="6" lg="3">
+      <CCol>
         <CWidgetBrand
           className="mb-4"
           headerChildren={
             <>
-              <CIcon name="cib-facebook" height="52" className="my-4 text-white" />
-              {withCharts && (
+              <h2>src/views/components/widgets/WidgetsBrand/headerChildren</h2>
+              {/* {<CIcon name="cib-facebook" height="52" className="my-4 text-white" />} */}
+              {/* {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"
                   type="line"
@@ -60,12 +61,14 @@ const WidgetsBrand = ({ withCharts }) => {
                   }}
                   options={chartOptions}
                 />
-              )}
+              )} */}
             </>
           }
           values={[
-            ['89k', 'friends'],
-            ['459', 'feeds'],
+            // ['89k', 'friends'],
+            // ['459', 'feeds'],
+            ['src/views/components/', 'widgets/WidgetsBrand/values'],
+            ['src/views/components/', 'widgets/WidgetsBrand/values'],
           ]}
           style={{
             '--cui-card-cap-bg': '#3b5998',
@@ -73,7 +76,7 @@ const WidgetsBrand = ({ withCharts }) => {
         />
       </CCol>
 
-      <CCol sm="6" lg="3">
+      {/* <CCol sm="6" lg="3">
         <CWidgetBrand
           className="mb-4"
           headerChildren={
@@ -183,7 +186,7 @@ const WidgetsBrand = ({ withCharts }) => {
             ['4', 'meetings'],
           ]}
         />
-      </CCol>
+      </CCol> */}
     </CRow>
   )
 }

@@ -1,4 +1,4 @@
-[![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
+<!-- [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
 [![NPM downloads][npm-coreui-download]][npm-coreui]  
 [![@coreui react](https://img.shields.io/badge/@coreui%20-react-lightgrey.svg?style=flat-square)](https://github.com/coreui/react)
@@ -50,7 +50,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
 * 💪  [CoreUI Pro Laravel Admin Template](https://coreui.io/pro/laravel/)
-* 💪  [CoreUI Pro Vue.js + Laravel Admin Template](https://coreui.io/pro/vue-laravel/)
+* 💪  [CoreUI Pro Vue.js + Laravel Admin Template](https://coreui.io/pro/vue-laravel/) -->
 
 ## Installation
 
@@ -129,46 +129,46 @@ CoreUI-React#v3.0.0
 └── package.json
 ```
 
-## Documentation
+## Components' url:
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src__nav_anchor.png" width='200' height='375' style='float:left;'>&emsp;src__nav_anchor</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_components_widgets_WidgetDropDown.png" width='260' height='180' style='float:left;'>&emsp;src_views_components_widgets_WidgetDropDown</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppBreadcrumb_CBreadcrumbItem.png" width='300' height='100' style='float:left;'>&emsp;src_components_AppBreadcrumb_CBreadcrumbItem</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppFooter_CFooter.png" width='400' height='50' style='float:left;'>&emsp;src_components_AppFooter_CFooter</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppHeader_CIcon.png" width='260' height='100' style='float:left;'>&emsp;src_components_AppHeader_CIcon</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppHeader_CNavLink.png" width='260' height='80' style='float:left;'>&emsp;src_components_AppHeader_CNavLink</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppSideBar_CSidebarNav.png" width='60' height='360' style='float:left;'>&emsp;src_components_AppSideBar_CSidebarNav</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppSideBar_CSidebarToggler.png" width='260' height='100' style='float:left;'>&emsp;src_components_AppSideBar_CSidebarToggler</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_AppSidebar_CIcon.png" width='290' height='100' style='float:left;'>&emsp;src_components_AppSidebar_CIcon</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_components_headerAppHeaderDropDown_CAvator.png" width='200' height='400' style='float:left;'>&emsp;src_components_headerAppHeaderDropDown_CAvator</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_components_widgets_WidgetsBrand_headerChildren.png" width='400' height='200' style='float:left;'>&emsp;src_views_components_widgets_WidgetsBrand_headerChildren</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_components_widgets_WidgetsBrand_value.png" width='400' height='200' style='float:left;'>&emsp;src_views_components_widgets_WidgetsBrand_value</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_dashboard_Dashboard.png" width='520' height='347' style='float:left;'>&emsp;src_views_dashboard_Dashboard</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_dashboard_Dashboard_CTable.png" width='520' height='347' style='float:left;'>&emsp;src_views_dashboard_Dashboard_CTable</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_dashboard_Dashboard_Traffic&Sales.png" width='520' height='347' style='float:left;'>&emsp;src_views_dashboard_Dashboard_Traffic&Sales</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_pagees_page404_Page404_CContainer.png" width='260' height='153' style='float:left;'>&emsp;src_views_pagees_page404_Page404_CContainer</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_pages_login_Login_CForm.png" width='260' height='260' style='float:left;'>&emsp;src_views_pages_login_Login_CForm</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_pages_login_Login_SignUp.png" width='260' height='260' style='float:left;'>&emsp;src_views_pages_login_Login_SignUp</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_pages_page500_Page500_CContainer.png" width='260' height='153' style='float:left;'>&emsp;src_views_pages_page500_Page500_CContainer</div>
+  <hr>
+<div style='font-size:28px;'><img src="https://github.com/vwvwMM/EndOfWeb/blob/v4/screenshot/src_views_pages_register_Register_CForm.png" width='260' height='260' style='float:left;'>&emsp;src_views_pages_register_Register_CForm</div>
+  <hr>
 
-The documentation for the CoreUI Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
 
-### :film_strip: How to setup coreui react theme in laravel. Video tutorial available [here](https://youtu.be/HVVpbpNUJ8M)
-
-## Versioning
-
-For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
-
-See [the Releases section of our project](https://github.com/coreui/coreui-free-react-admin-template/releases) for changelogs for each release version.
-
-## Creators
-
-**Łukasz Holeczek**
-* <https://twitter.com/lukaszholeczek>
-* <https://github.com/mrholek>
-* <https://github.com/coreui>
-
-**CoreUI team**
-* https://github.com/orgs/coreui/people
-
-## Community
-
-Get updates on CoreUI's development and chat with the project maintainers and community members.
-
-- Follow [@core_ui on Twitter](https://twitter.com/core_ui).
-- Read and subscribe to [CoreUI Blog](https://coreui.ui/blog/).
-
-
-## Copyright and License
-
-copyright 2021 creativeLabs Łukasz Holeczek.   
-
- 
-Code released under [the MIT license](https://github.com/coreui/coreui-free-react-admin-template/blob/master/LICENSE).
-There is only one limitation you can't can’t re-distribute the CoreUI as stock. You can’t do this if you modify the CoreUI. In past we faced some problems with persons who tried to sell CoreUI based templates.
-
-## Support CoreUI Development
-
-CoreUI is an MIT licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by buying [CoreUI Pro Version](https://coreui.io/pro/).
-
-We're also open to conversations regarding custom sponsorship / consulting arrangements. Get in touch on [Twitter](https://twitter.com/lukaszholeczek).

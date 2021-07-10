@@ -2,12 +2,19 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [3.2.0](https://github.com/coreui/coreui-free-react-admin-template/compare/3.1.1...3.2.0)
+#### [3.2.1](https://github.com/coreui/coreui-free-react-admin-template/compare/3.2.0...3.2.1)
+
+> 30 March 2021
+
+- chore: dependencies update - closes #294 [`#294`](https://github.com/coreui/coreui-free-react-admin-template/issues/294)
+
+### [3.2.0](https://github.com/coreui/coreui-free-react-admin-template/compare/3.1.1...3.2.0)
 
 > 14 December 2020
 
 - fix(BrandButtons): minor temp fixes with stylings [`f0c0585`](https://github.com/coreui/coreui-free-react-admin-template/commit/f0c05858329430c9487bdcfcf36d0aa98f60776d)
 - refactor: polyfills cleanup [`9522ade`](https://github.com/coreui/coreui-free-react-admin-template/commit/9522ade1f1eb2c5a26d5208fe6e44be803123bd2)
+- chore: 3.2.0 release for React 17 [`9d5ba97`](https://github.com/coreui/coreui-free-react-admin-template/commit/9d5ba97b4d7ab7d2adbb09b8a2c74d4f00fadbcc)
 - test: refactor, import temp update [`f3f91c5`](https://github.com/coreui/coreui-free-react-admin-template/commit/f3f91c5d721754a2dac26143f312415c94c7ed68)
 - chore: React 17 and dependencies update [`f6a710f`](https://github.com/coreui/coreui-free-react-admin-template/commit/f6a710ffd6996c9b6b026b8eebed6ff390757fe1)
 - fix(_nav): no anonymous default export [`ed83c9a`](https://github.com/coreui/coreui-free-react-admin-template/commit/ed83c9a3d4199b8c6566a6e01396cdcbca80cf42)

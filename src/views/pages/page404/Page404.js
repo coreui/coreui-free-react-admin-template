@@ -14,7 +14,8 @@ const Page404 = () => {
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
-        <CRow className="justify-content-center">
+        <h1>src/views/pagees/page404/Page404/CContainer</h1>
+        {/* <CRow className="justify-content-center">
           <CCol md="6">
             <div className="clearfix">
               <h1 className="float-start display-3 me-4">404</h1>
@@ -31,7 +32,7 @@ const Page404 = () => {
               <CButton color="info">Search</CButton>
             </CInputGroup>
           </CCol>
-        </CRow>
+        </CRow> */}
       </CContainer>
     </div>
   )

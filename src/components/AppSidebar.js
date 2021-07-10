@@ -34,18 +34,20 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <CIcon className="sidebar-brand-full" name="logo-negative" height={35} />
-        <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} />
+        <h6>components/AppSidebar/CIcon</h6>
+        {/* <CIcon className="sidebar-brand-full" name="logo-negative" height={35} /> */}
+        {/* <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} /> */}
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
           <CCreateNavItem items={navigation} />
         </SimpleBar>
       </CSidebarNav>
-      <CSidebarToggler
+      <p>components/AppSideBar/CSidebarToggler</p>
+      {/* <CSidebarToggler
         className="d-none d-lg-flex"
         onClick={() => dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })}
-      />
+      /> */}
     </CSidebar>
   )
 }

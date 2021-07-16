@@ -25,9 +25,9 @@ const Column = () => {
   }, [])
   return (
     <div className="App">
-      <Title data={data.top} />
-      <Resume data={data.body} />
-      <Testimonials data={data.annotation} />
+      {data.top && <Title data={data.top} />}
+      {data.body && <Resume data={data.body} />}
+      {data.annotation && <Testimonials data={data.annotation} />}
     </div>
   )
 }

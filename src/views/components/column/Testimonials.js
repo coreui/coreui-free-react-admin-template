@@ -2,18 +2,16 @@
 import React from 'react'
 
 const Testimonials = ({ data }) => {
-  if (data) {
-    var annotations = data.annotation.map(function (annotation) {
-      return (
-        <li key={annotation.contributer}>
-          <blockquote>
-            <p>{annotation.job}</p>
-            <cite>{annotation.contributer}</cite>
-          </blockquote>
-        </li>
-      )
-    })
-  }
+  const annotations = data.annotation.map((annotation) => {
+    return (
+      <li key={annotation.contributer}>
+        <blockquote>
+          <p>{annotation.job}</p>
+          <cite>{annotation.contributer}</cite>
+        </blockquote>
+      </li>
+    )
+  })
   return (
     <section id="testimonials">
       <div className="text-container">

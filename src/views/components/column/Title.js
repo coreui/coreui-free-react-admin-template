@@ -3,7 +3,8 @@ import React from 'react'
 
 const Title = ({ data }) => {
   if (data) {
-    var title = data.title
+    var name = data.name
+    var exp = data.experience
     var hashtags = data.hashtags.map((hashtag) => {
       return (
         <nobr key={hashtag}>
@@ -18,7 +19,8 @@ const Title = ({ data }) => {
     <header id="home">
       <div className="row banner">
         <div className="banner-text">
-          <h1 className="responsive-headline">{title}</h1>
+          <h1 className="responsive-headline">{name}</h1>
+          <h1 className="responsive-headline">{exp}</h1>
           {hashtags}
           <hr />
         </div>

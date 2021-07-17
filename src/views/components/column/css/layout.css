@@ -279,7 +279,7 @@ ul#nav li.current a {
 }
 
 #resume h1 {
-  font: 18px/24px 'opensans-bold', sans-serif;
+  font: 20px/24px 'opensans-bold', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -295,7 +295,7 @@ ul#nav li.current a {
   padding-top: 9px;
 }
 #resume .main-col {
-  padding-right: 10%;
+  padding-right: 5%;
 }
 
 .education,

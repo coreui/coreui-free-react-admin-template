@@ -6,11 +6,7 @@ const Resume = ({ data }) => {
       return (
         <div key={bigsection.subtitle}>
           <h3>{bigsection.subtitle}</h3>
-          <p className="info">
-            {bigsection.degree} <span>&bull;</span>
-            <em className="date">{bigsection.graduated}</em>
-          </p>
-          <p>{bigsection.subsection}</p>
+          <p>&emsp;&emsp;&thinsp;&thinsp;{bigsection.subsection}</p>
         </div>
       )
     })
@@ -21,7 +17,7 @@ const Resume = ({ data }) => {
       <div className="row education" key={bigsection.bigtitle}>
         <div className="three columns header-col">
           <nobr>
-            <h1>
+            <h1 align="center">
               <span>{bigsection.bigtitle}</span>
             </h1>
           </nobr>

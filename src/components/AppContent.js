@@ -6,8 +6,11 @@ import { CContainer, CSpinner } from '@coreui/react'
 import routes from '../routes'
 
 const AppContent = () => {
+  const ContentStyle = {
+    'max-width': `1600px;`,
+  }
   return (
-    <CContainer lg>
+    <div lg style={ContentStyle}>
       <Suspense fallback={<CSpinner color="primary" />}>
         <Switch>
           {routes.map((route, idx) => {
@@ -30,7 +33,7 @@ const AppContent = () => {
           <Redirect from="/" to="/dashboard" />
         </Switch>
       </Suspense>
-    </CContainer>
+    </div>
   )
 }
 

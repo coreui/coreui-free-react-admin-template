@@ -728,7 +728,7 @@ textarea,
 select {
   display: block;
   padding: 18px 15px;
-  margin: 0 0 24px 0;
+  /* margin: 0 0 24px 0; */
   border: 0;
   outline: none;
   vertical-align: middle;

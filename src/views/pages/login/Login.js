@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import FacebookLogin from 'react-facebook-login'
 import {
   CButton,
   CCard,
@@ -17,14 +17,13 @@ import CIcon from '@coreui/icons-react'
 
 const Login = () => {
   return (
-    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
-      <CContainer>
+    <div className="min-vh-100 d-flex flex-row align-items-center">
+      <CContainer className="align-items-center">
         <CRow className="justify-content-center">
           <CCol md="8">
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  {/* <h1>src/views/pages/login/Login/CForm</h1> */}
                   <CForm>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
@@ -34,7 +33,7 @@ const Login = () => {
                       </CInputGroupText>
                       <CFormControl placeholder="Username" autoComplete="username" />
                     </CInputGroup>
-                    <CInputGroup className="mb-4">
+                    <CInputGroup className="mb-2">
                       <CInputGroupText>
                         <CIcon name="cil-lock-locked" />
                       </CInputGroupText>
@@ -46,34 +45,46 @@ const Login = () => {
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton color="primary" className="px-4">
-                          Login
+                        <CButton color="link" className="px-0">
+                          Create a new account?
                         </CButton>
                       </CCol>
-                      <CCol xs="6" className="text-right">
+                      <CCol xs="6" className="d-flex justify-content-end">
                         <CButton color="link" className="px-0">
                           Forgot password?
                         </CButton>
                       </CCol>
                     </CRow>
+                    <CRow className="mt-3">
+                      <CCol className="d-flex justify-content-center">
+                        <CButton color="dark" className="px-4">
+                          Login
+                        </CButton>
+                      </CCol>
+                    </CRow>
+                    <CRow className="justify-content-center">
+                      <div
+                        className="w-75 text-center mt-3 pt-3"
+                        style={{ borderTop: '1px solid gray' }}
+                      >
+                        or login with...
+                      </div>
+                    </CRow>
+                    <CRow className="justify-content-center">
+                      <div style={{ width: '5rem' }}>
+                        <FacebookLogin
+                          appId="571174603253755"
+                          autoLoad={false}
+                          isMobile={false}
+                          // fields="name,email,picture"
+                          // callback={this.handleFBSubmit}
+                          cssClass="btnFacebook d-flex justify-content-center mt-2"
+                          icon="fa-facebook"
+                          textButton=""
+                        />
+                      </div>
+                    </CRow>
                   </CForm>
-                </CCardBody>
-              </CCard>
-              <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
-                <CCardBody className="text-center">
-                  {/* <h1>src/views/pages/login/Login/SignUp</h1> */}
-                  <div>
-                    <h2>Sign up</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <Link to="/register">
-                      <CButton color="primary" className="mt-3" active tabIndex={-1}>
-                        Register Now!
-                      </CButton>
-                    </Link>
-                  </div>
                 </CCardBody>
               </CCard>
             </CCardGroup>

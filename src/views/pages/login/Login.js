@@ -24,8 +24,8 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <h1>src/views/pages/login/Login/CForm</h1>
-                  {/* <CForm>
+                  {/* <h1>src/views/pages/login/Login/CForm</h1> */}
+                  <CForm>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
                     <CInputGroup className="mb-3">
@@ -56,13 +56,13 @@ const Login = () => {
                         </CButton>
                       </CCol>
                     </CRow>
-                  </CForm> */}
+                  </CForm>
                 </CCardBody>
               </CCard>
               <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
                 <CCardBody className="text-center">
-                  <h1>src/views/pages/login/Login/SignUp</h1>
-                  {/* <div>
+                  {/* <h1>src/views/pages/login/Login/SignUp</h1> */}
+                  <div>
                     <h2>Sign up</h2>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -73,7 +73,7 @@ const Login = () => {
                         Register Now!
                       </CButton>
                     </Link>
-                  </div> */}
+                  </div>
                 </CCardBody>
               </CCard>
             </CCardGroup>

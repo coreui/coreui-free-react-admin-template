@@ -15,8 +15,8 @@ const AppHeaderDropdown = () => {
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
-        <h6>src/components/header/AppHeaderDropDown/CAvator</h6>
-        {/* <CAvatar src="/avatars/8.jpg" size="md" /> */}
+        {/* <h6>src/components/header/AppHeaderDropDown/CAvator</h6> */}
+        <CAvatar src="/avatars/8.jpg" size="md" />
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-light fw-semibold py-2">Account</CDropdownHeader>

@@ -36,33 +36,33 @@ const AppHeader = () => {
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
             <CNavLink to="/dashboard" component={NavLink} activeClassName="active">
-              src/components/AppHeader/CNavLink
+              Dashboard
             </CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">src/components/AppHeader/CNavLink</CNavLink>
+            <CNavLink href="#">Users</CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">src/components/AppHeader/CNavLink</CNavLink>
+            <CNavLink href="#">Setting</CNavLink>
           </CNavItem>
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>
             <CNavLink href="#">
-              <h6>src/components/AppHeader/CIcon</h6>
-              {/* <CIcon name="cil-bell" size="lg" /> */}
+              {/* <h6>src/components/AppHeader/CIcon</h6> */}
+              <CIcon name="cil-bell" size="lg" />
             </CNavLink>
           </CNavItem>
           <CNavItem>
             <CNavLink href="#">
-              <h6>src/components/AppHeader/CIcon</h6>
-              {/* <CIcon name="cil-list" size="lg" /> */}
+              {/* <h6>src/components/AppHeader/CIcon</h6> */}
+              <CIcon name="cil-list" size="lg" />
             </CNavLink>
           </CNavItem>
           <CNavItem>
             <CNavLink href="#">
-              <h6>src/components/AppHeader/CIcon</h6>
-              {/* <CIcon name="cil-envelope-open" size="lg" /> */}
+              {/* <h6>src/components/AppHeader/CIcon</h6> */}
+              <CIcon name="cil-envelope-open" size="lg" />
             </CNavLink>
           </CNavItem>
         </CHeaderNav>

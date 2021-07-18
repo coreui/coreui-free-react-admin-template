@@ -31,14 +31,15 @@ const AppBreadcrumb = () => {
 
   return (
     <CBreadcrumb className="m-0 ms-2">
-      <CBreadcrumbItem href="/">src/components/AppBreadcrumb/CBreadcrumbItem</CBreadcrumbItem>
+      <CBreadcrumbItem href="/">Home</CBreadcrumbItem>
       {breadcrumbs.map((breadcrumb, index) => {
         return (
           <CBreadcrumbItem
             {...(breadcrumb.active ? { active: true } : { href: breadcrumb.pathname })}
             key={index}
           >
-            src/components/AppBreadcrumb/CBreadcrumbItem{/* {breadcrumb.name} */}
+            {/* {src/components/AppBreadcrumb/CBreadcrumbItem*/}
+            {breadcrumb.name}
           </CBreadcrumbItem>
         )
       })}

@@ -1,0 +1,314 @@
+/*  3. Links  ------------------------------------------------------- */
+
+.hashtag,
+.hashtag:visited {
+  text-decoration: none;
+  outline: 0;
+  color: #11abb0;
+  -webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.hashtag:hover,
+.hashtag:focus {
+  color: #313131;
+}
+
+/* column widths */
+.row .one {
+  width: 8.33333%;
+}
+.row .two {
+  width: 16.66667%;
+}
+.row .three {
+  width: 25%;
+}
+.row .four {
+  width: 33.33333%;
+}
+.row .five {
+  width: 41.66667%;
+}
+.row .six {
+  width: 50%;
+}
+.row .seven {
+  width: 58.33333%;
+}
+.row .eight {
+  width: 66.66667%;
+}
+.row .nine {
+  width: 75%;
+}
+.row .ten {
+  width: 83.33333%;
+}
+.row .eleven {
+  width: 91.66667%;
+}
+.row .twelve {
+  width: 100%;
+}
+
+/* smaller screens
+  --------------------------------------------------------------- */
+@media only screen and (max-width: 900px) {
+  /* block grids on small screens */
+  .s-bgrid-sixths [class*='column'] {
+    width: 16.66667%;
+  }
+  .s-bgrid-quarters [class*='column'] {
+    width: 25%;
+  }
+  .s-bgrid-thirds [class*='column'] {
+    width: 33.33333%;
+  }
+  .s-bgrid-halves [class*='column'] {
+    width: 50%;
+  }
+
+  /* block grids left clearing */
+  .first {
+    clear: none;
+  }
+  .s-first {
+    clear: left;
+  }
+}
+
+/* mobile wide/smaller tablets
+  --------------------------------------------------------------- */
+@media only screen and (max-width: 767px) {
+  .row {
+    width: 460px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .column,
+  .columns {
+    width: auto !important;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 30px;
+  }
+  .row .row {
+    width: auto;
+    max-width: none;
+    margin: 0 -30px;
+  }
+
+  [class*='column'] + [class*='column']:last-child {
+    float: none;
+  }
+  [class*='bgrid'] [class*='column'] + [class*='column']:last-child {
+    float: none;
+  }
+
+  /* Offsets */
+  .row .offset-1 {
+    margin-left: 0%;
+  }
+  .row .offset-2 {
+    margin-left: 0%;
+  }
+  .row .offset-3 {
+    margin-left: 0%;
+  }
+  .row .offset-4 {
+    margin-left: 0%;
+  }
+  .row .offset-5 {
+    margin-left: 0%;
+  }
+  .row .offset-6 {
+    margin-left: 0%;
+  }
+  .row .offset-7 {
+    margin-left: 0%;
+  }
+  .row .offset-8 {
+    margin-left: 0%;
+  }
+  .row .offset-9 {
+    margin-left: 0%;
+  }
+  .row .offset-10 {
+    margin-left: 0%;
+  }
+  .row .offset-11 {
+    margin-left: 0%;
+  }
+}
+
+/* mobile narrow
+  --------------------------------------------------------------- */
+@media only screen and (max-width: 460px) {
+  .row {
+    width: auto;
+  }
+}
+
+/* larger screens
+  --------------------------------------------------------------- */
+@media screen and (min-width: 1200px) {
+  .wide .row {
+    max-width: 1180px;
+  }
+}
+header {
+  position: relative;
+  height: 800px;
+  min-height: 500px;
+  width: 100%;
+  background: #161415 url(../assets/images/header-background.jpg) no-repeat top center;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* vertically center banner section */
+header:before {
+  content: '';
+  vertical-align: middle;
+  display: inline-block;
+  height: 100%;
+}
+header .banner {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+  width: 85%;
+  padding-bottom: 30px;
+  text-align: center;
+}
+header .banner-text h1 {
+  font: 3.1rem/1.1em 'opensans-bold', sans-serif;
+  color: #fff;
+  letter-spacing: -2px;
+  margin: 0 auto 18px auto;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+#resume {
+  background: #fff;
+  padding-top: 90px;
+  padding-bottom: 72px;
+  overflow: hidden;
+}
+
+#resume h1 {
+  font: 1.5rem/1.25rem 'opensans-bold', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.063rem;
+}
+#resume h1 span {
+  border-bottom: 0.188rem solid #11abb0;
+  padding-bottom: 0.375rem;
+  margin-left: 0.5rem;
+}
+#resume h3 {
+  font: 1.688rem/1.875rem 'opensans-bold', sans-serif;
+  font-weight: 550;
+  margin-bottom: 1.2rem;
+  margin-top: 1rem;
+}
+#resume p {
+  font: 1.438rem/1.875rem 'opensans-bold', sans-serif;
+  margin-bottom: 1.7rem;
+  line-height: 2.8rem;
+}
+
+#resume .header-col {
+  padding-top: 9px;
+}
+#resume .main-col {
+  padding-right: 5%;
+}
+
+.education,
+.work {
+  margin-bottom: 20px;
+  padding-bottom: 0px;
+  border-bottom: 1.5px solid #e8e8e8;
+}
+#resume .info {
+  font: 16px/24px 'librebaskerville-italic', serif;
+  color: #6e7881;
+  margin-bottom: 18px;
+  margin-top: 9px;
+}
+#resume .info span {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+#resume .date {
+  font: 15px/24px 'opensans-regular', sans-serif;
+  margin-top: 6px;
+}
+
+/*----------------------------------------------*/
+
+#testimonials {
+  background: #1f1f1f url(../assets/images/testimonials-bg.jpg) no-repeat center center;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  background-attachment: fixed;
+
+  position: relative;
+  min-height: 200px;
+  width: 100%;
+  overflow: hidden;
+}
+#testimonials .text-container {
+  padding-top: 96px;
+  padding-bottom: 66px;
+}
+#testimonials h1 {
+  font: 18px/24px 'opensans-bold', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #fff;
+}
+#testimonials .header-col {
+  padding-top: 9px;
+}
+#testimonials .header-col h1:before {
+  font-family: 'FontAwesome';
+  content: '\f10d';
+  padding-right: 10px;
+  font-size: 72px;
+  line-height: 72px;
+  text-align: left;
+  float: left;
+  color: #fff;
+}
+
+/*	Blockquotes */
+#testimonials blockquote {
+  margin: 0 0px 30px 0px;
+  padding-left: 0;
+  position: relative;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+}
+#testimonials blockquote:before {
+  content: none;
+}
+#testimonials blockquote p {
+  font-family: 'librebaskerville-italic', serif;
+  padding: 0;
+  font-size: 30px;
+  line-height: 48px;
+  color: #fff;
+}
+#testimonials blockquote cite {
+  display: block;
+  font-size: 20px;
+  font-style: normal;
+  line-height: 18px;
+  color: #fff;
+}

@@ -60,6 +60,12 @@ const _nav = [
       {
         _component: 'CNavItem',
         as: NavLink,
+        anchor: 'RegisterEntry',
+        to: '/register_entry',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
         anchor: 'Error 404',
         to: '/404',
       },

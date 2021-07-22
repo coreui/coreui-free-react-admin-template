@@ -1,0 +1,32 @@
+.career {
+  background: linear-gradient(90deg, #ebedef, aqua, #ebedef);
+  height: 50rem;
+  width: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.career_img {
+  transition-property: transform;
+  transform: scale(1);
+  transition-duration: 0.5s;
+}
+.career_img:hover {
+  transform: scale(1.05);
+  animation-name: wobble;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+@keyframes wobble {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

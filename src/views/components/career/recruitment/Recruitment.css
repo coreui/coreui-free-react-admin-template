@@ -1,0 +1,32 @@
+.RecruBlock {
+  background-color: azure;
+  border-radius: 3%;
+  font-size: 4rem;
+  box-shadow: aqua 0px 5px 15px;
+  width: 95%;
+  margin: 0% 12% 10% 1% !important;
+}
+.eesa {
+  background-color: azure;
+  width: 90%;
+  padding: 0;
+}
+.widgetbrand {
+  background-color: azure;
+  border: 0px;
+  border-radius: 5%;
+}
+.card-header {
+  padding: 0%;
+  border-radius: 5% !important;
+}
+.recrucontent{
+  padding:0% 3% 5% 3%;
+}
+.fw-semibold{
+  font-size: 1.9rem !important;
+  margin-top: 5%;
+}
+hr{
+  margin-top: 0;
+}

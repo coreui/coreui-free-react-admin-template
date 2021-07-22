@@ -2,7 +2,7 @@ import React from 'react'
 import CIcon from '@coreui/icons-react'
 import { NavLink } from 'react-router-dom'
 
-const _nav = [
+const _navIn = [
   {
     _component: 'CNavItem',
     anchor: '_nav/anchor',
@@ -79,4 +79,4 @@ const _nav = [
   },
 ]
 
-export default _nav
+export default _navIn

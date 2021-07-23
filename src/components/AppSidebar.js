@@ -7,6 +7,7 @@ import {
   CSidebarNav,
   CSidebarToggler,
   CCreateNavItem,
+  CImage,
 } from '@coreui/react'
 
 import CIcon from '@coreui/icons-react'
@@ -18,6 +19,9 @@ import 'simplebar/dist/simplebar.min.css'
 import navOut from '../_navOut'
 import navIn from '../_navIn'
 
+//sidebar top icon
+import logo_row from '../assets/images/logo_row.png'
+
 const AppSidebar = () => {
   const [inout, setInout] = useState(false)
   const chNav = () => {
@@ -28,13 +32,11 @@ const AppSidebar = () => {
     <CSidebar position="fixed" selfHiding="md" onShow={() => console.log('show')}>
       <CSidebarBrand className="d-none d-md-flex" to="/">
         {/* <h6>components/AppSidebar/CIcon</h6> */}
-        <CIcon
-          className="sidebar-brand-full"
-          name="logo-negative"
-          height={35}
+        <CImage
+          src={logo_row}
+          width="60%"
           onClick={(e) => {
             setInout(!inout)
-            e.preventDefault()
           }}
         />
         {/* <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} /> */}

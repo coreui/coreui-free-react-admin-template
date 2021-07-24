@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Redirect, Link } from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login'
 import {
   CButton,
@@ -15,8 +16,35 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
+const LoginFormTemplate = {
+  studentID: '',
+  password: '',
+}
+
 const Login = () => {
-  return (
+  const [loginForm, setLoginForm] = useState(LoginFormTemplate)
+  const [isLogin, setIsLogin] = useState(false) // delete if redux is setting
+
+  useEffect(() => {
+    // check login status
+    setIsLogin(false) // for test
+  }, [])
+
+  const handleInputChange = (e) => {
+    setLoginForm({ ...loginForm, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // connect with backend
+    // check if login
+    // if success then redirect inside
+    setIsLogin(true)
+  }
+
+  return isLogin ? (
+    <Redirect to="/"></Redirect>
+  ) : (
     <div className="min-vh-100 d-flex flex-row align-items-center">
       <CContainer className="align-items-center">
         <CRow className="justify-content-center">
@@ -29,9 +57,13 @@ const Login = () => {
                     <p className="text-medium-emphasis">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-user" />
+                        <CIcon name="cil-education" />
                       </CInputGroupText>
-                      <CFormControl placeholder="Username" autoComplete="username" />
+                      <CFormControl
+                        placeholder="Student ID"
+                        name="studentID"
+                        onChange={handleInputChange}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-2">
                       <CInputGroupText>
@@ -40,24 +72,25 @@ const Login = () => {
                       <CFormControl
                         type="password"
                         placeholder="Password"
-                        autoComplete="current-password"
+                        name="password"
+                        onChange={handleInputChange}
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton color="link" className="px-0">
+                        <Link to="/register_entry" color="link" className="px-0">
                           Create a new account?
-                        </CButton>
+                        </Link>
                       </CCol>
                       <CCol xs="6" className="d-flex justify-content-end">
-                        <CButton color="link" className="px-0">
+                        <Link to="/forget" color="link" className="px-0">
                           Forgot password?
-                        </CButton>
+                        </Link>
                       </CCol>
                     </CRow>
                     <CRow className="mt-3">
                       <CCol className="d-flex justify-content-center">
-                        <CButton color="dark" className="px-4">
+                        <CButton color="dark" className="px-4" onClick={handleSubmit}>
                           Login
                         </CButton>
                       </CCol>

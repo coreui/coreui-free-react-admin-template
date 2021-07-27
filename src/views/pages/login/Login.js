@@ -42,6 +42,15 @@ const Login = () => {
     setIsLogin(true)
   }
 
+  const handleFBSubmit = (res) => {
+    if (res.status == 'unknown') {
+      return
+    }
+    // call backend
+    // send res.userID
+    console.log(res.userID)
+  }
+
   return isLogin ? (
     <Redirect to="/"></Redirect>
   ) : (
@@ -109,8 +118,8 @@ const Login = () => {
                           appId="571174603253755"
                           autoLoad={false}
                           isMobile={false}
-                          // fields="name,email,picture"
-                          // callback={this.handleFBSubmit}
+                          fields="name,email,picture"
+                          callback={handleFBSubmit}
                           cssClass="btnFacebook d-flex justify-content-center mt-2"
                           icon="fa-facebook"
                           textButton=""

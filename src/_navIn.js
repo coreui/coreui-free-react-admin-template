@@ -77,6 +77,12 @@ const _navIn = [
       {
         _component: 'CNavItem',
         as: NavLink,
+        anchor: 'RegisterFB',
+        to: '/register_facebook',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
         anchor: 'Error 404',
         to: '/404',
       },

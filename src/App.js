@@ -15,6 +15,7 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const RegisterEntry = React.lazy(() => import('./views/pages/register/RegisterEntry'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
+const RegisterFB = React.lazy(() => import('./views/pages/registerFB/RegisterFB'))
 const Forget = React.lazy(() => import('./views/pages/forget/Forget'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
@@ -38,6 +39,12 @@ class App extends Component {
               path="/register"
               name="Register Page"
               render={(props) => <Register {...props} />}
+            />
+            <Route
+              exact
+              path="/register_facebook"
+              name="Register with Facebook"
+              render={(props) => <RegisterFB {...props} />}
             />
             <Route exact path="/forget" name="Forget" render={(props) => <Forget {...props} />} />
 

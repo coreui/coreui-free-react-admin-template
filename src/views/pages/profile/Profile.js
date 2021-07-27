@@ -110,10 +110,14 @@ const Profile = () => {
         <nav aria-label="breadcrumb" className="main-breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="index.html">Home</a>
+              <a href="index.html" style={{ color: '#8a93a2' }}>
+                Home
+              </a>
             </li>
             <li className="breadcrumb-item">
-              <a href="javascript:void(0)">User</a>
+              <a href="javascript:void(0)" style={{ color: '#8a93a2' }}>
+                User
+              </a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               User Profile

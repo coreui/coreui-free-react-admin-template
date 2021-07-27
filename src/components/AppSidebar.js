@@ -23,13 +23,25 @@ import navIn from '../_navIn'
 import logo_row from '../assets/images/logo_row.png'
 
 const AppSidebar = () => {
+  const dispatch = useDispatch()
+  const unfoldable = useSelector((state) => state.sidebarUnfoldable)
+  const sidebarShow = useSelector((state) => state.sidebarShow)
   const [inout, setInout] = useState(false)
   const chNav = () => {
     if (inout) return navIn
     else return navOut
   }
   return (
-    <CSidebar position="fixed" selfHiding="md" onShow={() => console.log('show')}>
+    <CSidebar
+      position="fixed"
+      selfHiding="md"
+      unfoldable={unfoldable}
+      show={sidebarShow}
+      onShow={() => console.log('show')}
+      onHide={() => {
+        dispatch({ type: 'set', sidebarShow: false })
+      }}
+    >
       <CSidebarBrand className="d-none d-md-flex" to="/">
         {/* <h6>components/AppSidebar/CIcon</h6> */}
         <CImage

@@ -14,7 +14,7 @@ const Title = ({ data }) => {
     )
   })
   return (
-    <header id="home">
+    <header>
       <div className="row banner">
         <div className="banner-text">
           <h1 className="responsive-headline">{name}</h1>

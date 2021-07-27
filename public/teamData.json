@@ -1,0 +1,80 @@
+{
+  "minister": [
+    {
+      "name": "鄭謹譯",
+      "img": "https://i.imgur.com/tBIMSbr.png",
+      "part": "網頁"
+    },
+    {
+      "name": "李筠婕",
+      "img": "https://i.imgur.com/edivzlk.png",
+      "part": "留學"
+    }
+  ],
+  "abroad": [
+    {
+      "name": "翁瑋襄",
+      "img": "https://i.imgur.com/7wuyePm.png"
+    },
+    {
+      "name": "余欣澄",
+      "img": "https://i.imgur.com/IYmBNEr.png"
+    },
+    {
+      "name": "謝承霖",
+      "img": "https://i.imgur.com/7X2YA9P.png"
+    },
+    {
+      "name": "周軒羽",
+      "img": "https://i.imgur.com/uco5sLV.png"
+    },
+    {
+      "name": "施彥宇",
+      "img": "https://i.imgur.com/5xXLHbb.png"
+    }
+  ],
+  "back": [
+    {
+      "name": "陳君輔",
+      "img": "https://i.imgur.com/umMRS1L.png"
+    },
+    {
+      "name": "李宗倫",
+      "img": "https://i.imgur.com/sXdgp9o.png"
+    },
+    {
+      "name": "賴侃軒",
+      "img": "https://i.imgur.com/AYw8d4f.png"
+    },
+    {
+      "name": "吳建翰",
+      "img": "https://i.imgur.com/CCdQe52.png"
+    },
+    {
+      "name": "王維恩",
+      "img": "https://i.imgur.com/Sjv06Cg.png"
+    }
+  ],
+  "front": [
+    {
+      "name": "呂承燁",
+      "img": "https://i.imgur.com/v1lP2kc.png"
+    },
+    {
+      "name": "王友廷",
+      "img": "https://i.imgur.com/x6Q9l52.png"
+    },
+    {
+      "name": "何明翰",
+      "img": "https://i.imgur.com/0FuDgw1.png"
+    },
+    {
+      "name": "陳育楷",
+      "img": "https://i.imgur.com/GsEuD2J.png"
+    },
+    {
+      "name": "俞建旋",
+      "img": "https://i.imgur.com/Vh9zeFk.png"
+    }
+  ]
+}

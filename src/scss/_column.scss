@@ -157,7 +157,7 @@
     max-width: 1180px;
   }
 }
-header {
+.column header {
   position: relative;
   height: 800px;
   min-height: 500px;
@@ -170,13 +170,13 @@ header {
 }
 
 /* vertically center banner section */
-header:before {
+.column header:before {
   content: '';
   vertical-align: middle;
   display: inline-block;
   height: 100%;
 }
-header .banner {
+.column header .banner {
   display: inline-block;
   vertical-align: middle;
   margin: 0 auto;
@@ -184,7 +184,7 @@ header .banner {
   padding-bottom: 30px;
   text-align: center;
 }
-header .banner-text h1 {
+.column header .banner-text h1 {
   font: 3.1rem/1.1em 'opensans-bold', sans-serif;
   color: #fff;
   letter-spacing: -2px;

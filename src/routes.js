@@ -16,17 +16,18 @@ const Recruitment = React.lazy(() => import('./views/components/career/recruitme
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/column', name: 'Column', component: Column },
+  { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
+  { path: '/columns', exact: true, name: 'ColumnSummary', component: ShowColumns },
+  { path: '/columns/:id', exact: false, name: 'Column', component: Column },
+  { path: '/columnSummary', exact: true, name: 'ColumnSummary', component: ShowColumns },
+  { path: '/career', exact: true, name: 'Career', component: Career },
+  { path: '/recommendation', exact: true, name: 'Recommendation', component: Recommendation },
+  { path: '/recruitment', exact: true, name: 'Recruitment', component: Recruitment },
   { path: '/about', name: 'About', component: About },
   { path: '/history', name: 'History', component: History },
   { path: '/contact', name: 'Contact', component: Contact },
   { path: '/support', name: 'Support', component: Support },
   { path: '/team', name: 'Team', component: Team },
-  { path: '/columnSummary', name: 'ColumnSummary', component: ShowColumns },
-  { path: '/career', name: 'Career', component: Career },
-  { path: '/recommendation', name: 'Recommendation', component: Recommendation },
-  { path: '/recruitment', name: 'Recruitment', component: Recruitment },
 ]
 
 export default routes

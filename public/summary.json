@@ -5,26 +5,70 @@
       "anno": ["廖宜倫", "黃偉倫", "楊耀城"],
       "date": "2017/3/13 星期一",
       "title": "1995級 徐瑞廷",
-      "exp": ["BCG波士頓顧問公司台北辦公室負責人、合夥人暨董事總經理"],
+      "exp": ["BCG波士頓顧問公司台北辦公室負責合夥人暨董事總經理"],
       "edu": ["史丹福大學電子工程學碩士", "聖塔克拉拉大學MBA"],
       "intro": [
         "系學會很榮幸邀請到 1995級 徐瑞廷系友參加本次專訪，感謝 1995級林哲立系友 與 1995級丁建均教授的大力幫忙。現在就點擊文章，讓我們一起看看徐瑞廷學長的分享與心路歷程吧!"
       ],
-      "id": "Column_Block_1601"
+      "id": "1601"
     },
     {
       "filename": "1602",
       "anno": ["藍珮瑜", "Steven Huang", "林昱嘉", "陳柏瑞"],
       "date": "2017/5/12 星期五",
       "title": "1992級 梁維仁",
-      "exp": "元大證券香港區總經理、花旗環球證券臺灣區總經理",
+      "exp": ["元大證券香港區總經", "花旗環球證券臺灣區總經理"],
       "edu": [
         "碩士：Carnegie Mellon University master of science Computational Finance, Industrial administration."
       ],
       "intro": [
         "系學會很榮幸邀請到 1992級 梁維仁 系友參加本次skype專訪！學長不但在金融工程領域闖出一片天，退休後投入音樂藝術相關工作，還擅長登山滑雪等休閒活動，人生經歷非常豐富，我們快來看看梁維仁學長的經驗分享吧！"
       ],
-      "id": "Column_Block_1602"
+      "id": "1602"
+    },
+    {
+      "filename": "1603",
+      "anno": ["許秉鈞 袁培傑 劉禹辰 曾耕森"],
+      "date": "2017/2/27 星期一",
+      "title": ["2008級 趙式隆"],
+      "exp": ["台灣矽谷創業家協會理事長", "學悅科技Zuvio創辦人"],
+      "edu": ["博士：台大電機博士 (D97)"],
+      "intro": [
+        "系學會很榮幸邀請到2008級 趙式隆 學長擔任首po系友專訪，為我們介紹他的簡歷以及NTUEE在他心中的定位！"
+      ],
+      "id": "1603"
+    },
+    {
+      "filename": "1604",
+      "anno": ["吳奕萱 楊程皓 毛弘仁 江庭瑋 蘇峯廣"],
+      "date": "2017/3/30 星期四",
+      "title": ["2000級 胡一天"],
+      "exp": [
+        "Founder, Chairman & CEO @ Kyber Capital 源鉑資本",
+        "Co-Founder/Managing Partner at Infinite Studio",
+        "源鉑資本Kyber Capital執行長",
+        "專業投資人與金融觀察家"
+      ],
+      "edu": [
+        "碩士：Financial Engineering, Columbia University  (2003-2006)",
+        "臺灣大學電機工程學系、法律系財經法學組  (1996-2001)"
+      ],
+      "intro": [
+        "系學會很榮幸邀請到 2000級 胡一天系友參加本次專訪，感謝 2000級 陳和麟教授的大力幫忙。學長對於金融的洞見非常令人欽佩，而且樂於與學弟妹分享自己的故事、願意撥冗直接參與編修這篇文章 (超熱心！)現在就點擊連結、一起認識學長的心路歷程吧!"
+      ],
+      "id": "1604"
+    },
+    {
+      "filename": "1605",
+      "anno": ["蔡忠紘 林怡廷 陳鴻智 蔡承佑"],
+      "date": "2017/4/28 星期五",
+      "title": ["2006級 高奕豪"],
+      "exp": ["Quantitative Researcher", "Two Sigma Investments"],
+      "edu": ["博士：Stanford University Information Systems Lab, EE PhD (2012)"],
+      "intro": [
+        "系學會很榮幸邀請到 2006級 高奕豪 系友參加本次skype專訪，感謝 2006級 I-Hsiang Wang 教授的推薦。學長的經歷非常豐富，在Stanford University取得EE的PhD後，進入Wall Street 的 hedge fund，在數學、軟硬體、計量金融...等領域，都有很多人生故事願意和我們分享。快點進文章，看一看高奕豪學長為我們帶來的分享吧!"
+      ],
+      "id": "1605"
     }
   ]
 }

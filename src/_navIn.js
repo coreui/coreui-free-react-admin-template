@@ -32,17 +32,6 @@ const _navIn = [
   {
     _component: 'CNavItem',
     as: NavLink,
-    anchor: 'Column',
-    to: '/column',
-    icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
-  },
-  {
-    _component: 'CNavItem',
-    as: NavLink,
     anchor: 'Columns',
     to: '/columnSummary',
     icon: <CIcon name="cil-notes" customClassName="nav-icon" />,

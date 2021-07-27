@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
@@ -83,7 +84,7 @@ const ColumnSummary = ({ data }) => {
     return (
       <Grid item xs={12} md={12} key={art.key}>
         <Card className={classes.card}>
-          <CardActionArea>
+          <Link to={'/columns/' + art.id}>
             <CardMedia
               className={classes.media}
               image="https://picsum.photos/1024/700"
@@ -94,7 +95,9 @@ const ColumnSummary = ({ data }) => {
                 {art.title}
               </Typography>
               <Typography gutterBottom className={classes.exp}>
-                ({art.exp})
+                {art.exp.map((e) => (
+                  <h3 key={e}>{e}</h3>
+                ))}
               </Typography>
               <Typography
                 variant="body2"
@@ -105,7 +108,7 @@ const ColumnSummary = ({ data }) => {
                 {art.intro}
               </Typography>
             </CardContent>
-          </CardActionArea>
+          </Link>
           <CardActions className={classes.cardActions}>
             {art.anno.map((person) => {
               return contributions(person)

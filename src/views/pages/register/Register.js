@@ -22,14 +22,24 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
+const RegisterFormTemplate = {
+  account: '',
+  password: '',
+  ConfirmPassword: '',
+  username: '',
+  Email: '',
+  file: null,
+}
+
 const Register = () => {
   // for web control
   const [isExpand, setIsExpand] = useState(false)
   const [isModal, setIsModal] = useState(false)
   const [previewURL, setPreviewURL] = useState(null)
+  const [fileButton, setFileButton] = useState(null)
 
   // data to backend
-  const [IDphoto, setIDphoto] = useState(null)
+  const [registerForm, setRegisterForm] = useState(RegisterFormTemplate)
 
   const expand = (e) => {
     e.preventDefault()
@@ -51,7 +61,8 @@ const Register = () => {
   const handleChangeImage = (e) => {
     let reader = new FileReader()
     let file = e.target.files[0]
-    setIDphoto(file)
+    setFileButton(e.target)
+    setRegisterForm({ ...registerForm, file: file })
     reader.onloadend = () => {
       setPreviewURL(reader.result)
     }
@@ -62,8 +73,36 @@ const Register = () => {
 
   const clearImage = (e) => {
     setIsModal(false)
-    setIDphoto(null)
     setPreviewURL(null)
+    setRegisterForm({ ...registerForm, file: null })
+    fileButton.value = ''
+  }
+
+  const handleInputChange = (e) => {
+    setRegisterForm({ ...registerForm, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (registerForm.password != registerForm.ConfirmPassword) {
+      return alert('密碼不一致')
+    } else {
+      let r = window.confirm('確認註冊？')
+      if (r) {
+        let data = new FormData()
+        for (let key in registerForm) {
+          data.append(key, registerForm[data])
+        }
+        const config = {
+          headers: {
+            'content-type': 'multipart/form-data',
+          },
+        }
+        // TODO
+        // send to backend
+        // then redirect to login
+      }
+    }
   }
 
   return (
@@ -97,13 +136,21 @@ const Register = () => {
                       <CInputGroupText>
                         <CIcon name="cil-user" />
                       </CInputGroupText>
-                      <CFormControl placeholder="Your Chinese Name" />
+                      <CFormControl
+                        placeholder="Your Chinese Name"
+                        name="username"
+                        onChange={handleInputChange}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon name="cil-education" />
                       </CInputGroupText>
-                      <CFormControl placeholder="Student ID" />
+                      <CFormControl
+                        placeholder="Student ID"
+                        name="account"
+                        onChange={handleInputChange}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -112,7 +159,8 @@ const Register = () => {
                       <CFormControl
                         type="password"
                         placeholder="Password"
-                        autoComplete="new-password"
+                        name="password"
+                        onChange={handleInputChange}
                       />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
@@ -122,12 +170,13 @@ const Register = () => {
                       <CFormControl
                         type="password"
                         placeholder="Repeat password"
-                        autoComplete="new-password"
+                        name="ConfirmPassword"
+                        onChange={handleInputChange}
                       />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>@</CInputGroupText>
-                      <CFormControl placeholder="Email" autoComplete="email" />
+                      <CFormControl placeholder="Email" name="Email" onChange={handleInputChange} />
                     </CInputGroup>
                     <CInputGroup
                       className="mb-3"
@@ -170,7 +219,7 @@ const Register = () => {
                     </CCollapse>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex justify-content-center">
-                        <CButton color="dark" block>
+                        <CButton color="dark" onClick={handleSubmit}>
                           Create Account
                         </CButton>
                       </div>

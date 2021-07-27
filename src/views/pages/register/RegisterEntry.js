@@ -7,8 +7,19 @@ import RegisterAccount from './images/Register_Account.png'
 import RegisterFB from './images/Register_Facebook.png'
 
 const RegisterEntry = () => {
+  const handleFBSubmit = (res) => {
+    if (res.status == 'unknown') {
+      return
+    }
+    // try to loginFB
+    // check if login success
+    // if no redirect to registerFB, then redirect to login
+    // if success redirect to inside
+    console.log(res.userID) // for test
+  }
+
   const buttonAccount = (
-    <Link className="d-flex justify-content-center" to="/">
+    <Link className="d-flex justify-content-center" to="/register">
       <CImage fluid src={RegisterAccount} alt="Register by Account" />
     </Link>
   )
@@ -18,10 +29,9 @@ const RegisterEntry = () => {
         appId="571174603253755"
         autoLoad={false}
         isMobile={false}
-        // fields="name,email,picture"
-        // callback={this.handleFBSubmit}
+        fields="name,email,picture"
+        callback={handleFBSubmit}
         textButton=""
-        //   cssClass="d-flex justify-content-center w-50"
         render={(renderProps) => (
           <CImage
             src={RegisterFB}
@@ -34,6 +44,7 @@ const RegisterEntry = () => {
       />
     </div>
   )
+
   return (
     <div className="min-vh-100 d-flex flex-row align-items-center">
       <CContainer className="align-items-center">

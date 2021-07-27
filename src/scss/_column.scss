@@ -80,7 +80,7 @@
 /* mobile wide/smaller tablets
   --------------------------------------------------------------- */
 @media only screen and (max-width: 767px) {
-  .row {
+  .column .row {
     width: 460px;
     margin: 0 auto;
     padding: 0;

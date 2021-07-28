@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Post from './Post'
+import RecruPost from './RecruPost'
 
 const Recruitment = () => {
   const [data, setData] = useState([])
@@ -18,7 +18,7 @@ const Recruitment = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <div>{data.posts && <Post data={data.posts} />}</div>
+  return <div>{data.posts && <RecruPost data={data.posts} />}</div>
 }
 
 export default Recruitment

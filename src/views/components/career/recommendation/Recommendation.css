@@ -20,10 +20,16 @@
   padding: 0%;
   border-radius: 5% !important;
 }
-.recomcontent{
+.recomcontent {
   padding: 0% 3% 5% 3%;
 }
-.recomcontent>h3, h2{
-  font-weight:600 ;
+.recomcontent > h3,
+h2 {
+  font-weight: 600;
 }
-
+.recomcontent > button {
+  font-size: 1vw;
+  color: blue;
+  border: none;
+  background: none;
+}

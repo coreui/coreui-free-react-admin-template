@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Post from './Post'
+import RecomPost from './RecomPost'
 
 const Recommendation = () => {
   const [data, setData] = useState([])
@@ -18,7 +18,7 @@ const Recommendation = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <div>{data.posts && <Post data={data.posts} />}</div>
+  return <div>{data.posts && <RecomPost data={data.posts} />}</div>
 }
 
 export default Recommendation

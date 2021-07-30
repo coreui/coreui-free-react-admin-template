@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // import './profile.css'
 import {
   CButton,
@@ -15,6 +15,21 @@ import {
 } from '@coreui/react'
 
 const Profile = () => {
+  let recommendation = []
+  const [recruitment, setRecruitment] = useState([])
+  const getRecruitment = () => {
+    fetch('recruitmentPosts.json', {
+      headers: {
+        ContentType: 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setRecruitment(data)
+        console.log(data)
+      })
+  }
   const [data, setData] = useState({
     account: {
       show: true,
@@ -103,6 +118,33 @@ const Profile = () => {
     userimage: 'https://avatars.githubusercontent.com/u/55401762?v=4', // not same as schema
   })
 
+  useEffect(() => {
+    getRecruitment()
+  }, [])
+  const EditRecruitment = () => {}
+  const DeleteRecruitment = () => {}
+  const showRecruitment = (Recruitment) => {
+    console.log(Recruitment)
+    return Recruitment.posts.map((post, i) => {
+      return (
+        <>
+          <div className="row">
+            <div className="col-sm-3">
+              <h6 className="mb-0">post {i + 1}</h6>
+            </div>
+            <div className="col-sm-5 text-secondary">{post.title.title}</div>
+            <CButton className="col-sm-2" color="dark" onClick={EditRecruitment}>
+              Edit
+            </CButton>
+            <CButton className="col-sm-2" color="primary" onClick={DeleteRecruitment}>
+              Delete
+            </CButton>
+          </div>
+          <hr />
+        </>
+      )
+    })
+  }
   return (
     <div className="container">
       <div className="main-body">
@@ -386,6 +428,13 @@ const Profile = () => {
                 </div>
               </div>
             </div>
+            {recruitment.length !== 0 ? (
+              <div className="card mb-3">
+                <div className="card-body">{showRecruitment(recruitment)}</div>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
       </div>

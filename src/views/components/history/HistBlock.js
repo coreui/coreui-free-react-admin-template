@@ -7,7 +7,7 @@ const HistBlock = ({ people }) => {
   return (
     <CContainer className="align-items-center">
       {/* for desktop and ipad */}
-      <CRow className="justify-content-around d-sm-none d-lg-flex">
+      <CRow className="justify-content-around d-none d-sm-flex">
         {people.map((person) => {
           return (
             <CCol xs={3} key={person.name} align="center" className="justify-content-center mt-2">
@@ -17,13 +17,15 @@ const HistBlock = ({ people }) => {
                 className="img-fluid"
                 style={{ boxShadow: '3px 3px 12px gray', padding: '2px', borderRadius: '50%' }}
               />
-              <h4 className="mt-2">{person.name}</h4>
+              <h4 className="mt-2" style={{ fontSize: '2vw' }}>
+                {person.name}
+              </h4>
             </CCol>
           )
         })}
       </CRow>
       {/* for mobile */}
-      <CRow className="justify-content-center d-sm-flex d-lg-none">
+      <CRow className="justify-content-center d-sm-none">
         {people.map((person) => {
           return (
             <div key={person.name} style={{ width: '100%' }}>

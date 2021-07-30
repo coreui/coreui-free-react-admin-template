@@ -41,8 +41,9 @@ const AppSidebar = () => {
       onHide={() => {
         dispatch({ type: 'set', sidebarShow: false })
       }}
+      className="bg-light"
     >
-      <CSidebarBrand className="d-none d-md-flex" to="/">
+      <CSidebarBrand className="d-flex" to="/">
         {/* <h6>components/AppSidebar/CIcon</h6> */}
         <CImage
           src={logo_row}

@@ -17,9 +17,8 @@ const Recruitment = React.lazy(() => import('./views/components/career/recruitme
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
-  { path: '/columns', exact: true, name: 'ColumnSummary', component: ShowColumns },
-  { path: '/columns/:id', exact: false, name: 'Column', component: Column },
-  { path: '/columnSummary', exact: true, name: 'ColumnSummary', component: ShowColumns },
+  { path: '/ColumnSummary', exact: true, name: 'columnSummary', component: ShowColumns },
+  { path: '/ColumnSummary/:id', exact: false, name: 'column', component: Column },
   { path: '/career', exact: true, name: 'Career', component: Career },
   { path: '/recommendation', exact: true, name: 'Recommendation', component: Recommendation },
   { path: '/recruitment', exact: true, name: 'Recruitment', component: Recruitment },

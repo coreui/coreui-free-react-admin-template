@@ -13,14 +13,9 @@
       },
 
       "spec": {
-        "experience": [
-          "IEEE seminar",
-          "8x 書卷獎",
-          " MIT 交換學生"
-        ],
+        "experience": ["IEEE seminar", "8x 書卷獎", " MIT 交換學生"],
         "speciality": ["Computer Science"]
-      },
-      "id": "Recruitment_block_1"
+      }
     },
     {
       "title": {
@@ -42,9 +37,8 @@
           " MIT 交換學生",
           "電機系系學會長"
         ],
-        "speciality": [ "Machine Learning", "EDA,VLSI", "ICS"]
-      },
-      "id": "Recruitment_block_2"
+        "speciality": ["Machine Learning", "EDA,VLSI", "ICS"]
+      }
     },
     {
       "title": {
@@ -59,15 +53,9 @@
       },
 
       "spec": {
-        "experience": [
-          "IEEE seminar",
-          "2020 ICCAD 1st place",
-          "Google intern",
-          "電機系系學會長"
-        ],
+        "experience": ["IEEE seminar", "2020 ICCAD 1st place", "Google intern", "電機系系學會長"],
         "speciality": ["Computer Science", "Machine Learning", "EDA,VLSI", "ICS"]
-      },
-      "id": "Recruitment_block_3"
+      }
     }
   ]
 }

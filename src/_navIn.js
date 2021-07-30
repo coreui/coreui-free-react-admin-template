@@ -33,7 +33,7 @@ const _navIn = [
     _component: 'CNavItem',
     as: NavLink,
     anchor: 'Columns',
-    to: '/columnSummary',
+    to: '/ColumnSummary',
     icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
     badge: {
       color: 'info',

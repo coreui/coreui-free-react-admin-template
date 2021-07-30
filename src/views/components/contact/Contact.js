@@ -20,7 +20,7 @@ const Contact = () => {
           <h3>B06901180</h3>
         </CCol>
       </CRow>
-      <div className="container d-flex justify-content-center mt-5">
+      <div className="container d-flex justify-content-center mt-5 mb-4">
         <Link to="/team">
           <button
             className="px-3 py-2"

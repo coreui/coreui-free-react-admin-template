@@ -8,7 +8,7 @@
       },
       "info": {
         "salary": "月薪 70000元",
-        "experience": "無工作經驗限制",
+        "experience": ["無工作經驗限制"],
         "diploma": "NTUEE"
       },
       "spec": {
@@ -38,7 +38,7 @@
       },
       "info": {
         "salary": "月薪 50000元",
-        "experience": "無工作經驗限制",
+        "experience": ["無工作經驗限制"],
         "diploma": "NTUEE"
       },
 
@@ -60,7 +60,7 @@
       },
       "info": {
         "salary": "年薪 1M ~ 2.5M 元",
-        "experience": "無需工作經驗限制",
+        "experience": ["無工作經驗限制"],
         "diploma": "NTUEE"
       },
 
@@ -87,7 +87,7 @@
       },
       "info": {
         "salary": "誠徵 可議",
-        "experience": "無需工作經驗限制",
+        "experience": ["無工作經驗限制"],
         "diploma": ""
       },
       "spec": {
@@ -110,7 +110,7 @@
       },
       "info": {
         "salary": "誠徵 可議",
-        "experience": "無需工作經驗限制",
+        "experience": ["無工作經驗限制", "", ""],
         "diploma": ""
       },
 

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { CCol, CRow } from '@coreui/react'
+import { CCol, CContainer, CRow, CButton } from '@coreui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import left_img from '../../../assets/images/left_minister.png'
@@ -7,7 +7,7 @@ import right_img from '../../../assets/images/right_minister.png'
 
 const Contact = () => {
   return (
-    <div align="center" className="mt-4">
+    <CContainer className="text-center">
       <CRow className="justify-content-evenly">
         <CCol xs={3}>
           <img src={left_img} alt="部長 留學組" className="img-fluid mb-4" />
@@ -20,17 +20,17 @@ const Contact = () => {
           <h3>B06901180</h3>
         </CCol>
       </CRow>
-      <div className="container d-flex justify-content-center mt-5 mb-4">
+      <CRow className="justify-content-center">
         <Link to="/team">
-          <button
+          <CButton
             className="px-3 py-2"
             style={{ fontWeight: 'bold', border: '0.2rem solid', borderRadius: '1rem' }}
           >
             Our Team
-          </button>
+          </CButton>
         </Link>
-      </div>
-    </div>
+      </CRow>
+    </CContainer>
   )
 }
 

@@ -1,4 +1,15 @@
 // Here you can add other styles
+
+:root {
+  --primary_color1: #63e7e7;
+  --primary_color2: rgb(106, 255, 198);
+  --primary_bgcolor: #003f67;
+}
+
+body {
+  background-color: var(--primary_bgcolor);
+}
+
 .btnFacebook {
   width: 3rem;
   height: 3rem;
@@ -16,6 +27,7 @@
 .nav-link {
   color: black !important;
 }
-// .nav-link .active{
-//   background-color: azure;
-// }
+
+.text-color-black {
+  color: var(--cui-body-color);
+}

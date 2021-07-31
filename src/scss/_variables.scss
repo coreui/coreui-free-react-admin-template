@@ -5,33 +5,33 @@
 // Color system
 
 // scss-docs-start gray-color-variables
-$white: #fff !default;
-$gray-base: #3c4b64 !default;
-$gray-100: #ebedef !default;
-$gray-200: #d8dbe0 !default;
-$gray-300: #c4c9d0 !default;
-$gray-400: #b1b7c1 !default;
-$gray-500: #9da5b1 !default;
-$gray-600: #8a93a2 !default;
-$gray-700: #768192 !default;
-$gray-800: #636f83 !default;
-$gray-900: #4f5d73 !default;
-$black: #000015 !default;
+// $white: #fff !default;
+// $gray-base: #3c4b64 !default;
+// $gray-100: #ebedef !default;
+// $gray-200: #d8dbe0 !default;
+// $gray-300: #c4c9d0 !default;
+// $gray-400: #b1b7c1 !default;
+// $gray-500: #9da5b1 !default;
+// $gray-600: #8a93a2 !default;
+// $gray-700: #768192 !default;
+// $gray-800: #636f83 !default;
+// $gray-900: #4f5d73 !default;
+// $black: #000015 !default;
 // scss-docs-end gray-color-variables
 
 // fusv-disable
 // scss-docs-start gray-colors-map
-$grays: (
-  '100': $gray-100,
-  '200': $gray-200,
-  '300': $gray-300,
-  '400': $gray-400,
-  '500': $gray-500,
-  '600': $gray-600,
-  '700': $gray-700,
-  '800': $gray-800,
-  '900': $gray-900,
-) !default;
+// $grays: (
+//   '100': $gray-100,
+//   '200': $gray-200,
+//   '300': $gray-300,
+//   '400': $gray-400,
+//   '500': $gray-500,
+//   '600': $gray-600,
+//   '700': $gray-700,
+//   '800': $gray-800,
+//   '900': $gray-900,
+// ) !default;
 // scss-docs-end gray-colors-map
 // fusv-enable
 
@@ -75,61 +75,61 @@ $grays: (
 // scss-docs-end colors-map
 
 // our main color
-$primary_color1: #63e7e7 !default;
-$primary_color2: rgb(106, 255, 198) !default;
-$primary_bgcolor: #003f67 !default;
+// $primary_color1: #63e7e7 !default;
+// $primary_color2: rgb(106, 255, 198) !default;
+// $primary_bgcolor: #003f67 !default;
 
 // fusv-disable
 // $primary-dark:  #1f1498 !default;
-$primary-base: $primary_color1 !default;
+// $primary-base: $primary_color1 !default;
 // $primary-50:    #988fed !default;
 // $primary-25:    #ccc7f6 !default;
 
 // $secondary-dark:  #212233 !default;
-$secondary-base: black !default;
+// $secondary-base: black !default;
 // $secondary-50:    #9da5b1 !default;
 // $secondary-25:    #ced2d8 !default;
 
 // $success-dark:  #1b9e3e !default;
-$success-base: #2eb85c !default;
+// $success-base: #2eb85c !default;
 // $success-50:    #96dbad !default;
 // $success-25:    #cbedd6 !default;
 
 // $info-dark:  #2982cc !default;
-$info-base: #39f !default;
+// $info-base: #39f !default;
 // $info-50:    #80c6ff !default;
 // $info-25:    #c0e6ff !default;
 
 // $warning-dark:  #f6960b !default;
-$warning-base: #f9b115 !default;
+// $warning-base: #f9b115 !default;
 // $warning-50:    #fcd88a !default;
 // $warning-25:    #feecc5 !default;
 
 // $danger-dark:  #d93737 !default;
-$danger-base: #e55353 !default;
+// $danger-base: #e55353 !default;
 // $danger-50:    #f2a9a9 !default;
 // $danger-25:    #f9d4d4 !default;
 
 // $light-dark:     $gray-100 !default;
-$light-base: $gray-100 !default;
+// $light-base: $gray-100 !default;
 // $light-50:       shift-color($light-base, -70) !default;
 // $light-25:       shift-color($light-base, -80) !default;
 
 // $dark-dark:      $gray-900 !default;
-$dark-base: $gray-900 !default;
+// $dark-base: $gray-900 !default;
 // $dark-50:        shift-color($dark-base, -70) !default;
 // $dark-25:        shift-color($dark-base, -80) !default;
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary: $primary-base !default;
-$secondary: $secondary-base !default;
-$success: $success-base !default;
-$info: $info-base !default;
-$warning: $warning-base !default;
-$danger: $danger-base !default;
-$light: $light-base !default;
-$dark: $dark-base !default;
+// $primary: $primary-base !default;
+// $secondary: $secondary-base !default;
+// $success: $success-base !default;
+// $info: $info-base !default;
+// $warning: $warning-base !default;
+// $danger: $danger-base !default;
+// $light: $light-base !default;
+// $dark: $dark-base !default;
 
 // scss-docs-end theme-color-variables
 
@@ -340,7 +340,7 @@ $dark: $dark-base !default;
 //
 // Settings for the `<body>` element.
 
-$body-bg: $primary_bgcolor !default;
+// $body-bg: $primary_bgcolor !default;
 // $body-color:                $high-emphasis !default;
 // $body-text-align:           null !default;
 
@@ -348,7 +348,7 @@ $body-bg: $primary_bgcolor !default;
 //
 // Style anchor elements.
 
-$link-color: $primary_bgcolor !default;
+// $link-color: $primary_bgcolor !default;
 $link-decoration: none !default;
 // $link-shade-percentage:                   20% !default;
 // $link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;

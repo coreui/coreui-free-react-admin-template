@@ -8,7 +8,7 @@ import Recommendation_image from '../../../assets/images/Recommendation.png'
 
 const Career = () => {
   return (
-    <div className="min-vh-100 d-flex flex-row align-items-center career">
+    <div className="d-flex flex-row align-items-center career">
       <CContainer className="align-items-center">
         {/* for desktop and ipad */}
         <CRow className="justify-content-around d-sm-none d-lg-flex">

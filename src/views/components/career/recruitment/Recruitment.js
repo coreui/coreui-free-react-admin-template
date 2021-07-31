@@ -18,7 +18,7 @@ const Recruitment = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <div>{data.posts && <RecruPost data={data.posts} />}</div>
+  return <div className="text-color-black">{data.posts && <RecruPost data={data.posts} />}</div>
 }
 
 export default Recruitment

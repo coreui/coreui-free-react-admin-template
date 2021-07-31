@@ -19,7 +19,7 @@ const Timeline = ({ data }) => {
   }
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%' }} className="text-color-black">
       <Chrono
         items={items}
         mode="VERTICAL_ALTERNATING"
@@ -42,7 +42,7 @@ const Timeline = ({ data }) => {
         })}
       </Chrono>
       <br />
-      <CContainer>
+      <CContainer style={{ color: 'white' }}>
         <CRow className="justify-content-center align-items-center">
           <CCol xs={6} className="justify-content-center">
             <CImage src={data.allImg} alt="" className="img-fluid" style={{ margin: 'shadow' }} />

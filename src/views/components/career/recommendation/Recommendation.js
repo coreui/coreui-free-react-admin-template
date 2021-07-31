@@ -18,7 +18,7 @@ const Recommendation = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <div>{data.posts && <RecomPost data={data.posts} />}</div>
+  return <div className="text-color-black">{data.posts && <RecomPost data={data.posts} />}</div>
 }
 
 export default Recommendation

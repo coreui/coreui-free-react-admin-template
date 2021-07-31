@@ -132,7 +132,7 @@ const AddRecommendation = () => {
           </CButton>
         </CModalFooter>
       </CModal>
-      <div className="min-vh-100 d-flex flex-row align-items-center">
+      <div className="d-flex flex-row align-items-center text-color-black">
         <CContainer>
           <CRow className="justify-content-center">
             <CCol md="11" lg="9" xl="8">

@@ -138,7 +138,7 @@ const ColumnSummary = ({ data }) => {
         </Grid>
       </div>
       <Box my={4} className={classes.paginationContainer}>
-        <Pagination count={10} />
+        <Pagination count={10} color="primary" />
       </Box>
     </div>
   )

@@ -7,8 +7,10 @@ import routes from '../routes'
 
 const AppContent = () => {
   const ContentStyle = {
-    'max-width': `100%;`,
-    'max-height': `100%;`,
+    maxWidth: `100%`,
+    maxHeight: `100%`,
+    // height: '100%',
+    // position: 'relative',
   }
   return (
     <div lg style={ContentStyle}>

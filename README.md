@@ -10,6 +10,7 @@ $ git clone https://github.com/coreui/coreui-free-react-admin-template.git my-pr
 $ cd my-project
 
 # install app's dependencies
+$ cd client
 $ npm install
 ```
 
@@ -22,6 +23,7 @@ Copy all your files to your project folder and then,
 $ cd my-project
 
 # install app's dependencies
+$ cd client
 $ npm install
 ```
 
@@ -36,6 +38,7 @@ see also:
 
 ```bash
 # dev server with hot reload at http://localhost:3000
+$ cd client
 $ npm start
 ```
 
@@ -47,6 +50,7 @@ Run `build` to build the project. The build artifacts will be stored in the `bui
 
 ```bash
 # build for production with minification
+$ cd client
 $ npm run build
 ```
 
@@ -56,24 +60,25 @@ Within the download you'll find the following directories and files, logically g
 
 ```
 CoreUI-React#v3.0.0
-├── public/          #static files
-│   └── index.html   #html template
-│
-├── src/             #project root
-│   ├── assets/      #assets - js icons object
-│   ├── containers/  #container source - template layout
-|   │   ├── _nav.js  #sidebar config
-|   │   └── ...
-│   ├── scss/        #user scss/css source
-│   ├── views/       #views source
-│   ├── App.js
-│   ├── App.test.js
-│   ├── polyfill.js
-│   ├── index.js
-│   ├── routes.js    #routes config
-│   └── store.js     #template state example
-│
-└── package.json
+├──client
+    ├── public/          #static files
+    │   └── index.html   #html template
+    │
+    ├── src/             #project root
+    │   ├── assets/      #assets - js icons object
+    │   ├── containers/  #container source - template layout
+    |   │   ├── _nav.js  #sidebar config
+    |   │   └── ...
+    │   ├── scss/        #user scss/css source
+    │   ├── views/       #views source
+    │   ├── App.js
+    │   ├── App.test.js
+    │   ├── polyfill.js
+    │   ├── index.js
+    │   ├── routes.js    #routes config
+    │   └── store.js     #template state example
+    │
+    └── package.json
 ```
 
 ## Components' url:

@@ -5,6 +5,12 @@
 package-lock.json
 yarn.lock
 
+# testing
+/coverage
+
+# production
+/build
+
 # misc
 .eslintcache
 .DS_Store

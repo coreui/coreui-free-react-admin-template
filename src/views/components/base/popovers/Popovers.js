@@ -18,7 +18,7 @@ const Popovers = () => {
               <CPopover
                 title="Popover title"
                 content="And here’s some amazing content. It’s very engaging. Right?"
-                placement="end"
+                placement="right"
               >
                 <CButton color="danger" size="lg">
                   Click to toggle popover
@@ -47,7 +47,7 @@ const Popovers = () => {
               </CPopover>
               <CPopover
                 content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="end"
+                placement="right"
               >
                 <CButton color="secondary">Popover on right</CButton>
               </CPopover>
@@ -59,7 +59,7 @@ const Popovers = () => {
               </CPopover>
               <CPopover
                 content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="start"
+                placement="left"
               >
                 <CButton color="secondary">Popover on left</CButton>
               </CPopover>

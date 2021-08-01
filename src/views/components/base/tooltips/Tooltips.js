@@ -55,7 +55,7 @@ const Tooltips = () => {
               </CTooltip>
               <CTooltip
                 content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="end"
+                placement="right"
               >
                 <CButton color="secondary">Tooltip on right</CButton>
               </CTooltip>
@@ -67,7 +67,7 @@ const Tooltips = () => {
               </CTooltip>
               <CTooltip
                 content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                placement="start"
+                placement="left"
               >
                 <CButton color="secondary">Tooltip on left</CButton>
               </CTooltip>

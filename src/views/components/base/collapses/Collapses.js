@@ -64,7 +64,7 @@ const Collapses = () => {
                 Toggle both elements
               </CButton>
               <CRow>
-                <CCol xs="6">
+                <CCol xs={6}>
                   <CCollapse visible={visibleA}>
                     <CCard className="mt-3">
                       <CCardBody>
@@ -75,7 +75,7 @@ const Collapses = () => {
                     </CCard>
                   </CCollapse>
                 </CCol>
-                <CCol xs="6">
+                <CCol xs={6}>
                   <CCollapse visible={visibleB}>
                     <CCard className="mt-3">
                       <CCardBody>

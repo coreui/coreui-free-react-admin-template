@@ -1,5 +1,5 @@
 import React from 'react'
-import { CCard, CCardBody, CCardHeader, CCol, CFormCheck, CRow } from '@coreui/react'
+import { CCard, CCardBody, CCardHeader, CCol, CFormCheck, CFormSwitch, CRow } from '@coreui/react'
 import { DocsCallout, Example } from 'src/reusable'
 
 const ChecksRadios = () => {
@@ -106,25 +106,18 @@ const ChecksRadios = () => {
               attribute.
             </p>
             <Example href="forms/checks-radios#switches">
-              <CFormCheck
-                switch
-                label="Default switch checkbox input"
-                id="formSwitchCheckDefault"
-              />
-              <CFormCheck
-                switch
+              <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault" />
+              <CFormSwitch
                 label="Checked switch checkbox input"
                 id="formSwitchCheckChecked"
                 defaultChecked
               />
-              <CFormCheck
-                switch
+              <CFormSwitch
                 label="Disabled switch checkbox input"
                 id="formSwitchCheckDisabled"
                 disabled
               />
-              <CFormCheck
-                switch
+              <CFormSwitch
                 label="Disabled checked switch checkbox input"
                 id="formSwitchCheckCheckedDisabled"
                 defaultChecked
@@ -141,19 +134,13 @@ const ChecksRadios = () => {
           </CCardHeader>
           <CCardBody>
             <Example href="forms/checks-radios#sizes">
-              <CFormCheck
-                switch
-                label="Default switch checkbox input"
-                id="formSwitchCheckDefault"
-              />
-              <CFormCheck
-                switch
+              <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault" />
+              <CFormSwitch
                 size="lg"
                 label="Large switch checkbox input"
                 id="formSwitchCheckDefaultLg"
               />
-              <CFormCheck
-                switch
+              <CFormSwitch
                 size="xl"
                 label="Extra large switch checkbox input"
                 id="formSwitchCheckDefaultXL"

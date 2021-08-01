@@ -7,10 +7,11 @@ import {
   CCol,
   CForm,
   CFormCheck,
-  CFormControl,
+  CFormInput,
   CFormFeedback,
   CFormLabel,
   CFormSelect,
+  CFormTextarea,
   CInputGroup,
   CInputGroupText,
   CRow,
@@ -34,21 +35,21 @@ const CustomStyles = () => {
       validated={validated}
       onSubmit={handleSubmit}
     >
-      <CCol md="4">
+      <CCol md={4}>
         <CFormLabel htmlFor="validationCustom01">Email</CFormLabel>
-        <CFormControl type="text" id="validationCustom01" defaultValue="Mark" required />
+        <CFormInput type="text" id="validationCustom01" defaultValue="Mark" required />
         <CFormFeedback valid>Looks good!</CFormFeedback>
       </CCol>
-      <CCol md="4">
+      <CCol md={4}>
         <CFormLabel htmlFor="validationCustom02">Email</CFormLabel>
-        <CFormControl type="text" id="validationCustom02" defaultValue="Otto" required />
+        <CFormInput type="text" id="validationCustom02" defaultValue="Otto" required />
         <CFormFeedback valid>Looks good!</CFormFeedback>
       </CCol>
-      <CCol md="4">
+      <CCol md={4}>
         <CFormLabel htmlFor="validationCustomUsername">Username</CFormLabel>
         <CInputGroup className="has-validation">
           <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
-          <CFormControl
+          <CFormInput
             type="text"
             id="validationCustomUsername"
             defaultValue=""
@@ -58,12 +59,12 @@ const CustomStyles = () => {
           <CFormFeedback invalid>Please choose a username.</CFormFeedback>
         </CInputGroup>
       </CCol>
-      <CCol md="6">
+      <CCol md={6}>
         <CFormLabel htmlFor="validationCustom03">City</CFormLabel>
-        <CFormControl type="text" id="validationCustom03" required />
+        <CFormInput type="text" id="validationCustom03" required />
         <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
       </CCol>
-      <CCol md="3">
+      <CCol md={3}>
         <CFormLabel htmlFor="validationCustom04">City</CFormLabel>
         <CFormSelect id="validationCustom04">
           <option disabled>Choose...</option>
@@ -71,12 +72,12 @@ const CustomStyles = () => {
         </CFormSelect>
         <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
       </CCol>
-      <CCol md="3">
+      <CCol md={3}>
         <CFormLabel htmlFor="validationCustom05">City</CFormLabel>
-        <CFormControl type="text" id="validationCustom05" required />
+        <CFormInput type="text" id="validationCustom05" required />
         <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
       </CCol>
-      <CCol xs="12">
+      <CCol xs={12}>
         <CFormCheck
           type="checkbox"
           id="invalidCheck"
@@ -85,7 +86,7 @@ const CustomStyles = () => {
         />
         <CFormFeedback invalid>You must agree before submitting.</CFormFeedback>
       </CCol>
-      <CCol xs="12">
+      <CCol xs={12}>
         <CButton color="primary" type="submit">
           Submit form
         </CButton>
@@ -106,21 +107,21 @@ const BrowserDefaults = () => {
   }
   return (
     <CForm className="row g-3 needs-validation" validated={validated} onSubmit={handleSubmit}>
-      <CCol md="4">
+      <CCol md={4}>
         <CFormLabel htmlFor="validationDefault01">Email</CFormLabel>
-        <CFormControl type="text" id="validationDefault01" defaultValue="Mark" required />
+        <CFormInput type="text" id="validationDefault01" defaultValue="Mark" required />
         <CFormFeedback valid>Looks good!</CFormFeedback>
       </CCol>
-      <CCol md="4">
+      <CCol md={4}>
         <CFormLabel htmlFor="validationDefault02">Email</CFormLabel>
-        <CFormControl type="text" id="validationDefault02" defaultValue="Otto" required />
+        <CFormInput type="text" id="validationDefault02" defaultValue="Otto" required />
         <CFormFeedback valid>Looks good!</CFormFeedback>
       </CCol>
-      <CCol md="4">
+      <CCol md={4}>
         <CFormLabel htmlFor="validationDefaultUsername">Username</CFormLabel>
         <CInputGroup className="has-validation">
           <CInputGroupText id="inputGroupPrepend02">@</CInputGroupText>
-          <CFormControl
+          <CFormInput
             type="text"
             id="validationDefaultUsername"
             defaultValue=""
@@ -130,12 +131,12 @@ const BrowserDefaults = () => {
           <CFormFeedback invalid>Please choose a username.</CFormFeedback>
         </CInputGroup>
       </CCol>
-      <CCol md="6">
+      <CCol md={6}>
         <CFormLabel htmlFor="validationDefault03">City</CFormLabel>
-        <CFormControl type="text" id="validationDefault03" required />
+        <CFormInput type="text" id="validationDefault03" required />
         <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
       </CCol>
-      <CCol md="3">
+      <CCol md={3}>
         <CFormLabel htmlFor="validationDefault04">City</CFormLabel>
         <CFormSelect id="validationDefault04">
           <option disabled>Choose...</option>
@@ -143,12 +144,12 @@ const BrowserDefaults = () => {
         </CFormSelect>
         <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
       </CCol>
-      <CCol md="3">
+      <CCol md={3}>
         <CFormLabel htmlFor="validationDefault05">City</CFormLabel>
-        <CFormControl type="text" id="validationDefault05" required />
+        <CFormInput type="text" id="validationDefault05" required />
         <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
       </CCol>
-      <CCol xs="12">
+      <CCol xs={12}>
         <CFormCheck
           type="checkbox"
           id="invalidCheck"
@@ -157,7 +158,7 @@ const BrowserDefaults = () => {
         />
         <CFormFeedback invalid>You must agree before submitting.</CFormFeedback>
       </CCol>
-      <CCol xs="12">
+      <CCol xs={12}>
         <CButton color="primary" type="submit">
           Submit form
         </CButton>
@@ -183,25 +184,25 @@ const Tooltips = () => {
       validated={validated}
       onSubmit={handleSubmit}
     >
-      <CCol md="4" className="position-relative">
+      <CCol md={4} className="position-relative">
         <CFormLabel htmlFor="validationTooltip01">Email</CFormLabel>
-        <CFormControl type="text" id="validationTooltip01" defaultValue="Mark" required />
+        <CFormInput type="text" id="validationTooltip01" defaultValue="Mark" required />
         <CFormFeedback tooltip valid>
           Looks good!
         </CFormFeedback>
       </CCol>
-      <CCol md="4" className="position-relative">
+      <CCol md={4} className="position-relative">
         <CFormLabel htmlFor="validationTooltip02">Email</CFormLabel>
-        <CFormControl type="text" id="validationTooltip02" defaultValue="Otto" required />
+        <CFormInput type="text" id="validationTooltip02" defaultValue="Otto" required />
         <CFormFeedback tooltip valid>
           Looks good!
         </CFormFeedback>
       </CCol>
-      <CCol md="4" className="position-relative">
+      <CCol md={4} className="position-relative">
         <CFormLabel htmlFor="validationTooltipUsername">Username</CFormLabel>
         <CInputGroup className="has-validation">
           <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
-          <CFormControl
+          <CFormInput
             type="text"
             id="validationTooltipUsername"
             defaultValue=""
@@ -213,14 +214,14 @@ const Tooltips = () => {
           </CFormFeedback>
         </CInputGroup>
       </CCol>
-      <CCol md="6" className="position-relative">
+      <CCol md={6} className="position-relative">
         <CFormLabel htmlFor="validationTooltip03">City</CFormLabel>
-        <CFormControl type="text" id="validationTooltip03" required />
+        <CFormInput type="text" id="validationTooltip03" required />
         <CFormFeedback tooltip invalid>
           Please provide a valid city.
         </CFormFeedback>
       </CCol>
-      <CCol md="3" className="position-relative">
+      <CCol md={3} className="position-relative">
         <CFormLabel htmlFor="validationTooltip04">City</CFormLabel>
         <CFormSelect id="validationTooltip04" required>
           <option disabled defaultValue="">
@@ -232,14 +233,14 @@ const Tooltips = () => {
           Please provide a valid city.
         </CFormFeedback>
       </CCol>
-      <CCol md="3" className="position-relative">
+      <CCol md={3} className="position-relative">
         <CFormLabel htmlFor="validationTooltip05">City</CFormLabel>
-        <CFormControl type="text" id="validationTooltip05" required />
+        <CFormInput type="text" id="validationTooltip05" required />
         <CFormFeedback tooltip invalid>
           Please provide a valid zip.
         </CFormFeedback>
       </CCol>
-      <CCol xs="12" className="position-relative">
+      <CCol xs={12} className="position-relative">
         <CButton color="primary" type="submit">
           Submit form
         </CButton>
@@ -316,9 +317,9 @@ const Validation = () => {
             </p>
             <Example href="forms/validation#server-side">
               <CForm className="row g-3 needs-validation">
-                <CCol md="4">
+                <CCol md={4}>
                   <CFormLabel htmlFor="validationServer01">Email</CFormLabel>
-                  <CFormControl
+                  <CFormInput
                     type="text"
                     id="validationServer01"
                     defaultValue="Mark"
@@ -327,9 +328,9 @@ const Validation = () => {
                   />
                   <CFormFeedback valid>Looks good!</CFormFeedback>
                 </CCol>
-                <CCol md="4">
+                <CCol md={4}>
                   <CFormLabel htmlFor="validationServer02">Email</CFormLabel>
-                  <CFormControl
+                  <CFormInput
                     type="text"
                     id="validationServer02"
                     defaultValue="Otto"
@@ -338,11 +339,11 @@ const Validation = () => {
                   />
                   <CFormFeedback valid>Looks good!</CFormFeedback>
                 </CCol>
-                <CCol md="4">
+                <CCol md={4}>
                   <CFormLabel htmlFor="validationServerUsername">Username</CFormLabel>
                   <CInputGroup className="has-validation">
                     <CInputGroupText id="inputGroupPrepend03">@</CInputGroupText>
-                    <CFormControl
+                    <CFormInput
                       type="text"
                       id="validationServerUsername"
                       defaultValue=""
@@ -353,12 +354,12 @@ const Validation = () => {
                     <CFormFeedback invalid>Please choose a username.</CFormFeedback>
                   </CInputGroup>
                 </CCol>
-                <CCol md="6">
+                <CCol md={6}>
                   <CFormLabel htmlFor="validationServer03">City</CFormLabel>
-                  <CFormControl type="text" id="validationServer03" invalid required />
+                  <CFormInput type="text" id="validationServer03" invalid required />
                   <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
                 </CCol>
-                <CCol md="3">
+                <CCol md={3}>
                   <CFormLabel htmlFor="validationServer04">City</CFormLabel>
                   <CFormSelect id="validationServer04" invalid>
                     <option disabled>Choose...</option>
@@ -366,12 +367,12 @@ const Validation = () => {
                   </CFormSelect>
                   <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
                 </CCol>
-                <CCol md="3">
+                <CCol md={3}>
                   <CFormLabel htmlFor="validationServer05">City</CFormLabel>
-                  <CFormControl type="text" id="validationServer05" invalid required />
+                  <CFormInput type="text" id="validationServer05" invalid required />
                   <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
                 </CCol>
-                <CCol xs="12">
+                <CCol xs={12}>
                   <CFormCheck
                     type="checkbox"
                     id="invalidCheck"
@@ -381,7 +382,7 @@ const Validation = () => {
                   />
                   <CFormFeedback invalid>You must agree before submitting.</CFormFeedback>
                 </CCol>
-                <CCol xs="12">
+                <CCol xs={12}>
                   <CButton color="primary" type="submit">
                     Submit form
                   </CButton>
@@ -402,7 +403,7 @@ const Validation = () => {
             </p>
             <ul>
               <li>
-                <code>&lt;CFormControl&gt;</code>s
+                <code>&lt;CFormInput&gt;</code>s
               </li>
               <li>
                 <code>&lt;CFormSelect&gt;</code>s
@@ -417,13 +418,12 @@ const Validation = () => {
                   <CFormLabel htmlFor="validationTextarea" className="form-label">
                     Textarea
                   </CFormLabel>
-                  <CFormControl
-                    component="textarea"
+                  <CFormTextarea
                     id="validationTextarea"
                     placeholder="Required example textarea"
                     invalid
                     required
-                  ></CFormControl>
+                  ></CFormTextarea>
                   <CFormFeedback invalid>Please enter a message in the textarea.</CFormFeedback>
                 </div>
                 <CFormCheck
@@ -463,7 +463,7 @@ const Validation = () => {
                 </div>
 
                 <div className="mb-3">
-                  <CFormControl
+                  <CFormInput
                     type="file"
                     id="validationTextarea"
                     aria-label="file example"

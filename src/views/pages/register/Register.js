@@ -6,7 +6,7 @@ import {
   CCol,
   CContainer,
   CForm,
-  CFormControl,
+  CFormInput,
   CInputGroup,
   CInputGroupText,
   CRow,
@@ -18,7 +18,7 @@ const Register = () => {
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
-          <CCol md="9" lg="7" xl="6">
+          <CCol md={9} lg={7} xl={6}>
             <CCard className="mx-4">
               <CCardBody className="p-4">
                 <CForm>
@@ -28,17 +28,17 @@ const Register = () => {
                     <CInputGroupText>
                       <CIcon name="cil-user" />
                     </CInputGroupText>
-                    <CFormControl placeholder="Username" autoComplete="username" />
+                    <CFormInput placeholder="Username" autoComplete="username" />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>@</CInputGroupText>
-                    <CFormControl placeholder="Email" autoComplete="email" />
+                    <CFormInput placeholder="Email" autoComplete="email" />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
                       <CIcon name="cil-lock-locked" />
                     </CInputGroupText>
-                    <CFormControl
+                    <CFormInput
                       type="password"
                       placeholder="Password"
                       autoComplete="new-password"
@@ -48,7 +48,7 @@ const Register = () => {
                     <CInputGroupText>
                       <CIcon name="cil-lock-locked" />
                     </CInputGroupText>
-                    <CFormControl
+                    <CFormInput
                       type="password"
                       placeholder="Repeat password"
                       autoComplete="new-password"

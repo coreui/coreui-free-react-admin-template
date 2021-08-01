@@ -36,13 +36,13 @@ const Dashboard = () => {
       <CCard className="mb-4">
         <CCardBody>
           <CRow>
-            <CCol sm="5">
+            <CCol sm={5}>
               <h4 id="traffic" className="card-title mb-0">
                 Traffic
               </h4>
               <div className="small text-medium-emphasis">January - July 2021</div>
             </CCol>
-            <CCol sm="7" className="d-none d-md-block">
+            <CCol sm={7} className="d-none d-md-block">
               <CButton color="primary" className="float-end">
                 <CIcon name="cil-cloud-download" />
               </CButton>
@@ -184,15 +184,15 @@ const Dashboard = () => {
             <CCardHeader>Traffic {' & '} Sales</CCardHeader>
             <CCardBody>
               <CRow>
-                <CCol xs="12" md="6" xl="6">
+                <CCol xs={12} md={6} xl={6}>
                   <CRow>
-                    <CCol sm="6">
+                    <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-info py-1 px-3">
                         <div className="text-medium-emphasis small">New Clients</div>
                         <div className="fs-5 fw-semibold">9,123</div>
                       </div>
                     </CCol>
-                    <CCol sm="6">
+                    <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Recurring Clients</div>
                         <div className="fs-5 fw-semibold">22,643</div>
@@ -267,15 +267,15 @@ const Dashboard = () => {
                   </div>
                 </CCol>
 
-                <CCol xs="12" md="6" xl="6">
+                <CCol xs={12} md={6} xl={6}>
                   <CRow>
-                    <CCol sm="6">
+                    <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Pageviews</div>
                         <div className="fs-5 fw-semibold">78,623</div>
                       </div>
                     </CCol>
-                    <CCol sm="6">
+                    <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-success py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Organic</div>
                         <div className="fs-5 fw-semibold">49,123</div>

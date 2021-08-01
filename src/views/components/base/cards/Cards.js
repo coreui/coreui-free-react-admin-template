@@ -355,7 +355,7 @@ const Cards = () => {
             </p>
             <Example href="components/card/#sizing">
               <CRow>
-                <CCol sm="6">
+                <CCol sm={6}>
                   <CCard>
                     <CCardBody>
                       <CCardTitle>Special title treatment</CCardTitle>
@@ -366,7 +366,7 @@ const Cards = () => {
                     </CCardBody>
                   </CCard>
                 </CCol>
-                <CCol sm="6">
+                <CCol sm={6}>
                   <CCard>
                     <CCardBody>
                       <CCardTitle>Special title treatment</CCardTitle>

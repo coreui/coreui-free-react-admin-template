@@ -6,8 +6,9 @@ import {
   CCardHeader,
   CCol,
   CForm,
-  CFormControl,
+  CFormInput,
   CFormLabel,
+  CFormTextarea,
   CRow,
 } from '@coreui/react'
 import { DocsCallout, Example } from 'src/reusable'
@@ -28,7 +29,7 @@ const FormControl = () => {
               <CForm>
                 <div className="mb-3">
                   <CFormLabel htmlFor="exampleFormControlInput1">Email address</CFormLabel>
-                  <CFormControl
+                  <CFormInput
                     type="email"
                     id="exampleFormControlInput1"
                     placeholder="name@example.com"
@@ -36,11 +37,7 @@ const FormControl = () => {
                 </div>
                 <div className="mb-3">
                   <CFormLabel htmlFor="exampleFormControlTextarea1">Example textarea</CFormLabel>
-                  <CFormControl
-                    component="textarea"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
-                  ></CFormControl>
+                  <CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
                 </div>
               </CForm>
             </Example>
@@ -58,20 +55,20 @@ const FormControl = () => {
               <code>size=&#34;sm&#34;</code>.
             </p>
             <Example href="forms/form-control#sizing">
-              <CFormControl
+              <CFormInput
                 type="text"
                 size="lg"
                 placeholder="Large input"
                 aria-label="lg input example"
               />
               <br />
-              <CFormControl
+              <CFormInput
                 type="text"
                 placeholder="Default input"
                 aria-label="default input example"
               />
               <br />
-              <CFormControl
+              <CFormInput
                 type="text"
                 size="sm"
                 placeholder="Small input"
@@ -92,14 +89,14 @@ const FormControl = () => {
               appearance and remove pointer events.
             </p>
             <Example href="forms/form-control#disabled">
-              <CFormControl
+              <CFormInput
                 type="text"
                 placeholder="Disabled input"
                 aria-label="Disabled input example"
                 disabled
               />
               <br />
-              <CFormControl
+              <CFormInput
                 type="text"
                 placeholder="Disabled readonly input"
                 aria-label="Disabled input example"
@@ -123,7 +120,7 @@ const FormControl = () => {
               but retain the standard cursor.
             </p>
             <Example href="forms/form-control#readonly">
-              <CFormControl
+              <CFormInput
                 type="text"
                 placeholder="Readonly input here..."
                 aria-label="readonly input example"
@@ -150,7 +147,7 @@ const FormControl = () => {
                   Email
                 </CFormLabel>
                 <div className="col-sm-10">
-                  <CFormControl
+                  <CFormInput
                     type="text"
                     id="staticEmail"
                     defaultValue="email@example.com"
@@ -164,7 +161,7 @@ const FormControl = () => {
                   Password
                 </CFormLabel>
                 <div className="col-sm-10">
-                  <CFormControl type="password" id="inputPassword" />
+                  <CFormInput type="password" id="inputPassword" />
                 </div>
               </CRow>
             </Example>
@@ -174,7 +171,7 @@ const FormControl = () => {
                   <CFormLabel htmlFor="staticEmail2" className="visually-hidden">
                     Email
                   </CFormLabel>
-                  <CFormControl
+                  <CFormInput
                     type="text"
                     id="staticEmail2"
                     defaultValue="email@example.com"
@@ -186,7 +183,7 @@ const FormControl = () => {
                   <CFormLabel htmlFor="inputPassword2" className="visually-hidden">
                     Password
                   </CFormLabel>
-                  <CFormControl type="password" id="inputPassword2" placeholder="Password" />
+                  <CFormInput type="password" id="inputPassword2" placeholder="Password" />
                 </div>
                 <div className="col-auto">
                   <CButton type="submit" className="mb-3">
@@ -207,23 +204,23 @@ const FormControl = () => {
             <Example href="forms/form-control#file-input">
               <div className="mb-3">
                 <CFormLabel htmlFor="formFile">Default file input example</CFormLabel>
-                <CFormControl type="file" id="formFile" />
+                <CFormInput type="file" id="formFile" />
               </div>
               <div className="mb-3">
                 <CFormLabel htmlFor="formFileMultiple">Multiple files input example</CFormLabel>
-                <CFormControl type="file" id="formFileMultiple" multiple />
+                <CFormInput type="file" id="formFileMultiple" multiple />
               </div>
               <div className="mb-3">
                 <CFormLabel htmlFor="formFileDisabled">Disabled file input example</CFormLabel>
-                <CFormControl type="file" id="formFileDisabled" disabled />
+                <CFormInput type="file" id="formFileDisabled" disabled />
               </div>
               <div className="mb-3">
                 <CFormLabel htmlFor="formFileSm">Small file input example</CFormLabel>
-                <CFormControl type="file" size="sm" id="formFileSm" />
+                <CFormInput type="file" size="sm" id="formFileSm" />
               </div>
               <div>
                 <CFormLabel htmlFor="formFileLg">Large file input example</CFormLabel>
-                <CFormControl type="file" size="lg" id="formFileLg" />
+                <CFormInput type="file" size="lg" id="formFileLg" />
               </div>
             </Example>
           </CCardBody>
@@ -237,7 +234,7 @@ const FormControl = () => {
           <CCardBody>
             <Example href="forms/form-control#color">
               <CFormLabel htmlFor="exampleColorInput">Color picker</CFormLabel>
-              <CFormControl
+              <CFormInput
                 type="color"
                 id="exampleColorInput"
                 defaultValue="#563d7c"

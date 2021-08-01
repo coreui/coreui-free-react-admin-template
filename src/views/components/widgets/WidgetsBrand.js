@@ -35,7 +35,7 @@ const WidgetsBrand = ({ withCharts }) => {
 
   return (
     <CRow>
-      <CCol sm="6" lg="3">
+      <CCol sm={6} lg={3}>
         <CWidgetBrand
           className="mb-4"
           headerChildren={
@@ -73,7 +73,7 @@ const WidgetsBrand = ({ withCharts }) => {
         />
       </CCol>
 
-      <CCol sm="6" lg="3">
+      <CCol sm={6} lg={3}>
         <CWidgetBrand
           className="mb-4"
           headerChildren={
@@ -111,7 +111,7 @@ const WidgetsBrand = ({ withCharts }) => {
         />
       </CCol>
 
-      <CCol sm="6" lg="3">
+      <CCol sm={6} lg={3}>
         <CWidgetBrand
           className="mb-4"
           headerChildren={
@@ -149,7 +149,7 @@ const WidgetsBrand = ({ withCharts }) => {
         />
       </CCol>
 
-      <CCol sm="6" lg="3">
+      <CCol sm={6} lg={3}>
         <CWidgetBrand
           className="mb-4"
           color="warning"

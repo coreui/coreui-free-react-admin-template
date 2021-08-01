@@ -21,7 +21,7 @@ const Jumbotrons = () => {
             <CButton size="lg">Example button</CButton>
           </CContainer>
           <CRow className="align-items-md-stretch">
-            <CCol md="6">
+            <CCol md={6}>
               <div className="h-100 p-5 text-white bg-dark rounded-3">
                 <h2>Change the background</h2>
                 <p>
@@ -33,7 +33,7 @@ const Jumbotrons = () => {
                 </CButton>
               </div>
             </CCol>
-            <CCol md="6">
+            <CCol md={6}>
               <div className="h-100 p-5 bg-light border rounded-3">
                 <h2>Add borders</h2>
                 <p>

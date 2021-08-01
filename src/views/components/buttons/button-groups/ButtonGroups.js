@@ -13,7 +13,7 @@ import {
   CCardHeader,
   CCol,
   CFormCheck,
-  CFormControl,
+  CFormInput,
   CInputGroup,
   CInputGroupText,
   CRow,
@@ -220,7 +220,7 @@ const ButtonGroups = () => {
                 </CButtonGroup>
                 <CInputGroup>
                   <CInputGroupText>@</CInputGroupText>
-                  <CFormControl
+                  <CFormInput
                     placeholder="Input group example"
                     aria-label="Input group example"
                     aria-describedby="btnGroupAddon"
@@ -248,7 +248,7 @@ const ButtonGroups = () => {
                 </CButtonGroup>
                 <CInputGroup>
                   <CInputGroupText>@</CInputGroupText>
-                  <CFormControl
+                  <CFormInput
                     placeholder="Input group example"
                     aria-label="Input group example"
                     aria-describedby="btnGroupAddon"

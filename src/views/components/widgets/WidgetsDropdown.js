@@ -15,7 +15,7 @@ import CIcon from '@coreui/icons-react'
 const WidgetsDropdown = () => {
   return (
     <CRow>
-      <CCol sm="6" lg="3">
+      <CCol sm={6} lg={3}>
         <CWidgetDropdown
           className="mb-4"
           color="primary"
@@ -100,7 +100,7 @@ const WidgetsDropdown = () => {
           }
         />
       </CCol>
-      <CCol sm="6" lg="3">
+      <CCol sm={6} lg={3}>
         <CWidgetDropdown
           className="mb-4"
           color="info"
@@ -199,7 +199,7 @@ const WidgetsDropdown = () => {
           }
         />
       </CCol>
-      <CCol sm="6" lg="3">
+      <CCol sm={6} lg={3}>
         <CWidgetDropdown
           className="mb-4"
           color="warning"
@@ -270,7 +270,7 @@ const WidgetsDropdown = () => {
           }
         />
       </CCol>
-      <CCol sm="6" lg="3">
+      <CCol sm={6} lg={3}>
         <CWidgetDropdown
           className="mb-4"
           color="danger"

@@ -23,7 +23,7 @@ const Widgets = () => {
     <>
       <WidgetsDropdown />
       <CRow>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetProgress
             className="mb-4"
             value="89.9%"
@@ -33,7 +33,7 @@ const Widgets = () => {
             text="Lorem ipsum dolor sit amet enim."
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetProgress
             className="mb-4"
             value="12.124"
@@ -43,7 +43,7 @@ const Widgets = () => {
             text="Lorem ipsum dolor sit amet enim."
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetProgress
             className="mb-4"
             value="$98.111,00"
@@ -53,7 +53,7 @@ const Widgets = () => {
             text="Lorem ipsum dolor sit amet enim."
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetProgress
             className="mb-4"
             value="2 TB"
@@ -63,7 +63,7 @@ const Widgets = () => {
           />
         </CCol>
 
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetProgress
             className="mb-4"
             color="success"
@@ -75,7 +75,7 @@ const Widgets = () => {
             text="Lorem ipsum dolor sit amet enim."
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetProgress
             className="mb-4"
             color="info"
@@ -87,7 +87,7 @@ const Widgets = () => {
             text="Lorem ipsum dolor sit amet enim."
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetProgress
             className="mb-4"
             color="warning"
@@ -99,7 +99,7 @@ const Widgets = () => {
             text="Lorem ipsum dolor sit amet enim."
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetProgress
             className="mb-4"
             color="primary"
@@ -114,7 +114,7 @@ const Widgets = () => {
       </CRow>
 
       <CRow>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             icon={<CIcon width={24} name="cil-settings" size="xl" />}
@@ -124,7 +124,7 @@ const Widgets = () => {
             color="primary"
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             icon={<CIcon width={24} name="cil-user" size="xl" />}
@@ -134,7 +134,7 @@ const Widgets = () => {
             color="info"
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             icon={<CIcon width={24} name="cil-moon" size="xl" />}
@@ -144,7 +144,7 @@ const Widgets = () => {
             color="warning"
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             icon={<CIcon width={24} name="cil-bell" size="xl" />}
@@ -154,7 +154,7 @@ const Widgets = () => {
             color="danger"
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             icon={<CIcon width={24} name="cil-settings" size="xl" />}
@@ -175,7 +175,7 @@ const Widgets = () => {
             }
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             icon={<CIcon width={24} name="cil-laptop" size="xl" />}
@@ -196,7 +196,7 @@ const Widgets = () => {
             }
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             icon={<CIcon width={24} name="cil-moon" size="xl" />}
@@ -217,7 +217,7 @@ const Widgets = () => {
             }
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             icon={<CIcon width={24} name="cil-bell" size="xl" />}
@@ -238,7 +238,7 @@ const Widgets = () => {
             }
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             padding={0}
@@ -249,7 +249,7 @@ const Widgets = () => {
             color="primary"
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             padding={0}
@@ -260,7 +260,7 @@ const Widgets = () => {
             color="info"
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             padding={0}
@@ -271,7 +271,7 @@ const Widgets = () => {
             color="warning"
           />
         </CCol>
-        <CCol xs="12" sm="6" lg="3">
+        <CCol xs={12} sm={6} lg={3}>
           <CWidgetIcon
             className="mb-3"
             padding={0}
@@ -322,7 +322,7 @@ const Widgets = () => {
         />
       </CCardGroup>
       <CRow>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             icon={<CIcon name="cil-people" height="36" />}
             value="87.500"
@@ -332,7 +332,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             icon={<CIcon name="cil-userFollow" height="36" />}
             value="385"
@@ -342,7 +342,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             icon={<CIcon name="cil-basket" height="36" />}
             value="1238"
@@ -352,7 +352,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             icon={<CIcon name="cil-chartPie" height="36" />}
             value="28%"
@@ -362,7 +362,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             icon={<CIcon name="cil-speedometer" height="36" />}
             value="5:34:11"
@@ -372,7 +372,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             icon={<CIcon name="cil-speech" height="36" />}
             value="972"
@@ -384,7 +384,7 @@ const Widgets = () => {
         </CCol>
       </CRow>
       <CRow>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             color="info"
             icon={<CIcon name="cil-people" height="36" />}
@@ -395,7 +395,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             color="success"
             icon={<CIcon name="cil-userFollow" height="36" />}
@@ -406,7 +406,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             color="warning"
             icon={<CIcon name="cil-basket" height="36" />}
@@ -417,7 +417,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             color="primary"
             icon={<CIcon name="cil-chartPie" height="36" />}
@@ -428,7 +428,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             color="danger"
             icon={<CIcon name="cil-speedometer" height="36" />}
@@ -439,7 +439,7 @@ const Widgets = () => {
             className="mb-4"
           />
         </CCol>
-        <CCol sm="6" md="2">
+        <CCol sm={6} md={2}>
           <CWidgetProgressIcon
             color="info"
             icon={<CIcon name="cil-speech" height="36" />}
@@ -452,7 +452,7 @@ const Widgets = () => {
         </CCol>
       </CRow>
       <CRow>
-        <CCol sm="4" lg="2">
+        <CCol sm={4} lg={2}>
           <CWidgetSimple title="title" value="1,123" className="mb-4">
             <CChartBar
               style={{ height: '40px' }}
@@ -502,7 +502,7 @@ const Widgets = () => {
             />
           </CWidgetSimple>
         </CCol>
-        <CCol sm="4" lg="2">
+        <CCol sm={4} lg={2}>
           <CWidgetSimple title="title" value="1,123" className="mb-4">
             <CChartBar
               style={{ height: '40px' }}
@@ -552,7 +552,7 @@ const Widgets = () => {
             />
           </CWidgetSimple>
         </CCol>
-        <CCol sm="4" lg="2">
+        <CCol sm={4} lg={2}>
           <CWidgetSimple title="title" value="1,123" className="mb-4">
             <CChartBar
               style={{ height: '40px' }}
@@ -602,7 +602,7 @@ const Widgets = () => {
             />
           </CWidgetSimple>
         </CCol>
-        <CCol sm="4" lg="2">
+        <CCol sm={4} lg={2}>
           <CWidgetSimple title="title" value="1,123" className="mb-4">
             <CChartLine
               style={{ height: '40px' }}
@@ -660,7 +660,7 @@ const Widgets = () => {
             />
           </CWidgetSimple>
         </CCol>
-        <CCol sm="4" lg="2">
+        <CCol sm={4} lg={2}>
           <CWidgetSimple title="title" value="1,123" className="mb-4">
             <CChartLine
               style={{ height: '40px' }}
@@ -718,7 +718,7 @@ const Widgets = () => {
             />
           </CWidgetSimple>
         </CCol>
-        <CCol sm="4" lg="2">
+        <CCol sm={4} lg={2}>
           <CWidgetSimple title="title" value="1,123" className="mb-4">
             <CChartLine
               style={{ height: '40px' }}

@@ -10,7 +10,7 @@ const toKebabCase = (str) => {
 
 export const getIconsView = (iconset) => {
   return Object.entries(iconset).map(([name, value]) => (
-    <CCol className="mb-5" xs="6" sm="4" md="3" xl="2" key={name}>
+    <CCol className="mb-5" xs={6} sm={4} md={3} xl={2} key={name}>
       <CIcon content={value} size="2xl" />
       <div>{toKebabCase(name)}</div>
     </CCol>

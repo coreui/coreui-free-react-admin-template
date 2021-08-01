@@ -16,7 +16,7 @@ const Range = () => {
           <CCardBody>
             <p className="text-medium-emphasis small">
               Create custom <code>&lt;input type=&#34;range&#34;&gt;</code> controls with{' '}
-              <code>&lt;CFormControl&gt;</code>.
+              <code>&lt;CFormRange&gt;</code>.
             </p>
             <Example href="forms/range">
               <CFormLabel htmlFor="customRange1">Example range</CFormLabel>

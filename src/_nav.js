@@ -1,12 +1,10 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import { NavLink } from 'react-router-dom'
 
 const _nav = [
   {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Dashboard',
+    component: 'CNavItem',
+    name: 'Dashboard',
     to: '/dashboard',
     icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
     badge: {
@@ -15,210 +13,206 @@ const _nav = [
     },
   },
   {
-    _component: 'CNavTitle',
-    anchor: 'Theme',
+    component: 'CNavTitle',
+    name: 'Theme',
   },
   {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Colors',
+    component: 'CNavItem',
+    name: 'Colors',
     to: '/theme/colors',
     icon: <CIcon name="cil-drop" customClassName="nav-icon" />,
   },
   {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Typography',
+    component: 'CNavItem',
+    name: 'Typography',
     to: '/theme/typography',
     icon: <CIcon name="cil-pencil" customClassName="nav-icon" />,
   },
   {
-    _component: 'CNavTitle',
-    anchor: 'Components',
+    component: 'CNavTitle',
+    name: 'Components',
   },
   {
-    _component: 'CNavGroup',
-    as: NavLink,
-    anchor: 'Base',
-    to: '/to',
-    icon: <CIcon name="cil-puzzle" customClassName="nav-icon" />,
+    component: 'CNavGroup',
+    name: 'Base',
+    to: '/base',
+    icon: 'cil-puzzle',
     items: [
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Accordion',
+        component: 'CNavItem',
+
+        name: 'Accordion',
         to: '/base/accordion',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Breadcrumb',
+        component: 'CNavItem',
+
+        name: 'Breadcrumb',
         to: '/base/breadcrumbs',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Cards',
+        component: 'CNavItem',
+
+        name: 'Cards',
         to: '/base/cards',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Carousel',
+        component: 'CNavItem',
+
+        name: 'Carousel',
         to: '/base/carousels',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Collapse',
+        component: 'CNavItem',
+
+        name: 'Collapse',
         to: '/base/collapses',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'List group',
+        component: 'CNavItem',
+
+        name: 'List group',
         to: '/base/list-groups',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Navs & Tabs',
+        component: 'CNavItem',
+
+        name: 'Navs & Tabs',
         to: '/base/navs',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Pagination',
+        component: 'CNavItem',
+
+        name: 'Pagination',
         to: '/base/paginations',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Popovers',
+        component: 'CNavItem',
+
+        name: 'Popovers',
         to: '/base/popovers',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Progress',
+        component: 'CNavItem',
+
+        name: 'Progress',
         to: '/base/progress',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Spinners',
+        component: 'CNavItem',
+
+        name: 'Spinners',
         to: '/base/spinners',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Tables',
+        component: 'CNavItem',
+
+        name: 'Tables',
         to: '/base/tables',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Tooltips',
+        component: 'CNavItem',
+
+        name: 'Tooltips',
         to: '/base/tooltips',
       },
     ],
   },
   {
-    _component: 'CNavGroup',
-    anchor: 'Buttons',
+    component: 'CNavGroup',
+    name: 'Buttons',
     icon: <CIcon name="cil-cursor" customClassName="nav-icon" />,
     items: [
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Buttons',
+        component: 'CNavItem',
+
+        name: 'Buttons',
         to: '/buttons/buttons',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Buttons groups',
+        component: 'CNavItem',
+
+        name: 'Buttons groups',
         to: '/buttons/button-groups',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Dropdowns',
+        component: 'CNavItem',
+
+        name: 'Dropdowns',
         to: '/buttons/dropdowns',
       },
     ],
   },
   {
-    _component: 'CNavGroup',
-    anchor: 'Forms',
+    component: 'CNavGroup',
+    name: 'Forms',
     icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
     items: [
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Form Control',
+        component: 'CNavItem',
+
+        name: 'Form Control',
         to: '/forms/form-control',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Select',
+        component: 'CNavItem',
+
+        name: 'Select',
         to: '/forms/select',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Checks & Radios',
+        component: 'CNavItem',
+
+        name: 'Checks & Radios',
         to: '/forms/checks-radios',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Range',
+        component: 'CNavItem',
+
+        name: 'Range',
         to: '/forms/range',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Input Group',
+        component: 'CNavItem',
+
+        name: 'Input Group',
         to: '/forms/input-group',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Floating Labels',
+        component: 'CNavItem',
+
+        name: 'Floating Labels',
         to: '/forms/floating-labels',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Layout',
+        component: 'CNavItem',
+
+        name: 'Layout',
         to: '/forms/layout',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Validation',
+        component: 'CNavItem',
+
+        name: 'Validation',
         to: '/forms/validation',
       },
     ],
   },
   {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Charts',
+    component: 'CNavItem',
+    name: 'Charts',
     to: '/charts',
     icon: <CIcon name="cil-chart-pie" customClassName="nav-icon" />,
   },
   {
-    _component: 'CNavGroup',
-    anchor: 'Icons',
+    component: 'CNavGroup',
+    name: 'Icons',
     icon: <CIcon name="cil-star" customClassName="nav-icon" />,
     items: [
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'CoreUI Free',
+        component: 'CNavItem',
+
+        name: 'CoreUI Free',
         to: '/icons/coreui-icons',
         badge: {
           color: 'success',
@@ -226,54 +220,53 @@ const _nav = [
         },
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'CoreUI Flags',
+        component: 'CNavItem',
+
+        name: 'CoreUI Flags',
         to: '/icons/flags',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'CoreUI Brands',
+        component: 'CNavItem',
+
+        name: 'CoreUI Brands',
         to: '/icons/brands',
       },
     ],
   },
   {
-    _component: 'CNavGroup',
-    anchor: 'Notifications',
+    component: 'CNavGroup',
+    name: 'Notifications',
     icon: <CIcon name="cil-bell" customClassName="nav-icon" />,
     items: [
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Alerts',
+        component: 'CNavItem',
+
+        name: 'Alerts',
         to: '/notifications/alerts',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Badges',
+        component: 'CNavItem',
+
+        name: 'Badges',
         to: '/notifications/badges',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Modal',
+        component: 'CNavItem',
+
+        name: 'Modal',
         to: '/notifications/modals',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Toasts',
+        component: 'CNavItem',
+
+        name: 'Toasts',
         to: '/notifications/toasts',
       },
     ],
   },
   {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Widgets',
+    component: 'CNavItem',
+    name: 'Widgets',
     to: '/widgets',
     icon: <CIcon name="cil-calculator" customClassName="nav-icon" />,
     badge: {
@@ -282,36 +275,36 @@ const _nav = [
     },
   },
   {
-    _component: 'CNavTitle',
-    anchor: 'Extras',
+    component: 'CNavTitle',
+    name: 'Extras',
   },
   {
-    _component: 'CNavGroup',
-    anchor: 'Pages',
+    component: 'CNavGroup',
+    name: 'Pages',
     icon: <CIcon name="cil-star" customClassName="nav-icon" />,
     items: [
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Login',
+        component: 'CNavItem',
+
+        name: 'Login',
         to: '/login',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Register',
+        component: 'CNavItem',
+
+        name: 'Register',
         to: '/register',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Error 404',
+        component: 'CNavItem',
+
+        name: 'Error 404',
         to: '/404',
       },
       {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Error 500',
+        component: 'CNavItem',
+
+        name: 'Error 500',
         to: '/500',
       },
     ],

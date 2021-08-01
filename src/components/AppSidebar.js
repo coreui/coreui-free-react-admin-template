@@ -1,13 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import {
-  CSidebar,
-  CSidebarBrand,
-  CSidebarNav,
-  CSidebarToggler,
-  CCreateNavItem,
-} from '@coreui/react'
+import { CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler } from '@coreui/react'
+
+import { AppSidebarNav } from './AppSidebarNav'
 
 import CIcon from '@coreui/icons-react'
 
@@ -27,7 +23,7 @@ const AppSidebar = () => {
       position="fixed"
       selfHiding="md"
       unfoldable={unfoldable}
-      show={sidebarShow}
+      visible={sidebarShow}
       onShow={() => console.log('show')}
       onHide={() => {
         dispatch({ type: 'set', sidebarShow: false })
@@ -39,7 +35,7 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <CCreateNavItem items={navigation} />
+          <AppSidebarNav items={navigation} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler

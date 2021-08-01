@@ -23,7 +23,7 @@
 
 ### Forms
 
-- `CInput` => `CFormControl`
+- `CInput` => `CFormInput`
 - `CInputCheckbox` => `CFormCheck`
 - `CLabel` => `CFormLabel`
 - `CSelect` => `CFormSelect`

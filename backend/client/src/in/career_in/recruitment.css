@@ -1,0 +1,16 @@
+.Recruitment{
+	height: 85vh;
+}
+.Recruitment_container {
+	box-sizing: border-box;
+	margin:0 auto;
+}
+.Recruitment_wrapper{
+	margin:0 auto;
+	vertical-align: top;
+}
+.Recruitment_block{
+	margin-top:0;
+	vertical-align: top;
+}
+

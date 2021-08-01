@@ -1,0 +1,16 @@
+@import url(../component/style/_global.css);
+
+
+#column_block_container {
+	position : relative;
+	/*font-family:'Noto Sans TC',Arial,sans-serif;*/
+	margin-top: 10vh;
+	/* overflow-y: scroll; */
+	/*height: 85vh;*/
+	opacity: 0.95;
+}
+
+a:link,a:visited,a:hover,a:active {
+  text-decoration: none; 
+  color: var(--title-color);
+}

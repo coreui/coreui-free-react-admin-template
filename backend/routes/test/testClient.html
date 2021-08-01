@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>測試頁-hero</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+</head>
+<body>
+  <form id="testForm">
+	<input type="text" id="pUrl" placeholder="url" value="/api/testRoute">
+    <input type="submit" />
+  </form>
+  <textarea form="testForm" id="taid" cols="35" wrap="soft"></textarea>
+  <input type="file" id="selectFiles" value="Import" /><br />
+  <button id="import">Import file</button>
+  <script>
+  document.getElementById('import').onclick = function() {
+    var files = document.getElementById('selectFiles').files;
+  console.log(files);
+  if (files.length <= 0) {
+    return false;
+  }
+
+  var fr = new FileReader();
+
+  fr.onload = function(e) { 
+    console.log(e);
+    var result = JSON.parse(e.target.result);
+    var formatted = JSON.stringify(result, null, 2);
+    document.getElementById('taid').value = formatted;
+    document.getElementById("taid").disabled = true;
+  }
+
+  fr.readAsText(files.item(0));
+};
+  </script>
+  <script>
+    
+	$("#testForm").submit(function(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+    var form = $(this);
+    var url = $('#pUrl').val();
+	var data = {}
+	var text = $('#taid').val();
+  console.log('processing')
+  if(document.getElementById("taid").disabled){
+    data = JSON.parse(text);
+  }else{
+    text.split("\n").forEach(line=>{
+      temp = line.split(' ')
+      data[temp[0]]=temp[1]
+    })
+  }
+	
+	console.log('toSend=',data)
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: data, // serializes the form's elements.
+           success: function(data)
+           {
+               console.log(data); // show response from the php script.
+               document.getElementById("taid").disabled = false;
+               document.getElementById('taid').value = "";
+           },
+           error:function(XMLHttpRequest, textStatus){
+              console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
+              // console.log(textStatus);
+              // $(".box").html("服务器错误！");
+           }
+         });
+});
+  </script>
+</body>
+</html>

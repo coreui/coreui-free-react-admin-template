@@ -1,0 +1,205 @@
+@import url(../component/style/_global.css);
+
+html {
+
+    background-color: #003F67;
+
+}
+
+.Contact_image{
+
+    width: 15rem;
+
+}
+
+#Contact_container{
+
+    display:flex;
+    flex-direction: column;
+
+    min-height:100vh;
+    
+    margin-left:5vw;
+    margin-right:5vw;
+    
+}
+#Contact_content_wrap{
+
+    margin-top: 10rem;
+
+}
+
+
+#Contact_left_column{
+
+    font-size:1.5rem;
+    font-weight:500;
+    color:white;
+    
+}
+
+#Contact_left_text{
+
+    margin:0;
+
+    font-family:var(--primary-font);
+    text-align: center;
+    
+}
+
+#Contact_right_column{
+    
+    font-size:1.5rem;
+    font-weight:500;
+    color:white;
+
+}
+
+
+
+#Contact_right_text{
+  
+    margin:0;
+
+    font-family:var(--primary-font);
+    text-align: center;
+    
+}
+
+#Contact_team_btn{
+
+    background-color:  #003f67;
+
+    
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    
+}
+#Contact_team_btn:hover{
+    
+    background-color: #fff;
+
+    font-weight: bold;
+    color: #003f67;
+
+    transition-property: background-color, color;
+    transition-duration: 250ms, 250ms;
+    transition-timing-function: cubic-bezier(0.4.0,0.2,1),cubic-bezier(0.4.0,0.2,1);
+    
+}
+#Contact_link{
+
+    color: unset;
+    text-decoration: none;
+    
+}
+
+@media screen and (min-width: 300px){
+    #Contact_left_text{
+        font-size: 15px;
+    }
+    #Contact_right_text{
+        font-size: 15px;
+    }
+    #Contact_team_btn{
+
+        border: 2px #fff solid;
+        border-radius: 10px;
+        
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 350px){
+    #Contact_left_text{
+        font-size: 20px;
+    }
+    #Contact_right_text{
+        font-size: 20px;
+    }
+    #Contact_team_btn{
+        
+        border-radius: 11px;
+
+        font-size: 22px;
+    }
+}
+@media screen and (min-width: 400px){
+    #Contact_left_text{
+        font-size: 22px;
+    }
+    #Contact_right_text{
+        font-size: 22px;
+    }
+    #Contact_team_btn{
+
+        border-radius: 13px;
+
+        font-size: 25px;
+        
+    }
+}
+@media screen and (min-width: 600px){
+    #Contact_left_text{
+        font-size: 25px;
+    }
+    #Contact_right_text{
+        font-size: 25px;
+    }
+    #Contact_team_btn{
+
+        border-radius: 15px;
+
+        font-size: 30px;
+        
+    }
+}
+@media screen and (min-width: 767px){
+    #Contact_left_text{
+        font-size: 35px;
+    }
+    #Contact_right_text{
+        font-size: 35px;
+    }
+    #Contact_team_btn{
+
+        border: 4px #fff solid;
+        border-radius: 21px;
+
+        font-size: 42px;
+        
+    }
+}
+@media screen and (min-width: 1023px){
+    #Contact_left_text{
+        font-size: 39px;
+    }
+    #Contact_right_text{
+        font-size: 39px;
+    }
+    #Contact_team_btn{
+        
+        border-radius: 23px;
+        font-size: 45px;
+        
+    }
+}
+@media screen and (min-width: 1500px){
+    #Contact_left_text{
+        font-size: 32px;
+    }
+    #Contact_right_text{
+        font-size: 32px;
+    }
+    #Contact_team_btn{
+
+        border: 2px #fff solid;
+        border-radius: 19px;
+
+        font-size: 38px;
+
+    }
+}
+
+

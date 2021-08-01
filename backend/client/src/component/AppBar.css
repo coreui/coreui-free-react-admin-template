@@ -1,0 +1,102 @@
+button:focus{
+    outline: 0;
+}
+/* .AppBar_dropdown{
+    margin-right: -10vw;
+}
+.AppBar_dropdown>li{
+    display: inline-block;
+    width: fit-content;
+    margin-left: 5vw;
+}
+.AppBar_dropdown ul{
+    padding-top: 2vh;
+    margin: 0 !important;
+    list-style: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    left:9999999px;
+    z-index: 2;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+}
+.AppBar_dropdown ul>li{
+    width:10vw;
+    margin-left: -2.5vw;
+}
+.AppBar_dropdown li:hover > ul{
+    /* display: block; 
+    left:42.5vw;
+    opacity: 1;
+} */
+/* #AppBar_root{
+    position:fixed;
+    top: 0;
+    align-items:stretch;
+    z-index: 1;
+    /* width: 100vw; 
+} */
+
+#AppBar_Bar{
+    flex-grow: 1;
+    position:static;
+    margin-right:100;
+    background-color:#FFFFFF;
+    height:90;
+}
+#AppBar_Logo{
+    display: inline-block;
+    flex-grow:1;
+    /* border:2px solid red; */
+}
+#AppBar_space{
+    display: inline-block;
+    flex-grow:3;
+    /* border:2px solid red; */
+}
+#AppBar_menu{
+    display: inline-block;
+    flex-grow:2;
+    /* border:2px solid red; */
+    
+}
+
+#AppBar_menuButton{
+    display: inline-block;
+    position: relative;
+    /* border:2px solid green; */
+    flex-grow: 1;
+    width: 10vw;
+    height: 100%;
+    margin:0;
+    color:#6AFFC6;
+    font-size: 1.5rem;
+    font-weight:Bold;
+    text-decoration:none;
+}
+#AppBar_Link{
+    color:#6AFFC6;
+    font-size: 1.5rem;
+    font-weight:Bold;
+    text-decoration:none;
+}
+#AppBar_menuButton:hover{
+    color:rgb(48, 232, 255) ;
+}
+#AppBar_menuButton:focus{
+    color: #005588;
+}
+#AppBar_menuButton:active{
+    color: #005588;
+}
+
+.dropdown-menu{
+    border:0;
+    background-color: #f8f9fa;
+}
+
+.noHoverBg:hover{
+    background-color: inherit !important;
+}

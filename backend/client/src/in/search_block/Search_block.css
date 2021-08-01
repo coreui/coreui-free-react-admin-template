@@ -1,0 +1,18 @@
+.Search_block_div{
+    background-image: url('../../images/search_bar.png');
+    background-repeat: no-repeat;
+    background-size: 45vw,15vh;
+    clear: both;
+    height: 30vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+.Search_block_div img{
+    width:200px;
+    height:200px;
+    float: left;
+}
+#Search_block_text{
+    float: left;
+    /* display: inline-block; */
+}

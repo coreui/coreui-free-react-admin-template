@@ -1,0 +1,26 @@
+@import url(../component/style/_global.css);
+
+#Team_container{
+    font-family:var(--primary-font) !important;
+}
+
+#Team_content{
+
+    font-size: 24px;
+    color:white;
+    
+}
+#Team_title_hr{
+
+    width:100%;
+
+    border-bottom: 2px solid gray;
+
+    font-size: 48px;
+    
+}
+#Team_B06_title_hr{
+
+    font-size: 32px;
+
+}

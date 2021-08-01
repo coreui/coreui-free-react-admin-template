@@ -1,0 +1,21 @@
+#hashtag_space{
+    padding:10px 80px;
+}
+
+.column_hashtags{
+    text-align: center;
+    color: #4682B4;
+    text-decoration: none;
+    word-spacing:100px;
+    font-size: 20px;
+}
+
+.column_hashtags a:hover{
+    text-decoration: underline;
+}
+
+.column_hashtags a{
+    margin-left: 1vw;
+    transition-property: text-decoration;
+    transition-duration: 0.5s;
+}

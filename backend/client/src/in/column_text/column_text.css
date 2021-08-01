@@ -1,0 +1,50 @@
+#column_text_container {
+	position : relative;
+	font-family:'Noto Sans TC',Arial,sans-serif;
+}
+#column_text_background {
+	overflow-y: auto;
+	height: 70vw;
+	margin-top : 1em;
+	margin-left : 10vw;
+	margin-right : 10vw;
+	background-color : #93D5FF;
+	border-radius: 10px;
+	box-shadow: #fff 3px 2px;
+}
+
+
+#column_titlepage{
+	margin-top : 5em;
+	clear: both;
+	text-align: center;
+	font-size : 24px;
+	color : #fff;
+	cursor: pointer;
+	text-shadow: #000 1px 1px;
+	
+}
+#column_hashtagpage{
+	clear: both;
+	text-align: center;
+	font-size : 20px;
+	color : rgb(238, 240, 128);
+	cursor: pointer;
+	text-shadow: #000 1px 1px;
+	
+}
+#column_textpage{
+	overflow-y: auto;
+	width: 1000px;
+	display: inline-block;
+	margin-left: 55px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size : 16px;
+}
+@media (max-width:1200px){
+	
+}
+@media (max-width:500px){
+	
+}

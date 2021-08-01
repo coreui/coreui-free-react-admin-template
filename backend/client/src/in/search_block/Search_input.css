@@ -1,0 +1,15 @@
+#Search_input_container{
+    color: white;
+    list-style: none;
+}
+.Search_input_btn{
+    height: 2vw;
+    width: 2vw;
+}
+#Search_input_addbtn{
+    height: 2vw;
+    width: 2vw;
+    background-color: inherit;
+    padding: 0;
+    border: 0;
+}

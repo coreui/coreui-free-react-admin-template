@@ -1,0 +1,120 @@
+@import url(../../component/style/_global.css);
+
+/** column block no element really use it **/
+
+
+#column_block {
+    display: block;
+	margin-top : 1vw;
+    margin-bottom : 2vw;
+    padding: 0.5rem 0.5rem;
+	background-color: rgba(248, 252, 253, 0.9);
+    font: normal 500 18px/ 1.2em var(--primary-font);
+    border-radius: 10px;
+    box-sizing: border-box;
+	/*box-shadow: #fff 3px 2px;*/
+}
+#column_block:hover{
+    background-color: white;
+}
+
+.container {
+    max-width: 90%;
+}
+
+/** title **/
+.column_block_title{
+    font-weight: bold;
+    color: var(--title-color);
+    margin-left: 0.4rem; 
+    margin:  em 0;
+}
+.column_block_title:hover {
+    color: var(--primary-color);
+}
+.Simple-Line {
+    max-width: 40%;
+    border-top: 2px solid var(--title-color);
+    margin: 0.5rem 0rem;
+}
+
+.column_block_text{
+    font-family: var(--primary-font);
+    padding: 1rem 0;
+    padding-left: 1.5rem;;
+    padding-right: 2rem;
+	/*display: inline-block;*/
+    /*height: 10vh;*/
+}
+
+/** anno **/
+.column_block_Anno{
+    text-align: right;
+    color: var(--title-color);
+    margin:0;    
+}
+.column_block_anno{
+    font-size: 0.6em;
+    margin:0;
+}
+.column_block_date{
+    font-size: 0.4em;
+    color: var(--text-color);
+    margin:0;
+}
+
+.column_block_bulletlist {
+    padding-left: 1em;
+}
+
+.column_listtitle {
+    font-size : 14px;
+    font-weight: bold;
+    list-style-type: square;
+    color: var(--primary-color2);
+    padding: 0.1em 0;
+}
+/** intro **/
+.column_block_introtext >p{
+    /* overflow-y: auto; */
+    list-style-type: none;
+    color: var(--text-color);
+    font-size : 12px;
+    line-height: 18px;
+    margin: 0.1em 0;
+    text-indent: 2em;    
+}
+
+/** img **/
+.column_block_img{
+    /*float : left;
+    margin-bottom: 3rem;    
+    
+    max-height: auto;*/
+    /*border: 1px solid var(--border-color);*/
+    max-width: 600px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: box-shadow .4s ease;
+}
+.column_block_img > img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+.column_block_img:hover{
+    box-shadow: var(--box-shadow);
+    /*transform: scale(1.1); */
+}
+/*
+.column_block_img:hover > img {
+    filter: brightness(1.1);
+}*/
+
+
+
+

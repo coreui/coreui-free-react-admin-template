@@ -1,0 +1,157 @@
+
+.Slidebar_btn{
+    background-color: inherit;
+    border-radius: 50%;
+    border: 0;
+    position: absolute;
+    transform: scale(1);
+    transition-property: transform;
+    transition-duration: 0.5s;
+    z-index: 3;
+}
+.Slidebar_btn:hover{
+    transform: scale(1.25);
+}
+#Slidebar_container{
+    z-index: 3;
+    position: fixed;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+}
+#Slidebar_container::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+@media screen and (min-width: 300px){
+
+    #Slidebar_container{
+        left: -17rem;
+    }
+
+    #Slidebar_main{
+        width: 17rem;
+        height: 90%;
+    }
+
+    .Slidebar_png{
+        height: 40px;
+        width: 40px;
+        
+    }
+
+    .Slidebar_btn{
+        padding:0;
+        left: 17.5rem;
+        top: calc(40vh - 20px);
+    }
+}
+@media screen and (min-width: 350px){
+    #Slidebar_container{
+        left: -20rem;
+    }
+
+    #Slidebar_main{
+        width: 20rem;
+        height: 90%;
+    }
+
+    .Slidebar_btn{
+        left: 20.5rem;
+        top: calc(40vh - 20px);
+    }
+}
+@media screen and (min-width: 400px){
+    #Slidebar_container{
+        left: -22rem;
+    }
+
+    #Slidebar_main{
+        width: 22rem;
+        height: 90%;
+    }
+
+    .Slidebar_btn{
+        left: 22.5rem;
+        top: calc(40vh - 20px);
+    }
+    
+}
+@media screen and (min-width: 600px){
+    #Slidebar_container{
+        left: -30rem;
+    }
+
+    #Slidebar_main{
+        width: 30rem;
+        height: 90%;
+    }
+
+    
+
+    .Slidebar_btn{
+        left: 30.5rem;
+        top: calc(40vh - 20px);
+    }
+}
+@media screen and (min-width: 767px){
+    #Slidebar_container{
+        left: -35rem;
+    }
+
+    #Slidebar_main{
+        width: 35rem;
+        height: 90%;
+    }
+
+    .Slidebar_btn{
+        left: 35.5rem;
+        top: calc(40vh - 25px);
+    }
+
+    .Slidebar_png{
+        height: 50px;
+        width: 50px;
+        
+    }
+}
+@media screen and (min-width: 1023px){
+    #Slidebar_container{
+        left: -45rem;
+    }
+
+    #Slidebar_main{
+        width: 45rem;
+        height: 90%;
+    }
+
+    .Slidebar_btn{
+        left: 45.5rem;
+        top: calc(40vh - 30px);
+    }
+    .Slidebar_png{
+        height: 60px;
+        width: 60px;
+        
+    }
+}
+@media screen and (min-width: 1500px){
+    #Slidebar_container{
+        left: -50rem;
+    }
+
+    #Slidebar_main{
+        width: 50rem;
+        height: 90%;
+    }
+
+    .Slidebar_btn{
+        left: 50.5rem;
+        top: calc(40vh - 35px);
+    }
+    .Slidebar_png{
+        height: 70px;
+        width: 70px;
+        
+    }
+}
+

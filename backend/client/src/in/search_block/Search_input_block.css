@@ -1,0 +1,71 @@
+.Search_input_block_container{
+    margin-top: 2.5vh;
+    height: 3vh;
+    /* display: block; */
+}
+.Search_input_block_list_container{
+    float: left;
+    /* display: inline-block; */
+}
+.Search_input_block_options{
+    cursor: pointer;
+    list-style: none;
+    
+}
+
+.Search_input_block_dropdown>li{
+    /*CurrentOption*/
+    display: inline-block;
+    padding:0;
+}
+.Search_input_block_dropdown ul{
+    color: black;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    left:-9999999px;
+    z-index: 3;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    padding:0;
+}
+.Search_input_block_dropdown ul>li{
+    border-top: 1px gray solid;
+}
+.Search_input_block_dropdown li:hover >ul{
+    left:14vw;
+    opacity: 0.8;
+}
+
+.Search_input_block_input{
+    color: white;
+    background: none;
+    font-size: 16px;
+    float: right;
+    border-width:0 0 4px 0;
+    -o-border-image: linear-gradient(to right, rgb(106, 255, 198) 0%, rgb(48, 232, 255) 100%);
+       border-image: -webkit-gradient(linear, left top, right top, from(rgb(106, 255, 198)), to(rgb(48, 232, 255)));
+       border-image: linear-gradient(to right, rgb(106, 255, 198) 0%, rgb(48, 232, 255) 100%);
+    border-image-slice: 1;
+    padding: 0;
+    margin-top:1%;
+}
+.Search_input_block_remove_btn{
+    float: right;
+    height: 2vw;
+    width: 2vw;
+    background-color: inherit;
+    padding: 0;
+    border: 0;
+    
+}
+.Search_input_block_btn{
+    height: 2vw;
+    width: 2vw;
+    margin-left: 1vw;
+}
+.Search_input_block_expand{
+    margin-bottom: -0.25em;
+    height:1.5em;
+    width: 1.5em;
+}

@@ -1,0 +1,64 @@
+#AppBar_in_root{
+    position:fixed;
+    top:0;
+    align-items:stretch;
+    z-index: 1;
+    width: 100%;
+}
+
+#AppBar_in_Bar{
+    flex-grow: 1;
+    position:static;
+    margin-right:100;
+    background-color:#FFFFFF;
+    height:90;
+}
+#AppBar_in_Logo{
+    display: inline-block;
+    flex-grow:1;
+    /* border:2px solid red; */
+}
+#AppBar_in_space{
+    display: inline-block;
+    flex-grow:1;
+    /* border:2px solid red; */
+}
+#AppBar_in_menu{
+    display: inline-block;
+    flex-grow:4;
+    /*border:2px solid red;*/ 
+    
+}
+#AppBar_in_menuButton{
+    display: inline-block;
+    position: relative;
+    /* border:2px solid green; */
+    flex-grow: 1;
+    width: 10vw;
+    height: 100%;
+    margin:0;
+    color:#6AFFC6;
+    font-size: 1.5rem;
+    font-weight:Bold;
+    text-decoration:none;
+}
+#AppBar_in_Link{
+    color:#6AFFC6;
+    font-size: 1.1vw;
+    font-weight:Bold;
+    text-decoration:none;
+}
+#AppBar_in_menuButton:hover{
+    color:rgb(48, 232, 255) ;
+}
+#AppBar_in_menuButton:focus{
+    color: #005588;
+}
+#AppBar_in_menuButton:active{
+    color: #005588;
+}
+
+.noHoverBg:hover{
+    background-color: inherit !important;
+    color:rgb(48, 232, 255);
+}

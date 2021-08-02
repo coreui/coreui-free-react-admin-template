@@ -27,7 +27,9 @@ body {
 .nav-link {
   color: black !important;
 }
-
+.nav-icon{
+  color: var(--primary_bgcolor) !important;
+}
 .text-color-black {
   color: var(--cui-body-color);
 }

@@ -6,10 +6,6 @@ import { NavLink } from 'react-router-dom'
 const _navOut = [
   {
     _component: 'CNavItem',
-    anchor: '_nav/anchor',
-  },
-  {
-    _component: 'CNavItem',
     as: NavLink,
     anchor: 'CONTACT',
     to: '/contact',

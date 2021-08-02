@@ -5,10 +5,6 @@ import { NavLink } from 'react-router-dom'
 const _navIn = [
   {
     _component: 'CNavItem',
-    anchor: '_nav/anchor',
-  },
-  {
-    _component: 'CNavItem',
     as: NavLink,
     anchor: 'Dashboard',
     to: '/dashboard',
@@ -23,28 +19,6 @@ const _navIn = [
     as: NavLink,
     anchor: 'Career',
     to: '/career',
-    icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
-  },
-  {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Add Recru',
-    to: '/addRecruitment',
-    icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
-  },
-  {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Add Recom',
-    to: '/addRecommendation',
     icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
     badge: {
       color: 'info',

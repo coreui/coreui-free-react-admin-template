@@ -13,6 +13,12 @@ const RecruPost = ({ data }) => {
     500: 1,
   }
   return (
+    <>
+    <a href="/#/addRecruitment">
+      <div className="d-flex justify-content-center add" width="100%">
+        +
+      </div>
+    </a>
     <Masonry
       breakpointCols={breakpointColumnsObj}
       className="my-masonry-grid"
@@ -28,6 +34,7 @@ const RecruPost = ({ data }) => {
         <RecruBlock post={post} key={post.id} />
       ))}
     </Masonry>
+    </>
   )
 }
 RecruPost.propTypes = {

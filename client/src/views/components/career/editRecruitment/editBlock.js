@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
+import PropTypes from 'prop-types'
 import {
   CButton,
   CCard,
@@ -20,33 +21,37 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { freeSet } from '@coreui/icons'
-const formTemplate = {
-  title: '',
-  name: '',
-  desireWorkType: '',
-  contact: '',
-  email: '',
-  diploma: '',
-  file: '',
-}
-const AddRecommendation = () => {
+const EditBlock = ({ data }) => {
+  const EditFormTemplate = {
+    title: data.title.title,
+    companyName: data.title.company_name,
+    workType: data.title.work_type,
+    salary: data.info.salary,
+    diploma: data.info.diploma,
+    file: data.image,
+    id:data.id
+  }
   const history = useHistory()
   const [isModal, setIsModal] = useState(false)
   const [previewURL, setPreviewURL] = useState(null)
-  const [experience, setExperience] = useState([''])
-  const [speciality, setSpeciality] = useState([''])
+  const [experience, setExperience] = useState(data.info.experience)
+  const [requirement, setRequirement] = useState(data.spec.requirement)
+  const [description, setDescription] = useState(data.spec.description)
   const [fileButton, setFileButton] = useState(null)
-  const [recommendationForm, setRecommendationForm] = useState(formTemplate)
+  const [editForm, setEditForm] = useState(EditFormTemplate)
   const handleInputChange = (e) => {
-    setRecommendationForm({ ...recommendationForm, [e.target.name]: e.target.value })
+    setEditForm({ ...editForm, [e.target.name]: e.target.value })
   }
   const addArray = (e) => {
     if (e.target.name === 'experience') {
       const newArray = experience.concat([''])
       setExperience(newArray)
-    } else if (e.target.name === 'speciality') {
-      const newArray = speciality.concat([''])
-      setSpeciality(newArray)
+    } else if (e.target.name === 'requirement') {
+      const newArray = requirement.concat([''])
+      setRequirement(newArray)
+    } else if (e.target.name === 'description') {
+      const newArray = description.concat([''])
+      setDescription(newArray)
     }
   }
   const handleInputArray = (e, index) => {
@@ -56,28 +61,37 @@ const AddRecommendation = () => {
         else return e.target.value
       })
       setExperience(newArray)
-    } else if (e.target.name === 'speciality') {
-      const newArray = speciality.map((req, idx) => {
+    } else if (e.target.name === 'requirement') {
+      const newArray = requirement.map((req, idx) => {
         if (idx !== index) return req
         else return e.target.value
       })
-      setSpeciality(newArray)
+      setRequirement(newArray)
+    } else if (e.target.name === 'description') {
+      const newArray = description.map((desc, idx) => {
+        if (idx !== index) return desc
+        else return e.target.value
+      })
+      setDescription(newArray)
     }
   }
   const handleDeleteArray = (e, index) => {
     if (e.target.name === 'experience') {
       const newArray = experience.filter((exp, idx) => idx !== index)
       setExperience(newArray)
-    } else if (e.target.name === 'speciality') {
-      const newArray = speciality.filter((spec, idx) => idx !== index)
-      setSpeciality(newArray)
+    } else if (e.target.name === 'requirement') {
+      const newArray = requirement.filter((req, idx) => idx !== index)
+      setRequirement(newArray)
+    } else if (e.target.name === 'description') {
+      const newArray = description.filter((desc, idx) => idx !== index)
+      setDescription(newArray)
     }
   }
   const handleChangeImage = (e) => {
     let reader = new FileReader()
     let file = e.target.files[0]
     setFileButton(e.target)
-    setRecommendationForm({ ...recommendationForm, file: file })
+    setEditForm({ ...editForm, file: file })
     reader.onloadend = () => {
       setPreviewURL(reader.result)
     }
@@ -89,30 +103,34 @@ const AddRecommendation = () => {
   const clearImage = (e) => {
     setIsModal(false)
     setPreviewURL(null)
-    setRecommendationForm({ ...recommendationForm, file: null })
+    setEditForm({ ...editForm, file: null })
     fileButton.value = ''
   }
   const handleSubmit = () => {
+    setExperience(experience.filter(exp=>exp===''))
+    setRequirement(requirement.filter(req=>req===''))
+    setDescription(description.filter(des=>des===''))
     const post = {
       title: {
-        title: recommendationForm.title,
-        name: recommendationForm.name,
-        desire_work_type: recommendationForm.desireWorkType,
+        title: editForm.title,
+        company_name: editForm.companyName,
+        work_type: editForm.workType,
       },
       info: {
-        contact: recommendationForm.contact,
-        email: recommendationForm.email,
-        diploma: recommendationForm.diploma,
+        salary: editForm.salary,
+        experience: experience,
+        diploma: editForm.diploma,
       },
       spec: {
-        experience: experience,
-        speciality: speciality,
+        requirement: requirement,
+        description: description,
       },
-      image: recommendationForm.file,
+      image: editForm.file,
     }
     console.log(post)
-    history.push('/recommendation')
+    history.push('/profile')
   }
+
   return (
     <>
       <CModal visible={isModal} onDismiss={() => setIsModal(false)} alignment="center">
@@ -138,50 +156,54 @@ const AddRecommendation = () => {
               <CCard className="mx-4">
                 <CCardBody className="p-4">
                   <CForm>
-                    <h1>Ready to post a recommendation?</h1>
-                    <p className="text-medium-emphasis">Create your recommendation</p>
+                    <h1>Edit a recruitment?</h1>
+                    <p className="text-medium-emphasis">Edit your recruitment</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-user" />
+                        <CIcon content={freeSet.cilLayers} />
                       </CInputGroupText>
-                      <CFormControl placeholder="Title" name="title" onChange={handleInputChange} />
+                      <CFormControl
+                        placeholder={data.title.title}
+                        name="title"
+                        onChange={handleInputChange}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilUser} />
+                        <CIcon content={freeSet.cilBuilding} />
                       </CInputGroupText>
-                      <CFormControl placeholder="Name" name="name" onChange={handleInputChange} />
+                      <CFormControl
+                        placeholder={data.title.company_name}
+                        name="companyName"
+                        onChange={handleInputChange}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilBraille} />
                       </CInputGroupText>
                       <CFormControl
-                        placeholder="Desired Work Type"
-                        name="desireWorkType"
+                        placeholder={data.title.work_type}
+                        name="workType"
                         onChange={handleInputChange}
                       />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilPhone} />
+                        <CIcon content={freeSet.cilDollar} />
                       </CInputGroupText>
                       <CFormControl
-                        placeholder="Phone"
-                        name="contact"
+                        placeholder={data.info.salary}
+                        name="salary"
                         onChange={handleInputChange}
                       />
-                    </CInputGroup>
-                    <CInputGroup className="mb-4">
-                      <CInputGroupText>@</CInputGroupText>
-                      <CFormControl placeholder="Email" name="email" onChange={handleInputChange} />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilEducation} />
                       </CInputGroupText>
                       <CFormControl
-                        placeholder="Diploma"
+                        placeholder={data.info.diploma}
                         name="diploma"
                         onChange={handleInputChange}
                       />
@@ -193,7 +215,7 @@ const AddRecommendation = () => {
                             <CIcon content={freeSet.cilAddressBook} />
                           </CInputGroupText>
                           <CFormControl
-                            placeholder="Experience"
+                            placeholder={experience[index]||"Required Experience"}
                             name="experience"
                             value={exp}
                             onChange={(e) => handleInputArray(e, index)}
@@ -208,21 +230,43 @@ const AddRecommendation = () => {
                         </CInputGroup>
                       )
                     })}
-                    {speciality.map((req, index) => {
+                    {requirement.map((req, index) => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
                             <CIcon content={freeSet.cilThumbUp} />
                           </CInputGroupText>
                           <CFormControl
-                            placeholder="Speciality"
-                            name="speciality"
+                            placeholder={requirement[index]||"Required Skill"}
+                            name="requirement"
                             value={req}
                             onChange={(e) => handleInputArray(e, index)}
                           />
                           <CButton
                             type="button"
-                            name="speciality"
+                            name="requirement"
+                            onClick={(e) => handleDeleteArray(e, index)}
+                          >
+                            x
+                          </CButton>
+                        </CInputGroup>
+                      )
+                    })}
+                    {description.map((desc, index) => {
+                      return (
+                        <CInputGroup className="mb-3" key={index}>
+                          <CInputGroupText>
+                            <CIcon content={freeSet.cilDescription} />
+                          </CInputGroupText>
+                          <CFormControl
+                            placeholder={description[index]||"Description"}
+                            name="description"
+                            value={desc}
+                            onChange={(e) => handleInputArray(e, index)}
+                          />
+                          <CButton
+                            type="button"
+                            name="description"
                             onClick={(e) => handleDeleteArray(e, index)}
                           >
                             x
@@ -238,24 +282,30 @@ const AddRecommendation = () => {
                         id="formFile"
                         type="file"
                         onChange={handleChangeImage}
+                        placeholder={data.image}
                       ></CFormControl>
                     </CInputGroup>
-                    <CRow className="justify-content-between mt-3">
-                      <CCol xs={5} className="d-flex justify-content-center">
+                    <CRow className="mt-3">
+                      <CCol xs={4} className="d-flex justify-content-center">
                         <CButton type="button" name="experience" onClick={addArray}>
-                          Add experience
+                          Add required experience
                         </CButton>
                       </CCol>
-                      <CCol xs={5} className="d-flex justify-content-center">
-                        <CButton type="button" name="speciality" onClick={addArray}>
-                          Add speciality
+                      <CCol xs={4} className="d-flex justify-content-center">
+                        <CButton type="button" name="requirement" onClick={addArray}>
+                          Add required skills
+                        </CButton>
+                      </CCol>
+                      <CCol xs={4} className="d-flex justify-content-center">
+                        <CButton type="button" name="description" onClick={addArray}>
+                          Add description
                         </CButton>
                       </CCol>
                     </CRow>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
                         <CButton color="dark" onClick={handleSubmit}>
-                          Post A Recommendation
+                          Edition Completed
                         </CButton>
                       </div>
                     </CRow>
@@ -269,5 +319,7 @@ const AddRecommendation = () => {
     </>
   )
 }
-
-export default AddRecommendation
+EditBlock.propTypes = {
+  data: PropTypes.object,
+}
+export default EditBlock

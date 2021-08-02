@@ -14,6 +14,10 @@
     "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
   },
   "dependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.14.9",
+    "@babel/preset-react": "^7.14.5",
     "@coreui/chartjs": "3.0.0",
     "@coreui/coreui": "4.0.0",
     "@coreui/icons": "^2.0.1",
@@ -25,10 +29,15 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
+    "babel-loader": "^8.2.2",
     "chart.js": "^3.4.1",
     "classnames": "^2.3.1",
     "core-js": "^3.15.2",
+    "css-loader": "^6.2.0",
     "enzyme": "^3.11.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
@@ -39,7 +48,10 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "4.1.0",
-    "simplebar-react": "^2.3.4"
+    "sass-loader": "^12.1.0",
+    "simplebar-react": "^2.3.4",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.47.1"
   },
   "devDependencies": {
     "auto-changelog": "~2.3.0",
@@ -48,17 +60,12 @@
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "2.3.2",
     "react-scripts": "^4.0.3",
-    "sass": "^1.35.1"
+    "sass": "^1.35.1",
+    "webpack-cli": "^4.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "lint": "eslint \"src/**/*.js\"",
-    "test": "react-scripts test",
-    "test:cov": "npm test -- --coverage --watchAll=false",
-    "test:debug": "react-scripts --inspect-brk test --runInBand",
-    "eject": "react-scripts eject",
-    "changelog": "auto-changelog --starting-version 3.0.0 --commit-limit false --hide-credit"
+    "local-build": "webpack --watch --mode development",
+    "build": "webpack"
   },
   "bugs": {
     "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"

@@ -54,4 +54,5 @@ certificate.crt
 certificate.key
 routes/apidoc-out
 package-lock.json
+yarn.lock
 **/uploads/*.xlsx

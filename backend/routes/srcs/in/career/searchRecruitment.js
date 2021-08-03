@@ -3,58 +3,46 @@ const Recruitment = require('../../../Schemas/recruitment')
 const asyncHandler = require('express-async-handler')
 
 const recruitment = {
-    "title":[
-        "title",
-        "company_name",
-        "work_type"
-    ],
-    "info":[
-        "salary",
-        "experience",
-        "diploma"
-    ],
-    "spec":[
-        "requirement",
-        "description"
-    ]
+  title: ['title', 'company_name', 'work_type'],
+  info: ['salary', 'experience', 'diploma'],
+  spec: ['requirement', 'description'],
 }
 
 const search = (req) => {
-	const query = {};
-    if(req.body.account){
-        query['account'] = req.body.account.toLowerCase();
-    }
+  const query = {}
+  if (req.body._id) query['_id'] = req.body._id
+  if (req.body.account) query['account'] = req.body.account.toLowerCase()
 
-	recruitment.title.forEach(element => {
-		if(req.body[element] !== undefined){
-            const regex = new RegExp(req.body[element], "i")
-			query["title." + element] = {$regex: regex};
-		}
-	});
-	recruitment.info.forEach(element => {
-		if(req.body[element] !== undefined){
-            const regex = new RegExp(req.body[element], "i")
-			query["info." + element] = {$regex: regex};
-		}
-	});
-	recruitment.spec.forEach(element => {
-		if(req.body[element] !== undefined){
-            const regex = new RegExp(req.body[element], "i")
-			query["spec." + element] = {$regex: regex};
-		}
-	});
-	console.log('query=', query);
-	return query;
+  recruitment.title.forEach((element) => {
+    if (req.body[element] !== undefined) {
+      const regex = new RegExp(req.body[element], 'i')
+      query['title.' + element] = { $regex: regex }
+    }
+  })
+  recruitment.info.forEach((element) => {
+    if (req.body[element] !== undefined) {
+      const regex = new RegExp(req.body[element], 'i')
+      query['info.' + element] = { $regex: regex }
+    }
+  })
+  recruitment.spec.forEach((element) => {
+    if (req.body[element] !== undefined) {
+      const regex = new RegExp(req.body[element], 'i')
+      query['spec.' + element] = { $regex: regex }
+    }
+  })
+  console.log('query=', query)
+  return query
 }
 
 const searchRecuitment = async function (req, res, next) {
-    const query = search(req);
-    const objs = await Recruitment.find(query).sort({_id: 1}).catch(dbCatch);
-    const recruitments = [];
-    objs.forEach(each => {
-        recruitments.push(each.getPublic());
-    })
-    return res.status(201).send({data: recruitments})
+  const query = search(req)
+  const objs = await Recruitment.find(query).sort({ _id: 1 }).catch(dbCatch)
+  const recruitments = []
+  objs.forEach((each) => {
+    recruitments.push(each.getPublic())
+  })
+  return res.status(201).send({ data: recruitments })
 }
 
 /**
@@ -62,6 +50,7 @@ const searchRecuitment = async function (req, res, next) {
  * @apiName SearchRecruitment
  * @apiGroup In/career
  * 
+ * @apiparam {String} _id _id (optional)
  * @apiparam {String} account 學號 (optional)
  * @apiparam {String} title 職缺標題 (optional)
  * @apiparam {String} company_name 公司名稱 (optional)

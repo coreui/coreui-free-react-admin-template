@@ -1,43 +1,44 @@
-const { dbCatch } = require('../../../error');
-const Recruitment = require('../../../Schemas/recruitment');
+const { dbCatch } = require('../../../error')
+const Recruitment = require('../../../Schemas/recruitment')
 const asyncHandler = require('express-async-handler')
 
 /*新增一筆資料*/
-async function insert(account,title,company_name,work_type,salary,experience,diploma,requirement,description,img){
+async function insert(
+  account,
+  title,
+  company_name,
+  work_type,
+  salary,
+  experience,
+  diploma,
+  requirement,
+  description,
+  img,
+) {
   let recruitmentObj = {
     account: account,
-    title:{
+    title: {
       title: title,
-		  company_name: company_name,
-		  work_type: work_type
-	  },
-	  info:{
-		  salary: salary,
-		  experience: experience,
-		  diploma: diploma
-	  },
-	  spec:{
-		  requirement: requirement,
-		  description: description
+      company_name: company_name,
+      work_type: work_type,
     },
-  };
-  if(img){
-    recruitmentObj.img = img;
+    info: {
+      salary: salary,
+      experience: experience,
+      diploma: diploma,
+    },
+    spec: {
+      requirement: requirement,
+      description: description,
+    },
   }
-  const recruitment =  await new Recruitment(recruitmentObj).save().catch(dbCatch)
+  if (img) {
+    recruitmentObj.img = img
+  }
+  const recruitment = await new Recruitment(recruitmentObj).save().catch(dbCatch)
   console.log(recruitment.title.title)
-  return recruitment.title.title
-  // recruitment.save(function(err,res){ //save to db
-  //     if(err){
-  //         console.log(err);
-  //     }
-  //     else{
-  //     console.log('成功儲存：',recruitment);
-  //     console.log(res);
-  //     }
-  // })
+  return recruitment
 }
-
 
 /**
  * @api {post} /addRecruitment 新增職缺
@@ -59,35 +60,47 @@ async function insert(account,title,company_name,work_type,salary,experience,dip
  * @apiparam {File} file 照片
  * 
  * @apiSuccess (201) data 職缺標題
+ * @apiSuccess (201) _id 職缺_id(用來search,update,delete)
  * 
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req, res)=>{
-  let recruitmentAccount = 'none';
-  if(req.session){
-    recruitmentAccount = req.session.loginAccount;
-    console.log(req.session);
+module.exports = asyncHandler(async (req, res) => {
+  let recruitmentAccount = 'none'
+  if (req.session) {
+    recruitmentAccount = req.session.loginAccount
+    console.log(req.session)
   }
 
-  const recruitmentTitle = req.body.title;
-  const recruitmentCompany_name = req.body.company_name;
-  const recruitmentWork_type = req.body.work_type;
-  const recruitmentSalary = req.body.salary;
-  const recruitmentExperience = req.body.experience;
-  const recruitmentDiploma = req.body.diploma;
-  const recruitmentRequirement = req.body.requirement;
-  const recruitmentDescription = req.body.description;
+  const recruitmentTitle = req.body.title
+  const recruitmentCompany_name = req.body.company_name
+  const recruitmentWork_type = req.body.work_type
+  const recruitmentSalary = req.body.salary
+  const recruitmentExperience = req.body.experience
+  const recruitmentDiploma = req.body.diploma
+  const recruitmentRequirement = req.body.requirement
+  const recruitmentDescription = req.body.description
 
-  const recruitmentFile = req.file;
-  let recruitmentImg;
-  if(recruitmentFile){
-    recruitmentImg = {data:recruitmentFile.buffer, contentType:recruitmentFile.mimetype}
+  const recruitmentFile = req.file
+  let recruitmentImg
+  if (recruitmentFile) {
+    recruitmentImg = { data: recruitmentFile.buffer, contentType: recruitmentFile.mimetype }
     console.log(recruitmentImg)
   }
 
   //var query = {ID: ID};
-  console.log("新增recruitment")
-  await insert(recruitmentAccount,recruitmentTitle,recruitmentCompany_name,recruitmentWork_type,recruitmentSalary,recruitmentExperience,recruitmentDiploma,recruitmentRequirement,recruitmentDescription, recruitmentFile?recruitmentImg:undefined)
+  console.log('新增recruitment')
+  const { _id } = await insert(
+    recruitmentAccount,
+    recruitmentTitle,
+    recruitmentCompany_name,
+    recruitmentWork_type,
+    recruitmentSalary,
+    recruitmentExperience,
+    recruitmentDiploma,
+    recruitmentRequirement,
+    recruitmentDescription,
+    recruitmentFile ? recruitmentImg : undefined,
+  )
 
-  res.status(201).send({data: recruitmentTitle})
+  res.status(201).send({ data: recruitmentTitle, _id })
 })

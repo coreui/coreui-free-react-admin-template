@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -67,7 +67,9 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ColumnSummary = ({ data }) => {
+  const postsPerPage = 2
   const classes = useStyles()
+  const [page, setPage] = useState(1)
   const contributions = (person) => {
     return (
       <Box className={classes.author} key={person}>
@@ -80,49 +82,51 @@ const ColumnSummary = ({ data }) => {
       </Box>
     )
   }
-  const articles = data.map((art) => {
-    return (
-      <Grid item xs={12} md={12} key={art.key}>
-        <Card className={classes.card}>
-          <Link to={'/ColumnSummary/' + art.id}>
-            <CardMedia
-              className={classes.media}
-              image="https://picsum.photos/1024/700"
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h2" component="h2">
-                {art.title}
-              </Typography>
-              <Typography gutterBottom className={classes.exp}>
-                {art.exp.map((e) => (
-                  <h3 key={e}>{e}</h3>
-                ))}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                className={classes.intro}
-              >
-                {art.intro}
-              </Typography>
-            </CardContent>
-          </Link>
-          <CardActions className={classes.cardActions}>
-            {art.anno.map((person) => {
-              return contributions(person)
-            })}
-            <Box>
-              <Typography variant="subtitle2" color="textSecondary" component="p">
-                {art.date} &emsp;
-                <BookmarkBorderIcon />
-              </Typography>
-            </Box>
-          </CardActions>
-        </Card>
-      </Grid>
-    )
+  const articles = data.map((art, index) => {
+    if (index < postsPerPage * page && index > postsPerPage * (page - 1) - 1) {
+      return (
+        <Grid item xs={12} md={12} key={art.key}>
+          <Card className={classes.card}>
+            <Link to={'/ColumnSummary/' + art.id}>
+              <CardMedia
+                className={classes.media}
+                image="https://picsum.photos/1024/700"
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h2" component="h2">
+                  {art.title}
+                </Typography>
+                <Typography gutterBottom className={classes.exp}>
+                  {art.exp.map((e) => (
+                    <h3 key={e}>{e}</h3>
+                  ))}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  className={classes.intro}
+                >
+                  {art.intro}
+                </Typography>
+              </CardContent>
+            </Link>
+            <CardActions className={classes.cardActions}>
+              {art.anno.map((person) => {
+                return contributions(person)
+              })}
+              <Box>
+                <Typography variant="subtitle2" color="textSecondary" component="p">
+                  {art.date} &emsp;
+                  <BookmarkBorderIcon />
+                </Typography>
+              </Box>
+            </CardActions>
+          </Card>
+        </Grid>
+      )
+    }
   })
   return (
     <div>
@@ -138,7 +142,11 @@ const ColumnSummary = ({ data }) => {
         </Grid>
       </div>
       <Box my={4} className={classes.paginationContainer}>
-        <Pagination count={10} color="primary" />
+        <Pagination
+          count={Math.ceil(data.length / postsPerPage)}
+          color="secondary"
+          onChange={(e, val) => setPage(val)}
+        />
       </Box>
     </div>
   )

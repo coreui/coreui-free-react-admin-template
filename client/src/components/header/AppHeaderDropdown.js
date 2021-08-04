@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import {
   CAvatar,
   CBadge,
@@ -10,8 +11,26 @@ import {
   CDropdownToggle,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import axios from 'axios'
 
 const AppHeaderDropdown = () => {
+  const dispatch = useDispatch()
+  const setIsLogin = (isLogin) => {
+    dispatch({ type: 'set', isLogin: isLogin })
+  }
+  const handleLogOut = (e) => {
+    e.preventDefault()
+    axios
+      .post('/api/logout', {})
+      .then((res) => {
+        alert('登出成功!')
+        setIsLogin(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
@@ -72,9 +91,9 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem href="#">
+        <CDropdownItem onClick={handleLogOut}>
           <CIcon name="cil-lock-locked" className="me-2" />
-          Lock Account
+          Logout
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

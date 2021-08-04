@@ -1,5 +1,6 @@
-import React, { lazy } from 'react'
-
+import React, { lazy, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import {
   CAvatar,
   CButton,
@@ -30,7 +31,11 @@ const Dashboard = () => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
-  return (
+  const isLogin = useSelector((state) => state.isLogin)
+
+  console.log(isLogin)
+
+  return isLogin ? (
     <>
       {/* <WidgetsDropdown /> */}
       <h2>src/views/dashboard/Dashboard</h2>
@@ -586,6 +591,8 @@ const Dashboard = () => {
         </CCol>
       </CRow>
     </>
+  ) : (
+    <Redirect to="/contact" />
   )
 }
 

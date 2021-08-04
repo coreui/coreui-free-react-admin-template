@@ -11,6 +11,7 @@ import {
   CNavLink,
   CNavItem,
   CImage,
+  CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
@@ -23,6 +24,7 @@ import logo_row from '../assets/images/logo_row.png'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
+  const isLogin = useSelector((state) => state.isLogin)
 
   return (
     <CHeader position="sticky" className="mb-4">
@@ -70,9 +72,17 @@ const AppHeader = () => {
             </CNavLink>
           </CNavItem>
         </CHeaderNav>
-        <CHeaderNav className="ms-3">
-          <AppHeaderDropdown />
-        </CHeaderNav>
+        {isLogin ? (
+          <CHeaderNav className="ms-3">
+            <AppHeaderDropdown />
+          </CHeaderNav>
+        ) : (
+          <CHeaderNav>
+            <CNavLink to="/login" component={NavLink}>
+              <CButton>Login</CButton>
+            </CNavLink>
+          </CHeaderNav>
+        )}
       </CContainer>
       <CHeaderDivider />
       <CContainer fluid>

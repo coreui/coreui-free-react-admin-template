@@ -3,6 +3,7 @@ module.exports = {
   register: ['username', 'account', 'password', 'ConfirmPassword'],
   registerFB: ['username', 'account', 'facebookID'],
   login: ['account', 'password'],
+  loginFB: ['facebookID'],
   forget: ['account'], //,"question","Email","password","ConfirmPassword"],
   chLogin: ['question'],
   chPassword: ['chPassword/oldpassword', 'chPassword/newpassword'],

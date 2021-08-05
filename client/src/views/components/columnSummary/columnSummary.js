@@ -145,7 +145,10 @@ const ColumnSummary = ({ data }) => {
         <Pagination
           count={Math.ceil(data.length / postsPerPage)}
           color="secondary"
-          onChange={(e, val) => setPage(val)}
+          onChange={(e, val) => {
+            window.scrollTo(0, 0)
+            setPage(val)
+          }}
         />
       </Box>
     </div>

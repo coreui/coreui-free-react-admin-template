@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import React, { Suspense, useEffect } from 'react'
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
 
 // routes config
@@ -12,6 +12,11 @@ const AppContent = () => {
     // height: '100%',
     // position: 'relative',
   }
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   return (
     <div lg style={ContentStyle}>
       <Suspense fallback={<CSpinner color="primary" />}>

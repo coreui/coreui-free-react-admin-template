@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import {
   CButton,
   CCard,
@@ -21,6 +22,7 @@ import {
   CLink,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { Redirect } from 'react-router-dom'
 
 const RegisterFormTemplate = {
   account: '',
@@ -37,6 +39,7 @@ const Register = () => {
   const [isModal, setIsModal] = useState(false)
   const [previewURL, setPreviewURL] = useState(null)
   const [fileButton, setFileButton] = useState(null)
+  const [toLogin, setToLogin] = useState(false)
 
   // data to backend
   const [registerForm, setRegisterForm] = useState(RegisterFormTemplate)
@@ -91,21 +94,37 @@ const Register = () => {
       if (r) {
         let data = new FormData()
         for (let key in registerForm) {
-          data.append(key, registerForm[data])
+          data.append(key, registerForm[key])
         }
         const config = {
           headers: {
             'content-type': 'multipart/form-data',
           },
         }
-        // TODO
         // send to backend
         // then redirect to login
+        axios
+          .post('api/register', data, config)
+          .then((res) => {
+            // console.log(res)
+            alert('註冊成功,跳轉至登入頁面')
+            setToLogin(true)
+          })
+          .catch((err) => {
+            // console.log(err.response)
+            switch (err.response.status) {
+              default:
+                alert(err.response.data.description)
+                break
+            }
+          })
       }
     }
   }
 
-  return (
+  return toLogin ? (
+    <Redirect to="/login" />
+  ) : (
     <>
       <CModal visible={isModal} onDismiss={closeModal} alignment="center">
         <CModalHeader onDismiss={closeModal}>

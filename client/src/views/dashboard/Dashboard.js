@@ -33,8 +33,6 @@ const Dashboard = () => {
 
   const isLogin = useSelector((state) => state.isLogin)
 
-  console.log(isLogin)
-
   return isLogin ? (
     <>
       {/* <WidgetsDropdown /> */}

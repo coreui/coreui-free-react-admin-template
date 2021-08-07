@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import axios from 'axios'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { CCol, CContainer, CRow, CImage } from '@coreui/react'
 
 import RegisterAccount from './images/Register_Account.png'
 import RegisterFB from './images/Register_Facebook.png'
 
 const RegisterEntry = () => {
+  const dispatch = useDispatch()
+  const isLogin = useSelector((state) => state.isLogin)
+  const setIsLogin = (isLogin) => {
+    dispatch({ type: 'set', isLogin: isLogin })
+  }
+
+  const [needRegister, setNeedRegister] = useState(false)
+  const [userId, setUserId] = useState(null)
+
   const handleFBSubmit = (res) => {
     if (res.status == 'unknown') {
       return
@@ -15,7 +26,26 @@ const RegisterEntry = () => {
     // check if login success
     // if no redirect to registerFB, then redirect to login
     // if success redirect to inside
-    console.log(res.userID) // for test
+    // console.log(res.userID) // for test
+    setUserId(res.userID)
+    axios
+      .post('/api/loginFB', { facebookID: res.userID })
+      .then((res) => {
+        const { username } = res.data
+        alert(`歡迎回來! ${username}`)
+        setIsLogin(true)
+      })
+      .catch((err) => {
+        switch (err.response.status) {
+          case 404:
+            alert(err.response.data.description)
+            setNeedRegister(true)
+            break
+          default:
+            alert(err.response.data.description)
+            break
+        }
+      })
   }
 
   const buttonAccount = (
@@ -44,27 +74,39 @@ const RegisterEntry = () => {
       />
     </div>
   )
-
-  return (
-    <div className="min-vh-100 d-flex flex-row align-items-center">
-      <CContainer className="align-items-center">
-        <CRow className="justify-content-center mt-5 mb-3">
-          <p className="text-wrap text-center badge" style={{ fontSize: '1.5rem' }}>
-            Please choose one method to register, strongly recommend via Facebook
-          </p>
-        </CRow>
-        {/* for desktop and ipad */}
-        <CRow className="justify-content-between d-sm-none d-lg-flex">
-          <CCol xs="4">{buttonAccount}</CCol>
-          <CCol xs="4">{buttonFB}</CCol>
-        </CRow>
-        {/* for mobile */}
-        <CRow className="justify-content-center d-sm-flex d-lg-none">
-          <CRow className="justify-content-center mb-3">{buttonAccount}</CRow>
-          <CRow className="justify-content-center mt-3">{buttonFB}</CRow>
-        </CRow>
-      </CContainer>
-    </div>
-  )
+  if (isLogin) {
+    return <Redirect to="/dashboard" />
+  } else if (needRegister) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/register_facebook',
+          state: { facebookID: userId },
+        }}
+      />
+    )
+  } else {
+    return (
+      <div className="min-vh-100 d-flex flex-row align-items-center">
+        <CContainer className="align-items-center">
+          <CRow className="justify-content-center mt-5 mb-3">
+            <p className="text-wrap text-center badge" style={{ fontSize: '1.5rem' }}>
+              Please choose one method to register, strongly recommend via Facebook
+            </p>
+          </CRow>
+          {/* for desktop and ipad */}
+          <CRow className="justify-content-between d-sm-none d-lg-flex">
+            <CCol xs="4">{buttonAccount}</CCol>
+            <CCol xs="4">{buttonFB}</CCol>
+          </CRow>
+          {/* for mobile */}
+          <CRow className="justify-content-center d-sm-flex d-lg-none">
+            <CRow className="justify-content-center mb-3">{buttonAccount}</CRow>
+            <CRow className="justify-content-center mt-3">{buttonFB}</CRow>
+          </CRow>
+        </CContainer>
+      </div>
+    )
+  }
 }
 export default RegisterEntry

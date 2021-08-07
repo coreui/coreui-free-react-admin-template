@@ -71,7 +71,7 @@ const Login = () => {
     // send res.userID
     console.log(res.userID)
     axios
-      .post('/api/loginFB', { userID: res.userID })
+      .post('/api/loginFB', { facebookID: res.userID })
       .then((res) => {
         console.log(res)
         const { username } = res.data
@@ -93,7 +93,7 @@ const Login = () => {
   if (isLogin) {
     return <Redirect to="/dashboard"></Redirect>
   } else if (needRegister) {
-    return <Redirect to="/register"></Redirect>
+    return <Redirect to="/register_entry"></Redirect>
   } else {
     return (
       <div className="min-vh-100 d-flex flex-row align-items-center">

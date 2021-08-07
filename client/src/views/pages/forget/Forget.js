@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 import {
   CButton,
   CCard,
@@ -14,10 +16,12 @@ import {
 import CIcon from '@coreui/icons-react'
 
 const ForgetFormTemplate = {
-  studentID: '',
+  account: '',
 }
 
 const Forget = () => {
+  const [toLogin, setToLogin] = useState(false)
+
   const [forgetForm, setForgetForm] = useState(ForgetFormTemplate)
 
   const handleInputChange = (e) => {
@@ -28,10 +32,20 @@ const Forget = () => {
     e.preventDefault()
     // connect with backend
     // and send email to user
-    console.log(forgetForm) // for test
+    axios
+      .post('/api/forget', forgetForm)
+      .then((res) => {
+        alert(`重設密碼信已寄出，請至${res.data.email}收信`)
+        setToLogin(true)
+      })
+      .catch((err) => {
+        alert(err.response.data.description)
+      })
   }
 
-  return (
+  return toLogin ? (
+    <Redirect to="/login" />
+  ) : (
     <div className="min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
@@ -47,13 +61,13 @@ const Forget = () => {
                     </CInputGroupText>
                     <CFormControl
                       placeholder="Student ID"
-                      name="studentID"
+                      name="account"
                       onChange={handleInputChange}
                     />
                   </CInputGroup>
                   <CRow className="justify-content-center mt-3">
                     <div className="d-flex justify-content-center">
-                      <CButton color="dark" block onClick={handleSubmit}>
+                      <CButton color="dark" onClick={handleSubmit}>
                         Send Link to Mail
                       </CButton>
                     </div>

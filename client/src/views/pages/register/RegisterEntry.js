@@ -38,7 +38,6 @@ const RegisterEntry = () => {
       .catch((err) => {
         switch (err.response.status) {
           case 404:
-            alert(err.response.data.description)
             setNeedRegister(true)
             break
           default:

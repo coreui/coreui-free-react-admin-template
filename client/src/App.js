@@ -19,6 +19,7 @@ const RegisterEntry = React.lazy(() => import('./views/pages/register/RegisterEn
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const RegisterFB = React.lazy(() => import('./views/pages/register/RegisterFB'))
 const Forget = React.lazy(() => import('./views/pages/forget/Forget'))
+const ResetPassword = React.lazy(() => import('./views/pages/resetPassword/ResetPassword'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const Profile = React.lazy(() => import('./views/pages/profile/Profile'))
@@ -67,7 +68,12 @@ const App = () => {
             render={(props) => <RegisterFB {...props} />}
           />
           <Route exact path="/forget" name="Forget" render={(props) => <Forget {...props} />} />
-
+          <Route
+            exact
+            path="/ResetPassword/:account/:active"
+            name="Reset Password"
+            render={(props) => <ResetPassword {...props} />}
+          />
           <Route exact path="/profile" name="Profile Page" render={() => <Profile />} />
           <Route
             exact

@@ -67,8 +67,8 @@ const Forget = () => {
                   </CInputGroup>
                   <CRow className="justify-content-center mt-3">
                     <div className="d-flex justify-content-center">
-                      <CButton color="dark" onClick={handleSubmit}>
-                        Send Link to Mail
+                      <CButton color="dark" block onClick={handleSubmit}>
+                        Send Link to Your Mail
                       </CButton>
                     </div>
                   </CRow>

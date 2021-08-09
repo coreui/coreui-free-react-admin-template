@@ -26,9 +26,9 @@ const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.sidebarShow)
-  const [inout, setInout] = useState(false)
+  const isLogin = useSelector((state) => state.isLogin)
   const chNav = () => {
-    if (inout) return navIn
+    if (isLogin) return navIn
     else return navOut
   }
   return (
@@ -45,13 +45,7 @@ const AppSidebar = () => {
     >
       <CSidebarBrand className="d-flex" to="/">
         {/* <h6>components/AppSidebar/CIcon</h6> */}
-        <CImage
-          src={logo_row}
-          width="60%"
-          onClick={(e) => {
-            setInout(!inout)
-          }}
-        />
+        <CImage src={logo_row} width="60%" />
         {/* <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} /> */}
       </CSidebarBrand>
       <CSidebarNav>

@@ -25,6 +25,7 @@ EE+ api 文件
   - [新增職缺](#新增職缺)
   - [顯示我建立的職缺](#顯示我建立的職缺)
   - [顯示所有職缺](#顯示所有職缺)
+  - [reg 搜尋](#reg搜尋)
 - [In/column](#incolumn)
   - [拿 Detail 資料](#拿detail資料)
   - [拿 Outline 資料](#拿outline資料)
@@ -38,12 +39,14 @@ EE+ api 文件
   - [更新 porfile](#更新porfile)
   - [搜尋 porfile(or)](<#搜尋porfile(or)>)
   - [顯示個人 profile](#顯示個人profile)
+  - [reg 搜尋](#reg搜尋)
 - [In/recommendation](#inrecommendation)
   - [刪除簡歷](#刪除簡歷)
   - [更新簡歷](#更新簡歷)
   - [搜尋簡歷](#搜尋簡歷)
   - [新增簡歷](#新增簡歷)
   - [顯示我建立的簡歷](#顯示我建立的簡歷)
+  - [reg 搜尋](#reg搜尋)
 - [In/study](#instudy)
   - [拿取本年表單連結](#拿取本年表單連結)
   - [配對](#配對)
@@ -734,6 +737,49 @@ POST /showRecruitment
 | ----------- | -------- | ----------- |
 | description | `String` | 資料庫錯誤  |
 
+## reg 搜尋
+
+[Back to top](#top)
+
+```
+POST /smartsearchRecruitment
+```
+
+### Parameters - `Parameter`
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| keyword | `String` | 用空格區分  |
+
+### Success response
+
+#### Success response - `201`
+
+| Name                     | Type       | Description                                         |
+| ------------------------ | ---------- | --------------------------------------------------- |
+| -                        | `Object[]` | 職缺們                                              |
+| &ensp;\_id               | `String`   | mongodb \_id(for delete)                            |
+| &ensp;title              | `Object`   | 標題相關                                            |
+| &ensp;&ensp;title        | `String`   | 標題                                                |
+| &ensp;&ensp;company_name | `String`   | 公司名稱                                            |
+| &ensp;&ensp;work_type    | `String`   | 職位(ex.前端工程師)                                 |
+| &ensp;info               | `Object`   | 工作資訊                                            |
+| &ensp;&ensp;salary       | `String`   | 薪資                                                |
+| &ensp;&ensp;experience   | `String[]` | 經驗要求                                            |
+| &ensp;&ensp;diploma      | `String`   | 學院要求                                            |
+| &ensp;spec               | `Object`   | 詳細描述                                            |
+| &ensp;&ensp;requirement  | `String[]` | 技能要求                                            |
+| &ensp;&ensp;description  | `String[]` | 工作的其他描述                                      |
+| &ensp;image              | `String`   | 公司頭像(Ex. <code>&lt;img src={image}/&gt;</code>) |
+
+### Error response
+
+#### Error response - `500`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 資料庫錯誤  |
+
 # In/column
 
 ## 拿 Detail 資料
@@ -1363,6 +1409,55 @@ GET /profile
 | ----------- | -------- | ----------- |
 | description | `String` | 資料庫錯誤  |
 
+## reg 搜尋
+
+[Back to top](#top)
+
+```
+POST /smartsearchProfile
+```
+
+### Parameters - `Parameter`
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| keyword | `String` | 用空格區分  |
+
+### Success response
+
+#### Success response - `201`
+
+| Name         | Type       | Description                                           |
+| ------------ | ---------- | ----------------------------------------------------- |
+| userimage    | `String`   | 大頭貼(使用<code>&lt;img src={userimage}/&gt;</code>) |
+| account      | `String`   | 學號                                                  |
+| username     | `String`   | 名字                                                  |
+| nickname     | `String`   | 綽號                                                  |
+| profile      | `String`   | 自介                                                  |
+| publicEmail  | `String`   | 公開信相                                              |
+| cellphone    | `String`   | 手機                                                  |
+| CC           | `String`   | city and country                                      |
+| web          | `String`   | 個人部落格                                            |
+| facebook     | `String`   | facebook                                              |
+| Linkedin     | `String`   | Linkedin                                              |
+| major        | `String`   | 學士                                                  |
+| double_major | `String`   | 雙主修                                                |
+| minor        | `String`   | 輔系                                                  |
+| master       | `String`   | 碩士                                                  |
+| doctor       | `String`   | 博士                                                  |
+| Occupation   | `Object[]` | 職業                                                  |
+| &ensp;C      | `String`   | 公司                                                  |
+| &ensp;O      | `String`   | 部門                                                  |
+| &ensp;P      | `String`   | 職稱                                                  |
+
+### Error response
+
+#### Error response - `500`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 資料庫錯誤  |
+
 # In/recommendation
 
 ## 刪除簡歷
@@ -1582,6 +1677,55 @@ GET /recommendation/mine
 | &ensp;info                   | `Object`   | 工作資訊                                        |
 | &ensp;&ensp;contact          | `String`   | 電話                                            |
 | &ensp;&ensp;email            | `String`   | 信箱                                            |
+| &ensp;&ensp;diploma          | `String`   | 學院                                            |
+| &ensp;spec                   | `Object`   | 詳細描述                                        |
+| &ensp;&ensp;experience       | `String[]` | 經驗                                            |
+| &ensp;&ensp;speciality       | `String[]` | 專長                                            |
+| &ensp;image                  | `String`   | 頭像(Ex. <code>&lt;img src={image}/&gt;</code>) |
+
+### Error response
+
+#### Error response - `403`
+
+| Name | Type     | Description |
+| ---- | -------- | ----------- |
+| -    | `String` | not login   |
+
+#### Error response - `500`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 資料庫錯誤  |
+
+## reg 搜尋
+
+[Back to top](#top)
+
+```
+GET /smartsearchrecommendation
+```
+
+### Parameters - `Parameter`
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| keyword | `String` | 用空格區分  |
+
+### Success response
+
+#### Success response - `201`
+
+| Name                         | Type       | Description                                     |
+| ---------------------------- | ---------- | ----------------------------------------------- |
+| -                            | `Object[]` | 簡歷們                                          |
+| &ensp;\_id                   | `String`   | mongodb \_id(for update,delete)                 |
+| &ensp;title                  | `Object`   | 標題相關                                        |
+| &ensp;&ensp;title            | `String`   | 標題                                            |
+| &ensp;&ensp;name             | `String`   | 名字                                            |
+| &ensp;&ensp;desire_work_type | `String`   | 想要職位                                        |
+| &ensp;info                   | `Object`   | 工作資訊                                        |
+| &ensp;&ensp;contact          | `String`   | 電話                                            |
+| &ensp;&ensp;email            | `String[]` | 信箱                                            |
 | &ensp;&ensp;diploma          | `String`   | 學院                                            |
 | &ensp;spec                   | `Object`   | 詳細描述                                        |
 | &ensp;&ensp;experience       | `String[]` | 經驗                                            |
@@ -2023,9 +2167,9 @@ POST /activation
 
 #### Error response - `401`
 
-| Name        | Type     | Description    |
-| ----------- | -------- | -------------- |
-| description | `String` | 驗證碼已不存在 |
+| Name        | Type     | Description                      |
+| ----------- | -------- | -------------------------------- |
+| description | `String` | 驗證碼已不存在，請至 forget 頁面 |
 
 #### Error response - `500`
 

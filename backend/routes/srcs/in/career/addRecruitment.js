@@ -68,7 +68,7 @@ module.exports = asyncHandler(async (req, res) => {
   let recruitmentAccount = 'none'
   if (req.session) {
     recruitmentAccount = req.session.loginAccount
-    console.log(req.session)
+    // console.log(req.session)
   }
 
   const recruitmentTitle = req.body.title

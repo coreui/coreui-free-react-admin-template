@@ -45,7 +45,7 @@ const { dbCatch } = require('../../../error')
  */
 
 module.exports = asyncHandler(async (req, res, next) => {
-  const keyword = req.body.keyword
+  const { keyword } = req.query
   const foundArticle = await Column_detail.find({ 'top.hashtags': keyword }).catch(dbCatch)
   return res.status(201).send(foundArticle)
 })

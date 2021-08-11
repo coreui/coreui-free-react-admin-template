@@ -1321,6 +1321,7 @@ POST /searchProfile
 | web          | `String` | 個人部落格                                                                     |
 | facebook     | `String` | facebook                                                                       |
 | Linkedin     | `String` | Linkedin                                                                       |
+| github       | `String` | github                                                                         |
 | major        | `Object` | 主修                                                                           |
 | double_major | `String` | 雙主修                                                                         |
 | minor        | `String` | 輔修                                                                           |
@@ -1348,6 +1349,7 @@ POST /searchProfile
 | web          | `String`   | 個人部落格                                            |
 | facebook     | `String`   | facebook                                              |
 | Linkedin     | `String`   | Linkedin                                              |
+| github       | `String`   | github                                                |
 | major        | `String`   | 學士                                                  |
 | double_major | `String`   | 雙主修                                                |
 | minor        | `String`   | 輔系                                                  |
@@ -1440,6 +1442,7 @@ POST /smartsearchProfile
 | web          | `String`   | 個人部落格                                            |
 | facebook     | `String`   | facebook                                              |
 | Linkedin     | `String`   | Linkedin                                              |
+| github       | `String`   | github                                                |
 | major        | `String`   | 學士                                                  |
 | double_major | `String`   | 雙主修                                                |
 | minor        | `String`   | 輔系                                                  |

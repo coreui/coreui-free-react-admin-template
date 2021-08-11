@@ -20,6 +20,7 @@ const { dbCatch } = require('../../../error')
  * @apiSuccess (201) {String} web 個人部落格
  * @apiSuccess (201) {String} facebook facebook
  * @apiSuccess (201) {String} Linkedin Linkedin
+ * @apiSuccess (201) {String} github github
  * @apiSuccess (201) {String} major 學士
  * @apiSuccess (201) {String} double_major 雙主修
  * @apiSuccess (201) {String} minor 輔系

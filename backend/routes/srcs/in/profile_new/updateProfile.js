@@ -37,45 +37,57 @@ const asyncHandler = require('express-async-handler')
  * @apiError (404) {String} description 帳號不存在
  * @apiError (500) {String} description 資料庫錯誤
  */
-const updateProfile = async (req, res, next)=>{
-    let session_account = req.session.loginAccount
-    if(!session_account) session_account='b07901029' //return res.status(403).send('not login')
-    const obj = await Visual.findOne({"account":session_account}).catch(dbCatch)
-    if(!obj) throw new ErrorHandler(404,'帳號不存在')
-    console.log(req.body)
-    const update = updateFormat(req)
-    console.log('update',update)
-    await Visual.updateOne({"account":session_account},update).catch(dbCatch)
-    if(req.body.username!==undefined && req.body.username!==''){
-        await Login.updateOne(
-            {account:session_account},
-            {$set:{username:req.body.username}}
-        ).catch(dbCatch)
-    }
-    return res.status(204).end()
+const updateProfile = async (req, res, next) => {
+  let session_account = req.session.loginAccount
+  if (!session_account) session_account = 'b07901029' //return res.status(403).send('not login')
+  const obj = await Visual.findOne({ account: session_account }).catch(dbCatch)
+  if (!obj) throw new ErrorHandler(404, '帳號不存在')
+  console.log(req.body)
+  const update = updateFormat(req)
+  console.log('update', update)
+  await Visual.updateOne({ account: session_account }, update).catch(dbCatch)
+  if (req.body.username !== undefined && req.body.username !== '') {
+    await Login.updateOne(
+      { account: session_account },
+      { $set: { username: req.body.username } },
+    ).catch(dbCatch)
+  }
+  return res.status(204).end()
 }
-const updateFormat = (req)=>{
-    const set = {}
-    const unset = {}
-    const iter = [
-        'username','nickname','profile',
-        'publicEmail','cellphone','CC','web','facebook','Linkedin',
-        'major','double_major','minor','master','doctor',
-        'Occupation'
-    ]
-    iter.forEach(key=>{
-        const value = req.body[key]
-        if(value===undefined) return
-        if(key!=='username' && value==='') return unset[key]=''
-        if(key==='Occupation' && !Array.isArray(value)) return
-        set[key] = value
-    })
-    if(req.file){
-		set["userimage.data"] = req.file.buffer
-		set["userimage.contentType"] = req.file.mimetype
-		console.log('get img',set["userimage.contentType"])
-    }
-    return {$set:set,$unset:unset}
+const updateFormat = (req) => {
+  const set = {}
+  const unset = {}
+  const iter = [
+    'username',
+    'nickname',
+    'profile',
+    'publicEmail',
+    'cellphone',
+    'CC',
+    'web',
+    'facebook',
+    'Linkedin',
+    'github',
+    'major',
+    'double_major',
+    'minor',
+    'master',
+    'doctor',
+    'Occupation',
+  ]
+  iter.forEach((key) => {
+    const value = req.body[key]
+    if (value === undefined) return
+    if (key !== 'username' && value === '') return (unset[key] = '')
+    if (key === 'Occupation' && !Array.isArray(value)) return
+    set[key] = value
+  })
+  if (req.file) {
+    set['userimage.data'] = req.file.buffer
+    set['userimage.contentType'] = req.file.mimetype
+    console.log('get img', set['userimage.contentType'])
+  }
+  return { $set: set, $unset: unset }
 }
 
 module.exports = asyncHandler(updateProfile)

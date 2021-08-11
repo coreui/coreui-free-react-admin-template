@@ -45,7 +45,7 @@ const Column = require('../../../Schemas/column_detail')
  * @apiError (500) {String} description 資料庫錯誤
  */
 module.exports = asyncHandler(async (req, res, next) => {
-  const { id } = req.body
+  const { id } = req.query
   if (!id) throw new ErrorHandler(400, 'id is required')
   const objDetail = await Column.findOne({ id }).catch(dbCatch)
   if (!objDetail) throw new ErrorHandler(404, '資料不存在')

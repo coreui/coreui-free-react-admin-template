@@ -48,7 +48,7 @@ module.exports = asyncHandler(async (req, res, next) => {
     diploma,
     experience,
     speciality,
-  } = req.body
+  } = req.query
   const query = [
     { _id },
     { account },

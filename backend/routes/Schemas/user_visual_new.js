@@ -17,6 +17,7 @@ const Profile_Schema = new Schema({
   CC: String, //city+country
   web: String,
   facebook: String,
+  github: String,
   Linkedin: String,
   Occupation: [
     {
@@ -67,6 +68,7 @@ Profile_Schema.statics.smartFind = async function (keywords) {
       { web: reg },
       { facebook: reg },
       { Linkedin: reg },
+      { github: reg },
       { 'Occupation.O': reg },
       { 'Occupation.P': reg },
       { 'Occupation.C': reg },

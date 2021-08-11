@@ -28,7 +28,7 @@ const Column_Outline = require('../../../Schemas/column_outline')
  * @apiError (500) {String} description 資料庫錯誤
  */
 module.exports = asyncHandler(async (req, res, next) => {
-  const { id } = req.body
+  const { id } = req.query
   const query = id ? { id } : {}
   const columnOulines = await Column_Outline.find(query).catch(dbCatch)
   return res.status(201).send(columnOulines.map((col) => col.getPublic()))

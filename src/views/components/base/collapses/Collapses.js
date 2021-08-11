@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CRow } from '@coreui/react'
-import { DocsCallout, Example } from 'src/reusable'
+import { DocsCallout, DocsExample } from 'src/components'
 
 const Collapses = () => {
   const [visible, setVisible] = useState(false)
@@ -19,7 +19,7 @@ const Collapses = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">You can use a link or a button component.</p>
-            <Example href="components/collapse">
+            <DocsExample href="components/collapse">
               <CButton
                 href="#"
                 onClick={(e) => {
@@ -39,7 +39,7 @@ const Collapses = () => {
                   </CCardBody>
                 </CCard>
               </CCollapse>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -52,7 +52,7 @@ const Collapses = () => {
             <p className="text-medium-emphasis small">
               A <code>&lt;CButton&gt;</code> can show and hide multiple elements.
             </p>
-            <Example href="components/collapse#multiple-targets">
+            <DocsExample href="components/collapse#multiple-targets">
               <CButton onClick={() => setVisibleA(!visibleA)}>Toggle first element</CButton>
               <CButton onClick={() => setVisibleB(!visibleB)}>Toggle second element</CButton>
               <CButton
@@ -87,7 +87,7 @@ const Collapses = () => {
                   </CCollapse>
                 </CCol>
               </CRow>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>

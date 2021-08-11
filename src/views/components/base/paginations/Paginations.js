@@ -8,7 +8,7 @@ import {
   CPaginationItem,
   CRow,
 } from '@coreui/react'
-import { DocsCallout, Example } from 'src/reusable'
+import { DocsCallout, DocsExample } from 'src/components'
 
 const Paginations = () => {
   return (
@@ -36,7 +36,7 @@ const Paginations = () => {
               component is used to navigate between a set of search results, an appropriate label
               could be <code>aria-label=&#34;Search results pages&#34;</code>.
             </p>
-            <Example href="components/pagination">
+            <DocsExample href="components/pagination">
               <CPagination aria-label="Page navigation example">
                 <CPaginationItem>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
@@ -44,7 +44,7 @@ const Paginations = () => {
                 <CPaginationItem>3</CPaginationItem>
                 <CPaginationItem>Next</CPaginationItem>
               </CPagination>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -58,7 +58,7 @@ const Paginations = () => {
               Looking to use an icon or symbol in place of text for some pagination links? Be sure
               to provide proper screen reader support with <code>aria</code> attributes.
             </p>
-            <Example href="components/pagination#working-with-icons">
+            <DocsExample href="components/pagination#working-with-icons">
               <CPagination aria-label="Page navigation example">
                 <CPaginationItem aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
@@ -70,7 +70,7 @@ const Paginations = () => {
                   <span aria-hidden="true">&raquo;</span>
                 </CPaginationItem>
               </CPagination>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -92,7 +92,7 @@ const Paginations = () => {
               such, we always add <code>tabindex=&#34;-1&#34;</code> on disabled links and use
               custom JavaScript to fully disable their functionality.
             </p>
-            <Example href="components/pagination#disabled-and-active-states">
+            <DocsExample href="components/pagination#disabled-and-active-states">
               <CPagination aria-label="Page navigation example">
                 <CPaginationItem aria-label="Previous" disabled>
                   <span aria-hidden="true">&laquo;</span>
@@ -104,7 +104,7 @@ const Paginations = () => {
                   <span aria-hidden="true">&raquo;</span>
                 </CPaginationItem>
               </CPagination>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -118,7 +118,7 @@ const Paginations = () => {
               Fancy larger or smaller pagination? Add <code>size=&#34;lg&#34;</code> or{' '}
               <code>size=&#34;sm&#34;</code> for additional sizes.
             </p>
-            <Example href="components/pagination#sizing">
+            <DocsExample href="components/pagination#sizing">
               <CPagination size="lg" aria-label="Page navigation example">
                 <CPaginationItem>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
@@ -126,8 +126,8 @@ const Paginations = () => {
                 <CPaginationItem>3</CPaginationItem>
                 <CPaginationItem>Next</CPaginationItem>
               </CPagination>
-            </Example>
-            <Example href="components/pagination#sizing">
+            </DocsExample>
+            <DocsExample href="components/pagination#sizing">
               <CPagination size="sm" aria-label="Page navigation example">
                 <CPaginationItem>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
@@ -135,7 +135,7 @@ const Paginations = () => {
                 <CPaginationItem>3</CPaginationItem>
                 <CPaginationItem>Next</CPaginationItem>
               </CPagination>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -149,7 +149,7 @@ const Paginations = () => {
               Change the alignment of pagination components with{' '}
               <a href="https://coreui.io/docs/utilities/flex/">flexbox utilities</a>.
             </p>
-            <Example href="components/pagination#aligment">
+            <DocsExample href="components/pagination#aligment">
               <CPagination className="justify-content-center" aria-label="Page navigation example">
                 <CPaginationItem disabled>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
@@ -157,8 +157,8 @@ const Paginations = () => {
                 <CPaginationItem>3</CPaginationItem>
                 <CPaginationItem>Next</CPaginationItem>
               </CPagination>
-            </Example>
-            <Example href="components/pagination#aligment">
+            </DocsExample>
+            <DocsExample href="components/pagination#aligment">
               <CPagination className="justify-content-end" aria-label="Page navigation example">
                 <CPaginationItem disabled>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
@@ -166,7 +166,7 @@ const Paginations = () => {
                 <CPaginationItem>3</CPaginationItem>
                 <CPaginationItem>Next</CPaginationItem>
               </CPagination>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>

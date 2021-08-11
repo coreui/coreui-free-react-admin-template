@@ -5,7 +5,7 @@ import CIcon from '@coreui/icons-react'
 
 import packageJson from '../../package.json'
 
-const Example = (props) => {
+const DocsExample = (props) => {
   const { children, href } = props
 
   const _href = `https://coreui.io/react/docs/${packageJson.config.coreui_library_short_version}/${href}`
@@ -35,9 +35,9 @@ const Example = (props) => {
   )
 }
 
-Example.propTypes = {
+DocsExample.propTypes = {
   children: PropTypes.node,
   href: PropTypes.string,
 }
 
-export default React.memo(Example)
+export default React.memo(DocsExample)

@@ -9,7 +9,7 @@ import {
   CCol,
   CRow,
 } from '@coreui/react'
-import { DocsCallout, Example } from 'src/reusable'
+import { DocsCallout, DocsExample } from 'src/components'
 
 const slides = [
   'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1607923e7e2%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1607923e7e2%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.9296875%22%20y%3D%22217.75625%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
@@ -36,7 +36,7 @@ const Carousels = () => {
           </CCardHeader>
           <CCardBody>
             <p className="text-medium-emphasis small">Here’s a carousel with slides</p>
-            <Example href="components/carousel">
+            <DocsExample href="components/carousel">
               <CCarousel>
                 <CCarouselItem>
                   <img className="d-block w-100" src={slides[0]} alt="slide 1" />
@@ -48,7 +48,7 @@ const Carousels = () => {
                   <img className="d-block w-100" src={slides[2]} alt="slide 3" />
                 </CCarouselItem>
               </CCarousel>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -61,7 +61,7 @@ const Carousels = () => {
             <p className="text-medium-emphasis small">
               Adding in the previous and next controls by <code>controls</code> property.
             </p>
-            <Example href="components/carousel/#with-controls">
+            <DocsExample href="components/carousel/#with-controls">
               <CCarousel controls>
                 <CCarouselItem>
                   <img className="d-block w-100" src={slides[0]} alt="slide 1" />
@@ -73,7 +73,7 @@ const Carousels = () => {
                   <img className="d-block w-100" src={slides[2]} alt="slide 3" />
                 </CCarouselItem>
               </CCarousel>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -86,7 +86,7 @@ const Carousels = () => {
             <p className="text-medium-emphasis small">
               You can attach the indicators to the carousel, lengthwise the controls, too.
             </p>
-            <Example href="components/carousel/#with-indicators">
+            <DocsExample href="components/carousel/#with-indicators">
               <CCarousel controls indicators>
                 <CCarouselItem>
                   <img className="d-block w-100" src={slides[0]} alt="slide 1" />
@@ -98,7 +98,7 @@ const Carousels = () => {
                   <img className="d-block w-100" src={slides[2]} alt="slide 3" />
                 </CCarouselItem>
               </CCarousel>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -116,7 +116,7 @@ const Carousels = () => {
               with <code>.d-none</code> and draw them back on medium-sized devices with{' '}
               <code>.d-md-block</code>.
             </p>
-            <Example href="components/carousel/#with-captions">
+            <DocsExample href="components/carousel/#with-captions">
               <CCarousel controls indicators>
                 <CCarouselItem>
                   <img className="d-block w-100" src={slides[0]} alt="slide 1" />
@@ -140,7 +140,7 @@ const Carousels = () => {
                   </CCarouselCaption>
                 </CCarouselItem>
               </CCarousel>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -154,7 +154,7 @@ const Carousels = () => {
               Add <code>transition=&#34;crossfade&#34;</code> to your carousel to animate slides
               with a fade transition instead of a slide.
             </p>
-            <Example href="components/carousel/#crossfade">
+            <DocsExample href="components/carousel/#crossfade">
               <CCarousel controls transition="crossfade">
                 <CCarouselItem>
                   <img className="d-block w-100" src={slides[0]} alt="slide 1" />
@@ -166,7 +166,7 @@ const Carousels = () => {
                   <img className="d-block w-100" src={slides[2]} alt="slide 3" />
                 </CCarouselItem>
               </CCarousel>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -182,7 +182,7 @@ const Carousels = () => {
               with the <code>filter</code> CSS property. Captions and controls have additional Sass
               variables that customize the <code>color</code> and <code>background-color</code>.
             </p>
-            <Example href="components/carousel/#dark-variant">
+            <DocsExample href="components/carousel/#dark-variant">
               <CCarousel controls indicators dark>
                 <CCarouselItem>
                   <img className="d-block w-100" src={slidesLight[0]} alt="slide 1" />
@@ -206,7 +206,7 @@ const Carousels = () => {
                   </CCarouselCaption>
                 </CCarouselItem>
               </CCarousel>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>

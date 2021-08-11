@@ -10,7 +10,7 @@ import {
   CListGroupItem,
   CRow,
 } from '@coreui/react'
-import { DocsCallout, Example } from 'src/reusable'
+import { DocsCallout, DocsExample } from 'src/components'
 
 const ListGroups = () => {
   return (
@@ -28,7 +28,7 @@ const ListGroups = () => {
               The default list group is an unordered list with items and the proper CSS classes.
               Build upon it with the options that follow, or with your CSS as required.
             </p>
-            <Example href="components/list-group">
+            <DocsExample href="components/list-group">
               <CListGroup>
                 <CListGroupItem>Cras justo odio</CListGroupItem>
                 <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
@@ -36,7 +36,7 @@ const ListGroups = () => {
                 <CListGroupItem>Porta ac consectetur ac</CListGroupItem>
                 <CListGroupItem>Vestibulum at eros</CListGroupItem>
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -50,7 +50,7 @@ const ListGroups = () => {
               Add <code>active</code> boolean property to a <code>&lt;CListGroupItem&gt;</code> to
               show the current active selection.
             </p>
-            <Example href="components/list-group/#active-items">
+            <DocsExample href="components/list-group/#active-items">
               <CListGroup>
                 <CListGroupItem active>Cras justo odio</CListGroupItem>
                 <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
@@ -58,7 +58,7 @@ const ListGroups = () => {
                 <CListGroupItem>Porta ac consectetur ac</CListGroupItem>
                 <CListGroupItem>Vestibulum at eros</CListGroupItem>
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -72,7 +72,7 @@ const ListGroups = () => {
               Add <code>disabled</code> boolean property to a <code>&lt;CListGroupItem&gt;</code> to
               make it appear disabled.
             </p>
-            <Example href="components/list-group/#disabled-items">
+            <DocsExample href="components/list-group/#disabled-items">
               <CListGroup>
                 <CListGroupItem disabled>Cras justo odio</CListGroupItem>
                 <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
@@ -80,7 +80,7 @@ const ListGroups = () => {
                 <CListGroupItem>Porta ac consectetur ac</CListGroupItem>
                 <CListGroupItem>Vestibulum at eros</CListGroupItem>
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -98,7 +98,7 @@ const ListGroups = () => {
               <code>&lt;div&gt;</code>
               s) don&#39;tprovide a click or tap affordance.
             </p>
-            <Example href="components/list-group/#links-and-buttons">
+            <DocsExample href="components/list-group/#links-and-buttons">
               <CListGroup>
                 <CListGroupItem component="a" href="#" active>
                   Cras justo odio
@@ -116,7 +116,7 @@ const ListGroups = () => {
                   Vestibulum at eros
                 </CListGroupItem>
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -130,7 +130,7 @@ const ListGroups = () => {
               Add <code>flush</code> boolean property to remove some borders and rounded corners to
               render list group items edge-to-edge in a parent container (e.g., cards).
             </p>
-            <Example href="components/list-group/#flush">
+            <DocsExample href="components/list-group/#flush">
               <CListGroup flush>
                 <CListGroupItem>Cras justo odio</CListGroupItem>
                 <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
@@ -138,7 +138,7 @@ const ListGroups = () => {
                 <CListGroupItem>Porta ac consectetur ac</CListGroupItem>
                 <CListGroupItem>Vestibulum at eros</CListGroupItem>
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -156,7 +156,7 @@ const ListGroups = () => {
               <code>min-width</code>. Currently{' '}
               <strong>horizontal list groups cannot be combined with flush list groups.</strong>
             </p>
-            <Example href="components/list-group/#flush">
+            <DocsExample href="components/list-group/#flush">
               {['', '-sm', '-md', '-lg', '-xl', '-xxl'].map((breakpoint, index) => (
                 <CListGroup className="mb-2" layout={`horizontal${breakpoint}`} key={index}>
                   <CListGroupItem>Cras justo odio</CListGroupItem>
@@ -164,7 +164,7 @@ const ListGroups = () => {
                   <CListGroupItem>Morbi leo risus</CListGroupItem>
                 </CListGroup>
               ))}
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -177,7 +177,7 @@ const ListGroups = () => {
             <p className="text-medium-emphasis small">
               Use contextual classes to style list items with a stateful background and color.
             </p>
-            <Example href="components/list-group/#contextual-classes">
+            <DocsExample href="components/list-group/#contextual-classes">
               <CListGroup>
                 <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
                 {[
@@ -195,14 +195,14 @@ const ListGroups = () => {
                   </CListGroupItem>
                 ))}
               </CListGroup>
-            </Example>
+            </DocsExample>
             <p className="text-medium-emphasis small">
               Contextual classes also work with <code>&lt;a&gt;</code>s or{' '}
               <code>&lt;button&gt;</code>s. Note the addition of the hover styles here not present
               in the previous example. Also supported is the <code>active</code> state; apply it to
               indicate an active selection on a contextual list group item.
             </p>
-            <Example href="components/list-group/#contextual-classes">
+            <DocsExample href="components/list-group/#contextual-classes">
               <CListGroup>
                 <CListGroupItem component="a" href="#">
                   Dapibus ac facilisis in
@@ -222,7 +222,7 @@ const ListGroups = () => {
                   </CListGroupItem>
                 ))}
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -235,7 +235,7 @@ const ListGroups = () => {
             <p className="text-medium-emphasis small">
               Add badges to any list group item to show unread counts, activity, and more.
             </p>
-            <Example href="components/list-group/#with-badges">
+            <DocsExample href="components/list-group/#with-badges">
               <CListGroup>
                 <CListGroupItem className="d-flex justify-content-between align-items-center">
                   Cras justo odio
@@ -256,7 +256,7 @@ const ListGroups = () => {
                   </CBadge>
                 </CListGroupItem>
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -270,7 +270,7 @@ const ListGroups = () => {
               Add nearly any HTML within, even for linked list groups like the one below, with the
               help of <a href="https://coreui.io/docs/utilities/flex/">flexbox utilities</a>.
             </p>
-            <Example href="components/list-group/#custom-content">
+            <DocsExample href="components/list-group/#custom-content">
               <CListGroup>
                 <CListGroupItem component="a" href="#" active>
                   <div className="d-flex w-100 justify-content-between">
@@ -306,7 +306,7 @@ const ListGroups = () => {
                   <small className="text-medium-emphasis">Donec id elit non mi porta.</small>
                 </CListGroupItem>
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -320,7 +320,7 @@ const ListGroups = () => {
               Place CoreUI&#39;s checkboxes and radios within list group items and customize as
               needed.
             </p>
-            <Example href="components/list-group/#checkboxes-and-radios">
+            <DocsExample href="components/list-group/#checkboxes-and-radios">
               <CListGroup>
                 <CListGroupItem>
                   <CFormCheck label="Cras justo odio" />
@@ -338,7 +338,7 @@ const ListGroups = () => {
                   <CFormCheck label="Vestibulum at eros" />
                 </CListGroupItem>
               </CListGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>

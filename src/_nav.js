@@ -121,6 +121,7 @@ const _nav = [
   {
     component: 'CNavGroup',
     name: 'Buttons',
+    to: '/buttons',
     icon: <CIcon name="cil-cursor" customClassName="nav-icon" />,
     items: [
       {

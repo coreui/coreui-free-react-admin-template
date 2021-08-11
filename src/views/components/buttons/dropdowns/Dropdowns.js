@@ -13,7 +13,7 @@ import {
   CDropdownToggle,
   CRow,
 } from '@coreui/react'
-import { DocsCallout, Example } from 'src/reusable'
+import { DocsCallout, DocsExample } from 'src/components'
 
 const Dropdowns = () => {
   return (
@@ -31,7 +31,7 @@ const Dropdowns = () => {
               Here&#39;s how you can put them to work with either <code>&lt;button&gt;</code>{' '}
               elements:
             </p>
-            <Example href="components/dropdown#single-button">
+            <DocsExample href="components/dropdown#single-button">
               <CDropdown>
                 <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
                 <CDropdownMenu>
@@ -40,11 +40,11 @@ const Dropdowns = () => {
                   <CDropdownItem href="#">Something else here</CDropdownItem>
                 </CDropdownMenu>
               </CDropdown>
-            </Example>
+            </DocsExample>
             <p className="text-medium-emphasis small">
               The best part is you can do this with any button variant, too:
             </p>
-            <Example href="components/dropdown#single-button">
+            <DocsExample href="components/dropdown#single-button">
               <>
                 {['primary', 'secondary', 'success', 'info', 'warning', 'danger'].map(
                   (color, index) => (
@@ -61,7 +61,7 @@ const Dropdowns = () => {
                   ),
                 )}
               </>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -82,7 +82,7 @@ const Dropdowns = () => {
               normal button dropdowns. Those additional changes hold the caret centered in the split
               button and implement a more properly sized hit area next to the main button.
             </p>
-            <Example href="components/dropdown#split-button">
+            <DocsExample href="components/dropdown#split-button">
               <>
                 {['primary', 'secondary', 'success', 'info', 'warning', 'danger'].map(
                   (color, index) => (
@@ -100,7 +100,7 @@ const Dropdowns = () => {
                   ),
                 )}
               </>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -114,7 +114,7 @@ const Dropdowns = () => {
               Button dropdowns work with buttons of all sizes, including default and split dropdown
               buttons.
             </p>
-            <Example href="components/dropdown#sizing">
+            <DocsExample href="components/dropdown#sizing">
               <CDropdown variant="btn-group">
                 <CDropdownToggle color="secondary" size="lg">
                   Large button
@@ -140,8 +140,8 @@ const Dropdowns = () => {
                   <CDropdownItem href="#">Separated link</CDropdownItem>
                 </CDropdownMenu>
               </CDropdown>
-            </Example>
-            <Example href="components/dropdown#sizing">
+            </DocsExample>
+            <DocsExample href="components/dropdown#sizing">
               <CDropdown variant="btn-group">
                 <CDropdownToggle color="secondary" size="sm">
                   Small button
@@ -167,7 +167,7 @@ const Dropdowns = () => {
                   <CDropdownItem href="#">Separated link</CDropdownItem>
                 </CDropdownMenu>
               </CDropdown>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -181,7 +181,7 @@ const Dropdowns = () => {
               Opt into darker dropdowns to match a dark navbar or custom style by set{' '}
               <code>dark</code> property. No changes are required to the dropdown items.
             </p>
-            <Example href="components/dropdown#dark-dropdowns">
+            <DocsExample href="components/dropdown#dark-dropdowns">
               <CDropdown dark>
                 <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
                 <CDropdownMenu>
@@ -192,9 +192,9 @@ const Dropdowns = () => {
                   <CDropdownItem href="#">Separated link</CDropdownItem>
                 </CDropdownMenu>
               </CDropdown>
-            </Example>
+            </DocsExample>
             <p className="text-medium-emphasis small">And putting it to use in a navbar:</p>
-            <Example href="components/dropdown#dark-dropdowns">
+            <DocsExample href="components/dropdown#dark-dropdowns">
               <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
                   <a className="navbar-brand" href="https://coreui.io/react/">
@@ -227,7 +227,7 @@ const Dropdowns = () => {
                   </div>
                 </div>
               </nav>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -242,7 +242,7 @@ const Dropdowns = () => {
               <code>direction=&#34;dropup&#34;</code> to the <code>&lt;CDropdown&gt;</code>{' '}
               component.
             </p>
-            <Example href="components/dropdown#dropup">
+            <DocsExample href="components/dropdown#dropup">
               <CDropdown variant="btn-group" direction="dropup">
                 <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
                 <CDropdownMenu>
@@ -264,7 +264,7 @@ const Dropdowns = () => {
                   <CDropdownItem href="#">Separated link</CDropdownItem>
                 </CDropdownMenu>
               </CDropdown>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -279,7 +279,7 @@ const Dropdowns = () => {
               <code>direction=&#34;dropend&#34;</code> to the <code>&lt;CDropdown&gt;</code>{' '}
               component.
             </p>
-            <Example href="components/dropdown#dropright">
+            <DocsExample href="components/dropdown#dropright">
               <CDropdown variant="btn-group" direction="dropend">
                 <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
                 <CDropdownMenu>
@@ -301,7 +301,7 @@ const Dropdowns = () => {
                   <CDropdownItem href="#">Separated link</CDropdownItem>
                 </CDropdownMenu>
               </CDropdown>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -316,7 +316,7 @@ const Dropdowns = () => {
               <code>direction=&#34;dropstart&#34;</code> to the <code>&lt;CDropdown&gt;</code>{' '}
               component.
             </p>
-            <Example href="components/dropdown#dropleft">
+            <DocsExample href="components/dropdown#dropleft">
               <CButtonGroup>
                 <CDropdown variant="btn-group" direction="dropstart">
                   <CDropdownToggle color="secondary" split />
@@ -330,7 +330,7 @@ const Dropdowns = () => {
                 </CDropdown>
                 <CButton color="secondary">Small split button</CButton>
               </CButtonGroup>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>

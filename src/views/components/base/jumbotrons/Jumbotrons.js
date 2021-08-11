@@ -1,6 +1,6 @@
 import React from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CContainer, CRow } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
+import { DocsLink } from 'src/components'
 
 const Jumbotrons = () => {
   return (
@@ -29,7 +29,7 @@ const Jumbotrons = () => {
                   jumbotron look. Then, mix and match with additional component themes and more.
                 </p>
                 <CButton color="light" variant="outline">
-                  Example button
+                  DocsExample button
                 </CButton>
               </div>
             </CCol>
@@ -42,7 +42,7 @@ const Jumbotrons = () => {
                   adjusted the alignment and sizing of both column&#39;s content for equal-height.
                 </p>
                 <CButton color="secondary" variant="outline">
-                  Example button
+                  DocsExample button
                 </CButton>
               </div>
             </CCol>

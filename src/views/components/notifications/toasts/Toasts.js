@@ -12,7 +12,7 @@ import {
   CToastHeader,
   CToaster,
 } from '@coreui/react'
-import { DocsCallout, Example } from 'src/reusable'
+import { DocsCallout, DocsExample } from 'src/components'
 
 const ExampleToast = () => {
   const [toast, addToast] = useState(0)
@@ -62,7 +62,7 @@ const Toasts = () => {
               we require a single element to contain your “toasted” content and strongly encourage a
               dismiss button.
             </p>
-            <Example href="components/toast">
+            <DocsExample href="components/toast">
               <CToast title="CoreUI for React.js" autohide={false}>
                 <CToastHeader close>
                   <svg
@@ -81,8 +81,8 @@ const Toasts = () => {
                 </CToastHeader>
                 <CToastBody>Hello, world! This is a toast message.</CToastBody>
               </CToast>
-            </Example>
-            <Example href="components/toast">{ExampleToast()}</Example>
+            </DocsExample>
+            <DocsExample href="components/toast">{ExampleToast()}</DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -95,7 +95,7 @@ const Toasts = () => {
             <p className="text-medium-emphasis small">
               Toasts are slightly translucent to blend in with what&#39;s below them.
             </p>
-            <Example href="components/toast#translucent">
+            <DocsExample href="components/toast#translucent">
               <div className="bg-dark p-3">
                 <CToast title="CoreUI for React.js" autohide={false}>
                   <CToastHeader close>
@@ -116,7 +116,7 @@ const Toasts = () => {
                   <CToastBody>Hello, world! This is a toast message.</CToastBody>
                 </CToast>
               </div>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -130,7 +130,7 @@ const Toasts = () => {
               You can stack toasts by wrapping them in a toast container, which will vertically add
               some spacing.
             </p>
-            <Example href="components/toast#stacking">
+            <DocsExample href="components/toast#stacking">
               <CToaster>
                 <CToast title="CoreUI for React.js" autohide={false}>
                   <CToastHeader close>
@@ -169,7 +169,7 @@ const Toasts = () => {
                   <CToastBody>Hello, world! This is a toast message.</CToastBody>
                 </CToast>
               </CToaster>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -188,18 +188,18 @@ const Toasts = () => {
               <a href="https://coreui.io/docs/4.0/utilities/flex">flexbox utilities</a> to adjust
               the layout.
             </p>
-            <Example href="components/toast#custom-content">
+            <DocsExample href="components/toast#custom-content">
               <CToast autohide={false} className="align-items-center">
                 <div className="d-flex">
                   <CToastBody>Hello, world! This is a toast message.</CToastBody>
                   <CToastClose className="me-2 m-auto" />
                 </div>
               </CToast>
-            </Example>
+            </DocsExample>
             <p className="text-medium-emphasis small">
               Alternatively, you can also add additional controls and components to toasts.
             </p>
-            <Example href="components/toast#custom-content">
+            <DocsExample href="components/toast#custom-content">
               <CToast autohide={false}>
                 <CToastBody>
                   Hello, world! This is a toast message.
@@ -213,7 +213,7 @@ const Toasts = () => {
                   </div>
                 </CToastBody>
               </CToast>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
@@ -232,14 +232,14 @@ const Toasts = () => {
               <code>white</code> property to our close button. For a crisp edge, we remove the
               default border with <code>.border-0</code>.
             </p>
-            <Example href="components/toast#color-schemes">
+            <DocsExample href="components/toast#color-schemes">
               <CToast autohide={false} color="primary" className="text-white align-items-center">
                 <div className="d-flex">
                   <CToastBody>Hello, world! This is a toast message.</CToastBody>
                   <CToastClose className="me-2 m-auto" white />
                 </div>
               </CToast>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>

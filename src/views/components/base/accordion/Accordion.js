@@ -12,7 +12,7 @@ import {
   CAccordionHeader,
   CAccordionItem,
 } from '@coreui/react'
-import { DocsCallout, Example } from 'src/reusable'
+import { DocsCallout, DocsExample } from 'src/components'
 
 const Accordion = () => {
   const [activeKey, setActiveKey] = useState(0)
@@ -32,7 +32,7 @@ const Accordion = () => {
             <p className="text-medium-emphasis small">
               Click the accordions below to expand/collapse the accordion content.
             </p>
-            <Example href="components/accordion">
+            <DocsExample href="components/accordion">
               <CAccordion>
                 <CAccordionItem>
                   <CAccordionHeader>
@@ -98,7 +98,7 @@ const Accordion = () => {
                   </CAccordionCollapse>
                 </CAccordionItem>
               </CAccordion>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
         <CCard className="mb-4">
@@ -111,7 +111,7 @@ const Accordion = () => {
               borders, and some rounded corners to render accordions edge-to-edge with their parent
               container.
             </p>
-            <Example href="components/accordion#flush">
+            <DocsExample href="components/accordion#flush">
               <CAccordion flush>
                 <CAccordionItem>
                   <CAccordionHeader>
@@ -177,7 +177,7 @@ const Accordion = () => {
                   </CAccordionCollapse>
                 </CAccordionItem>
               </CAccordion>
-            </Example>
+            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>

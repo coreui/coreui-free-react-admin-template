@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ColumnSummary = ({ data }) => {
-  const postsPerPage = 2
+  const postsPerPage = 5
   const classes = useStyles()
   const [page, setPage] = useState(1)
   const contributions = (person) => {
@@ -90,7 +90,7 @@ const ColumnSummary = ({ data }) => {
             <Link to={'/ColumnSummary/' + art.id}>
               <CardMedia
                 className={classes.media}
-                image="https://picsum.photos/1024/700"
+                image={art.imgSrc}
                 title="Contemplative Reptile"
               />
               <CardContent>

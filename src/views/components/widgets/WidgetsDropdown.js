@@ -140,21 +140,6 @@ const WidgetsDropdown = () => {
                   },
                 ],
               }}
-              getDatasetAtEvent={(dataset, event) => {
-                console.log('init1')
-                console.log(dataset)
-                console.log(event)
-              }}
-              getElementAtEvent={(element, event) => {
-                console.log('init2')
-                console.log(element)
-                console.log(event)
-              }}
-              getElementsAtEvent={(element, event) => {
-                console.log('init3')
-                console.log(element)
-                console.log(event)
-              }}
               options={{
                 plugins: {
                   legend: {

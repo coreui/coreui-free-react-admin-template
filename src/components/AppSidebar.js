@@ -24,7 +24,6 @@ const AppSidebar = () => {
       selfHiding="md"
       unfoldable={unfoldable}
       visible={sidebarShow}
-      onShow={() => console.log('show')}
       onHide={() => {
         dispatch({ type: 'set', sidebarShow: false })
       }}

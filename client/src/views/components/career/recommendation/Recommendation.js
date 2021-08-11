@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import RecomPost from './RecomPost'
-
+import axios from 'axios'
 const Recommendation = () => {
   const [data, setData] = useState([])
   const getData = () => {
-    fetch('recommendationPosts.json', {
-      headers: {
-        ContentType: 'application/json',
-        Accept: 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
+    axios
+      .get('/api/recommendation')
+      .then((res) => {
+        console.log('this is posts:', res.data)
+        setData(res.data)
+      })
+      .catch((err) => {
+        err.response.data.description && alert('錯誤\n' + err.response.data.description)
       })
   }
   useEffect(() => {
     getData()
   }, [])
-  return <div className="text-color-black">{data.posts && <RecomPost data={data.posts} />}</div>
+  return <div className="text-color-black">{data && <RecomPost data={data} />}</div>
 }
 
 export default Recommendation

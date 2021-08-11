@@ -20,6 +20,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { freeSet } from '@coreui/icons'
+import axios from 'axios'
 const formTemplate = {
   title: '',
   companyName: '',
@@ -105,25 +106,34 @@ const AddRecruitment = () => {
     fileButton.value = ''
   }
   const handleSubmit = () => {
-    const post = {
-      title: {
-        title: recruitmentForm.title,
-        company_name: recruitmentForm.companyName,
-        work_type: recruitmentForm.workType,
-      },
-      info: {
-        salary: recruitmentForm.salary,
-        experience: experience,
-        diploma: recruitmentForm.diploma,
-      },
-      spec: {
-        requirement: requirement,
-        description: description,
-      },
-      image: recruitmentForm.file,
+    const data = new FormData()
+    data.append('title', recruitmentForm.title)
+    data.append('company_name', recruitmentForm.companyName)
+    data.append('work_type', recruitmentForm.workType)
+    data.append('salary', recruitmentForm.salary)
+    data.append('diploma', recruitmentForm.diploma)
+    for (let exp of experience) {
+      data.append('experience[]', exp)
     }
-    console.log(post)
-    history.push('/recruitment')
+    for (let req of requirement) {
+      data.append('requirement[]', req)
+    }
+    for (let desc of description) {
+      data.append('description[]', desc)
+    }
+    data.append('file', recruitmentForm.file)
+    const config = {
+      headers: { 'content-type': 'multipart/form-data' },
+    }
+    axios
+      .post('/api/addRecruitment', data, config)
+      .then(() => {
+        alert('已新增')
+        history.push('/recruitment')
+      })
+      .catch((err) => {
+        err.response.data.description && alert('錯誤\n' + err.response.data.description)
+      })
   }
   return (
     <>

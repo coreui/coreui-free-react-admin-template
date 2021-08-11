@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CWidgetBrand } from '@coreui/react'
 import RecomBlock from './RecomBlock'
 import './Recommendation.css'
 import Masonry from 'react-masonry-css'

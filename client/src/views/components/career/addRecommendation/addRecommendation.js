@@ -18,6 +18,7 @@ import {
   CModalTitle,
   CModalFooter,
 } from '@coreui/react'
+import axios from 'axios'
 import CIcon from '@coreui/icons-react'
 import { freeSet } from '@coreui/icons'
 const formTemplate = {
@@ -93,25 +94,32 @@ const AddRecommendation = () => {
     fileButton.value = ''
   }
   const handleSubmit = () => {
-    const post = {
-      title: {
-        title: recommendationForm.title,
-        name: recommendationForm.name,
-        desire_work_type: recommendationForm.desireWorkType,
-      },
-      info: {
-        contact: recommendationForm.contact,
-        email: recommendationForm.email,
-        diploma: recommendationForm.diploma,
-      },
-      spec: {
-        experience: experience,
-        speciality: speciality,
-      },
-      image: recommendationForm.file,
+    const data = new FormData()
+    data.append('title', recommendationForm.title)
+    data.append('name', recommendationForm.name)
+    data.append('desire_work_type', recommendationForm.desireWorkType)
+    data.append('contact', recommendationForm.contact)
+    data.append('email', recommendationForm.email)
+    data.append('diploma', recommendationForm.diploma)
+    for (let exp of experience) {
+      data.append('experience[]', exp)
     }
-    console.log(post)
-    history.push('/recommendation')
+    for (let spec of speciality) {
+      data.append('speciality[]', spec)
+    }
+    data.append('file', recommendationForm.file)
+    const config = {
+      headers: { 'content-type': 'multipart/form-data' },
+    }
+    axios
+      .post('/api/recommendation', data, config)
+      .then(() => {
+        alert('已新增')
+        history.push('/recommendation')
+      })
+      .catch((err) => {
+        err.response.data.description && alert('錯誤\n' + err.response.data.description)
+      })
   }
   return (
     <>

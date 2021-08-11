@@ -27,16 +27,16 @@
   },
   "dependencies": {
     "@coreui/chartjs": "3.0.0",
-    "@coreui/coreui": "4.0.0",
+    "@coreui/coreui": "4.0.1",
     "@coreui/icons": "^2.0.1",
     "@coreui/icons-react": "^2.0.0-rc.0",
     "@coreui/react": "4.0.0-beta.2",
     "@coreui/react-chartjs": "2.0.0-rc.0",
     "@coreui/utils": "^1.3.1",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
-    "chart.js": "^3.4.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+    "chart.js": "^3.5.0",
     "classnames": "^2.3.1",
-    "core-js": "^3.15.2",
+    "core-js": "^3.16.1",
     "enzyme": "^3.11.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -44,17 +44,17 @@
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "redux": "4.1.0",
-    "simplebar-react": "^2.3.4"
+    "redux": "4.1.1",
+    "simplebar-react": "^2.3.5"
   },
   "devDependencies": {
     "auto-changelog": "~2.3.0",
-    "eslint": "^7.30.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "2.3.2",
     "react-scripts": "^4.0.3",
-    "sass": "^1.35.1"
+    "sass": "^1.37.5"
   },
   "scripts": {
     "start": "react-scripts start",

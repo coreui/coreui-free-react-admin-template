@@ -1,18 +1,34 @@
 const mongoose = require('./db'),
-    Schema = mongoose.Schema;
+  Schema = mongoose.Schema
 
 const Column_detail = new Schema({
-    title:[{type:String}],
-    hashtags:[{type:String}],
-    sections:[{
-        bigtitle:{type:String},
-        sections:[{
-            title:{type:String},
-            section:{type:String}
-        }]
-    }],
-    annotation:[{type:String}],
-    id:{type:String}
+  top: {
+    name: String,
+    experience: [String],
+    hashtags: [String],
+  },
+  body: {
+    body: [
+      {
+        bigtitle: String,
+        bigsections: [
+          {
+            subtitle: String,
+            subsection: String,
+          },
+        ],
+      },
+    ],
+  },
+  annotation: {
+    annotation: [
+      {
+        job: String,
+        contributer: String,
+      },
+    ],
+  },
+  id: { type: String, unique: true },
 })
 
-module.exports = mongoose.model('Column_detail',Column_detail);
+module.exports = mongoose.model('Column_detail_v2', Column_detail)

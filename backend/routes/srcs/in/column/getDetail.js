@@ -1,36 +1,53 @@
-const getColumn = require('./imgProcess/getDetail')
 const asyncHandler = require('express-async-handler')
 const { dbCatch, ErrorHandler } = require('../../../error')
-
+const Column = require('../../../Schemas/column_detail')
 
 /**
- * @api {post} /getDetail 拿Detail資料
+ * @api {get} /column/detail 拿Detail資料
  * @apiName GetDetail
  * @apiGroup In/column
  * 
- * @apiparam {String} id column_yymm
+ * @apiparam {String} id yymm(required)
  * 
  * @apiSuccessExample {json} Success-Response:
  * 	HTTP/1.1 200 OK
  * 	{
- * 		title:String
- * 		hashtag:String
- * 		sections:[{
- * 			bigtitle:String,
- * 			sections:[{
- * 				title:String,
- * 				section:String
- * 			}]
- * 		}]
- * 		annotation:["特別感謝:...","撰寫:...","校稿:...",...]
- * 		id:["column_yymm"]
+ * 		top:{
+ *          name:String,
+ *          experience:String,
+ *          hashtags:[String]
+ *      },
+ *      body: {
+            body: [
+            {
+                bigtitle: String,
+                bigsections: [
+                {
+                    subtitle: String,
+                    subsection: String,
+                },
+                ],
+            },
+            ],
+        },
+        annotation: {
+            annotation: [
+            {
+                job: String,
+                contributer: String,
+            },
+            ],
+        },
+        id: String,
  * 	}
  * 
- * @apiError (404) {String} description 找不到資料
+ * @apiError (404) {String} description id is required/資料不存在
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req, res, next)=>{
-	const getDone = await getColumn(req.body.id)
-	if (!getDone) throw new ErrorHandler(404, "找不到資料")
-	return res.status(201).send(getDone)
+module.exports = asyncHandler(async (req, res, next) => {
+  const { id } = req.body
+  if (!id) throw new ErrorHandler(400, 'id is required')
+  const objDetail = await Column.findOne({ id }).catch(dbCatch)
+  if (!objDetail) throw new ErrorHandler(404, '資料不存在')
+  return res.status(201).send(objDetail)
 })

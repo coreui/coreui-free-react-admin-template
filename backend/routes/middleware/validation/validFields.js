@@ -16,6 +16,6 @@ module.exports = {
     'chVisual/email',
     'chVisual/office',
   ],
-  addColumn: ['column/detail_id', 'column/filename', 'column/outline_id'],
-  getDetail: ['column/id'],
+  addColumn: [], //['column/detail_id', 'column/filename', 'column/outline_id'],
+  getDetail: [], //['column/id'],
 }

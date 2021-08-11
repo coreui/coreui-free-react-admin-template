@@ -26,8 +26,6 @@ EE+ api 文件
   - [顯示我建立的職缺](#顯示我建立的職缺)
   - [顯示所有職缺](#顯示所有職缺)
 - [In/column](#incolumn)
-  - [存 column 照片](#存column照片)
-  - [拿 column 照片](#拿column照片)
   - [拿 Detail 資料](#拿detail資料)
   - [拿 Outline 資料](#拿outline資料)
   - [管理員新增文章](#管理員新增文章)
@@ -738,123 +736,64 @@ POST /showRecruitment
 
 # In/column
 
-## 存 column 照片
-
-[Back to top](#top)
-
-```
-POST /addImg
-```
-
-### Header examples
-
-config
-
-```json
-{ "content-type": "multipart/form-data" }
-```
-
-### Parameters - `Parameter`
-
-| Name     | Type     | Description |
-| -------- | -------- | ----------- |
-| filename | `String` | 檔名        |
-| file     | `String` | 照片檔      |
-
-### Success response
-
-#### Success response - `204`
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| -    |      |             |
-
-### Error response
-
-#### Error response - `500`
-
-| Name        | Type     | Description |
-| ----------- | -------- | ----------- |
-| description | `String` | 資料庫錯誤  |
-
-## 拿 column 照片
-
-[Back to top](#top)
-
-```
-POST /getImg
-```
-
-### Parameters - `Parameter`
-
-| Name     | Type     | Description |
-| -------- | -------- | ----------- |
-| filename | `String` | 檔名        |
-
-### Success response
-
-#### Success response - `201`
-
-| Name | Type | Description                                       |
-| ---- | ---- | ------------------------------------------------- |
-| data |      | 照片 url(Ex. <code>&lt;img src={url}/&gt;</code>) |
-
-### Error response
-
-#### Error response - `404`
-
-| Name        | Type     | Description |
-| ----------- | -------- | ----------- |
-| description | `String` | 照片不存在  |
-
-#### Error response - `500`
-
-| Name        | Type     | Description |
-| ----------- | -------- | ----------- |
-| description | `String` | 資料庫錯誤  |
-
 ## 拿 Detail 資料
 
 [Back to top](#top)
 
 ```
-POST /getDetail
+GET /column/detail
 ```
 
 ### Parameters - `Parameter`
 
-| Name | Type     | Description |
-| ---- | -------- | ----------- |
-| id   | `String` | column_yymm |
+| Name | Type     | Description    |
+| ---- | -------- | -------------- |
+| id   | `String` | yymm(required) |
 
 ### Success response example
 
 #### Success response example - `Success-Response:`
 
 ```json
-HTTP/1.1 200 OK
-{
-	title:String
-	hashtag:String
-	sections:[{
-		bigtitle:String,
-		sections:[{
-			title:String,
-			section:String
-		}]
-	}]
-	annotation:["特別感謝:...","撰寫:...","校稿:...",...]
-	id:["column_yymm"]
-}
+	HTTP/1.1 200 OK
+	{
+		top:{
+         name:String,
+         experience:String,
+         hashtags:[String]
+     },
+     body: {
+            body: [
+            {
+                bigtitle: String,
+                bigsections: [
+                {
+                    subtitle: String,
+                    subsection: String,
+                },
+                ],
+            },
+            ],
+        },
+        annotation: {
+            annotation: [
+            {
+                job: String,
+                contributer: String,
+            },
+            ],
+        },
+        id: String,
+	}
 ```
 
 ### Error response
 
 #### Error response - `404`
 
-| Name        | Type     | Description |
-| ----------- | -------- | ----------- |
-| description | `String` | 找不到資料  |
+| Name        | Type     | Description               |
+| ----------- | -------- | ------------------------- |
+| description | `String` | id is required/資料不存在 |
 
 #### Error response - `500`
 
@@ -867,39 +806,37 @@ HTTP/1.1 200 OK
 [Back to top](#top)
 
 ```
-POST /getOutline
+GET /column/outline
 ```
 
 ### Parameters - `Parameter`
 
-| Name | Type                   | Description |
-| ---- | ---------------------- | ----------- |
-| -    | `<ul> <li></li> </ul>` | <li></li>   |
+| Name | Type     | Description                 |
+| ---- | -------- | --------------------------- |
+| id   | `String` | id(optional,若未給則送全部) |
 
 ### Success response example
 
 #### Success response example - `Success-Response:`
 
 ```json
-HTTP/1.1 200 OK
-{
-	filename:["yymm"]
-	anno:["作者1 作者2 作者3...","| yyyy/mm/dd 星期x"]
-	title:["yyyy級 採訪者姓名 (目前職位)"...]
-	exp:["採訪者姓名 現任:目前職位"...]
-	edu:["採訪者姓名 學士/碩士/博士:....(畢業年分)",...]
-	intro:["內文段落1","內文段落2"...]
-	id:["Column_Block_yymm"]
-}
+	HTTP/1.1 200 OK
+	[{
+    anno: [{ type: String }],
+      date: String,
+      title: [{ type: String }],
+      exp: [{ type: String }],
+      edu: [{ type: String }],
+      intro: [{ type: String }],
+      id: { type: String, unique: true },
+      columnImg: {
+        data: { type: Buffer },
+        contentType: { type: String },
+      }
+    },]
 ```
 
 ### Error response
-
-#### Error response - `404`
-
-| Name        | Type     | Description |
-| ----------- | -------- | ----------- |
-| description | `String` | 找不到資料  |
 
 #### Error response - `500`
 
@@ -912,76 +849,79 @@ HTTP/1.1 200 OK
 [Back to top](#top)
 
 ```
-POST /addColumn
+POST /add
 ```
 
 ### Parameters - `Parameter`
 
-| Name                | Type        | Description                                                                |
-| ------------------- | ----------- | -------------------------------------------------------------------------- | ------------------- |
-| title               | `String[]`  | 文章標題 (xxxx 級 xxx (公司名稱與職位))                                    |
-| detail_id           | `String`    | 文章在 column_details 的編號 (column_yymm)                                 |
-| hashtags            | `String[]`  | 文章的 hashtag (文章類別，訪問者姓名、級別、工作、相關組織與企業)          |
-| sections            | `Object[]`  |                                                                            |
-| &ensp;bigtitle      | `String`    | (一、標題，二、求學階段...)                                                |
-| &ensp;sections      | `Object[]`  |                                                                            |
-| &ensp;&ensp;title   | `String`    | (各 bigtitle 的小主題)                                                     |
-| &ensp;&ensp;section | `String`    | (文章內容)                                                                 |
-| annotation          | `String[]`  | 參與人員 (工作:人員)                                                       |
-| filename            | `String`    | (yymm)                                                                     |
-| anno                | `String[2]` | ([所有採訪人員姓名,                                                        | yyyy/mm/dd 星期 x]) |
-| exp                 | `String[]`  | 採訪者的姓名與現任職位                                                     |
-| edu                 | `String[]`  | 採訪者的學歷 (學士:校系(畢業年分) 碩士:校系(畢業年分) 博士:校系(畢業年分)) |
-| intro               | `String[]`  | 簡介 (1 個 element 是一段)                                                 |
-| outline_id          | `String`    | 文章在 column_outlines 的 id (Column_Block_yymm)                           |
+| Name                         | Type       | Description                                                                   |
+| ---------------------------- | ---------- | ----------------------------------------------------------------------------- |
+| title                        | `String[]` | 文章標題 (xxxx 級 xxx (公司名稱與職位))(這邊看要不要和 name,experience 合併?) |
+| id                           | `String`   | 文章的編號 (建議 yymm)                                                        |
+| top                          | `Object`   |                                                                               |
+| &ensp;name                   | `String`   | 標題(xxxx 級 xxx)                                                             |
+| &ensp;experience             | `String`   | 副標題(公司名稱與職位)                                                        |
+| &ensp;hashtags               | `String[]` | 文章的 hashtag (文章類別，訪問者姓名、級別、工作、相關組織與企業)             |
+| &ensp;body                   | `Object[]` |                                                                               |
+| &ensp;&ensp;bigtitle         | `String`   | (一、標題，二、求學階段...)                                                   |
+| &ensp;&ensp;bigsections      | `Object[]` |                                                                               |
+| &ensp;&ensp;&ensp;subtitle   | `String`   | 子標題                                                                        |
+| &ensp;&ensp;&ensp;subsection | `String`   | (文章內容)                                                                    |
+| &ensp;annotation             | `String[]` | 參與全人員                                                                    |
+| &ensp;&ensp;job              | `String[]` | 工作                                                                          |
+| &ensp;&ensp;contributer      | `String[]` | 人員                                                                          |
+| anno                         | `String[]` | [所有採訪人員姓名]                                                            |
+| date                         | `String[]` | yyyy/mm/dd 星期 x                                                             |
+| exp                          | `String[]` | 職位                                                                          |
+| edu                          | `String[]` | 學歷 [學士:校系(畢業年分),碩士:校系(畢業年分),博士:校系(畢業年分)]            |
+| intro                        | `String[]` | 簡介 (1 個 element 是一段)                                                    |
 
 ### Parameters examples
 
 `js` - Input-Example:
 
 ```js
-let input=new FormData()
+let input = new FormData()
 
-input.append("file", 採訪合照)
-input.append("title", "2008級 方劭云（當屆最年輕升遷副教授）")
-input.append("detail_id", "column_yymm")
-input.append("hashtags[0]", 關鍵字1)
-input.append("hashtags[1]", 關鍵字2) ...
-input.append("annotation[0]", "特別感謝:...")
-input.append("annotation[1]", "撰寫:...") ...
-input.append("anno[0]", "作者1 作者2 ...")
-input.append("anno[1]", "| yyyy/mm/dd 星期x")
-input.append("exp[0]", "現任：國立臺灣科技大學電機系 副教授") ...
-input.append("edu[0]", "博士：台灣大學電子所  (2013)") ...
-input.append("intro[0]", "2008畢業於台大電機，目前任職於臺灣科技大學的方劭云教授...") ...
-input.append("outline_id", "Column_Block_yymm")
+input.append('file', 採訪合照)
+input.append('id', 'yymm')
+input.append('title', '2008級 方劭云（當屆最年輕升遷副教授）')
+input.append('top[name]', '2008級 方劭云')
+input.append('top[experience]', '當屆最年輕升遷副教授')
+input.append('top[hashtags][0]', 關鍵字1)
+input.append('annotation[annotation][0][job]', '撰寫')
+input.append('annotation[annotation][0][contributer]][]', '王曉明')
+input.append('anno[]', '作者1')
+input.append('date', 'yyyy/mm/dd 星期x')
+input.append('exp[0]', '現任：國立臺灣科技大學電機系 副教授')
+input.append('edu[0]', '博士：台灣大學電子所  (2013)')
+input.append('intro[0]', '2008畢業於台大電機，目前任職於臺灣科技大學的方劭云教授...')
 
-input.append("sections[0][bigtitle]", "一、我的大學生涯")
-input.append("sections[0][sections][0][title]", "球隊與課業交織的辛苦大學生活")
-input.append("sections[0][sections][0][section]", "因為我是排球校隊，沒能花很多時間在系上...")
-input.append("sections[0][sections][1][title]", "求學生涯印象最深刻的事")
-input.append("sections[0][sections][1][section]", "雖然有嘗試做過專題，但一直到大四要推甄的時候我還是很徬徨...")
-input.append("sections[0][sections][2...][title/section]", ...)
+input.append('body[body][][bigtitle]', '一、我的大學生涯')
+input.append('body[body][][bigsections][0][subtitle]', '球隊與課業交織的辛苦大學生活')
+input.append(
+  'body[body][][bigsections][0][subsection]',
+  '因為我是排球校隊，沒能花很多時間在系上...',
+)
 
-input.append("sections[1][bigtitle]", "二、攻讀碩士博士")
-input.append("sections[1][sections][0][title]", "漫長的研究所生涯")
-input.append("sections[1][sections][0][section]", "我讀完一年碩士之後就直升攻讀博士，再花四年拿到博士學位...")
-input.append("sections[1][sections][1...][title/section]", ...)
-...
-
-axios.post("/api/addColumn", input, {headers:{'content-type': 'multipart/form-data'}})
+axios.post('/api/addColumn', input, { headers: { 'content-type': 'multipart/form-data' } })
 ```
 
 ### Success response
 
 #### Success response - `201`
 
-| Name     | Type     | Description      |
-| -------- | -------- | ---------------- |
-| title    | `String` | post 的 title    |
-| filename | `String` | post 的 filename |
+| Name | Type     | Description |
+| ---- | -------- | ----------- |
+| id   | `String` | post 的 id  |
 
 ### Error response
+
+#### Error response - `400`
+
+| Name        | Type     | Description    |
+| ----------- | -------- | -------------- |
+| description | `String` | id is required |
 
 #### Error response - `500`
 
@@ -994,7 +934,7 @@ axios.post("/api/addColumn", input, {headers:{'content-type': 'multipart/form-da
 [Back to top](#top)
 
 ```
-POST /column/search
+GET /column/search
 ```
 
 ### Parameters - `Parameter`
@@ -1008,20 +948,36 @@ POST /column/search
 #### Success response example - `Success-Response:`
 
 ```json
-HTTP/1.1 200 OK
-[{
-	title:String
-	hashtag:String
-	sections:[{
-		bigtitle:String,
-		sections:[{
-			title:String,
-			section:String
-		}]
-	}]
-	annotation:["特別感謝:...","撰寫:...","校稿:...",...]
-	id:["column_yymm"]
-},...]
+	HTTP/1.1 200 OK
+	[{
+		top:{
+         name:String,
+         experience:String,
+         hashtags:[String]
+     },
+     body: {
+            body: [
+            {
+                bigtitle: String,
+                bigsections: [
+                {
+                    subtitle: String,
+                    subsection: String,
+                },
+                ],
+            },
+            ],
+        },
+        annotation: {
+            annotation: [
+            {
+                job: String,
+                contributer: String,
+            },
+            ],
+        },
+        id: String,
+	},...]
 ```
 
 ### Error response

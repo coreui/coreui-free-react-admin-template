@@ -1,6 +1,7 @@
 import { sygnet } from './sygnet'
 import { logo } from './logo'
 import { logoNegative } from './logo-negative'
+import { website } from './website'
 
 import {
   cibSkype,
@@ -44,6 +45,7 @@ import {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBrowser,
   cilCalculator,
   cilCalendar,
   cilCloudDownload,
@@ -135,6 +137,7 @@ export const icons = Object.assign(
     sygnet,
     logo,
     logoNegative,
+    website,
   },
   {
     cilAlignCenter,

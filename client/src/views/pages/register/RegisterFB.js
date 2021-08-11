@@ -93,33 +93,31 @@ const RegisterFB = () => {
 
   const handleFBSubmit = (e) => {
     e.preventDefault()
-    let r = window.confirm('確認註冊？')
-    if (r) {
-      let data = new FormData()
-      for (let key in registerFBForm) {
-        data.append(key, registerFBForm[key])
-      }
-      const config = {
-        headers: {
-          'content-type': 'multipart/form-data',
-        },
-      }
-      axios
-        .post('api/registerFB', data, config)
-        .then((res) => {
-          // console.log(res)
-          alert('註冊成功,跳轉至登入頁面')
-          setToLogin(true)
-        })
-        .catch((err) => {
-          // console.log(err.response)
-          switch (err.response.status) {
-            default:
-              alert(err.response.data.description)
-              break
-          }
-        })
+
+    let data = new FormData()
+    for (let key in registerFBForm) {
+      data.append(key, registerFBForm[key])
     }
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    }
+    axios
+      .post('api/registerFB', data, config)
+      .then((res) => {
+        // console.log(res)
+        alert('註冊成功,跳轉至登入頁面')
+        setToLogin(true)
+      })
+      .catch((err) => {
+        // console.log(err.response)
+        switch (err.response.status) {
+          default:
+            alert(err.response.data.description)
+            break
+        }
+      })
   }
   if (!location.state) {
     return <Redirect to="/register_entry" />

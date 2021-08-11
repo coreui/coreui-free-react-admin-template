@@ -15,10 +15,7 @@ const History = () => {
   useEffect(() => {
     getData()
   }, [])
-  return (
-    <>{data.member && <Timeline data={data} />}</>
-    // <div style={{ width: '100%' }}>{data.history && data.member && <Timeline data={data} />}</div>
-  )
+  return <>{data.member && <Timeline data={data} />}</>
 }
 
 export default History

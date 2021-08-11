@@ -90,35 +90,30 @@ const Register = () => {
     if (registerForm.password != registerForm.ConfirmPassword) {
       return alert('密碼不一致')
     } else {
-      let r = window.confirm('確認註冊？')
-      if (r) {
-        let data = new FormData()
-        for (let key in registerForm) {
-          data.append(key, registerForm[key])
-        }
-        const config = {
-          headers: {
-            'content-type': 'multipart/form-data',
-          },
-        }
-        // send to backend
-        // then redirect to login
-        axios
-          .post('api/register', data, config)
-          .then((res) => {
-            // console.log(res)
-            alert('註冊成功,跳轉至登入頁面')
-            setToLogin(true)
-          })
-          .catch((err) => {
-            // console.log(err.response)
-            switch (err.response.status) {
-              default:
-                alert(err.response.data.description)
-                break
-            }
-          })
+      let data = new FormData()
+      for (let key in registerForm) {
+        data.append(key, registerForm[key])
       }
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      }
+      // send to backend
+      // then redirect to login
+      axios
+        .post('api/register', data, config)
+        .then((res) => {
+          alert('註冊成功,跳轉至登入頁面')
+          setToLogin(true)
+        })
+        .catch((err) => {
+          switch (err.response.status) {
+            default:
+              alert(err.response.data.description)
+              break
+          }
+        })
     }
   }
 

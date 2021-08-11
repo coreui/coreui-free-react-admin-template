@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react'
 import TeamBlocks from './TeamBlocks'
-import { CContainer } from '@coreui/react'
 const Team = () => {
   const [data, setData] = useState([])
   const getData = () => {

@@ -20,17 +20,15 @@ const Profile = () => {
   let recommendation = []
   const [recruitment, setRecruitment] = useState([])
   const getRecruitment = () => {
-    fetch('recruitmentPosts.json', {
-      headers: {
-        ContentType: 'application/json',
-        Accept: 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setRecruitment(data)
-        // console.log(data)
+    axios
+      .get('/api/recruitment')
+      .then((res) => {
+        setRecruitment(res.data)
+        console.log(res)
       })
+      .catch(
+        (err) => err.response.data.description && alert('錯誤\n' + err.response.data.description),
+      )
   }
   const getProfile = () => {
     axios
@@ -84,8 +82,8 @@ const Profile = () => {
   const DeleteRecruitment = () => {}
   const showRecruitment = (Recruitment) => {
     console.log(Recruitment)
-    return Recruitment.posts.map((post, i) => {
-      const editPath = '/#/editRecruitment/' + (i + 1)
+    return Recruitment.map((post, i) => {
+      const editPath = '/#/editRecruitment/' + post._id
       return (
         <>
           <CRow sm="3">

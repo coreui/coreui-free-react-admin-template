@@ -21,6 +21,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { freeSet } from '@coreui/icons'
+import axios from 'axios'
 const EditBlock = ({ data }) => {
   const EditFormTemplate = {
     title: data.title.title,
@@ -29,7 +30,7 @@ const EditBlock = ({ data }) => {
     salary: data.info.salary,
     diploma: data.info.diploma,
     file: data.image,
-    id:data.id
+    id: data._id,
   }
   const history = useHistory()
   const [isModal, setIsModal] = useState(false)
@@ -107,28 +108,31 @@ const EditBlock = ({ data }) => {
     fileButton.value = ''
   }
   const handleSubmit = () => {
-    setExperience(experience.filter(exp=>exp===''))
-    setRequirement(requirement.filter(req=>req===''))
-    setDescription(description.filter(des=>des===''))
+    setExperience(experience.filter((exp) => exp === ''))
+    setRequirement(requirement.filter((req) => req === ''))
+    setDescription(description.filter((des) => des === ''))
     const post = {
-      title: {
-        title: editForm.title,
-        company_name: editForm.companyName,
-        work_type: editForm.workType,
-      },
-      info: {
-        salary: editForm.salary,
-        experience: experience,
-        diploma: editForm.diploma,
-      },
-      spec: {
-        requirement: requirement,
-        description: description,
-      },
-      image: editForm.file,
+      _id: editForm.id,
+      title: editForm.title,
+      company_name: editForm.companyName,
+      work_type: editForm.workType,
+      salary: editForm.salary,
+      experience: experience,
+      diploma: editForm.diploma,
+      requirement: requirement,
+      description: description,
+      file: editForm.file,
     }
-    console.log(post)
-    history.push('/profile')
+    console.log('this is post id:', post._id)
+    axios
+      .patch('/api/recruitment', post, { 'content-type': 'multipart/form-data' })
+      .then(() => {
+        alert('已更新')
+        history.push('/profile')
+      })
+      .catch((err) => {
+        err.response.data.description && alert('錯誤\n' + err.response.data.description)
+      })
   }
 
   return (
@@ -215,7 +219,7 @@ const EditBlock = ({ data }) => {
                             <CIcon content={freeSet.cilAddressBook} />
                           </CInputGroupText>
                           <CFormControl
-                            placeholder={experience[index]||"Required Experience"}
+                            placeholder={experience[index] || 'Required Experience'}
                             name="experience"
                             value={exp}
                             onChange={(e) => handleInputArray(e, index)}
@@ -237,7 +241,7 @@ const EditBlock = ({ data }) => {
                             <CIcon content={freeSet.cilThumbUp} />
                           </CInputGroupText>
                           <CFormControl
-                            placeholder={requirement[index]||"Required Skill"}
+                            placeholder={requirement[index] || 'Required Skill'}
                             name="requirement"
                             value={req}
                             onChange={(e) => handleInputArray(e, index)}
@@ -259,7 +263,7 @@ const EditBlock = ({ data }) => {
                             <CIcon content={freeSet.cilDescription} />
                           </CInputGroupText>
                           <CFormControl
-                            placeholder={description[index]||"Description"}
+                            placeholder={description[index] || 'Description'}
                             name="description"
                             value={desc}
                             onChange={(e) => handleInputArray(e, index)}

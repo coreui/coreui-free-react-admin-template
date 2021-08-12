@@ -8,10 +8,10 @@ const EditRecruitment = () => {
   const [data, setData] = useState([])
   const getData = () => {
     axios
-      .get('/api/searchRecruitment', { _id: id })
+      .post('/api/searchRecruitment', { _id: id })
       .then((res) => {
-        console.log('this is posts:', res.data)
-        setData(res.data)
+        console.log('this is posts:', res.data.data[0])
+        setData(res.data.data[0])
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)
@@ -20,7 +20,7 @@ const EditRecruitment = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <>{data.id && <EditBlock data={data} />}</>
+  return <>{data._id && <EditBlock data={data} />}</>
 }
 
 export default EditRecruitment

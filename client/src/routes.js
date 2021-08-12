@@ -40,7 +40,7 @@ const routes = [
   },
   {
     path: '/editRecruitment/:id',
-    exact: true,
+    exact: false,
     name: 'EditRecruitment',
     component: EditRecruitment,
   },

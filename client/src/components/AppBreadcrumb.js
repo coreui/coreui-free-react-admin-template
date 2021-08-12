@@ -10,7 +10,7 @@ const AppBreadcrumb = () => {
 
   const getRouteName = (pathname, routes, index) => {
     const pathFraction = currentLocation.split('/').length
-    if (isNaN(currentLocation.split('/')[pathFraction - 1])) {
+    if (currentLocation.split('/')[pathFraction - 1].length !== 24) {
       const currentRoute = routes.find((route) => route.path === pathname)
       return currentRoute.name
     } else {

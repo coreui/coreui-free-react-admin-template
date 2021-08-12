@@ -95,18 +95,6 @@ const Select = () => {
           </CCardBody>
         </CCard>
       </CCol>
-      {/* <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Select</strong> <small></small>
-          </CCardHeader>
-          <CCardBody>
-            <DocsExample href="forms/select">
-
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol> */}
     </CRow>
   )
 }

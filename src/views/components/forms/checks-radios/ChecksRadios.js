@@ -281,11 +281,16 @@ const ChecksRadios = () => {
               further be grouped in a button group if needed.
             </p>
             <DocsExample href="forms/checks-radios#toggle-buttons">
-              <CFormCheck button id="btn-check" autoComplete="off" label="Single toggle" />
+              <CFormCheck
+                button={{ color: 'primary ' }}
+                id="btn-check"
+                autoComplete="off"
+                label="Single toggle"
+              />
             </DocsExample>
             <DocsExample href="forms/checks-radios#toggle-buttons">
               <CFormCheck
-                button
+                button={{ color: 'primary ' }}
                 id="btn-check-2"
                 autoComplete="off"
                 label="Checked"
@@ -293,13 +298,18 @@ const ChecksRadios = () => {
               />
             </DocsExample>
             <DocsExample href="forms/checks-radios#toggle-buttons">
-              <CFormCheck button id="btn-check-3" autoComplete="off" label="Disabled" disabled />
+              <CFormCheck
+                button={{ color: 'primary ' }}
+                id="btn-check-3"
+                autoComplete="off"
+                label="Disabled"
+                disabled
+              />
             </DocsExample>
             <h3>Radio toggle buttons</h3>
             <DocsExample href="forms/checks-radios#toggle-buttons">
               <CFormCheck
-                button
-                buttonColor="secondary"
+                button={{ color: 'secondary' }}
                 type="radio"
                 name="options"
                 id="option1"
@@ -308,8 +318,7 @@ const ChecksRadios = () => {
                 defaultChecked
               />
               <CFormCheck
-                button
-                buttonColor="secondary"
+                button={{ color: 'secondary' }}
                 type="radio"
                 name="options"
                 id="option2"
@@ -317,8 +326,7 @@ const ChecksRadios = () => {
                 label="Radio"
               />
               <CFormCheck
-                button
-                buttonColor="secondary"
+                button={{ color: 'secondary' }}
                 type="radio"
                 name="options"
                 id="option3"
@@ -327,8 +335,7 @@ const ChecksRadios = () => {
                 disabled
               />
               <CFormCheck
-                button
-                buttonColor="secondary"
+                button={{ color: 'secondary' }}
                 type="radio"
                 name="options"
                 id="option4"
@@ -343,9 +350,7 @@ const ChecksRadios = () => {
             <DocsExample href="forms/checks-radios#toggle-buttons">
               <div>
                 <CFormCheck
-                  button
-                  buttonColor="primary"
-                  buttonVariant="outline"
+                  button={{ color: 'primary', variant: 'outline' }}
                   id="btn-check-outlined"
                   autoComplete="off"
                   label="Single toggle"
@@ -353,9 +358,7 @@ const ChecksRadios = () => {
               </div>
               <div>
                 <CFormCheck
-                  button
-                  buttonColor="secondary"
-                  buttonVariant="outline"
+                  button={{ color: 'secondary', variant: 'outline' }}
                   id="btn-check-2-outlined"
                   autoComplete="off"
                   label="Checked"
@@ -364,9 +367,7 @@ const ChecksRadios = () => {
               </div>
               <div>
                 <CFormCheck
-                  button
-                  buttonColor="success"
-                  buttonVariant="outline"
+                  button={{ color: 'success', variant: 'outline' }}
                   type="radio"
                   name="options-outlined"
                   id="success-outlined"
@@ -375,9 +376,7 @@ const ChecksRadios = () => {
                   defaultChecked
                 />
                 <CFormCheck
-                  button
-                  buttonColor="danger"
-                  buttonVariant="outline"
+                  button={{ color: 'danger', variant: 'outline' }}
                   type="radio"
                   name="options-outlined"
                   id="danger-outlined"

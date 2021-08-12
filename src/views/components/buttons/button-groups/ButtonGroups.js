@@ -114,22 +114,19 @@ const ButtonGroups = () => {
             <DocsExample href="components/button-group#checkbox-and-radio-button-groups">
               <CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
                 <CFormCheck
-                  button
-                  buttonVariant="outline"
+                  button={{ variant: 'outline' }}
                   id="btncheck1"
                   autoComplete="off"
                   label="Checkbox 1"
                 />
                 <CFormCheck
-                  button
-                  buttonVariant="outline"
+                  button={{ variant: 'outline' }}
                   id="btncheck2"
                   autoComplete="off"
                   label="Checkbox 2"
                 />
                 <CFormCheck
-                  button
-                  buttonVariant="outline"
+                  button={{ variant: 'outline' }}
                   id="btncheck3"
                   autoComplete="off"
                   label="Checkbox 3"
@@ -140,8 +137,7 @@ const ButtonGroups = () => {
               <CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
                 <CFormCheck
                   type="radio"
-                  button
-                  buttonVariant="outline"
+                  button={{ variant: 'outline' }}
                   name="btnradio"
                   id="btnradio1"
                   autoComplete="off"
@@ -149,8 +145,7 @@ const ButtonGroups = () => {
                 />
                 <CFormCheck
                   type="radio"
-                  button
-                  buttonVariant="outline"
+                  button={{ variant: 'outline' }}
                   name="btnradio"
                   id="btnradio2"
                   autoComplete="off"
@@ -158,8 +153,7 @@ const ButtonGroups = () => {
                 />
                 <CFormCheck
                   type="radio"
-                  button
-                  buttonVariant="outline"
+                  button={{ variant: 'outline' }}
                   name="btnradio"
                   id="btnradio3"
                   autoComplete="off"
@@ -413,9 +407,7 @@ const ButtonGroups = () => {
               <CButtonGroup vertical role="group" aria-label="Vertical button group">
                 <CFormCheck
                   type="radio"
-                  button
-                  buttonColor="danger"
-                  buttonVariant="outline"
+                  button={{ color: 'danger', variant: 'outline' }}
                   name="vbtnradio"
                   id="vbtnradio1"
                   autoComplete="off"
@@ -424,9 +416,7 @@ const ButtonGroups = () => {
                 />
                 <CFormCheck
                   type="radio"
-                  button
-                  buttonColor="danger"
-                  buttonVariant="outline"
+                  button={{ color: 'danger', variant: 'outline' }}
                   name="vbtnradio"
                   id="vbtnradio2"
                   autoComplete="off"
@@ -434,9 +424,7 @@ const ButtonGroups = () => {
                 />
                 <CFormCheck
                   type="radio"
-                  button
-                  buttonColor="danger"
-                  buttonVariant="outline"
+                  button={{ color: 'danger', variant: 'outline' }}
                   name="vbtnradio"
                   id="vbtnradio3"
                   autoComplete="off"

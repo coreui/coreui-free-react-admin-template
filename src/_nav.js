@@ -6,7 +6,7 @@ const _nav = [
     component: 'CNavItem',
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-speedometer" customClassName="nav-icon" />,
     badge: {
       color: 'info',
       text: 'NEW',
@@ -20,13 +20,13 @@ const _nav = [
     component: 'CNavItem',
     name: 'Colors',
     to: '/theme/colors',
-    icon: <CIcon name="cil-drop" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-drop" customClassName="nav-icon" />,
   },
   {
     component: 'CNavItem',
     name: 'Typography',
     to: '/theme/typography',
-    icon: <CIcon name="cil-pencil" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-pencil" customClassName="nav-icon" />,
   },
   {
     component: 'CNavTitle',
@@ -122,7 +122,7 @@ const _nav = [
     component: 'CNavGroup',
     name: 'Buttons',
     to: '/buttons',
-    icon: <CIcon name="cil-cursor" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-cursor" customClassName="nav-icon" />,
     items: [
       {
         component: 'CNavItem',
@@ -147,7 +147,7 @@ const _nav = [
   {
     component: 'CNavGroup',
     name: 'Forms',
-    icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-notes" customClassName="nav-icon" />,
     items: [
       {
         component: 'CNavItem',
@@ -203,12 +203,12 @@ const _nav = [
     component: 'CNavItem',
     name: 'Charts',
     to: '/charts',
-    icon: <CIcon name="cil-chart-pie" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-chart-pie" customClassName="nav-icon" />,
   },
   {
     component: 'CNavGroup',
     name: 'Icons',
-    icon: <CIcon name="cil-star" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-star" customClassName="nav-icon" />,
     items: [
       {
         component: 'CNavItem',
@@ -237,7 +237,7 @@ const _nav = [
   {
     component: 'CNavGroup',
     name: 'Notifications',
-    icon: <CIcon name="cil-bell" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-bell" customClassName="nav-icon" />,
     items: [
       {
         component: 'CNavItem',
@@ -269,7 +269,7 @@ const _nav = [
     component: 'CNavItem',
     name: 'Widgets',
     to: '/widgets',
-    icon: <CIcon name="cil-calculator" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-calculator" customClassName="nav-icon" />,
     badge: {
       color: 'info',
       text: 'NEW',
@@ -282,7 +282,7 @@ const _nav = [
   {
     component: 'CNavGroup',
     name: 'Pages',
-    icon: <CIcon name="cil-star" customClassName="nav-icon" />,
+    icon: <CIcon icon="cil-star" customClassName="nav-icon" />,
     items: [
       {
         component: 'CNavItem',

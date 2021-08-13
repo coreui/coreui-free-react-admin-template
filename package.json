@@ -29,7 +29,7 @@
     "@coreui/chartjs": "3.0.0",
     "@coreui/coreui": "4.0.1",
     "@coreui/icons": "^2.0.1",
-    "@coreui/icons-react": "^2.0.0-rc.0",
+    "@coreui/icons-react": "^2.0.0-rc.5",
     "@coreui/react": "4.0.0-beta.4",
     "@coreui/react-chartjs": "2.0.0-rc.0",
     "@coreui/utils": "^1.3.1",

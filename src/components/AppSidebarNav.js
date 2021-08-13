@@ -12,7 +12,7 @@ export const AppSidebarNav = ({ items }) => {
   const navLink = (name, icon, badge) => {
     return (
       <>
-        {icon && typeof icon === 'string' ? <CIcon name={icon} customClassName="nav-icon" /> : icon}
+        {icon && typeof icon === 'string' ? <CIcon icon={icon} customClassName="nav-icon" /> : icon}
         {name && name}
         {badge && (
           <CBadge color={badge.color} className="ms-auto">

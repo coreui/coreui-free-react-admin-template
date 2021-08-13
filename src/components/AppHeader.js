@@ -28,10 +28,10 @@ const AppHeader = () => {
           className="ps-1"
           onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
         >
-          <CIcon name="cil-menu" size="lg" />
+          <CIcon icon="cil-menu" size="lg" />
         </CHeaderToggler>
         <CHeaderBrand className="mx-auto d-md-none" to="/">
-          <CIcon name="logo" height="48" alt="Logo" />
+          <CIcon icon="logo" height={48} alt="Logo" />
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
@@ -49,17 +49,17 @@ const AppHeader = () => {
         <CHeaderNav>
           <CNavItem>
             <CNavLink href="#">
-              <CIcon name="cil-bell" size="lg" />
+              <CIcon icon="cil-bell" size="lg" />
             </CNavLink>
           </CNavItem>
           <CNavItem>
             <CNavLink href="#">
-              <CIcon name="cil-list" size="lg" />
+              <CIcon icon="cil-list" size="lg" />
             </CNavLink>
           </CNavItem>
           <CNavItem>
             <CNavLink href="#">
-              <CIcon name="cil-envelope-open" size="lg" />
+              <CIcon icon="cil-envelope-open" size="lg" />
             </CNavLink>
           </CNavItem>
         </CHeaderNav>

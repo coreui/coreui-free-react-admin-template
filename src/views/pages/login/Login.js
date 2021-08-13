@@ -29,13 +29,13 @@ const Login = () => {
                     <p className="text-medium-emphasis">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-user" />
+                        <CIcon icon="cil-user" />
                       </CInputGroupText>
                       <CFormInput placeholder="Username" autoComplete="username" />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <CIcon name="cil-lock-locked" />
+                        <CIcon icon="cil-lock-locked" />
                       </CInputGroupText>
                       <CFormInput
                         type="password"

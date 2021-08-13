@@ -40,7 +40,7 @@ const WidgetsBrand = ({ withCharts }) => {
           className="mb-4"
           headerChildren={
             <>
-              <CIcon name="cib-facebook" height="52" className="my-4 text-white" />
+              <CIcon icon="cib-facebook" height={52} className="my-4 text-white" />
               {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"
@@ -78,7 +78,7 @@ const WidgetsBrand = ({ withCharts }) => {
           className="mb-4"
           headerChildren={
             <>
-              <CIcon name="cib-twitter" height="52" className="my-4 text-white" />
+              <CIcon icon="cib-twitter" height={52} className="my-4 text-white" />
               {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"
@@ -116,7 +116,7 @@ const WidgetsBrand = ({ withCharts }) => {
           className="mb-4"
           headerChildren={
             <>
-              <CIcon name="cib-linkedin" height="52" className="my-4 text-white" />
+              <CIcon icon="cib-linkedin" height={52} className="my-4 text-white" />
               {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"
@@ -155,7 +155,7 @@ const WidgetsBrand = ({ withCharts }) => {
           color="warning"
           headerChildren={
             <>
-              <CIcon name="cil-calendar" height="52" className="my-4 text-white" />
+              <CIcon icon="cil-calendar" height={52} className="my-4 text-white" />
               {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"

@@ -22,14 +22,14 @@ const WidgetsDropdown = () => {
           value="26K"
           change={
             <>
-              (-12.4% <CIcon name="cil-arrow-bottom" />)
+              (-12.4% <CIcon icon="cil-arrow-bottom" />)
             </>
           }
           title="Users"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon name="cil-options" className="text-high-emphasis-inverse" />
+                <CIcon icon="cil-options" className="text-high-emphasis-inverse" />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -107,14 +107,14 @@ const WidgetsDropdown = () => {
           value="$6.200"
           change={
             <>
-              (40.9% <CIcon name="cil-arrow-top" />)
+              (40.9% <CIcon icon="cil-arrow-top" />)
             </>
           }
           title="Income"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon name="cil-options" className="text-high-emphasis-inverse" />
+                <CIcon icon="cil-options" className="text-high-emphasis-inverse" />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -191,14 +191,14 @@ const WidgetsDropdown = () => {
           value="2.49%"
           change={
             <>
-              (84.7% <CIcon name="cil-arrow-top" />)
+              (84.7% <CIcon icon="cil-arrow-top" />)
             </>
           }
           title="Conversion Rate"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon name="cil-options" className="text-high-emphasis-inverse" />
+                <CIcon icon="cil-options" className="text-high-emphasis-inverse" />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -262,14 +262,14 @@ const WidgetsDropdown = () => {
           value="44K"
           change={
             <>
-              (-23.6% <CIcon name="cil-arrow-bottom" />)
+              (-23.6% <CIcon icon="cil-arrow-bottom" />)
             </>
           }
           title="Sessions"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon name="cil-options" className="text-high-emphasis-inverse" />
+                <CIcon icon="cil-options" className="text-high-emphasis-inverse" />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>

@@ -25,7 +25,7 @@ const Page500 = () => {
             </span>
             <CInputGroup className="input-prepend">
               <CInputGroupText>
-                <CIcon name="cil-magnifying-glass" />
+                <CIcon icon="cil-magnifying-glass" />
               </CInputGroupText>
               <CFormInput size="16" type="text" placeholder="What are you looking for?" />
               <CButton color="info">Search</CButton>

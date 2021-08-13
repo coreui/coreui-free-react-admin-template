@@ -14,8 +14,8 @@ import {
 import CIcon from '@coreui/icons-react'
 
 import { AppBreadcrumb } from './index'
-
 import { AppHeaderDropdown } from './header/index'
+import { logo } from 'src/assets/brand/logo'
 
 const AppHeader = () => {
   const dispatch = useDispatch()
@@ -31,7 +31,7 @@ const AppHeader = () => {
           <CIcon icon="cil-menu" size="lg" />
         </CHeaderToggler>
         <CHeaderBrand className="mx-auto d-md-none" to="/">
-          <CIcon icon="logo" height={48} alt="Logo" />
+          <CIcon icon={logo} height={48} alt="Logo" />
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>

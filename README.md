@@ -15,7 +15,7 @@
 [npm-next]: https://img.shields.io/npm/v/@coreui/react/next.png?style=flat-square
 [npm]: https://www.npmjs.com/package/@coreui/react
 
-# CoreUI Free React Admin Template v3
+# CoreUI Free React Admin Template v4
 
 CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
 
@@ -23,8 +23,9 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 * [Versions](#versions)
 * [CoreUI Pro](#coreui-pro)
+* [Quick Start](#quick-start)
 * [Installation](#installation)
-* [Basic usage](#create-react-app)
+* [Basic usage](#basic-usage)
 * [What's included](#whats-included)
 * [Documentation](#documentation)
 * [Versioning](#versioning)
@@ -35,55 +36,35 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 ## Versions
 
 * [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
-* [CoreUI Free Angular 9+ Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
+* [CoreUI Free Angular Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
 * [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
 * [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
-* [CoreUI Free Laravel Admin Template](https://github.com/coreui/coreui-free-laravel-admin-template)
-* [CoreUI Free Vue.js + Laravel Admin Template](https://github.com/coreui/coreui-free-vue-laravel-admin-template)
 
 ## CoreUI Pro
 
 **Only customers with [Enterpise Membership Plan](https://coreui.io/pro/#buy) have access to private github CoreUI Pro repository.**
 
 * 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/pro/)
-* 💪  [CoreUI Pro Angular 9+ Admin Template](https://coreui.io/pro/angular)
+* 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/pro/angular)
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
-* 💪  [CoreUI Pro Laravel Admin Template](https://coreui.io/pro/laravel/)
-* 💪  [CoreUI Pro Vue.js + Laravel Admin Template](https://coreui.io/pro/vue-laravel/)
 
-## Installation
+## Quick Start
 
-### Clone repo
+- [Download the latest release](https://github.com/coreui/coreui-free-react-admin-template/archive/refs/heads/v4.zip)
+- Clone the repo: `git clone https://github.com/coreui/coreui-free-react-admin-template.git`
+
+### Instalation
 
 ``` bash
-# clone the repo
-$ git clone https://github.com/coreui/coreui-free-react-admin-template.git my-project
-
-# go into app's directory
-$ cd my-project
-
-# install app's dependencies
 $ npm install
 ```
 
-### Copy and Paste
-
-Copy all your files to your project folder and then,
+or
 
 ``` bash
-# go into app's directory
-$ cd my-project
-
-# install app's dependencies
-$ npm install
+$ yarn install
 ```
-
-## Create React App
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
-
-see also:
-[CRA docs](https://create-react-app.dev/docs/getting-started)
 
 ### Basic usage
 
@@ -92,9 +73,16 @@ see also:
 $ npm start
 ```
 
+or 
+
+``` bash
+# dev server with hot reload at http://localhost:3000
+$ yarn start
+```
+
 Navigate to [http://localhost:3000](http://localhost:3000). The app will automatically reload if you change any of the source files.
 
-### Build
+#### Build
 
 Run `build` to build the project. The build artifacts will be stored in the `build/` directory.
 
@@ -103,28 +91,34 @@ Run `build` to build the project. The build artifacts will be stored in the `bui
 $ npm run build
 ```
 
+or
+
+```bash
+# build for production with minification
+$ yarn build
+```
+
 ## What's included
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
 ```
-CoreUI-React#v3.0.0
-├── public/          #static files
-│   └── index.html   #html template
+coreui-free-react-admin-template
+├── public/          # static files
+│   └── index.html   # html template
 │
-├── src/             #project root
-│   ├── assets/      #assets - js icons object
-│   ├── containers/  #container source - template layout
-|   │   ├── _nav.js  #sidebar config
-|   │   └── ...      
-│   ├── scss/        #user scss/css source
-│   ├── views/       #views source
+├── src/             # project root
+│   ├── assets/      # images, icons, etc.
+│   ├── components/  # common components - header, footer, sidebar, etc.
+│   ├── layouts/     # layout containers
+│   ├── scss/        # scss styles
+│   ├── views/       # application views
+│   ├── _nav.js      # sidebar navigation config
 │   ├── App.js
-│   ├── App.test.js
-│   ├── polyfill.js
+│   ├── ...
 │   ├── index.js
-│   ├── routes.js    #routes config
-│   └── store.js     #template state example 
+│   ├── routes.js    # routes config
+│   └── store.js     # template state example 
 │
 └── package.json
 ```
@@ -132,8 +126,6 @@ CoreUI-React#v3.0.0
 ## Documentation
 
 The documentation for the CoreUI Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
-
-### :film_strip: How to setup coreui react theme in laravel. Video tutorial available [here](https://youtu.be/HVVpbpNUJ8M)
 
 ## Versioning
 
@@ -156,8 +148,7 @@ See [the Releases section of our project](https://github.com/coreui/coreui-free-
 Get updates on CoreUI's development and chat with the project maintainers and community members.
 
 - Follow [@core_ui on Twitter](https://twitter.com/core_ui).
-- Read and subscribe to [CoreUI Blog](https://coreui.ui/blog/).
-
+- Read and subscribe to [CoreUI Blog](https://blog.coreui.ui/).
 
 ## Copyright and License
 

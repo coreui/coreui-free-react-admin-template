@@ -52,26 +52,6 @@ const AppHeader = () => {
             <CNavLink href="#">Setting</CNavLink>
           </CNavItem>
         </CHeaderNav>
-        <CHeaderNav>
-          <CNavItem>
-            <CNavLink href="#">
-              {/* <h6>src/components/AppHeader/CIcon</h6> */}
-              <CIcon name="cil-bell" size="lg" />
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">
-              {/* <h6>src/components/AppHeader/CIcon</h6> */}
-              <CIcon name="cil-list" size="lg" />
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">
-              {/* <h6>src/components/AppHeader/CIcon</h6> */}
-              <CIcon name="cil-envelope-open" size="lg" />
-            </CNavLink>
-          </CNavItem>
-        </CHeaderNav>
         {isLogin ? (
           <CHeaderNav className="ms-3">
             <AppHeaderDropdown />

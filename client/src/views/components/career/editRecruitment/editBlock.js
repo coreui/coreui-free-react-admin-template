@@ -22,6 +22,7 @@ import {
 import CIcon from '@coreui/icons-react'
 import { freeSet } from '@coreui/icons'
 import axios from 'axios'
+import PreviewBlock from './previewBlock'
 const EditBlock = ({ data }) => {
   const EditFormTemplate = {
     title: data.title.title,
@@ -33,7 +34,8 @@ const EditBlock = ({ data }) => {
     id: data._id,
   }
   const history = useHistory()
-  const [isModal, setIsModal] = useState(false)
+  const [imageModal, setImageModal] = useState(false)
+  const [blockModal, setBlockModal] = useState(false)
   const [previewURL, setPreviewURL] = useState(null)
   const [experience, setExperience] = useState(data.info.experience)
   const [requirement, setRequirement] = useState(data.spec.requirement)
@@ -98,32 +100,29 @@ const EditBlock = ({ data }) => {
     }
     reader.readAsDataURL(file)
     // call the modal
-    setIsModal(true)
+    setImageModal(true)
   }
 
   const clearImage = (e) => {
-    setIsModal(false)
+    setImageModal(false)
     setPreviewURL(null)
     setEditForm({ ...editForm, file: null })
     fileButton.value = ''
   }
   const handleSubmit = () => {
-    setExperience(experience.filter((exp) => exp === ''))
-    setRequirement(requirement.filter((req) => req === ''))
-    setDescription(description.filter((des) => des === ''))
     const post = {
       _id: editForm.id,
       title: editForm.title,
       company_name: editForm.companyName,
       work_type: editForm.workType,
       salary: editForm.salary,
-      experience: experience,
+      experience: experience.filter((exp) => exp !== ''),
       diploma: editForm.diploma,
-      requirement: requirement,
-      description: description,
+      requirement: requirement.filter((req) => req !== ''),
+      description: description.filter((des) => des !== ''),
       file: editForm.file,
     }
-    console.log('this is post id:', post._id)
+    console.log('this is post:', post)
     axios
       .patch('/api/recruitment', post, { 'content-type': 'multipart/form-data' })
       .then(() => {
@@ -137,8 +136,8 @@ const EditBlock = ({ data }) => {
 
   return (
     <>
-      <CModal visible={isModal} onDismiss={() => setIsModal(false)} alignment="center">
-        <CModalHeader onDismiss={() => setIsModal(false)}>
+      <CModal visible={imageModal} onDismiss={() => setImageModal(false)} alignment="center">
+        <CModalHeader onDismiss={() => setImageModal(false)}>
           <CModalTitle>Preview Your Photo</CModalTitle>
         </CModalHeader>
         <CModalBody>
@@ -148,7 +147,28 @@ const EditBlock = ({ data }) => {
           <CButton color="warning" onClick={clearImage}>
             Clear
           </CButton>
-          <CButton color="dark" onClick={() => setIsModal(false)}>
+          <CButton color="dark" onClick={() => setImageModal(false)}>
+            OK
+          </CButton>
+        </CModalFooter>
+      </CModal>
+      <CModal visible={blockModal} onDismiss={() => setBlockModal(false)} alignment="center">
+        <CModalHeader onDismiss={() => setBlockModal(false)}>
+          <CModalTitle>Preview Your Update</CModalTitle>
+        </CModalHeader>
+        <CModalBody>
+          <PreviewBlock
+            post={editForm}
+            experience={experience}
+            requirement={requirement}
+            description={description}
+          />
+        </CModalBody>
+        <CModalFooter>
+          <CButton color="warning" onClick={() => setBlockModal(false)}>
+            Back
+          </CButton>
+          <CButton color="dark" onClick={handleSubmit}>
             OK
           </CButton>
         </CModalFooter>
@@ -308,8 +328,8 @@ const EditBlock = ({ data }) => {
                     </CRow>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
-                        <CButton color="dark" onClick={handleSubmit}>
-                          Edition Completed
+                        <CButton color="dark" onClick={() => setBlockModal(true)}>
+                          Done
                         </CButton>
                       </div>
                     </CRow>

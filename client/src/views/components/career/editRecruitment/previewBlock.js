@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { CWidgetBrand } from '@coreui/react'
 import eesa from '../../../../assets/images/eesa-icon.png'
+import './previewBlock.css'
 
-const RecruBlock = ({ post }) => {
+const PreviewBlock = ({ post, experience, requirement, description }) => {
   const [isExpand, setIsExpand] = useState(false)
   const spec = (li) => {
     return (
@@ -14,27 +15,27 @@ const RecruBlock = ({ post }) => {
     )
   }
   return (
-    <div className="RecruBlock" key={post.id}>
+    <div className="PreviewBlock" key={post.id}>
       <CWidgetBrand
         className="mb-4 widgetbrand"
         headerChildren={<img className="eesa" src={eesa} alt="eesa" />}
-        values={[[post.title.company_name]]}
+        values={[[post.companyName]]}
       />
       <hr></hr>
-      <div className="recrucontent">
-        <h3 style={{ 'font-weight': '600' }}>{post.title.title}</h3>
-        <h2 style={{ margin: '1rem 0rem', fontWeight: '600', color: 'red' }}>{post.info.salary}</h2>
+      <div className="previewcontent">
+        <h3 style={{ 'font-weight': '600' }}>{post.title}</h3>
+        <h2 style={{ margin: '1rem 0rem', fontWeight: '600', color: 'red' }}>{post.salary}</h2>
         <h3>要求學歷：</h3>
-        <h4 style={{ 'font-size': '1.39rem' }}>{post.info.diploma}</h4>
+        <h4 style={{ 'font-size': '1.39rem' }}>{post.diploma}</h4>
         {!isExpand && <button onClick={() => setIsExpand(true)}>Show more...</button>}
         {isExpand && (
           <>
             <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>工作經驗限制：</h3>
-            <h4>{post.info.experience.map((exp) => spec(exp))}</h4>
+            <h4>{experience.map((exp) => spec(exp))}</h4>
             <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>要求條件：</h3>
-            <h4>{post.spec.requirement.map((req) => spec(req))}</h4>
+            <h4>{requirement.map((req) => spec(req))}</h4>
             <h3 style={{ 'font-weight': '600', margin: '1rem 0 0.1rem' }}>說明：</h3>
-            <h4>{post.spec.description.map((des) => spec(des))}</h4>
+            <h4>{description.map((des) => spec(des))}</h4>
             <button onClick={() => setIsExpand(false)}>Show less...</button>
           </>
         )}
@@ -42,8 +43,11 @@ const RecruBlock = ({ post }) => {
     </div>
   )
 }
-RecruBlock.propTypes = {
+PreviewBlock.propTypes = {
   post: PropTypes.object,
+  experience: PropTypes.array,
+  requirement: PropTypes.array,
+  description: PropTypes.array,
 }
 
-export default RecruBlock
+export default PreviewBlock

@@ -13,7 +13,6 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { Link } from 'react-router-dom'
-import 'axios'
 import axios from 'axios'
 
 const Profile = () => {
@@ -197,7 +196,7 @@ const Profile = () => {
                   <h6 className="mb-0">Mobile</h6>
                 </CCol>
                 <CCol sm="9" className="text-secondary">
-                  {data.cellphone.data}
+                  {data.cellphone}
                 </CCol>
               </CRow>
               <hr />

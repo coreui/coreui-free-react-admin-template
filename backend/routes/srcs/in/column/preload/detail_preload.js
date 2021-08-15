@@ -3,29 +3,30 @@
 const Column_detail = require('../../../../Schemas/column_detail')
 // const Column = require('../../../Schemas/column')
 const toInsert = [
-  // require('./details/1601'),
-  // require('./details/1602'),
-  // require('./details/1603'),
-  // require('./details/1604'),
-  // require('./details/1605'),
-  // require('./details/1606'),
-  // require('./details/1805'),
-  // require('./details/1806'),
-  // require('./details/1807'),
-  // // require('./details/1808'),
-  // require('./details/1907'),
-  // require('./details/1908'),
-  // require('./details/1909'),
+  require('./details/1601'),
+  require('./details/1602'),
+  require('./details/1603'),
+  require('./details/1604'),
+  require('./details/1605'),
+  // require('./details/16052'),
+  require('./details/1606'),
+  require('./details/1805'),
+  require('./details/1806'),
+  require('./details/1807'),
+  // require('./details/1808'),
+  require('./details/1907'),
+  require('./details/1908'),
+  require('./details/1909'),
   require('./details/1910'),
-  // require('./details/1912'),
-  // require('./details/2001'),
+  require('./details/1912'),
+  require('./details/2001'),
 ]
 
 // const path = require('path')
 
 const main = async () => {
-  toInsert.forEach(async (obj, index) => {
-    const { title, hashtags, sections, annotation, id } = obj
+  for (let i = 0; i < toInsert.length; i += 1) {
+    const { title, hashtags, sections, annotation, id } = toInsert[i]
     const data = {
       top: {
         name: title.map((til) => til.split(/\(|（|）|\)/)[0].trim()).join(' & '),
@@ -54,9 +55,9 @@ const main = async () => {
       await column_detail.save()
       console.log(id, 'done')
     } catch (e) {
-      console.log(e)
+      // console.log(e)
       console.log(`id ${id} duplicate`)
     }
-  })
+  }
 }
 main()

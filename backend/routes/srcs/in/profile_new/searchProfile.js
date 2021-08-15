@@ -54,6 +54,7 @@ const asyncHandler = require('express-async-handler')
  */
 const srhProfile = async function (req, res, next) {
   const query = search(req)
+  console.log('query', query)
   const objs = await Visual.find(query, { _id: 0 }).catch(dbCatch)
   const users = objs.map((person) => {
     const imgSrc = person['imgSrc']
@@ -96,14 +97,20 @@ const search = (req) => {
   iter.forEach((key) => {
     const value = req.body[key]
     if (value === undefined) return
+    const reg = new RegExp(value.replace(' ', '|'), 'i')
     const obj = {}
-    obj[key] = value
+    obj[key] = reg
     query.push(obj) //{username:'陳君輔'}
   })
 
   const { Occupation } = req.body
   if (Occupation !== undefined) {
-    const obj = { Occupation: { $elemMatch: Occupation } }
+    const { O, C, P } = Occupation
+    const elem = {}
+    if (O !== undefined) elem.O = new RegExp(O.replace(' ', '|'), 'i')
+    if (C !== undefined) elem.C = new RegExp(C.replace(' ', '|'), 'i')
+    if (P !== undefined) elem.P = new RegExp(P.replace(' ', '|'), 'i')
+    const obj = { Occupation: { $elemMatch: elem } }
     query.push(obj)
   }
 

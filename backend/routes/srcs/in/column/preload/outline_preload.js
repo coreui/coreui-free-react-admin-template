@@ -145,7 +145,7 @@ toInsert = [
   {
     anno: ['劉衡謙', '賴明緯', '潘彥銘', '葉加祈', 'Sasa Chen'],
     date: '2017/6/9 星期五',
-    id: 'HungMingJiun',
+    id: '16052',
     title: ['2014級 洪銘駿 (RobotArt 國際機器人藝術大賽首獎)'],
     exp: ['JTCF Novel Technology Paper Award for Amusement Culture'],
     edu: ['碩士：台大電機所控制組'],
@@ -219,7 +219,8 @@ toInsert = [
 ]
 
 const main = async () => {
-  toInsert.forEach(async (obj) => {
+  for (let i = toInsert.length - 1; i >= 0; i -= 1) {
+    const obj = toInsert[i]
     const column_out = new Column_out(obj)
     const { columnImg } = await Column.findOne({ filename: obj.id })
     column_out.columnImg = columnImg
@@ -229,6 +230,6 @@ const main = async () => {
     } catch {
       console.log(obj.id, 'fail')
     }
-  })
+  }
 }
 main()

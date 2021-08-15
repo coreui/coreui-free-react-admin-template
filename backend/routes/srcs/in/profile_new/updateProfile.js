@@ -42,7 +42,7 @@ const updateProfile = async (req, res, next) => {
   if (!session_account) session_account = 'b07901029' //return res.status(403).send('not login')
   const obj = await Visual.findOne({ account: session_account }).catch(dbCatch)
   if (!obj) throw new ErrorHandler(404, '帳號不存在')
-  console.log(req.body)
+  console.log('body', req.body)
   const update = updateFormat(req)
   console.log('update', update)
   await Visual.updateOne({ account: session_account }, update).catch(dbCatch)

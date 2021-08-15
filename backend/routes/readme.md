@@ -857,9 +857,11 @@ GET /column/outline
 
 ### Parameters - `Parameter`
 
-| Name | Type     | Description                 |
-| ---- | -------- | --------------------------- |
-| id   | `String` | id(optional,若未給則送全部) |
+| Name    | Type     | Description                  |
+| ------- | -------- | ---------------------------- |
+| id      | `String` | id(optional,若未給則送全部)  |
+| perpage | `String` | 一頁數量(optional,default 5) |
+| page    | `String` | 頁數(optional,default 1)     |
 
 ### Success response example
 
@@ -867,6 +869,7 @@ GET /column/outline
 
 ```json
 	HTTP/1.1 200 OK
+{data:
 	[{
     anno: [{ type: String }],
       date: String,
@@ -879,7 +882,8 @@ GET /column/outline
         data: { type: Buffer },
         contentType: { type: String },
       }
-    },]
+    },],
+maxPage:Number}
 ```
 
 ### Error response
@@ -985,9 +989,12 @@ GET /column/search
 
 ### Parameters - `Parameter`
 
-| Name    | Type     | Description |
-| ------- | -------- | ----------- |
-| keyword | `String` |             |
+| Name     | Type     | Description                  |
+| -------- | -------- | ---------------------------- |
+| keyword  | `String` | 用空格區分                   |
+| hashtags | `String` | 用 hashtags 搜尋             |
+| perpage  | `String` | 一頁數量(optional,default 5) |
+| page     | `String` | 頁數(optional,default 1)     |
 
 ### Success response example
 
@@ -995,7 +1002,8 @@ GET /column/search
 
 ```json
 	HTTP/1.1 200 OK
-	[{
+{data:
+[{
 		top:{
          name:String,
          experience:String,
@@ -1023,7 +1031,9 @@ GET /column/search
             ],
         },
         id: String,
-	},...]
+	},...],
+maxPage:Number
+}
 ```
 
 ### Error response

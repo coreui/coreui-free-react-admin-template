@@ -89,6 +89,18 @@ const _navIn = [
         anchor: 'ProfileEdit',
         to: '/profileEdit',
       },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'OwnRecruitment',
+        to: '/own_recruitment',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'OwnRecommendation',
+        to: '/own_recommendation',
+      },
     ],
   },
 ]

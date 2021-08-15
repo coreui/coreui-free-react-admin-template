@@ -1,0 +1,51 @@
+.RecomBlock {
+  background-color: azure;
+  border-radius: 3%;
+  font-size: 4rem;
+  box-shadow: aqua 0px 5px 15px;
+  width: 95%;
+  margin: 0% 12% 10% 1% !important;
+}
+.eesa {
+  background-color: azure;
+  width: 90%;
+  padding: 0;
+}
+.widgetbrand {
+  background-color: azure;
+  border: 0px;
+  border-radius: 5%;
+}
+.card-header {
+  padding: 0%;
+  border-radius: 5% !important;
+}
+.recomcontent {
+  padding: 0% 3% 5% 3%;
+}
+.recomcontent > h3,
+h2 {
+  font-weight: 600;
+}
+.recomcontent > button {
+  font-size: 1vw;
+  color: blue;
+  border: none;
+  background: none;
+}
+.add {
+  padding: 2% 2% 2% 1%;
+  margin-bottom: 2%;
+  margin-right: 1%;
+  border-radius: 2rem;
+  border: dashed;
+  border-width: 2%;
+  border-color: azure;
+  font-size: 7rem;
+  color: azure;
+  font-weight: 600;
+}
+.add:hover {
+  background-color: azure;
+  color: var(--primary_bgcolor);
+}

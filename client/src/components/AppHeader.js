@@ -5,7 +5,6 @@ import {
   CContainer,
   CHeader,
   CHeaderBrand,
-  CHeaderDivider,
   CHeaderNav,
   CHeaderToggler,
   CNavLink,
@@ -14,8 +13,6 @@ import {
   CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-
-import { AppBreadcrumb } from './index'
 
 import { AppHeaderDropdown } from './header/index'
 
@@ -63,10 +60,6 @@ const AppHeader = () => {
             </CNavLink>
           </CHeaderNav>
         )}
-      </CContainer>
-      <CHeaderDivider />
-      <CContainer fluid>
-        <AppBreadcrumb />
       </CContainer>
     </CHeader>
   )

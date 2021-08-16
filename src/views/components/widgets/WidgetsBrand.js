@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { CWidgetBrand, CRow, CCol } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { cibFacebook, cibLinkedin, cibTwitter, cilCalendar } from '@coreui/icons'
 import { CChart } from '@coreui/react-chartjs'
 
 const WidgetsBrand = ({ withCharts }) => {
@@ -40,7 +41,7 @@ const WidgetsBrand = ({ withCharts }) => {
           className="mb-4"
           headerChildren={
             <>
-              <CIcon icon="cib-facebook" height={52} className="my-4 text-white" />
+              <CIcon icon={cibFacebook} height={52} className="my-4 text-white" />
               {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"
@@ -78,7 +79,7 @@ const WidgetsBrand = ({ withCharts }) => {
           className="mb-4"
           headerChildren={
             <>
-              <CIcon icon="cib-twitter" height={52} className="my-4 text-white" />
+              <CIcon icon={cibTwitter} height={52} className="my-4 text-white" />
               {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"
@@ -116,7 +117,7 @@ const WidgetsBrand = ({ withCharts }) => {
           className="mb-4"
           headerChildren={
             <>
-              <CIcon icon="cib-linkedin" height={52} className="my-4 text-white" />
+              <CIcon icon={cibLinkedin} height={52} className="my-4 text-white" />
               {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"
@@ -155,7 +156,7 @@ const WidgetsBrand = ({ withCharts }) => {
           color="warning"
           headerChildren={
             <>
-              <CIcon icon="cil-calendar" height={52} className="my-4 text-white" />
+              <CIcon icon={cilCalendar} height={52} className="my-4 text-white" />
               {withCharts && (
                 <CChart
                   className="position-absolute w-100 h-100"

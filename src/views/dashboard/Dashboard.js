@@ -21,6 +21,28 @@ import {
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
 import CIcon from '@coreui/icons-react'
+import {
+  cibCcAmex,
+  cibCcApplePay,
+  cibCcMastercard,
+  cibCcPaypal,
+  cibCcStripe,
+  cibCcVisa,
+  cibGoogle,
+  cibFacebook,
+  cibLinkedin,
+  cifBr,
+  cifEs,
+  cifFr,
+  cifIn,
+  cifPl,
+  cifUs,
+  cibTwitter,
+  cilCloudDownload,
+  cilPeople,
+  cilUser,
+  cilUserFemale,
+} from '@coreui/icons'
 
 const WidgetsDropdown = lazy(() => import('../components/widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../components/widgets/WidgetsBrand.js'))
@@ -44,7 +66,7 @@ const Dashboard = () => {
             </CCol>
             <CCol sm={7} className="d-none d-md-block">
               <CButton color="primary" className="float-end">
-                <CIcon icon="cil-cloud-download" />
+                <CIcon icon={cilCloudDownload} />
               </CButton>
               <CButtonGroup className="float-end me-3">
                 {['Day', 'Month', 'Year'].map((value) => (
@@ -287,7 +309,7 @@ const Dashboard = () => {
 
                   <div className="progress-group mb-4">
                     <div className="progress-group-header">
-                      <CIcon className="icon icon-lg me-2" icon="cil-user" />
+                      <CIcon className="icon icon-lg me-2" icon={cilUser} />
                       <span>Male</span>
                       <span className="ms-auto font-semibold">43%</span>
                     </div>
@@ -297,7 +319,7 @@ const Dashboard = () => {
                   </div>
                   <div className="progress-group mb-5">
                     <div className="progress-group-header">
-                      <CIcon className="icon icon-lg me-2" icon="cil-user-female" />
+                      <CIcon className="icon icon-lg me-2" icon={cilUserFemale} />
                       <span>Female</span>
                       <span className="ms-auto font-semibold">37%</span>
                     </div>
@@ -308,7 +330,7 @@ const Dashboard = () => {
 
                   <div className="progress-group">
                     <div className="progress-group-header">
-                      <CIcon className="icon icon-lg me-2" icon="cib-google" />
+                      <CIcon className="icon icon-lg me-2" icon={cibGoogle} />
                       <span>Organic Search</span>
                       <span className="ms-auto font-semibold">
                         191,235 <span className="text-medium-emphasis small">(56%)</span>
@@ -320,7 +342,7 @@ const Dashboard = () => {
                   </div>
                   <div className="progress-group">
                     <div className="progress-group-header">
-                      <CIcon icon="cib-facebook" className="icon icon-lg me-2" />
+                      <CIcon className="icon icon-lg me-2" icon={cibFacebook} />
                       <span>Facebook</span>
                       <span className="ms-auto font-semibold">
                         51,223 <span className="text-medium-emphasis small">(15%)</span>
@@ -332,7 +354,7 @@ const Dashboard = () => {
                   </div>
                   <div className="progress-group">
                     <div className="progress-group-header">
-                      <CIcon icon="cib-twitter" className="icon icon-lg me-2" />
+                      <CIcon className="icon icon-lg me-2" icon={cibTwitter} />
                       <span>Twitter</span>
                       <span className="ms-auto font-semibold">
                         37,564 <span className="text-medium-emphasis small">(11%)</span>
@@ -344,7 +366,7 @@ const Dashboard = () => {
                   </div>
                   <div className="progress-group">
                     <div className="progress-group-header">
-                      <CIcon icon="cib-linkedin" className="icon icon-lg me-2" />
+                      <CIcon className="icon icon-lg me-2" icon={cibLinkedin} />
                       <span>LinkedIn</span>
                       <span className="ms-auto font-semibold">
                         27,319 <span className="text-medium-emphasis small">(8%)</span>
@@ -363,7 +385,7 @@ const Dashboard = () => {
                 <CTableHead color="light">
                   <CTableRow>
                     <CTableHeaderCell className="text-center">
-                      <CIcon icon="cil-people" />
+                      <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
                     <CTableHeaderCell>User</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
@@ -384,7 +406,7 @@ const Dashboard = () => {
                       </div>
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cif-us" title="us" id="us" />
+                      <CIcon size="xl" icon={cifUs} title="us" id="us" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="clearfix">
@@ -400,7 +422,7 @@ const Dashboard = () => {
                       <CProgress thin color="success" value={50} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cib-cc-mastercard" />
+                      <CIcon size="xl" icon={cibCcMastercard} />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>
@@ -418,7 +440,7 @@ const Dashboard = () => {
                       </div>
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cif-br" title="br" id="br" />
+                      <CIcon size="xl" icon={cifBr} title="br" id="br" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="clearfix">
@@ -434,7 +456,7 @@ const Dashboard = () => {
                       <CProgress thin color="info" value={10} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cib-cc-visa" />
+                      <CIcon size="xl" icon={cibCcVisa} />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>
@@ -452,7 +474,7 @@ const Dashboard = () => {
                       </div>
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cif-in" title="in" id="in" />
+                      <CIcon size="xl" icon={cifIn} title="in" id="in" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="clearfix">
@@ -468,7 +490,7 @@ const Dashboard = () => {
                       <CProgress thin color="warning" value={74} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cib-cc-stripe" />
+                      <CIcon size="xl" icon={cibCcStripe} />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>
@@ -486,7 +508,7 @@ const Dashboard = () => {
                       </div>
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cif-fr" title="fr" id="fr" />
+                      <CIcon size="xl" icon={cifFr} title="fr" id="fr" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="clearfix">
@@ -502,7 +524,7 @@ const Dashboard = () => {
                       <CProgress thin color="danger" value={98} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cib-cc-paypal" />
+                      <CIcon size="xl" icon={cibCcPaypal} />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>
@@ -520,7 +542,7 @@ const Dashboard = () => {
                       </div>
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cif-es" title="es" id="es" />
+                      <CIcon size="xl" icon={cifEs} title="es" id="es" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="clearfix">
@@ -536,7 +558,7 @@ const Dashboard = () => {
                       <CProgress thin color="info" value={22} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cib-cc-apple-pay" />
+                      <CIcon size="xl" icon={cibCcApplePay} />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>
@@ -554,7 +576,7 @@ const Dashboard = () => {
                       </div>
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cif-pl" title="pl" id="pl" />
+                      <CIcon size="xl" icon={cifPl} title="pl" id="pl" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="clearfix">
@@ -570,7 +592,7 @@ const Dashboard = () => {
                       <CProgress thin color="success" value={43} />
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
-                      <CIcon size="xl" icon="cib-cc-amex" />
+                      <CIcon size="xl" icon={cibCcAmex} />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="small text-medium-emphasis">Last login</div>

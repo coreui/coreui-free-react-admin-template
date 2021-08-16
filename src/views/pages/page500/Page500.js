@@ -9,6 +9,7 @@ import {
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { cilMagnifyingGlass } from '@coreui/icons'
 
 const Page500 = () => {
   return (
@@ -25,7 +26,7 @@ const Page500 = () => {
             </span>
             <CInputGroup className="input-prepend">
               <CInputGroupText>
-                <CIcon icon="cil-magnifying-glass" />
+                <CIcon icon={cilMagnifyingGlass} />
               </CInputGroupText>
               <CFormInput size="16" type="text" placeholder="What are you looking for?" />
               <CButton color="info">Search</CButton>

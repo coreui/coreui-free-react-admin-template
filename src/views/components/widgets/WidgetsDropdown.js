@@ -11,6 +11,7 @@ import {
 import { getStyle } from '@coreui/utils'
 import { CChartBar, CChartLine } from '@coreui/react-chartjs'
 import CIcon from '@coreui/icons-react'
+import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
 
 const WidgetsDropdown = () => {
   return (
@@ -22,14 +23,14 @@ const WidgetsDropdown = () => {
           value="26K"
           change={
             <>
-              (-12.4% <CIcon icon="cil-arrow-bottom" />)
+              (-12.4% <CIcon icon={cilArrowBottom} />)
             </>
           }
           title="Users"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon="cil-options" className="text-high-emphasis-inverse" />
+                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -107,14 +108,14 @@ const WidgetsDropdown = () => {
           value="$6.200"
           change={
             <>
-              (40.9% <CIcon icon="cil-arrow-top" />)
+              (40.9% <CIcon icon={cilArrowTop} />)
             </>
           }
           title="Income"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon="cil-options" className="text-high-emphasis-inverse" />
+                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -191,14 +192,14 @@ const WidgetsDropdown = () => {
           value="2.49%"
           change={
             <>
-              (84.7% <CIcon icon="cil-arrow-top" />)
+              (84.7% <CIcon icon={cilArrowTop} />)
             </>
           }
           title="Conversion Rate"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon="cil-options" className="text-high-emphasis-inverse" />
+                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -262,14 +263,14 @@ const WidgetsDropdown = () => {
           value="44K"
           change={
             <>
-              (-23.6% <CIcon icon="cil-arrow-bottom" />)
+              (-23.6% <CIcon icon={cilArrowBottom} />)
             </>
           }
           title="Sessions"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon="cil-options" className="text-high-emphasis-inverse" />
+                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>

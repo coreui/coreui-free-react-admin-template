@@ -3,7 +3,6 @@ import { NavLink, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import { CBadge, CNavGroup, CNavGroupItems, CNavItem, CNavLink, CNavTitle } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
 
 export const AppSidebarNav = ({ items }) => {
   const components = { CNavGroup, CNavGroupItems, CNavItem, CNavLink, CNavTitle }
@@ -12,7 +11,7 @@ export const AppSidebarNav = ({ items }) => {
   const navLink = (name, icon, badge) => {
     return (
       <>
-        {icon && typeof icon === 'string' ? <CIcon icon={icon} customClassName="nav-icon" /> : icon}
+        {icon && icon}
         {name && name}
         {badge && (
           <CBadge color={badge.color} className="ms-auto">

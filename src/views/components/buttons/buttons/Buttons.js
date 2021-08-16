@@ -1,6 +1,7 @@
 import React from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { cilBell } from '@coreui/icons'
 import { DocsCallout, DocsExample } from 'src/components'
 
 const Buttons = () => {
@@ -87,12 +88,12 @@ const Buttons = () => {
                         active={state === 'active'}
                         disabled={state === 'disabled'}
                       >
-                        <CIcon icon="cil-bell" className="me-2" />
+                        <CIcon icon={cilBell} className="me-2" />
                         {color.charAt(0).toUpperCase() + color.slice(1)}
                       </CButton>
                     ))}
                     <CButton color="link">
-                      <CIcon icon="cil-bell" className="me-2" />
+                      <CIcon icon={cilBell} className="me-2" />
                       Link
                     </CButton>
                   </CCol>

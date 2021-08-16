@@ -28,7 +28,7 @@ const Page500 = () => {
               <CInputGroupText>
                 <CIcon icon={cilMagnifyingGlass} />
               </CInputGroupText>
-              <CFormInput size="16" type="text" placeholder="What are you looking for?" />
+              <CFormInput type="text" placeholder="What are you looking for?" />
               <CButton color="info">Search</CButton>
             </CInputGroup>
           </CCol>

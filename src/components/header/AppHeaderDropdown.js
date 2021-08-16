@@ -13,6 +13,7 @@ import {
   cilBell,
   cilCreditCard,
   cilCommentSquare,
+  cilEnvelopeOpen,
   cilFile,
   cilLockLocked,
   cilSettings,
@@ -30,28 +31,28 @@ const AppHeaderDropdown = () => {
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-light fw-semibold py-2">Account</CDropdownHeader>
         <CDropdownItem href="#">
-          <CIcon name={cilBell} className="me-2" />
+          <CIcon icon={cilBell} className="me-2" />
           Updates
           <CBadge color="info" className="ms-2">
             42
           </CBadge>
         </CDropdownItem>
         <CDropdownItem href="#">
-          <CIcon name="cil-envelope-open" className="me-2" />
+          <CIcon icon={cilEnvelopeOpen} className="me-2" />
           Messages
           <CBadge color="success" className="ms-2">
             42
           </CBadge>
         </CDropdownItem>
         <CDropdownItem href="#">
-          <CIcon name={cilTask} className="me-2" />
+          <CIcon icon={cilTask} className="me-2" />
           Tasks
           <CBadge color="danger" className="ms-2">
             42
           </CBadge>
         </CDropdownItem>
         <CDropdownItem href="#">
-          <CIcon name={cilCommentSquare} className="me-2" />
+          <CIcon icon={cilCommentSquare} className="me-2" />
           Comments
           <CBadge color="warning" className="ms-2">
             42
@@ -59,22 +60,22 @@ const AppHeaderDropdown = () => {
         </CDropdownItem>
         <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>
         <CDropdownItem href="#">
-          <CIcon name={cilUser} className="me-2" />
+          <CIcon icon={cilUser} className="me-2" />
           Profile
         </CDropdownItem>
         <CDropdownItem href="#">
-          <CIcon name={cilSettings} className="me-2" />
+          <CIcon icon={cilSettings} className="me-2" />
           Settings
         </CDropdownItem>
         <CDropdownItem href="#">
-          <CIcon name={cilCreditCard} className="me-2" />
+          <CIcon icon={cilCreditCard} className="me-2" />
           Payments
           <CBadge color="secondary" className="ms-2">
             42
           </CBadge>
         </CDropdownItem>
         <CDropdownItem href="#">
-          <CIcon name={cilFile} className="me-2" />
+          <CIcon icon={cilFile} className="me-2" />
           Projects
           <CBadge color="primary" className="ms-2">
             42
@@ -82,7 +83,7 @@ const AppHeaderDropdown = () => {
         </CDropdownItem>
         <CDropdownDivider />
         <CDropdownItem href="#">
-          <CIcon name={cilLockLocked} className="me-2" />
+          <CIcon icon={cilLockLocked} className="me-2" />
           Lock Account
         </CDropdownItem>
       </CDropdownMenu>

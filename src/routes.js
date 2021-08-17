@@ -2,6 +2,15 @@ import React from 'react'
 
 // examples
 
+// const createconsignor = React.lazy(() =>
+//   import('./views/components/booking/consignor/Createconsignor'),
+// )
+const Consignment = React.lazy(() =>
+  import('./views/components/booking/newconsignment/Consignment'),
+)
+const Listconsignment = React.lazy(() =>
+  import('./views/components/booking/listconsignment/Listconsignment'),
+)
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
@@ -103,6 +112,21 @@ const routes = [
   // { path: '/404', name: '404', component: Page404 },
   // { path: '/500', name: '500', component: Page500 },
   { path: '/widgets', name: 'Widgets', component: Widgets },
+  // { path: '/booking/consignment',exact name: 'Consignment', component: Consignment },
+  { path: '/booking', exact: true, name: 'Booking', component: Consignment },
+  { path: '/booking/newconsignment', exact: true, name: 'Consignment', component: Consignment },
+  {
+    path: '/booking/listconsignment',
+    exact: true,
+    name: 'Listconsignment',
+    component: Listconsignment,
+  },
+  // {
+  //   path: '/booking/createconsignor',
+  //   exact: true,
+  //   name: 'createconsignor',
+  //   component: createconsignor,
+  // },
 ]
 
 export default routes

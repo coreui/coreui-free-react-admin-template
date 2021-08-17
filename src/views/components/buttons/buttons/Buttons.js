@@ -388,9 +388,9 @@ const Buttons = () => {
             <Example href="components/buttons#block-buttons">
               <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                 <CButton color="primary" className="me-md-2">
-                  Button
+                  2 end
                 </CButton>
-                <CButton color="primary">Button</CButton>
+                <CButton color="primary">end</CButton>
               </div>
             </Example>
           </CCardBody>

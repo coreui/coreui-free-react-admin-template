@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useRef, useState } from 'react'
+import { useAuth } from '../../../contexts/AuthContext'
+import { Link, useHistory } from 'react-router-dom'
 import {
   CButton,
   CCard,
@@ -12,10 +13,29 @@ import {
   CInputGroup,
   CInputGroupText,
   CRow,
+  CAlert,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 const Login = () => {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const { login } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
+  async function handleSubmit(e) {
+    e.preventDefault()
+    try {
+      setError('')
+      setLoading(true)
+      await login(emailRef.current.value, passwordRef.current.value)
+      history.push('/')
+    } catch {
+      setLoading(false)
+      setError('Failed to Signin')
+    }
+  }
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -24,28 +44,34 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm>
+                  <CForm onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
+                    {error && <CAlert color="danger">{error}</CAlert>}
                     <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <CIcon name="cil-user" />
-                      </CInputGroupText>
-                      <CFormControl placeholder="Username" autoComplete="username" />
+                      <CInputGroupText>@</CInputGroupText>
+                      <CFormControl
+                        required
+                        ref={emailRef}
+                        placeholder="Email"
+                        autoComplete="email"
+                      />
                     </CInputGroup>
-                    <CInputGroup className="mb-4">
+                    <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon name="cil-lock-locked" />
                       </CInputGroupText>
                       <CFormControl
+                        ref={passwordRef}
                         type="password"
                         placeholder="Password"
-                        autoComplete="current-password"
+                        autoComplete="new-password"
+                        required
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton color="primary" className="px-4">
+                        <CButton disabled={loading} type="submit" color="primary" className="px-4">
                           Login
                         </CButton>
                       </CCol>

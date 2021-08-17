@@ -16,25 +16,198 @@ const _nav = [
   },
   {
     _component: 'CNavTitle',
-    anchor: 'Theme',
+    anchor: 'Navigation Panel',
   },
   {
-    _component: 'CNavItem',
+    _component: 'CNavGroup',
     as: NavLink,
-    anchor: 'Colors',
-    to: '/theme/colors',
-    icon: <CIcon name="cil-drop" customClassName="nav-icon" />,
+    anchor: 'Booking',
+    to: '/to',
+    icon: <CIcon name="cil-puzzle" customClassName="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add Consignment',
+        to: '/booking/newconsignment',
+      },
+      // {
+      //   _component: 'CNavItem',
+      //   as: NavLink,
+      //   anchor: 'create consignor',
+      //   to: '/booking/createconsignor',
+      // },
+
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'view Consignments',
+        to: '/booking/listconsignment',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Tables',
+        to: '/base/tables',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Tooltips',
+        to: '/base/tooltips',
+      },
+    ],
+  },
+  // Loading and Despatch
+  {
+    _component: 'CNavGroup',
+    as: NavLink,
+    anchor: 'Loading & Despatch',
+    to: '/to',
+    icon: <CIcon name="cil-puzzle" customClassName="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add Consignment',
+        to: '/booking/consignment',
+      },
+
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Spinners',
+        to: '/base/spinners',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Tables',
+        to: '/base/tables',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Tooltips',
+        to: '/base/tooltips',
+      },
+    ],
   },
   {
-    _component: 'CNavItem',
+    _component: 'CNavGroup',
     as: NavLink,
-    anchor: 'Typography',
-    to: '/theme/typography',
-    icon: <CIcon name="cil-pencil" customClassName="nav-icon" />,
+    anchor: 'Recive',
+    to: '/to',
+    icon: <CIcon name="cil-puzzle" customClassName="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add Consignment',
+        to: '/booking/consignment',
+      },
+
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Spinners',
+        to: '/base/spinners',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Tables',
+        to: '/base/tables',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Tooltips',
+        to: '/base/tooltips',
+      },
+    ],
   },
+  {
+    _component: 'CNavGroup',
+    as: NavLink,
+    anchor: 'Delivery',
+    to: '/to',
+    icon: <CIcon name="cil-puzzle" customClassName="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add Consignment',
+        to: '/booking/consignment',
+      },
+
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Spinners',
+        to: '/base/spinners',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Tables',
+        to: '/base/tables',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Tooltips',
+        to: '/base/tooltips',
+      },
+    ],
+  },
+  // nav
+
   {
     _component: 'CNavTitle',
-    anchor: 'Components',
+    anchor: "Admin's Pannel",
+  },
+  {
+    _component: 'CNavGroup',
+    as: NavLink,
+    anchor: 'Users',
+    to: '/to',
+    icon: <CIcon name="cil-puzzle" customClassName="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: "All User's",
+        to: '/base/accordion',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add User',
+        to: '/base/breadcrumbs',
+      },
+    ],
+  },
+  {
+    _component: 'CNavGroup',
+    as: NavLink,
+    anchor: 'Settings',
+    to: '/to',
+    icon: <CIcon name="cil-puzzle" customClassName="nav-icon" />,
+    items: [
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: "All User's",
+        to: '/base/accordion',
+      },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Add User',
+        to: '/base/breadcrumbs',
+      },
+    ],
   },
   {
     _component: 'CNavGroup',
@@ -203,13 +376,7 @@ const _nav = [
       },
     ],
   },
-  {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Charts',
-    to: '/charts',
-    icon: <CIcon name="cil-chart-pie" customClassName="nav-icon" />,
-  },
+
   {
     _component: 'CNavGroup',
     anchor: 'Icons',
@@ -267,52 +434,6 @@ const _nav = [
         as: NavLink,
         anchor: 'Toasts',
         to: '/notifications/toasts',
-      },
-    ],
-  },
-  {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'Widgets',
-    to: '/widgets',
-    icon: <CIcon name="cil-calculator" customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
-  },
-  {
-    _component: 'CNavTitle',
-    anchor: 'Extras',
-  },
-  {
-    _component: 'CNavGroup',
-    anchor: 'Pages',
-    icon: <CIcon name="cil-star" customClassName="nav-icon" />,
-    items: [
-      {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Login',
-        to: '/login',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Register',
-        to: '/register',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Error 404',
-        to: '/404',
-      },
-      {
-        _component: 'CNavItem',
-        as: NavLink,
-        anchor: 'Error 500',
-        to: '/500',
       },
     ],
   },

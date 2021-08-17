@@ -5,8 +5,8 @@ import axios from 'axios'
 import './scss/style.scss'
 
 const loading = (
-  <div className="pt-3 text-center">
-    <div className="sk-spinner sk-spinner-pulse"></div>
+  <div className="spinner-border text-primary mt-3" role="status">
+    <span className="sr-only"></span>
   </div>
 )
 

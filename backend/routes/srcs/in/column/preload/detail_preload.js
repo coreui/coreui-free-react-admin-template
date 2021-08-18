@@ -1,7 +1,6 @@
-// const imgPath = '../../../../../client/src/images'
-// const fs =require('fs')
-const Column_detail = require('../../../../Schemas/column_detail')
-// const Column = require('../../../Schemas/column')
+const mongoose = require('../../../../Schemas/db')
+const { model: Column_detail } = require('../../../../Schemas/column_detail')
+
 const toInsert = [
   require('./details/1601'),
   require('./details/1602'),
@@ -13,7 +12,7 @@ const toInsert = [
   require('./details/1805'),
   require('./details/1806'),
   require('./details/1807'),
-  // require('./details/1808'),
+  require('./details/1808'),
   require('./details/1907'),
   require('./details/1908'),
   require('./details/1909'),
@@ -21,8 +20,6 @@ const toInsert = [
   require('./details/1912'),
   require('./details/2001'),
 ]
-
-// const path = require('path')
 
 const main = async () => {
   for (let i = 0; i < toInsert.length; i += 1) {
@@ -60,4 +57,7 @@ const main = async () => {
     }
   }
 }
-main()
+mongoose.connection.on('open', () => {
+  console.log('DB on')
+  main()
+})

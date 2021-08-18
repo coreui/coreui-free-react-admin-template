@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
-const Column_Outline = require('../../../Schemas/column_outline')
+const { model: Column_Outline } = require('../../../Schemas/column_outline')
 
 /**
  * @api {get} /column/outline 拿Outline資料

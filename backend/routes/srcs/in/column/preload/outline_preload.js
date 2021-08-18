@@ -1,4 +1,5 @@
-const Column_out = require('../../../../Schemas/column_outline')
+const mongoose = require('../../../../Schemas/db')
+const { model: Column_out } = require('../../../../Schemas/column_outline')
 const Column = require('../../../../Schemas/column')
 toInsert = [
   {
@@ -232,4 +233,8 @@ const main = async () => {
     }
   }
 }
-main()
+
+mongoose.connection.on('open', () => {
+  console.log('DB on')
+  main()
+})

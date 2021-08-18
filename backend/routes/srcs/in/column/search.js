@@ -1,5 +1,5 @@
-const Column_detail = require('../../../Schemas/column_detail')
-const Column_Outline = require('../../../Schemas/column_outline')
+const { model: Column_detail } = require('../../../Schemas/column_detail')
+const { model: Column_Outline } = require('../../../Schemas/column_outline')
 const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
 

@@ -1,4 +1,4 @@
-const mongoose = require('./db'),
+const mongoose = require('mongoose'),
   Schema = mongoose.Schema
 
 const Column_Outline = new Schema({
@@ -62,4 +62,7 @@ Column_Outline.statics.smartQuery = function (keywords) {
 
 Column_Outline.index({ id: -1 })
 
-module.exports = mongoose.model('Column_outline_v3', Column_Outline)
+const collectionName = 'Column_outline_v3'
+module.exports.Schema = Column_Outline
+module.exports.collectionName = collectionName
+module.exports.model = mongoose.model(collectionName, Column_Outline)

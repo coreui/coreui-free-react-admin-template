@@ -54,6 +54,17 @@ $ cd client
 $ npm run build
 ```
 
+### Docker
+
+Use docker to run the project.
+
+```bash
+$ docker-compose up --build -d (噴error時取消-d可以看到完整錯誤訊息)
+$ docker-compose exec web npm run reset-db
+```
+
+then open http://localhost:3000
+
 ## What's included
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:

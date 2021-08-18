@@ -1,0 +1,7 @@
+# Dependency directories
+node_modules
+client/node_modules
+backend/node_modules
+# webpack bundle
+client/dist
+client/build

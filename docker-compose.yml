@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    # restart: always
+    expose:
+      - '27017'
+    # volumes:
+    #   - "./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh"
+    # ports:
+    #   - 27017:27017
+    # volumes:
+    #   - ./tmp/data/db:/data/db
+  web:
+    image: node:12
+    working_dir: /app
+    restart: on-failure:5
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - '3000:1993'
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://mongodb/eeplus
+    tty: true
+    stdin_open: true
+    # command: >
+    #     /bin/sh -c '
+    #     while ! nc -z db 27017;
+    #     do
+    #         echo "waiting for database ...";
+    #         sleep 3;
+    #     done;
+    #     echo "db is ready!";
+    #     npm start;
+    #     '

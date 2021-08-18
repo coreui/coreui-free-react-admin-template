@@ -4,7 +4,9 @@
     "local-install": "yarn install && cd client && yarn install && cd ../backend && yarn install && cd ..",
     "start-server": "nodemon index.js",
     "start-client": "cd client && yarn run local-build && cd ..",
-    "dev": "npm-run-all --parallel start-client start-server"
+    "dev": "npm-run-all --parallel start-client start-server",
+    "build-client": "cd client && yarn build && cd ..",
+    "reset-db": "node ./backend/routes/Schemas/preload.js"
   },
   "dependencies": {
     "connect-history-api-fallback": "^1.6.0",

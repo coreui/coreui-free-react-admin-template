@@ -74,6 +74,7 @@ const ShowColumns = () => {
         params: { perpage: postsPerPage.toString(), page: page.toString() },
       })
       .then((res) => {
+        console.log('this is data:', data)
         setData(res.data)
         setIsPending(false)
       })

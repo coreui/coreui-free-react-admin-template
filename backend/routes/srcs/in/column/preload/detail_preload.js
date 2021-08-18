@@ -8,7 +8,7 @@ const toInsert = [
   require('./details/1603'),
   require('./details/1604'),
   require('./details/1605'),
-  // require('./details/16052'),
+  require('./details/16052'),
   require('./details/1606'),
   require('./details/1805'),
   require('./details/1806'),

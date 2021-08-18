@@ -3,6 +3,7 @@ import { createStore } from 'redux'
 const initialState = {
   isLogin: false,
   sidebarShow: false,
+  page: 1,
 }
 
 const changeState = (state = initialState, { type, ...rest }) => {

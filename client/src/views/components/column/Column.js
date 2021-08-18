@@ -4,22 +4,21 @@ import Title from './Title'
 import Resume from './Resume'
 import Testimonials from './Testimonials'
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 // export default App;
 const Column = () => {
   const id = useParams().id
   const [data, setData] = useState([])
   const getData = () => {
-    fetch('resumeData.json', {
-      headers: {
-        ContentType: 'application/json',
-        Accept: 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((fetchData) => {
-        setData(fetchData.articles.find((article) => article.id === id))
+    axios
+      .get('/api/column/detail', { params: { id: id } })
+      .then((res) => {
+        setData(res.data)
         console.log('this is data:', data)
+      })
+      .catch((err) => {
+        err.response.data.description && alert('錯誤\n' + err.response.data.description)
       })
   }
   useEffect(() => {

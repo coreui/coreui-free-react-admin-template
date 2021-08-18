@@ -16,11 +16,9 @@ const Resume = ({ data }) => {
     return (
       <div className="row education" key={bigsection.bigtitle}>
         <div className="three columns header-col">
-          <nobr>
-            <h1 align="center">
-              <span>{bigsection.bigtitle}</span>
-            </h1>
-          </nobr>
+          <h1 align="center" style={{ lineHeight: '2.6rem' }}>
+            <span>{bigsection.bigtitle}</span>
+          </h1>
         </div>
         <div className="nine columns main-col">
           <div className="row item">

@@ -13,6 +13,7 @@ import Avatar from '@material-ui/core/Avatar'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder'
 import Pagination from '@material-ui/lab/Pagination'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -65,8 +66,12 @@ const useStyles = makeStyles((theme) => ({
 const ShowColumns = () => {
   const postsPerPage = 5
   const classes = useStyles()
+  const dispatch = useDispatch()
   const [data, setData] = useState({ maxPage: undefined, data: [] })
-  const [page, setPage] = useState(1)
+  const page = useSelector((state) => state.page)
+  const setPage = (val) => {
+    dispatch({ type: 'set', page: val })
+  }
   const [isPending, setIsPending] = useState(true)
   const getData = () => {
     axios
@@ -164,6 +169,7 @@ const ShowColumns = () => {
         <Box my={4} className={classes.paginationContainer}>
           <Pagination
             count={data.maxPage}
+            defaultPage={page}
             color="secondary"
             onChange={(e, val) => {
               window.scrollTo(0, 0)

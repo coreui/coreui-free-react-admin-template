@@ -21,7 +21,7 @@ module.exports = {
   ],
   sections: [
     {
-      bigtittle: '一、跟求學時有關的問題',
+      bigtitle: '一、跟求學時有關的問題',
       sections: [
         {
           title: '談到電機系的歸屬感，請問對當年的電機系有什麼樣的回憶呢？',
@@ -41,7 +41,7 @@ module.exports = {
       ],
     },
     {
-      bigtittle: '二、跟從台大電機畢業時相關的問題',
+      bigtitle: '二、跟從台大電機畢業時相關的問題',
       sections: [
         {
           title: '教授是先在台大讀完 MS 才去北卡攻讀 Ph.D.，選擇這樣做，有什麼考量嗎？',
@@ -67,7 +67,7 @@ module.exports = {
       ],
     },
     {
-      bigtittle: '三、跟從事現在這個工作時有關的問題',
+      bigtitle: '三、跟從事現在這個工作時有關的問題',
       sections: [
         {
           title:

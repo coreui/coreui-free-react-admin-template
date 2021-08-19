@@ -2,7 +2,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import RecomBlock from './RecomBlock'
-import './Recommendation.css'
 import Masonry from 'react-masonry-css'
 
 const RecomPost = ({ data }) => {

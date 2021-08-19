@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { CWidgetBrand } from '@coreui/react'
 import eesa from '../../../../assets/images/eesa-icon.png'
-import './previewBlock.css'
 
 const PreviewBlock = ({ post, experience, requirement, description }) => {
   const [isExpand, setIsExpand] = useState(false)

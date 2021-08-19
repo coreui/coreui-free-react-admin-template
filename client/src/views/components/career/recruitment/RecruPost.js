@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Recruitment.css'
 import Masonry from 'react-masonry-css'
 import RecruBlock from './RecruBlock'
 

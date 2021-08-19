@@ -1,10 +1,12 @@
-.RecomBlock {
+.RecruBlock,
+.RecomBlock,
+.PreviewBlock {
   background-color: azure;
   border-radius: 3%;
   font-size: 4rem;
   box-shadow: aqua 0px 5px 15px;
   width: 95%;
-  margin: 2% 0% 4% 2%;
+  margin: 0% 1% 7% 2% !important;
 }
 .eesa {
   background-color: azure;
@@ -20,14 +22,26 @@
   padding: 0%;
   border-radius: 5% !important;
 }
-.recomcontent {
+.recrucontent,
+.recomcontent,
+.previewcontent {
   padding: 0% 3% 5% 3%;
 }
+.fw-semibold {
+  font-size: 1.9rem !important;
+  margin-top: 5%;
+}
 .recomcontent > h3,
-h2 {
+.RecomBlock > h2 {
   font-weight: 600;
 }
-.recomcontent > button {
+.RecruBlock > hr,
+.PreviewBlock > hr {
+  margin-top: 0;
+}
+.recrucontent > button,
+.recomcontent > button,
+.previewcontent > button {
   font-size: 1vw;
   color: blue;
   border: none;

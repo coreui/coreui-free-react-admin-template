@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { selectLogin, login } from '../../../slices/loginSlice'
 import { Redirect, Link } from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login'
 import axios from 'axios'
@@ -25,12 +26,9 @@ const LoginFormTemplate = {
 
 const Login = () => {
   const dispatch = useDispatch()
-  const isLogin = useSelector((state) => state.isLogin)
-  const setIsLogin = (isLogin) => {
-    dispatch({ type: 'set', isLogin: isLogin })
-  }
+  const { isLogin } = useSelector(selectLogin)
+
   const [loginForm, setLoginForm] = useState(LoginFormTemplate)
-  // const [isLogin, setIsLogin] = useState(false) // delete if redux is setting
   const [needRegister, setNeedRegister] = useState(false)
 
   const handleInputChange = (e) => {
@@ -45,10 +43,9 @@ const Login = () => {
     axios
       .post('api/login', loginForm)
       .then((res) => {
-        // console.log(res)
         const { username } = res.data
         alert(`歡迎回來! ${username}`)
-        setIsLogin(true)
+        dispatch(login())
       })
       .catch((err) => {
         switch (err.response.status) {
@@ -76,7 +73,7 @@ const Login = () => {
         console.log(res)
         const { username } = res.data
         alert(`歡迎回來! ${username}`)
-        setIsLogin(true)
+        dispatch(login())
       })
       .catch((err) => {
         switch (err.response.status) {

@@ -28,6 +28,7 @@
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
+    "@reduxjs/toolkit": "^1.6.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",

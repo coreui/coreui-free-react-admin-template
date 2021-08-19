@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { selectLogin } from '../slices/loginSlice'
+import { selectGlobal, hideSidebar, openSidebar } from '../slices/globalSlice'
 import {
   CSidebar,
   CSidebarBrand,
@@ -24,9 +25,8 @@ import logo_row from '../assets/images/logo_row.png'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
-  const unfoldable = useSelector((state) => state.sidebarUnfoldable)
-  const sidebarShow = useSelector((state) => state.sidebarShow)
-  const isLogin = useSelector((state) => state.isLogin)
+  const { isLogin } = useSelector(selectLogin)
+  const { sidebarShow, unfoldable } = useSelector(selectGlobal)
   const chNav = () => {
     if (isLogin) return navIn
     else return navOut
@@ -37,10 +37,8 @@ const AppSidebar = () => {
       selfHiding="md"
       unfoldable={unfoldable}
       show={sidebarShow}
-      onShow={() => console.log('show')}
-      onHide={() => {
-        dispatch({ type: 'set', sidebarShow: false })
-      }}
+      onShow={() => dispatch(openSidebar())}
+      onHide={() => dispatch(hideSidebar())}
       className="bg-light"
     >
       <CSidebarBrand className="d-flex" to="/">

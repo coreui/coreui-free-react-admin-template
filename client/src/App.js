@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { login, logout } from './slices/loginSlice'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import './scss/style.scss'
@@ -28,20 +29,16 @@ const OwnRecruitment = React.lazy(() => import('./views/pages/recruitment/OwnRec
 const OwnRecommendation = React.lazy(() => import('./views/pages/recommendation/OwnRecommendation'))
 const App = () => {
   const dispatch = useDispatch()
-  const setIsLogin = (isLogin) => {
-    dispatch({ type: 'set', isLogin: isLogin })
-  }
 
   useEffect(() => {
     // check login status
     axios
       .post('/api/isLogin', {})
       .then((res) => {
-        // alert('已登入!')
-        setIsLogin(true)
+        dispatch(login())
       })
       .catch((err) => {
-        setIsLogin(false)
+        dispatch(logout())
       })
   }, [])
 

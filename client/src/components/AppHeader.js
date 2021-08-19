@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { selectGlobal, openSidebar, hideSidebar } from '../slices/globalSlice'
+import { selectLogin } from '../slices/loginSlice'
 import {
   CContainer,
   CHeader,
@@ -20,15 +22,15 @@ import logo_row from '../assets/images/logo_row.png'
 
 const AppHeader = () => {
   const dispatch = useDispatch()
-  const sidebarShow = useSelector((state) => state.sidebarShow)
-  const isLogin = useSelector((state) => state.isLogin)
+  const { sidebarShow } = useSelector(selectGlobal)
+  const { isLogin } = useSelector(selectLogin)
 
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
         <CHeaderToggler
           className="ms-md-3 d-lg-none"
-          onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
+          onClick={() => (sidebarShow ? dispatch(hideSidebar()) : dispatch(openSidebar()))}
         >
           <CIcon name="cil-menu" size="lg" />
         </CHeaderToggler>

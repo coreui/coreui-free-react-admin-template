@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { logout } from '../../slices/loginSlice'
 import {
   CAvatar,
   CBadge,
@@ -15,16 +16,13 @@ import axios from 'axios'
 
 const AppHeaderDropdown = () => {
   const dispatch = useDispatch()
-  const setIsLogin = (isLogin) => {
-    dispatch({ type: 'set', isLogin: isLogin })
-  }
   const handleLogOut = (e) => {
     e.preventDefault()
     axios
       .post('/api/logout', {})
       .then((res) => {
         alert('登出成功!')
-        setIsLogin(false)
+        dispatch(logout())
       })
       .catch((err) => {
         console.log(err)

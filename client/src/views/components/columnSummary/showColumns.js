@@ -14,6 +14,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder'
 import Pagination from '@material-ui/lab/Pagination'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
+import { selectColumnSummary, setPage } from '../../../slices/columnSummarySlice'
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -68,10 +69,7 @@ const ShowColumns = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const [data, setData] = useState({ maxPage: undefined, data: [] })
-  const page = useSelector((state) => state.page)
-  const setPage = (val) => {
-    dispatch({ type: 'set', page: val })
-  }
+  const { page } = useSelector(selectColumnSummary)
   const [isPending, setIsPending] = useState(true)
   const getData = () => {
     axios
@@ -173,7 +171,7 @@ const ShowColumns = () => {
             color="secondary"
             onChange={(e, val) => {
               window.scrollTo(0, 0)
-              setPage(val)
+              dispatch(setPage(val))
               setIsPending(true)
             }}
           />

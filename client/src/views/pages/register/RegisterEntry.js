@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { selectLogin, login } from '../../../slices/loginSlice'
 import axios from 'axios'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { Link, Redirect } from 'react-router-dom'
@@ -10,10 +11,7 @@ import RegisterFB from './images/Register_Facebook.png'
 
 const RegisterEntry = () => {
   const dispatch = useDispatch()
-  const isLogin = useSelector((state) => state.isLogin)
-  const setIsLogin = (isLogin) => {
-    dispatch({ type: 'set', isLogin: isLogin })
-  }
+  const { isLogin } = useSelector(selectLogin)
 
   const [needRegister, setNeedRegister] = useState(false)
   const [userId, setUserId] = useState(null)
@@ -33,7 +31,7 @@ const RegisterEntry = () => {
       .then((res) => {
         const { username } = res.data
         alert(`歡迎回來! ${username}`)
-        setIsLogin(true)
+        dispatch(login())
       })
       .catch((err) => {
         switch (err.response.status) {

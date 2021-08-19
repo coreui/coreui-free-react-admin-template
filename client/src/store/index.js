@@ -1,4 +1,10 @@
-import { createStore } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
+import { reducers } from '../slices'
+
+export default configureStore({
+  reducer: reducers,
+})
+/* import { createStore } from 'redux'
 
 const initialState = {
   isLogin: false,
@@ -16,4 +22,4 @@ const changeState = (state = initialState, { type, ...rest }) => {
 }
 
 const store = createStore(changeState)
-export default store
+export default store */

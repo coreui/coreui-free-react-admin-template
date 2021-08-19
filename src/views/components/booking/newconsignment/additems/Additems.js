@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {
   CButton,
   CCard,
@@ -19,8 +20,20 @@ import {
   CListGroupItem,
   CListGroup,
 } from '@coreui/react'
-function handleSubmit(e) {}
-function Additems() {
+
+const Additems = ({ formData, setForm, navigation }) => {
+  const {
+    quantity,
+    packagetype,
+    productdetails,
+    actualweight,
+    grossweight,
+    weighttype,
+    gst,
+    rateperreturn,
+    rate,
+  } = formData
+
   return (
     <div>
       <CRow>
@@ -51,7 +64,7 @@ function Additems() {
         </CTable>
         <CCol xs="12">
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-            <CButton onClick={handleSubmit} type="submit" color="warning">
+            <CButton onClick={() => navigation.next()} type="submit" color="warning">
               Add to Bilty
             </CButton>
           </div>
@@ -72,43 +85,71 @@ function Additems() {
               <CForm className="row g-3">
                 <CCol md="3">
                   <CFormLabel htmlFor="Quantity">Quantity :</CFormLabel>
-                  <CFormControl type="number" id="quantity" />
+                  <CFormControl type="number" name="quantity" onChange={setForm} value={quantity} />
                 </CCol>
                 <CCol md="3">
                   <CFormLabel htmlFor="Package">Package Type :</CFormLabel>
-                  <CFormControl type="text" id="Package" />
+                  <CFormControl
+                    type="text"
+                    onChange={setForm}
+                    name="packagetype"
+                    value={packagetype}
+                  />
                 </CCol>
                 <CCol md="3">
                   <CFormLabel>Product Details :</CFormLabel>
-                  <CFormControl type="text" />
+                  <CFormControl
+                    type="text"
+                    onChange={setForm}
+                    name="productdetails"
+                    value={productdetails}
+                  />
                 </CCol>
                 <CCol md="3">
                   <CFormLabel>Actual Weight :</CFormLabel>
-                  <CFormControl type="number" />
+                  <CFormControl
+                    type="number"
+                    onChange={setForm}
+                    name="actualweight"
+                    value={actualweight}
+                  />
                 </CCol>
                 <CCol md="3">
                   <CFormLabel>Gross Weight :</CFormLabel>
-                  <CFormControl type="number" />
+                  <CFormControl
+                    type="number"
+                    onChange={setForm}
+                    name="grossweight"
+                    value={grossweight}
+                  />
                 </CCol>
                 <CCol md="3">
                   <CFormLabel htmlFor="weightType">Weight Type :</CFormLabel>
-                  <CFormControl type="Text" id="weighttype" />
+                  <CFormControl
+                    name="weighttype"
+                    type="Text"
+                    onChange={setForm}
+                    id="weighttype"
+                    value={weighttype}
+                  />
                 </CCol>
                 <CCol md="3">
                   <CFormLabel htmlFor="gst">GST % :</CFormLabel>
-                  <CFormControl type="number" id="gst" />
+                  <CFormControl type="number" onChange={setForm} id="gst" name="gst" value={gst} />
                 </CCol>
                 <CCol md="3">
                   <CFormLabel>Rate per return :</CFormLabel>
-                  <CFormControl type="number" id="" />
+                  <CFormControl
+                    type="number"
+                    onChange={setForm}
+                    id=""
+                    value={rateperreturn}
+                    name="rateperreturn"
+                  />
                 </CCol>
                 <CCol md="3">
                   <CFormLabel>Rate </CFormLabel>
-                  <CFormControl type="number" id="" />
-                </CCol>
-                <CCol md="3">
-                  <CFormLabel>Actual Weight</CFormLabel>
-                  <CFormControl type="number" id="" />
+                  <CFormControl type="number" id="" onChange={setForm} value={rate} name="rate" />
                 </CCol>
 
                 <CCol md="4">
@@ -136,3 +177,8 @@ function Additems() {
 }
 
 export default Additems
+Additems.propTypes = {
+  formData: PropTypes.any,
+  setForm: PropTypes.any,
+  navigation: PropTypes.any,
+}

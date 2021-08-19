@@ -8,11 +8,63 @@ import Addcharge from '../newconsignment/addcharge/addcharge'
 import Recipt from '../recipt/Recipt'
 
 const defaultData = {
-  Quantity: '',
+  quantity: '',
   packageType: '',
   productDetails: '',
   actualWeight: '',
   grossWeight: '',
+  weighttype: '',
+  gst: '',
+  rateperreturn: '',
+  rate: '',
+  consignmentbookingdate: '',
+  biltytype: '',
+  bookingrefference: '',
+  brokerdetails: '',
+  billdate: '',
+  billno: '',
+  taxpaidby: '',
+  from: '',
+  valueofgoods: '',
+  to: '',
+  packingsize: '',
+  partymark: '',
+  brokernote: '',
+  shippingrisk: '',
+  ewaybillno: '',
+  ewaybilldate: '',
+  distancelevel: '',
+  consignorname1: '',
+  address11: '',
+  address21: '',
+  state1: '',
+  city1: '',
+  pincode1: '',
+  consignormobile1: '',
+  consignoramobile1: '',
+  email1: '',
+  consignorgstno1: '',
+  consigneename: '',
+  consigneeaddress1: '',
+  consigneeaddress2: '',
+  state: '',
+  pincode: '',
+  city: '',
+  consigneemobile1: '',
+  consigneeamobile: '',
+  email: '',
+  consigneegstno: '',
+  rc: '',
+  hamaili: '',
+  servicecharge: '',
+  statisticalcharge: '',
+  covercharge: '',
+  insurancecharge: '',
+  ddcharge: '',
+  packingcharge: '',
+  othercharge: '',
+  feecharge: '',
+  doordeliverycharges: '',
 }
 const steps = [
   { id: 'additems' },
@@ -28,28 +80,26 @@ function Consignment() {
     steps,
     initialStep: 0,
   })
+  const props = { formData, setForm, navigation }
+
   switch (step.id) {
     case 'additems':
-      return <Additems />
+      return <Additems {...props} />
     case 'consignor':
-      return <Consignor />
+      return <Consignor {...props} />
     case 'consignee':
-      return <Consignee />
+      return <Consignee {...props} />
     case 'consignmentssummary':
-      return <Consignmentssummary />
+      return <Consignmentssummary {...props} />
     case 'addcharge':
-      return <Addcharge />
+      return <Addcharge {...props} />
     case 'recipt':
-      return <Recipt />
+      return <Recipt {...props} />
     default:
       break
   }
 
-  return (
-    <div>
-      <Additems />
-    </div>
-  )
+  return <div></div>
 }
 
 export default Consignment

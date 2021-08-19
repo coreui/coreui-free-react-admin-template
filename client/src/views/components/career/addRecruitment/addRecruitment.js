@@ -129,7 +129,7 @@ const AddRecruitment = () => {
       .post('/api/addRecruitment', data, config)
       .then(() => {
         alert('已新增')
-        history.push('/recruitment')
+        history.push('/own_recruitment')
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)

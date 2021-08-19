@@ -127,7 +127,7 @@ const EditBlock = ({ data }) => {
       .patch('/api/recruitment', post, { 'content-type': 'multipart/form-data' })
       .then(() => {
         alert('已更新')
-        history.push('/profile')
+        history.push('/own_recruitment')
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)

@@ -5,7 +5,7 @@ import './Recruitment.css'
 import Masonry from 'react-masonry-css'
 import RecruBlock from './RecruBlock'
 
-const RecruPost = ({ data }) => {
+const RecruPost = ({ data, setData }) => {
   const breakpointColumnsObj = {
     default: 2,
     1100: 2,
@@ -30,8 +30,8 @@ const RecruPost = ({ data }) => {
         }}
         style={{ display: 'flex' }}
       >
-        {data.map((post) => (
-          <RecruBlock post={post} key={post.id} />
+        {data.map((post, i) => (
+          <RecruBlock post={post} setData={setData} index={i} key={i} />
         ))}
       </Masonry>
     </>
@@ -39,6 +39,7 @@ const RecruPost = ({ data }) => {
 }
 RecruPost.propTypes = {
   data: PropTypes.array,
+  setData: PropTypes.func,
 }
 
 export default RecruPost

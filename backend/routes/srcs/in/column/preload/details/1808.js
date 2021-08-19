@@ -1,7 +1,5 @@
 module.exports = {
-  title: [
-    '1994級 陳維超 （Skywatch Inc. Co-founder、Skywatch Inc. Co-founder、英業達 Head of AI Center）',
-  ],
+  title: ['1994級 陳維超 （Skywatch Inc. Co-founder、英業達 Head of AI Center）'],
   hashtags: [
     '系友專訪',
     '陳維超',

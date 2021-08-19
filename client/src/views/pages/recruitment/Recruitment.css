@@ -4,7 +4,7 @@
   font-size: 4rem;
   box-shadow: aqua 0px 5px 15px;
   width: 95%;
-  margin: 0% 12% 10% 1% !important;
+  margin: 2% 0% 4% 2%;
 }
 .eesa {
   background-color: azure;
@@ -37,9 +37,8 @@ hr {
   background: none;
 }
 .add {
-  padding: 2% 2% 2% 1%;
-  margin-bottom: 2%;
-  margin-right: 1%;
+  padding: 2%;
+  margin: 1% 1%;
   border-radius: 2rem;
   border: dashed;
   border-width: 2%;
@@ -51,4 +50,10 @@ hr {
 .add:hover {
   background-color: azure;
   color: var(--primary_bgcolor);
+}
+.avatar {
+  margin-left: 1%;
+}
+.avatar:hover {
+  cursor: pointer;
 }

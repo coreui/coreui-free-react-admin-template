@@ -17,7 +17,9 @@ const OwnRecruitment = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <div className="text-color-black">{data && <RecruPost data={data} />}</div>
+  return (
+    <div className="text-color-black">{data && <RecruPost data={data} setData={setData} />}</div>
+  )
 }
 
 export default OwnRecruitment

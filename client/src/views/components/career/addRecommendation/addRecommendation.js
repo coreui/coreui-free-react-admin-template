@@ -115,7 +115,7 @@ const AddRecommendation = () => {
       .post('/api/recommendation', data, config)
       .then(() => {
         alert('已新增')
-        history.push('/recommendation')
+        history.push('/own_recommendation')
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)

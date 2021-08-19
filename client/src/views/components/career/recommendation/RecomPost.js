@@ -13,28 +13,21 @@ const RecomPost = ({ data }) => {
     500: 1,
   }
   return (
-    <>
-      <a href="/#/addRecommendation">
-        <div className="d-flex justify-content-center add" width="100%">
-          +
-        </div>
-      </a>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-        columnAttrs={{
-          className: 'should be overridden',
-          'data-test': '',
-          style: { '--test': 'test' },
-        }}
-        style={{ display: 'flex' }}
-      >
-        {data.map((post) => (
-          <RecomBlock post={post} key={post.id} />
-        ))}
-      </Masonry>
-    </>
+    <Masonry
+      breakpointCols={breakpointColumnsObj}
+      className="my-masonry-grid"
+      columnClassName="my-masonry-grid_column"
+      columnAttrs={{
+        className: 'should be overridden',
+        'data-test': '',
+        style: { '--test': 'test' },
+      }}
+      style={{ display: 'flex' }}
+    >
+      {data.map((post) => (
+        <RecomBlock post={post} key={post.id} />
+      ))}
+    </Masonry>
   )
 }
 RecomPost.propTypes = {

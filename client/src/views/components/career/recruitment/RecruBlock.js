@@ -14,7 +14,7 @@ const RecruBlock = ({ post }) => {
     )
   }
   return (
-    <div className="RecruBlock" key={post.id}>
+    <div className="RecruBlock" key={post._id}>
       <CWidgetBrand
         className="mb-4 widgetbrand"
         headerChildren={<img className="eesa" src={eesa} alt="eesa" />}

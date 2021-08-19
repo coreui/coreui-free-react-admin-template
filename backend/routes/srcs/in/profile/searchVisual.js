@@ -1,21 +1,22 @@
-const Visual = require('../../../Schemas/user_visual');
-const search = require('./DBquery/searchOr');
-const getPublic = require('./DBquery/getPublic');
-const { dbCatch } = require('../../../error');
+const Visual = require('../../../Schemas/user_visual')
+const search = require('./DBquery/searchOr')
+const getPublic = require('./DBquery/getPublic')
+const { dbCatch } = require('../../../error')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {post} /searchVisual 搜尋porfile
+ * @api {post} /searchVisual search
  * @apiName SearchVisual
  * @apiGroup In/profile
- * 
+ * @apiDescription 搜尋porfile
+ *
  * @apiparam {String} account 學號(用'x'進行模糊搜尋, ex.'b079010xx')
  * @apiparam {String} username 名字
  * @apiparam {String} nickname 綽號
  * @apiparam {String} profile 自介
  * @apiparam {String} publicEmail 公開信相
  * @apiparam {String} office 公司電話
- * @apiparam {String} homephone 家裡電話 
+ * @apiparam {String} homephone 家裡電話
  * @apiparam {String} cellphone 手機
  * @apiparam {String} CC city and country
  * @apiparam {String} web 個人部落格
@@ -31,7 +32,7 @@ const asyncHandler = require('express-async-handler')
  * @apiparam {String} Occupation.C 公司
  * @apiparam {String} Occupation.O 部門
  * @apiparam {String} Occupation.P 職位
- * 
+ *
  * @apiSuccess (201) {Object[]} data Visual資料(請用res.data.data拿到)
  * @apiSuccess (201) {String} data.userimage 大頭貼(使用<code>\<img src={userimage}/></code>)
  * @apiSuccess (201) {String} data.account 學號
@@ -40,7 +41,7 @@ const asyncHandler = require('express-async-handler')
  * @apiSuccess (201) {String} data.profile 自介
  * @apiSuccess (201) {String} data.publicEmail 公開信相
  * @apiSuccess (201) {String} data.office 公司電話
- * @apiSuccess (201) {String} data.homephone 家裡電話 
+ * @apiSuccess (201) {String} data.homephone 家裡電話
  * @apiSuccess (201) {String} data.cellphone 手機
  * @apiSuccess (201) {String} data.CC city and country
  * @apiSuccess (201) {String} data.web 個人部落格
@@ -58,16 +59,16 @@ const asyncHandler = require('express-async-handler')
  * @apiSuccess (201) {String} data.Occupation.C 公司()
  * @apiSuccess (201) {String} data.Occupation.O 部門
  * @apiSuccess (201) {String} data.Occupation.P 職稱
- * 
+ *
  * @apiError (500) {String} description 資料庫錯誤
  */
 const searchVisual = async function (req, res, next) {
-	const query = search(req)
-	const objs = await Visual.find(query,{_id:0}).catch(dbCatch)
-	const users = []
-	objs.forEach(person=>{
-		users.push(getPublic(person))
-	})
-	return res.status(201).send({data:users})
+  const query = search(req)
+  const objs = await Visual.find(query, { _id: 0 }).catch(dbCatch)
+  const users = []
+  objs.forEach((person) => {
+    users.push(getPublic(person))
+  })
+  return res.status(201).send({ data: users })
 }
 module.exports = asyncHandler(searchVisual)

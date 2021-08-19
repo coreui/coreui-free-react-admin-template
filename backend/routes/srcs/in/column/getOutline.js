@@ -3,9 +3,10 @@ const { dbCatch } = require('../../../error')
 const { model: Column_Outline } = require('../../../Schemas/column_outline')
 
 /**
- * @api {get} /column/outline 拿Outline資料
+ * @api {get} /column/outline get outline with id optional
  * @apiName GetOutline
  * @apiGroup In/column
+ * @apiDescription 拿Outline資料(含圖片)
  *
  * @apiparam {String} id id(optional,若未給則送全部)
  * @apiparam {String} perpage 一頁數量(optional,default 5)

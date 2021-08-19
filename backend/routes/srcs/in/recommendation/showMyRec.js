@@ -2,13 +2,13 @@ const { dbCatch, ErrorHandler } = require('../../../error')
 const Recommendation = require('../../../Schemas/recommendation')
 const asyncHandler = require('express-async-handler')
 
-
 /**
- * @api {get} /recommendation/mine 顯示我建立的簡歷
+ * @api {get} /recommendation/mine show mine
  * @apiName ShowMyRecommendation
  * @apiGroup In/recommendation
- * 
- * 
+ * @apiDescription 顯示我建立的簡歷
+ *
+ *
  * @apiSuccess (201) {Object[]} - 簡歷們
  * @apiSuccess (201) {String} -._id mongodb _id(for update,delete)
  * @apiSuccess (201) {Object} -.title 標題相關
@@ -23,14 +23,14 @@ const asyncHandler = require('express-async-handler')
  * @apiSuccess (201) {String[]} -.spec.experience 經驗
  * @apiSuccess (201) {String[]} -.spec.speciality 專長
  * @apiSuccess (201) {String} -.image 頭像(Ex. <code>\<img src={image}/></code>)
- * 
+ *
  * @apiError (403) {String} - not login
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req,res,next)=>{
-    const account = req.session.loginAccount
-    if(!account) throw new ErrorHandler(403,'not login')
-    const recs = await Recommendation.find({account}).catch(dbCatch)
-    const output = recs.map(obj=>obj.getPublic())
-    res.status(200).send(output)
+module.exports = asyncHandler(async (req, res, next) => {
+  const account = req.session.loginAccount
+  if (!account) throw new ErrorHandler(403, 'not login')
+  const recs = await Recommendation.find({ account }).catch(dbCatch)
+  const output = recs.map((obj) => obj.getPublic())
+  res.status(200).send(output)
 })

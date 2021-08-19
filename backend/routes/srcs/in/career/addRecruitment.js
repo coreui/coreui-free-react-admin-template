@@ -41,10 +41,10 @@ async function insert(
 }
 
 /**
- * @api {post} /addRecruitment 新增職缺
+ * @api {post} /addRecruitment add
  * @apiName AddRecruitment
  * @apiGroup In/career
- * 
+ * @apiDescription 新增一筆職缺
  * 
  * @apiHeaderExample {json} header-config
 				 { "content-type": "multipart/form-data" }

@@ -3,9 +3,10 @@ const Recommendation = require('../../../Schemas/recommendation')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {get} /recommendation 搜尋簡歷
+ * @api {get} /recommendation search by field
  * @apiName ShowRecommendation
  * @apiGroup In/recommendation
+ * @apiDescription 搜尋簡歷
  *
  * @apiparam {String} _id _id
  * @apiparam {String} account 學號

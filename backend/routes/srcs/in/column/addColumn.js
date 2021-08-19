@@ -4,9 +4,10 @@ const { model: Column_outline } = require('../../../Schemas/column_outline')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {post} /add 管理員新增文章
+ * @api {post} /column/add add
  * @apiName addColumn
  * @apiGroup In/column
+ * @apiDescription 管理員新增文章
  *
  * @apiParam {String[]} title 文章標題
  *    (xxxx 級 xxx (公司名稱與職位))(這邊看要不要和name,experience合併?)

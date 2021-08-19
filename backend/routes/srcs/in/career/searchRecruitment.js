@@ -46,9 +46,10 @@ const searchRecuitment = async function (req, res, next) {
 }
 
 /**
- * @api {post} /searchRecruitment 尋找職缺
+ * @api {post} /searchRecruitment search by field
  * @apiName SearchRecruitment
  * @apiGroup In/career
+ * @apiDescription 指定欄位搜尋職缺
  * 
  * @apiparam {String} _id _id (optional)
  * @apiparam {String} account 學號 (optional)

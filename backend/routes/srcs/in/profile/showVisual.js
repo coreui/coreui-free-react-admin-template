@@ -1,26 +1,31 @@
 //srcs/login.js
-const { dbCatch } = require('../../../error');
-const Visual = require('../../../Schemas/user_visual');
-const Login = require('../../../Schemas/user_login');
-const getPrivate = require('./DBquery/getPrivate');
+const { dbCatch } = require('../../../error')
+const Visual = require('../../../Schemas/user_visual')
+const Login = require('../../../Schemas/user_login')
+const getPrivate = require('./DBquery/getPrivate')
 const asyncHandler = require('express-async-handler')
 
-async function insertVisual(name,account){
-    const user = await new Visual({
-        username:{data : name},
-        account:{data: account}
-    }).save().catch(dbCatch)
+async function insertVisual(name, account) {
+  const user = await new Visual({
+    username: { data: name },
+    account: { data: account },
+  })
+    .save()
+    .catch(dbCatch)
 
-    Login.updateOne({account},{$set:{visual:user._id}}).exec().catch(dbCatch)
+  Login.updateOne({ account }, { $set: { visual: user._id } })
+    .exec()
+    .catch(dbCatch)
 
-    return user
+  return user
 }
 
 /**
- * @api {post} /showVisual 顯示個人profile
+ * @api {post} /showVisual show mine
  * @apiName ShowVisual
  * @apiGroup In/profile
- * 
+ * @apiDescription 顯示個人profile
+ *
  * @apiSuccess (201) {Object} data Visual資料(請用res.data.data拿到)
  * @apiSuccess (201) {String} data.userimage 大頭貼(使用<code>\<img src={userimage}/></code>)
  * @apiSuccess (201) {Object} data.account 學號 {data,show}
@@ -49,18 +54,18 @@ async function insertVisual(name,account){
  * @apiSuccess (201) {String} data.Occupation.C 公司
  * @apiSuccess (201) {String} data.Occupation.O 部門
  * @apiSuccess (201) {String} data.Occupation.P 職稱
- * 
+ *
  * @apiError (500) {String} description 資料庫錯誤
  */
-const shVisual = async (req, res, next)=>{
-    let session_account = req.session.loginAccount
+const shVisual = async (req, res, next) => {
+  let session_account = req.session.loginAccount
 
-    let obj = await Visual.findOne({"account.data":session_account}).catch(dbCatch)
-    if(!obj){
-        if(!session_account) return//for dev
-        obj = await insertVisual(req.session.loginName,session_account)
-    }
-    const user = getPrivate(obj)
-    return res.status(201).send({data:user})
+  let obj = await Visual.findOne({ 'account.data': session_account }).catch(dbCatch)
+  if (!obj) {
+    if (!session_account) return //for dev
+    obj = await insertVisual(req.session.loginName, session_account)
+  }
+  const user = getPrivate(obj)
+  return res.status(201).send({ data: user })
 }
 module.exports = asyncHandler(shVisual)

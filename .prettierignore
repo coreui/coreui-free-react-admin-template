@@ -1,2 +1,3 @@
 ./client/dist/
 ./client/node_modules
+./backend/routes/docTemplate/plate.md

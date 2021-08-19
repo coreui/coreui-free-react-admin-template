@@ -1,11 +1,12 @@
-const { dbCatch, ErrorHandler } = require('../../../error');
-const Recommendation = require('../../../Schemas/recommendation');
+const { dbCatch, ErrorHandler } = require('../../../error')
+const Recommendation = require('../../../Schemas/recommendation')
 const asyncHandler = require('express-async-handler')
 
-/**
- * @api {post} /recommendation 新增簡歷
+/** 
+ * @api {post} /recommendation add
  * @apiName AddRecommendation
  * @apiGroup In/recommendation
+ * @apiDescription 新增簡歷
  * 
  * @apiHeaderExample {json} header-config
 				 { "content-type": "multipart/form-data" }
@@ -25,28 +26,27 @@ const asyncHandler = require('express-async-handler')
  * 
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req, res)=>{
-    const account = req.session.loginAccount
-    if(!account) throw new ErrorHandler(403,'not login')
+module.exports = asyncHandler(async (req, res) => {
+  const account = req.session.loginAccount
+  if (!account) throw new ErrorHandler(403, 'not login')
 
-    const {
-        title,name,desire_work_type,
-        contact,email,diploma,
-        experience,speciality
-    } = req.body
+  const { title, name, desire_work_type, contact, email, diploma, experience, speciality } =
+    req.body
 
-    const imgFile = req.file
-    let recruitmentImg
-    if(imgFile){
-        recruitmentImg = {data:imgFile.buffer, contentType:imgFile.mimetype}
-    }
-    const recomd = await new Recommendation({
-        account,
-        title:{title,name,desire_work_type},
-        info:{contact,email,diploma},
-        spec:{experience,speciality},
-        img:recruitmentImg
-    }).save().catch(dbCatch)
+  const imgFile = req.file
+  let recruitmentImg
+  if (imgFile) {
+    recruitmentImg = { data: imgFile.buffer, contentType: imgFile.mimetype }
+  }
+  const recomd = await new Recommendation({
+    account,
+    title: { title, name, desire_work_type },
+    info: { contact, email, diploma },
+    spec: { experience, speciality },
+    img: recruitmentImg,
+  })
+    .save()
+    .catch(dbCatch)
 
-    return res.status(200).send({title:recomd.title.title, _id:recomd._id})
+  return res.status(200).send({ title: recomd.title.title, _id: recomd._id })
 })

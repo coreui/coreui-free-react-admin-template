@@ -3,13 +3,13 @@ const Recruitment = require('../../../Schemas/recruitment')
 const asyncHandler = require('express-async-handler')
 // const getPublic = require('./DBquery/getPublic')
 
-
 /**
- * @api {get} /recruitment 顯示我建立的職缺
+ * @api {get} /recruitment show mine
  * @apiName ShowMyRecruitment
  * @apiGroup In/career
- * 
- * 
+ * @apiDescription 顯示我的所有職缺
+ *
+ *
  * @apiSuccess (201) {Object[]} - 職缺們
  * @apiSuccess (201) {String} -._id mongodb _id(for delete)
  * @apiSuccess (201) {Object} -.title 標題相關
@@ -24,17 +24,17 @@ const asyncHandler = require('express-async-handler')
  * @apiSuccess (201) {String[]} -.spec.requirement 技能要求
  * @apiSuccess (201) {String[]} -.spec.description 工作的其他描述
  * @apiSuccess (201) {String} -.image 公司頭像(Ex. <code>\<img src={image}/></code>)
- * 
- * @apiError (403) {String} - not login
+ *
+ * @apiError (403) {String} description not login
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req,res,next)=>{
-    const account = req.session.loginAccount
-    if(!account) return res.status(403).send('not login')
-    const recs = await Recruitment.find({account}).catch(dbCatch)
-    const output = []
-    recs.forEach(obj=>{
-        output.push(obj.getPublic())
-    })
-    res.status(200).send(output)
+module.exports = asyncHandler(async (req, res, next) => {
+  const account = req.session.loginAccount
+  if (!account) return res.status(403).send('not login')
+  const recs = await Recruitment.find({ account }).catch(dbCatch)
+  const output = []
+  recs.forEach((obj) => {
+    output.push(obj.getPublic())
+  })
+  res.status(200).send(output)
 })

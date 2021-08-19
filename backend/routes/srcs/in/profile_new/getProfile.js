@@ -17,9 +17,10 @@ async function insertVisual(name, account) {
   return user
 }
 /**
- * @api {get} /profile 顯示個人profile
+ * @api {get} /profile show mine
  * @apiName getProfile
  * @apiGroup In/profile_new
+ * @apiDescription 顯示個人profile
  *
  * @apiSuccess (201) {String} userimage 大頭貼(使用<code>\<img src={userimage}/></code>)
  * @apiSuccess (201) {String} account 學號

@@ -3,9 +3,10 @@ const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
 
 /**
- * @api {get} /smartsearchrecommendation reg搜尋
+ * @api {get} /smartsearchrecommendation search by keywords
  * @apiName ShowRecommendation
  * @apiGroup In/recommendation
+ * @apiDescription 關鍵字搜尋(空格區分)
  *
  * @apiparam {String} keyword 用空格區分
  *

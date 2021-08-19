@@ -4,9 +4,10 @@ const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
 
 /**
- * @api {get} /column/search hashtag關鍵字查詢
+ * @api {get} /column/search search by keywords or hashtags
  * @apiName Search
  * @apiGroup In/column
+ * @apiDescription 用keyword(空格區分)或hashtag搜尋
  *
  * @apiparam {String} keyword 用空格區分
  * @apiparam {String} hashtags 用hashtags搜尋

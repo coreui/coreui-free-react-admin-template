@@ -5,9 +5,10 @@ const Login = require('../../../Schemas/user_login')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {patch} /profile 更新porfile
+ * @api {patch} /profile update
  * @apiName ChangeProfile
  * @apiGroup In/profile_new
+ * @apiDescription 更新porfile
  * 
  * @apiHeaderExample {json} header-config
 				 { "content-type": "multipart/form-data" }

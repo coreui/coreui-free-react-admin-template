@@ -3,9 +3,10 @@ const { dbCatch } = require('../../../error')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {post} /searchProfile 搜尋porfile(or)
+ * @api {post} /searchProfile search by fields
  * @apiName SearchProfile
  * @apiGroup In/profile_new
+ * @apiDescription 給定欄位搜尋porfile(OR)
  *
  * @apiparam {String} account 學號(用'x'進行模糊搜尋, ex.'b079010xx')
  * @apiparam {String} username 名字

@@ -3,9 +3,10 @@ const { dbCatch, ErrorHandler } = require('../../../error')
 const { model: Column } = require('../../../Schemas/column_detail')
 
 /**
- * @api {get} /column/detail 拿Detail資料
+ * @api {get} /column/detail get detail
  * @apiName GetDetail
  * @apiGroup In/column
+ * @apiDescription 拿詳細文章內容
  * 
  * @apiparam {String} id yymm(required)
  * 

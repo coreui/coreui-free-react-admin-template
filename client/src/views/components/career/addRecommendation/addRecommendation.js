@@ -20,6 +20,7 @@ import {
 } from '@coreui/react'
 import axios from 'axios'
 import CIcon from '@coreui/icons-react'
+import PreviewBlock from '../editRecruitment/previewBlock'
 import { freeSet } from '@coreui/icons'
 const formTemplate = {
   title: '',
@@ -33,6 +34,7 @@ const formTemplate = {
 const AddRecommendation = () => {
   const history = useHistory()
   const [isModal, setIsModal] = useState(false)
+  const [blockModal, setBlockModal] = useState(false)
   const [previewURL, setPreviewURL] = useState(null)
   const [experience, setExperience] = useState([''])
   const [speciality, setSpeciality] = useState([''])
@@ -135,6 +137,27 @@ const AddRecommendation = () => {
             Clear
           </CButton>
           <CButton color="dark" onClick={() => setIsModal(false)}>
+            OK
+          </CButton>
+        </CModalFooter>
+      </CModal>
+      <CModal visible={blockModal} onDismiss={() => setBlockModal(false)} alignment="center">
+        <CModalHeader onDismiss={() => setBlockModal(false)}>
+          <CModalTitle>Preview New Post</CModalTitle>
+        </CModalHeader>
+        <CModalBody>
+          <PreviewBlock
+            post={recommendationForm}
+            experience={experience}
+            requirement={speciality}
+            description={[]}
+          />
+        </CModalBody>
+        <CModalFooter>
+          <CButton color="warning" onClick={() => setBlockModal(false)}>
+            Back
+          </CButton>
+          <CButton color="dark" onClick={handleSubmit}>
             OK
           </CButton>
         </CModalFooter>
@@ -262,8 +285,8 @@ const AddRecommendation = () => {
                     </CRow>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
-                        <CButton color="dark" onClick={handleSubmit}>
-                          Post A Recommendation
+                        <CButton color="dark" onClick={() => setBlockModal(true)}>
+                          Done
                         </CButton>
                       </div>
                     </CRow>

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
+import PreviewBlock from '../editRecruitment/previewBlock'
 import {
   CButton,
   CCard,
@@ -32,6 +33,7 @@ const formTemplate = {
 const AddRecruitment = () => {
   const history = useHistory()
   const [isModal, setIsModal] = useState(false)
+  const [blockModal, setBlockModal] = useState(false)
   const [previewURL, setPreviewURL] = useState(null)
   const [experience, setExperience] = useState([''])
   const [requirement, setRequirement] = useState([''])
@@ -149,6 +151,27 @@ const AddRecruitment = () => {
             Clear
           </CButton>
           <CButton color="dark" onClick={() => setIsModal(false)}>
+            OK
+          </CButton>
+        </CModalFooter>
+      </CModal>
+      <CModal visible={blockModal} onDismiss={() => setBlockModal(false)} alignment="center">
+        <CModalHeader onDismiss={() => setBlockModal(false)}>
+          <CModalTitle>Preview New Post</CModalTitle>
+        </CModalHeader>
+        <CModalBody>
+          <PreviewBlock
+            post={recruitmentForm}
+            experience={experience}
+            requirement={requirement}
+            description={description}
+          />
+        </CModalBody>
+        <CModalFooter>
+          <CButton color="warning" onClick={() => setBlockModal(false)}>
+            Back
+          </CButton>
+          <CButton color="dark" onClick={handleSubmit}>
             OK
           </CButton>
         </CModalFooter>
@@ -307,8 +330,8 @@ const AddRecruitment = () => {
                     </CRow>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
-                        <CButton color="dark" onClick={handleSubmit}>
-                          Post A Recruitment
+                        <CButton color="dark" onClick={() => setBlockModal(true)}>
+                          Done
                         </CButton>
                       </div>
                     </CRow>

@@ -35,7 +35,7 @@ const main = async () => {
           bigtitle,
           bigsections: sections.map(({ title, section }) => ({
             subtitle: title,
-            subsection: section,
+            subsection: section.replace(/&nbsp;|&nbsp/g, '').replace(/\n/g, '\n     '),
           })),
         })),
       },

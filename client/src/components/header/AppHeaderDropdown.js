@@ -1,6 +1,6 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { logout } from '../../slices/loginSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, clearImgSrc, selectLogin } from '../../slices/loginSlice'
 import {
   CAvatar,
   CBadge,
@@ -16,6 +16,7 @@ import axios from 'axios'
 
 const AppHeaderDropdown = () => {
   const dispatch = useDispatch()
+  const { imgSrc } = useSelector(selectLogin)
   const handleLogOut = (e) => {
     e.preventDefault()
     axios
@@ -23,6 +24,7 @@ const AppHeaderDropdown = () => {
       .then((res) => {
         alert('登出成功!')
         dispatch(logout())
+        dispatch(clearImgSrc())
       })
       .catch((err) => {
         console.log(err)
@@ -33,7 +35,7 @@ const AppHeaderDropdown = () => {
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
         {/* <h6>src/components/header/AppHeaderDropDown/CAvator</h6> */}
-        <CAvatar size="md" />
+        <CAvatar size="md" src={imgSrc} />
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>

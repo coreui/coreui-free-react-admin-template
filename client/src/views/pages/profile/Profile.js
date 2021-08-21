@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-// import './profile.css'
+import { useSelector } from 'react-redux'
+import { selectLogin } from '../../../slices/loginSlice'
 import {
   CButton,
   CCard,
@@ -17,11 +18,11 @@ import axios from 'axios'
 
 const Profile = () => {
   let recommendation = []
+  const { imgSrc } = useSelector(selectLogin)
   const getProfile = () => {
     axios
       .get('api/profile')
       .then((res) => {
-        // console.log(data)
         setData({ ...data, ...res.data })
       })
       .catch((err) => {
@@ -64,6 +65,7 @@ const Profile = () => {
 
   useEffect(() => {
     getProfile()
+    console.log(data)
   }, [])
 
   return (
@@ -73,7 +75,7 @@ const Profile = () => {
           <CCard>
             <CCardBody>
               <div className="d-flex flex-column align-items-center text-center">
-                <img src={data.userimage} alt="Admin" className="rounded-circle" width="150" />
+                <img src={imgSrc} alt="Admin" className="rounded-circle" width="150" />
                 <div className="mt-3">
                   <h4>{data.username}</h4>
                   <p className="text-secondary mb-1">{data.profile}</p>

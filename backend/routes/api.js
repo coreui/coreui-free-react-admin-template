@@ -28,6 +28,8 @@ if (process.env.NODE_ENV === 'development') {
 router.use(require('./srcs/out/account/main'))
 //forget, activation
 router.use(require('./srcs/out/forget/main'))
+//dashboard
+router.use(require('./srcs/out/dashboard/main'))
 
 //in
 //check is user

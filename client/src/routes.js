@@ -23,6 +23,8 @@ const EditRecruitment = React.lazy(() =>
   import('./views/components/career/editRecruitment/editRecruitment'),
 )
 
+const ProfileSearch = React.lazy(() => import('./views/components/searchProfile/SearchProfile'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
@@ -45,6 +47,7 @@ const routes = [
     component: EditRecruitment,
   },
   { path: '/editRecruitment', name: 'EditRecruitment', component: Recruitment },
+  { path: '/profileSearch', name: 'profileSearch', component: ProfileSearch },
   { path: '/about', name: 'About', component: About },
   { path: '/history', name: 'History', component: History },
   { path: '/contact', name: 'Contact', component: Contact },

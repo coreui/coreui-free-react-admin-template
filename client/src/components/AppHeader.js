@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useHistory } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectGlobal, openSidebar, hideSidebar } from '../slices/globalSlice'
 import { selectLogin } from '../slices/loginSlice'
+import { selectSearch, setKeywords, setResultProfiles } from '../slices/searchSlice'
 import {
   CContainer,
   CHeader,
@@ -13,17 +15,40 @@ import {
   CNavItem,
   CImage,
   CButton,
+  CFormControl,
+  CInputGroup,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 import { AppHeaderDropdown } from './header/index'
 
 import logo_row from '../assets/images/logo_row.png'
+import axios from 'axios'
 
 const AppHeader = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const { sidebarShow } = useSelector(selectGlobal)
   const { isLogin } = useSelector(selectLogin)
+  const { keywords } = useSelector(selectSearch)
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    axios
+      .post('api/smartsearchProfile', { keyword: keywords })
+      .then((res) => {
+        dispatch(setResultProfiles(res.data))
+        history.push('/profileSearch')
+      })
+      .catch((err) => console.log(err))
+  }
+
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleSearch(e)
+    }
+  }
 
   return (
     <CHeader position="sticky" className="mb-4">
@@ -39,17 +64,25 @@ const AppHeader = () => {
         </CHeaderBrand>
 
         <CHeaderNav className="d-none d-md-flex me-auto">
-          <CNavItem>
-            <CNavLink to="/dashboard" component={NavLink} activeClassName="active">
-              Dashboard
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Setting</CNavLink>
-          </CNavItem>
+          {isLogin ? (
+            <CNavItem>
+              <CInputGroup>
+                <CFormControl
+                  type="search"
+                  placeholder="Search for Profile"
+                  onChange={(e) => {
+                    dispatch(setKeywords(e.target.value))
+                  }}
+                  onKeyPress={handleEnter}
+                ></CFormControl>
+                <CButton onClick={handleSearch}>
+                  <CIcon name="cil-search" />
+                </CButton>
+              </CInputGroup>
+            </CNavItem>
+          ) : (
+            <></>
+          )}
         </CHeaderNav>
         {isLogin ? (
           <CHeaderNav className="ms-3">

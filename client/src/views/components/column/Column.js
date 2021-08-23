@@ -15,7 +15,6 @@ const Column = () => {
       .get('/api/column/detail', { params: { id: id } })
       .then((res) => {
         setData(res.data)
-        console.log('this is data:', data)
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)

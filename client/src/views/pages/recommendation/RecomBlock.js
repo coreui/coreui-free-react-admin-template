@@ -24,10 +24,10 @@ const RecomBlock = ({ post }) => {
       <div className="recomcontent">
         <h3>
           {post.title.name} asking for <nobr>{post.title.desire_work_type}</nobr>
-          <CAvatar className="avatar">
+          <CAvatar className="hover-pointer">
             <CIcon name="cil-pencil"></CIcon>
           </CAvatar>
-          <CAvatar className="avatar">
+          <CAvatar className="hover-pointer">
             <CIcon name="cil-trash"></CIcon>
           </CAvatar>
         </h3>

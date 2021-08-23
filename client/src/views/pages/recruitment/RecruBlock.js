@@ -42,10 +42,10 @@ const RecruBlock = ({ post, setData, index }) => {
       <div className="recrucontent">
         <h3 style={{ 'font-weight': '600' }}>
           {post.title.title}
-          <a className="avatar" href={'/#/editRecruitment/' + post._id}>
+          <a className="hover-pointer" href={'/#/editRecruitment/' + post._id}>
             <CIcon name="cil-pencil"></CIcon>
           </a>
-          <CAvatar className="avatar">
+          <CAvatar className="hover-pointer">
             <CIcon name="cil-trash" onClick={() => DeleteRecruitment(post._id)}></CIcon>
           </CAvatar>
         </h3>

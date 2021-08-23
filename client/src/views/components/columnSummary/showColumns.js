@@ -12,9 +12,15 @@ import CardContent from '@material-ui/core/CardContent'
 import Avatar from '@material-ui/core/Avatar'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder'
 import Pagination from '@material-ui/lab/Pagination'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectColumnSummary, setPage } from '../../../slices/columnSummarySlice'
+import {
+  selectColumnSummary,
+  setPage,
+  setKeywords,
+  setIsSearch,
+} from '../../../slices/columnSummarySlice'
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -28,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     color: '#fff',
-    fontSize: '4rem',
     flexDirection: 'column',
   },
   blogsContainer: {
@@ -69,15 +74,33 @@ const ShowColumns = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const [data, setData] = useState({ maxPage: undefined, data: [] })
-  const { page } = useSelector(selectColumnSummary)
+  const { page, keywords, isSearch } = useSelector(selectColumnSummary)
   const [isPending, setIsPending] = useState(true)
   const getData = () => {
+    setIsPending(true)
     axios
       .get('/api/column/outline', {
         params: { perpage: postsPerPage.toString(), page: page.toString() },
       })
       .then((res) => {
-        console.log('this is data:', data)
+        setData(res.data)
+        console.log('this is data:', res.data)
+        setIsPending(false)
+      })
+      .catch((err) => {
+        err.response.data.description && alert('錯誤\n' + err.response.data.description)
+      })
+  }
+  const searchData = (e = null) => {
+    if (e) {
+      e.preventDefault()
+    }
+    dispatch(setIsSearch(true))
+    setIsPending(true)
+    axios
+      .get('/api/column/search', { params: { keyword: keywords, page: page } })
+      .then((res) => {
+        console.log('keywords:', keywords)
         setData(res.data)
         setIsPending(false)
       })
@@ -86,7 +109,11 @@ const ShowColumns = () => {
       })
   }
   useEffect(() => {
-    getData()
+    if (!isSearch) {
+      getData()
+    } else {
+      searchData()
+    }
   }, [page])
   const contributions = (person) => {
     return (
@@ -149,33 +176,97 @@ const ShowColumns = () => {
   return (
     <div>
       <Box className={classes.hero}>
-        <Box>All Articles</Box>
+        <Box
+          className="display-1 hover-pointer"
+          onClick={() => {
+            dispatch(setIsSearch(false))
+            dispatch(setKeywords(''))
+            if (page === 1) {
+              getData()
+            } else {
+              dispatch(setPage(1))
+            }
+          }}
+        >
+          {isSearch ? 'All articles' : 'Search article'}
+        </Box>
+        <form
+          className="justify-content-around d-flex flex-column bg-dark rounded-3 text-light py-2"
+          onSubmit={(e) => searchData(e)}
+          action={(e) => searchData(e)}
+        >
+          <div className="row">
+            <label forhtml="keywords" className="d-flex">
+              &ensp;Key words&#40;split with space&#41;:
+            </label>
+          </div>
+          <div className="row justify-content-around d-flex">
+            <div className=" col-8 mt-2">
+              <input
+                type="text"
+                name="keywords"
+                placeholder={keywords === '' ? 'search for...' : keywords}
+                className="rounded-3"
+                value={keywords}
+                onChange={(e) => dispatch(setKeywords(e.target.value))}
+              ></input>
+            </div>
+            <div className="col-3 align-items-center d-flex">
+              <button
+                type="button"
+                onClick={(e) => searchData(e)}
+                className="btn btn-primary d-flex mt-1"
+              >
+                <i className="bi bi-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
       </Box>
-      {isPending && (
-        <div className="spinner-border text-primary mt-3" role="status">
-          <span className="sr-only"></span>
-        </div>
-      )}
-      {!isPending && (
-        <div className={classes.blogsContainer}>
-          <Grid container spacing={1}>
-            {articles(data)}
-          </Grid>
-        </div>
-      )}
-      {data.maxPage && (
+      {data.maxPage === 0 && !isPending ? (
+        <div className="display-2 d-flex justify-content-center mt-3">No corresponding columns</div>
+      ) : data.maxPage ? (
         <Box my={4} className={classes.paginationContainer}>
           <Pagination
             count={data.maxPage}
             defaultPage={page}
+            page={page}
             color="secondary"
             onChange={(e, val) => {
               window.scrollTo(0, 0)
               dispatch(setPage(val))
-              setIsPending(true)
             }}
           />
         </Box>
+      ) : (
+        []
+      )}
+      {isPending === true ? (
+        <div className="spinner-border text-primary mt-3" role="status">
+          <span className="sr-only"></span>
+        </div>
+      ) : (
+        <>
+          {data && (
+            <div className={classes.blogsContainer}>
+              <Grid container spacing={1}>
+                {articles(data)}
+              </Grid>
+            </div>
+          )}
+          <Box my={4} className={classes.paginationContainer}>
+            <Pagination
+              count={data.maxPage}
+              defaultPage={page}
+              page={page}
+              color="secondary"
+              onChange={(e, val) => {
+                window.scrollTo(0, 0)
+                dispatch(setPage(val))
+              }}
+            />
+          </Box>
+        </>
       )}
     </div>
   )

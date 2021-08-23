@@ -9,6 +9,8 @@
     "reset-db": "node ./backend/routes/Schemas/preload.js"
   },
   "dependencies": {
+    "@material-ui/icons": "^4.11.2",
+    "bootstrap-icons": "^1.5.0",
     "connect-history-api-fallback": "^1.6.0",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",

@@ -44,6 +44,13 @@ import {
   cilUserFemale,
 } from '@coreui/icons'
 
+import avatar1 from './../../assets/images/avatars/1.jpg'
+import avatar2 from './../../assets/images/avatars/2.jpg'
+import avatar3 from './../../assets/images/avatars/3.jpg'
+import avatar4 from './../../assets/images/avatars/4.jpg'
+import avatar5 from './../../assets/images/avatars/5.jpg'
+import avatar6 from './../../assets/images/avatars/6.jpg'
+
 const WidgetsDropdown = lazy(() => import('../components/widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../components/widgets/WidgetsBrand.js'))
 
@@ -397,7 +404,7 @@ const Dashboard = () => {
                 <CTableBody>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="/avatars/1.jpg" status="success" />
+                      <CAvatar size="md" src={avatar1} status="success" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Yiorgos Avraamu</div>
@@ -431,7 +438,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="/avatars/2.jpg" status="danger" />
+                      <CAvatar size="md" src={avatar2} status="danger" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Avram Tarasios</div>
@@ -465,7 +472,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="/avatars/3.jpg" status="warning" />
+                      <CAvatar size="md" src={avatar3} status="warning" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Quintin Ed</div>
@@ -499,7 +506,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="/avatars/4.jpg" status="secondary" />
+                      <CAvatar size="md" src={avatar4} status="secondary" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Enéas Kwadwo</div>
@@ -533,7 +540,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="/avatars/5.jpg" status="success" />
+                      <CAvatar size="md" src={avatar5} status="success" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Agapetus Tadeáš</div>
@@ -567,7 +574,7 @@ const Dashboard = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableDataCell className="text-center">
-                      <CAvatar size="md" src="/avatars/6.jpg" status="danger" />
+                      <CAvatar size="md" src={avatar6} status="danger" />
                     </CTableDataCell>
                     <CTableDataCell>
                       <div>Friderik Dávid</div>

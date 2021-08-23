@@ -6,7 +6,7 @@ import {
   CDropdownMenu,
   CDropdownItem,
   CDropdownToggle,
-  CWidgetDropdown,
+  CWidgetStatsA,
 } from '@coreui/react'
 import { getStyle } from '@coreui/utils'
 import { CChartBar, CChartLine } from '@coreui/react-chartjs'
@@ -17,13 +17,15 @@ const WidgetsDropdown = () => {
   return (
     <CRow>
       <CCol sm={6} lg={3}>
-        <CWidgetDropdown
+        <CWidgetStatsA
           className="mb-4"
           color="primary"
-          value="26K"
-          change={
+          value={
             <>
-              (-12.4% <CIcon icon={cilArrowBottom} />)
+              26K{' '}
+              <span className="fs-6 fw-normal">
+                (-12.4% <CIcon icon={cilArrowBottom} />)
+              </span>
             </>
           }
           title="Users"
@@ -102,13 +104,15 @@ const WidgetsDropdown = () => {
         />
       </CCol>
       <CCol sm={6} lg={3}>
-        <CWidgetDropdown
+        <CWidgetStatsA
           className="mb-4"
           color="info"
-          value="$6.200"
-          change={
+          value={
             <>
-              (40.9% <CIcon icon={cilArrowTop} />)
+              $6.200{' '}
+              <span className="fs-6 fw-normal">
+                (40.9% <CIcon icon={cilArrowTop} />)
+              </span>
             </>
           }
           title="Income"
@@ -186,13 +190,15 @@ const WidgetsDropdown = () => {
         />
       </CCol>
       <CCol sm={6} lg={3}>
-        <CWidgetDropdown
+        <CWidgetStatsA
           className="mb-4"
           color="warning"
-          value="2.49%"
-          change={
+          value={
             <>
-              (84.7% <CIcon icon={cilArrowTop} />)
+              2.49{' '}
+              <span className="fs-6 fw-normal">
+                (84.7% <CIcon icon={cilArrowTop} />)
+              </span>
             </>
           }
           title="Conversion Rate"
@@ -257,13 +263,15 @@ const WidgetsDropdown = () => {
         />
       </CCol>
       <CCol sm={6} lg={3}>
-        <CWidgetDropdown
+        <CWidgetStatsA
           className="mb-4"
           color="danger"
-          value="44K"
-          change={
+          value={
             <>
-              (-23.6% <CIcon icon={cilArrowBottom} />)
+              44K{' '}
+              <span className="fs-6 fw-normal">
+                (-23.6% <CIcon icon={cilArrowBottom} />)
+              </span>
             </>
           }
           title="Sessions"

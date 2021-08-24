@@ -1,4 +1,4 @@
-Follow Fork & Pull model
+# Follow Fork & Pull model
 
 ## Step1 Fork(first time)
 
@@ -17,7 +17,9 @@ git remote add upstream https://github.com/NTUEE-PLUS/EndOfWeb.git
 git remote set-url --push upstream no_push
 git remote -v //check
 ```
+
 ![image](https://github.com/featherchen/EndOfWeb/blob/NTUEEPLUS-5/screenshot/remote-v.png)
+
 ## Step 3 Go to [Jira](https://ntueeplus.atlassian.net/jira/software/c/projects/NTUEEPLUS/issues/) to find/create an issue
 
 ## Step 4 Create a local branch for contribution
@@ -67,9 +69,13 @@ git push origin NTUEEPLUS-${jira_number}
 ## Step 7 Create a pull request (PR) GitHub UI.
 
 ### PR
+
 ![image](https://github.com/featherchen/EndOfWeb/blob/NTUEEPLUS-5/screenshot/PR.png)
+
 ### Fill the PR template
+
 ![image](https://github.com/featherchen/EndOfWeb/blob/NTUEEPLUS-5/screenshot/PR%20template.png)
+
 ## Step 8 The review process
 
 Ask reviewer to review the PR.(Ping them)

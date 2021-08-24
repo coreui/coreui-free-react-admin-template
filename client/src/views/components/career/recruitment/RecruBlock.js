@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { CWidgetBrand } from '@coreui/react'
 import eesa from '../../../../assets/images/eesa-icon.png'
@@ -15,11 +16,13 @@ const RecruBlock = ({ post }) => {
   }
   return (
     <div className="RecruBlock" key={post._id}>
-      <CWidgetBrand
-        className="mb-4 widgetbrand"
-        headerChildren={<img className="eesa" src={eesa} alt="eesa" />}
-        values={[[post.title.company_name]]}
-      />
+      <Link to={`/profile/${post.account}`}>
+        <CWidgetBrand
+          className="mb-4 widgetbrand"
+          headerChildren={<img className="eesa" src={eesa} alt="eesa" />}
+          values={[[post.title.company_name]]}
+        />
+      </Link>
       <hr></hr>
       <div className="recrucontent">
         <h3 style={{ 'font-weight': '600' }}>{post.title.title}</h3>

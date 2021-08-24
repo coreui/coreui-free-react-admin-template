@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { CWidgetBrand } from '@coreui/react'
 import eesa from '../../../../assets/images/eesa-icon.png'
@@ -15,11 +16,13 @@ const RecomBlock = ({ post }) => {
   }
   return (
     <div className="RecomBlock" key={post.id}>
-      <CWidgetBrand
-        className="mb-4 widgetbrand"
-        headerChildren={<img className="eesa" src={eesa} alt="eesa" />}
-        values={[['~~~~~~~~~~~~~~~~~~~~~~']]}
-      />
+      <Link to={`/profile/${post.account}`}>
+        <CWidgetBrand
+          className="mb-4 widgetbrand"
+          headerChildren={<img className="eesa" src={eesa} alt="eesa" />}
+          values={[['~~~~~~~~~~~~~~~~~~~~~~']]}
+        />
+      </Link>
       <div className="recomcontent">
         <h3>
           {post.title.name} asking for <nobr>{post.title.desire_work_type}</nobr>

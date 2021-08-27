@@ -9,7 +9,7 @@ const RecomBlock = ({ post }) => {
   const [isExpand, setIsExpand] = useState(false)
   const spec = (li) => {
     return (
-      <div key={li} style={{ lineHeight: '2.5rem' }}>
+      <div key={li} style={{ lineHeight: '2.5rem', fontSize: '1.6rem' }}>
         {li}
       </div>
     )

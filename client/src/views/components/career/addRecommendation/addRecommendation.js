@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useHistory } from 'react-router'
+import ReactTooltip from 'react-tooltip'
 import {
   CButton,
   CCard,
@@ -175,47 +176,77 @@ const AddRecommendation = () => {
                       <CInputGroupText>
                         <CIcon name="cil-user" />
                       </CInputGroupText>
-                      <CFormControl placeholder="Title" name="title" onChange={handleInputChange} />
+                      <CFormControl
+                        data-for="title"
+                        data-tip="Use impressing title to get people's attention!"
+                        placeholder="Title"
+                        name="title"
+                        onChange={handleInputChange}
+                      />
+                      <ReactTooltip id="title" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilUser} />
                       </CInputGroupText>
-                      <CFormControl placeholder="Name" name="name" onChange={handleInputChange} />
+                      <CFormControl
+                        data-for="name"
+                        data-tip="Enter your name"
+                        placeholder="Name"
+                        name="name"
+                        onChange={handleInputChange}
+                      />
+                      <ReactTooltip id="name" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilBraille} />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="workType"
+                        data-tip="What's your desired work?"
                         placeholder="Desired Work Type"
                         name="desireWorkType"
                         onChange={handleInputChange}
                       />
+                      <ReactTooltip id="workType" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilPhone} />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="phone"
+                        data-tip="Let others can call you!"
                         placeholder="Phone"
                         name="contact"
                         onChange={handleInputChange}
                       />
+                      <ReactTooltip id="phone" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>@</CInputGroupText>
-                      <CFormControl placeholder="Email" name="email" onChange={handleInputChange} />
+                      <CFormControl
+                        data-for="mail"
+                        data-tip="Let others can email you!"
+                        placeholder="Email"
+                        name="email"
+                        onChange={handleInputChange}
+                      />
+                      <ReactTooltip id="mail" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilEducation} />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="diploma"
+                        data-tip="Enter your highest education level"
                         placeholder="Diploma"
                         name="diploma"
                         onChange={handleInputChange}
                       />
+                      <ReactTooltip id="diploma" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     {experience.map((exp, index) => {
                       return (
@@ -224,11 +255,14 @@ const AddRecommendation = () => {
                             <CIcon content={freeSet.cilAddressBook} />
                           </CInputGroupText>
                           <CFormControl
+                            data-for="experience"
+                            data-tip="Enter your experience"
                             placeholder="Experience"
                             name="experience"
                             value={exp}
                             onChange={(e) => handleInputArray(e, index)}
                           />
+                          <ReactTooltip id="experience" place="top" type="dark" effect="solid" />
                           <CButton
                             type="button"
                             name="experience"
@@ -246,11 +280,14 @@ const AddRecommendation = () => {
                             <CIcon content={freeSet.cilThumbUp} />
                           </CInputGroupText>
                           <CFormControl
+                            data-for="specialty"
+                            data-tip="Enter your strength or other specialty"
                             placeholder="Speciality"
                             name="speciality"
                             value={req}
                             onChange={(e) => handleInputArray(e, index)}
                           />
+                          <ReactTooltip id="specialty" place="top" type="dark" effect="solid" />
                           <CButton
                             type="button"
                             name="speciality"
@@ -266,10 +303,13 @@ const AddRecommendation = () => {
                         <CIcon name="cil-image" />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="image"
+                        data-tip="Put a picture that can represent you!"
                         id="formFile"
                         type="file"
                         onChange={handleChangeImage}
                       ></CFormControl>
+                      <ReactTooltip id="image" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CRow className="justify-content-between mt-3">
                       <CCol xs={5} className="d-flex justify-content-center">

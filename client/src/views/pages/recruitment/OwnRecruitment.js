@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import RecruPost from './RecruPost'
 import axios from 'axios'
+
 const OwnRecruitment = () => {
   const [data, setData] = useState([])
   const getData = () => {

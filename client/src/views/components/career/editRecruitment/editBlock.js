@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import JoditEditor from 'jodit-react'
+import ReactTooltip from 'react-tooltip'
 import { useHistory } from 'react-router'
 import PropTypes from 'prop-types'
 import {
@@ -34,6 +36,7 @@ const EditBlock = ({ data }) => {
     id: data._id,
   }
   const history = useHistory()
+  const editor = useRef(null)
   const [imageModal, setImageModal] = useState(false)
   const [blockModal, setBlockModal] = useState(false)
   const [previewURL, setPreviewURL] = useState(null)
@@ -42,6 +45,9 @@ const EditBlock = ({ data }) => {
   const [description, setDescription] = useState(data.spec.description)
   const [fileButton, setFileButton] = useState(null)
   const [editForm, setEditForm] = useState(EditFormTemplate)
+  const config = {
+    readonly: false, // all options from https://xdsoft.net/jodit/doc/
+  }
   const handleInputChange = (e) => {
     setEditForm({ ...editForm, [e.target.name]: e.target.value })
   }
@@ -52,30 +58,32 @@ const EditBlock = ({ data }) => {
     } else if (e.target.name === 'requirement') {
       const newArray = requirement.concat([''])
       setRequirement(newArray)
-    } else if (e.target.name === 'description') {
-      const newArray = description.concat([''])
-      setDescription(newArray)
     }
+    //  else if (e.target.name === 'description') {
+    //   const newArray = description.concat([''])
+    //   setDescription(newArray)
+    // }
   }
   const handleInputArray = (e, index) => {
-    if (e.target.name === 'experience') {
-      const newArray = experience.map((exp, idx) => {
-        if (idx !== index) return exp
-        else return e.target.value
-      })
-      setExperience(newArray)
-    } else if (e.target.name === 'requirement') {
-      const newArray = requirement.map((req, idx) => {
-        if (idx !== index) return req
-        else return e.target.value
-      })
-      setRequirement(newArray)
-    } else if (e.target.name === 'description') {
-      const newArray = description.map((desc, idx) => {
-        if (idx !== index) return desc
-        else return e.target.value
-      })
-      setDescription(newArray)
+    console.log('target:', e.target)
+    if (e.target) {
+      if (e.target.name === 'experience') {
+        const newArray = experience.map((exp, idx) => {
+          if (idx !== index) return exp
+          else return e.target.value
+        })
+        setExperience(newArray)
+      } else if (e.target.name === 'requirement') {
+        const newArray = requirement.map((req, idx) => {
+          if (idx !== index) return req
+          else return e.target.value
+        })
+        setRequirement(newArray)
+      } else if (e.target.name === 'description') {
+        const newArray = [e.target.value]
+        console.log('new description:', newArray)
+        setDescription(newArray)
+      }
     }
   }
   const handleDeleteArray = (e, index) => {
@@ -85,10 +93,11 @@ const EditBlock = ({ data }) => {
     } else if (e.target.name === 'requirement') {
       const newArray = requirement.filter((req, idx) => idx !== index)
       setRequirement(newArray)
-    } else if (e.target.name === 'description') {
-      const newArray = description.filter((desc, idx) => idx !== index)
-      setDescription(newArray)
     }
+    // } else if (e.target.name === 'description') {
+    //   const newArray = description.filter((desc, idx) => idx !== index)
+    //   setDescription(newArray)
+    // }
   }
   const handleChangeImage = (e) => {
     let reader = new FileReader()
@@ -120,6 +129,7 @@ const EditBlock = ({ data }) => {
       diploma: editForm.diploma,
       requirement: requirement.filter((req) => req !== ''),
       description: description.filter((des) => des !== ''),
+      // description: editForm.description,
       file: editForm.file,
     }
     console.log('this is post:', post)
@@ -187,50 +197,65 @@ const EditBlock = ({ data }) => {
                         <CIcon content={freeSet.cilLayers} />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="title"
+                        data-tip="Use impressing title to get people's attention!"
                         placeholder={data.title.title}
                         name="title"
                         onChange={handleInputChange}
                       />
+                      <ReactTooltip id="title" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilBuilding} />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="companyName"
+                        data-tip="Enter your company's name"
                         placeholder={data.title.company_name}
                         name="companyName"
                         onChange={handleInputChange}
                       />
+                      <ReactTooltip id="companyName" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilBraille} />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="workType"
+                        data-tip="The position you are recruiting"
                         placeholder={data.title.work_type}
                         name="workType"
                         onChange={handleInputChange}
                       />
+                      <ReactTooltip id="workType" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilDollar} />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="salary"
+                        data-tip="Salary paid (/month or /year)"
                         placeholder={data.info.salary}
                         name="salary"
                         onChange={handleInputChange}
                       />
+                      <ReactTooltip id="salary" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon content={freeSet.cilEducation} />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="diploma"
+                        data-tip="Prefered education degree or major"
                         placeholder={data.info.diploma}
                         name="diploma"
                         onChange={handleInputChange}
                       />
+                      <ReactTooltip id="diploma" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     {experience.map((exp, index) => {
                       return (
@@ -239,11 +264,14 @@ const EditBlock = ({ data }) => {
                             <CIcon content={freeSet.cilAddressBook} />
                           </CInputGroupText>
                           <CFormControl
+                            data-for="experience"
+                            data-tip="Prefered experience"
                             placeholder={experience[index] || 'Required Experience'}
                             name="experience"
                             value={exp}
                             onChange={(e) => handleInputArray(e, index)}
                           />
+                          <ReactTooltip id="experience" place="top" type="dark" effect="solid" />
                           <CButton
                             type="button"
                             name="experience"
@@ -261,11 +289,14 @@ const EditBlock = ({ data }) => {
                             <CIcon content={freeSet.cilThumbUp} />
                           </CInputGroupText>
                           <CFormControl
+                            data-for="requirement"
+                            data-tip="Any requirement for this job"
                             placeholder={requirement[index] || 'Required Skill'}
                             name="requirement"
                             value={req}
                             onChange={(e) => handleInputArray(e, index)}
                           />
+                          <ReactTooltip id="requirement" place="top" type="dark" effect="solid" />
                           <CButton
                             type="button"
                             name="requirement"
@@ -276,53 +307,46 @@ const EditBlock = ({ data }) => {
                         </CInputGroup>
                       )
                     })}
-                    {description.map((desc, index) => {
-                      return (
-                        <CInputGroup className="mb-3" key={index}>
-                          <CInputGroupText>
-                            <CIcon content={freeSet.cilDescription} />
-                          </CInputGroupText>
-                          <CFormControl
-                            placeholder={description[index] || 'Description'}
-                            name="description"
-                            value={desc}
-                            onChange={(e) => handleInputArray(e, index)}
-                          />
-                          <CButton
-                            type="button"
-                            name="description"
-                            onClick={(e) => handleDeleteArray(e, index)}
-                          >
-                            x
-                          </CButton>
-                        </CInputGroup>
-                      )
-                    })}
+                    <div
+                      className="mb-3 mw-100"
+                      data-for="description"
+                      data-tip="Some description for this job"
+                    >
+                      <JoditEditor
+                        name="description"
+                        ref={editor}
+                        value={description[0]}
+                        config={config}
+                        tabIndex={1} // tabIndex of textarea
+                        onBlur={(newContent) => {
+                          setDescription([newContent])
+                        }} // preferred to use only this option to update the content for performance reasons
+                      />
+                      <ReactTooltip id="description" place="top" type="dark" effect="solid" />
+                    </div>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon name="cil-image" />
                       </CInputGroupText>
                       <CFormControl
+                        data-for="image"
+                        data-tip="Put your company's brand!"
                         id="formFile"
                         type="file"
                         onChange={handleChangeImage}
                         placeholder={data.image}
                       ></CFormControl>
+                      <ReactTooltip id="image" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CRow className="mt-3">
-                      <CCol xs={4} className="d-flex justify-content-center">
+                      <CCol xs={6} className="d-flex justify-content-center">
                         <CButton type="button" name="experience" onClick={addArray}>
                           Add required experience
                         </CButton>
                       </CCol>
-                      <CCol xs={4} className="d-flex justify-content-center">
+                      <CCol xs={6} className="d-flex justify-content-center">
                         <CButton type="button" name="requirement" onClick={addArray}>
                           Add required skills
-                        </CButton>
-                      </CCol>
-                      <CCol xs={4} className="d-flex justify-content-center">
-                        <CButton type="button" name="description" onClick={addArray}>
-                          Add description
                         </CButton>
                       </CCol>
                     </CRow>

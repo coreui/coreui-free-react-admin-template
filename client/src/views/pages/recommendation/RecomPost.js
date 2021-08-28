@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import RecomBlock from './RecomBlock'
 import Masonry from 'react-masonry-css'
 
-const RecomPost = ({ data }) => {
+const RecomPost = ({ data, setData }) => {
   const breakpointColumnsObj = {
     default: 2,
     1100: 2,
@@ -29,8 +29,8 @@ const RecomPost = ({ data }) => {
         }}
         style={{ display: 'flex' }}
       >
-        {data.map((post) => (
-          <RecomBlock post={post} key={post.id} />
+        {data.map((post, i) => (
+          <RecomBlock post={post} setData={setData} index={i} key={i} />
         ))}
       </Masonry>
     </>
@@ -38,6 +38,7 @@ const RecomPost = ({ data }) => {
 }
 RecomPost.propTypes = {
   data: PropTypes.array,
+  setData:PropTypes.func,
 }
 
 export default RecomPost

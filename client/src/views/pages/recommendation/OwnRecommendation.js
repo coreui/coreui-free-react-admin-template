@@ -17,7 +17,9 @@ const OwnRecommendation = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <div className="text-color-black">{data && <RecomPost data={data} />}</div>
+  return (
+    <div className="text-color-black">{data && <RecomPost data={data} setData={setData} />}</div>
+  )
 }
 
 export default OwnRecommendation

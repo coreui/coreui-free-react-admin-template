@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios'
 import { CWidgetBrand, CAvatar } from '@coreui/react'
 import eesa from '../../../assets/images/eesa-icon.png'
 import CIcon from '@coreui/icons-react'
 
-const RecomBlock = ({ post }) => {
+const RecomBlock = ({ post,setData,index }) => {
   const [isExpand, setIsExpand] = useState(false)
   const spec = (li) => {
     return (
@@ -13,6 +14,22 @@ const RecomBlock = ({ post }) => {
         {li}
       </div>
     )
+  }
+  const DeleteRecommendation = (id) => {
+    axios
+      .delete('/api/recommendation', { data: { _id: id } })
+      .then((res) => {
+        setData((data) => {
+          let newData = [...data]
+          newData.splice(index, 1)
+          console.log('this is newData', newData)
+          return newData
+        })
+        alert('delete ' + res.data.data)
+      })
+      .catch((err) => {
+        err.response.data.description && alert('錯誤\n' + err.response.data.description)
+      })
   }
   return (
     <div className="RecomBlock" key={post.id}>
@@ -24,11 +41,11 @@ const RecomBlock = ({ post }) => {
       <div className="recomcontent">
         <h3>
           {post.title.name} asking for <nobr>{post.title.desire_work_type}</nobr>
-          <CAvatar className="hover-pointer">
+          <a className="hover-pointer" href={'/#/editRecommendation/' + post._id}>
             <CIcon name="cil-pencil"></CIcon>
-          </CAvatar>
+          </a>
           <CAvatar className="hover-pointer">
-            <CIcon name="cil-trash"></CIcon>
+            <CIcon name="cil-trash" onClick={() => DeleteRecommendation(post._id)}></CIcon>
           </CAvatar>
         </h3>
         <h2 style={{ margin: '1rem 0rem' }}>{post.title.title}</h2>
@@ -52,6 +69,8 @@ const RecomBlock = ({ post }) => {
 }
 RecomBlock.propTypes = {
   post: PropTypes.object,
+  setData:PropTypes.func,
+  index:PropTypes.number,
 }
 
 export default RecomBlock

@@ -15,11 +15,11 @@ const RecomBlock = ({ post }) => {
     )
   }
   return (
-    <div className="RecomBlock" key={post.id}>
+    <div className="RecomBlock" key={post._id}>
       <Link to={`/profile/${post.account}`}>
         <CWidgetBrand
           className="mb-4 widgetbrand"
-          headerChildren={<img className="eesa" src={eesa} alt="eesa" />}
+          headerChildren={<img className="eesa" src={post.image ? post.image : eesa} alt="eesa" />}
           values={[['~~~~~~~~~~~~~~~~~~~~~~']]}
         />
       </Link>

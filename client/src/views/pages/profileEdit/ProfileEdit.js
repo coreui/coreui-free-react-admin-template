@@ -166,7 +166,7 @@ const ProfileEdit = () => {
                   <CFormControl
                     className="text-secondary"
                     value={data.github}
-                    onChange={(e) => setData({ ...github, github: e.target.value })}
+                    onChange={(e) => setData({ ...data, github: e.target.value })}
                   />
                 </CListGroupItem>
                 <CListGroupItem>

@@ -1,16 +1,17 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 import PropTypes from 'prop-types'
+import RecomBlock from './RecomBlock'
 import Masonry from 'react-masonry-css'
-import RecruBlock from './RecruBlock'
 
-const RecruPost = ({ data }) => {
+const RecomPosts = ({ data }) => {
   const breakpointColumnsObj = {
     default: 2,
     1100: 2,
     700: 1,
     500: 1,
   }
+
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
@@ -19,18 +20,18 @@ const RecruPost = ({ data }) => {
       columnAttrs={{
         className: 'should be overridden',
         'data-test': '',
-        style: { '--test': 'test' },
+        style: { '--test': 'test', color: 'black' },
       }}
       style={{ display: 'flex' }}
     >
       {data.map((post) => (
-        <RecruBlock post={post} key={post.id} />
+        <RecomBlock post={post} key={post._id} />
       ))}
     </Masonry>
   )
 }
-RecruPost.propTypes = {
+RecomPosts.propTypes = {
   data: PropTypes.array,
 }
 
-export default RecruPost
+export default RecomPosts

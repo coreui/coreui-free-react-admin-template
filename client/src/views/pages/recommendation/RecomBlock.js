@@ -35,7 +35,7 @@ const RecomBlock = ({ post,setData,index }) => {
     <div className="RecomBlock" key={post.id}>
       <CWidgetBrand
         className="mb-4 widgetbrand"
-        headerChildren={<img className="eesa" src={eesa} alt="eesa" />}
+        headerChildren={<img className="eesa" src={post.image?post.image:eesa} alt="eesa" />}
         values={[['~~~~~~~~~~~~~~~~~~~~~~']]}
       />
       <div className="recomcontent">

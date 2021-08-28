@@ -98,14 +98,14 @@ const EditBlock = ({ data }) => {
   const handleChangeImage = (e) => {
     let reader = new FileReader()
     let file = e.target.files[0]
-    setFileButton(e.target)
-    setEditForm({ ...editForm, file: file })
-    reader.onloadend = () => {
-      setPreviewURL(reader.result)
-    }
-    reader.readAsDataURL(file)
-    // call the modal
-    setImageModal(true)
+      setFileButton(e.target)
+      setEditForm({ ...editForm, file: file })
+      reader.onloadend = () => {
+        setPreviewURL(reader.result)
+      }
+      reader.readAsDataURL(file)
+      // call the modal
+      setImageModal(true)
   }
 
   const clearImage = (e) => {
@@ -115,29 +115,34 @@ const EditBlock = ({ data }) => {
     fileButton.value = ''
   }
   const handleSubmit = () => {
-    const post = {
-      _id: editForm.id,
-      title: editForm.title,
-      company_name: editForm.companyName,
-      work_type: editForm.workType,
-      salary: editForm.salary,
-      experience: experience.filter((exp) => exp !== ''),
-      diploma: editForm.diploma,
-      requirement: requirement.filter((req) => req !== ''),
-      description: description.filter((des) => des !== ''),
-      // description: editForm.description,
-      file: editForm.file,
-    }
-    console.log('this is post:', post)
-    axios
-      .patch('/api/recruitment', post, { 'content-type': 'multipart/form-data' })
-      .then(() => {
-        alert('已更新')
-        history.push('/own_recruitment')
-      })
-      .catch((err) => {
-        err.response.data.description && alert('錯誤\n' + err.response.data.description)
-      })
+      const data = new FormData()
+      data.append('title', editForm.title)
+      data.append('company_name', editForm.companyName)
+      data.append('work_type', editForm.workType)
+      data.append('salary', editForm.salary)
+      data.append('diploma', editForm.diploma)
+      data.append('_id', editForm.id)
+      for (let exp of experience) {
+        data.append('experience[]', exp)
+      }
+      for (let spec of requirement) {
+        data.append('requirement[]', spec)
+      }
+      for (let desc of description) {
+        data.append('description[]', desc)
+      }
+      data.append('file', editForm.file)
+      const config = { 'content-type': 'multipart/form-data' }
+
+      axios
+        .patch('/api/recruitment', data, config)
+        .then(() => {
+          alert('已更新')
+          history.push('/own_recruitment')
+        })
+        .catch((err) => {
+          err.response.data.description && alert('錯誤\n' + err.response.data.description)
+        })
   }
 
   return (
@@ -195,7 +200,7 @@ const EditBlock = ({ data }) => {
                       <CFormControl
                         data-for="title"
                         data-tip="Use impressing title to get people's attention!"
-                        value={data.title.title}
+                        value={editForm.title}
                         name="title"
                         onChange={handleInputChange}
                       />
@@ -208,7 +213,7 @@ const EditBlock = ({ data }) => {
                       <CFormControl
                         data-for="companyName"
                         data-tip="Enter your company's name"
-                        value={data.title.company_name}
+                        value={editForm.companyName}
                         name="companyName"
                         onChange={handleInputChange}
                       />
@@ -221,7 +226,7 @@ const EditBlock = ({ data }) => {
                       <CFormControl
                         data-for="workType"
                         data-tip="The position you are recruiting"
-                        value={data.title.work_type}
+                        value={editForm.workType}
                         name="workType"
                         onChange={handleInputChange}
                       />
@@ -234,7 +239,7 @@ const EditBlock = ({ data }) => {
                       <CFormControl
                         data-for="salary"
                         data-tip="Salary paid (/month or /year)"
-                        value={data.info.salary}
+                        value={editForm.salary}
                         name="salary"
                         onChange={handleInputChange}
                       />
@@ -247,7 +252,7 @@ const EditBlock = ({ data }) => {
                       <CFormControl
                         data-for="diploma"
                         data-tip="Prefered education degree or major"
-                        value={data.info.diploma}
+                        value={editForm.diploma}
                         name="diploma"
                         onChange={handleInputChange}
                       />

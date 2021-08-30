@@ -23,7 +23,6 @@ import {
 import axios from 'axios'
 import CIcon from '@coreui/icons-react'
 import PreviewBlock from '../editRecruitment/previewBlock'
-import { freeSet } from '@coreui/icons'
 const EditBlock = ({data}) => {
   const formTemplate = {
     title: data.title.title,
@@ -190,7 +189,7 @@ const EditBlock = ({data}) => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilUser} />
+                        <CIcon name='cil-user' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="name"
@@ -203,7 +202,7 @@ const EditBlock = ({data}) => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilBraille} />
+                        <CIcon name='cil-braille' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="workType"
@@ -216,7 +215,7 @@ const EditBlock = ({data}) => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilPhone} />
+                        <CIcon name='cil-phone' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="phone"
@@ -240,7 +239,7 @@ const EditBlock = ({data}) => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilEducation} />
+                        <CIcon name='cil-education' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="diploma"
@@ -255,7 +254,7 @@ const EditBlock = ({data}) => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon content={freeSet.cilAddressBook} />
+                            <CIcon name='cil-address-book' />
                           </CInputGroupText>
                           <CFormControl
                             data-for="experience"
@@ -280,7 +279,7 @@ const EditBlock = ({data}) => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon content={freeSet.cilThumbUp} />
+                            <CIcon name='cil-thumb-up' />
                           </CInputGroupText>
                           <CFormControl
                             data-for="specialty"

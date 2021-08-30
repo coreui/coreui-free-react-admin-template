@@ -22,7 +22,6 @@ import {
   CModalFooter,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { freeSet } from '@coreui/icons'
 import axios from 'axios'
 const formTemplate = {
   title: '',
@@ -194,7 +193,7 @@ const AddRecruitment = () => {
                     <p className="text-medium-emphasis">Create your recruitment</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilLayers} />
+                        <CIcon name='cil-layers' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="title"
@@ -207,7 +206,7 @@ const AddRecruitment = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilBuilding} />
+                        <CIcon name='cil-building'/>
                       </CInputGroupText>
                       <CFormControl
                         data-for="companyName"
@@ -220,7 +219,7 @@ const AddRecruitment = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilBraille} />
+                        <CIcon name='cil-braille' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="workType"
@@ -233,7 +232,7 @@ const AddRecruitment = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilDollar} />
+                        <CIcon name='cil-dollar' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="salary"
@@ -246,7 +245,7 @@ const AddRecruitment = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilEducation} />
+                        <CIcon name='cil-education' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="diploma"
@@ -261,7 +260,7 @@ const AddRecruitment = () => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon content={freeSet.cilAddressBook} />
+                            <CIcon name='cil-address-book' />
                           </CInputGroupText>
                           <CFormControl
                             data-for="experience"
@@ -286,7 +285,7 @@ const AddRecruitment = () => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon content={freeSet.cilThumbUp} />
+                            <CIcon name='cil-thumb-up' />
                           </CInputGroupText>
                           <CFormControl
                             data-for="requirement"

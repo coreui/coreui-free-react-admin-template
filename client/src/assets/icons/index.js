@@ -32,6 +32,7 @@ import {
 } from '@coreui/icons'
 import { cifUs, cifBr, cifIn, cifFr, cifEs, cifPl } from '@coreui/icons'
 import {
+  cilAddressBook,
   cilAlignCenter,
   cilAlignLeft,
   cilAlignRight,
@@ -45,7 +46,9 @@ import {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBraille,
   cilBrowser,
+  cilBuilding,
   cilCalculator,
   cilCalendar,
   cilCloudDownload,
@@ -122,6 +125,7 @@ import {
   cilSun,
   cilTags,
   cilTask,
+  cilThumbUp,
   cilTrash,
   cilUnderline,
   cilUser,
@@ -142,6 +146,7 @@ export const icons = Object.assign(
     website,
   },
   {
+    cilAddressBook,
     cilAlignCenter,
     cilAlignLeft,
     cilAlignRight,
@@ -155,6 +160,8 @@ export const icons = Object.assign(
     cilBell,
     cilBold,
     cilBookmark,
+    cilBraille,
+    cilBuilding,
     cilCalculator,
     cilCalendar,
     cilCloudDownload,
@@ -231,6 +238,7 @@ export const icons = Object.assign(
     cilSun,
     cilTags,
     cilTask,
+    cilThumbUp,
     cilTrash,
     cilUnderline,
     cilUser,

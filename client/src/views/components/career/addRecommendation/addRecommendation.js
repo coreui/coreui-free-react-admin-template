@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import ReactTooltip from 'react-tooltip'
 import {
@@ -22,7 +22,6 @@ import {
 import axios from 'axios'
 import CIcon from '@coreui/icons-react'
 import PreviewBlock from '../editRecruitment/previewBlock'
-import { freeSet } from '@coreui/icons'
 const formTemplate = {
   title: '',
   name: '',
@@ -187,7 +186,7 @@ const AddRecommendation = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilUser} />
+                        <CIcon name='cil-user' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="name"
@@ -200,7 +199,7 @@ const AddRecommendation = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilBraille} />
+                        <CIcon name='cil-braille' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="workType"
@@ -213,7 +212,7 @@ const AddRecommendation = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilPhone} />
+                        <CIcon name='cil-phone' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="phone"
@@ -237,7 +236,7 @@ const AddRecommendation = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon content={freeSet.cilEducation} />
+                        <CIcon name='cil-education' />
                       </CInputGroupText>
                       <CFormControl
                         data-for="diploma"
@@ -252,7 +251,7 @@ const AddRecommendation = () => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon content={freeSet.cilAddressBook} />
+                            <CIcon name='cil-address-book' />
                           </CInputGroupText>
                           <CFormControl
                             data-for="experience"
@@ -277,7 +276,7 @@ const AddRecommendation = () => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon content={freeSet.cilThumbUp} />
+                            <CIcon name='cil-thumb-up' />
                           </CInputGroupText>
                           <CFormControl
                             data-for="specialty"

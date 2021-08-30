@@ -1,0 +1,25 @@
+.carousel-caption {
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(119, 119, 119, 0.75) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  left: 0;
+}
+
+.carousel-indicators {
+  background-color: black;
+  margin: 0 !important;
+  /* margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important; */
+  // margin-left: calc(var(--cui-gutter-x) * 0.5) !important;
+  // margin-right: calc(var(--cui-gutter-x) * 0.5) !important;
+}
+
+.recent-ul {
+  display: table;
+  margin: 0 auto;
+}

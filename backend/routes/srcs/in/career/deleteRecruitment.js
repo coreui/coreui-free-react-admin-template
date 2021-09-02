@@ -4,12 +4,10 @@ const asyncHandler = require('express-async-handler')
 
 async function deleteRecruitment(req, res, next) {
   const { _id } = req.body
-  const delRec = await Recruitment.findById(_id).catch(dbCatch)
+  const delRec = await Recruitment.findById(_id, 'account title').catch(dbCatch)
   if (!delRec) throw new ErrorHandler(404, '_id not found')
-  if (delRec.account !== req.session.loginAccount && !req.session.isAuth) {
-    console.log(delRec.account, req.session.loginAccount, !req.session.isAuth)
+  if (delRec.account !== req.session.loginAccount && !req.session.isAuth)
     throw new ErrorHandler(403, 'not authorized')
-  }
 
   await Recruitment.findByIdAndDelete(_id).catch(dbCatch)
   res.status(200).send({ data: delRec.title.title })

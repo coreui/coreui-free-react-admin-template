@@ -32,7 +32,6 @@ const addRecru = async (req, res) => {
 
   const { title, company_name, work_type, salary, experience, diploma, requirement, description } =
     req.body
-  console.log(parseImg)
   const img = parseImg(req.file)
 
   const { _id } = await new Recruitment({

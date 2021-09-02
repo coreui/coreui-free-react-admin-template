@@ -19,7 +19,7 @@ const asyncHandler = require('express-async-handler')
 const delRec = async (req, res) => {
   const account = req.session.loginAccount
   const { _id } = req.body
-  const delRec = await Recommendation.findById(_id).catch(dbCatch)
+  const delRec = await Recommendation.findById(_id, 'account title').catch(dbCatch)
   if (!delRec) throw new ErrorHandler(404, '_id not found')
   if (delRec.account !== account && !req.session.isAuth)
     throw new ErrorHandler(403, 'not authorized')

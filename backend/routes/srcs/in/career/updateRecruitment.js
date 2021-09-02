@@ -4,7 +4,7 @@ const { updateQuery, parseImg } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
 const updateRecruitment = async (req, res, next) => {
-  const toUpdate = await Recruitment.findById(req.body._id).catch(dbCatch)
+  const toUpdate = await Recruitment.findById(req.body._id, 'account').catch(dbCatch)
   if (!toUpdate) throw new ErrorHandler(404, '_id not exists')
   if (!req.session.loginAccount || req.session.loginAccount !== toUpdate.account)
     throw new ErrorHandler(403, 'unauthorized')

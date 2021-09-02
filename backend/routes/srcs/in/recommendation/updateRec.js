@@ -34,7 +34,7 @@ const updateRec = async (req, res) => {
   const { _id, title, name, desire_work_type, contact, email, diploma, experience, speciality } =
     req.body
 
-  const data = await Recommendation.findById(_id).catch(dbCatch)
+  const data = await Recommendation.findById(_id, 'account').catch(dbCatch)
   if (!data || data.account !== account)
     throw new ErrorHandler(403, 'not valid _id or account not match')
 

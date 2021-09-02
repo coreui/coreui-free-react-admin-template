@@ -95,5 +95,9 @@ const secure_regFB = async (req, res) => {
   return res.status(201).send({ username })
 }
 
+const valid = require('../../../middleware/validation')
+const rules = [{ filename: 'required', field: 'username' }, 'account', 'facebookID']
 module.exports =
-  process.env.newReg === 'true' ? asyncHandler(secure_regFB) : asyncHandler(registerFB)
+  process.env.newReg === 'true'
+    ? [valid(rules), asyncHandler(secure_regFB)]
+    : [valid(rules), asyncHandler(registerFB)]

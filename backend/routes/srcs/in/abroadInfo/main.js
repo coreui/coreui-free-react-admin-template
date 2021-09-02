@@ -1,21 +1,14 @@
-const express = require("express")
+const express = require('express')
 const router = express.Router()
 const router_auth = express.Router()
-const ImgGet = require('../../../middleware/fileProcess')
-//const valid = require('../../../middleware/validation')
+const parseFile = require('../../../middleware/fileProcess')
 
-router_auth.post('/addAbroadInfo',
-    ImgGet('file'),
-    require('./addAbroadInfo'))
+router_auth.post('/addAbroadInfo', parseFile('file'), require('./addAbroadInfo'))
 
-router.post('/getAbroadInfo',
-    require('./getAbroadInfo'))
+router.post('/getAbroadInfo', require('./getAbroadInfo'))
 
-router_auth.post('/updateAbroadInfo',
-    ImgGet('file'),
-    require('./updateAbroadInfo'))
+router_auth.post('/updateAbroadInfo', parseFile('file'), require('./updateAbroadInfo'))
 
-router_auth.delete('/deleteAbroadInfo',
-    require('./deleteAbroadInfo'))
+router_auth.delete('/deleteAbroadInfo', require('./deleteAbroadInfo'))
 
-module.exports = {router,router_auth}
+module.exports = { router, router_auth }

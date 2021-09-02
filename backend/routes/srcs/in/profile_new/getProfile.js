@@ -12,12 +12,11 @@ async function insertVisual(name, account) {
     .save()
     .catch(dbCatch)
 
-  // Login.updateOne({account},{$set:{visual:user._id}}).exec().catch(dbCatch)
   await Login.updateOne({ account }, { $set: { visual: user._id } }).catch(dbCatch)
   return user
 }
 /**
- * @api {get} /profile show mine
+ * @api {get} /profile show my profile
  * @apiName getProfile
  * @apiGroup In/profile_new
  * @apiDescription 顯示個人profile
@@ -47,19 +46,8 @@ async function insertVisual(name, account) {
  */
 const getProfile = async (req, res, next) => {
   let session_account = req.session.loginAccount
-  if (!session_account) session_account = 'b07901029' //return res.status(403).send('not login')
-
   let obj = await Visual.findOne({ account: session_account }).catch(dbCatch)
-  if (!obj) {
-    if (!session_account) req.session.loginName = '均府' //return res.status(403).send('not login')
-    req.session.loginName = '均府'
-    obj = await insertVisual(req.session.loginName, session_account)
-  }
-  const imgSrc = obj['imgSrc']
-  const {
-    _doc: { userimage, ...restData },
-  } = obj
-  console.log('profile', restData.account)
-  return res.status(201).send({ userimage: imgSrc, ...restData })
+  if (!obj) obj = await insertVisual(req.session.loginName, session_account)
+  return res.status(201).send(obj.getPublic())
 }
 module.exports = asyncHandler(getProfile)

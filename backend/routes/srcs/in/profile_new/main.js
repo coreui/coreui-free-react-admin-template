@@ -1,21 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const getImg = require('../../../middleware/fileProcess')
-const valid = require('../../../middleware/validation')
+const parseFile = require('../../../middleware/fileProcess')
 
 router.get('/profile', require('./getProfile'))
-
-router.patch(
-  '/profile',
-  getImg('userimage'),
-  // valid('chVisual'),
-  require('./updateProfile'),
-)
-router.post(
-  '/searchProfile',
-  // valid('searchVisual'),
-  require('./searchProfile'),
-)
+router.patch('/profile', parseFile('userimage'), require('./updateProfile'))
+router.post('/searchProfile', require('./searchProfile'))
 router.post('/smartsearchProfile', require('./smartSearch'))
 
 module.exports = router

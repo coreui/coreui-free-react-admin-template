@@ -1,4 +1,3 @@
-//srcs/login.js
 const Login = require('../../../Schemas/user_login')
 const crypto = require('crypto')
 const { dbCatch, ErrorHandler } = require('../../../error')
@@ -43,4 +42,6 @@ const login = async (req, res, next) => {
   })
 }
 
-module.exports = asyncHandler(login)
+const valid = require('../../../middleware/validation')
+const rules = ['account', 'password']
+module.exports = [valid(rules), asyncHandler(login)]

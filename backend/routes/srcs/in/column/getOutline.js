@@ -3,7 +3,7 @@ const { dbCatch } = require('../../../error')
 const { model: Column_Outline } = require('../../../Schemas/column_outline')
 
 /**
- * @api {get} /column/outline get outline with id optional
+ * @api {get} /column/outline get column outline with id optional
  * @apiName GetOutline
  * @apiGroup In/column
  * @apiDescription 拿Outline資料(含圖片)
@@ -33,7 +33,7 @@ const { model: Column_Outline } = require('../../../Schemas/column_outline')
  *
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req, res, next) => {
+const getOut = async (req, res, next) => {
   const { id, page, perpage } = req.query
   const query = id ? { id } : {}
   const p = parseInt(page ? page : 1)
@@ -46,4 +46,21 @@ module.exports = asyncHandler(async (req, res, next) => {
   return res
     .status(201)
     .send({ data: columnOulines.reverse().map((col) => col.getPublic()), maxPage })
-})
+}
+
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: ['id'],
+    type: 'string',
+    method: 'get',
+  },
+  {
+    filename: 'optional',
+    field: ['perpage', 'page'],
+    type: 'any',
+    method: 'get',
+  },
+]
+module.exports = [valid(rules), asyncHandler(getOut)]

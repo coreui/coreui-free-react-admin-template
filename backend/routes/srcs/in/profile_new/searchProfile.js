@@ -1,9 +1,10 @@
 const Visual = require('../../../Schemas/user_visual_new')
+const { searchQuery } = require('../../../Schemas/query')
 const { dbCatch } = require('../../../error')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {post} /searchProfile search by fields
+ * @api {post} /searchProfile search profile by fields
  * @apiName SearchProfile
  * @apiGroup In/profile_new
  * @apiDescription 給定欄位搜尋porfile(OR)
@@ -54,68 +55,89 @@ const asyncHandler = require('express-async-handler')
  * @apiError (500) {String} description 資料庫錯誤
  */
 const srhProfile = async function (req, res, next) {
-  const query = search(req)
-  console.log('query', query)
-  const objs = await Visual.find(query, { _id: 0 }).catch(dbCatch)
-  const users = objs.map((person) => {
-    const imgSrc = person['imgSrc']
-    const {
-      _doc: { userimage, ...restData },
-    } = person
-    return { userimage: imgSrc, ...restData }
-  })
-  return res.status(201).send(users)
-}
-
-const search = (req) => {
-  const query = []
-
-  const { account } = req.body
-  if (account) {
-    if (account.includes('x'))
-      query.push({ account: { $regex: new RegExp(account.replace(/x/g, '.')) } })
-    else query.push({ account })
+  const {
+    account,
+    username,
+    nickname,
+    profile,
+    publicEmail,
+    cellphone,
+    CC,
+    web,
+    facebook,
+    Linkedin,
+    github,
+    major,
+    double_major,
+    minor,
+    master,
+    doctor,
+  } = req.body
+  const query = {
+    account,
+    username,
+    nickname,
+    profile,
+    publicEmail,
+    cellphone,
+    CC,
+    web,
+    facebook,
+    Linkedin,
+    github,
+    major,
+    double_major,
+    minor,
+    master,
+    doctor,
   }
-
-  const iter = [
-    'username',
-    'nickname',
-    'profile',
-    'publicEmail',
-    'cellphone',
-    'CC',
-    'web',
-    'facebook',
-    'Linkedin',
-    'github',
-    'major',
-    'double_major',
-    'minor',
-    'master',
-    'doctor',
-    // 'Occupation'
-  ]
-  iter.forEach((key) => {
-    const value = req.body[key]
-    if (value === undefined) return
-    const reg = new RegExp(value.replace(' ', '|'), 'i')
-    const obj = {}
-    obj[key] = reg
-    query.push(obj) //{username:'陳君輔'}
-  })
-
+  const sq = searchQuery(query)
   const { Occupation } = req.body
-  if (Occupation !== undefined) {
+  if (Occupation) {
     const { O, C, P } = Occupation
     const elem = {}
     if (O !== undefined) elem.O = new RegExp(O.replace(' ', '|'), 'i')
     if (C !== undefined) elem.C = new RegExp(C.replace(' ', '|'), 'i')
     if (P !== undefined) elem.P = new RegExp(P.replace(' ', '|'), 'i')
     const obj = { Occupation: { $elemMatch: elem } }
-    query.push(obj)
+    if (sq.$or !== undefined) {
+      sq.$or.push(obj)
+    } else {
+      sq['$or'] = [obj]
+    }
   }
-
-  return query.length === 0 ? {} : { $or: query }
+  const pros = await Visual.find(sq).catch(dbCatch)
+  return res.status(201).send(pros.map((p) => p.getPublic()))
 }
 
-module.exports = asyncHandler(srhProfile)
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: [
+      'account',
+      'username',
+      'nickname',
+      'profile',
+      'publicEmail',
+      'cellphone',
+      'CC',
+      'web',
+      'facebook',
+      'Linkedin',
+      'github',
+      'major',
+      'double_major',
+      'minor',
+      'master',
+      'doctor',
+    ],
+    type: 'string',
+  },
+  {
+    filename: 'optional',
+    field: ['Occupation'],
+    type: 'object',
+  },
+]
+module.exports = [valid(rules), asyncHandler(srhProfile)]

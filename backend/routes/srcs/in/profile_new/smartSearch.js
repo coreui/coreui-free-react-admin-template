@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
 
 /**
- * @api {post} /smartsearchProfile search by keywords
+ * @api {post} /smartsearchProfile search profile by keywords
  * @apiName SearchProfile
  * @apiGroup In/profile_new
  * @apiDescription 給定關鍵字(用空格區分)搜尋
@@ -35,16 +35,12 @@ const { dbCatch } = require('../../../error')
  * @apiError (500) {String} description 資料庫錯誤
  */
 
-module.exports = asyncHandler(async (req, res, next) => {
+const smartSearch = async (req, res, next) => {
   const { keyword } = req.body
   const pros = await Profile.smartFind(keyword).catch(dbCatch)
-  return res.status(201).send(
-    pros.map((pro) => {
-      const imgSrc = pro['imgSrc']
-      const {
-        _doc: { userimage, ...restData },
-      } = pro
-      return { userimage: imgSrc, ...restData }
-    }),
-  )
-})
+  return res.status(201).send(pros.map((pro) => pro.getPublic()))
+}
+
+const valid = require('../../../middleware/validation')
+const rules = [{ filename: 'optional', field: ['keyword'] }]
+module.exports = [valid(rules), asyncHandler(smartSearch)]

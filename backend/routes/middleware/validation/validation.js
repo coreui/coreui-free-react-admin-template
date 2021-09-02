@@ -1,11 +1,6 @@
-const validationFields = require('./validFields')
-
-const validationList = (method) => {
-  const output = []
-  validationFields[method].forEach((element) => {
-    output.push(require('./Name/' + element))
+module.exports = (rules) => {
+  return rules.map((rule) => {
+    if (typeof rule === 'string') return require('./Name/' + rule)({})
+    return require('./Name/' + rule.filename)(rule)
   })
-  return output
 }
-
-module.exports = validationList

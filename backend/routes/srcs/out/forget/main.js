@@ -1,13 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const valid = require("../../../middleware/validation");
+const express = require('express')
+const router = express.Router()
 
-router.post("/forget",
-	valid('forget'),
-	require("./forget"))
+router.post('/forget', require('./forget'))
 
-router.post("/activation",
-	valid('activation'),
-    require("./activation"))
+router.post('/activation', require('./activation'))
 
-module.exports = router;
+module.exports = router

@@ -1,4 +1,3 @@
-const {body} = require('express-validator');
+const { body } = require('express-validator')
 
-module.exports=body('Email','Invalid Email').exists()
-			.isEmail()
+module.exports = ({ field = 'Email' }) => body(field, 'invalid Email').exists().isEmail()

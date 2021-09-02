@@ -1,10 +1,11 @@
 const { dbCatch, ErrorHandler } = require('../../../error')
 const { model: Column_detail } = require('../../../Schemas/column_detail')
 const { model: Column_outline } = require('../../../Schemas/column_outline')
+const { parseImg } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {post} /column/add add
+ * @api {post} /column/add add column
  * @apiName addColumn
  * @apiGroup In/column
  * @apiDescription 管理員新增文章
@@ -64,20 +65,30 @@ const asyncHandler = require('express-async-handler')
  * @apiError (500) {String} description 資料庫錯誤
  */
 
-module.exports = asyncHandler(async (req, res) => {
+const addCol = async (req, res) => {
   const { id, top, body, annotation, anno, date, title, exp, edu, intro } = req.body
-  if (!id) throw new ErrorHandler(400, 'id is required')
-  const Imgcolumn = req.file
-  let columnImg
-  if (Imgcolumn !== undefined)
-    columnImg = { data: Imgcolumn.buffer, contentType: Imgcolumn.mimetype }
+  const columnImg = parseImg(req.file)
 
-  const detail_json = { id, top, body, annotation }
-  const outline_json = { anno, date, title, exp, edu, intro, id, columnImg }
-
-  console.log('新增column_detail')
-  await new Column_detail(detail_json).save().catch(dbCatch)
-  console.log('新增column_outline')
-  await new Column_outline(outline_json).save().catch(dbCatch)
+  await new Column_detail({ id, top, body, annotation }).save().catch(dbCatch)
+  await new Column_outline({ anno, date, title, exp, edu, intro, id, columnImg })
+    .save()
+    .catch(dbCatch)
   res.status(201).send({ id })
-})
+}
+
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: ['top', 'body', 'annotation'],
+    type: 'object',
+  },
+  {
+    filename: 'optional',
+    field: ['date'],
+    type: 'string',
+  },
+  { filename: 'optional', field: ['anno', 'title', 'exp', 'edu', 'intro'], type: 'array' },
+  { filename: 'required', field: 'id' },
+]
+module.exports = [valid(rules), asyncHandler(addCol)]

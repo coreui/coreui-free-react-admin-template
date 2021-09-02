@@ -2,10 +2,11 @@
 const { dbCatch, ErrorHandler } = require('../../../error')
 const Visual = require('../../../Schemas/user_visual_new')
 const Login = require('../../../Schemas/user_login')
+const { updateQuery, parseImg } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {patch} /profile update
+ * @api {patch} /profile update profile
  * @apiName ChangeProfile
  * @apiGroup In/profile_new
  * @apiDescription 更新porfile
@@ -40,13 +41,32 @@ const asyncHandler = require('express-async-handler')
  */
 const updateProfile = async (req, res, next) => {
   let session_account = req.session.loginAccount
-  if (!session_account) session_account = 'b07901029' //return res.status(403).send('not login')
   const obj = await Visual.findOne({ account: session_account }).catch(dbCatch)
   if (!obj) throw new ErrorHandler(404, '帳號不存在')
-  console.log('body', req.body)
-  const update = updateFormat(req)
-  console.log('update', update)
-  await Visual.updateOne({ account: session_account }, update).catch(dbCatch)
+
+  const query = ({
+    username,
+    nickname,
+    profile,
+    publicEmail,
+    cellphone,
+    CC,
+    web,
+    facebook,
+    Linkedin,
+    github,
+    major,
+    double_major,
+    minor,
+    master,
+    doctor,
+    Occupation,
+  } = req.body)
+  query['userimage'] = parseImg(req.file)
+  const toSet = updateQuery(query)
+  console.log('toSet', toSet)
+  await Visual.updateOne({ account: session_account }, toSet).catch(dbCatch)
+
   if (req.body.username !== undefined && req.body.username !== '') {
     await Login.updateOne(
       { account: session_account },
@@ -55,40 +75,40 @@ const updateProfile = async (req, res, next) => {
   }
   return res.status(204).end()
 }
-const updateFormat = (req) => {
-  const set = {}
-  const unset = {}
-  const iter = [
-    'username',
-    'nickname',
-    'profile',
-    'publicEmail',
-    'cellphone',
-    'CC',
-    'web',
-    'facebook',
-    'Linkedin',
-    'github',
-    'major',
-    'double_major',
-    'minor',
-    'master',
-    'doctor',
-    'Occupation',
-  ]
-  iter.forEach((key) => {
-    const value = req.body[key]
-    if (value === undefined) return
-    if (key !== 'username' && value === '') return (unset[key] = '')
-    if (key === 'Occupation' && !Array.isArray(value)) return
-    set[key] = value
-  })
-  if (req.file) {
-    set['userimage.data'] = req.file.buffer
-    set['userimage.contentType'] = req.file.mimetype
-    console.log('get img', set['userimage.contentType'])
-  }
-  return { $set: set, $unset: unset }
-}
 
-module.exports = asyncHandler(updateProfile)
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: [
+      'account',
+      'username',
+      'nickname',
+      'profile',
+      'publicEmail',
+      'cellphone',
+      'CC',
+      'web',
+      'facebook',
+      'Linkedin',
+      'github',
+      'major',
+      'double_major',
+      'minor',
+      'master',
+      'doctor',
+    ],
+    type: 'string',
+  },
+  {
+    filename: 'optional',
+    field: ['publicEmail'],
+    type: 'email',
+  },
+  {
+    filename: 'optional',
+    field: ['Occupation'],
+    type: 'array',
+  },
+]
+module.exports = [valid(rules), asyncHandler(updateProfile)]

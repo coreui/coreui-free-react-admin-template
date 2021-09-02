@@ -1,47 +1,10 @@
 const { dbCatch } = require('../../../error')
 const Recruitment = require('../../../Schemas/recruitment')
+const { parseImg } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
-/*新增一筆資料*/
-async function insert(
-  account,
-  title,
-  company_name,
-  work_type,
-  salary,
-  experience,
-  diploma,
-  requirement,
-  description,
-  img,
-) {
-  let recruitmentObj = {
-    account: account,
-    title: {
-      title: title,
-      company_name: company_name,
-      work_type: work_type,
-    },
-    info: {
-      salary: salary,
-      experience: experience,
-      diploma: diploma,
-    },
-    spec: {
-      requirement: requirement,
-      description: description,
-    },
-  }
-  if (img) {
-    recruitmentObj.img = img
-  }
-  const recruitment = await new Recruitment(recruitmentObj).save().catch(dbCatch)
-  console.log(recruitment.title.title)
-  return recruitment
-}
-
 /**
- * @api {post} /addRecruitment add
+ * @api {post} /addRecruitment add recruitment
  * @apiName AddRecruitment
  * @apiGroup In/career
  * @apiDescription 新增一筆職缺
@@ -64,43 +27,45 @@ async function insert(
  * 
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req, res) => {
-  let recruitmentAccount = 'none'
-  if (req.session) {
-    recruitmentAccount = req.session.loginAccount
-    // console.log(req.session)
-  }
+const addRecru = async (req, res) => {
+  const account = req.session.loginAccount
 
-  const recruitmentTitle = req.body.title
-  const recruitmentCompany_name = req.body.company_name
-  const recruitmentWork_type = req.body.work_type
-  const recruitmentSalary = req.body.salary
-  const recruitmentExperience = req.body.experience
-  const recruitmentDiploma = req.body.diploma
-  const recruitmentRequirement = req.body.requirement
-  const recruitmentDescription = req.body.description
+  const { title, company_name, work_type, salary, experience, diploma, requirement, description } =
+    req.body
+  console.log(parseImg)
+  const img = parseImg(req.file)
 
-  const recruitmentFile = req.file
-  let recruitmentImg
-  if (recruitmentFile) {
-    recruitmentImg = { data: recruitmentFile.buffer, contentType: recruitmentFile.mimetype }
-    console.log(recruitmentImg)
-  }
+  const { _id } = await new Recruitment({
+    account,
+    title: {
+      title,
+      company_name,
+      work_type,
+    },
+    info: {
+      salary,
+      experience,
+      diploma,
+    },
+    spec: {
+      requirement,
+      description,
+    },
+    img,
+  })
+    .save()
+    .catch(dbCatch)
 
-  //var query = {ID: ID};
-  console.log('新增recruitment')
-  const { _id } = await insert(
-    recruitmentAccount,
-    recruitmentTitle,
-    recruitmentCompany_name,
-    recruitmentWork_type,
-    recruitmentSalary,
-    recruitmentExperience,
-    recruitmentDiploma,
-    recruitmentRequirement,
-    recruitmentDescription,
-    recruitmentFile ? recruitmentImg : undefined,
-  )
+  res.status(201).send({ data: title, _id })
+}
 
-  res.status(201).send({ data: recruitmentTitle, _id })
-})
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: ['title', 'company_name', 'work_type', 'salary', 'diploma', 'description'],
+    type: 'string',
+  },
+  { filename: 'optional', field: ['experience', 'requirement'], type: 'array' },
+]
+module.exports = [valid(rules), asyncHandler(addRecru)]

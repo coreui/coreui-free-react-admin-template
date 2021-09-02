@@ -3,7 +3,7 @@ const Recommendation = require('../../../Schemas/recommendation')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {get} /recommendation/mine show mine
+ * @api {get} /recommendation/mine show my recommendation
  * @apiName ShowMyRecommendation
  * @apiGroup In/recommendation
  * @apiDescription 顯示我建立的簡歷
@@ -29,8 +29,6 @@ const asyncHandler = require('express-async-handler')
  */
 module.exports = asyncHandler(async (req, res, next) => {
   const account = req.session.loginAccount
-  if (!account) throw new ErrorHandler(403, 'not login')
   const recs = await Recommendation.find({ account }).catch(dbCatch)
-  const output = recs.map((obj) => obj.getPublic())
-  res.status(200).send(output)
+  res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
 })

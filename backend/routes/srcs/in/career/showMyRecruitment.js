@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 // const getPublic = require('./DBquery/getPublic')
 
 /**
- * @api {get} /recruitment show mine
+ * @api {get} /recruitment show my recruitment
  * @apiName ShowMyRecruitment
  * @apiGroup In/career
  * @apiDescription 顯示我的所有職缺
@@ -32,9 +32,5 @@ module.exports = asyncHandler(async (req, res, next) => {
   const account = req.session.loginAccount
   if (!account) return res.status(403).send('not login')
   const recs = await Recruitment.find({ account }).catch(dbCatch)
-  const output = []
-  recs.forEach((obj) => {
-    output.push(obj.getPublic())
-  })
-  res.status(200).send(output)
+  res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
 })

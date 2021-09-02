@@ -34,4 +34,7 @@ const activate = async (req, res) => {
     })
   return res.status(200).end()
 }
-module.exports = asyncHandler(activate)
+
+const valid = require('../../../middleware/validation')
+const rules = ['account', { filename: 'required', field: 'active' }, 'password']
+module.exports = [valid(rules), asyncHandler(activate)]

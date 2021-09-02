@@ -1,9 +1,10 @@
 const Abroad_info = require('../../../Schemas/abroad_info')
+const { updateQuery, parseImg } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 const { dbCatch, ErrorHandler } = require('../../../error')
 
 /**
- * @api {post} /updateAbroadInfo update
+ * @api {post} /updateAbroadInfo update abroadInfo
  * @apiName updateAbroadInfo
  * @apiGroup In/abroadInfo
  * @apiDescription 給_id更新留學資訊
@@ -22,12 +23,20 @@ const { dbCatch, ErrorHandler } = require('../../../error')
  */
 
 const updateAbroadInfo = async (req, res) => {
-  //const session_auth = (req.session.isAuth)
-  const { _id, title, info, file } = req.body
+  const { _id, title, info } = req.body
   if (!_id) throw new ErrorHandler(403, '_id not given')
-  const obj = await Abroad_info.findOne({ _id }, 'title info file').catch(dbCatch)
+  const obj = await Abroad_info.findOne({ _id }, 'title').catch(dbCatch)
   if (!obj) throw new ErrorHandler(404, '資料不存在')
-  await Abroad_info.updateOne({ _id }, { $set: { title, info, file } }).catch(dbCatch)
+
+  const icon = parseImg(req.file)
+  const toSet = updateQuery({ title, info, icon })
+  await Abroad_info.findByIdAndUpdate(_id, toSet).catch(dbCatch)
   return res.status(200).end()
 }
-module.exports = asyncHandler(updateAbroadInfo)
+
+const valid = require('../../../middleware/validation')
+const rules = [
+  { filename: 'required', field: '_id' },
+  { filename: 'optional', field: ['title', 'info'] },
+]
+module.exports = [valid(rules), asyncHandler(updateAbroadInfo)]

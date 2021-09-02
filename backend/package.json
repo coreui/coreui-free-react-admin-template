@@ -13,19 +13,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apidoc": "^0.25.0",
-    "apidoc-markdown": "^5.2.1",
     "body-parser": "^1.17.2",
     "connect-history-api-fallback": "^1.6.0",
     "connect-mongo": "^3.2.0",
     "core-js": "^3.8.1",
-    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "express-session": "^1.17.1",
     "express-validator": "^6.8.1",
-    "immutable": "^4.0.0-rc.12",
     "jquery": "^3.5.1",
     "jsdom": "^16.4.0",
     "mongoose": "^5.11.8",
@@ -34,19 +30,11 @@
     "munkres-js": "^1.2.2",
     "nodemailer": "^6.4.17",
     "read-excel-file": "^5.0.0",
-    "session-file-store": "^1.5.0",
     "xlsx": "^0.16.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^4.3.0",
-    "file-loader": "^6.2.0",
-    "nodemon": "^2.0.6",
-    "npm-run-all": "^4.1.5"
+    "apidoc": "^0.25.0",
+    "apidoc-markdown": "^5.2.1",
+    "nodemon": "^2.0.6"
   }
 }

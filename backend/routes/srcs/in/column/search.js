@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
 
 /**
- * @api {get} /column/search search by keywords or hashtags
+ * @api {get} /column/search search column by keywords or hashtags
  * @apiName Search
  * @apiGroup In/column
  * @apiDescription 用keyword(空格區分)或hashtag搜尋
@@ -53,7 +53,7 @@ const { dbCatch } = require('../../../error')
  * @apiError (500) {String} description 資料庫錯誤
  */
 
-module.exports = asyncHandler(async (req, res, next) => {
+const srhCol = async (req, res, next) => {
   const { hashtags, keyword, page, perpage } = req.query
   let queryId = []
   const task1 = async () => {
@@ -92,4 +92,21 @@ module.exports = asyncHandler(async (req, res, next) => {
   return res
     .status(201)
     .send({ data: columnOulines.reverse().map((col) => col.getPublic()), maxPage })
-})
+}
+
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: ['keyword', 'hashtags'],
+    type: 'string',
+    method: 'get',
+  },
+  {
+    filename: 'optional',
+    field: ['perpage', 'page'],
+    type: 'any',
+    method: 'get',
+  },
+]
+module.exports = [valid(rules), asyncHandler(srhCol)]

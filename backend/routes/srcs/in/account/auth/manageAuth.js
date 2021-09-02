@@ -21,4 +21,6 @@ const manage = async (req, res, next) => {
   res.end()
 }
 
-module.exports = asyncHandler(manage)
+const valid = require('../../../../middleware/validation')
+const rules = ['account', { filename: 'required', field: 'setAuth', type: 'bool' }]
+module.exports = [valid(rules), asyncHandler(manage)]

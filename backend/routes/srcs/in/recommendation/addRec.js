@@ -1,9 +1,10 @@
 const { dbCatch, ErrorHandler } = require('../../../error')
 const Recommendation = require('../../../Schemas/recommendation')
+const { parseImg } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
 /** 
- * @api {post} /recommendation add
+ * @api {post} /recommendation add recommendation
  * @apiName AddRecommendation
  * @apiGroup In/recommendation
  * @apiDescription 新增簡歷
@@ -26,27 +27,42 @@ const asyncHandler = require('express-async-handler')
  * 
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req, res) => {
+const addRec = async (req, res) => {
   const account = req.session.loginAccount
-  if (!account) throw new ErrorHandler(403, 'not login')
 
   const { title, name, desire_work_type, contact, email, diploma, experience, speciality } =
     req.body
 
-  const imgFile = req.file
-  let recruitmentImg
-  if (imgFile) {
-    recruitmentImg = { data: imgFile.buffer, contentType: imgFile.mimetype }
-  }
+  const img = parseImg(req.file)
   const recomd = await new Recommendation({
     account,
     title: { title, name, desire_work_type },
     info: { contact, email, diploma },
     spec: { experience, speciality },
-    img: recruitmentImg,
+    img,
   })
     .save()
     .catch(dbCatch)
 
   return res.status(200).send({ title: recomd.title.title, _id: recomd._id })
-})
+}
+
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: ['title', 'name', 'desire_work_type', 'contact', 'diploma'],
+    type: 'string',
+  },
+  {
+    filename: 'optional',
+    field: ['email'],
+    type: 'email',
+  },
+  {
+    filename: 'optional',
+    field: ['experience', 'speciality'],
+    type: 'array',
+  },
+]
+module.exports = [valid(rules), asyncHandler(addRec)]

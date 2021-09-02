@@ -17,18 +17,13 @@ const Recruitment_Schema = new Schema({
 
   spec: {
     requirement: [String],
-    description: [String],
+    description: String,
   },
   img: {
     data: { type: Buffer },
     contentType: { type: String },
   },
-  //   id: String
 })
-
-// Recruitment_Schema.index({
-//   '$**': 'text',
-// })
 
 Recruitment_Schema.virtual('imgSrc').get(function () {
   try {
@@ -71,4 +66,4 @@ Recruitment_Schema.statics.smartFind = async function (keywords) {
   return await this.find(query)
 }
 
-module.exports = mongoose.model('Recruitment_new', Recruitment_Schema)
+module.exports = mongoose.model('Recruitment_v3', Recruitment_Schema)

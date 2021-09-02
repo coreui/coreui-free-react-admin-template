@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 // const getPublic = require('./DBquery/getPublic')
 
 /**
- * @api {post} /showRecruitment show all
+ * @api {post} /showRecruitment show all recruitment
  * @apiName ShowRecruitment
  * @apiGroup In/career
  * @apiDescription 顯示所有職缺(等價於不傳任何參數的searchRecruitment)
@@ -28,9 +28,5 @@ const asyncHandler = require('express-async-handler')
  */
 module.exports = asyncHandler(async (req, res, next) => {
   const recs = await Recruitment.find().catch(dbCatch)
-  const output = []
-  recs.forEach((obj) => {
-    output.push(obj.getPublic())
-  })
-  res.status(200).send(output)
+  res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
 })

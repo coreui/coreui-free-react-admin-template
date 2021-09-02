@@ -1,41 +1,20 @@
-const { dbCatch } = require('../../../error')
+const { dbCatch, ErrorHandler } = require('../../../error')
 const Recruitment = require('../../../Schemas/recruitment')
 const asyncHandler = require('express-async-handler')
 
 async function deleteRecruitment(req, res, next) {
-  console.log(req.body)
-  const deletedRecruitment = await Recruitment.findById(req.body._id).catch(dbCatch)
-  if (!deletedRecruitment) {
-    console.log('_id not exists')
-    res.status(200).send({ data: '_id not exists' })
-    return
-  }
+  const { _id } = req.body
+  const delRec = await Recruitment.findById(_id).catch(dbCatch)
+  if (!delRec) throw new ErrorHandler(404, '_id not found')
+  if (delRec.account !== res.session.loginAccount || !req.session.isAuth)
+    throw new ErrorHandler(403, 'not authorized')
 
-  console.log(req.session)
-
-  if (deletedRecruitment.account) {
-    if (
-      req.session !== undefined &&
-      (req.session.loginAccount === deletedRecruitment.account || req.session.isAuth)
-    ) {
-      await Recruitment.findByIdAndDelete(req.body._id).catch(dbCatch)
-      let deletedtitle = deletedRecruitment.title.title
-      console.log('delete:', deletedtitle)
-      res.status(200).send({ data: deletedtitle })
-    } else {
-      console.log('unauthorized')
-      res.status(403).send({ data: 'unauthorized' })
-    }
-  } else {
-    await Recruitment.findByIdAndDelete(req.body._id).catch(dbCatch)
-    let deletedtitle = deletedRecruitment.title.title
-    console.log('delete:', deletedtitle)
-    res.status(200).send({ data: deletedtitle })
-  }
+  await Recruitment.findByIdAndDelete(_id).catch(dbCatch)
+  res.status(200).send({ data: delRec.title.title })
 }
 
 /**
- * @api {delete} /deleteRecruitment delete
+ * @api {delete} /deleteRecruitment delete recruitment
  * @apiName DeleteRecruitment
  * @apiGroup In/career
  * @apiDescription 用_id刪除職缺
@@ -45,7 +24,16 @@ async function deleteRecruitment(req, res, next) {
  * @apiSuccess (200) data 刪除職缺標題
  *
  * @apiError (500) {String} description 資料庫錯誤
- * @apiError (403) {String} description 沒有權限(僅建立者與管理員可以刪除)
+ * @apiError (403) {String} description not authorized(僅建立者與管理員可以刪除)
+ * @apiError (404) {String} description _id not found
+ *
  */
 
-module.exports = asyncHandler(deleteRecruitment)
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'required',
+    field: '_id',
+  },
+]
+module.exports = [valid(rules), asyncHandler(deleteRecruitment)]

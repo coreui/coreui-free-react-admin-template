@@ -36,7 +36,7 @@ const RecruBlock = ({ post, setData, index }) => {
     <div className="RecruBlock" key={post._id}>
       <CWidgetBrand
         className="mb-4 widgetbrand"
-        headerChildren={<img className="eesa" src={post.image?post.image:eesa} alt="eesa" />}
+        headerChildren={<img className="eesa" src={post.image ? post.image : eesa} alt="eesa" />}
         values={[[`${post.title.company_name} 徵 ${post.title.work_type}`]]}
       />
       <hr></hr>
@@ -59,7 +59,8 @@ const RecruBlock = ({ post, setData, index }) => {
             <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>要求條件：</h3>
             <h4>{post.spec.requirement.map((req) => spec(req))}</h4>
             <h3 style={{ 'font-weight': '600', margin: '1rem 0 0.1rem' }}>說明：</h3>
-            <h4>{post.spec.description.map((des) => spec(parser(des)))}</h4>
+            {/* <h4>{post.spec.description.map((des) => spec(des))}</h4> */}
+            <h4>{parser(post.spec.description)}</h4>
             <button onClick={() => setIsExpand(false)}>Show less...</button>
           </>
         )}

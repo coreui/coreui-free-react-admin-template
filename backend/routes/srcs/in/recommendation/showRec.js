@@ -1,9 +1,10 @@
 const { dbCatch, ErrorHandler } = require('../../../error')
 const Recommendation = require('../../../Schemas/recommendation')
+const { searchQuery } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {get} /recommendation search by field
+ * @api {get} /recommendation search recommendation by field
  * @apiName ShowRecommendation
  * @apiGroup In/recommendation
  * @apiDescription 搜尋簡歷
@@ -37,7 +38,7 @@ const asyncHandler = require('express-async-handler')
  * @apiError (403) {String} - not login
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req, res, next) => {
+const showRec = async (req, res, next) => {
   const {
     account,
     _id,
@@ -50,22 +51,41 @@ module.exports = asyncHandler(async (req, res, next) => {
     experience,
     speciality,
   } = req.query
-  const query = [
-    { _id },
-    { account },
-    { 'title.title': title },
-    { 'title.name': name },
-    { 'title.desire_work_type': desire_work_type },
-    { 'info.contact': contact },
-    { 'info.email': email },
-    { 'info.diploma': diploma },
-    { 'spec.experience': experience },
-    { 'spec.speciality': speciality },
-  ]
-  const input = query.filter((obj) => Object.values(obj)[0] !== undefined)
-  const toSearch = input.length === 0 ? {} : { $or: input }
-  console.log('search query', toSearch)
-  const recs = await Recommendation.find(toSearch).catch(dbCatch)
-  const output = recs.map((obj) => obj.getPublic())
-  res.status(200).send(output)
-})
+  const query = {
+    _id,
+    account,
+    'title.title': title,
+    'title.name': name,
+    'title.desire_work_type': desire_work_type,
+    'info.contact': contact,
+    'info.email': email,
+    'info.diploma': diploma,
+    'spec.experience': experience,
+    'spec.speciality': speciality,
+  }
+  const sq = searchQuery(query)
+  const recs = await Recommendation.find(sq).catch(dbCatch)
+  res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
+}
+
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: [
+      'account',
+      '_id',
+      'title',
+      'name',
+      'desire_work_type',
+      'contact',
+      'email',
+      'diploma',
+      'experience',
+      'speciality',
+    ],
+    method: 'get',
+    type: 'string',
+  },
+]
+module.exports = [valid(rules), asyncHandler(showRec)]

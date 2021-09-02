@@ -32,4 +32,10 @@ const chPsw = async (req, res, next) => {
   await Login.updateOne({ account: session_account }, { $set: { userpsw: newPsw } }).catch(dbCatch)
   return res.status(204).end()
 }
-module.exports = asyncHandler(chPsw)
+
+const valid = require('../../../middleware/validation')
+const rules = [
+  { filename: 'password', field: 'oldPsw' },
+  { filename: 'password', field: 'newPsw' },
+]
+module.exports = [valid(rules), asyncHandler(chPsw)]

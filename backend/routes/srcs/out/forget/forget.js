@@ -68,4 +68,7 @@ const forget = async (req, res, next) => {
   return res.status(200).send({ email })
   //   else return res.status(200).send({ email: '您的私人信箱' })
 }
-module.exports = asyncHandler(forget)
+
+const valid = require('../../../middleware/validation')
+const rules = ['account']
+module.exports = [valid(rules), asyncHandler(forget)]

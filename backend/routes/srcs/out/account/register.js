@@ -1,34 +1,34 @@
-//srcs/register.js
-const Login = require('../../../Schemas/user_login');
-const Pending = require('../../../Schemas/user_pending');
-const crypto = require("crypto");
-// const Visual = require('../../../Schemas/user_visual');
-const Visual = require('../../../Schemas/user_visual_new');
-const { ErrorHandler, dbCatch } = require('../../../error');
+const Login = require('../../../Schemas/user_login')
+const Pending = require('../../../Schemas/user_pending')
+const crypto = require('crypto')
+const Visual = require('../../../Schemas/user_visual_new')
+const { parseImg } = require('../../../Schemas/query')
+const { ErrorHandler, dbCatch } = require('../../../error')
 const asyncHandler = require('express-async-handler')
 const env = require('dotenv')
 env.config()
 
 /*新增一筆使用者資料*/
-async function insert(username,account,psw,file,visual){
-    await new Login({
-        username : username,
-        account: account,
-        userpsw : psw,
-        img:{
-            data:file.buffer,
-            contentType:file.mimetype
-        },
-        visual:visual._id
-    }).save().catch(dbCatch)
+async function insert(username, account, psw, img, visual) {
+  await new Login({
+    username: username,
+    account: account,
+    userpsw: psw,
+    img,
+    visual: visual._id,
+  })
+    .save()
+    .catch(dbCatch)
 }
 
-async function insertVisual(name,account,email){
-    return await new Visual({
-        username: name,
-        account: account,
-        publicEmail: email
-    }).save().catch(dbCatch)
+async function insertVisual(name, account, email) {
+  return await new Visual({
+    username: name,
+    account: account,
+    publicEmail: email,
+  })
+    .save()
+    .catch(dbCatch)
 }
 
 /**
@@ -45,7 +45,7 @@ async function insertVisual(name,account,email){
  * @apiparam {String} ConfirmPassword 二次密碼
  * @apiparam {String} username 使用者名字
  * @apiparam {String} Email 信箱 
- * @apiparam {File} file 身分證明的照片
+ * @apiparam {File} file 身分證明的照片(optional for beta)
  * 
  * @apiSuccess (201) {String} username 使用者名字
  * 
@@ -55,51 +55,57 @@ async function insertVisual(name,account,email){
  * @apiError (500) {String} description 資料庫錯誤
  */
 const register = async (req, res) => {
-    const {username,password,Email} = req.body
-    const account = req.body.account.toLowerCase()
+  const { username, password, Email } = req.body
+  const account = req.body.account.toLowerCase()
 
-    //密碼加密
-    const newPsw = crypto.createHash("md5").update(password).digest("hex")
+  //密碼加密
+  const newPsw = crypto.createHash('md5').update(password).digest('hex')
 
-    if(req.file===undefined) throw new ErrorHandler(400,"請添加照片")
-    
-    const query = {account}
-    const isRegistered = await Login.exists(query).catch(dbCatch)
-    if(isRegistered) throw new ErrorHandler(403,'帳號已存在')
-    const user = await insertVisual(username,account,Email)
-    await insert(username,account,newPsw,req.file,user)
-    req.session.loginName = username
-    req.session.loginAccount = account
-    return res.status(201).send({username})
+  const query = { account }
+  const isRegistered = await Login.exists(query).catch(dbCatch)
+  if (isRegistered) throw new ErrorHandler(403, '帳號已存在')
+  const user = await insertVisual(username, account, Email)
+  await insert(username, account, newPsw, parseImg(req.file), user)
+  req.session.loginName = username
+  req.session.loginAccount = account
+  return res.status(201).send({ username })
 }
 
 const secure_reg = async (req, res) => {
-    const {username,password,Email} = req.body
-    const account = req.body.account.toLowerCase()
-    const newPsw = crypto.createHash("md5").update(password).digest("hex")
-    if(req.file===undefined) throw new ErrorHandler(400,"請添加照片")
-    const query = {account}
-    const isRegistered = await Login.exists(query).catch(dbCatch)
-    if(isRegistered) throw new ErrorHandler(403,'帳號已存在')
+  const { username, password, Email } = req.body
+  const account = req.body.account.toLowerCase()
+  const newPsw = crypto.createHash('md5').update(password).digest('hex')
+  if (req.file === undefined) throw new ErrorHandler(400, '請添加照片')
+  const query = { account }
+  const isRegistered = await Login.exists(query).catch(dbCatch)
+  if (isRegistered) throw new ErrorHandler(403, '帳號已存在')
 
-    const data = {
-        username,
-        account,
-        userpsw:newPsw,
-        email:Email,
-        img:{
-            data:req.file.buffer,
-            contentType:req.file.mimetype
-        }
-    }
-    await Pending.findOneAndUpdate(
-        {account},
-        data,
-        {upsert: true}
-    ).catch(dbCatch)
-    
-    return res.status(201).send({username})
+  const data = {
+    username,
+    account,
+    userpsw: newPsw,
+    email: Email,
+    img: {
+      data: req.file.buffer,
+      contentType: req.file.mimetype,
+    },
+  }
+  await Pending.findOneAndUpdate({ account }, data, { upsert: true }).catch(dbCatch)
+
+  return res.status(201).send({ username })
 }
 
-if(process.env.newReg==='true') console.log('using new register rule')
-module.exports = process.env.newReg==='true' ? asyncHandler(secure_reg) : asyncHandler(register)
+if (process.env.newReg === 'true') console.log('using new register rule')
+
+const valid = require('../../../middleware/validation')
+const rules = [
+  'account',
+  'password',
+  { filename: 'required', field: 'username' },
+  'Email',
+  'ConfirmPassword',
+]
+module.exports =
+  process.env.newReg === 'true'
+    ? [valid(rules), asyncHandler(secure_reg)]
+    : [valid(rules), asyncHandler(register)]

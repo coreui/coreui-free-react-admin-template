@@ -26,9 +26,7 @@ const Profile_Schema = new Schema({
       C: String, //公司
     },
   ],
-  // JobID: {type:String}, //改在career用account link
   userimage: {
-    //大頭貼
     data: Buffer,
     contentType: String,
   },
@@ -75,6 +73,51 @@ Profile_Schema.statics.smartFind = async function (keywords) {
     ],
   }
   return await this.find(query)
+}
+
+Profile_Schema.methods.getPublic = function () {
+  const {
+    _id,
+    account,
+    username,
+    nickname,
+    profile,
+    major,
+    double_major,
+    minor,
+    master,
+    doctor,
+    publicEmail,
+    cellphone,
+    CC,
+    web,
+    facebook,
+    github,
+    Linkedin,
+    Occupation,
+    imgSrc,
+  } = this
+  return {
+    _id,
+    account,
+    username,
+    nickname,
+    profile,
+    major,
+    double_major,
+    minor,
+    master,
+    doctor,
+    publicEmail,
+    cellphone,
+    CC,
+    web,
+    facebook,
+    github,
+    Linkedin,
+    Occupation,
+    userimage: imgSrc,
+  }
 }
 
 module.exports = mongoose.model('Profile', Profile_Schema)

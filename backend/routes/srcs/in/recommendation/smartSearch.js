@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
 
 /**
- * @api {get} /smartsearchrecommendation search by keywords
+ * @api {post} /smartsearchrecommendation search recommendation by keywords
  * @apiName ShowRecommendation
  * @apiGroup In/recommendation
  * @apiDescription 關鍵字搜尋(空格區分)
@@ -28,8 +28,12 @@ const { dbCatch } = require('../../../error')
  * @apiError (403) {String} - not login
  * @apiError (500) {String} description 資料庫錯誤
  */
-module.exports = asyncHandler(async (req, res, next) => {
+const smartSearch = async (req, res, next) => {
   const { keyword } = req.body
   const recmds = await Recmd.smartFind(keyword).catch(dbCatch)
-  return res.status(201).send(recmds.map((recmd) => recmd.getPublic()))
-})
+  return res.status(201).send(recmds.map((recmd) => recmd.getPublic()).reverse())
+}
+
+const valid = require('../../../middleware/validation')
+const rules = [{ filename: 'optional', field: ['keyword'] }]
+module.exports = [valid(rules), asyncHandler(smartSearch)]

@@ -1,52 +1,41 @@
 const { dbCatch } = require('../../../error')
 const Recruitment = require('../../../Schemas/recruitment')
+const { searchQuery } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
-const recruitment = {
-  title: ['title', 'company_name', 'work_type'],
-  info: ['salary', 'experience', 'diploma'],
-  spec: ['requirement', 'description'],
-}
-
-const search = (req) => {
-  const query = {}
-  if (req.body._id) query['_id'] = req.body._id
-  if (req.body.account) query['account'] = req.body.account.toLowerCase()
-
-  recruitment.title.forEach((element) => {
-    if (req.body[element] !== undefined) {
-      const regex = new RegExp(req.body[element], 'i')
-      query['title.' + element] = { $regex: regex }
-    }
-  })
-  recruitment.info.forEach((element) => {
-    if (req.body[element] !== undefined) {
-      const regex = new RegExp(req.body[element], 'i')
-      query['info.' + element] = { $regex: regex }
-    }
-  })
-  recruitment.spec.forEach((element) => {
-    if (req.body[element] !== undefined) {
-      const regex = new RegExp(req.body[element], 'i')
-      query['spec.' + element] = { $regex: regex }
-    }
-  })
-  console.log('query=', query)
-  return query
-}
-
 const searchRecuitment = async function (req, res, next) {
-  const query = search(req)
-  const objs = await Recruitment.find(query).sort({ _id: 1 }).catch(dbCatch)
-  const recruitments = []
-  objs.forEach((each) => {
-    recruitments.push(each.getPublic())
-  })
-  return res.status(201).send({ data: recruitments })
+  const {
+    _id,
+    account,
+    title,
+    company_name,
+    work_type,
+    salary,
+    experience,
+    diploma,
+    requirement,
+    description,
+  } = req.body
+  const keys = {
+    _id,
+    account,
+    'title.title': title,
+    'title.company_name': company_name,
+    'title.work_type': work_type,
+    'info.salary': salary,
+    'info.experience': experience,
+    'info.diploma': diploma,
+    'spec.requirement': requirement,
+    'spec.description': description,
+  }
+  const query = searchQuery(keys)
+
+  const recrus = await Recruitment.find(query).catch(dbCatch)
+  return res.status(201).send(recrus.map((recru) => recru.getPublic()).reverse())
 }
 
 /**
- * @api {post} /searchRecruitment search by field
+ * @api {post} /searchRecruitment search recruitment by field
  * @apiName SearchRecruitment
  * @apiGroup In/career
  * @apiDescription 指定欄位搜尋職缺
@@ -86,4 +75,23 @@ const searchRecuitment = async function (req, res, next) {
  * @apiError (500) {String} description 資料庫錯誤
  */
 
-module.exports = asyncHandler(searchRecuitment)
+const valid = require('../../../middleware/validation')
+const rules = [
+  {
+    filename: 'optional',
+    field: [
+      '_id',
+      'account',
+      'title',
+      'company_name',
+      'work_type',
+      'salary',
+      'experience',
+      'diploma',
+      'requirement',
+      'description',
+    ],
+    type: 'string',
+  },
+]
+module.exports = [valid(rules), asyncHandler(searchRecuitment)]

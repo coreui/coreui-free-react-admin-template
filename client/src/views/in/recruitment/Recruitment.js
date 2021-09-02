@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { selectCareer, setKeywords, clearKeywords } from '../../../../slices/careerSlice'
-import RecruPosts from './RecruPosts'
+import { selectCareer, setKeywords, clearKeywords } from '../career/index'
+import CareerBlock from '../career/CareerBlock'
+import Masonry from 'react-masonry-css'
 
 const Recruitment = () => {
   const [data, setData] = useState([])
@@ -10,6 +11,12 @@ const Recruitment = () => {
   const { keywords } = useSelector(selectCareer)
   const [isPending, setIsPending] = useState()
   const [isSearch, setIsSearch] = useState(false)
+  const breakpointColumnsObj = {
+    default: 2,
+    1100: 2,
+    700: 1,
+    500: 1,
+  }
   const searchData = (e) => {
     e.preventDefault()
     setIsPending(true)
@@ -103,7 +110,23 @@ const Recruitment = () => {
       ) : isSearch && data.length === 0 ? (
         <div className="display-2 d-flex justify-content-center mt-3">Result not found</div>
       ) : (
-        <RecruPosts data={data} />
+        data.length !== 0 && (
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+            columnAttrs={{
+              className: 'should be overridden',
+              'data-test': '',
+              style: { '--test': 'test', color: 'black' },
+            }}
+            style={{ display: 'flex' }}
+          >
+            {data.map((post) => (
+              <CareerBlock post={post} key={post._id} />
+            ))}
+          </Masonry>
+        )
       )}
     </>
   )

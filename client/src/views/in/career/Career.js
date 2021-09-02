@@ -2,8 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { CCol, CRow, CContainer, CImage } from '@coreui/react'
-import Recruitment_image from '../../../assets/images/Recruitment.png'
-import Recommendation_image from '../../../assets/images/Recommendation.png'
+import {Recruitment_image,Recommendation_image} from './index'
 
 const Career = () => {
   return (

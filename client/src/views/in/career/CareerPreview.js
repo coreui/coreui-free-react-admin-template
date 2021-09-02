@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
-import PropTypes, { object } from 'prop-types'
+import PropTypes from 'prop-types'
 import { CWidgetBrand } from '@coreui/react'
-import eesa from '../../../../assets/images/eesa-icon.png'
-import parse from 'html-react-parser'
+import { eesa } from './index'
+import parser from 'html-react-parser'
 
-const PreviewBlock = ({ post, experience, requirement, description }) => {
+const CareerPreview = ({ post, experience, requirement }) => {
   const [isExpand, setIsExpand] = useState(false)
   const [previewURL, setPreviewURL] = useState(post.file)
-  if (typeof(post.file)==='object') {
+  if (typeof post.file === 'object') {
     let reader = new FileReader()
     reader.onloadend = () => {
       setPreviewURL(reader.result)
@@ -22,7 +22,7 @@ const PreviewBlock = ({ post, experience, requirement, description }) => {
       </div>
     )
   }
-  if (description.length !== 0) {
+  if (typeof(post.description)==='string') {
     return (
       <div className="PreviewBlock" key={post.id}>
         <CWidgetBrand
@@ -44,7 +44,7 @@ const PreviewBlock = ({ post, experience, requirement, description }) => {
               <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>要求條件：</h3>
               <h4>{requirement.map((req) => spec(req))}</h4>
               <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>說明：</h3>
-              {description.map((des) => spec(parse(des)))}
+              <h4>{parser(post.description)}</h4>
               <button onClick={() => setIsExpand(false)}>Show less...</button>
             </>
           )}
@@ -83,11 +83,10 @@ const PreviewBlock = ({ post, experience, requirement, description }) => {
     )
   }
 }
-PreviewBlock.propTypes = {
+CareerPreview.propTypes = {
   post: PropTypes.object,
   experience: PropTypes.array,
   requirement: PropTypes.array,
-  description: PropTypes.array,
 }
 
-export default PreviewBlock
+export default CareerPreview

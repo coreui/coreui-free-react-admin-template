@@ -1,17 +1,16 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import EditBlock from './editBlock'
+import RecommendationForm from '../RecommendationForm'
 import axios from 'axios'
-const EditRecruitment = () => {
+const EditRecommendation = () => {
   const id = useParams().id
   const [data, setData] = useState([])
   const getData = () => {
     axios
-      .post('/api/searchRecruitment', { _id: id })
+      .get('/api/recommendation', { params: { _id: id } })
       .then((res) => {
-        console.log('this is posts:', res.data.data[0])
-        setData(res.data.data[0])
+        setData(res.data[0])
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)
@@ -20,7 +19,8 @@ const EditRecruitment = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <>{data._id && <EditBlock data={data} />}</>
+  // return <>{data._id && <EditBlock data={data} />}</>
+  return <>{data._id && <RecommendationForm data={data} />}</>
 }
 
-export default EditRecruitment
+export default EditRecommendation

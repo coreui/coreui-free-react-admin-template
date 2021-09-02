@@ -1,7 +1,9 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useHistory } from 'react-router'
+import JoditEditor from 'jodit-react'
 import ReactTooltip from 'react-tooltip'
+import PropTypes from 'prop-types'
 import {
   CButton,
   CCard,
@@ -21,35 +23,52 @@ import {
 } from '@coreui/react'
 import axios from 'axios'
 import CIcon from '@coreui/icons-react'
-import PreviewBlock from '../editRecruitment/previewBlock'
-const formTemplate = {
-  title: '',
-  name: '',
-  desireWorkType: '',
-  contact: '',
-  email: '',
-  diploma: '',
-  file: '',
-}
-const AddRecommendation = () => {
+import CareerPreview from '../career/CareerPreview'
+const CareerForm = ({ data }) => {
+  const add = data ? false : true
+  const formTemplate = add
+    ? {
+        title: '',
+        companyName: '',
+        workType: '',
+        salary: '',
+        diploma: '',
+        description: '',
+        file: '',
+      }
+    : {
+        title: data.title.title,
+        companyName: data.title.company_name,
+        workType: data.title.work_type,
+        salary: data.info.salary,
+        diploma: data.info.diploma,
+        description: data.spec.description,
+        file: data.image,
+        _id: data._id,
+      }
   const history = useHistory()
+  const editor = useRef(null)
   const [isModal, setIsModal] = useState(false)
   const [blockModal, setBlockModal] = useState(false)
   const [previewURL, setPreviewURL] = useState(null)
-  const [experience, setExperience] = useState([''])
-  const [speciality, setSpeciality] = useState([''])
+  const [experience, setExperience] = useState(add ? [''] : data.info.experience)
+  const [requirement, setRequirement] = useState(add ? [''] : data.spec.requirement)
   const [fileButton, setFileButton] = useState(null)
-  const [recommendationForm, setRecommendationForm] = useState(formTemplate)
+  const [dataForm, setDataForm] = useState(formTemplate)
+  const config = {
+    readonly: false, // all options from https://xdsoft.net/jodit/doc/
+  }
   const handleInputChange = (e) => {
-    setRecommendationForm({ ...recommendationForm, [e.target.name]: e.target.value })
+    console.log('value changed', e.target.value)
+    setDataForm({ ...dataForm, [e.target.name]: e.target.value })
   }
   const addArray = (e) => {
     if (e.target.name === 'experience') {
       const newArray = experience.concat([''])
       setExperience(newArray)
-    } else if (e.target.name === 'speciality') {
-      const newArray = speciality.concat([''])
-      setSpeciality(newArray)
+    } else if (e.target.name === 'requirement') {
+      const newArray = requirement.concat([''])
+      setRequirement(newArray)
     }
   }
   const handleInputArray = (e, index) => {
@@ -59,28 +78,28 @@ const AddRecommendation = () => {
         else return e.target.value
       })
       setExperience(newArray)
-    } else if (e.target.name === 'speciality') {
-      const newArray = speciality.map((req, idx) => {
+    } else if (e.target.name === 'requirement') {
+      const newArray = requirement.map((req, idx) => {
         if (idx !== index) return req
         else return e.target.value
       })
-      setSpeciality(newArray)
+      setRequirement(newArray)
     }
   }
   const handleDeleteArray = (e, index) => {
     if (e.target.name === 'experience') {
       const newArray = experience.filter((exp, idx) => idx !== index)
       setExperience(newArray)
-    } else if (e.target.name === 'speciality') {
-      const newArray = speciality.filter((spec, idx) => idx !== index)
-      setSpeciality(newArray)
+    } else if (e.target.name === 'requirement') {
+      const newArray = requirement.filter((req, idx) => idx !== index)
+      setRequirement(newArray)
     }
   }
   const handleChangeImage = (e) => {
     let reader = new FileReader()
     let file = e.target.files[0]
     setFileButton(e.target)
-    setRecommendationForm({ ...recommendationForm, file: file })
+    setDataForm({ ...dataForm, file: file })
     reader.onloadend = () => {
       setPreviewURL(reader.result)
     }
@@ -92,36 +111,53 @@ const AddRecommendation = () => {
   const clearImage = (e) => {
     setIsModal(false)
     setPreviewURL(null)
-    setRecommendationForm({ ...recommendationForm, file: null })
+    setDataForm({ ...dataForm, file: null })
     fileButton.value = ''
   }
   const handleSubmit = () => {
     const data = new FormData()
-    data.append('title', recommendationForm.title)
-    data.append('name', recommendationForm.name)
-    data.append('desire_work_type', recommendationForm.desireWorkType)
-    data.append('contact', recommendationForm.contact)
-    data.append('email', recommendationForm.email)
-    data.append('diploma', recommendationForm.diploma)
+    data.append('title', dataForm.title)
+    data.append('company_name', dataForm.companyName)
+    data.append('work_type', dataForm.workType)
+    data.append('salary', dataForm.salary)
+    data.append('diploma', dataForm.diploma)
+    data.append('description', dataForm.description)
     for (let exp of experience) {
       data.append('experience[]', exp)
     }
-    for (let spec of speciality) {
-      data.append('speciality[]', spec)
+    for (let req of requirement) {
+      data.append('requirement[]', req)
     }
-    data.append('file', recommendationForm.file)
+    if (previewURL) {
+      data.append('file', dataForm.file)
+    }
     const config = {
       headers: { 'content-type': 'multipart/form-data' },
     }
-    axios
-      .post('/api/recommendation', data, config)
-      .then(() => {
-        alert('已新增')
-        history.push('/own_recommendation')
-      })
-      .catch((err) => {
-        err.response.data.description && alert('錯誤\n' + err.response.data.description)
-      })
+    if (add) {
+      console.log('in add recruitment', data)
+      axios
+        .post('/api/addRecruitment', data, config)
+        .then(() => {
+          alert('已新增')
+          history.push('/own_recruitment')
+        })
+        .catch((err) => {
+          err.response.data.description && alert('錯誤\n' + err.response.data.description)
+        })
+    } else if (!add) {
+      data.append('_id', dataForm._id)
+      console.log('in edit recruitment', data)
+      axios
+        .patch('/api/recruitment', data, config)
+        .then(() => {
+          alert('已更新')
+          history.push('/own_recruitment')
+        })
+        .catch((err) => {
+          err.response.data.description && alert('錯誤\n' + err.response.data.description)
+        })
+    }
   }
   return (
     <>
@@ -146,12 +182,7 @@ const AddRecommendation = () => {
           <CModalTitle>Preview New Post</CModalTitle>
         </CModalHeader>
         <CModalBody>
-          <PreviewBlock
-            post={recommendationForm}
-            experience={experience}
-            requirement={speciality}
-            description={[]}
-          />
+          <CareerPreview post={dataForm} experience={experience} requirement={requirement} />
         </CModalBody>
         <CModalFooter>
           <CButton color="warning" onClick={() => setBlockModal(false)}>
@@ -169,16 +200,19 @@ const AddRecommendation = () => {
               <CCard className="mx-4">
                 <CCardBody className="p-4">
                   <CForm>
-                    <h1>Ready to post a recommendation?</h1>
-                    <p className="text-medium-emphasis">Create your recommendation</p>
+                    <h1>{add ? 'Ready to post' : 'Want to edit'} a recruitment?</h1>
+                    <p className="text-medium-emphasis">
+                      {add ? 'Create' : 'Edit'} your recruitment
+                    </p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-user" />
+                        <CIcon name="cil-layers" />
                       </CInputGroupText>
                       <CFormControl
                         data-for="title"
                         data-tip="Use impressing title to get people's attention!"
-                        placeholder="Title"
+                        placeholder="The job title"
+                        value={dataForm.title}
                         name="title"
                         onChange={handleInputChange}
                       />
@@ -186,62 +220,55 @@ const AddRecommendation = () => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name='cil-user' />
+                        <CIcon name="cil-building" />
                       </CInputGroupText>
                       <CFormControl
-                        data-for="name"
-                        data-tip="Enter your name"
-                        placeholder="Name"
-                        name="name"
+                        data-for="companyName"
+                        data-tip="Enter your company's name"
+                        placeholder="Company name"
+                        value={dataForm.companyName}
+                        name="companyName"
                         onChange={handleInputChange}
                       />
-                      <ReactTooltip id="name" place="top" type="dark" effect="solid" />
+                      <ReactTooltip id="companyName" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name='cil-braille' />
+                        <CIcon name="cil-braille" />
                       </CInputGroupText>
                       <CFormControl
                         data-for="workType"
-                        data-tip="What's your desired work?"
-                        placeholder="Desired Work Type"
-                        name="desireWorkType"
+                        data-tip="The position you are recruiting"
+                        placeholder="Work Type"
+                        value={dataForm.workType}
+                        name="workType"
                         onChange={handleInputChange}
                       />
                       <ReactTooltip id="workType" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <CIcon name='cil-phone' />
+                        <CIcon name="cil-dollar" />
                       </CInputGroupText>
                       <CFormControl
-                        data-for="phone"
-                        data-tip="Let others can call you!"
-                        placeholder="Phone"
-                        name="contact"
+                        data-for="salary"
+                        data-tip="Salary paid (/month or /year)"
+                        placeholder="Salary"
+                        name="salary"
+                        value={dataForm.salary}
                         onChange={handleInputChange}
                       />
-                      <ReactTooltip id="phone" place="top" type="dark" effect="solid" />
-                    </CInputGroup>
-                    <CInputGroup className="mb-4">
-                      <CInputGroupText>@</CInputGroupText>
-                      <CFormControl
-                        data-for="mail"
-                        data-tip="Let others can email you!"
-                        placeholder="Email"
-                        name="email"
-                        onChange={handleInputChange}
-                      />
-                      <ReactTooltip id="mail" place="top" type="dark" effect="solid" />
+                      <ReactTooltip id="salary" place="top" type="dark" effect="solid" />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name='cil-education' />
+                        <CIcon name="cil-education" />
                       </CInputGroupText>
                       <CFormControl
                         data-for="diploma"
-                        data-tip="Enter your highest education level"
+                        data-tip="Prefered education degree or major"
                         placeholder="Diploma"
+                        value={dataForm.diploma}
                         name="diploma"
                         onChange={handleInputChange}
                       />
@@ -251,12 +278,12 @@ const AddRecommendation = () => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon name='cil-address-book' />
+                            <CIcon name="cil-address-book" />
                           </CInputGroupText>
                           <CFormControl
                             data-for="experience"
-                            data-tip="Enter your experience"
-                            placeholder="Experience"
+                            data-tip="Prefered experience"
+                            placeholder="Required Experience"
                             name="experience"
                             value={exp}
                             onChange={(e) => handleInputArray(e, index)}
@@ -272,24 +299,24 @@ const AddRecommendation = () => {
                         </CInputGroup>
                       )
                     })}
-                    {speciality.map((req, index) => {
+                    {requirement.map((req, index) => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon name='cil-thumb-up' />
+                            <CIcon name="cil-thumb-up" />
                           </CInputGroupText>
                           <CFormControl
-                            data-for="specialty"
-                            data-tip="Enter your strength or other specialty"
-                            placeholder="Speciality"
-                            name="speciality"
+                            data-for="requirement"
+                            data-tip="Any requirement for this job"
+                            placeholder="Required skills"
+                            name="requirement"
                             value={req}
                             onChange={(e) => handleInputArray(e, index)}
                           />
-                          <ReactTooltip id="specialty" place="top" type="dark" effect="solid" />
+                          <ReactTooltip id="requirement" place="top" type="dark" effect="solid" />
                           <CButton
                             type="button"
-                            name="speciality"
+                            name="requirement"
                             onClick={(e) => handleDeleteArray(e, index)}
                           >
                             x
@@ -297,28 +324,45 @@ const AddRecommendation = () => {
                         </CInputGroup>
                       )
                     })}
+                    <div
+                      className="mb-3 mw-100"
+                      data-for="description"
+                      data-tip="Some description for this job"
+                    >
+                      <JoditEditor
+                        name="description"
+                        ref={editor}
+                        value={dataForm.description}
+                        config={config}
+                        tabIndex={1} // tabIndex of textarea
+                        onBlur={(newContent) =>
+                          setDataForm({ ...dataForm, description: newContent })
+                        } // preferred to use only this option to update the content for performance reasons
+                      />
+                      <ReactTooltip id="description" place="top" type="dark" effect="solid" />
+                    </div>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon name="cil-image" />
                       </CInputGroupText>
                       <CFormControl
                         data-for="image"
-                        data-tip="Put a picture that can represent you!"
+                        data-tip="Put your company's brand!"
                         id="formFile"
                         type="file"
                         onChange={handleChangeImage}
                       ></CFormControl>
                       <ReactTooltip id="image" place="top" type="dark" effect="solid" />
                     </CInputGroup>
-                    <CRow className="justify-content-between mt-3">
-                      <CCol xs={5} className="d-flex justify-content-center">
+                    <CRow className="mt-3">
+                      <CCol xs={6} className="d-flex justify-content-center">
                         <CButton type="button" name="experience" onClick={addArray}>
-                          Add experience
+                          Add required experience
                         </CButton>
                       </CCol>
-                      <CCol xs={5} className="d-flex justify-content-center">
-                        <CButton type="button" name="speciality" onClick={addArray}>
-                          Add speciality
+                      <CCol xs={6} className="d-flex justify-content-center">
+                        <CButton type="button" name="requirement" onClick={addArray}>
+                          Add required skills
                         </CButton>
                       </CCol>
                     </CRow>
@@ -339,5 +383,7 @@ const AddRecommendation = () => {
     </>
   )
 }
-
-export default AddRecommendation
+CareerForm.propTypes = {
+  data: PropTypes.object,
+}
+export default CareerForm

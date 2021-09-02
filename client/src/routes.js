@@ -8,22 +8,14 @@ const Support = React.lazy(() => import('./views/components/support/Support'))
 const Team = React.lazy(() => import('./views/components/team/Team'))
 const ShowColumns = React.lazy(() => import('./views/components/columnSummary/showColumns'))
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
-const Career = React.lazy(() => import('./views/components/career/career'))
-const Recommendation = React.lazy(() =>
-  import('./views/components/career/recommendation/Recommendation'),
-)
-const Recruitment = React.lazy(() => import('./views/components/career/recruitment/Recruitment'))
-const AddRecruitment = React.lazy(() =>
-  import('./views/components/career/addRecruitment/addRecruitment'),
-)
-const AddRecommendation = React.lazy(() =>
-  import('./views/components/career/addRecommendation/addRecommendation'),
-)
-const EditRecruitment = React.lazy(() =>
-  import('./views/components/career/editRecruitment/editRecruitment'),
-)
+const Career = React.lazy(() => import('./views/in/career/Career'))
+const RecommendationForm = React.lazy(() => import('./views/in/recommendation/RecommendationForm'))
+const Recommendation = React.lazy(() => import('./views/in/recommendation/Recommendation'))
+const RecruitmentForm = React.lazy(() => import('./views/in/recruitment/RecruitmentForm'))
+const Recruitment = React.lazy(() => import('./views/in/recruitment/Recruitment'))
+const EditRecruitment = React.lazy(() => import('./views/in/recruitment/edit/EditRecruitment'))
 const EditRecommendation = React.lazy(() =>
-  import('./views/components/career/editRecommendation/editRecommendation'),
+  import('./views/in/recommendation/edit/EditRecommendation'),
 )
 
 const ProfileSearch = React.lazy(() => import('./views/components/searchProfile/SearchProfile'))
@@ -36,12 +28,12 @@ const routes = [
   { path: '/career', exact: true, name: 'Career', component: Career },
   { path: '/recommendation', exact: true, name: 'Recommendation', component: Recommendation },
   { path: '/recruitment', exact: true, name: 'Recruitment', component: Recruitment },
-  { path: '/addRecruitment', exact: true, name: 'AddRecruitment', component: AddRecruitment },
+  { path: '/addRecruitment', exact: true, name: 'AddRecruitment', component: RecruitmentForm },
   {
     path: '/addRecommendation',
     exact: true,
     name: 'AddRecommendation',
-    component: AddRecommendation,
+    component: RecommendationForm,
   },
   {
     path: '/editRecruitment/:id',

@@ -6,7 +6,7 @@ async function deleteRecruitment(req, res, next) {
   const { _id } = req.body
   const delRec = await Recruitment.findById(_id).catch(dbCatch)
   if (!delRec) throw new ErrorHandler(404, '_id not found')
-  if (delRec.account !== res.session.loginAccount || !req.session.isAuth)
+  if (delRec.account !== req.session.loginAccount || !req.session.isAuth)
     throw new ErrorHandler(403, 'not authorized')
 
   await Recruitment.findByIdAndDelete(_id).catch(dbCatch)

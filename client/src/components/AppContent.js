@@ -1,27 +1,58 @@
 import React, { Suspense, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
-import { CContainer, CSpinner } from '@coreui/react'
+import {
+  login,
+  logout,
+  setImgSrc,
+  selectLogin,
+  clearImgSrc,
+  setStudentID,
+  clearStudentID,
+} from '../slices/loginSlice'
+import { CSpinner } from '@coreui/react'
+import axios from 'axios'
+import default_male from '../assets/images/default_male.png'
 
 // routes config
-import routes from '../routes'
+import { routes_out, routes_in } from '../routes'
 
 const AppContent = () => {
   const ContentStyle = {
     maxWidth: `100%`,
     maxHeight: `100%`,
-    // height: '100%',
-    // position: 'relative',
   }
+
+  const dispatch = useDispatch()
+  const { isLogin } = useSelector(selectLogin)
   const { pathname } = useLocation()
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
+
+  useEffect(() => {
+    // check login status
+    axios
+      .post('/api/isLogin', {})
+      .then((res) => {
+        console.log(res)
+        dispatch(login())
+        dispatch(setImgSrc(res.data.userimage === '' ? default_male : res.data.userimage))
+        dispatch(setStudentID(res.data.account))
+      })
+      .catch((err) => {
+        dispatch(logout())
+        dispatch(clearImgSrc())
+        dispatch(clearStudentID())
+      })
+  }, [isLogin])
+
   return (
-    <div lg style={ContentStyle}>
+    <div style={ContentStyle}>
       <Suspense fallback={<CSpinner color="primary" />}>
         <Switch>
-          {routes.map((route, idx) => {
+          {routes_out.map((route, idx) => {
             return (
               route.component && (
                 <Route
@@ -38,6 +69,25 @@ const AppContent = () => {
               )
             )
           })}
+          {isLogin
+            ? routes_in.map((route, idx) => {
+                return (
+                  route.component && (
+                    <Route
+                      key={idx}
+                      path={route.path}
+                      exact={route.exact}
+                      name={route.name}
+                      render={(props) => (
+                        <>
+                          <route.component {...props} />
+                        </>
+                      )}
+                    />
+                  )
+                )
+              })
+            : null}
           <Redirect from="/" to="/dashboard" />
         </Switch>
       </Suspense>

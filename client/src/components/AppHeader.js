@@ -38,7 +38,7 @@ const AppHeader = () => {
       .post('api/smartsearchProfile', { keyword: keywords })
       .then((res) => {
         dispatch(setResultProfiles(res.data))
-        history.push('/profileSearch')
+        history.push('/search_profile')
       })
       .catch((err) => console.log(err))
   }

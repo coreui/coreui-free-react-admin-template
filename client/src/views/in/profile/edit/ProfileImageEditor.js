@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectProfile, closeEditImageModal } from '../../../slices/profileSlice'
-import { selectLogin, setImgSrc } from '../../../slices/loginSlice'
+import { selectProfile, closeEditImageModal } from '../../../../slices/profileSlice'
+import { selectLogin, setImgSrc } from '../../../../slices/loginSlice'
 import ProfilePicture from '@dsalvagni/react-profile-picture'
 import '@dsalvagni/react-profile-picture/dist/ProfilePicture.css'
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Masonry from 'react-masonry-css'
 import CareerBlock from '../../career/CareerBlock'
 import axios from 'axios'
@@ -27,11 +28,11 @@ const OwnRecruitment = () => {
   }, [])
   return (
     <div className="text-color-black">
-      <a href="/#/addRecruitment">
+      <Link to="/add_recruitment">
         <div className="d-flex justify-content-center add" width="100%">
           +
         </div>
-      </a>
+      </Link>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

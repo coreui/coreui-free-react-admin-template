@@ -1,2 +1,2 @@
-import ProfileEdit from './ProfileEdit'
-export default ProfileEdit
+import EditProfile from './EditProfile'
+export default EditProfile

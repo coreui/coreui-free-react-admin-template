@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { openEditImageModal } from '../../../slices/profileSlice'
-import { selectLogin } from '../../../slices/loginSlice'
+import { openEditImageModal } from '../../../../slices/profileSlice'
+import { selectLogin } from '../../../../slices/loginSlice'
 import {
   CButton,
   CCard,
   CCardBody,
-  CCardGroup,
   CCol,
   CContainer,
-  CForm,
   CFormControl,
   CInputGroup,
-  CInputGroupText,
   CRow,
   CListGroup,
   CListGroupItem,
@@ -25,32 +22,7 @@ import axios from 'axios'
 const ProfileEdit = () => {
   const dispatch = useDispatch()
   const { imgSrc } = useSelector(selectLogin)
-  const [data, setData] = useState({
-    account: 'B08901072',
-    username: 'Tim Wang',
-    nickname: '提姆',
-    profile: '一人救全系', //自介
-    major: 'NTUEE',
-    double_major: '',
-    minor: '',
-    master: '',
-    doctor: '',
-    publicEmail: 'b08901072@ntu.edu.tw', //mongoose.SchemaTypes.Email ?
-    cellphone: '0987654321',
-    CC: 'Taipei, Taiwan', //city+country
-    web: '',
-    github: 'noidname01',
-    facebook: 'https://www.facebook.com/noidname',
-    Linkedin: '',
-    Occupation: [
-      {
-        O: '', //部門?
-        P: 'CEO & CTO', //職稱?
-        C: '友廷股份有限公司', //公司?
-      },
-    ],
-    userimage: 'https://avatars.githubusercontent.com/u/55401762?v=4', // not same as schema
-  })
+  const [data, setData] = useState(null)
 
   const getProfile = () => {
     axios
@@ -98,10 +70,10 @@ const ProfileEdit = () => {
     setData({ ...data, Occupation: list })
   }
 
-  useEffect(async () => {
-    await getProfile()
+  useEffect(() => {
+    getProfile()
   }, [])
-  return (
+  return data ? (
     <>
       <ProfileImageEditor />
       <CContainer>
@@ -349,7 +321,7 @@ const ProfileEdit = () => {
         </CRow>
       </CContainer>
     </>
-  )
+  ) : null
 }
 
 export default ProfileEdit

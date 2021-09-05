@@ -28,7 +28,7 @@ const AppSidebar = () => {
   const { isLogin } = useSelector(selectLogin)
   const { sidebarShow, unfoldable } = useSelector(selectGlobal)
   const chNav = () => {
-    if (isLogin) return navIn
+    if (isLogin) return [...navIn, ...navOut]
     else return navOut
   }
   return (
@@ -42,13 +42,12 @@ const AppSidebar = () => {
       className="bg-light"
     >
       <CSidebarBrand className="d-flex" to="/">
-        {/* <h6>components/AppSidebar/CIcon</h6> */}
         <CImage src={logo_row} width="60%" />
         {/* <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} /> */}
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <CCreateNavItem items={chNav()} />
+          <CCreateNavItem items={chNav()} className="text-color-black" />
         </SimpleBar>
       </CSidebarNav>
     </CSidebar>

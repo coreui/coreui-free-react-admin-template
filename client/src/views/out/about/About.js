@@ -1,5 +1,6 @@
-/* eslint-disable prettier/prettier */
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { CButton } from '@coreui/react'
 
 const About = () => {
   return (
@@ -29,14 +30,17 @@ const About = () => {
         讓系友們有專屬的家！
         <br />
       </h2>
-      <button
+      {/* <button
         style={{
           fontWeight: '700',
           border: '2px solid',
         }}
       >
         JOIN US
-      </button>
+      </button> */}
+      <Link to="/register_entry">
+        <CButton>JOIN US</CButton>
+      </Link>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CareerBlock from '../../career/CareerBlock'
+import { Link } from 'react-router-dom'
 import Masonry from 'react-masonry-css'
 import axios from 'axios'
 const OwnRecommendation = () => {
@@ -26,11 +27,11 @@ const OwnRecommendation = () => {
   }, [])
   return (
     <div className="text-color-black">
-      <a href="/#/addRecommendation">
+      <Link to="/add_recommendation">
         <div className="d-flex justify-content-center add" width="100%">
           +
         </div>
-      </a>
+      </Link>
       {data.length !== 0 && (
         <Masonry
           breakpointCols={breakpointColumnsObj}

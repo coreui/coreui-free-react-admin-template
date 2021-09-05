@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router'
 import { selectLogin } from '../../../slices/loginSlice'
 import {
   CButton,
@@ -15,15 +16,17 @@ import {
 import CIcon from '@coreui/icons-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import default_male from '../../../assets/images/default_male.png'
 
 const Profile = () => {
-  let recommendation = []
-  const { imgSrc } = useSelector(selectLogin)
+  const id = useParams().id
+  const { imgSrc, studentID } = useSelector(selectLogin)
   const getProfile = () => {
     axios
-      .get('api/profile')
+      .post('api/searchProfile', { account: id })
       .then((res) => {
-        setData({ ...data, ...res.data })
+        console.log(res)
+        setData(res.data[0])
       })
       .catch((err) => {
         // console.log(err)
@@ -37,45 +40,26 @@ const Profile = () => {
         }
       })
   }
-  const [data, setData] = useState({
-    account: 'B08901072',
-    username: 'Tim Wang',
-    nickname: '提姆',
-    profile: '一人救全系', //自介
-    major: 'NTUEE',
-    double_major: '',
-    minor: '',
-    master: '',
-    doctor: '',
-    publicEmail: 'b08901072@ntu.edu.tw', //mongoose.SchemaTypes.Email ?
-    cellphone: '0987654321',
-    CC: 'Taipei, Taiwan', //city+country
-    web: '',
-    facebook: 'https://www.facebook.com/noidname',
-    Linkedin: '',
-    Occupation: [
-      {
-        O: '', //部門?
-        P: 'CEO & CTO', //職稱?
-        C: '友廷股份有限公司', //公司?
-      },
-    ],
-    userimage: 'https://avatars.githubusercontent.com/u/55401762?v=4', // not same as schema
-  })
+  const [data, setData] = useState(null)
 
   useEffect(() => {
     getProfile()
     console.log(data)
   }, [])
 
-  return (
+  return data ? (
     <CContainer>
       <CRow>
         <CCol md="4" className="mb-3">
           <CCard>
             <CCardBody>
               <div className="d-flex flex-column align-items-center text-center">
-                <img src={imgSrc} alt="Admin" className="rounded-circle" width="150" />
+                <img
+                  src={data.userimage === '' ? default_male : data.userimage}
+                  alt="Admin"
+                  className="rounded-circle"
+                  width="150"
+                />
                 <div className="mt-3">
                   <h4>{data.username}</h4>
                   <p className="text-secondary mb-1">{data.profile}</p>
@@ -95,7 +79,7 @@ const Profile = () => {
                   </CAvatar>
                   Website
                 </h6>
-                <span className="text-secondary">{data.web.data}</span>
+                <span className="text-secondary">{data.web}</span>
               </CListGroupItem>
               <CListGroupItem>
                 <h6 className="mb-0">
@@ -166,11 +150,13 @@ const Profile = () => {
                 </CCol>
               </CRow>
               <hr />
-              <CRow>
-                <Link>
-                  <CButton>Edit</CButton>
-                </Link>
-              </CRow>
+              {studentID === id ? (
+                <CRow>
+                  <Link to="/edit_profile">
+                    <CButton>Edit</CButton>
+                  </Link>
+                </CRow>
+              ) : null}
             </CCardBody>
           </CCard>
           <CRow>
@@ -252,7 +238,7 @@ const Profile = () => {
         </CCol>
       </CRow>
     </CContainer>
-  )
+  ) : null
 }
 
 export default Profile

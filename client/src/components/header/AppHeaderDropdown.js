@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout, clearImgSrc, selectLogin } from '../../slices/loginSlice'
+import { Link } from 'react-router-dom'
+import { logout, clearImgSrc, clearStudentID, selectLogin } from '../../slices/loginSlice'
 import {
   CAvatar,
   CBadge,
@@ -16,7 +17,7 @@ import axios from 'axios'
 
 const AppHeaderDropdown = () => {
   const dispatch = useDispatch()
-  const { imgSrc } = useSelector(selectLogin)
+  const { imgSrc, studentID } = useSelector(selectLogin)
   const handleLogOut = (e) => {
     e.preventDefault()
     axios
@@ -25,6 +26,7 @@ const AppHeaderDropdown = () => {
         alert('登出成功!')
         dispatch(logout())
         dispatch(clearImgSrc())
+        dispatch(clearStudentID())
       })
       .catch((err) => {
         console.log(err)
@@ -39,10 +41,21 @@ const AppHeaderDropdown = () => {
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>
-        <CDropdownItem href="#">
+        <CDropdownItem component={Link} to={`/profile/${studentID}`}>
           <CIcon name="cil-user" className="me-2" />
           Profile
         </CDropdownItem>
+
+        <CDropdownItem component={Link} to="/own_recruitment">
+          <CIcon name="cil-user" className="me-2" />
+          Your Recruitment
+        </CDropdownItem>
+
+        <CDropdownItem component={Link} to={`/own_recommendation`}>
+          <CIcon name="cil-user" className="me-2" />
+          Your Recommendation
+        </CDropdownItem>
+
         <CDropdownItem href="#">
           <CIcon name="cil-settings" className="me-2" />
           Settings

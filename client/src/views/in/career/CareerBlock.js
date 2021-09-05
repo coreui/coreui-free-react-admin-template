@@ -69,9 +69,9 @@ const CareerBlock = ({ post, setData, index }) => {
           {post.title.title}
           {own ? (
             <>
-              <a className="hover-pointer" href={'/#/editRecruitment/' + post._id}>
+              <Link to={`/edit_recruitment/${post._id}`}>
                 <CIcon name="cil-pencil"></CIcon>
-              </a>
+              </Link>
               <CAvatar className="hover-pointer">
                 <CIcon name="cil-trash" onClick={() => deleteCareer(post._id)}></CIcon>
               </CAvatar>
@@ -111,9 +111,9 @@ const CareerBlock = ({ post, setData, index }) => {
           {post.title.name} asking for <nobr>{post.title.desire_work_type}</nobr>
           {own ? (
             <>
-              <a className="hover-pointer" href={'/#/editRecommendation/' + post._id}>
+              <Link to={`/edit_recommendation/${post._id}`}>
                 <CIcon name="cil-pencil"></CIcon>
-              </a>
+              </Link>
               <CAvatar className="hover-pointer">
                 <CIcon name="cil-trash" onClick={() => deleteCareer(post._id)}></CIcon>
               </CAvatar>

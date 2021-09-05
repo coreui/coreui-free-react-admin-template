@@ -132,7 +132,7 @@ const ColumnSummary = () => {
       return (
         <Grid item xs={12} md={12} key={art.key}>
           <Card className={classes.card}>
-            <Link to={'/ColumnSummary/' + art.id}>
+            <Link to={'/column_summary/' + art.id}>
               <CardMedia
                 className={classes.media}
                 image={art.imgSrc}

@@ -77,7 +77,7 @@ const RegisterEntry = () => {
     return (
       <Redirect
         to={{
-          pathname: '/register_facebook',
+          pathname: '/register_fb',
           state: { facebookID: userId },
         }}
       />

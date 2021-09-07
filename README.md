@@ -29,3 +29,10 @@ please read [How to Contribute](https://github.com/NTUEE-PLUS/EndOfWeb/blob/main
 ## 會議記錄
 
 > https://hackmd.io/7RZ9XyL7Qa-7aFXaZSfw_w
+
+## GCP
+
+```
+$ gcloud builds submit --tag gcr.io/eeplus-web/cra-cloud-run
+$ gcloud run deploy --image gcr.io/eeplus-web/cra-cloud-run --platform managed
+```

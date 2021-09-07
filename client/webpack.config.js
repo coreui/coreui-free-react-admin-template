@@ -21,6 +21,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
     }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
   ],
   //===================================================================
   module: {

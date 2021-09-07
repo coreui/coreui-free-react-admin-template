@@ -5,6 +5,8 @@ export const careerSlice = createSlice({
   name: 'career',
   initialState: {
     keywords: '',
+    croppedFile: null,
+    croppedDataUrl: '',
   },
   reducers: {
     setKeywords: (state, action) => {
@@ -13,9 +15,28 @@ export const careerSlice = createSlice({
     clearKeywords: (state) => {
       state.keywords = ''
     },
+    setCroppedFile: (state, action) => {
+      state.croppedFile = action.payload
+    },
+    clearCroppedFile: (state) => {
+      state.croppedFile = null
+    },
+    setCroppedDataUrl: (state, action) => {
+      state.croppedDataUrl = action.payload
+    },
+    clearCroppedDataUrl: (state) => {
+      state.croppedDataUrl = ''
+    },
   },
 })
 
-export const { setKeywords, clearKeywords } = careerSlice.actions
+export const {
+  setKeywords,
+  clearKeywords,
+  setCroppedFile,
+  clearCroppedFile,
+  setCroppedDataUrl,
+  clearCroppedDataUrl,
+} = careerSlice.actions
 export const selectCareer = (state) => state.career
 export default careerSlice.reducer

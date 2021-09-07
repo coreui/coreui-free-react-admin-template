@@ -1,6 +1,9 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectCareer, clearCroppedDataUrl, clearCroppedFile } from '../../../slices/careerSlice'
 import { useHistory } from 'react-router'
+import CareerImageEditor from '../career/CareerImageEditor'
 import JoditEditor from 'jodit-react'
 import ReactTooltip from 'react-tooltip'
 import PropTypes from 'prop-types'
@@ -46,11 +49,13 @@ const CareerForm = ({ data }) => {
         file: data.image,
         _id: data._id,
       }
+  const dispatch = useDispatch()
   const history = useHistory()
   const editor = useRef(null)
+  const { croppedFile } = useSelector(selectCareer)
   const [isModal, setIsModal] = useState(false)
   const [blockModal, setBlockModal] = useState(false)
-  const [previewURL, setPreviewURL] = useState(null)
+  const [originalImage, setOriginalImage] = useState(null)
   const [experience, setExperience] = useState(add ? [''] : data.info.experience)
   const [requirement, setRequirement] = useState(add ? [''] : data.spec.requirement)
   const [fileButton, setFileButton] = useState(null)
@@ -99,9 +104,11 @@ const CareerForm = ({ data }) => {
     let reader = new FileReader()
     let file = e.target.files[0]
     setFileButton(e.target)
-    setDataForm({ ...dataForm, file: file })
+    // clear old edit image
+    dispatch(clearCroppedDataUrl())
+    dispatch(clearCroppedFile())
     reader.onloadend = () => {
-      setPreviewURL(reader.result)
+      setOriginalImage(reader.result)
     }
     reader.readAsDataURL(file)
     // call the modal
@@ -109,10 +116,21 @@ const CareerForm = ({ data }) => {
   }
 
   const clearImage = (e) => {
+    // close modal
     setIsModal(false)
-    setPreviewURL(null)
+    // clear all the image
+    setOriginalImage(null)
+    dispatch(clearCroppedDataUrl())
+    dispatch(clearCroppedFile())
     setDataForm({ ...dataForm, file: null })
     fileButton.value = ''
+  }
+
+  const saveEditImage = (e) => {
+    // close the modal
+    setIsModal(false)
+    // fill the form
+    setDataForm({ ...dataForm, file: croppedFile })
   }
   const handleSubmit = () => {
     const data = new FormData()
@@ -128,8 +146,8 @@ const CareerForm = ({ data }) => {
     for (let req of requirement) {
       data.append('requirement[]', req)
     }
-    if (previewURL) {
-      data.append('file', dataForm.file)
+    if (croppedFile) {
+      data.append('file', dataForm.file, '.png')
     }
     const config = {
       headers: { 'content-type': 'multipart/form-data' },
@@ -161,18 +179,18 @@ const CareerForm = ({ data }) => {
   }
   return (
     <>
-      <CModal visible={isModal} onDismiss={() => setIsModal(false)} alignment="center">
+      <CModal size="xl" visible={isModal} onDismiss={() => setIsModal(false)} alignment="center">
         <CModalHeader onDismiss={() => setIsModal(false)}>
-          <CModalTitle>Preview Your Photo</CModalTitle>
+          <CModalTitle>Edit Your Photo</CModalTitle>
         </CModalHeader>
         <CModalBody>
-          <img src={previewURL} className="img-fluid container justify-content-center d-flex" />
+          <CareerImageEditor imgSrc={originalImage} />
         </CModalBody>
         <CModalFooter>
           <CButton color="warning" onClick={clearImage}>
             Clear
           </CButton>
-          <CButton color="dark" onClick={() => setIsModal(false)}>
+          <CButton color="dark" onClick={saveEditImage} disabled={!croppedFile}>
             OK
           </CButton>
         </CModalFooter>
@@ -189,7 +207,7 @@ const CareerForm = ({ data }) => {
             Back
           </CButton>
           <CButton color="dark" onClick={handleSubmit}>
-            OK
+            Post
           </CButton>
         </CModalFooter>
       </CModal>
@@ -204,6 +222,19 @@ const CareerForm = ({ data }) => {
                     <p className="text-medium-emphasis">
                       {add ? 'Create' : 'Edit'} your recruitment
                     </p>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon name="cil-image" />
+                      </CInputGroupText>
+                      <CFormControl
+                        data-for="image"
+                        data-tip="Put your company's brand!"
+                        id="formFile"
+                        type="file"
+                        onChange={handleChangeImage}
+                      ></CFormControl>
+                      <ReactTooltip id="image" place="top" type="dark" effect="solid" />
+                    </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon name="cil-layers" />
@@ -341,19 +372,6 @@ const CareerForm = ({ data }) => {
                       />
                       <ReactTooltip id="description" place="top" type="dark" effect="solid" />
                     </div>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <CIcon name="cil-image" />
-                      </CInputGroupText>
-                      <CFormControl
-                        data-for="image"
-                        data-tip="Put your company's brand!"
-                        id="formFile"
-                        type="file"
-                        onChange={handleChangeImage}
-                      ></CFormControl>
-                      <ReactTooltip id="image" place="top" type="dark" effect="solid" />
-                    </CInputGroup>
                     <CRow className="mt-3">
                       <CCol xs={6} className="d-flex justify-content-center">
                         <CButton type="button" name="experience" onClick={addArray}>
@@ -369,7 +387,7 @@ const CareerForm = ({ data }) => {
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
                         <CButton color="dark" onClick={() => setBlockModal(true)}>
-                          Done
+                          Preview
                         </CButton>
                       </div>
                     </CRow>

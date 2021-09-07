@@ -8,7 +8,7 @@ import parser from 'html-react-parser'
 const CareerPreview = ({ post, experience, requirement }) => {
   const [isExpand, setIsExpand] = useState(false)
   const [previewURL, setPreviewURL] = useState(post.file)
-  if (typeof post.file === 'object') {
+  if (post.file && typeof post.file === 'object') {
     let reader = new FileReader()
     reader.onloadend = () => {
       setPreviewURL(reader.result)
@@ -22,7 +22,7 @@ const CareerPreview = ({ post, experience, requirement }) => {
       </div>
     )
   }
-  if (typeof(post.description)==='string') {
+  if (typeof post.description === 'string') {
     return (
       <div className="PreviewBlock" key={post.id}>
         <CWidgetBrand
@@ -32,18 +32,18 @@ const CareerPreview = ({ post, experience, requirement }) => {
         />
         <hr></hr>
         <div className="previewcontent">
-          <h3 style={{ 'font-weight': '600' }}>{post.title}</h3>
+          <h3 style={{ fontWeight: '600' }}>{post.title}</h3>
           <h2 style={{ margin: '1rem 0rem', fontWeight: '600', color: 'red' }}>{post.salary}</h2>
-          <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>要求學歷：</h3>
+          <h3 style={{ fontWeight: '600', margin: '1.3rem 0 0.1rem' }}>要求學歷：</h3>
           <h4 style={{ lineHeight: '2.5rem', fontSize: '1.6rem' }}>{post.diploma}</h4>
           {!isExpand && <button onClick={() => setIsExpand(true)}>Show more...</button>}
           {isExpand && (
             <>
-              <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>工作經驗限制：</h3>
+              <h3 style={{ fontWeight: '600', margin: '1.3rem 0 0.1rem' }}>工作經驗限制：</h3>
               <h4>{experience.map((exp) => spec(exp))}</h4>
-              <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>要求條件：</h3>
+              <h3 style={{ fontWeight: '600', margin: '1.3rem 0 0.1rem' }}>要求條件：</h3>
               <h4>{requirement.map((req) => spec(req))}</h4>
-              <h3 style={{ 'font-weight': '600', margin: '1.3rem 0 0.1rem' }}>說明：</h3>
+              <h3 style={{ fontWeight: '600', margin: '1.3rem 0 0.1rem' }}>說明：</h3>
               <h4>{parser(post.description)}</h4>
               <button onClick={() => setIsExpand(false)}>Show less...</button>
             </>
@@ -65,7 +65,7 @@ const CareerPreview = ({ post, experience, requirement }) => {
           </h3>
           <h2 style={{ margin: '1rem 0rem' }}>{post.title}</h2>
           <div style={{ 'font-size': '1.39rem' }}>
-            <span style={{ color: 'red', 'font-weight': '500' }}>{post.diploma}</span> |{' '}
+            <span style={{ color: 'red', fontWeight: '500' }}>{post.diploma}</span> |{' '}
             <nobr>{post.contact}</nobr> | <nobr>{post.email}</nobr>
           </div>
           {!isExpand && <button onClick={() => setIsExpand(true)}>Show more...</button>}

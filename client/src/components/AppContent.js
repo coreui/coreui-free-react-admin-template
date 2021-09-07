@@ -69,6 +69,7 @@ const AppContent = () => {
               )
             )
           })}
+          {!isLogin ? <Redirect to="/login" /> : null}
           {isLogin
             ? routes_in.map((route, idx) => {
                 return (
@@ -88,7 +89,6 @@ const AppContent = () => {
                 )
               })
             : null}
-          <Redirect from="/" to="/dashboard" />
         </Switch>
       </Suspense>
     </div>

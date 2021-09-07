@@ -1,6 +1,9 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useRef } from 'react'
-import { useHistory, useLocation } from 'react-router'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectCareer, clearCroppedDataUrl, clearCroppedFile } from '../../../slices/careerSlice'
+import { useHistory } from 'react-router'
+import CareerImageEditor from '../career/CareerImageEditor'
 import ReactTooltip from 'react-tooltip'
 import PropTypes from 'prop-types'
 import {
@@ -45,10 +48,12 @@ const RecommendationForm = ({ data }) => {
         file: data.image,
         _id: data._id,
       }
+  const dispatch = useDispatch()
   const history = useHistory()
+  const { croppedFile } = useSelector(selectCareer)
   const [isModal, setIsModal] = useState(false)
   const [blockModal, setBlockModal] = useState(false)
-  const [previewURL, setPreviewURL] = useState(null)
+  const [originalImage, setOriginalImage] = useState(null)
   const [experience, setExperience] = useState(add ? [''] : data.spec.experience)
   const [speciality, setSpeciality] = useState(add ? [''] : data.spec.speciality)
   const [fileButton, setFileButton] = useState(null)
@@ -93,9 +98,11 @@ const RecommendationForm = ({ data }) => {
     let reader = new FileReader()
     let file = e.target.files[0]
     setFileButton(e.target)
-    setDataForm({ ...dataForm, file: file })
+    // clear old edit image
+    dispatch(clearCroppedDataUrl())
+    dispatch(clearCroppedFile())
     reader.onloadend = () => {
-      setPreviewURL(reader.result)
+      setOriginalImage(reader.result)
     }
     reader.readAsDataURL(file)
     // call the modal
@@ -103,11 +110,23 @@ const RecommendationForm = ({ data }) => {
   }
 
   const clearImage = (e) => {
+    // close modal
     setIsModal(false)
-    setPreviewURL(null)
+    // clear all the image
+    setOriginalImage(null)
+    dispatch(clearCroppedDataUrl())
+    dispatch(clearCroppedFile())
     setDataForm({ ...dataForm, file: null })
     fileButton.value = ''
   }
+
+  const saveEditImage = (e) => {
+    // close the modal
+    setIsModal(false)
+    // fill the form
+    setDataForm({ ...dataForm, file: croppedFile })
+  }
+
   const handleSubmit = () => {
     const data = new FormData()
     data.append('title', dataForm.title)
@@ -122,8 +141,8 @@ const RecommendationForm = ({ data }) => {
     for (let spec of speciality) {
       data.append('speciality[]', spec)
     }
-    if (previewURL) {
-      data.append('file', dataForm.file)
+    if (croppedFile) {
+      data.append('file', dataForm.file, '.png')
     }
     const config = { 'content-type': 'multipart/form-data' }
     if (add) {
@@ -152,18 +171,18 @@ const RecommendationForm = ({ data }) => {
   }
   return (
     <>
-      <CModal visible={isModal} onDismiss={() => setIsModal(false)} alignment="center">
+      <CModal size="xl" visible={isModal} onDismiss={() => setIsModal(false)} alignment="center">
         <CModalHeader onDismiss={() => setIsModal(false)}>
-          <CModalTitle>Preview Your Photo</CModalTitle>
+          <CModalTitle>Edit Your Photo</CModalTitle>
         </CModalHeader>
         <CModalBody>
-          <img src={previewURL} className="img-fluid container justify-content-center d-flex" />
+          <CareerImageEditor imgSrc={originalImage} />
         </CModalBody>
         <CModalFooter>
           <CButton color="warning" onClick={clearImage}>
             Clear
           </CButton>
-          <CButton color="dark" onClick={() => setIsModal(false)}>
+          <CButton color="dark" onClick={saveEditImage} disabled={!croppedFile}>
             OK
           </CButton>
         </CModalFooter>
@@ -185,7 +204,7 @@ const RecommendationForm = ({ data }) => {
             Back
           </CButton>
           <CButton color="dark" onClick={handleSubmit}>
-            OK
+            Post
           </CButton>
         </CModalFooter>
       </CModal>
@@ -196,12 +215,23 @@ const RecommendationForm = ({ data }) => {
               <CCard className="mx-4">
                 <CCardBody className="p-4">
                   <CForm>
-                    <h1>
-                      {add ? 'Ready to post' : 'Want to edit'} a recommendation?
-                    </h1>
+                    <h1>{add ? 'Ready to post' : 'Want to edit'} a recommendation?</h1>
                     <p className="text-medium-emphasis">
                       {add ? 'Create' : 'Edit'} your recommendation
                     </p>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon name="cil-image" />
+                      </CInputGroupText>
+                      <CFormControl
+                        data-for="image"
+                        data-tip="Put a picture that can represent you!"
+                        id="formFile"
+                        type="file"
+                        onChange={handleChangeImage}
+                      ></CFormControl>
+                      <ReactTooltip id="image" place="top" type="dark" effect="solid" />
+                    </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon name="cil-user" />
@@ -334,19 +364,6 @@ const RecommendationForm = ({ data }) => {
                         </CInputGroup>
                       )
                     })}
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <CIcon name="cil-image" />
-                      </CInputGroupText>
-                      <CFormControl
-                        data-for="image"
-                        data-tip="Put a picture that can represent you!"
-                        id="formFile"
-                        type="file"
-                        onChange={handleChangeImage}
-                      ></CFormControl>
-                      <ReactTooltip id="image" place="top" type="dark" effect="solid" />
-                    </CInputGroup>
                     <CRow className="justify-content-between mt-3">
                       <CCol xs={5} className="d-flex justify-content-center">
                         <CButton type="button" name="experience" onClick={addArray}>
@@ -362,7 +379,7 @@ const RecommendationForm = ({ data }) => {
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
                         <CButton color="dark" onClick={() => setBlockModal(true)}>
-                          Done
+                          Preview
                         </CButton>
                       </div>
                     </CRow>

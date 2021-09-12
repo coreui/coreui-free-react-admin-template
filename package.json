@@ -6,7 +6,13 @@
     "start-client": "cd client && yarn run local-build && cd ..",
     "dev": "npm-run-all --parallel start-client start-server",
     "build-client": "cd client && yarn build && cd ..",
-    "reset-db": "node ./backend/routes/Schemas/preload.js"
+    "reset-db": "node ./backend/routes/Schemas/preload.js",
+    "heroku-postbuild": "cd client && yarn install --dev && yarn run webpack && cd ../backend && yarn install && cd ..",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "14.15.1",
+    "yarn": "1.22.10"
   },
   "dependencies": {
     "@material-ui/icons": "^4.11.2",

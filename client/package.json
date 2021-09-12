@@ -58,7 +58,8 @@
     "sass-loader": "^12.1.0",
     "simplebar-react": "^2.3.4",
     "style-loader": "^3.2.1",
-    "webpack": "^5.47.1"
+    "webpack": "^5.47.1",
+    "webpack-cli": "^4.8.0"
   },
   "devDependencies": {
     "auto-changelog": "~2.3.0",
@@ -67,8 +68,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "2.3.2",
     "react-scripts": "^4.0.3",
-    "sass": "^1.35.1",
-    "webpack-cli": "^4.7.2"
+    "sass": "^1.35.1"
   },
   "scripts": {
     "local-build": "webpack --watch --mode development",

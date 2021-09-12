@@ -7,8 +7,8 @@ import {
   setImgSrc,
   selectLogin,
   clearImgSrc,
-  setStudentID,
-  clearStudentID,
+  setStudentInfo,
+  clearStudentInfo,
 } from '../slices/loginSlice'
 import { CSpinner } from '@coreui/react'
 import axios from 'axios'
@@ -39,12 +39,12 @@ const AppContent = () => {
         console.log(res)
         dispatch(login())
         dispatch(setImgSrc(res.data.userimage === '' ? default_male : res.data.userimage))
-        dispatch(setStudentID(res.data.account))
+        dispatch(setStudentInfo(res.data))
       })
       .catch((err) => {
         dispatch(logout())
         dispatch(clearImgSrc())
-        dispatch(clearStudentID())
+        dispatch(clearStudentInfo())
       })
   }, [isLogin])
 

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { selectLogin } from '../../../slices/loginSlice'
 import { selectCareer, clearCroppedDataUrl, clearCroppedFile } from '../../../slices/careerSlice'
 import { useHistory } from 'react-router'
 import CareerImageEditor from '../career/CareerImageEditor'
@@ -28,13 +29,14 @@ import CIcon from '@coreui/icons-react'
 import CareerPreview from '../career/CareerPreview'
 const RecommendationForm = ({ data }) => {
   const add = data ? false : true
+  const { cellphone: userPhone, email: userEmail, name: userName } = useSelector(selectLogin)
   const formTemplate = add
     ? {
         title: '',
-        name: '',
+        name: userName,
         desireWorkType: '',
-        contact: '',
-        email: '',
+        contact: userPhone,
+        email: userEmail,
         diploma: '',
         file: '',
       }
@@ -239,7 +241,7 @@ const RecommendationForm = ({ data }) => {
                       <CFormControl
                         data-for="title"
                         data-tip="Use impressing title to get people's attention!"
-                        placeholder="Title"
+                        placeholder="Title*"
                         value={dataForm.title}
                         name="title"
                         onChange={handleInputChange}
@@ -253,7 +255,7 @@ const RecommendationForm = ({ data }) => {
                       <CFormControl
                         data-for="name"
                         data-tip="Enter your name"
-                        placeholder="Name"
+                        placeholder="Name*"
                         value={dataForm.name}
                         name="name"
                         onChange={handleInputChange}
@@ -267,7 +269,7 @@ const RecommendationForm = ({ data }) => {
                       <CFormControl
                         data-for="workType"
                         data-tip="What's your desired work?"
-                        placeholder="Desired Work Type"
+                        placeholder="Desired Work Type*"
                         value={dataForm.desireWorkType}
                         name="desireWorkType"
                         onChange={handleInputChange}
@@ -378,7 +380,21 @@ const RecommendationForm = ({ data }) => {
                     </CRow>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
-                        <CButton color="dark" onClick={() => setBlockModal(true)}>
+                        <CButton
+                          color="dark"
+                          onClick={() => {
+                            for (let info in dataForm) {
+                              if (
+                                !dataForm[info] &&
+                                (info === 'title' || info === 'name' || info === 'desireWorkType')
+                              ) {
+                                alert(`${info} can't be empty`)
+                                return
+                              }
+                            }
+                            setBlockModal(true)
+                          }}
+                        >
                           Preview
                         </CButton>
                       </div>

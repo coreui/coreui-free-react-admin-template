@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { logout, clearImgSrc, clearStudentID, selectLogin } from '../../slices/loginSlice'
+import { logout, clearImgSrc, clearStudentInfo, selectLogin } from '../../slices/loginSlice'
 import {
   CAvatar,
   CBadge,
@@ -26,7 +26,7 @@ const AppHeaderDropdown = () => {
         alert('登出成功!')
         dispatch(logout())
         dispatch(clearImgSrc())
-        dispatch(clearStudentID())
+        dispatch(clearStudentInfo())
       })
       .catch((err) => {
         console.log(err)

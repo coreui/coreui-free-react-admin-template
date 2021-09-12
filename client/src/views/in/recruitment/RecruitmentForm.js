@@ -242,7 +242,7 @@ const CareerForm = ({ data }) => {
                       <CFormControl
                         data-for="title"
                         data-tip="Use impressing title to get people's attention!"
-                        placeholder="The job title"
+                        placeholder="The job title*"
                         value={dataForm.title}
                         name="title"
                         onChange={handleInputChange}
@@ -386,7 +386,18 @@ const CareerForm = ({ data }) => {
                     </CRow>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
-                        <CButton color="dark" onClick={() => setBlockModal(true)}>
+                        <CButton
+                          color="dark"
+                          onClick={() => {
+                            for (let info in dataForm) {
+                              if (!dataForm[info] && info === 'title') {
+                                alert(`${info} can't be empty`)
+                                return
+                              }
+                            }
+                            setBlockModal(true)
+                          }}
+                        >
                           Preview
                         </CButton>
                       </div>

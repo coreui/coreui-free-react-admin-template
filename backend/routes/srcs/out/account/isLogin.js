@@ -16,6 +16,6 @@ module.exports = asyncHandler(async (req, res, next) => {
   if (session_account) {
     const user = await Visual.findOne({ account: session_account })
     if (!user) throw new ErrorHandler(404, 'profile不存在')
-    return res.status(200).send({ account: session_account, userimage: user.imgSrc })
+    return res.status(200).send({ account: session_account, userimage: user.imgSrc, userCellphone:user.cellphone, userName:user.username,userEmail:user.publicEmail })
   } else throw new ErrorHandler(403, '未登入')
 })

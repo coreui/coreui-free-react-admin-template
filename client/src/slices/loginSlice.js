@@ -6,6 +6,9 @@ export const loginSlice = createSlice({
     isLogin: false,
     imgSrc: null,
     studentID: '',
+    email: '',
+    cellphone: '',
+    name: '',
   },
   reducers: {
     login: (state) => {
@@ -20,16 +23,22 @@ export const loginSlice = createSlice({
     clearImgSrc: (state) => {
       state.imgSrc = null
     },
-    setStudentID: (state, action) => {
-      state.studentID = action.payload
+    setStudentInfo: (state, action) => {
+      state.studentID = action.payload.account
+      state.cellphone = action.payload.userCellphone
+      state.name = action.payload.userName
+      state.email = action.payload.userEmail
     },
-    clearStudentID: (state, action) => {
+    clearStudentInfo: (state, action) => {
       state.studentID = ''
+      state.cellphone = ''
+      state.name = ''
+      state.email = ''
     },
   },
 })
 
-export const { login, logout, setImgSrc, clearImgSrc, setStudentID, clearStudentID } =
+export const { login, logout, setImgSrc, clearImgSrc, setStudentInfo, clearStudentInfo } =
   loginSlice.actions
 export const selectLogin = (state) => state.login
 export default loginSlice.reducer

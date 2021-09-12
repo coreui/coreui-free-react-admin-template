@@ -11,8 +11,8 @@
     "start": "node index.js"
   },
   "engines": {
-    "node": "14.15.1",
-    "yarn": "1.22.10"
+    "node": ">=14.15",
+    "yarn": ">=1.22"
   },
   "dependencies": {
     "@material-ui/icons": "^4.11.2",

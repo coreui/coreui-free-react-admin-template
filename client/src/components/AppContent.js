@@ -13,6 +13,7 @@ import {
 import { CSpinner } from '@coreui/react'
 import axios from 'axios'
 import default_male from '../assets/images/default_male.png'
+import { AppBackground } from '.'
 
 // routes config
 import { routes_out, routes_in } from '../routes'
@@ -50,6 +51,7 @@ const AppContent = () => {
 
   return (
     <div style={ContentStyle}>
+      <AppBackground />
       <Suspense fallback={<CSpinner color="primary" />}>
         <Switch>
           {routes_out.map((route, idx) => {

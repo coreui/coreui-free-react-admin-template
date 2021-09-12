@@ -4,6 +4,7 @@ import { Chrono } from 'react-chrono'
 import HistBlock from './HistBlock'
 import PropTypes from 'prop-types'
 import { CCol, CContainer, CImage, CRow } from '@coreui/react'
+import { history_icon } from '.'
 
 const Timeline = ({ data }) => {
   const items = data.history.map((year) => {
@@ -30,7 +31,7 @@ const Timeline = ({ data }) => {
         <div className="chrono-icons">
           {data.history.map((year) => (
             <img
-              src="https://img.icons8.com/color/144/000000/sun--v1.png"
+              src={history_icon}
               alt="icon"
               key={year.grade}
               style={{ backgroundColor: '#0000e3a3', borderRadius: '50%', height: '100%' }}

@@ -1,0 +1,31 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: ['-c', 'docker pull gcr.io/$PROJECT_ID/eeplus || true']
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--cache-from'
+      - 'gcr.io/$PROJECT_ID/eeplus'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/eeplus'
+      - '.'
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/eeplus']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'eeplus'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/eeplus'
+      - '--region'
+      - 'asia-east1'
+images:
+  - 'gcr.io/$PROJECT_ID/eeplus'
+timeout: 1200s

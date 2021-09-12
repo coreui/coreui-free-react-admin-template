@@ -7,6 +7,10 @@ COPY backend/package*.json ./backend/
 RUN yarn local-install
 # Bundle app source
 COPY . .
+ENV PORT=3000
+ENV NODE_ENV=production
+ENV newReg=false
 RUN yarn run build-client
-EXPOSE 1993
+
+EXPOSE 3000
 CMD [ "node", "index.js" ]

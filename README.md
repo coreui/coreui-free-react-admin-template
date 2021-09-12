@@ -32,7 +32,10 @@ please read [How to Contribute](https://github.com/NTUEE-PLUS/EndOfWeb/blob/main
 
 ## GCP
 
+```bash
+# in the cloud shell
+$ gcloud builds submit
 ```
-$ gcloud builds submit --tag gcr.io/eeplus-web/cra-cloud-run
-$ gcloud run deploy --image gcr.io/eeplus-web/cra-cloud-run --platform managed
-```
+
+> This will take 5~15 mins, depends on whether package.json was changed. If package wasn't changed, cache will be used; Otherwise, yarn install will take a lot of time.
+> After deployment finish, open [website](https://eeplus-jflswz6uxq-de.a.run.app/#/contact)

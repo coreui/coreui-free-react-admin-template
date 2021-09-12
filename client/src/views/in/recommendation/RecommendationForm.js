@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectLogin } from '../../../slices/loginSlice'
 import { selectCareer, clearCroppedDataUrl, clearCroppedFile } from '../../../slices/careerSlice'
@@ -231,6 +231,7 @@ const RecommendationForm = ({ data }) => {
                         id="formFile"
                         type="file"
                         onChange={handleChangeImage}
+                        onClick={(e) => (e.target.value = null)}
                       ></CFormControl>
                       <ReactTooltip id="image" place="top" type="dark" effect="solid" />
                     </CInputGroup>

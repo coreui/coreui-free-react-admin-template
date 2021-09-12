@@ -232,6 +232,7 @@ const CareerForm = ({ data }) => {
                         id="formFile"
                         type="file"
                         onChange={handleChangeImage}
+                        onClick={(e) => (e.target.value = null)}
                       ></CFormControl>
                       <ReactTooltip id="image" place="top" type="dark" effect="solid" />
                     </CInputGroup>

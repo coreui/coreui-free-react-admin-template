@@ -4,6 +4,7 @@
 /node_modules
 package-lock.json
 yarn.lock
+.env
 
 # misc
 .eslintcache

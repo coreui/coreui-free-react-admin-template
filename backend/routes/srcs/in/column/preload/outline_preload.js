@@ -1,5 +1,5 @@
 const mongoose = require('../../../../Schemas/db')
-const { model: Column_out } = require('../../../../Schemas/column_outline')
+const Column_out = require('../../../../Schemas/column_outline')
 const Column = require('../../../../Schemas/column')
 toInsert = [
   {

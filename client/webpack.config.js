@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const env = require('dotenv')
+env.config({ path: '../.env' })
 
 module.exports = {
   entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
@@ -23,6 +25,9 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       process: 'process/browser',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_fbAPIid': process.env.REACT_APP_fbAPIid,
     }),
   ],
   //===================================================================

@@ -1,6 +1,6 @@
 const { dbCatch, ErrorHandler } = require('../../../error')
-const { model: Column_detail } = require('../../../Schemas/column_detail')
-const { model: Column_outline } = require('../../../Schemas/column_outline')
+const Column_detail = require('../../../Schemas/column_detail')
+const Column_outline = require('../../../Schemas/column_outline')
 const { parseImg } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 

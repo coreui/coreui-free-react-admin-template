@@ -1,13 +1,19 @@
 const mongoose = require('mongoose')
-const { Schema: columnDetail, collectionName: detailName } = require('./column_detail')
-const { Schema: columnOutline, collectionName: outlineName } = require('./column_outline')
+const models = [
+  require('./user_login'),
+  require('./user_visual_new'),
+  require('./recruitment'),
+  require('./recommendation'),
+  require('./column_detail'),
+  require('./column_outline'),
+]
+const env = require('dotenv')
+env.config()
 
+if (!process.env.MONGO_URI) throw new Error('MONGO_URI not given')
 const sourceUrl =
-    'mongodb+srv://ntueeplus:ntueeplus2020@cluster0.fctiy.mongodb.net/heroku_kbtrwz4h?retryWrites=true&w=majority',
-  targetUrl =
-    process.env.MONGO_URI ||
-    'mongodb+srv://ntueeplus:ntueeplus2020@cluster0.gbnte.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-// 'mongodb://localhost:27017/EEplus?readPreference=primary&appname=MongoDB%20Compass&ssl=false'
+  'mongodb+srv://ntueeplus:ntueeplus2020@cluster0.fctiy.mongodb.net/heroku_kbtrwz4h?retryWrites=true&w=majority'
+const targetUrl = process.env.MONGO_URI
 
 const copy = async (sourceDB, targetDB, schema, name, ordered = true) => {
   const sourceModel = sourceDB.model(name, schema)
@@ -19,7 +25,6 @@ const copy = async (sourceDB, targetDB, schema, name, ordered = true) => {
 }
 
 const main = async () => {
-  if (!targetUrl) throw new Error('MONGO_URI not set in env')
   console.log(`saving to ${targetUrl}`)
   const option = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
   const sourceDB = await mongoose.createConnection(sourceUrl, option)
@@ -27,18 +32,17 @@ const main = async () => {
   const dp = new Promise((resolve, reject) => {
     targetDB.db.dropDatabase(function (err, res) {
       if (err) reject(err)
-      console.log('docker DB drop success')
+      console.log('target DB drop success')
       resolve()
     })
   })
   await dp
-  const task1 = async () => {
-    await copy(sourceDB, targetDB, columnDetail, detailName)
-  }
-  const task2 = async () => {
-    await copy(sourceDB, targetDB, columnOutline, outlineName)
-  }
-  await Promise.all([task1(), task2()])
+  const tasks = models.map((model) => {
+    const collectionName = model.collection.collectionName
+    const Schema = model.schema
+    return copy(sourceDB, targetDB, Schema, collectionName)
+  })
+  await Promise.all(tasks)
   sourceDB.close()
   targetDB.close()
 }

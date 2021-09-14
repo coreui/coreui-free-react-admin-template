@@ -11,6 +11,10 @@ steps:
       - 'gcr.io/$PROJECT_ID/eeplus'
       - '-t'
       - 'gcr.io/$PROJECT_ID/eeplus'
+      - '--build-arg'
+      - 'MONGO_URI=${_MONGO_URI}'
+      - '--build-arg'
+      - 'REACT_APP_fbAPIid=${_FB_APPID}'
       - '.'
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'

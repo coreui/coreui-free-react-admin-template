@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const { dbCatch, ErrorHandler } = require('../../../error')
-const { model: Column } = require('../../../Schemas/column_detail')
+const Column = require('../../../Schemas/column_detail')
 
 /**
  * @api {get} /column/detail get column detail

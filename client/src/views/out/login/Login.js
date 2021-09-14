@@ -27,7 +27,6 @@ const LoginFormTemplate = {
 const Login = () => {
   const dispatch = useDispatch()
   const { isLogin } = useSelector(selectLogin)
-
   const [loginForm, setLoginForm] = useState(LoginFormTemplate)
   const [needRegister, setNeedRegister] = useState(false)
 
@@ -154,7 +153,7 @@ const Login = () => {
                       <CRow className="justify-content-center">
                         <div style={{ width: '5rem' }}>
                           <FacebookLogin
-                            appId="571174603253755"
+                            appId={process.env.REACT_APP_fbAPIid || '571174603253755'}
                             autoLoad={false}
                             isMobile={false}
                             fields="name,email,picture"

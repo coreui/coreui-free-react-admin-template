@@ -53,7 +53,7 @@ const RegisterEntry = () => {
   const buttonFB = (
     <div className="d-flex justify-content-center">
       <FacebookLogin
-        appId="571174603253755"
+        appId={process.env.REACT_APP_fbAPIid || '571174603253755'}
         autoLoad={false}
         isMobile={false}
         fields="name,email,picture"

@@ -1,4 +1,4 @@
-const mongoose = require('./db'),
+const mongoose = require('mongoose'),
   Schema = mongoose.Schema
 
 const Study_Schema = new Schema({

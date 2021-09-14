@@ -17,7 +17,6 @@
     "connect-history-api-fallback": "^1.6.0",
     "connect-mongo": "^3.2.0",
     "core-js": "^3.8.1",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "express-session": "^1.17.1",

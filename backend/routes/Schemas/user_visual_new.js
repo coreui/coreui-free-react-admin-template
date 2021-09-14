@@ -1,4 +1,4 @@
-const mongoose = require('./db'),
+const mongoose = require('mongoose'),
   Schema = mongoose.Schema
 require('mongoose-type-email')
 

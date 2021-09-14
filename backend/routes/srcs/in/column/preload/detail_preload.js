@@ -1,5 +1,5 @@
 const mongoose = require('../../../../Schemas/db')
-const { model: Column_detail } = require('../../../../Schemas/column_detail')
+const Column_detail = require('../../../../Schemas/column_detail')
 
 const toInsert = [
   require('./details/1601'),

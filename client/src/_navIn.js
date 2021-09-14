@@ -10,6 +10,13 @@ const _navIn = [
   {
     _component: 'CNavItem',
     as: NavLink,
+    anchor: 'DASHBOARD',
+    to: '/dashboard',
+    icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
+  },
+  {
+    _component: 'CNavItem',
+    as: NavLink,
     anchor: 'CAREER',
     to: '/career',
     icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,

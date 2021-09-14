@@ -9,12 +9,14 @@ $enable-rtl: true;
 
 // Import Chart.js custom tooltips styles
 @import '@coreui/chartjs/scss/coreui-chartjs';
-
 @import 'layout';
+
+// Import AOS style
+@import 'node_modules/aos/src/sass/aos.scss';
 
 // If you want to add custom CSS you can put it here.
 @import 'custom';
-
 @import 'column.scss';
 @import 'careerBlock.scss';
 @import 'recent.scss';
+@import 'outLanding.scss';

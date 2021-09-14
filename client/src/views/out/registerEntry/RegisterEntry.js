@@ -72,7 +72,7 @@ const RegisterEntry = () => {
     </div>
   )
   if (isLogin) {
-    return <Redirect to="/dashboard" />
+    return <Redirect to="/home" />
   } else if (needRegister) {
     return (
       <Redirect

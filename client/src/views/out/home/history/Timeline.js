@@ -20,13 +20,15 @@ const Timeline = ({ data }) => {
   }
 
   return (
-    <div style={{ width: '100%' }} className="text-color-black">
+    <div style={{ width: '100%' }} className="text-color-black section" id="history">
       <Chrono
         items={items}
         mode="VERTICAL_ALTERNATING"
         slideShow
         slideItemDuration={4500}
         theme={{ cardBgColor: 'azure', primary: '#0000e3a3' }}
+        data-aos="fade-up"
+        data-aos-anchor-placement="bottom-bottom"
       >
         <div className="chrono-icons">
           {data.history.map((year) => (

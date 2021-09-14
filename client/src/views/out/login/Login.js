@@ -87,7 +87,7 @@ const Login = () => {
       })
   }
   if (isLogin) {
-    return <Redirect to="/dashboard"></Redirect>
+    return <Redirect to="/home"></Redirect>
   } else if (needRegister) {
     return <Redirect to="/register_entry"></Redirect>
   } else {

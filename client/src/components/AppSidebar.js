@@ -2,14 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectLogin } from '../slices/loginSlice'
 import { selectGlobal, hideSidebar, openSidebar } from '../slices/globalSlice'
-import {
-  CSidebar,
-  CSidebarBrand,
-  CSidebarNav,
-  CSidebarToggler,
-  CCreateNavItem,
-  CImage,
-} from '@coreui/react'
+import { CSidebar, CSidebarBrand, CSidebarNav, CImage, CCreateNavItem } from '@coreui/react'
 
 import CIcon from '@coreui/icons-react'
 

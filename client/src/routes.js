@@ -1,11 +1,6 @@
 // out pages
 import {
   Home,
-  About,
-  Contact,
-  Support,
-  History,
-  Team,
   Login,
   RegisterEntry,
   Register,
@@ -31,17 +26,12 @@ import {
   SearchProfile,
   Study,
 } from './views/in'
-import Dashboard from './views/dashboard'
+
+import Dashboard from './views/dashboard/Dashboard'
 
 // out routes
 const routes_out = [
-  { path: '/home', exact: true, name: 'Home', component: Home },
-  { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
-  { path: '/about', exact: true, name: 'About', component: About },
-  { path: '/contact', exact: true, name: 'Contact', component: Contact },
-  { path: '/support', exact: true, name: 'Support', component: Support },
-  { path: '/history', exact: true, name: 'History', component: History },
-  { path: '/team', exact: true, name: 'Team', component: Team },
+  { path: '/home', exact: false, name: 'Home', component: Home },
   { path: '/login', exact: true, name: 'Login', component: Login },
   { path: '/register_entry', exact: true, name: 'RegisterEntry', component: RegisterEntry },
   { path: '/register', exact: true, name: 'Register', component: Register },
@@ -56,6 +46,7 @@ const routes_out = [
 ]
 
 const routes_in = [
+  { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
   { path: '/column_summary', exact: true, name: 'ColumnSummary', component: ColumnSummary },
   { path: '/column_summary/:id', exact: false, name: 'column', component: Column },
   { path: '/career', exact: true, name: 'Career', component: Career },

@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
+import AOS from 'aos'
 import './scss/style.scss'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 const App = () => {
+  useEffect(() => {
+    AOS.init({
+      once: false,
+      disable: 'phone',
+      duration: 1000,
+      easing: 'ease-out-cubic',
+    })
+  })
+
   return (
     <HashRouter>
       <React.Suspense

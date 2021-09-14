@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import { NavLink } from 'react-router-dom'
+import { NavHashLink } from 'react-router-hash-link'
 
 const _navOut = [
   {
@@ -10,45 +10,59 @@ const _navOut = [
   },
   {
     _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'DASHBOARD',
-    to: '/dashboard',
+    as: NavHashLink,
+    anchor: 'HEADER',
+    to: '/home/#header',
     icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
   },
   {
     _component: 'CNavItem',
-    as: NavLink,
+    as: NavHashLink,
+    anchor: 'FEATURES',
+    to: '/home/#features',
+    icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
+  },
+  {
+    _component: 'CNavItem',
+    as: NavHashLink,
     anchor: 'ABOUT',
-    to: '/about',
+    to: '/home/#about',
     icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
   },
   {
     _component: 'CNavItem',
-    as: NavLink,
+    as: NavHashLink,
+    anchor: 'SERVICES',
+    to: '/home/#services',
+    icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
+  },
+  {
+    _component: 'CNavItem',
+    as: NavHashLink,
+    anchor: 'INTERVIEWS',
+    to: '/home/#interviews',
+    icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
+  },
+  {
+    _component: 'CNavItem',
+    as: NavHashLink,
     anchor: 'HISTORY',
-    to: '/history',
+    to: '/home/#history',
     icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
   },
   {
     _component: 'CNavItem',
-    as: NavLink,
+    as: NavHashLink,
     anchor: 'TEAM',
-    to: '/team',
+    to: '/home/#team',
     icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
   },
   {
     _component: 'CNavItem',
-    as: NavLink,
+    as: NavHashLink,
     anchor: 'CONTACT',
-    to: '/contact',
+    to: '/home/#contact',
     icon: <CIcon name="cil-speedometer" customClassName="nav-icon" />,
-  },
-  {
-    _component: 'CNavItem',
-    as: NavLink,
-    anchor: 'SUPPORT',
-    to: '/support',
-    icon: <CIcon name="cil-notes" customClassName="nav-icon" />,
   },
 ]
 

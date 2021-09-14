@@ -4,6 +4,7 @@ import axios from 'axios'
 import { selectCareer, setKeywords, clearKeywords } from '../career/index'
 import CareerBlock from '../career/CareerBlock'
 import Masonry from 'react-masonry-css'
+import { Spinner } from './index'
 
 const Recommendation = () => {
   const [data, setData] = useState([])
@@ -104,9 +105,7 @@ const Recommendation = () => {
         <div className="d-flex"></div>
       </div>
       {isPending ? (
-        <div className="spinner-border text-primary mt-3" role="status">
-          <span className="sr-only"></span>
-        </div>
+        <Spinner />
       ) : isSearch && data.length === 0 ? (
         <div className="display-2 d-flex justify-content-center mt-3">Result not found</div>
       ) : (

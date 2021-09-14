@@ -3,7 +3,9 @@ import CareerBlock from '../../career/CareerBlock'
 import { Link } from 'react-router-dom'
 import Masonry from 'react-masonry-css'
 import axios from 'axios'
+import { Spinner } from './index'
 const OwnRecommendation = () => {
+  const [isPending, setIsPending] = useState(true)
   const [data, setData] = useState([])
   const breakpointColumnsObj = {
     default: 2,
@@ -17,6 +19,7 @@ const OwnRecommendation = () => {
       .then((res) => {
         console.log('this is posts:', res.data)
         setData(res.data)
+        setIsPending(false)
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)
@@ -32,7 +35,9 @@ const OwnRecommendation = () => {
           +
         </div>
       </Link>
-      {data.length !== 0 && (
+      {isPending ? (
+        <Spinner />
+      ) : (
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"

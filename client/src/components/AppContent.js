@@ -10,7 +10,6 @@ import {
   setStudentInfo,
   clearStudentInfo,
 } from '../slices/loginSlice'
-import { CSpinner } from '@coreui/react'
 import axios from 'axios'
 import default_male from '../assets/images/default_male.png'
 import { AppBackground } from '.'
@@ -52,7 +51,15 @@ const AppContent = () => {
   return (
     <div style={ContentStyle}>
       <AppBackground />
-      <Suspense fallback={<CSpinner color="primary" />}>
+      <Suspense
+        fallback={
+          <div className="d-flex flex-row justify-content-center">
+            <div className="spinner-border text-primary mt-3" role="status">
+              <span className="sr-only"></span>
+            </div>
+          </div>
+        }
+      >
         <Switch>
           {routes_out.map((route, idx) => {
             return (

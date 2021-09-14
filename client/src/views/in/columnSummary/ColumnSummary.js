@@ -12,6 +12,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Avatar from '@material-ui/core/Avatar'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder'
 import Pagination from '@material-ui/lab/Pagination'
+import { Spinner } from './index'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
@@ -242,9 +243,7 @@ const ColumnSummary = () => {
         []
       )}
       {isPending === true ? (
-        <div className="spinner-border text-primary mt-3" role="status">
-          <span className="sr-only"></span>
-        </div>
+        <Spinner />
       ) : (
         <>
           {data && (

@@ -37,8 +37,6 @@ const AppSidebar = () => {
       selfHiding="md"
       unfoldable={unfoldable}
       show={sidebarShow}
-      onShow={() => dispatch(openSidebar())}
-      onHide={() => dispatch(hideSidebar())}
       className="bg-light"
     >
       <CSidebarBrand className="d-flex" to="/">

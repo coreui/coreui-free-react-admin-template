@@ -7,7 +7,7 @@
     "dev": "npm-run-all --parallel start-client start-server",
     "build-client": "cd client && yarn build && cd ..",
     "reset-db": "node ./backend/routes/Schemas/preload.js",
-    "heroku-postbuild": "cd client && yarn install --dev && webpack && cd ../backend && yarn install && cd ..",
+    "heroku-postbuild": "cd client && yarn install --dev && yarn run webpack && cd ../backend && yarn install && cd ..",
     "start": "node index.js"
   },
   "engines": {

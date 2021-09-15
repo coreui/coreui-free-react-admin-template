@@ -61,7 +61,7 @@
   border: 0;
 }
 .section-title {
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 .section-title h2 {
   position: relative;
@@ -268,7 +268,7 @@ header .intro-text {
 
 .portfolio-item {
   margin: 1px -15px 0 -14px;
-  padding: 0;
+  padding: 0 1rem;
 }
 .portfolio-item .hover-bg {
   overflow: hidden;
@@ -281,13 +281,13 @@ header .intro-text {
   margin: 0 auto;
   color: #fff;
   background: linear-gradient(to right, rgba(99, 114, 255, 0.8) 0%, rgba(92, 169, 251, 0.8) 100%);
-  padding: 30% 0 0;
+  padding: 8% 8% 0;
   height: 100%;
   width: 100%;
   opacity: 0;
   transition: all 0.5s;
 }
-.hover-bg .hover-text > h4 {
+.hover-bg .hover-text > h4 h3 {
   opacity: 0;
   color: #fff;
   -webkit-transform: translateY(100%);

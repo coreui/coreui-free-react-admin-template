@@ -3,10 +3,17 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 import history_icon from '../../../../assets/icons/history_icon.png'
 import 'react-vertical-timeline-component/style.min.css'
 import PropTypes from 'prop-types'
+import { CRow } from '@coreui/react'
 
 const Timeline = ({ data }) => {
   return (
-    <div className="d-flex jusitfy-contnet-center align-items-center" id="history">
+    <div
+      className="d-flex flex-column jusitfy-contnet-center align-items-center section"
+      id="history"
+    >
+      <CRow className="section-title">
+        <h2>History</h2>
+      </CRow>
       <VerticalTimeline>
         {data.history.map((year, i) => (
           <VerticalTimelineElement

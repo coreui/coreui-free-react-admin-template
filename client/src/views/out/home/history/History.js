@@ -15,7 +15,7 @@ const History = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <>{data.member && <Timeline data={data} />}</>
+  return <>{data.history && <Timeline data={data} />}</>
 }
 
 export default History

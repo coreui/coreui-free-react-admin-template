@@ -1,72 +1,55 @@
-/* eslint-disable prettier/prettier */
 import React from 'react'
-import { Chrono } from 'react-chrono'
-import HistBlock from './HistBlock'
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
+import history_icon from '../../../../assets/icons/history_icon.png'
+import 'react-vertical-timeline-component/style.min.css'
 import PropTypes from 'prop-types'
-import { CCol, CContainer, CImage, CRow } from '@coreui/react'
-import { history_icon } from '.'
 
 const Timeline = ({ data }) => {
-  const items = data.history.map((year) => {
-    return {
-      title: year.grade,
-      cardTitle: year.title,
-    }
-  })
-  const setIcons = () => {
-    for (let i = 0; i < data.history.length; i++) {
-      return
-    }
-  }
-
   return (
-    <div style={{ width: '100%' }} className="text-color-black section" id="history">
-      <Chrono
-        items={items}
-        mode="VERTICAL_ALTERNATING"
-        slideShow
-        slideItemDuration={4500}
-        theme={{ cardBgColor: 'azure', primary: '#0000e3a3' }}
-        data-aos="fade-up"
-        data-aos-anchor-placement="bottom-bottom"
-      >
-        <div className="chrono-icons">
-          {data.history.map((year) => (
-            <img
-              src={history_icon}
-              alt="icon"
-              key={year.grade}
-              style={{ backgroundColor: '#0000e3a3', borderRadius: '50%', height: '100%' }}
-            />
-          ))}
-        </div>
-        {data.history.map((year) => {
-          return <HistBlock people={year.people} key={year.grade} />
-        })}
-      </Chrono>
-      <br />
-      <CContainer style={{ color: 'white' }}>
-        <CRow className="justify-content-center align-items-center">
-          <CCol xs={6} className="justify-content-center">
-            <CImage src={data.allImg} alt="" className="img-fluid" style={{ margin: 'shadow' }} />
-          </CCol>
-          <CCol xs={4}>
-            <h3>今年部員:</h3>
-            {data.member.map((person) => {
-              return (
-                <span key={person} style={{ fontSize: '1.3rem' }}>
-                  {person}{' '}
-                </span>
-              )
-            })}
-          </CCol>
-        </CRow>
-      </CContainer>
+    <div className="d-flex jusitfy-contnet-center align-items-center" id="history">
+      <VerticalTimeline>
+        {data.history.map((year, i) => (
+          <VerticalTimelineElement
+            key={i}
+            className="vertical-timeline-element--work"
+            contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+            contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+            date={year.grade}
+            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+            icon={<img src={history_icon} alt="O" className="img-fluid" />}
+          >
+            <h3 className="vertical-timeline-element-title">{year.title}</h3>
+            <div className="row">
+              {year.people.map((person) => {
+                return (
+                  <div
+                    key={person.name}
+                    className="col d-flex flex-column align-items-center justify-content-between mt-2"
+                  >
+                    <img
+                      src={person.img}
+                      alt=""
+                      className="img-fluid"
+                      style={{
+                        boxShadow: '3px 3px 12px gray',
+                        padding: '2px',
+                        borderRadius: '50%',
+                        maxHeight: '10rem',
+                      }}
+                    />
+                    <h4 className="mt-2">{person.name}</h4>
+                  </div>
+                )
+              })}
+            </div>
+          </VerticalTimelineElement>
+        ))}
+      </VerticalTimeline>
     </div>
   )
 }
-Timeline.propTypes = {
-  data: PropTypes.array,
-}
 
 export default Timeline
+Timeline.propTypes = {
+  data: PropTypes.object,
+}

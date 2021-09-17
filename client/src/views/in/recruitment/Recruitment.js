@@ -5,7 +5,8 @@ import { selectCareer, setKeywords, clearKeywords } from '../career/index'
 import CareerBlock from '../career/CareerBlock'
 import Masonry from 'react-masonry-css'
 import { Spinner } from './index'
-
+import { CButton, CFormControl, CInputGroup } from '@coreui/react'
+import CIcon from '@coreui/icons-react'
 const Recruitment = () => {
   const [data, setData] = useState([])
   const dispatch = useDispatch()
@@ -56,53 +57,46 @@ const Recruitment = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-between">
-        <div className="d-flex flex-column justify-content-center">
-          <button
-            className="btn btn-warning ml-3"
-            onClick={() => {
-              clearKeywords()
-              getData()
-            }}
-          >
-            All
-          </button>
-        </div>
+      <div
+        className="d-flex flex-column justify-content-center align-items-center mb-4"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          height: '500px',
+          color: 'white',
+        }}
+      >
+        <div className="display-1">Recruitments</div>
         <form
-          className="d-flex justify-content-between text-light py-2 my-2"
+          className="text-light py-2 my-2 w-75"
           onSubmit={(e) => searchData(e)}
           action={(e) => searchData(e)}
         >
-          <div className="d-flex flex-column bg-dark rounded-3 py-3 align-self-center">
-            <div className="row">
-              <label forhtml="keywords" className="d-flex">
-                &ensp;Key words&#40;split with space&#41;:
-              </label>
-            </div>
-            <div className="row justify-content-around d-flex">
-              <div className=" col-8 mt-2">
-                <input
-                  type="text"
-                  name="keywords"
-                  placeholder={keywords === '' ? 'search for...' : keywords}
-                  className="rounded-3"
-                  value={keywords}
-                  onChange={(e) => dispatch(setKeywords(e.target.value))}
-                ></input>
-              </div>
-              <div className="col-3 align-items-center d-flex">
-                <button
-                  type="button"
-                  onClick={(e) => searchData(e)}
-                  className="btn btn-primary d-flex mt-1"
-                >
-                  <i className="bi bi-search"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+          <CInputGroup>
+            <CButton
+              onClick={() => {
+                clearKeywords()
+                getData()
+              }}
+              color="light"
+            >
+              <CIcon name="cil-home" />
+            </CButton>
+            <CFormControl
+              type="search"
+              placeholder={keywords === '' ? 'search for...' : keywords}
+              value={keywords}
+              onChange={(e) => {
+                dispatch(setKeywords(e.target.value))
+              }}
+            ></CFormControl>
+            <CButton onClick={(e) => searchData(e)} color="light">
+              <CIcon name="cil-search" />
+            </CButton>
+          </CInputGroup>
         </form>
-        <div className="d-flex"></div>
       </div>
       {isPending ? (
         <Spinner />

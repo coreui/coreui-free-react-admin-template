@@ -47,8 +47,8 @@ const routes_out = [
 
 const routes_in = [
   { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
-  { path: '/column_summary', exact: true, name: 'ColumnSummary', component: ColumnSummary },
   { path: '/column_summary/:id', exact: false, name: 'column', component: Column },
+  { path: '/column_summary', exact: false, name: 'ColumnSummary', component: ColumnSummary },
   { path: '/career', exact: true, name: 'Career', component: Career },
   { path: '/recruitment', exact: true, name: 'Recruitment', component: Recruitment },
   { path: '/add_recruitment', exact: true, name: 'AddRecruitment', component: AddRecruitment },

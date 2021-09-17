@@ -24,14 +24,15 @@ body {
   color: white;
   text-align: center;
 }
+.nav-title {
+  color: black !important;
+  font-size: large !important;
+}
 .nav-link {
   color: black !important;
 }
 .nav-icon {
   color: var(--primary_bgcolor) !important;
-}
-.text-color-black {
-  color: var(--cui-body-color);
 }
 
 // for particles background

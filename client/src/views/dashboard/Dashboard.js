@@ -63,35 +63,43 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <CContainer fluid className="align-items-center text-color-black">
-      <CRow className="justify-content-center mb-3">
-        <CCard>
-          <CCardHeader>
+    <CContainer fluid className="align-items-center text-color-black w-75">
+      <CRow className="justify-content-center my-4">
+        <CCard className="bg-transparent border-0">
+          <CCardHeader className="section-title mb-1 border-0 text-center bg-transparent">
             <h1>Recent Interviews</h1>
           </CCardHeader>
           <CCardBody>
             <CCarousel controls indicators transition="crossfade">
-              {recentColumns.map((column) => {
+              {recentColumns.map((column, index) => {
                 return (
-                  <CCarouselItem>
+                  <CCarouselItem key={index}>
                     <Link to={`/columnSummary/${column.id}`}>
                       <CImage className="d-block w-100" fluid src={column.imgSrc} alt={column.id} />
                       <CCarouselCaption className="d-none d-md-block w-100">
-                        {column.title.map((title) => {
-                          return <h1>{title}</h1>
+                        {column.title.map((title, i) => {
+                          return <h3 key={i}>{title}</h3>
                         })}
                         <CRow>
                           <CCol>
                             <ul className="recent-ul list-unstyled">
-                              {column.edu.map((edu) => {
-                                return <li className="text-start">{edu}</li>
+                              {column.edu.map((edu, i) => {
+                                return (
+                                  <li className="text-start" key={i}>
+                                    {edu}
+                                  </li>
+                                )
                               })}
                             </ul>
                           </CCol>
                           <CCol>
                             <ul className="recent-ul list-unstyled">
-                              {column.exp.map((exp) => {
-                                return <li className="text-start">{exp}</li>
+                              {column.exp.map((exp, i) => {
+                                return (
+                                  <li className="text-start" key={i}>
+                                    {exp}
+                                  </li>
+                                )
                               })}
                             </ul>
                           </CCol>
@@ -105,16 +113,16 @@ const Dashboard = () => {
           </CCardBody>
         </CCard>
       </CRow>
-      <CRow className="mb-3">
-        <CCard>
-          <CCardHeader>
+      <CRow className="justify-content-center my-4">
+        <CCard className="bg-transparent border-0">
+          <CCardHeader className="section-title mb-1 border-0 text-center bg-transparent">
             <h1>Recent Recruitment</h1>
           </CCardHeader>
           <CCardBody>
             <CRow>
-              {recentRecruitments.map((recruitment) => {
+              {recentRecruitments.map((recruitment, index) => {
                 return (
-                  <CCol className="col-6">
+                  <CCol className="col-6" key={index}>
                     <Link to="/recruitment">
                       <CCard className="m-2" style={{ borderRadius: '10px' }}>
                         <CCardImage src={recruitment.image === '' ? logo : recruitment.image} />
@@ -132,16 +140,16 @@ const Dashboard = () => {
           </CCardBody>
         </CCard>
       </CRow>
-      <CRow className="mb-3">
-        <CCard>
-          <CCardHeader>
+      <CRow className="justify-content-center my-4">
+        <CCard className="bg-transparent border-0">
+          <CCardHeader className="section-title mb-1 border-0 text-center bg-transparent">
             <h1>Recent Job Hunting</h1>
           </CCardHeader>
           <CCardBody>
             <CRow>
-              {recentRecommendations.map((recommendation) => {
+              {recentRecommendations.map((recommendation, index) => {
                 return (
-                  <CCol className="col-6">
+                  <CCol className="col-6" key={index}>
                     <Link to="/recommendation">
                       <CCard className="m-2" style={{ borderRadius: '10px' }}>
                         <CCardImage

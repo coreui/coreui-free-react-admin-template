@@ -30,15 +30,14 @@ const AppSidebar = () => {
       selfHiding="md"
       unfoldable={unfoldable}
       show={sidebarShow}
-      className="bg-light"
+      className="bg-white"
     >
-      <CSidebarBrand className="d-flex" to="/">
-        <CImage src={logo_row} width="60%" />
-        {/* <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} /> */}
+      <CSidebarBrand className="d-flex pt-1 bg-white text-dark" to="/">
+        <CImage src={logo_row} width="80%" />
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <CCreateNavItem items={chNav()} className="text-color-black" />
+          <CCreateNavItem items={chNav()} />
         </SimpleBar>
       </CSidebarNav>
     </CSidebar>

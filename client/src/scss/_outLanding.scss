@@ -62,14 +62,17 @@
 }
 .section-title {
   margin-bottom: 40px;
+  color: #fff;
 }
-.section-title h2 {
+.section-title h2,
+.section-title h1 {
   position: relative;
   margin-top: 10px;
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
-.section-title h2::after {
+.section-title h2::after,
+.section-title h1::after {
   position: absolute;
   content: '';
   background: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
@@ -221,6 +224,7 @@ header .intro-text {
 }
 #about p {
   line-height: 24px;
+  font-size: 1.2rem;
   margin: 30px 0;
 }
 /* Services Section */

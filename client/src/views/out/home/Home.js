@@ -5,7 +5,6 @@ import Contact from './contact'
 import History from './history'
 import Team from './team'
 import Services from './services'
-import Feature from './features'
 import Interviews from './interviews'
 import Header from './header'
 
@@ -16,9 +15,8 @@ const Home = () => {
       style={{ color: 'white', justifyContent: 'center', alignItems: 'center' }}
     >
       <Header />
-      <Feature />
-      <About />
       <Services />
+      <About />
       <Interviews />
       <History />
       <Team />

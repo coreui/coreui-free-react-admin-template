@@ -1,59 +1,56 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import { CContainer } from '@coreui/react'
+import { CContainer, CRow, CImage } from '@coreui/react'
+import studyabroad from '../../../../assets/images/studyabroad.png'
+import column from '../../../../assets/images/column.png'
+import communicate from '../../../../assets/images/communicate.png'
+import career from '../../../../assets/images/career.png'
 
 const Services = () => {
   return (
-    <div id="services" className="text-center section">
-      <CContainer data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-        <div className="section-title">
+    <div id="features" className="text-center section">
+      <CContainer
+        className="justify-content-center"
+        data-aos="fade-up"
+        data-aos-anchor-placement="bottom-bottom"
+      >
+        {/* <div className="col-md-10 col-md-offset-1 section-title"> */}
+
+        <CRow className="section-title">
           <h2>Our Services</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec.</p>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
+        </CRow>
+        <CRow>
+          <div className="col-xs-6 col-sm-3">
             {' '}
-            <i className="bi bi-alarm"></i>
-            <div className="service-desc">
-              <h3>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, exercitationem!
-              </h3>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, asperiores
-                repellendus maxime numquam quas consequuntur quae quos aperiam qui quo quis libero!
-                Autem, magni obcaecati.
-              </p>
-            </div>
+            <CImage src={communicate} alt="..." className="team-img img-fluid"></CImage>
+            <h3>通訊錄</h3>
+            <p>建立完整系友聯繫網路，加深NTUEEer之間的連結。</p>
           </div>
-          <div className="col-md-4">
+          <div className="col-xs-6 col-sm-3">
             {' '}
-            <i className="bi bi-alarm"></i>
-            <div className="service-desc">
-              <h3>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, exercitationem!
-              </h3>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, asperiores
-                repellendus maxime numquam quas consequuntur quae quos aperiam qui quo quis libero!
-                Autem, magni obcaecati.
-              </p>
-            </div>
+            <CImage src={career} alt="..." className="team-img img-fluid"></CImage>
+            <h3>徵才求職</h3>
+            <p></p>
           </div>
-          <div className="col-md-4">
+          <div className="col-xs-6 col-sm-3">
             {' '}
-            <i className="bi bi-alarm"></i>
-            <div className="service-desc">
-              <h3>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, exercitationem!
-              </h3>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, asperiores
-                repellendus maxime numquam quas consequuntur quae quos aperiam qui quo quis libero!
-                Autem, magni obcaecati.
-              </p>
-            </div>
+            <CImage src={studyabroad} alt="..." className="team-img img-fluid"></CImage>
+            <h3>留學資訊</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero ex eius sint nobis
+              veritatis vel commodi alias impedit?
+            </p>
           </div>
-        </div>
+          <div className="col-xs-6 col-sm-3">
+            {' '}
+            <CImage src={column} alt="..." className="team-img img-fluid"></CImage>
+            <h3>採訪文章</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero ex eius sint nobis
+              veritatis vel commodi alias impedit?
+            </p>
+          </div>
+        </CRow>
       </CContainer>
     </div>
   )

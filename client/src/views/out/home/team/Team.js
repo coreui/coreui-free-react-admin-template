@@ -8,7 +8,6 @@ const Team = () => {
       <CContainer data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
         <CRow className="section-title">
           <h2>Meet the Team</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec.</p>
         </CRow>
         <CRow>
           <div className="col-sm-3 col-xs-6 team">

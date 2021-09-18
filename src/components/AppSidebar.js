@@ -23,11 +23,10 @@ const AppSidebar = () => {
   return (
     <CSidebar
       position="fixed"
-      selfHiding="md"
       unfoldable={unfoldable}
       visible={sidebarShow}
-      onHide={() => {
-        dispatch({ type: 'set', sidebarShow: false })
+      onVisibleChange={(visible) => {
+        dispatch({ type: 'set', sidebarShow: visible })
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">

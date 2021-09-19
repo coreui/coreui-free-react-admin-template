@@ -330,7 +330,7 @@ header .intro-text {
 }
 #team .thumbnail .caption {
   padding: 10px 0 0;
-  color: #888;
+  color: white;
 }
 /* Contact Section */
 #contact {
@@ -352,7 +352,7 @@ header .intro-text {
 #contact .section-title h2::after {
   position: absolute;
   content: '';
-  background: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
   height: 4px;
   width: 60px;
   bottom: 0;
@@ -443,18 +443,18 @@ label {
   display: inline-block;
   margin: 0 20px;
 }
-#contact .social i.fa {
-  font-size: 22px;
+
+.social-icon {
+  padding: 3px 0;
+  fill: white;
   width: 48px;
   height: 48px;
-  padding: 12px 0;
-  border: 2px solid #fff;
-  color: #fff;
   border-radius: 50%;
   transition: all 0.3s;
 }
-#contact .social i.fa:hover {
-  color: #608dfd;
+
+.social-icon:hover {
+  fill: #608dfd;
   background: #fff;
 }
 

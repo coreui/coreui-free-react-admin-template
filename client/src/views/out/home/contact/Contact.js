@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { CCol, CContainer, CRow } from '@coreui/react'
 import React, { useState } from 'react'
+import CIcon from '@coreui/icons-react'
 
 import emailjs from 'emailjs-com'
 
@@ -34,7 +35,7 @@ const Contact = () => {
   return (
     <div>
       <div id="contact" className="section">
-        <CContainer data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+        <CContainer data-aos="fade-up" data-aos-anchor-placement="top-bottom">
           <CRow>
             <div className="col-md-8">
               <CRow>
@@ -102,15 +103,7 @@ const Contact = () => {
                   <span>
                     <i className="bi bi-alarm"></i> Address
                   </span>
-                  4321 California St, San Francisco, CA 12345
-                </p>
-              </div>
-              <div className="contact-item">
-                <p>
-                  <span>
-                    <i className="bi bi-alarm"></i> Phone
-                  </span>{' '}
-                  +1 123 456 1234
+                  台灣大學博理館 B1 系學會辦
                 </p>
               </div>
               <div className="contact-item">
@@ -118,7 +111,15 @@ const Contact = () => {
                   <span>
                     <i className="bi bi-alarm"></i> Email
                   </span>{' '}
-                  info@company.com
+                  eeplus2020@gmail.com
+                </p>
+              </div>
+              <div className="contact-item">
+                <p>
+                  <span>
+                    <i className="bi bi-alarm"></i> Support
+                  </span>{' '}
+                  700-0001236-0553850(Taiwan)
                 </p>
               </div>
             </div>
@@ -127,18 +128,18 @@ const Contact = () => {
                 <div className="social">
                   <ul>
                     <li>
-                      <a href="https://www.facebook.com/groups/ntueeplus">
-                        <i className="bi bi-facebook"></i>
+                      <a href="https://www.facebook.com/groups/ntueeplus" target="_blank">
+                        <CIcon name="cib-facebook" customClassName="social-icon" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/ntueeplus/">
-                        <i className="bi bi-instagram"></i>
+                      <a href="https://www.instagram.com/ntueeplus/" target="_blank">
+                        <CIcon name="cib-instagram" customClassName="social-icon" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://github.com/NTUEE-PLUS/EndOfWeb/">
-                        <i className="bi bi-github"></i>
+                      <a href="https://github.com/NTUEE-PLUS/EndOfWeb/" target="_blank">
+                        <CIcon name="cib-github" customClassName="social-icon" />
                       </a>
                     </li>
                   </ul>

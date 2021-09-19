@@ -8,7 +8,7 @@ const About = () => {
         <CRow>
           <div className="col-xs-12 col-md-6">
             {' '}
-            <img src={Welcome} className="img-responsive" alt="" />{' '}
+            <img src={Welcome} className="img-fluid" alt="" />{' '}
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">

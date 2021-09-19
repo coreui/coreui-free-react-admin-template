@@ -60,8 +60,18 @@ const RecommendationForm = ({ data }) => {
   const [speciality, setSpeciality] = useState(add ? [''] : data.spec.speciality)
   const [fileButton, setFileButton] = useState(null)
   const [dataForm, setDataForm] = useState(formTemplate)
+  const [requiredStyle, setRequiredStyle] = useState({
+    title: '',
+    name: '',
+    desireWorkType: '',
+  })
   const handleInputChange = (e) => {
     setDataForm({ ...dataForm, [e.target.name]: e.target.value })
+    if (requiredStyle.hasOwnProperty(e.target.name)) {
+      if (e.target.value === '')
+        setRequiredStyle({ ...requiredStyle, [e.target.name]: 'border-3 border-danger' })
+      else setRequiredStyle({ ...requiredStyle, [e.target.name]: '' })
+    }
   }
   const addArray = (e) => {
     if (e.target.name === 'experience') {
@@ -240,6 +250,7 @@ const RecommendationForm = ({ data }) => {
                         <CIcon name="cil-user" />
                       </CInputGroupText>
                       <CFormControl
+                        className={requiredStyle.title}
                         data-for="title"
                         data-tip="Use impressing title to get people's attention!"
                         placeholder="Title*"
@@ -254,6 +265,7 @@ const RecommendationForm = ({ data }) => {
                         <CIcon name="cil-user" />
                       </CInputGroupText>
                       <CFormControl
+                        className={requiredStyle.name}
                         data-for="name"
                         data-tip="Enter your name"
                         placeholder="Name*"
@@ -268,6 +280,7 @@ const RecommendationForm = ({ data }) => {
                         <CIcon name="cil-braille" />
                       </CInputGroupText>
                       <CFormControl
+                        className={requiredStyle.desireWorkType}
                         data-for="workType"
                         data-tip="What's your desired work?"
                         placeholder="Desired Work Type*"
@@ -342,6 +355,19 @@ const RecommendationForm = ({ data }) => {
                         </CInputGroup>
                       )
                     })}
+                    <CInputGroup className="mb-4 d-flex flex-row">
+                      <CInputGroupText>
+                        <CIcon name="cil-address-book" />
+                      </CInputGroupText>
+                      <CButton
+                        type="button"
+                        name="experience"
+                        className="form-add"
+                        onClick={addArray}
+                      >
+                        +
+                      </CButton>
+                    </CInputGroup>
                     {speciality.map((req, index) => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
@@ -367,31 +393,38 @@ const RecommendationForm = ({ data }) => {
                         </CInputGroup>
                       )
                     })}
-                    <CRow className="justify-content-between mt-3">
-                      <CCol xs={5} className="d-flex justify-content-center">
-                        <CButton type="button" name="experience" onClick={addArray}>
-                          Add experience
-                        </CButton>
-                      </CCol>
-                      <CCol xs={5} className="d-flex justify-content-center">
-                        <CButton type="button" name="speciality" onClick={addArray}>
-                          Add speciality
-                        </CButton>
-                      </CCol>
-                    </CRow>
+                    <CInputGroup className="mb-4 d-flex flex-row">
+                      <CInputGroupText>
+                        <CIcon name="cil-thumb-up" />
+                      </CInputGroupText>
+                      <CButton
+                        type="button"
+                        name="speciality"
+                        className="form-add"
+                        onClick={addArray}
+                      >
+                        +
+                      </CButton>
+                    </CInputGroup>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
                         <CButton
                           color="dark"
                           onClick={() => {
-                            for (let info in dataForm) {
-                              if (
-                                !dataForm[info] &&
-                                (info === 'title' || info === 'name' || info === 'desireWorkType')
-                              ) {
-                                alert(`${info} can't be empty`)
-                                return
+                            let miss = []
+                            for (let info in requiredStyle) {
+                              if (!dataForm[info]) {
+                                miss.push(info)
                               }
+                            }
+                            if (miss.length !== 0) {
+                              let missStyle = requiredStyle
+                              for (let m of miss) {
+                                missStyle[m] = 'border-3 border-danger'
+                              }
+                              alert(`You have to fill out ${miss}`)
+                              setRequiredStyle({ ...requiredStyle, ...missStyle })
+                              return
                             }
                             setBlockModal(true)
                           }}

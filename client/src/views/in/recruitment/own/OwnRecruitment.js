@@ -9,9 +9,8 @@ const OwnRecruitment = () => {
   const [isPending, setIsPending] = useState(true)
   const [data, setData] = useState([])
   const breakpointColumnsObj = {
-    default: 2,
+    default: 3,
     1100: 2,
-    700: 1,
     500: 1,
   }
   const getData = () => {

@@ -60,12 +60,19 @@ const CareerForm = ({ data }) => {
   const [requirement, setRequirement] = useState(add ? [''] : data.spec.requirement)
   const [fileButton, setFileButton] = useState(null)
   const [dataForm, setDataForm] = useState(formTemplate)
+  const [requiredStyle, setRequiredStyle] = useState({
+    title: '',
+  })
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/doc/
   }
   const handleInputChange = (e) => {
-    console.log('value changed', e.target.value)
     setDataForm({ ...dataForm, [e.target.name]: e.target.value })
+    if (requiredStyle[e.target.name] !== undefined) {
+      if (e.target.value === '')
+        setRequiredStyle({ ...requiredStyle, [e.target.name]: 'border-3 border-danger' })
+      else setRequiredStyle({ ...requiredStyle, [e.target.name]: '' })
+    }
   }
   const addArray = (e) => {
     if (e.target.name === 'experience') {
@@ -241,9 +248,10 @@ const CareerForm = ({ data }) => {
                         <CIcon name="cil-layers" />
                       </CInputGroupText>
                       <CFormControl
+                        className={requiredStyle.title}
                         data-for="title"
                         data-tip="Use impressing title to get people's attention!"
-                        placeholder="The job title*"
+                        placeholder="Title*"
                         value={dataForm.title}
                         name="title"
                         onChange={handleInputChange}
@@ -331,6 +339,19 @@ const CareerForm = ({ data }) => {
                         </CInputGroup>
                       )
                     })}
+                    <CInputGroup className="mb-4 d-flex flex-row">
+                      <CInputGroupText>
+                        <CIcon name="cil-address-book" />
+                      </CInputGroupText>
+                      <CButton
+                        type="button"
+                        name="experience"
+                        className="form-add"
+                        onClick={addArray}
+                      >
+                        +
+                      </CButton>
+                    </CInputGroup>
                     {requirement.map((req, index) => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
@@ -356,6 +377,19 @@ const CareerForm = ({ data }) => {
                         </CInputGroup>
                       )
                     })}
+                    <CInputGroup className="mb-4 d-flex flex-row">
+                      <CInputGroupText>
+                        <CIcon name="cil-thumb-up" />
+                      </CInputGroupText>
+                      <CButton
+                        type="button"
+                        name="requirement"
+                        className="form-add"
+                        onClick={addArray}
+                      >
+                        +
+                      </CButton>
+                    </CInputGroup>
                     <div
                       className="mb-3 mw-100"
                       data-for="description"
@@ -373,28 +407,25 @@ const CareerForm = ({ data }) => {
                       />
                       <ReactTooltip id="description" place="top" type="dark" effect="solid" />
                     </div>
-                    <CRow className="mt-3">
-                      <CCol xs={6} className="d-flex justify-content-center">
-                        <CButton type="button" name="experience" onClick={addArray}>
-                          Add required experience
-                        </CButton>
-                      </CCol>
-                      <CCol xs={6} className="d-flex justify-content-center">
-                        <CButton type="button" name="requirement" onClick={addArray}>
-                          Add required skills
-                        </CButton>
-                      </CCol>
-                    </CRow>
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex d-flex justify-content-center">
                         <CButton
                           color="dark"
                           onClick={() => {
-                            for (let info in dataForm) {
-                              if (!dataForm[info] && info === 'title') {
-                                alert(`${info} can't be empty`)
-                                return
+                            let miss = []
+                            for (let info in requiredStyle) {
+                              if (!dataForm[info]) {
+                                miss.push(info)
                               }
+                            }
+                            if (miss.length !== 0) {
+                              let missStyle = requiredStyle
+                              for (let m of miss) {
+                                missStyle[m] = 'border-3 border-danger'
+                              }
+                              alert(`You have to fill out ${miss}`)
+                              setRequiredStyle({ ...requiredStyle, ...missStyle })
+                              return
                             }
                             setBlockModal(true)
                           }}

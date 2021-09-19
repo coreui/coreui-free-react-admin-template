@@ -1,8 +1,6 @@
-.RecruBlock,
-.RecomBlock,
-.PreviewBlock {
+.CareerBlock {
   background-color: azure;
-  border-radius: 3%;
+  // border-radius: 3%;
   font-size: 4rem;
   box-shadow: aqua 0px 5px 15px;
   width: 95%;
@@ -17,14 +15,14 @@
   background-color: azure;
   border: 0px;
   border-radius: 5%;
+  border: 0.5rem;
 }
 .card-header {
   padding: 0%;
-  border-radius: 5% !important;
+  border: none;
+  background-color: azure;
 }
-.recrucontent,
-.recomcontent,
-.previewcontent {
+.careercontent {
   padding: 0% 3% 5% 3%;
 }
 .fw-semibold {
@@ -32,17 +30,14 @@
   margin-top: 5%;
   color: black;
 }
-.recomcontent > h3,
-.RecomBlock > h2 {
+.careercontent > h3,
+.careercontent > h2 {
   font-weight: 600;
 }
-.RecruBlock > hr,
-.PreviewBlock > hr {
+.CareerBlock > hr {
   margin-top: 0;
 }
-.recrucontent > button,
-.recomcontent > button,
-.previewcontent > button {
+.careercontent > button {
   font-size: 1vw;
   color: blue;
   border: none;
@@ -93,6 +88,20 @@
   animation-name: wobble;
   animation-duration: 1s;
   animation-iteration-count: 1;
+}
+.form-add {
+  border: dashed;
+  border-width: 2%;
+  border-color: blue;
+  width: 94%;
+  background-color: white;
+  color: blue;
+  padding: 0;
+  font-size: 1.4rem;
+}
+.form-add:hover {
+  background-color: blue;
+  color: white;
 }
 @keyframes wobble {
   0% {

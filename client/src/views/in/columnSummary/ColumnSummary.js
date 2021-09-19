@@ -134,7 +134,7 @@ const ColumnSummary = () => {
   const articles = (data) => {
     return data.data.map((art) => {
       return (
-        <Grid item xs={12} md={12} key={art.key}>
+        <Grid className="my-4" item xs={12} md={12} key={art.key}>
           <Card className={classes.card}>
             <Link to={'/column_summary/' + art.id}>
               <CardMedia
@@ -178,7 +178,7 @@ const ColumnSummary = () => {
     })
   }
   return (
-    <div>
+    <div className="d-flex flex-column justify-content-center m-auto w-75">
       <Box className={classes.hero}>
         <Box className="display-1">Our Articles</Box>
         <form className="text-light p-2 m-2 w-75" onSubmit={searchData} method="GET">

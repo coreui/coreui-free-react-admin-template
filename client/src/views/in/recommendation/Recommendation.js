@@ -15,9 +15,8 @@ const Recommendation = () => {
   const [isPending, setIsPending] = useState()
   const [isSearch, setIsSearch] = useState(false)
   const breakpointColumnsObj = {
-    default: 2,
+    default: 3,
     1100: 2,
-    700: 1,
     500: 1,
   }
   const searchData = (e) => {

@@ -55,16 +55,18 @@ const CareerBlock = ({ post, setData, index }) => {
     )
   }
   return recru ? (
-    <div className="RecruBlock" key={post._id}>
+    <div className="CareerBlock" key={post._id}>
       <Link to={`/profile/${post.account}`}>
         <CWidgetBrand
-          className="mb-4 widgetbrand"
-          headerChildren={<img className="eesa" src={post.image ? post.image : eesa} alt="eesa" />}
+          className="pt-4 widgetbrand"
+          headerChildren={
+            <img className="eesa img-fluid" src={post.image ? post.image : eesa} alt="eesa" />
+          }
           values={[[`${post.title.company_name} 徵 ${post.title.work_type}`]]}
         />
       </Link>
       <hr></hr>
-      <div className="recrucontent">
+      <div className="careercontent">
         <h3 style={{ 'font-weight': '600' }}>
           {post.title.title}
           {own ? (
@@ -98,15 +100,18 @@ const CareerBlock = ({ post, setData, index }) => {
       </div>
     </div>
   ) : (
-    <div className="RecomBlock" key={post._id}>
+    <div className="CareerBlock" key={post._id}>
       <Link to={`/profile/${post.account}`}>
         <CWidgetBrand
-          className="mb-4 widgetbrand"
-          headerChildren={<img className="eesa" src={post.image ? post.image : eesa} alt="eesa" />}
-          values={[['~~~~~~~~~~~~~~~~~~~~~~']]}
+          className="pt-4 widgetbrand"
+          headerChildren={
+            <img className="eesa img-fluid" src={post.image ? post.image : eesa} alt="eesa" />
+          }
+          values={[[post.title.title]]}
         />
       </Link>
-      <div className="recomcontent">
+      <hr></hr>
+      <div className="careercontent">
         <h3>
           {post.title.name} asking for <nobr>{post.title.desire_work_type}</nobr>
           {own ? (
@@ -122,7 +127,6 @@ const CareerBlock = ({ post, setData, index }) => {
             <></>
           )}
         </h3>
-        <h2 style={{ margin: '1rem 0rem' }}>{post.title.title}</h2>
         <div style={{ 'font-size': '1.39rem' }}>
           <span style={{ color: 'red', 'font-weight': '500' }}>{post.info.diploma}</span> |{' '}
           <nobr>{post.info.contact}</nobr> | <nobr>{post.info.email}</nobr>

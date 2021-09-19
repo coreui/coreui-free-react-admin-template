@@ -24,14 +24,16 @@ const CareerPreview = ({ post, experience, requirement }) => {
   }
   if (typeof post.description === 'string') {
     return (
-      <div className="PreviewBlock" key={post.id}>
+      <div className="CareerBlock" key={post.id}>
         <CWidgetBrand
-          className="mb-4 widgetbrand"
-          headerChildren={<img className="eesa" src={previewURL ? previewURL : eesa} alt="eesa" />}
+          className="pt-4 widgetbrand"
+          headerChildren={
+            <img className="eesa img-fluid" src={previewURL ? previewURL : eesa} alt="eesa" />
+          }
           values={[[`${post.companyName} 徵 ${post.workType}`]]}
         />
         <hr></hr>
-        <div className="previewcontent">
+        <div className="careercontent">
           <h3 style={{ fontWeight: '600' }}>{post.title}</h3>
           <h2 style={{ margin: '1rem 0rem', fontWeight: '600', color: 'red' }}>{post.salary}</h2>
           <h3 style={{ fontWeight: '600', margin: '1.3rem 0 0.1rem' }}>要求學歷：</h3>
@@ -53,17 +55,19 @@ const CareerPreview = ({ post, experience, requirement }) => {
     )
   } else {
     return (
-      <div className="PreviewBlock" key={post.id}>
+      <div className="CareerBlock" key={post.id}>
         <CWidgetBrand
-          className="mb-4 widgetbrand"
-          headerChildren={<img className="eesa" src={previewURL ? previewURL : eesa} alt="eesa" />}
-          values={[['~~~~~~~~~~~~~~~~~~']]}
+          className="pt-4 widgetbrand"
+          headerChildren={
+            <img className="eesa img-fluid" src={previewURL ? previewURL : eesa} alt="eesa" />
+          }
+          values={[[post.title]]}
         />
-        <div className="previewcontent">
+        <hr></hr>
+        <div className="careercontent">
           <h3>
             {post.name} asking for <nobr>{post.desireWorkType}</nobr>
           </h3>
-          <h2 style={{ margin: '1rem 0rem' }}>{post.title}</h2>
           <div style={{ 'font-size': '1.39rem' }}>
             <span style={{ color: 'red', fontWeight: '500' }}>{post.diploma}</span> |{' '}
             <nobr>{post.contact}</nobr> | <nobr>{post.email}</nobr>

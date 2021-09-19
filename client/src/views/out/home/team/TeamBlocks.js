@@ -7,7 +7,9 @@ const TeamBlocks = ({ data }) => {
   const minister = data.minister.map((person) => {
     return (
       <CCol xs={2} key={person.name} align="center" className="justify-content-center">
-        <CImage src={person.img} height="200rem" className="img-fluid" />
+        <div className="square-img-container">
+          <CImage src={person.img} height="200rem" className="img img-fluid" />
+        </div>
         <h3 className="mb-4">
           {person.name} {person.part}
         </h3>

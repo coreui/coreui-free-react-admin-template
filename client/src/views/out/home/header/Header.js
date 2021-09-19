@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import { CContainer, CRow } from '@coreui/react'
+import { CButton, CContainer, CRow } from '@coreui/react'
+import { NavHashLink } from 'react-router-hash-link'
 
 const Header = () => {
   return (
@@ -11,17 +12,16 @@ const Header = () => {
             <CRow className="justify-content-center">
               <div className="col-md-8 col-md-offset-2 intro-text">
                 <h1>
-                  We are a landing page
+                  <span className="header-title">NTUEE+</span>
                   <span></span>
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, corporis.
-                  Excepturi, porro libero ab consequuntur facilis suscipit ea ratione, illo a sit
-                  vel quo esse delectus et rerum.
-                </p>
-                <a href="#features" className="btn btn-custom btn-lg page-scroll">
+                <h2>系友們專屬的家!</h2>
+                {/* <a href="/home/#services" className="btn btn-custom btn-lg page-scroll">
                   Learn More
-                </a>{' '}
+                </a>{' '} */}
+                <NavHashLink to="#services">
+                  <CButton className="btn-custom">Learn More</CButton>
+                </NavHashLink>
               </div>
             </CRow>
           </CContainer>

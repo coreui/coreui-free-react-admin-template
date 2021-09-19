@@ -8,47 +8,51 @@ import career from '../../../../assets/images/career.png'
 
 const Services = () => {
   return (
-    <div id="features" className="text-center section">
+    <div id="services" className="text-center section">
       <CContainer
         className="justify-content-center"
         data-aos="fade-up"
         data-aos-anchor-placement="bottom-bottom"
       >
-        {/* <div className="col-md-10 col-md-offset-1 section-title"> */}
-
         <CRow className="section-title">
           <h2>Our Services</h2>
         </CRow>
         <CRow>
           <div className="col-xs-6 col-sm-3">
             {' '}
-            <CImage src={communicate} alt="..." className="team-img img-fluid"></CImage>
+            <div className="square-img-container">
+              <CImage src={communicate} alt="..." className="img img-fluid"></CImage>
+            </div>
             <h3>通訊錄</h3>
-            <p>建立完整系友聯繫網路，加深NTUEEer之間的連結。</p>
+            <p>
+              建立完整系友聯繫網路
+              <br />
+              加深NTUEErs之間的連結
+            </p>
           </div>
           <div className="col-xs-6 col-sm-3">
             {' '}
-            <CImage src={career} alt="..." className="team-img img-fluid"></CImage>
+            <div className="square-img-container">
+              <CImage src={career} alt="..." className="img img-fluid"></CImage>
+            </div>
             <h3>徵才求職</h3>
             <p></p>
           </div>
           <div className="col-xs-6 col-sm-3">
             {' '}
-            <CImage src={studyabroad} alt="..." className="team-img img-fluid"></CImage>
+            <div className="square-img-container">
+              <CImage src={studyabroad} alt="..." className="img img-fluid"></CImage>
+            </div>
             <h3>留學資訊</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero ex eius sint nobis
-              veritatis vel commodi alias impedit?
-            </p>
+            <p></p>
           </div>
           <div className="col-xs-6 col-sm-3">
             {' '}
-            <CImage src={column} alt="..." className="team-img img-fluid"></CImage>
+            <div className="square-img-container">
+              <CImage src={column} alt="..." className="img img-fluid"></CImage>
+            </div>
             <h3>採訪文章</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero ex eius sint nobis
-              veritatis vel commodi alias impedit?
-            </p>
+            <p></p>
           </div>
         </CRow>
       </CContainer>

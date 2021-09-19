@@ -5,18 +5,18 @@
 }
 .landing h2 {
   text-transform: uppercase;
-  margin: 0 0 20px;
+  margin: 0 0 30px;
   font-weight: 800;
   font-size: 36px;
   // color: #333;
 }
 .landing h3 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
   // color: #333;
 }
 .landing h4 {
-  font-size: 18px;
+  font-size: 20px;
   // color: #333;
   font-weight: 600;
 }
@@ -26,7 +26,7 @@
   line-height: 20px;
 }
 .landing p {
-  font-size: 15px;
+  font-size: 18px;
 }
 .landing p.intro {
   margin: 12px 0 0;
@@ -141,7 +141,7 @@
 .intro h1 {
   font-family: 'Raleway', sans-serif;
   color: #fff;
-  font-size: 82px;
+  font-size: 150px;
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 0;
@@ -149,7 +149,48 @@
 }
 .intro h1 span {
   font-weight: 800;
-  color: #5ca9fb;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #32b1fd 0%, #00ffcf 100%);
+  background-size: 150% 150%;
+  -webkit-animation: header-animation 5s ease infinite;
+  -moz-animation: header-animation 5s ease infinite;
+  animation: header-animation 5s ease infinite;
+}
+
+@-webkit-keyframes header-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes header-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes header-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 .intro p {
   color: #fff;
@@ -226,6 +267,7 @@ header .intro-text {
   line-height: 24px;
   font-size: 1.2rem;
   margin: 30px 0;
+  color: rgba(255, 255, 255, 0.75);
 }
 /* Services Section */
 #services {
@@ -240,7 +282,7 @@ header .intro-text {
 #services .section-title h2::after {
   position: absolute;
   content: '';
-  background: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
   height: 4px;
   width: 60px;
   bottom: 0;
@@ -267,6 +309,17 @@ header .intro-text {
 }
 #services .service-desc {
   margin-bottom: 40px;
+}
+
+.square-img-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+#services .img {
+  position: absolute;
+  left: 0;
 }
 /* Portfolio Section */
 
@@ -321,8 +374,8 @@ header .intro-text {
 #team h4 {
   margin: 5px 0;
 }
-#team .team-img {
-  width: 240px;
+#team .img {
+  position: absolute;
 }
 #team .thumbnail {
   background: transparent;

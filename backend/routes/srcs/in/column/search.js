@@ -15,38 +15,18 @@ const { dbCatch } = require('../../../error')
  * @apiparam {String} page 頁數(optional,default 1)
  *
  * @apiSuccessExample {json} Success-Response:
- * 	HTTP/1.1 200 OK
  * {data:
  * [{
- * 		top:{
- *          name:String,
- *          experience:String,
- *          hashtags:[String]
- *      },
- *      body: {
-            body: [
-            {
-                bigtitle: String,
-                bigsections: [
-                {
-                    subtitle: String,
-                    subsection: String,
-                },
-                ],
-            },
-            ],
-        },
-        annotation: {
-            annotation: [
-            {
-                job: String,
-                contributer: String,
-            },
-            ],
-        },
-        id: String,
- * 	},...],
- * maxPage:Number
+*     'anno': ['String'],
+      'date': 'String',
+      'title': ['String'],
+      'exp': ['String'],
+      'edu': ['String'],
+      'intro': ['String'],
+      'id': 'String',
+      'imgSrc':'String'
+    },],
+ * 'maxPage':'Number'
  * }
  * 	
  *

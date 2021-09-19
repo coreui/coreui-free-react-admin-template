@@ -52,25 +52,24 @@ const searchRecuitment = async function (req, res, next) {
  * @apiparam {String} description 其他描述 (optional)
  * 
  * @apiSuccessExample {json} Success-Response:
- * 	HTTP/1.1 201 Created
  * 	[{
- *      _id: String,
- * 		title: {
- *          title: String,
- *          company_name: String,
- *          work_type: String
+ *      '_id': 'String',
+ * 		'title': {
+ *          'title': 'String',
+ *          'company_name': 'String',
+ *          'work_type': 'String'
  *      },
- *      info: {
-            salary: String,
-            experience: String,
-            diploma: String
+ *      'info': {
+            'salary': 'String',
+            'experience': ['String'],
+            'diploma': 'String'
  *      },
- * 		spec: {
-            requirement: String,
-            description: String
+ * 		  'spec': {
+            'requirement': ['String'],
+            'description': 'String'
  *      },
-        image: String
- * 	},...]
+        'image': 'String'
+ * 	},]
  * 
  * @apiError (500) {String} description 資料庫錯誤
  */

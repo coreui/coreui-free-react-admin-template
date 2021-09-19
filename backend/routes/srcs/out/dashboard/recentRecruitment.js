@@ -4,10 +4,12 @@ const asyncHandler = require('express-async-handler')
 // const getPublic = require('./DBquery/getPublic')
 
 /**
- * @api {post} /showRecruitment show all
- * @apiName ShowRecruitment
- * @apiGroup In/career
+ * @api {get} /recruitment/recent get recent recruitment
+ * @apiName RecentRecruitment
+ * @apiGroup Out/recent
  * @apiDescription 顯示所有職缺(等價於不傳任何參數的searchRecruitment)
+ *
+ * @apiParam {Number} number 篇數(default:5)
  *
  * @apiSuccess (201) {Object[]} - 職缺們
  * @apiSuccess (201) {String} -._id mongodb _id(for delete)

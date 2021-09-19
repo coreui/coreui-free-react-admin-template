@@ -11,35 +11,31 @@ const Column = require('../../../Schemas/column_detail')
  * @apiparam {String} id yymm(required)
  * 
  * @apiSuccessExample {json} Success-Response:
- * 	HTTP/1.1 200 OK
  * 	{
- * 		top:{
- *          name:String,
- *          experience:String,
- *          hashtags:[String]
+ * 		'top':{
+ *          'name':'String',
+ *          'experience':'String',
+ *          'hashtags':['String']
  *      },
- *      body: {
-            body: [
+ *      'body': {
+            'body': [
             {
-                bigtitle: String,
-                bigsections: [
+                'bigtitle': 'String',
+                'bigsections': [
                 {
-                    subtitle: String,
-                    subsection: String,
-                },
-                ],
-            },
-            ],
+                    'subtitle': 'String',
+                    'subsection': 'String',
+                },],
+            },],
         },
-        annotation: {
-            annotation: [
+        'annotation': {
+            'annotation': [
             {
-                job: String,
-                contributer: String,
-            },
-            ],
+                'job': 'String',
+                'contributer': 'String',
+            },],
         },
-        id: String,
+        'id': 'String',
  * 	}
  * 
  * @apiError (404) {String} description id is required/資料不存在

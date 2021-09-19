@@ -3,33 +3,29 @@ const { dbCatch } = require('../../../error')
 const Column_Outline = require('../../../Schemas/column_outline')
 
 /**
- * @api {get} /column/outline get outline with id optional
- * @apiName GetOutline
- * @apiGroup In/column
+ * @api {get} /column/recent get recent column
+ * @apiName RecentColumn
+ * @apiGroup Out/recent
  * @apiDescription 拿Outline資料(含圖片)
  *
- * @apiparam {String} id id(optional,若未給則送全部)
- * @apiparam {String} perpage 一頁數量(optional,default 5)
- * @apiparam {String} page 頁數(optional,default 1)
- * 
+ * @apiParam {Number} number 篇數(default:5)
  *
  * @apiSuccessExample {json} Success-Response:
- * 	HTTP/1.1 200 OK
- * {data:
+ * {'data':
  * 	[{
-*     anno: [{ type: String }],
-      date: String,
-      title: [{ type: String }],
-      exp: [{ type: String }],
-      edu: [{ type: String }],
-      intro: [{ type: String }],
-      id: { type: String, unique: true },
-      columnImg: {
-        data: { type: Buffer },
-        contentType: { type: String },
-      }
-    },],
- * maxPage:Number}
+ *    'anno': ['String'],
+ *    'date': 'String',
+ *    'title': ['String'],
+ *    'exp': ['String'],
+ *    'edu': ['String'],
+ *    'intro': ['String'],
+ *    'id': 'String',
+ *    'columnImg': {
+ *      'data': 'Buffer',
+ *      'contentType': 'String',
+ *    }
+ *  }]
+ * }
  *
  * @apiError (500) {String} description 資料庫錯誤
  */

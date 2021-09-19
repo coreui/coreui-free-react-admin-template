@@ -14,22 +14,18 @@ const Column_Outline = require('../../../Schemas/column_outline')
  * 
  *
  * @apiSuccessExample {json} Success-Response:
- * 	HTTP/1.1 200 OK
- * {data:
+ * {'data':
  * 	[{
-*     anno: [{ type: String }],
-      date: String,
-      title: [{ type: String }],
-      exp: [{ type: String }],
-      edu: [{ type: String }],
-      intro: [{ type: String }],
-      id: { type: String, unique: true },
-      columnImg: {
-        data: { type: Buffer },
-        contentType: { type: String },
-      }
+*     'anno': ['String'],
+      'date': 'String',
+      'title': ['String'],
+      'exp': ['String'],
+      'edu': ['String'],
+      'intro': ['String'],
+      'id': 'String',
+      'imgSrc':'String'
     },],
- * maxPage:Number}
+ * 'maxPage':'Number'}
  *
  * @apiError (500) {String} description 資料庫錯誤
  */

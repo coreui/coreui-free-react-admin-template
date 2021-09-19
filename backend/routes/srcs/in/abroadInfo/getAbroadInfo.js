@@ -8,13 +8,11 @@ const { dbCatch, ErrorHandler } = require('../../../error')
  * @apiGroup In/abroadInfo
  * @apiDescription 拿留學資訊
  *
- * @apiSuccessExample {json} Success-Response:
- * HTTP/1.1 200 OK
- * [{
- *     iconSrc:string
- *     title:string
- *     info:string
- * }]
+ *
+ * @apiSuccess (201) {String} iconSrc 圖片
+ * @apiSuccess (201) {String} title title
+ * @apiSuccess (201) {String} info info
+ *
  *
  * @apiError (500) {String} description 資料庫錯誤
  */

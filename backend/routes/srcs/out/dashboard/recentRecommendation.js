@@ -3,21 +3,12 @@ const Recommendation = require('../../../Schemas/recommendation')
 const asyncHandler = require('express-async-handler')
 
 /**
- * @api {get} /recommendation search by field
- * @apiName ShowRecommendation
- * @apiGroup In/recommendation
+ * @api {get} /recommendation/recent get recent recommendation
+ * @apiName RecentRecommendation
+ * @apiGroup Out/recent
  * @apiDescription 搜尋簡歷
  *
- * @apiparam {String} _id _id
- * @apiparam {String} account 學號
- * @apiparam {String} title 簡歷標題
- * @apiparam {String} name 姓名
- * @apiparam {String} desire_work_type 想要職位
- * @apiparam {String} contact 電話
- * @apiparam {String} email 信箱
- * @apiparam {String} diploma 學位
- * @apiparam {String} experience 經驗
- * @apiparam {String} speciality 專長
+ * @apiParam {Number} number 篇數(default:5)
  *
  * @apiSuccess (201) {Object[]} - 簡歷們
  * @apiSuccess (201) {String} -._id mongodb _id(for update,delete)

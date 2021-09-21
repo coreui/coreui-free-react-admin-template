@@ -10,15 +10,8 @@ const Abroad_Info = new Schema({
   },
 })
 
-Abroad_Info.virtual('iconSrc').get(function () {
-  try {
-    const prefix = 'data:' + this.icon.contentType + ';base64,'
-    const img = new Buffer(this.icon.data, 'binary').toString('base64')
-    return prefix + img
-  } catch {
-    return ''
-  }
-})
+const { buf2url } = require('./query')
+Abroad_Info.virtual('iconSrc').get(buf2url('icon'))
 
 Abroad_Info.methods.getPublic = function () {
   return {

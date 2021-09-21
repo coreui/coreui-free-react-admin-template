@@ -16,14 +16,6 @@ const updateQuery = (obj) => {
   return toSet
 }
 
-const parseImg = (file) => {
-  if (!file) return undefined
-  return {
-    data: file.buffer,
-    contentType: file.mimetype,
-  }
-}
-
 const searchQuery = (obj) => {
   const query = Object.entries(obj).reduce((acc, [key, val]) => {
     if (val === undefined) return acc
@@ -58,5 +50,34 @@ const findWithLimit = async (Collection, query, page, perpage) => {
   const docs = await Collection.find(query).skip(toSkip).limit(toLim).catch(dbCatch)
   return [docs, maxPage]
 }
+/*
+ * trans {buffer,mimetype} to {data,contentType}
+ * @param {File} file format: {buffer,mimetype}
+ * @returns
+ */
+const parseImg = (file) => {
+  if (!file) return undefined
+  return {
+    data: file.buffer,
+    contentType: file.mimetype,
+  }
+}
 
-module.exports = { updateQuery, parseImg, searchQuery, findWithLimit }
+/**
+ * trans {contentType, data} to dataurl
+ * @param {String} key default 'img'
+ * @returns
+ */
+const buf2url = (key = 'img') => {
+  return function () {
+    try {
+      return `data:${this[key].contentType};base64,${Buffer.from(this[key].data).toString(
+        'base64',
+      )}`
+    } catch {
+      return ''
+    }
+  }
+}
+
+module.exports = { updateQuery, searchQuery, parseImg, buf2url, findWithLimit }

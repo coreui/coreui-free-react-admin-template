@@ -16,15 +16,8 @@ const Column_Outline = new Schema({
   },
 })
 
-Column_Outline.virtual('imgSrc').get(function () {
-  try {
-    const prefix = 'data:' + this.columnImg.contentType + ';base64,'
-    const img = new Buffer(this.columnImg.data, 'binary').toString('base64')
-    return prefix + img
-  } catch {
-    return ''
-  }
-})
+const { buf2url } = require('./query')
+Column_Outline.virtual('imgSrc').get(buf2url('columnImg'))
 
 Column_Outline.methods.getPublic = function () {
   const { anno, date, title, exp, edu, intro, id, imgSrc } = this

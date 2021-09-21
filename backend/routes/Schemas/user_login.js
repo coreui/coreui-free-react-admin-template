@@ -26,4 +26,7 @@ const User_login_Schema =
         },
       })
 
+const { buf2url } = require('./query')
+User_login_Schema.virtual('imgSrc').get(buf2url())
+
 module.exports = mongoose.model('User_login', User_login_Schema)

@@ -25,15 +25,8 @@ const Recommendation_Schema = new Schema({
   //image:eesa_icon,
 })
 
-Recommendation_Schema.virtual('imgSrc').get(function () {
-  try {
-    return `data:${
-      this.img.contentType
-    };base64,${new Buffer(this.img.data, 'binary').toString('base64')}`
-  } catch {
-    return ''
-  }
-})
+const { buf2url } = require('./query')
+Recommendation_Schema.virtual('imgSrc').get(buf2url())
 
 Recommendation_Schema.methods.getPublic = function () {
   return {

@@ -9,19 +9,12 @@ const User_pending_Schema = new Schema({
   userpsw: String, //密碼
   email: { type: mongoose.SchemaTypes.Email },
   img: {
-    data: { type: Buffer },
-    contentType: { type: String },
+    data: Buffer,
+    contentType: String,
   },
 })
 
-User_pending_Schema.virtual('imgSrc').get(function () {
-  try {
-    const prefix = 'data:' + this.img.contentType + ';base64,'
-    const img = new Buffer(this.img.data, 'binary').toString('base64')
-    return prefix + img
-  } catch {
-    return ''
-  }
-})
+const { buf2url } = require('./query')
+User_pending_Schema.virtual('imgSrc').get(buf2url())
 
 module.exports = mongoose.model('User_pending', User_pending_Schema)

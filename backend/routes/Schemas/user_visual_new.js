@@ -32,18 +32,8 @@ const Profile_Schema = new Schema({
   },
 })
 
-Profile_Schema.virtual('imgSrc').get(function () {
-  try {
-    // const prefix="data:"+this.userimage.contentType+";base64,"
-    // const img = new Buffer(this.userimage.data, 'binary').toString('base64');
-    // return prefix+img;
-    return `data:${
-      this.userimage.contentType
-    };base64,${new Buffer(this.userimage.data, 'binary').toString('base64')}`
-  } catch {
-    return ''
-  }
-})
+const { buf2url } = require('./query')
+Profile_Schema.virtual('imgSrc').get(buf2url('userimage'))
 
 Profile_Schema.statics.smartQuery = function (keywords) {
   if (!keywords) return []

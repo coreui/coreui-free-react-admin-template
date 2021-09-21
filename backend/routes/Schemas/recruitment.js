@@ -46,7 +46,7 @@ Recruitment_Schema.methods.getPublic = function () {
   }
 }
 
-Recruitment_Schema.statics.smartFind = async function (keywords) {
+Recruitment_Schema.statics.smartQuery = function (keywords) {
   if (!keywords) return []
   const reg = new RegExp(keywords.replace(' ', '|'), 'i')
   // console.log(reg)
@@ -63,7 +63,7 @@ Recruitment_Schema.statics.smartFind = async function (keywords) {
       { 'spec.description': reg },
     ],
   }
-  return await this.find(query)
+  return query
 }
 
 module.exports = mongoose.model('Recruitment_v3', Recruitment_Schema)

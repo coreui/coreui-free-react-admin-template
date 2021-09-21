@@ -45,7 +45,7 @@ Profile_Schema.virtual('imgSrc').get(function () {
   }
 })
 
-Profile_Schema.statics.smartFind = async function (keywords) {
+Profile_Schema.statics.smartQuery = function (keywords) {
   if (!keywords) return []
   const reg = new RegExp(keywords.replace(' ', '|'), 'i')
   //   console.log(reg)
@@ -72,7 +72,7 @@ Profile_Schema.statics.smartFind = async function (keywords) {
       { 'Occupation.C': reg },
     ],
   }
-  return await this.find(query)
+  return query
 }
 
 Profile_Schema.methods.getPublic = function () {

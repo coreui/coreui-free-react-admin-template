@@ -1,6 +1,7 @@
-const Recruitment_new = require('../../../Schemas/recruitment')
+const Recruitment = require('../../../Schemas/recruitment')
 const asyncHandler = require('express-async-handler')
-const { dbCatch } = require('../../../error')
+const { findWithLimit } = require('../../../Schemas/query')
+
 /**
  * @api {post} /smartsearchRecruitment search recruitment by keywords
  * @apiName ShowRecruitment
@@ -27,8 +28,9 @@ const { dbCatch } = require('../../../error')
  * @apiError (500) {String} description 資料庫錯誤
  */
 const smartSrh = async (req, res, next) => {
-  const { keyword } = req.body
-  const recrus = await Recruitment_new.smartFind(keyword).catch(dbCatch)
+  const { keyword, page, perpage } = req.body
+  const query = Recruitment.smartQuery(keyword)
+  const [recrus, maxPage] = await findWithLimit(Recruitment, query, page, perpage)
   res.status(201).send(recrus.map((recru) => recru.getPublic()).reverse())
 }
 

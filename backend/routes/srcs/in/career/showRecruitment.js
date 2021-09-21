@@ -1,13 +1,15 @@
-const { dbCatch } = require('../../../error')
 const Recruitment = require('../../../Schemas/recruitment')
 const asyncHandler = require('express-async-handler')
-// const getPublic = require('./DBquery/getPublic')
+const { findWithLimit } = require('../../../Schemas/query')
 
 /**
  * @api {post} /showRecruitment show all recruitment
  * @apiName ShowRecruitment
  * @apiGroup In/career
  * @apiDescription 顯示所有職缺(等價於不傳任何參數的searchRecruitment)
+ *
+ * @apiparam {Number} page default 1
+ * @apiparam {Number} perpage default 20
  *
  * @apiSuccess (201) {Object[]} - 職缺們
  * @apiSuccess (201) {String} -._id mongodb _id(for delete)
@@ -27,6 +29,7 @@ const asyncHandler = require('express-async-handler')
  * @apiError (500) {String} description 資料庫錯誤
  */
 module.exports = asyncHandler(async (req, res, next) => {
-  const recs = await Recruitment.find().catch(dbCatch)
+  const { page, perpage } = req.body
+  const [recs, maxPage] = await findWithLimit(Recruitment, {}, page, perpage || 20)
   res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
 })

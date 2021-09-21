@@ -1,8 +1,7 @@
 const { dbCatch, ErrorHandler } = require('../../../error')
 const Recommendation = require('../../../Schemas/recommendation')
-const { searchQuery } = require('../../../Schemas/query')
+const { searchQuery, findWithLimit } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
-
 /**
  * @api {get} /recommendation search recommendation by field
  * @apiName ShowRecommendation
@@ -19,6 +18,8 @@ const asyncHandler = require('express-async-handler')
  * @apiparam {String} diploma 學位
  * @apiparam {String} experience 經驗
  * @apiparam {String} speciality 專長
+ * @apiparam {Number} page default 1
+ * @apiparam {Number} perpage default 50
  *
  * @apiSuccess (201) {Object[]} - 簡歷們
  * @apiSuccess (201) {String} -._id mongodb _id(for update,delete)
@@ -64,7 +65,8 @@ const showRec = async (req, res, next) => {
     'spec.speciality': speciality,
   }
   const sq = searchQuery(query)
-  const recs = await Recommendation.find(sq).catch(dbCatch)
+  const { page, perpage } = req.body
+  const [recs, maxPage] = await findWithLimit(Recommendation, sq, page, perpage || 20) //Recommendation.find(sq).catch(dbCatch)
   res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
 }
 

@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
 const Column_Outline = require('../../../Schemas/column_outline')
+const { findWithLimit } = require('../../../Schemas/query')
 
 /**
  * @api {get} /column/outline get column outline with id optional
@@ -32,13 +33,7 @@ const Column_Outline = require('../../../Schemas/column_outline')
 const getOut = async (req, res, next) => {
   const { id, page, perpage } = req.query
   const query = id ? { id } : {}
-  const p = parseInt(page ? page : 1)
-  const pp = parseInt(perpage & (perpage > 0) ? perpage : 5)
-  const totalData = await Column_Outline.count(query).catch(dbCatch)
-  const maxPage = Math.ceil(totalData / pp)
-  const toSkip = p >= maxPage ? 0 : totalData - pp * p
-  const toLim = p >= maxPage ? totalData - pp * (maxPage - 1) : pp
-  const columnOulines = await Column_Outline.find(query).skip(toSkip).limit(toLim).catch(dbCatch)
+  const [columnOulines, maxPage] = await findWithLimit(Column_Outline, query, page, perpage)
   return res
     .status(201)
     .send({ data: columnOulines.reverse().map((col) => col.getPublic()), maxPage })

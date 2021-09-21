@@ -2,6 +2,7 @@ const Visual = require('../../../Schemas/user_visual_new')
 const { searchQuery } = require('../../../Schemas/query')
 const { dbCatch } = require('../../../error')
 const asyncHandler = require('express-async-handler')
+const { findWithLimit } = require('../../../Schemas/query')
 
 /**
  * @api {post} /searchProfile search profile by fields
@@ -29,6 +30,8 @@ const asyncHandler = require('express-async-handler')
  * @apiparam {String} Occupation.C 公司
  * @apiparam {String} Occupation.O 部門
  * @apiparam {String} Occupation.P 職位
+ * @apiparam {Number} page default 1
+ * @apiparam {Number} perpage default 50
  *
  * @apiSuccess (201) {String} userimage 大頭貼(使用<code>\<img src={userimage}/></code>)
  * @apiSuccess (201) {String} account 學號
@@ -106,7 +109,8 @@ const srhProfile = async function (req, res, next) {
       sq['$or'] = [obj]
     }
   }
-  const pros = await Visual.find(sq).catch(dbCatch)
+  const { page, perpage } = req.body
+  const [pros, maxPage] = await findWithLimit(Visual, sq, page, perpage || 50) //Visual.find(sq).catch(dbCatch)
   return res.status(201).send(pros.map((p) => p.getPublic()))
 }
 

@@ -545,6 +545,8 @@ POST /searchRecruitment
 | diploma      | `String` | 學系要求 (optional) |
 | requirement  | `String` | 技能要求 (optional) |
 | description  | `String` | 其他描述 (optional) |
+| page         | `Number` | default 1           |
+| perpage      | `Number` | default 20          |
 
 ### Success response example
 
@@ -636,6 +638,13 @@ POST /smartsearchRecruitment
 POST /showRecruitment
 ```
 
+### Parameters - `Parameter`
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| page    | `Number` | default 1   |
+| perpage | `Number` | default 20  |
+
 ### Success response
 
 #### Success response - `201`
@@ -674,6 +683,13 @@ POST /showRecruitment
 ```
 GET /recruitment
 ```
+
+### Parameters - `Parameter`
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| page    | `Number` | default 1   |
+| perpage | `Number` | default 20  |
 
 ### Success response
 
@@ -1059,6 +1075,8 @@ POST /searchProfile
 | &ensp;C      | `String` | 公司                                                                           |
 | &ensp;O      | `String` | 部門                                                                           |
 | &ensp;P      | `String` | 職位                                                                           |
+| page         | `Number` | default 1                                                                      |
+| perpage      | `Number` | default 50                                                                     |
 
 ### Success response
 
@@ -1111,6 +1129,8 @@ POST /smartsearchProfile
 | Name    | Type     | Description |
 | ------- | -------- | ----------- |
 | keyword | `String` | 用空格區分  |
+| page    | `String` |             |
+| perpage | `String` | default 50  |
 
 ### Success response
 
@@ -1376,6 +1396,8 @@ GET /recommendation
 | diploma          | `String` | 學位        |
 | experience       | `String` | 經驗        |
 | speciality       | `String` | 專長        |
+| page             | `Number` | default 1   |
+| perpage          | `Number` | default 50  |
 
 ### Success response
 
@@ -1427,6 +1449,8 @@ POST /smartsearchrecommendation
 | Name    | Type     | Description |
 | ------- | -------- | ----------- |
 | keyword | `String` | 用空格區分  |
+| page    | `Number` | default 1   |
+| perpage | `Number` | default 50  |
 
 ### Success response
 
@@ -1472,6 +1496,13 @@ POST /smartsearchrecommendation
 ```
 GET /recommendation/mine
 ```
+
+### Parameters - `Parameter`
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| page    | `Number` | default 1   |
+| perpage | `Number` | default 20  |
 
 ### Success response
 

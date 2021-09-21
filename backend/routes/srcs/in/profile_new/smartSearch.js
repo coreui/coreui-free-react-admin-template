@@ -1,6 +1,7 @@
 const Profile = require('../../../Schemas/user_visual_new')
 const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
+const { findWithLimit } = require('../../../Schemas/query')
 
 /**
  * @api {post} /smartsearchProfile search profile by keywords
@@ -9,6 +10,8 @@ const { dbCatch } = require('../../../error')
  * @apiDescription 給定關鍵字(用空格區分)搜尋
  *
  * @apiparam {String} keyword 用空格區分
+ * @apiparam {String} page
+ * @apiparam {String} perpage default 50
  *
  * @apiSuccess (201) {String} userimage 大頭貼(使用<code>\<img src={userimage}/></code>)
  * @apiSuccess (201) {String} account 學號
@@ -36,8 +39,9 @@ const { dbCatch } = require('../../../error')
  */
 
 const smartSearch = async (req, res, next) => {
-  const { keyword } = req.body
-  const pros = await Profile.smartFind(keyword).catch(dbCatch)
+  const { keyword, page, perpage } = req.body
+  const query = Profile.smartQuery(keyword)
+  const [pros, maxPage] = await findWithLimit(Profile, query, page, perpage || 50)
   return res.status(201).send(pros.map((pro) => pro.getPublic()))
 }
 

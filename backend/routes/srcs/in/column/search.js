@@ -58,7 +58,7 @@ const srhCol = async (req, res, next) => {
     }
   }
   await Promise.all([task1(), task2(), task3()])
-  queryId = [...new Set(queryId)].sort().reverse()
+  queryId = [...new Set(queryId)].sort()
   console.log('id found:', queryId)
   const p = parseInt(page ? page : 1)
   const pp = parseInt(perpage & (perpage > 0) ? perpage : 5)
@@ -71,7 +71,7 @@ const srhCol = async (req, res, next) => {
   console.log('find done')
   return res
     .status(201)
-    .send({ data: columnOulines.reverse().map((col) => col.getPublic()), maxPage })
+    .send({ data: columnOulines.map((col) => col.getPublic()).reverse(), maxPage })
 }
 
 const valid = require('../../../middleware/validation')

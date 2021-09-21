@@ -1,6 +1,7 @@
 const Recmd = require('../../../Schemas/recommendation')
 const asyncHandler = require('express-async-handler')
 const { dbCatch } = require('../../../error')
+const { findWithLimit } = require('../../../Schemas/query')
 
 /**
  * @api {post} /smartsearchrecommendation search recommendation by keywords
@@ -9,6 +10,8 @@ const { dbCatch } = require('../../../error')
  * @apiDescription 關鍵字搜尋(空格區分)
  *
  * @apiparam {String} keyword 用空格區分
+ * @apiparam {Number} page default 1
+ * @apiparam {Number} perpage default 50
  *
  * @apiSuccess (201) {Object[]} - 簡歷們
  * @apiSuccess (201) {String} -._id mongodb _id(for update,delete)
@@ -29,8 +32,9 @@ const { dbCatch } = require('../../../error')
  * @apiError (500) {String} description 資料庫錯誤
  */
 const smartSearch = async (req, res, next) => {
-  const { keyword } = req.body
-  const recmds = await Recmd.smartFind(keyword).catch(dbCatch)
+  const { keyword, page, perpage } = req.body
+  const query = Recmd.smartQuery(keyword)
+  const [recmds, maxPage] = await findWithLimit(Recmd, query, page, perpage)
   return res.status(201).send(recmds.map((recmd) => recmd.getPublic()).reverse())
 }
 

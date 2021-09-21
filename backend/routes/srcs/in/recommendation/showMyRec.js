@@ -1,6 +1,7 @@
 const { dbCatch, ErrorHandler } = require('../../../error')
 const Recommendation = require('../../../Schemas/recommendation')
 const asyncHandler = require('express-async-handler')
+const { findWithLimit } = require('../../../Schemas/query')
 
 /**
  * @api {get} /recommendation/mine show my recommendation
@@ -8,6 +9,8 @@ const asyncHandler = require('express-async-handler')
  * @apiGroup In/recommendation
  * @apiDescription 顯示我建立的簡歷
  *
+ * @apiparam {Number} page default 1
+ * @apiparam {Number} perpage default 20
  *
  * @apiSuccess (201) {Object[]} - 簡歷們
  * @apiSuccess (201) {String} -._id mongodb _id(for update,delete)
@@ -29,6 +32,7 @@ const asyncHandler = require('express-async-handler')
  */
 module.exports = asyncHandler(async (req, res, next) => {
   const account = req.session.loginAccount
-  const recs = await Recommendation.find({ account }).catch(dbCatch)
+  const { page, perpage } = req.body
+  const [recs, maxPage] = await findWithLimit(Recommendation, { account }, page, perpage || 20)
   res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
 })

@@ -1,6 +1,5 @@
-const { dbCatch } = require('../../../error')
 const Recruitment = require('../../../Schemas/recruitment')
-const { searchQuery } = require('../../../Schemas/query')
+const { searchQuery, findWithLimit } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
 const searchRecuitment = async function (req, res, next) {
@@ -29,8 +28,8 @@ const searchRecuitment = async function (req, res, next) {
     'spec.description': description,
   }
   const query = searchQuery(keys)
-
-  const recrus = await Recruitment.find(query).catch(dbCatch)
+  const { page, perpage } = req.body
+  const [recrus, maxPage] = await findWithLimit(Recruitment, query, page, perpage || 20)
   return res.status(201).send(recrus.map((recru) => recru.getPublic()).reverse())
 }
 
@@ -50,6 +49,8 @@ const searchRecuitment = async function (req, res, next) {
  * @apiparam {String} diploma 學系要求 (optional)
  * @apiparam {String} requirement 技能要求 (optional)
  * @apiparam {String} description 其他描述 (optional)
+ * @apiparam {Number} page default 1
+ * @apiparam {Number} perpage default 20
  * 
  * @apiSuccessExample {json} Success-Response:
  * 	[{

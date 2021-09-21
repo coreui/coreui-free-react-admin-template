@@ -20,13 +20,13 @@ mongoose.connection.on('open', () => {
   // 	res.header("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Type, Accept');
   // 	next();
   // });
-  app.use(
-    cors({
-      origin: 'http://localhost:3000',
-      methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'PATCH', 'DELETE'],
-      credentials: true,
-    }),
-  )
+  // app.use(
+  //   cors({
+  //     origin: 'http://localhost:3000',
+  //     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'PATCH', 'DELETE'],
+  //     credentials: true,
+  //   }),
+  // )
   //session 設定
   //參考網站https://www.cnblogs.com/chyingp/p/nodejs-learning-express-session.html
   app.use(

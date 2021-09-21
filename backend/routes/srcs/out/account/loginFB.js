@@ -1,7 +1,7 @@
 //srcs/login.js
 const Login = require('../../../Schemas/user_login')
 const { ErrorHandler, dbCatch } = require('../../../error')
-
+const crypto = require('crypto')
 const asyncHandler = require('express-async-handler')
 
 /**
@@ -21,7 +21,8 @@ const asyncHandler = require('express-async-handler')
  * @apiError (500) {String} description 資料庫錯誤
  */
 const loginFB = async (req, res, next) => {
-  const { facebookID } = req.body
+  const { facebookID: unEncID } = req.body
+  const facebookID = crypto.createHash('md5').update(unEncID).digest('hex')
   const query = { facebookID }
   const obj = await Login.findOne(query, 'username account').catch(dbCatch)
   if (!obj) throw new ErrorHandler(404, '帳號不存在')

@@ -4,6 +4,7 @@ const Pending = require('../../../Schemas/user_pending')
 const Login = require('../../../Schemas/user_login')
 const Visual = require('../../../Schemas/user_visual_new')
 const asyncHandler = require('express-async-handler')
+const crypto = require('crypto')
 
 async function insertFB(name, account, facebookID, file, user) {
   await new Login({
@@ -54,9 +55,9 @@ async function insertVisual(name, account) {
  * @apiError (500) {String} description 資料庫錯誤
  */
 const registerFB = async (req, res) => {
-  const username = req.body.username
+  const { username, facebookID } = req.body
   const account = req.body.account.toLowerCase()
-  const userFBid = req.body.facebookID
+  const fbIdEnc = crypto.createHash('md5').update(facebookID).digest('hex')
 
   if (req.file === undefined) throw new ErrorHandler(400, '請添加照片')
 
@@ -64,7 +65,7 @@ const registerFB = async (req, res) => {
   const isRegistered = await Login.exists(query).catch(dbCatch)
   if (isRegistered) throw new ErrorHandler(403, '帳號已存在')
   const user = await insertVisual(username, account)
-  await insertFB(username, account, userFBid, req.file, user)
+  await insertFB(username, account, fbIdEnc, req.file, user)
   req.session.loginName = username
   req.session.loginAccount = account
   return res.status(201).send({ username })

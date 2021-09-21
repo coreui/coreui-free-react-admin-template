@@ -36,7 +36,11 @@ const Services = () => {
               <CImage src={career} alt="..." className="img img-fluid"></CImage>
             </div>
             <h3>徵才求職</h3>
-            <p></p>
+            <p>
+              透過已建立之聯繫網絡分享工作資訊
+              <br />
+              不怕錯失內推機會
+            </p>
           </div>
           <div className="col-xs-6 col-sm-3">
             {' '}
@@ -44,7 +48,11 @@ const Services = () => {
               <CImage src={studyabroad} alt="..." className="img img-fluid"></CImage>
             </div>
             <h3>留學資訊</h3>
-            <p></p>
+            <p>
+              整理國外各校和本系歷年的留學資料
+              <br />
+              提供在校學生參考
+            </p>
           </div>
           <div className="col-xs-6 col-sm-3">
             {' '}
@@ -52,7 +60,11 @@ const Services = () => {
               <CImage src={column} alt="..." className="img img-fluid"></CImage>
             </div>
             <h3>採訪文章</h3>
-            <p></p>
+            <p>
+              收錄過去採訪眾多系友的紀錄
+              <br />
+              分享獨一無二的經歷和體驗
+            </p>
           </div>
         </CRow>
       </CContainer>

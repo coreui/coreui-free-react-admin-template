@@ -1,7 +1,6 @@
 import { sygnet } from './sygnet'
-import { logo } from './logo'
-import { logoNegative } from './logo-negative'
 import { website } from './website'
+import { sidebar_icon } from './sidebar_icon'
 
 import {
   cibSkype,
@@ -141,9 +140,8 @@ export const icons = Object.assign(
   {},
   {
     sygnet,
-    logo,
-    logoNegative,
     website,
+    sidebar_icon,
   },
   {
     cilAddressBook,

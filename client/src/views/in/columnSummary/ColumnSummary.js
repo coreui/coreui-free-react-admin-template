@@ -14,7 +14,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Avatar from '@material-ui/core/Avatar'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder'
 import Pagination from '@material-ui/lab/Pagination'
-import { Spinner } from './index'
+import { Spinner, default_male } from './index'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
@@ -122,7 +122,7 @@ const ColumnSummary = () => {
   const contributions = (person) => {
     return (
       <Box className={classes.author} key={person}>
-        <Avatar src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+        <Avatar src={default_male} />
         <Box ml={2} display="flex" alignItems="center">
           <Typography variant="subtitle2" component="p">
             {person}

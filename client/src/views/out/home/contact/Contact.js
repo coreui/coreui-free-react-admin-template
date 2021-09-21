@@ -3,7 +3,7 @@ import { CCol, CContainer, CRow } from '@coreui/react'
 import React, { useState } from 'react'
 import CIcon from '@coreui/icons-react'
 
-import emailjs from 'emailjs-com'
+import axios from 'axios'
 
 const initialState = {
   name: '',
@@ -22,15 +22,23 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(name, email, message)
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID').then(
-      (result) => {
-        console.log(result.text)
+
+    const url =
+      'https://docs.google.com/forms/d/e/1FAIpQLSed-GXXBhqIRUBEX7-nMlwuQ3a22-Z51mtxVSlcyhWzG9TH2Q/formResponse'
+
+    axios
+      .get(url, {
+        params: {
+          usp: 'pp_url',
+          'entry.1670134810': name,
+          'entry.302205267': email,
+          'entry.307115258': message,
+        },
+      })
+      .then((res) => {
+        alert('感謝您的意見!')
         clearState()
-      },
-      (error) => {
-        console.log(error.text)
-      },
-    )
+      })
   }
   return (
     <div>
@@ -58,6 +66,7 @@ const Contact = () => {
                           placeholder="Name"
                           required
                           onChange={handleChange}
+                          value={name}
                         />
                         <p className="help-block text-danger"></p>
                       </div>
@@ -72,6 +81,7 @@ const Contact = () => {
                           placeholder="Email"
                           required
                           onChange={handleChange}
+                          value={email}
                         />
                         <p className="help-block text-danger"></p>
                       </div>
@@ -86,6 +96,7 @@ const Contact = () => {
                       placeholder="Message"
                       required
                       onChange={handleChange}
+                      value={message}
                     ></textarea>
                     <p className="help-block text-danger"></p>
                   </div>
@@ -101,7 +112,7 @@ const Contact = () => {
                 <h3>Contact Info</h3>
                 <p>
                   <span>
-                    <i className="bi bi-alarm"></i> Address
+                    <CIcon name="cil-home" /> Address
                   </span>
                   台灣大學博理館 B1 系學會辦
                 </p>
@@ -109,7 +120,7 @@ const Contact = () => {
               <div className="contact-item">
                 <p>
                   <span>
-                    <i className="bi bi-alarm"></i> Email
+                    <CIcon name="cib-gmail" /> Email
                   </span>{' '}
                   eeplus2020@gmail.com
                 </p>
@@ -117,7 +128,7 @@ const Contact = () => {
               <div className="contact-item">
                 <p>
                   <span>
-                    <i className="bi bi-alarm"></i> Support
+                    <CIcon name="cil-dollar" /> Support
                   </span>{' '}
                   700-0001236-0553850(Taiwan)
                 </p>

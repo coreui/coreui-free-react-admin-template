@@ -28,6 +28,7 @@ import {
   cibCcApplePay,
   cibCcAmex,
   cibGoogle,
+  cibGmail,
 } from '@coreui/icons'
 import { cifUs, cifBr, cifIn, cifFr, cifEs, cifPl } from '@coreui/icons'
 import {
@@ -281,5 +282,6 @@ export const icons = Object.assign(
     cibCcApplePay,
     cibCcAmex,
     cibGoogle,
+    cibGmail,
   },
 )

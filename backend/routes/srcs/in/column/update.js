@@ -1,14 +1,26 @@
 const { dbCatch, ErrorHandler } = require('../../../error')
-const Column_detail = require('../../../Schemas/column_detail')
-const Column_outline = require('../../../Schemas/column_outline')
-const { parseImg } = require('../../../Schemas/query')
+const ColOut = require('../../../Schemas/column_outline')
+const ColDet = require('../../../Schemas/column_detail')
+const { updateQuery, parseImg } = require('../../../Schemas/query')
 const asyncHandler = require('express-async-handler')
 
+const updateColumn = async (req, res, next) => {
+  const { id, top, body, annotation, anno, date, title, exp, edu, intro } = req.body
+  const columnImg = parseImg(req.file)
+
+  const detailUpdate = updateQuery({ top, body, annotation })
+  const outlineUpdate = updateQuery({ anno, date, title, exp, edu, intro, columnImg })
+
+  await ColDet.findOneAndUpdate({ id }, detailUpdate).catch(dbCatch)
+  await ColOut.findOneAndUpdate({ id }, outlineUpdate).catch(dbCatch)
+  res.status(203).send({ id })
+}
+
 /**
- * @api {post} /column/add add column
- * @apiName addColumn
+ * @api {patch} /column/update update column
+ * @apiName updateColumn
  * @apiGroup In/column
- * @apiDescription 管理員新增文章
+ * @apiDescription 管理員更新文章
  *
  * @apiParam {String[]} title 文章標題
  *    (xxxx 級 xxx (公司名稱與職位))(這邊看要不要和name,experience合併?)
@@ -35,10 +47,10 @@ const asyncHandler = require('express-async-handler')
  *    [學士:校系(畢業年分),碩士:校系(畢業年分),博士:校系(畢業年分)]
  * @apiParam {String[]} intro 簡介
  *    (1個element是一段)
- * @apiParam {File} file 封面照
+ * @apiParam {File} file 頭貼
  *
  * @apiParamExample {js} Input-Example:
- *    let input=new FormData()
+ *    let input = new FormData()
  *
  *    input.append("file", 採訪合照)
  *    input.append("id", "yymm")
@@ -58,24 +70,13 @@ const asyncHandler = require('express-async-handler')
  *    input.append("body[body][][bigsections][0][subtitle]", "球隊與課業交織的辛苦大學生活")
  *    input.append("body[body][][bigsections][0][subsection]", "因為我是排球校隊，沒能花很多時間在系上...")
  *
- *    axios.post("/api/addColumn", input, {headers:{'content-type': 'multipart/form-data'}})
+ *    axios.post("/api/updateColumn", input, {headers:{'content-type': 'multipart/form-data'}})
  *
  * @apiSuccess (201) {String} id post的id
  *
  * @apiError (400) {String} description id is required
  * @apiError (500) {String} description 資料庫錯誤
  */
-
-const addCol = async (req, res) => {
-  const { id, top, body, annotation, anno, date, title, exp, edu, intro } = req.body
-  const columnImg = parseImg(req.file)
-
-  await new Column_detail({ id, top, body, annotation }).save().catch(dbCatch)
-  await new Column_outline({ anno, date, title, exp, edu, intro, id, columnImg })
-    .save()
-    .catch(dbCatch)
-  res.status(201).send({ id })
-}
 
 const valid = require('../../../middleware/validation')
 const rules = [
@@ -92,4 +93,4 @@ const rules = [
   { filename: 'optional', field: ['anno', 'title', 'exp', 'edu', 'intro'], type: 'array' },
   { filename: 'required', field: 'id' },
 ]
-module.exports = [valid(rules), asyncHandler(addCol)]
+module.exports = [valid(rules), asyncHandler(updateColumn)]

@@ -27,9 +27,11 @@ EE+ api 文件
   - [update recruitment](#update-recruitment)
 - [In/column](#incolumn)
   - [add column](#add-column)
+  - [delete column](#delete-column)
   - [get column detail](#get-column-detail)
   - [get column outline with id optional](#get-column-outline-with-id-optional)
   - [search column by keywords or hashtags](#search-column-by-keywords-or-hashtags)
+  - [update column](#update-column)
 - [In/profile_new](#inprofile_new)
   - [search profile by fields](#search-profile-by-fields)
   - [search profile by keywords](#search-profile-by-keywords)
@@ -822,6 +824,7 @@ POST /column/add
 | exp                          | `String[]` | 職位                                                                          |
 | edu                          | `String[]` | 學歷 [學士:校系(畢業年分),碩士:校系(畢業年分),博士:校系(畢業年分)]            |
 | intro                        | `String[]` | 簡介 (1 個 element 是一段)                                                    |
+| file                         | `File`     | 封面照                                                                        |
 
 ### Parameters examples
 
@@ -875,6 +878,38 @@ axios.post('/api/addColumn', input, { headers: { 'content-type': 'multipart/form
 | Name        | Type     | Description |
 | ----------- | -------- | ----------- |
 | description | `String` | 資料庫錯誤  |
+
+## delete column
+
+[Back to top](#top)
+
+管理員刪除文章
+
+```
+DELETE /column/delete
+```
+
+### Parameters - `Parameter`
+
+| Name | Type     | Description            |
+| ---- | -------- | ---------------------- |
+| id   | `String` | 文章的編號 (建議 yymm) |
+
+### Success response
+
+#### Success response - `201`
+
+| Name | Type     | Description |
+| ---- | -------- | ----------- |
+| id   | `String` | post 的 id  |
+
+### Error response
+
+#### Error response - `400`
+
+| Name        | Type     | Description    |
+| ----------- | -------- | -------------- |
+| description | `String` | id is required |
 
 ## get column detail
 
@@ -1032,6 +1067,94 @@ GET /column/search
 ```
 
 ### Error response
+
+#### Error response - `500`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 資料庫錯誤  |
+
+## update column
+
+[Back to top](#top)
+
+管理員更新文章
+
+```
+PATCH /column/update
+```
+
+### Parameters - `Parameter`
+
+| Name                         | Type       | Description                                                                   |
+| ---------------------------- | ---------- | ----------------------------------------------------------------------------- |
+| title                        | `String[]` | 文章標題 (xxxx 級 xxx (公司名稱與職位))(這邊看要不要和 name,experience 合併?) |
+| id                           | `String`   | 文章的編號 (建議 yymm)                                                        |
+| top                          | `Object`   |                                                                               |
+| &ensp;name                   | `String`   | 標題(xxxx 級 xxx)                                                             |
+| &ensp;experience             | `String`   | 副標題(公司名稱與職位)                                                        |
+| &ensp;hashtags               | `String[]` | 文章的 hashtag (文章類別，訪問者姓名、級別、工作、相關組織與企業)             |
+| &ensp;body                   | `Object[]` |                                                                               |
+| &ensp;&ensp;bigtitle         | `String`   | (一、標題，二、求學階段...)                                                   |
+| &ensp;&ensp;bigsections      | `Object[]` |                                                                               |
+| &ensp;&ensp;&ensp;subtitle   | `String`   | 子標題                                                                        |
+| &ensp;&ensp;&ensp;subsection | `String`   | (文章內容)                                                                    |
+| &ensp;annotation             | `String[]` | 參與全人員                                                                    |
+| &ensp;&ensp;job              | `String[]` | 工作                                                                          |
+| &ensp;&ensp;contributer      | `String[]` | 人員                                                                          |
+| anno                         | `String[]` | [所有採訪人員姓名]                                                            |
+| date                         | `String[]` | yyyy/mm/dd 星期 x                                                             |
+| exp                          | `String[]` | 職位                                                                          |
+| edu                          | `String[]` | 學歷 [學士:校系(畢業年分),碩士:校系(畢業年分),博士:校系(畢業年分)]            |
+| intro                        | `String[]` | 簡介 (1 個 element 是一段)                                                    |
+| file                         | `File`     | 頭貼                                                                          |
+
+### Parameters examples
+
+`js` - Input-Example:
+
+```js
+let input = new FormData()
+
+input.append('file', 採訪合照)
+input.append('id', 'yymm')
+input.append('title', '2008級 方劭云（當屆最年輕升遷副教授）')
+input.append('top[name]', '2008級 方劭云')
+input.append('top[experience]', '當屆最年輕升遷副教授')
+input.append('top[hashtags][0]', 關鍵字1)
+input.append('annotation[annotation][0][job]', '撰寫')
+input.append('annotation[annotation][0][contributer]][]', '王曉明')
+input.append('anno[]', '作者1')
+input.append('date', 'yyyy/mm/dd 星期x')
+input.append('exp[0]', '現任：國立臺灣科技大學電機系 副教授')
+input.append('edu[0]', '博士：台灣大學電子所  (2013)')
+input.append('intro[0]', '2008畢業於台大電機，目前任職於臺灣科技大學的方劭云教授...')
+
+input.append('body[body][][bigtitle]', '一、我的大學生涯')
+input.append('body[body][][bigsections][0][subtitle]', '球隊與課業交織的辛苦大學生活')
+input.append(
+  'body[body][][bigsections][0][subsection]',
+  '因為我是排球校隊，沒能花很多時間在系上...',
+)
+
+axios.post('/api/updateColumn', input, { headers: { 'content-type': 'multipart/form-data' } })
+```
+
+### Success response
+
+#### Success response - `201`
+
+| Name | Type     | Description |
+| ---- | -------- | ----------- |
+| id   | `String` | post 的 id  |
+
+### Error response
+
+#### Error response - `400`
+
+| Name        | Type     | Description    |
+| ----------- | -------- | -------------- |
+| description | `String` | id is required |
 
 #### Error response - `500`
 

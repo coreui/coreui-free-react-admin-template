@@ -15,6 +15,8 @@ router.get('/detail', require('./getDetail'))
 router.get('/outline', require('./getOutline'))
 
 router_auth.post('/add', parseFile('file'), require('./addColumn'))
+router_auth.patch('/update', parseFile('file'), require('./update'))
+router_auth.delete('/delete', require('./delete'))
 
 router.get('/search', require('./search'))
 

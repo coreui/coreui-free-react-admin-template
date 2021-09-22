@@ -41,7 +41,7 @@ const searchQuery = (obj) => {
  */
 const findWithLimit = async (Collection, query, page, perpage) => {
   const p = parseInt(page ? page : 1)
-  const pp = parseInt(perpage & (perpage > 0) ? perpage : 5)
+  const pp = parseInt(perpage && perpage > 0 ? perpage : 5)
   const totalData = await Collection.countDocuments(query).catch(dbCatch)
   const maxPage = Math.ceil(totalData / pp)
   if (p > maxPage) return [[], maxPage]

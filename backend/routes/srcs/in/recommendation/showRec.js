@@ -65,7 +65,7 @@ const showRec = async (req, res, next) => {
     'spec.speciality': speciality,
   }
   const sq = searchQuery(query)
-  const { page, perpage } = req.body
+  const { page, perpage } = req.query
   const [recs, maxPage] = await findWithLimit(Recommendation, sq, page, perpage || 20) //Recommendation.find(sq).catch(dbCatch)
   res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
 }

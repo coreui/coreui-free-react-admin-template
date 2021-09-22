@@ -32,7 +32,7 @@ const { findWithLimit } = require('../../../Schemas/query')
  */
 module.exports = asyncHandler(async (req, res, next) => {
   const account = req.session.loginAccount
-  const { page, perpage } = req.body
+  const { page, perpage } = req.query
   const [recs, maxPage] = await findWithLimit(Recommendation, { account }, page, perpage || 20)
   res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
 })

@@ -1,7 +1,7 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
   "description": "CoreUI Free React Admin Template",
-  "version": "4.0.0-rc.2",
+  "version": "4.0.0-rc.3",
   "config": {
     "coreui_library_short_version": "4.0"
   },

@@ -1216,7 +1216,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coreui/chartjs@3.0.0", "@coreui/chartjs@^3.0.0":
+"@coreui/chartjs@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@coreui/chartjs/-/chartjs-3.0.0.tgz#54b55d85de0f3146237b7d1d36b1bf33bc051735"
   integrity sha512-udbvSxanTNltv94lqTMW8bLRXTtzk9G2SrmFdM/7HH+JSaLX2wdQpZ4VIJhyOCRGLCSKHktl29BnW1/uXQecAg==
@@ -1229,12 +1229,12 @@
   resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.0.tgz#52ebe0197411a829ba48057ade61923e05859eec"
   integrity sha512-8vH6fJrmvCR/Oy5v0E+/1AL3Ygb4jhQ7NXK2fMYWJyK13BePDm9muB3y6S0IdqkpBwjY3hHVwHyt2lJqJdesmQ==
 
-"@coreui/coreui@4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.3.tgz#b4ae66d5e71eb8b9bc2edb26a9fad175d1f0e2ed"
-  integrity sha512-x3Q/o7G2LCq2iVT6iwmnkW+wbptdpPgIsKQzPz+k0Nudim8m4WUskusFK+4gJd6h2q7xJo85v/tOXrasCY4PQQ==
+"@coreui/coreui@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.4.tgz#e4848efa0c9f2ff6fbbc4d45d5dd73c1f5690f37"
+  integrity sha512-O/xWb+b3bSKTYvedwKJWjzRrTIf5u7t18MrfS13nRM0s1Ogr1H5aSpQQxtaqREDIuHN0KTY6a0bPInvEVeUBTg==
 
-"@coreui/icons-react@^2.0.0-rc.5":
+"@coreui/icons-react@2.0.0-rc.5":
   version "2.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/@coreui/icons-react/-/icons-react-2.0.0-rc.5.tgz#2adb4973b78f565302a4f3295922beccd76c5dda"
   integrity sha512-yqKUq2+sXPCIKXHbIFChd3Ku6VVYUdjKpE9kyxK93WLdZmACJphFQP9+qwPGxgmcyfSq2EeTjfN6Zp69AqcXcA==

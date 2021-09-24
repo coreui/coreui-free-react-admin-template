@@ -7,6 +7,7 @@ import {
   RegisterFB,
   Forget,
   ResetPassword,
+  Policy,
 } from './views/out'
 // in pages
 import {
@@ -43,6 +44,7 @@ const routes_out = [
     name: 'ResetPassword',
     component: ResetPassword,
   },
+  { path: '/policy', exact: true, name: 'Policy', component: Policy },
 ]
 
 const routes_in = [

@@ -7,5 +7,5 @@ const Register = React.lazy(() => import('./register'))
 const RegisterFB = React.lazy(() => import('./registerFB'))
 const Forget = React.lazy(() => import('./forget'))
 const ResetPassword = React.lazy(() => import('./resetPassword'))
-
-export { Home, Login, RegisterEntry, Register, RegisterFB, Forget, ResetPassword }
+const Policy = React.lazy(() => import('./policy'))
+export { Home, Login, RegisterEntry, Register, RegisterFB, Forget, ResetPassword, Policy }

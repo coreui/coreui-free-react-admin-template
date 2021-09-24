@@ -16,14 +16,14 @@ import {
   CAvatar,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { Link } from 'react-router-dom'
 import ProfileImageEditor from './ProfileImageEditor'
 import axios from 'axios'
 
 const ProfileEdit = () => {
   const dispatch = useDispatch()
-  const { imgSrc } = useSelector(selectLogin)
+  const { imgSrc, studentID } = useSelector(selectLogin)
   const [data, setData] = useState(null)
-
   const getProfile = () => {
     axios
       .get('api/profile')
@@ -69,7 +69,10 @@ const ProfileEdit = () => {
     list[index] = item
     setData({ ...data, Occupation: list })
   }
-
+  const inputStyle = {
+    border: '0px',
+    // outline: 'none',
+  }
   useEffect(() => {
     getProfile()
   }, [])
@@ -94,21 +97,22 @@ const ProfileEdit = () => {
 
                   <div className="mt-3">
                     <CFormControl
+                      style={inputStyle}
                       value={data.username}
                       onChange={(e) => setData({ ...data, username: e.target.value })}
                     />
                     <CFormControl
                       className="text-secondary mb-1"
+                      style={inputStyle}
                       value={data.profile}
                       onChange={(e) => setData({ ...data, profile: e.target.value })}
                     />
                     <CFormControl
                       className="text-muted font-size-sm"
+                      style={inputStyle}
                       value={data.CC}
                       onChange={(e) => setData({ ...data, CC: e.target.value })}
                     />
-                    <CButton>Follow</CButton>
-                    <CButton>Message</CButton>
                   </div>
                 </CInputGroup>
               </CCardBody>
@@ -124,6 +128,7 @@ const ProfileEdit = () => {
                   </h6>
                   <CFormControl
                     className="text-secondary"
+                    style={inputStyle}
                     value={data.web}
                     onChange={(e) => setData({ ...data, web: e.target.value })}
                   />
@@ -137,6 +142,7 @@ const ProfileEdit = () => {
                   </h6>
                   <CFormControl
                     className="text-secondary"
+                    style={inputStyle}
                     value={data.github}
                     onChange={(e) => setData({ ...data, github: e.target.value })}
                   />
@@ -150,18 +156,10 @@ const ProfileEdit = () => {
                   </h6>
                   <CFormControl
                     className="text-secondary"
+                    style={inputStyle}
                     value={data.Linkedin}
                     onChange={(e) => setData({ ...data, Linkedin: e.target.value })}
                   />
-                </CListGroupItem>
-                <CListGroupItem>
-                  <h6 className="mb-0">
-                    <CAvatar>
-                      <CIcon name="cib-instagram"></CIcon>
-                    </CAvatar>
-                    Instagram
-                  </h6>
-                  <CFormControl className="text-secondary" value="bootdey" />
                 </CListGroupItem>
                 <CListGroupItem>
                   <h6 className="mb-0">
@@ -172,6 +170,7 @@ const ProfileEdit = () => {
                   </h6>
                   <CFormControl
                     className="text-secondary"
+                    style={inputStyle}
                     value={data.facebook}
                     onChange={(e) => setData({ ...data, facebook: e.target.value })}
                   />
@@ -188,9 +187,19 @@ const ProfileEdit = () => {
                   </CCol>
                   <CCol sm="9" className="text-secondary">
                     <CFormControl
+                      style={inputStyle}
                       value={data.nickname}
                       onChange={(e) => setData({ ...data, nickname: e.target.value })}
                     />
+                  </CCol>
+                </CRow>
+                <hr />
+                <CRow>
+                  <CCol sm="3">
+                    <h6 className="mb-0">Student ID</h6>
+                  </CCol>
+                  <CCol sm="9" className="text-secondary">
+                    <CFormControl style={inputStyle} value={studentID} />
                   </CCol>
                 </CRow>
                 <hr />
@@ -200,6 +209,7 @@ const ProfileEdit = () => {
                   </CCol>
                   <CCol sm="9" className="text-secondary">
                     <CFormControl
+                      style={inputStyle}
                       value={data.publicEmail}
                       onChange={(e) => setData({ ...data, publicEmail: e.target.value })}
                     />
@@ -212,15 +222,13 @@ const ProfileEdit = () => {
                   </CCol>
                   <CCol sm="9" className="text-secondary">
                     <CFormControl
+                      style={inputStyle}
                       value={data.cellphone}
                       onChange={(e) => setData({ ...data, cellphone: e.target.value })}
                     />
                   </CCol>
                 </CRow>
                 <hr />
-                <CRow>
-                  <CButton onClick={handleSave}>Save</CButton>
-                </CRow>
               </CCardBody>
             </CCard>
             <CRow>
@@ -237,6 +245,7 @@ const ProfileEdit = () => {
                       </CCol>
                       <CCol sm="9" className="text-secondary">
                         <CFormControl
+                          style={inputStyle}
                           value={data.major}
                           onChange={(e) => setData({ ...data, major: e.target.value })}
                         />
@@ -249,6 +258,7 @@ const ProfileEdit = () => {
                       </CCol>
                       <CCol sm="9" className="text-secondary">
                         <CFormControl
+                          style={inputStyle}
                           value={data.master}
                           onChange={(e) => setData({ ...data, master: e.target.value })}
                         />
@@ -261,6 +271,7 @@ const ProfileEdit = () => {
                       </CCol>
                       <CCol sm="9" className="text-secondary">
                         <CFormControl
+                          style={inputStyle}
                           value={data.doctor}
                           onChange={(e) => setData({ ...data, doctor: e.target.value })}
                         />
@@ -278,11 +289,12 @@ const ProfileEdit = () => {
                     </h6>
                     <hr />
                     <CRow>
-                      <CCol sm="4">
+                      <CCol sm="3">
                         <h6 className="mb-0">Company</h6>
                       </CCol>
                       <CCol sm="9" className="text-secondary">
                         <CFormControl
+                          style={inputStyle}
                           value={data.Occupation.length != 0 ? data.Occupation[0].C : ''}
                           onChange={(e) => handleOccupationChange(0, 'C', e.target.value)}
                         />
@@ -290,11 +302,12 @@ const ProfileEdit = () => {
                     </CRow>
                     <hr />
                     <CRow>
-                      <CCol sm="4">
-                        <h6 className="mb-0">Department</h6>
+                      <CCol sm="3">
+                        <h6 className="mb-0">Division</h6>
                       </CCol>
                       <CCol sm="9" className="text-secondary">
                         <CFormControl
+                          style={inputStyle}
                           value={data.Occupation.length != 0 ? data.Occupation[0].O : ''}
                           onChange={(e) => handleOccupationChange(0, 'O', e.target.value)}
                         />
@@ -302,11 +315,12 @@ const ProfileEdit = () => {
                     </CRow>
                     <hr />
                     <CRow>
-                      <CCol sm="4">
+                      <CCol sm="3">
                         <h6 className="mb-0">Position</h6>
                       </CCol>
                       <CCol sm="9" className="text-secondary">
                         <CFormControl
+                          style={inputStyle}
                           value={data.Occupation.length != 0 ? data.Occupation[0].P : ''}
                           onChange={(e) => handleOccupationChange(0, 'P', e.target.value)}
                         />
@@ -316,6 +330,13 @@ const ProfileEdit = () => {
                   </CCardBody>
                 </CCard>
               </CCol>
+            </CRow>
+            <CRow>
+              <Link to={`/profile/${studentID}`}>
+                <CButton color="info" onClick={handleSave}>
+                  Save
+                </CButton>
+              </Link>
             </CRow>
           </CCol>
         </CRow>

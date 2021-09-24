@@ -653,7 +653,7 @@ POST /showRecruitment
 
 | Name                     | Type       | Description                                         |
 | ------------------------ | ---------- | --------------------------------------------------- |
-| -                        | `Object[]` | 職缺們                                              |
+| data                     | `Object[]` | 職缺們                                              |
 | &ensp;\_id               | `String`   | mongodb \_id(for delete)                            |
 | &ensp;title              | `Object`   | 標題相關                                            |
 | &ensp;&ensp;title        | `String`   | 標題                                                |
@@ -667,6 +667,7 @@ POST /showRecruitment
 | &ensp;&ensp;requirement  | `String[]` | 技能要求                                            |
 | &ensp;&ensp;description  | `String[]` | 工作的其他描述                                      |
 | &ensp;image              | `String`   | 公司頭像(Ex. <code>&lt;img src={image}/&gt;</code>) |
+| maxPage                  | `Number`   | 總頁數                                              |
 
 ### Error response
 
@@ -1528,7 +1529,7 @@ GET /recommendation
 
 | Name                         | Type       | Description                                     |
 | ---------------------------- | ---------- | ----------------------------------------------- |
-| -                            | `Object[]` | 簡歷們                                          |
+| data                         | `Object[]` | 簡歷們                                          |
 | &ensp;\_id                   | `String`   | mongodb \_id(for update,delete)                 |
 | &ensp;title                  | `Object`   | 標題相關                                        |
 | &ensp;&ensp;title            | `String`   | 標題                                            |
@@ -1542,6 +1543,7 @@ GET /recommendation
 | &ensp;&ensp;experience       | `String[]` | 經驗                                            |
 | &ensp;&ensp;speciality       | `String[]` | 專長                                            |
 | &ensp;image                  | `String`   | 頭像(Ex. <code>&lt;img src={image}/&gt;</code>) |
+| maxPage                      | `Number`   | 總頁數                                          |
 
 ### Error response
 
@@ -1874,9 +1876,13 @@ POST /isLogin
 
 #### Success response - `201`
 
-| Name    | Type     | Description |
-| ------- | -------- | ----------- |
-| account | `String` | 登入者學號  |
+| Name          | Type     | Description    |
+| ------------- | -------- | -------------- |
+| account       | `String` | 登入者學號     |
+| userimage     | `String` | 登入者頭貼     |
+| userCellphone | `String` | 登入者手機號碼 |
+| userName      | `String` | 登入者名字     |
+| userEmail     | `String` | 登入者信箱     |
 
 ### Error response
 

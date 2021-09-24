@@ -7,12 +7,15 @@ import Masonry from 'react-masonry-css'
 import { Spinner } from './index'
 import { CButton, CFormControl, CInputGroup } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import Pagination from '@material-ui/lab/Pagination'
 const Recruitment = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState({ data: [], maxPage: 0 })
   const dispatch = useDispatch()
   const { keywords } = useSelector(selectCareer)
   const [isPending, setIsPending] = useState()
   const [isSearch, setIsSearch] = useState(false)
+  const [page, setPage] = useState(1)
+  const postsPerPage = 9
   const breakpointColumnsObj = {
     default: 3,
     1100: 2,
@@ -38,7 +41,7 @@ const Recruitment = () => {
     setIsSearch(false)
     dispatch(clearKeywords())
     axios
-      .post('/api/showRecruitment')
+      .post('/api/showRecruitment', { page, perpage: postsPerPage })
       .then((res) => {
         console.log('this is posts:', res.data)
         if (res.data.length !== 0) {
@@ -52,7 +55,7 @@ const Recruitment = () => {
   }
   useEffect(() => {
     getData()
-  }, [])
+  }, [page])
 
   return (
     <>
@@ -97,28 +100,37 @@ const Recruitment = () => {
           </CInputGroup>
         </form>
       </div>
+      <Pagination
+        className="my-4 d-flex justify-content-center"
+        count={data.maxPage}
+        defaultPage={page}
+        page={page}
+        color="secondary"
+        onChange={(e, val) => {
+          window.scrollTo(0, 0)
+          setPage(val)
+        }}
+      />
       {isPending ? (
         <Spinner />
-      ) : isSearch && data.length === 0 ? (
+      ) : isSearch && data.data.length === 0 ? (
         <div className="display-2 d-flex justify-content-center mt-3">Result not found</div>
       ) : (
-        data.length !== 0 && (
-          <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-            columnAttrs={{
-              className: 'should be overridden',
-              'data-test': '',
-              style: { '--test': 'test', color: 'black' },
-            }}
-            style={{ display: 'flex' }}
-          >
-            {data.map((post) => (
-              <CareerBlock post={post} key={post._id} />
-            ))}
-          </Masonry>
-        )
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+          columnAttrs={{
+            className: 'should be overridden',
+            'data-test': '',
+            style: { '--test': 'test', color: 'black' },
+          }}
+          style={{ display: 'flex' }}
+        >
+          {data.data.map((post) => (
+            <CareerBlock post={post} key={post._id} />
+          ))}
+        </Masonry>
       )}
     </>
   )

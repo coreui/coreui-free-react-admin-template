@@ -6,14 +6,17 @@ import CareerBlock from '../career/CareerBlock'
 import Masonry from 'react-masonry-css'
 import { Spinner } from './index'
 import { CButton, CFormControl, CInputGroup } from '@coreui/react'
+import Pagination from '@material-ui/lab/Pagination'
 import CIcon from '@coreui/icons-react'
 
 const Recommendation = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState({ data: [], maxPage: 1 })
   const dispatch = useDispatch()
   const { keywords } = useSelector(selectCareer)
   const [isPending, setIsPending] = useState()
   const [isSearch, setIsSearch] = useState(false)
+  const [page, setPage] = useState(1)
+  const postsPerPage = 9
   const breakpointColumnsObj = {
     default: 3,
     1100: 2,
@@ -39,13 +42,10 @@ const Recommendation = () => {
     setIsSearch(false)
     dispatch(clearKeywords())
     axios
-      .get('/api/recommendation')
+      .get('/api/recommendation', { params: { page, perpage: postsPerPage } })
       .then((res) => {
-        console.log('this is posts:', res.data)
-        if (res.data.length !== 0) {
-          setData(res.data)
-          setIsPending(false)
-        }
+        setData(res.data)
+        setIsPending(false)
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)
@@ -53,7 +53,7 @@ const Recommendation = () => {
   }
   useEffect(() => {
     getData()
-  }, [])
+  }, [page])
 
   return (
     <>
@@ -98,12 +98,23 @@ const Recommendation = () => {
           </CInputGroup>
         </form>
       </div>
+      <Pagination
+        className="my-4 d-flex justify-content-center"
+        count={data.maxPage}
+        defaultPage={page}
+        page={page}
+        color="secondary"
+        onChange={(e, val) => {
+          window.scrollTo(0, 0)
+          setPage(val)
+        }}
+      />
       {isPending ? (
         <Spinner />
-      ) : isSearch && data.length === 0 ? (
+      ) : isSearch && data.data.length === 0 ? (
         <div className="display-2 d-flex justify-content-center mt-3">Result not found</div>
       ) : (
-        data.length !== 0 && (
+        <>
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
@@ -115,11 +126,22 @@ const Recommendation = () => {
             }}
             style={{ display: 'flex' }}
           >
-            {data.map((post) => (
+            {data.data.map((post) => (
               <CareerBlock post={post} key={post._id} />
             ))}
           </Masonry>
-        )
+          <Pagination
+            className="my-4 d-flex justify-content-center"
+            count={data.maxPage}
+            defaultPage={page}
+            page={page}
+            color="secondary"
+            onChange={(e, val) => {
+              window.scrollTo(0, 0)
+              setPage(val)
+            }}
+          />
+        </>
       )}
     </>
   )

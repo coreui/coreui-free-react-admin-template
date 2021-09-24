@@ -31,5 +31,5 @@ const { findWithLimit } = require('../../../Schemas/query')
 module.exports = asyncHandler(async (req, res, next) => {
   const { page, perpage } = req.body
   const [recs, maxPage] = await findWithLimit(Recruitment, {}, page, perpage || 20)
-  res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
+  res.status(200).send({ data: recs.map((obj) => obj.getPublic()).reverse(), maxPage })
 })

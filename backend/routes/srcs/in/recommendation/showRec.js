@@ -67,7 +67,7 @@ const showRec = async (req, res, next) => {
   const sq = searchQuery(query)
   const { page, perpage } = req.query
   const [recs, maxPage] = await findWithLimit(Recommendation, sq, page, perpage || 20) //Recommendation.find(sq).catch(dbCatch)
-  res.status(200).send(recs.map((obj) => obj.getPublic()).reverse())
+  res.status(200).send({ data: recs.map((obj) => obj.getPublic()).reverse(), maxPage })
 }
 
 const valid = require('../../../middleware/validation')

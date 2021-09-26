@@ -140,7 +140,7 @@ const ColumnSummary = () => {
                 title="Contemplative Reptile"
               />
               <CardContent>
-                <Typography gutterBottom variant="h2" component="h2">
+                <Typography gutterBottom variant="h3" component="h3">
                   {art.title}
                 </Typography>
                 <Typography gutterBottom className={classes.exp}>

@@ -32,13 +32,6 @@ const _navOut = [
   {
     _component: 'CNavItem',
     as: NavHashLink,
-    anchor: 'SERVICES',
-    to: '/home/#services',
-    icon: <CIcon name="sidebar_icon" customClassName="nav-icon" />,
-  },
-  {
-    _component: 'CNavItem',
-    as: NavHashLink,
     anchor: 'INTERVIEWS',
     to: '/home/#interviews',
     icon: <CIcon name="sidebar_icon" customClassName="nav-icon" />,

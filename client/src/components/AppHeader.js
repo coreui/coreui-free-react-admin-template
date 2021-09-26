@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectGlobal, openSidebar, hideSidebar } from '../slices/globalSlice'
+import {
+  selectGlobal,
+  sidebarOpen,
+  sidebarHide,
+  squeezeSidebar,
+  stretchSidebar,
+} from '../slices/globalSlice'
 import { selectLogin } from '../slices/loginSlice'
 import { selectSearch, setKeywords, setResultProfiles } from '../slices/searchSlice'
 import {
@@ -20,7 +26,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
-import { AppHeaderDropdown } from './header/index'
+import { AppHeaderDropdown } from './header'
 
 import logo_row from '../assets/images/logo_row.png'
 import axios from 'axios'
@@ -28,7 +34,7 @@ import axios from 'axios'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { sidebarShow } = useSelector(selectGlobal)
+  const { sidebarShow, unfoldable } = useSelector(selectGlobal)
   const { isLogin } = useSelector(selectLogin)
   const { keywords } = useSelector(selectSearch)
 
@@ -54,9 +60,16 @@ const AppHeader = () => {
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
         <CHeaderToggler
-          className="ms-md-3"
+          className="ms-md-3 d-md-none"
+          onClick={() => (sidebarShow ? dispatch(sidebarHide()) : dispatch(sidebarOpen()))}
+        >
+          <CIcon name="cil-menu" size="lg" />
+        </CHeaderToggler>
+        <CHeaderToggler
+          className="ms-md-3 d-none d-md-block"
           onClick={() => {
-            sidebarShow ? dispatch(hideSidebar()) : dispatch(openSidebar())
+            sidebarShow ? dispatch(sidebarHide()) : dispatch(sidebarOpen())
+            unfoldable ? dispatch(squeezeSidebar()) : dispatch(stretchSidebar())
           }}
         >
           <CIcon name="cil-menu" size="lg" />
@@ -87,11 +100,11 @@ const AppHeader = () => {
           )}
         </CHeaderNav>
         {isLogin ? (
-          <CHeaderNav className="ms-3">
+          <CHeaderNav className="ms-3 d-none d-md-block">
             <AppHeaderDropdown />
           </CHeaderNav>
         ) : (
-          <CHeaderNav>
+          <CHeaderNav className="d-none d-md-block">
             <CNavLink to="/login" component={NavLink}>
               <CButton>Login</CButton>
             </CNavLink>

@@ -3,21 +3,25 @@ import { createSlice } from '@reduxjs/toolkit'
 export const globalSlice = createSlice({
   name: 'global',
   initialState: {
-    sidebarShow: true,
+    sidebarShow: false,
     unfoldable: false,
   },
   reducers: {
-    hideSidebar: (state) => {
+    sidebarHide: (state) => {
       state.sidebarShow = false
+    },
+    sidebarOpen: (state) => {
+      state.sidebarShow = true
+    },
+    stretchSidebar: (state) => {
       state.unfoldable = true
     },
-    openSidebar: (state) => {
-      state.sidebarShow = true
+    squeezeSidebar: (state) => {
       state.unfoldable = false
     },
   },
 })
 
-export const { hideSidebar, openSidebar } = globalSlice.actions
+export const { sidebarHide, sidebarOpen, squeezeSidebar, stretchSidebar } = globalSlice.actions
 export const selectGlobal = (state) => state.global
 export default globalSlice.reducer

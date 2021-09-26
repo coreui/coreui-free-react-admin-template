@@ -25,11 +25,9 @@ const Profile = () => {
     axios
       .post('api/searchProfile', { account: id })
       .then((res) => {
-        console.log(res)
         setData(res.data[0])
       })
       .catch((err) => {
-        // console.log(err)
         switch (err.response.status) {
           case 404:
             alert(err.response.data.description)
@@ -44,7 +42,6 @@ const Profile = () => {
 
   useEffect(() => {
     getProfile()
-    console.log(data)
   }, [])
 
   return data ? (

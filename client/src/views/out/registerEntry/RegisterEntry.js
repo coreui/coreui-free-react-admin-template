@@ -24,7 +24,6 @@ const RegisterEntry = () => {
     // check if login success
     // if no redirect to registerFB, then redirect to login
     // if success redirect to inside
-    // console.log(res.userID) // for test
     setUserId(res.userID)
     axios
       .post('/api/loginFB', { facebookID: res.userID })

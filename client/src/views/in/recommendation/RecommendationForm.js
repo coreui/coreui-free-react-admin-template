@@ -158,7 +158,6 @@ const RecommendationForm = ({ data }) => {
     }
     const config = { 'content-type': 'multipart/form-data' }
     if (add) {
-      console.log('in add recommendation', data)
       axios
         .post('/api/recommendation', data, config)
         .then(() => {

@@ -22,7 +22,6 @@ const CareerBlock = ({ post, setData, index }) => {
           setData((data) => {
             let newData = [...data]
             newData.splice(index, 1)
-            console.log('this is newData', newData)
             return newData
           })
           alert('delete ' + res.data.data)
@@ -37,7 +36,6 @@ const CareerBlock = ({ post, setData, index }) => {
           setData((data) => {
             let newData = [...data]
             newData.splice(index, 1)
-            console.log('this is newData', newData)
             return newData
           })
           alert('delete ' + res.data.title)

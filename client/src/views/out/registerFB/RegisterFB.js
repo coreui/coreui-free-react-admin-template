@@ -83,7 +83,7 @@ const RegisterFB = () => {
   const clearImage = (e) => {
     setIsModal(false)
     setPreviewURL(null)
-    setRegisterForm({ ...registerFBForm, file: null })
+    setRegisterFBForm({ ...registerFBForm, file: null })
     fileButton.value = ''
   }
 
@@ -106,12 +106,10 @@ const RegisterFB = () => {
     axios
       .post('api/registerFB', data, config)
       .then((res) => {
-        // console.log(res)
         alert('註冊成功,跳轉至登入頁面')
         setToLogin(true)
       })
       .catch((err) => {
-        // console.log(err.response)
         switch (err.response.status) {
           default:
             alert(err.response.data.description)

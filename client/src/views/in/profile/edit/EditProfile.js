@@ -28,7 +28,6 @@ const ProfileEdit = () => {
     axios
       .get('api/profile')
       .then((res) => {
-        // console.log(data)
         setData({ ...data, ...res.data })
       })
       .catch((err) => {
@@ -44,7 +43,6 @@ const ProfileEdit = () => {
       })
   }
   const handleSave = () => {
-    console.log(data)
     axios
       .patch('api/profile', data)
       .then((res) => {

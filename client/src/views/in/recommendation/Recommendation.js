@@ -30,7 +30,6 @@ const Recommendation = () => {
       .post('/api/smartsearchrecommendation', { keyword: keywords })
       .then((res) => {
         setData(res.data)
-        console.log('data:', res.data)
         setIsPending(false)
       })
       .catch((err) => {

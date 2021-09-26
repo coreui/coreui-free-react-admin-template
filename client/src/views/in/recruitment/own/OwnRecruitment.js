@@ -17,7 +17,6 @@ const OwnRecruitment = () => {
     axios
       .get('/api/recruitment')
       .then((res) => {
-        console.log('this is posts:', res.data)
         setData(res.data)
         setIsPending(false)
       })

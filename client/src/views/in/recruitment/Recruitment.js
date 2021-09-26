@@ -29,7 +29,6 @@ const Recruitment = () => {
       .post('/api/smartsearchRecruitment', { keyword: keywords })
       .then((res) => {
         setData(res.data)
-        console.log('data:', res.data)
         setIsPending(false)
       })
       .catch((err) => {
@@ -43,7 +42,6 @@ const Recruitment = () => {
     axios
       .post('/api/showRecruitment', { page, perpage: postsPerPage })
       .then((res) => {
-        console.log('this is posts:', res.data)
         if (res.data.length !== 0) {
           setData(res.data)
           setIsPending(false)

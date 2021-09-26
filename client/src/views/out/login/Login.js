@@ -65,11 +65,9 @@ const Login = () => {
     }
     // call backend
     // send res.userID
-    console.log(res.userID)
     axios
       .post('/api/loginFB', { facebookID: res.userID })
       .then((res) => {
-        console.log(res)
         const { username } = res.data
         alert(`歡迎回來! ${username}`)
         dispatch(login())

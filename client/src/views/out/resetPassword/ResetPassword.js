@@ -50,12 +50,10 @@ const ResetPassword = () => {
         axios
           .post('api/activation', resetPasswordForm)
           .then((res) => {
-            console.log(res)
             alert('修改密碼成功,跳轉至登入頁面')
             setToLogin(true)
           })
           .catch((err) => {
-            console.log(err.response)
             switch (err.response.status) {
               default:
                 alert(err.response.data.description)

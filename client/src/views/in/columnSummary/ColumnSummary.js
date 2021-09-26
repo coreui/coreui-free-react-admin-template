@@ -87,7 +87,6 @@ const ColumnSummary = () => {
       })
       .then((res) => {
         setData(res.data)
-        console.log('this is data:', res.data)
         setIsPending(false)
       })
       .catch((err) => {
@@ -95,7 +94,6 @@ const ColumnSummary = () => {
       })
   }
   const searchData = (e = null) => {
-    console.log('pass in searchwords', keywords)
     if (e) {
       e.preventDefault()
     }
@@ -112,7 +110,6 @@ const ColumnSummary = () => {
       })
   }
   useEffect(() => {
-    console.log('use effect')
     if (!isSearch) {
       getData()
     } else {

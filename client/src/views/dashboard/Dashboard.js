@@ -30,7 +30,6 @@ const Dashboard = () => {
     axios
       .get('api/column/recent')
       .then((res) => {
-        console.log(res)
         setRecentColumns(res.data.data)
       })
       .catch((err) => console.log(err))
@@ -40,7 +39,6 @@ const Dashboard = () => {
     axios
       .get('api/recruitment/recent', { params: { number: perRecruitment } })
       .then((res) => {
-        console.log(res)
         setRecentRecruitments(res.data.data)
       })
       .catch((err) => console.log(err))
@@ -50,7 +48,6 @@ const Dashboard = () => {
     axios
       .get('api/recommendation/recent', { params: { number: perRecommendation } })
       .then((res) => {
-        console.log(res)
         setRecentRecommendations(res.data.data)
       })
       .catch((err) => console.log(err))

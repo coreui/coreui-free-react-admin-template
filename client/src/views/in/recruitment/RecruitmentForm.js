@@ -160,7 +160,6 @@ const CareerForm = ({ data }) => {
       headers: { 'content-type': 'multipart/form-data' },
     }
     if (add) {
-      console.log('in add recruitment', data)
       axios
         .post('/api/addRecruitment', data, config)
         .then(() => {
@@ -172,7 +171,6 @@ const CareerForm = ({ data }) => {
         })
     } else if (!add) {
       data.append('_id', dataForm._id)
-      console.log('in edit recruitment', data)
       axios
         .patch('/api/recruitment', data, config)
         .then(() => {

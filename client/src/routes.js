@@ -45,6 +45,7 @@ const routes_out = [
     component: ResetPassword,
   },
   { path: '/policy', exact: true, name: 'Policy', component: Policy },
+  { path: '/interview/:id', exact: false, name: 'Interviews', component: Column },
 ]
 
 const routes_in = [

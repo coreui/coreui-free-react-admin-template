@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 import { CContainer } from '@coreui/react'
+import { Link } from 'react-router-dom'
 import columnOutline1999 from '../../../../assets/images/1999_column_outline.jpg'
 import columnOutline2008 from '../../../../assets/images/2008_column_outline.jpg'
 import columnOutline2012 from '../../../../assets/images/2012_column_outline.jpg'
@@ -18,7 +19,11 @@ const Interviews = () => {
             <div className="portfolio-item">
               <div className="hover-bg">
                 {' '}
-                <a href="/#/login" title="Project Title" data-lightbox-gallery="gallery1">
+                <Link
+                  to="/interview/interview_1"
+                  title="Project Title"
+                  data-lightbox-gallery="gallery1"
+                >
                   <div className="hover-text">
                     <h3>2012級 李昀樵 </h3>
                     <h4>17直播 技術副總</h4>
@@ -31,7 +36,7 @@ const Interviews = () => {
                     className="img-fluid p-2 rounded"
                     alt="Project Title"
                   />{' '}
-                </a>{' '}
+                </Link>{' '}
               </div>
             </div>
           </div>
@@ -39,7 +44,11 @@ const Interviews = () => {
             <div className="portfolio-item">
               <div className="hover-bg">
                 {' '}
-                <a href="/#/login" title="Project Title" data-lightbox-gallery="gallery1">
+                <Link
+                  to="/interview/interview_2"
+                  title="Project Title"
+                  data-lightbox-gallery="gallery1"
+                >
                   <div className="hover-text">
                     <h3>1999級 簡韶逸</h3>
                     <h4> (CEO/ Founder @ Ganzin Technology, Prof. @ NTUEE)</h4>
@@ -49,7 +58,7 @@ const Interviews = () => {
                     </p>
                   </div>
                   <img src={columnOutline1999} className="img-fluid rounded" alt="Project Title" />{' '}
-                </a>{' '}
+                </Link>{' '}
               </div>
             </div>
           </div>
@@ -57,7 +66,11 @@ const Interviews = () => {
             <div className="portfolio-item">
               <div className="hover-bg">
                 {' '}
-                <a href="/#/login" title="Project Title" data-lightbox-gallery="gallery1">
+                <Link
+                  to="/interview/interview_3"
+                  title="Project Title"
+                  data-lightbox-gallery="gallery1"
+                >
                   <div className="hover-text">
                     <h3>2008級 鄭恆之</h3>
                     <h4> (Technical Lead Manager @ Google Brain)</h4>
@@ -71,7 +84,7 @@ const Interviews = () => {
                     className="img-fluid p-2 rounded"
                     alt="Project Title"
                   />{' '}
-                </a>{' '}
+                </Link>{' '}
               </div>
             </div>
           </div>

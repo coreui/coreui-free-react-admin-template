@@ -14,14 +14,14 @@ if (process.env.NODE_ENV === 'development') {
 router.use(require('./srcs/out/account/main'))
 //forget, activation
 router.use(require('./srcs/out/forget/main'))
-//dashboard
-router.use(require('./srcs/out/dashboard/main'))
 
 //in
 //check is user
 router.use(require('./srcs/in/auth/isUser'))
 //showVisual, chVisual, searchVisual
 // router.use(require('./srcs/in/profile/main'))
+//dashboard
+router.use(require('./srcs/in/dashboard/main'))
 //profile, searchProfile
 router.use(require('./srcs/in/profile_new/main'))
 //showPerson, chLogin, isLogin, logout

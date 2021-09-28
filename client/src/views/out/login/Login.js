@@ -97,7 +97,14 @@ const Login = () => {
               <CCardGroup>
                 <CCard className="p-4">
                   <CCardBody>
-                    <CForm>
+                    <CForm
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault()
+                          handleSubmit(e)
+                        }
+                      }}
+                    >
                       <h1>Login</h1>
                       <p className="text-medium-emphasis">Sign In to your account</p>
                       <CInputGroup className="mb-3">

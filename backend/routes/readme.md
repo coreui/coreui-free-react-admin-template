@@ -2082,13 +2082,14 @@ config
 
 ### Parameters - `Parameter`
 
-| Name       | Type     | Description                                                   |
-| ---------- | -------- | ------------------------------------------------------------- |
-| facebookID | `String` | facebookID                                                    |
-| account    | `String` | 學號                                                          |
-| username   | `String` | 使用者名字                                                    |
-| file       | `File`   | 身分證明的照片(如果 newRule=true 管理員認證好像可以不用照片?) |
-| Email      | `String` | Email(newRule=true 才需要)                                    |
+| Name       | Type     | Description              |
+| ---------- | -------- | ------------------------ |
+| facebookID | `String` | facebookID               |
+| account    | `String` | 學號                     |
+| username   | `String` | 使用者名字               |
+| file       | `File`   | 身分證明的照片(optional) |
+| avatar     | `File`   | 大頭貼(optional)         |
+| Email      | `String` | Email                    |
 
 ### Success response
 

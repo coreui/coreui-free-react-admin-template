@@ -5,6 +5,7 @@ const Login = require('../../../Schemas/user_login')
 const Visual = require('../../../Schemas/user_visual_new')
 const asyncHandler = require('express-async-handler')
 const crypto = require('crypto')
+const { parseImg } = require('../../../Schemas/query')
 
 async function insertFB(name, account, facebookID, file, user) {
   await new Login({
@@ -20,17 +21,9 @@ async function insertFB(name, account, facebookID, file, user) {
     .save()
     .catch(async (e) => {
       console.log(e)
-      await Visual.findByIdAndRemove(user._id)
+      await Visual.findByIdAndDelete(user._id)
       throw new ErrorHandler(500, '註冊失敗')
     })
-}
-async function insertVisual(name, account) {
-  return await new Visual({
-    username: name,
-    account: account,
-  })
-    .save()
-    .catch(dbCatch)
 }
 
 /**
@@ -45,8 +38,9 @@ async function insertVisual(name, account) {
  * @apiparam {String} facebookID facebookID
  * @apiparam {String} account 學號
  * @apiparam {String} username 使用者名字
- * @apiparam {File} file 身分證明的照片(如果newRule=true管理員認證好像可以不用照片?)
- * @apiparam {String} Email Email(newRule=true才需要)
+ * @apiparam {File} file 身分證明的照片(optional)
+ * @apiparam {File} avatar 大頭貼(optional)
+ * @apiparam {String} Email Email
  * 
  * @apiSuccess (201) {String} username 使用者名字
  * 
@@ -55,17 +49,28 @@ async function insertVisual(name, account) {
  * @apiError (500) {String} description 資料庫錯誤
  */
 const registerFB = async (req, res) => {
-  const { username, facebookID } = req.body
   const account = req.body.account.toLowerCase()
+  const isRegistered = await Login.exists({ account }).catch(dbCatch)
+  if (isRegistered) throw new ErrorHandler(403, '帳號已存在')
+
+  const { username, facebookID, Email } = req.body
   const fbIdEnc = crypto.createHash('md5').update(facebookID).digest('hex')
 
-  if (req.file === undefined) throw new ErrorHandler(400, '請添加照片')
+  const avatar = parseImg(req.files['avatar'] ? req.files['avatar'][0] : undefined)
+  console.log(req.files, req.files['avatar'], avatar)
 
-  const query = { account }
-  const isRegistered = await Login.exists(query).catch(dbCatch)
-  if (isRegistered) throw new ErrorHandler(403, '帳號已存在')
-  const user = await insertVisual(username, account)
-  await insertFB(username, account, fbIdEnc, req.file, user)
+  const idFile = parseImg(req.files['file'] ? req.files['file'][0] : undefined)
+
+  const user = await new Visual({
+    username,
+    account,
+    userimage: avatar,
+    publicEmail: Email,
+  })
+    .save()
+    .catch(dbCatch)
+  await insertFB(username, account, fbIdEnc, idFile, user)
+
   req.session.loginName = username
   req.session.loginAccount = account
   return res.status(201).send({ username })
@@ -86,10 +91,7 @@ const secure_regFB = async (req, res) => {
     account,
     facebookID,
     email,
-    img: {
-      data: req.file.buffer,
-      contentType: req.file.mimetype,
-    },
+    img: parseImg(req.file),
   }
   await Pending.findOneAndUpdate({ account }, data, { upsert: true }).catch(dbCatch)
 

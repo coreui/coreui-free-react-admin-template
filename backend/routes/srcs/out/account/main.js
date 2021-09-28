@@ -8,7 +8,14 @@ router.post('/loginFB', require('./loginFB'))
 
 router.post('/register', parseFile('file'), require('./register'))
 
-router.post('/registerFB', parseFile('file'), require('./registerFB'))
+router.post(
+  '/registerFB',
+  parseFile([
+    { name: 'avatar', maxCount: 1 },
+    { name: 'file', maxCount: 1 },
+  ]),
+  require('./registerFB'),
+)
 
 router.post('/logout', require('./logout'))
 

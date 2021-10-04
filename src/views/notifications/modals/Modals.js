@@ -22,7 +22,7 @@ const LiveDemo = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal visible={visible} onDismiss={() => setVisible(false)}>
+      <CModal visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Modal title</CModalTitle>
         </CModalHeader>
@@ -43,7 +43,7 @@ const StaticBackdrop = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch static backdrop modal</CButton>
-      <CModal backdrop="static" visible={visible} onDismiss={() => setVisible(false)}>
+      <CModal backdrop="static" visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Modal title</CModalTitle>
         </CModalHeader>
@@ -66,7 +66,7 @@ const ScrollingLongContent = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal visible={visible} onDismiss={() => setVisible(false)}>
+      <CModal visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Modal title</CModalTitle>
         </CModalHeader>
@@ -166,7 +166,7 @@ const ScrollingLongContent2 = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal scrollable visible={visible} onDismiss={() => setVisible(false)}>
+      <CModal scrollable visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Modal title</CModalTitle>
         </CModalHeader>
@@ -266,7 +266,7 @@ const VerticallyCentered = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Vertically centered modal</CButton>
-      <CModal alignment="center" visible={visible} onDismiss={() => setVisible(false)}>
+      <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Modal title</CModalTitle>
         </CModalHeader>
@@ -290,7 +290,7 @@ const VerticallyCentered2 = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Vertically centered scrollable modal</CButton>
-      <CModal alignment="center" scrollable visible={visible} onDismiss={() => setVisible(false)}>
+      <CModal alignment="center" scrollable visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Modal title</CModalTitle>
         </CModalHeader>
@@ -333,7 +333,7 @@ const TooltipsPopovers = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal alignment="center" visible={visible} onDismiss={() => setVisible(false)}>
+      <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Modal title</CModalTitle>
         </CModalHeader>
@@ -379,19 +379,19 @@ const OptionalSizes = () => {
       <CButton onClick={() => setVisibleXL(!visibleXL)}>Extra large modal</CButton>
       <CButton onClick={() => setVisibleLg(!visibleLg)}>Large modal</CButton>
       <CButton onClick={() => setVisibleSm(!visibleSm)}>Small large modal</CButton>
-      <CModal size="xl" visible={visibleXL} onDismiss={() => setVisibleXL(false)}>
+      <CModal size="xl" visible={visibleXL} onClose={() => setVisibleXL(false)}>
         <CModalHeader>
           <CModalTitle>Extra large modal</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal size="lg" visible={visibleLg} onDismiss={() => setVisibleLg(false)}>
+      <CModal size="lg" visible={visibleLg} onClose={() => setVisibleLg(false)}>
         <CModalHeader>
           <CModalTitle>Large modal</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal size="sm" visible={visibleSm} onDismiss={() => setVisibleSm(false)}>
+      <CModal size="sm" visible={visibleSm} onClose={() => setVisibleSm(false)}>
         <CModalHeader>
           <CModalTitle>Small modal</CModalTitle>
         </CModalHeader>
@@ -417,37 +417,37 @@ const FullscreenModal = () => {
       <CButton onClick={() => setVisibleLg(!visibleLg)}>Full screen below lg</CButton>
       <CButton onClick={() => setVisibleXL(!visibleXL)}>Full screen below xl</CButton>
       <CButton onClick={() => setVisibleXXL(!visibleXXL)}>Full screen below xxl</CButton>
-      <CModal fullscreen visible={visible} onDismiss={() => setVisible(false)}>
+      <CModal fullscreen visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Full screen</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="sm" visible={visibleSm} onDismiss={() => setVisibleSm(false)}>
+      <CModal fullscreen="sm" visible={visibleSm} onClose={() => setVisibleSm(false)}>
         <CModalHeader>
           <CModalTitle>Full screen below sm</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="md" visible={visibleMd} onDismiss={() => setVisibleMd(false)}>
+      <CModal fullscreen="md" visible={visibleMd} onClose={() => setVisibleMd(false)}>
         <CModalHeader>
           <CModalTitle>Full screen below md</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="lg" visible={visibleLg} onDismiss={() => setVisibleLg(false)}>
+      <CModal fullscreen="lg" visible={visibleLg} onClose={() => setVisibleLg(false)}>
         <CModalHeader>
           <CModalTitle>Full screen below lg</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="xl" visible={visibleXL} onDismiss={() => setVisibleXL(false)}>
+      <CModal fullscreen="xl" visible={visibleXL} onClose={() => setVisibleXL(false)}>
         <CModalHeader>
           <CModalTitle>Full screen below xl</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="xxl" visible={visibleXXL} onDismiss={() => setVisibleXXL(false)}>
+      <CModal fullscreen="xxl" visible={visibleXXL} onClose={() => setVisibleXXL(false)}>
         <CModalHeader>
           <CModalTitle>Full screen below xxl</CModalTitle>
         </CModalHeader>

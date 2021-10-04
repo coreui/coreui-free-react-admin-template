@@ -19,7 +19,7 @@ const ExampleToast = () => {
   const toaster = useRef()
   const exampleToast = (
     <CToast title="CoreUI for React.js">
-      <CToastHeader close>
+      <CToastHeader closeButton>
         <svg
           className="rounded me-2"
           width="20"
@@ -63,8 +63,8 @@ const Toasts = () => {
               dismiss button.
             </p>
             <DocsExample href="components/toast">
-              <CToast title="CoreUI for React.js" autohide={false}>
-                <CToastHeader close>
+              <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+                <CToastHeader closeButton>
                   <svg
                     className="rounded me-2"
                     width="20"
@@ -97,8 +97,8 @@ const Toasts = () => {
             </p>
             <DocsExample href="components/toast#translucent">
               <div className="bg-dark p-3">
-                <CToast title="CoreUI for React.js" autohide={false}>
-                  <CToastHeader close>
+                <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+                  <CToastHeader closeButton>
                     <svg
                       className="rounded me-2"
                       width="20"
@@ -132,8 +132,8 @@ const Toasts = () => {
             </p>
             <DocsExample href="components/toast#stacking">
               <CToaster>
-                <CToast title="CoreUI for React.js" autohide={false}>
-                  <CToastHeader close>
+                <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+                  <CToastHeader closeButton>
                     <svg
                       className="rounded me-2"
                       width="20"
@@ -150,8 +150,8 @@ const Toasts = () => {
                   </CToastHeader>
                   <CToastBody>Hello, world! This is a toast message.</CToastBody>
                 </CToast>
-                <CToast title="CoreUI for React.js" autohide={false}>
-                  <CToastHeader close>
+                <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+                  <CToastHeader closeButton>
                     <svg
                       className="rounded me-2"
                       width="20"
@@ -189,7 +189,7 @@ const Toasts = () => {
               the layout.
             </p>
             <DocsExample href="components/toast#custom-content">
-              <CToast autohide={false} className="align-items-center">
+              <CToast autohide={false} className="align-items-center" visible={true}>
                 <div className="d-flex">
                   <CToastBody>Hello, world! This is a toast message.</CToastBody>
                   <CToastClose className="me-2 m-auto" />
@@ -200,7 +200,7 @@ const Toasts = () => {
               Alternatively, you can also add additional controls and components to toasts.
             </p>
             <DocsExample href="components/toast#custom-content">
-              <CToast autohide={false}>
+              <CToast autohide={false} visible={true}>
                 <CToastBody>
                   Hello, world! This is a toast message.
                   <div className="mt-2 pt-2 border-top">
@@ -233,7 +233,12 @@ const Toasts = () => {
               default border with <code>.border-0</code>.
             </p>
             <DocsExample href="components/toast#color-schemes">
-              <CToast autohide={false} color="primary" className="text-white align-items-center">
+              <CToast
+                autohide={false}
+                color="primary"
+                className="text-white align-items-center"
+                visible={true}
+              >
                 <div className="d-flex">
                   <CToastBody>Hello, world! This is a toast message.</CToastBody>
                   <CToastClose className="me-2 m-auto" white />

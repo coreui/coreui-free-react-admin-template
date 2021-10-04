@@ -21,6 +21,8 @@ import {
 } from '@coreui/react'
 import { DocsCallout, DocsExample } from 'src/components'
 
+import ReactImg from 'src/assets/images/react.jpg'
+
 const Cards = () => {
   return (
     <CRow>
@@ -48,24 +50,7 @@ const Cards = () => {
             </p>
             <DocsExample href="components/card">
               <CCard style={{ width: '18rem' }}>
-                <CCardImage
-                  component="svg"
-                  orientation="top"
-                  className="docs-placeholder-img"
-                  width="100%"
-                  height="180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Image cap"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#868e96"></rect>
-                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                    Image cap
-                  </text>
-                </CCardImage>
+                <CCardImage orientation="top" src={ReactImg} />
                 <CCardBody>
                   <CCardTitle>Card title</CCardTitle>
                   <CCardText>
@@ -144,24 +129,7 @@ const Cards = () => {
             </p>
             <DocsExample href="components/card/#images">
               <CCard style={{ width: '18rem' }}>
-                <CCardImage
-                  component="svg"
-                  orientation="top"
-                  className="docs-placeholder-img"
-                  width="100%"
-                  height="180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Image cap"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#868e96"></rect>
-                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                    Image cap
-                  </text>
-                </CCardImage>
+                <CCardImage orientation="top" src={ReactImg} />
                 <CCardBody>
                   <CCardText>
                     Some quick example text to build on the card title and make up the bulk of the
@@ -231,24 +199,7 @@ const Cards = () => {
             </p>
             <DocsExample href="components/card/#kitchen-sink">
               <CCard style={{ width: '18rem' }}>
-                <CCardImage
-                  component="svg"
-                  orientation="top"
-                  className="docs-placeholder-img"
-                  width="100%"
-                  height="180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Image cap"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#868e96"></rect>
-                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                    Image cap
-                  </text>
-                </CCardImage>
+                <CCardImage orientation="top" src={ReactImg} />
                 <CCardBody>
                   <CCardTitle>Card title</CCardTitle>
                   <CCardText>
@@ -550,24 +501,7 @@ const Cards = () => {
               <CRow>
                 <CCol lg={6}>
                   <CCard className="mb-3">
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>
@@ -592,24 +526,7 @@ const Cards = () => {
                         <small className="text-medium-emphasis">Last updated 3 mins ago</small>
                       </CCardText>
                     </CCardBody>
-                    <CCardImage
-                      component="svg"
-                      orientation="bottom"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="bottom" src={ReactImg} />
                   </CCard>
                 </CCol>
               </CRow>
@@ -745,24 +662,7 @@ const Cards = () => {
             <DocsExample href="components/card/#card-groups">
               <CCardGroup>
                 <CCard>
-                  <CCardImage
-                    component="svg"
-                    orientation="top"
-                    className="docs-placeholder-img"
-                    width="100%"
-                    height="180"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Image cap"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                  >
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                      Image cap
-                    </text>
-                  </CCardImage>
+                  <CCardImage orientation="top" src={ReactImg} />
                   <CCardBody>
                     <CCardTitle>Card title</CCardTitle>
                     <CCardText>
@@ -775,24 +675,7 @@ const Cards = () => {
                   </CCardBody>
                 </CCard>
                 <CCard>
-                  <CCardImage
-                    component="svg"
-                    orientation="top"
-                    className="docs-placeholder-img"
-                    width="100%"
-                    height="180"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Image cap"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                  >
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                      Image cap
-                    </text>
-                  </CCardImage>
+                  <CCardImage orientation="top" src={ReactImg} />
                   <CCardBody>
                     <CCardTitle>Card title</CCardTitle>
                     <CCardText>
@@ -805,24 +688,7 @@ const Cards = () => {
                   </CCardBody>
                 </CCard>
                 <CCard>
-                  <CCardImage
-                    component="svg"
-                    orientation="top"
-                    className="docs-placeholder-img"
-                    width="100%"
-                    height="180"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Image cap"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                  >
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                      Image cap
-                    </text>
-                  </CCardImage>
+                  <CCardImage orientation="top" src={ReactImg} />
                   <CCardBody>
                     <CCardTitle>Card title</CCardTitle>
                     <CCardText>
@@ -843,24 +709,7 @@ const Cards = () => {
             <DocsExample href="components/card/#card-groups">
               <CCardGroup>
                 <CCard>
-                  <CCardImage
-                    component="svg"
-                    orientation="top"
-                    className="docs-placeholder-img"
-                    width="100%"
-                    height="180"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Image cap"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                  >
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                      Image cap
-                    </text>
-                  </CCardImage>
+                  <CCardImage orientation="top" src={ReactImg} />
                   <CCardBody>
                     <CCardTitle>Card title</CCardTitle>
                     <CCardText>
@@ -873,24 +722,7 @@ const Cards = () => {
                   </CCardFooter>
                 </CCard>
                 <CCard>
-                  <CCardImage
-                    component="svg"
-                    orientation="top"
-                    className="docs-placeholder-img"
-                    width="100%"
-                    height="180"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Image cap"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                  >
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                      Image cap
-                    </text>
-                  </CCardImage>
+                  <CCardImage orientation="top" src={ReactImg} />
                   <CCardBody>
                     <CCardTitle>Card title</CCardTitle>
                     <CCardText>
@@ -903,24 +735,7 @@ const Cards = () => {
                   </CCardFooter>
                 </CCard>
                 <CCard>
-                  <CCardImage
-                    component="svg"
-                    orientation="top"
-                    className="docs-placeholder-img"
-                    width="100%"
-                    height="180"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Image cap"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                  >
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                      Image cap
-                    </text>
-                  </CCardImage>
+                  <CCardImage orientation="top" src={ReactImg} />
                   <CCardBody>
                     <CCardTitle>Card title</CCardTitle>
                     <CCardText>
@@ -956,24 +771,7 @@ const Cards = () => {
               <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 2 }}>
                 <CCol xs>
                   <CCard>
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>
@@ -988,24 +786,7 @@ const Cards = () => {
                 </CCol>
                 <CCol xs>
                   <CCard>
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>
@@ -1020,24 +801,7 @@ const Cards = () => {
                 </CCol>
                 <CCol xs>
                   <CCard>
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>
@@ -1052,24 +816,7 @@ const Cards = () => {
                 </CCol>
                 <CCol xs>
                   <CCard>
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>
@@ -1092,24 +839,7 @@ const Cards = () => {
               <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 3 }}>
                 <CCol xs>
                   <CCard>
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>
@@ -1124,24 +854,7 @@ const Cards = () => {
                 </CCol>
                 <CCol xs>
                   <CCard>
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>
@@ -1156,24 +869,7 @@ const Cards = () => {
                 </CCol>
                 <CCol xs>
                   <CCard>
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>
@@ -1188,24 +884,7 @@ const Cards = () => {
                 </CCol>
                 <CCol xs>
                   <CCard>
-                    <CCardImage
-                      component="svg"
-                      orientation="top"
-                      className="docs-placeholder-img"
-                      width="100%"
-                      height="180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                    >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#868e96"></rect>
-                      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-                        Image cap
-                      </text>
-                    </CCardImage>
+                    <CCardImage orientation="top" src={ReactImg} />
                     <CCardBody>
                       <CCardTitle>Card title</CCardTitle>
                       <CCardText>

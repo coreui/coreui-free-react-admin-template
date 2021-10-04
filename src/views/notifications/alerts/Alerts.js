@@ -133,7 +133,7 @@ const Alerts = () => {
               <CAlert
                 color="warning"
                 dismissible
-                onDismissed={() => {
+                onClose={() => {
                   alert('👋 Well, hi there! Thanks for dismissing me.')
                 }}
               >

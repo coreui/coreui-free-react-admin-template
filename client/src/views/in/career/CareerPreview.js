@@ -68,7 +68,7 @@ const CareerPreview = ({ post, experience, requirement }) => {
           <h3>
             {post.name} asking for <nobr>{post.desireWorkType}</nobr>
           </h3>
-          <div style={{ 'font-size': '1.39rem' }}>
+          <div style={{ 'fontSize': '1.39rem' }}>
             <span style={{ color: 'red', fontWeight: '500' }}>{post.diploma}</span> |{' '}
             <nobr>{post.contact}</nobr> | <nobr>{post.email}</nobr>
           </div>

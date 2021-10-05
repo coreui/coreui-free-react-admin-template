@@ -10,7 +10,7 @@ const EditRecommendation = () => {
     axios
       .get('/api/recommendation', { params: { _id: id } })
       .then((res) => {
-        setData(res.data[0])
+        setData(res.data.data[0])
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)

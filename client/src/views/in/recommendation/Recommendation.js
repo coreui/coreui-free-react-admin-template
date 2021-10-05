@@ -68,11 +68,7 @@ const Recommendation = () => {
         }}
       >
         <div className="display-1">Recommendations</div>
-        <form
-          className="text-light py-2 my-2 w-75"
-          onSubmit={(e) => searchData(e)}
-          action={(e) => searchData(e)}
-        >
+        <form className="text-light py-2 my-2 w-75" onSubmit={(e) => searchData(e)}>
           <CInputGroup>
             <CButton
               onClick={() => {

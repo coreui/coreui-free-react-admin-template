@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
   exp: {
     fontSize: '1.875rem',
     fontWeight: '10',
-    margin: '1.2rem',
   },
   intro: {
     fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
@@ -116,22 +115,10 @@ const ColumnSummary = () => {
       searchData()
     }
   }, [page])
-  const contributions = (person) => {
-    return (
-      <Box className={classes.author} key={person}>
-        <Avatar src={default_male} />
-        <Box ml={2} display="flex" alignItems="center">
-          <Typography variant="subtitle2" component="p">
-            {person}
-          </Typography>
-        </Box>
-      </Box>
-    )
-  }
   const articles = (data) => {
-    return data.data.map((art) => {
+    return data.data.map((art, index) => {
       return (
-        <Grid className="my-4" item xs={12} md={12} key={art.key}>
+        <Grid className="my-4" item xs={12} md={12} key={index}>
           <Card className={classes.card}>
             <Link to={'/column_summary/' + art.id}>
               <CardMedia
@@ -143,11 +130,11 @@ const ColumnSummary = () => {
                 <Typography gutterBottom variant="h3" component="h3">
                   {art.title}
                 </Typography>
-                <Typography gutterBottom className={classes.exp}>
-                  {art.exp.map((e) => (
-                    <h3 key={e}>{e}</h3>
-                  ))}
-                </Typography>
+                {art.exp.map((e, i) => (
+                  <Typography gutterBottom className={classes.exp} key={i}>
+                    {e}
+                  </Typography>
+                ))}
                 <Typography
                   variant="body2"
                   color="textSecondary"
@@ -159,8 +146,17 @@ const ColumnSummary = () => {
               </CardContent>
             </Link>
             <CardActions className={classes.cardActions}>
-              {art.anno.map((person) => {
-                return contributions(person)
+              {art.anno.map((person, i) => {
+                return (
+                  <Box className={classes.author} key={i}>
+                    <Avatar src={default_male} />
+                    <Box ml={2} display="flex" alignItems="center">
+                      <Typography variant="subtitle2" component="p">
+                        {person}
+                      </Typography>
+                    </Box>
+                  </Box>
+                )
               })}
               <Box>
                 <Typography variant="subtitle2" color="textSecondary" component="p">

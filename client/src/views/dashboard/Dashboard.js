@@ -124,9 +124,7 @@ const Dashboard = () => {
                       <CCard className="m-2" style={{ borderRadius: '10px' }}>
                         <CCardImage src={recruitment.image === '' ? logo : recruitment.image} />
                         <CCardBody>
-                          <CCardTitle className="text-center">
-                            <h2>{recruitment.title.title}</h2>
-                          </CCardTitle>
+                          <CCardTitle className="text-center">{recruitment.title.title}</CCardTitle>
                         </CCardBody>
                       </CCard>
                     </Link>
@@ -154,7 +152,7 @@ const Dashboard = () => {
                         />
                         <CCardBody>
                           <CCardTitle className="text-center">
-                            <h2>{recommendation.title.title}</h2>
+                            {recommendation.title.title}
                           </CCardTitle>
                         </CCardBody>
                       </CCard>

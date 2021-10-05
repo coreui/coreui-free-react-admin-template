@@ -7,8 +7,13 @@ const User_pending_Schema = new Schema({
   facebookID: String,
   account: { type: String, required: true, lowercase: true, unique: true }, //學號
   userpsw: String, //密碼
-  email: { type: mongoose.SchemaTypes.Email },
+  email: { type: mongoose.SchemaTypes.Email, required: true },
+  active: String,
   img: {
+    data: Buffer,
+    contentType: String,
+  },
+  avatar: {
     data: Buffer,
     contentType: String,
   },

@@ -7,6 +7,9 @@ router.post('/login', require('./login'))
 router.post('/loginFB', require('./loginFB'))
 
 router.post('/register', parseFile('file'), require('./register'))
+router.post('/register_step2', parseFile('file'), require('./reg-step2'))
+
+router.get('/regact/:account/:active', require('./activate'))
 
 router.post(
   '/registerFB',

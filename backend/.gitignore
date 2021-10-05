@@ -56,3 +56,5 @@ routes/apidoc-out
 package-lock.json
 yarn.lock
 **/uploads/*.xlsx
+
+test.js

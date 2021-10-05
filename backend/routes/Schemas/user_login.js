@@ -3,9 +3,10 @@ const mongoose = require('mongoose'),
 const env = require('dotenv')
 env.config()
 
-const User_login_Schema =
-  process.env.newReg === 'true'
-    ? new Schema({
+const exportVersion = (v) => {
+  switch (v) {
+    case 'true':
+      return new Schema({
         username: { type: String, required: true }, //名字
         facebookID: String,
         account: { type: String, required: true, lowercase: true }, //學號
@@ -13,7 +14,17 @@ const User_login_Schema =
         isAuth: { type: Boolean, default: false },
         visual: { type: Schema.Types.ObjectId, ref: 'User_visual' },
       })
-    : new Schema({
+    case 'version3':
+      return new Schema({
+        username: { type: String, required: true }, //名字
+        facebookID: String,
+        account: { type: String, required: true, lowercase: true }, //學號
+        userpsw: String, //密碼
+        isAuth: { type: Boolean, default: false },
+        visual: { type: Schema.Types.ObjectId, ref: 'User_visual' },
+      })
+    default:
+      return new Schema({
         username: { type: String, required: true }, //名字
         facebookID: String,
         account: { type: String, required: true, lowercase: true }, //學號
@@ -25,6 +36,10 @@ const User_login_Schema =
           contentType: { type: String },
         },
       })
+  }
+}
+
+const User_login_Schema = exportVersion(process.env.newReg)
 
 const { buf2url } = require('./query')
 User_login_Schema.virtual('imgSrc').get(buf2url())

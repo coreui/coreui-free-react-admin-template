@@ -50,12 +50,14 @@ EE+ api 文件
   - [寄配對通知](#寄配對通知)
   - [新增本年表單連結](#新增本年表單連結)
 - [Out/account](#outaccount)
+  - [accountActivate](#accountactivate)
   - [isLogin](#islogin)
   - [login](#login)
   - [loginFB](#loginfb)
   - [logout](#logout)
   - [register](#register)
   - [registerFB](#registerfb)
+  - [registerStep2](#registerstep2)
 - [Out/contact](#outcontact)
   - [get in touch](#get-in-touch)
 - [Out/forget](#outforget)
@@ -653,7 +655,7 @@ POST /showRecruitment
 
 | Name                     | Type       | Description                                         |
 | ------------------------ | ---------- | --------------------------------------------------- |
-| data                     | `Object[]` | 職缺們                                              |
+| -                        | `Object[]` | 職缺們                                              |
 | &ensp;\_id               | `String`   | mongodb \_id(for delete)                            |
 | &ensp;title              | `Object`   | 標題相關                                            |
 | &ensp;&ensp;title        | `String`   | 標題                                                |
@@ -667,7 +669,6 @@ POST /showRecruitment
 | &ensp;&ensp;requirement  | `String[]` | 技能要求                                            |
 | &ensp;&ensp;description  | `String[]` | 工作的其他描述                                      |
 | &ensp;image              | `String`   | 公司頭像(Ex. <code>&lt;img src={image}/&gt;</code>) |
-| maxPage                  | `Number`   | 總頁數                                              |
 
 ### Error response
 
@@ -1529,7 +1530,7 @@ GET /recommendation
 
 | Name                         | Type       | Description                                     |
 | ---------------------------- | ---------- | ----------------------------------------------- |
-| data                         | `Object[]` | 簡歷們                                          |
+| -                            | `Object[]` | 簡歷們                                          |
 | &ensp;\_id                   | `String`   | mongodb \_id(for update,delete)                 |
 | &ensp;title                  | `Object`   | 標題相關                                        |
 | &ensp;&ensp;title            | `String`   | 標題                                            |
@@ -1543,7 +1544,6 @@ GET /recommendation
 | &ensp;&ensp;experience       | `String[]` | 經驗                                            |
 | &ensp;&ensp;speciality       | `String[]` | 專長                                            |
 | &ensp;image                  | `String`   | 頭像(Ex. <code>&lt;img src={image}/&gt;</code>) |
-| maxPage                      | `Number`   | 總頁數                                          |
 
 ### Error response
 
@@ -1862,6 +1862,59 @@ POST /study/addLink
 
 # Out/account
 
+## accountActivate
+
+[Back to top](#top)
+
+註冊後用信箱寄這個連結，驗證。完成後自動導向
+
+```
+GET /regact/:account/:active
+```
+
+### Header examples
+
+config
+
+```json
+{ "content-type": "multipart/form-data" }
+```
+
+### Parameters - `Parameter`
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| account | `String` | 學號        |
+| active  | `String` | 驗證碼      |
+
+### Success response
+
+#### Success response - `201`
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| -    | `HTML` | <li></li>   |
+
+### Error response
+
+#### Error response - `400`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 請添加照片  |
+
+#### Error response - `403`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 帳號已存在  |
+
+#### Error response - `500`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 資料庫錯誤  |
+
 ## isLogin
 
 [Back to top](#top)
@@ -1876,13 +1929,9 @@ POST /isLogin
 
 #### Success response - `201`
 
-| Name          | Type     | Description    |
-| ------------- | -------- | -------------- |
-| account       | `String` | 登入者學號     |
-| userimage     | `String` | 登入者頭貼     |
-| userCellphone | `String` | 登入者手機號碼 |
-| userName      | `String` | 登入者名字     |
-| userEmail     | `String` | 登入者信箱     |
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| account | `String` | 登入者學號  |
 
 ### Error response
 
@@ -2025,22 +2074,24 @@ config
 
 ### Parameters - `Parameter`
 
-| Name            | Type     | Description                       |
-| --------------- | -------- | --------------------------------- |
-| account         | `String` | 學號                              |
-| password        | `String` | 密碼(以後建議在前端加密)          |
-| ConfirmPassword | `String` | 二次密碼                          |
-| username        | `String` | 使用者名字                        |
-| Email           | `String` | 信箱                              |
-| file            | `File`   | 身分證明的照片(optional for beta) |
+| Name            | Type     | Description                                                      |
+| --------------- | -------- | ---------------------------------------------------------------- |
+| account         | `String` | 學號                                                             |
+| password        | `String` | 密碼(以後建議在前端加密)                                         |
+| ConfirmPassword | `String` | 二次密碼                                                         |
+| username        | `String` | 使用者名字                                                       |
+| Email           | `String` | 信箱                                                             |
+| isGraduated     | `String` | false 則寄送 email 給account@ntu.edu.tw(newRule=version3 才需要) |
 
 ### Success response
 
 #### Success response - `201`
 
-| Name     | Type     | Description |
-| -------- | -------- | ----------- |
-| username | `String` | 使用者名字  |
+| Name        | Type     | Description                                                       |
+| ----------- | -------- | ----------------------------------------------------------------- |
+| username    | `String` | 姓名(newRule=false)                                               |
+| isGraduated | `String` | isGraduated(newRule=version3)                                     |
+| email       | `String` | account@ntu.edu.tw(newRule=version3 &amp;&amp; isGraduated=false) |
 
 ### Error response
 
@@ -2066,7 +2117,7 @@ config
 
 [Back to top](#top)
 
-註冊(by facebook ID)
+註冊(by facebook ID)，在.env 用 newReg=version3
 
 ```
 POST /registerFB
@@ -2082,22 +2133,25 @@ config
 
 ### Parameters - `Parameter`
 
-| Name       | Type     | Description              |
-| ---------- | -------- | ------------------------ |
-| facebookID | `String` | facebookID               |
-| account    | `String` | 學號                     |
-| username   | `String` | 使用者名字               |
-| file       | `File`   | 身分證明的照片(optional) |
-| avatar     | `File`   | 大頭貼(optional)         |
-| Email      | `String` | Email                    |
+| Name        | Type     | Description                                                      |
+| ----------- | -------- | ---------------------------------------------------------------- |
+| facebookID  | `String` | facebookID                                                       |
+| account     | `String` | 學號                                                             |
+| username    | `String` | 使用者名字                                                       |
+| file        | `File`   | 身分證明的照片(optional)                                         |
+| avatar      | `File`   | 大頭貼(optional)                                                 |
+| Email       | `String` | Email(newRule=true,version3 才需要)                              |
+| isGraduated | `String` | false 則寄送 email 給account@ntu.edu.tw(newRule=version3 才需要) |
 
 ### Success response
 
 #### Success response - `201`
 
-| Name     | Type     | Description |
-| -------- | -------- | ----------- |
-| username | `String` | 使用者名字  |
+| Name        | Type     | Description                                                       |
+| ----------- | -------- | ----------------------------------------------------------------- |
+| username    | `String` | 使用者名字(newRule=false)                                         |
+| isGraduated | `String` | isGraduated(newRule=version3)                                     |
+| email       | `String` | account@ntu.edu.tw(newRule=version3 &amp;&amp; isGraduated=false) |
 
 ### Error response
 
@@ -2112,6 +2166,59 @@ config
 | Name        | Type     | Description |
 | ----------- | -------- | ----------- |
 | description | `String` | 帳號已存在  |
+
+#### Error response - `500`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 資料庫錯誤  |
+
+## registerStep2
+
+[Back to top](#top)
+
+註冊，新增照片(供管理員檢視)
+
+```
+POST /register_step2
+```
+
+### Header examples
+
+config
+
+```json
+{ "content-type": "multipart/form-data" }
+```
+
+### Parameters - `Parameter`
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| account | `String` | 學號        |
+| file    | `File`   | 身分證明    |
+
+### Success response
+
+#### Success response - `201`
+
+| Name | Type     | Description |
+| ---- | -------- | ----------- |
+| -    | `String` | <li></li>   |
+
+### Error response
+
+#### Error response - `400`
+
+| Name        | Type     | Description   |
+| ----------- | -------- | ------------- |
+| description | `String` | img not given |
+
+#### Error response - `404`
+
+| Name        | Type     | Description       |
+| ----------- | -------- | ----------------- |
+| description | `String` | account not found |
 
 #### Error response - `500`
 

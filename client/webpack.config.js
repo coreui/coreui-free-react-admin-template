@@ -10,6 +10,12 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+  resolve: {
+    fallback: {
+      crypto: require.resolve('crypto-browserify'),
+      stream: require.resolve('stream-browserify'),
+    },
+  },
   //=============== webpack server (currently not use)=================
   // devServer:{
   //   contentBase: path.resolve(__dirname,'dist'),
@@ -23,9 +29,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
     }),
-    new webpack.ProvidePlugin({
-      process: 'process/browser',
-    }),
+    // new webpack.ProvidePlugin({
+    //   process: 'process/browser',
+    // }),
     new webpack.DefinePlugin({
       'process.env.REACT_APP_fbAPIid': process.env.REACT_APP_fbAPIid,
     }),

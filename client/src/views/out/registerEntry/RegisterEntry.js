@@ -5,7 +5,7 @@ import axios from 'axios'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { Link, Redirect } from 'react-router-dom'
 import { CCol, CContainer, CRow, CImage } from '@coreui/react'
-
+import FB from 'fb-react-sdk'
 import RegisterAccount from './images/Register_Account.png'
 import RegisterFB from './images/Register_Facebook.png'
 
@@ -16,14 +16,34 @@ const RegisterEntry = () => {
   const [needRegister, setNeedRegister] = useState(false)
   const [userId, setUserId] = useState(null)
 
-  const handleFBSubmit = (res) => {
+  const handleFBSubmit = async (res) => {
     if (res.status == 'unknown') {
       return
     }
+    const { email, userID, accessToken } = res
+    const imgUrl = await new Promise((resolve, reject) => {
+      FB.setAccessToken(accessToken)
+      const url = `${userID}/picture`
+      FB.get(
+        url,
+        { redirect: false, height: 720 }, //type:"large"},
+        function (err, res) {
+          console.log(res)
+          if (err) {
+            console.log('error occurred', err)
+            return reject(false)
+          }
+          console.log(res.data.url)
+          resolve({ url: res.data.url })
+        },
+      )
+    })
+    console.log('img', imgUrl.url)
     // try to loginFB
     // check if login success
     // if no redirect to registerFB, then redirect to login
     // if success redirect to inside
+
     setUserId(res.userID)
     axios
       .post('/api/loginFB', { facebookID: res.userID })

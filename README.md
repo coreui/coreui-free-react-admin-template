@@ -32,6 +32,24 @@ please read [How to Contribute](https://github.com/NTUEE-PLUS/EndOfWeb/blob/main
 
 > https://hackmd.io/7RZ9XyL7Qa-7aFXaZSfw_w
 
+## 電二主機
+
+- 下載[.env](https://drive.google.com/drive/folders/1wruoEuM2yG2fNlA3i5pBeXH8IoKlr9cv?usp=sharing)，需要請求權限
+  - 請確認 newReg 的值，false 表示直接允許註冊，true 表示照片驗證(deprecated)，version3 表示寄信 or 照片驗證
+- 執行
+
+```bash
+$ docker-compose up --build -d (噴error時取消-d可以看到完整錯誤訊息)
+$ docker-compose exec web npm run reset-db
+open http://localhost:3000
+```
+
+- if docker no working well, try this in powershell
+
+```bash
+$ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
 ## Heroku
 
 - visit the [website](https://eeplus.herokuapp.com/)

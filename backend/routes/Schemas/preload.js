@@ -10,10 +10,10 @@ const models = [
 const env = require('dotenv')
 env.config()
 
-if (!process.env.MONGO_URI) throw new Error('MONGO_URI not given')
-const sourceUrl =
-  'mongodb+srv://ntueeplus:ntueeplus2020@cluster0.fctiy.mongodb.net/heroku_kbtrwz4h?retryWrites=true&w=majority'
+const sourceUrl = process.env.MONGO_URL
+// 'mongodb+srv://ntueeplus:ntueeplus2020@cluster0.fctiy.mongodb.net/heroku_kbtrwz4h?retryWrites=true&w=majority'
 const targetUrl = process.env.MONGO_URI
+if (!sourceUrl || !targetUrl) throw new Error('MONGO_URI or MONGO_URL not given')
 
 const copy = async (sourceDB, targetDB, schema, name, ordered = true) => {
   const sourceModel = sourceDB.model(name, schema)

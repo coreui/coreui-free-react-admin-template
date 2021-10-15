@@ -10,21 +10,14 @@ services:
     restart: on-failure:5
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: ee.Dockerfile
     volumes:
       - ./:/app
     ports:
-      - '8080'
+      - '3000:1993'
     depends_on:
       - mongodb
     environment:
       MONGO_URI: mongodb://mongodb/eeplus
-      PORT: '8080'
     tty: true
     stdin_open: true
-  nginx:
-    image: nginx
-    depends_on:
-      - web
-    ports:
-      - 8888:80

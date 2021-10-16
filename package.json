@@ -27,16 +27,16 @@
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
-    "@coreui/coreui": "^4.0.4",
+    "@coreui/coreui": "^4.0.5",
     "@coreui/icons": "^2.0.1",
     "@coreui/icons-react": "2.0.0-rc.5",
-    "@coreui/react": "4.0.0-rc.4",
+    "@coreui/react": "4.0.0-rc.5",
     "@coreui/react-chartjs": "2.0.0-rc.0",
     "@coreui/utils": "^1.3.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "chart.js": "^3.5.1",
     "classnames": "^2.3.1",
-    "core-js": "^3.18.1",
+    "core-js": "^3.18.3",
     "enzyme": "^3.11.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -54,7 +54,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "2.4.1",
     "react-scripts": "^4.0.3",
-    "sass": "^1.42.1"
+    "sass": "^1.43.2"
   },
   "scripts": {
     "start": "react-scripts start",

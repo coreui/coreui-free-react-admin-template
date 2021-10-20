@@ -59,6 +59,14 @@ const Dashboard = () => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
+  const progressExample = [
+    { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
+    { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
+    { title: 'Pageviews', value: '78.706 Views', percent: 60, color: 'warning' },
+    { title: 'New Users', value: '22.123 Users', percent: 80, color: 'danger' },
+    { title: 'Bounce Rate', value: 'Average Rate', percent: 40.15, color: 'primary' },
+  ]
+
   const progressGroupExample1 = [
     { title: 'Monday', value1: 34, value2: 78 },
     { title: 'Tuesday', value1: 56, value2: 94 },
@@ -289,31 +297,15 @@ const Dashboard = () => {
         </CCardBody>
         <CCardFooter>
           <CRow xs={{ cols: 1 }} md={{ cols: 5 }} className="text-center">
-            <CCol className="mb-sm-2 mb-0">
-              <div className="text-medium-emphasis">Visits</div>
-              <strong>29.703 Users (40%)</strong>
-              <CProgress thin className="mt-2" color="success" value={40} />
-            </CCol>
-            <CCol className="mb-sm-2 mb-0">
-              <div className="text-medium-emphasis">Unique</div>
-              <strong>24.093 Users (20%)</strong>
-              <CProgress thin className="mt-2" color="info" value={40} />
-            </CCol>
-            <CCol className="mb-sm-2 mb-0">
-              <div className="text-medium-emphasis">Pageviews</div>
-              <strong>78.706 Views (60%)</strong>
-              <CProgress thin className="mt-2" color="warning" value={40} />
-            </CCol>
-            <CCol className="mb-sm-2 mb-0">
-              <div className="text-medium-emphasis">New Users</div>
-              <strong>22.123 Users (80%)</strong>
-              <CProgress thin className="mt-2" color="danger" value={40} />
-            </CCol>
-            <CCol className="mb-sm-2 mb-0">
-              <div className="text-medium-emphasis">Bounce Rate</div>
-              <strong>Average Rate (40.15%)</strong>
-              <CProgress thin className="mt-2" value={40} />
-            </CCol>
+            {progressExample.map((item, index) => (
+              <CCol className="mb-sm-2 mb-0" key={index}>
+                <div className="text-medium-emphasis">{item.title}</div>
+                <strong>
+                  {item.value} ({item.percent}%)
+                </strong>
+                <CProgress thin className="mt-2" color={item.color} value={item.percent} />
+              </CCol>
+            ))}
           </CRow>
         </CCardFooter>
       </CCard>

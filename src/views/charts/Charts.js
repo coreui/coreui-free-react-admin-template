@@ -8,19 +8,23 @@ import {
   CChartPolarArea,
   CChartRadar,
 } from '@coreui/react-chartjs'
-import { DocsLink } from 'src/components'
+import { DocsCallout } from 'src/components'
 
 const Charts = () => {
   const random = () => Math.round(Math.random() * 100)
 
   return (
     <CRow>
+      <CCol xs={12}>
+        <DocsCallout
+          name="Chart"
+          href="components/chart"
+          content="React wrapper component for Chart.js 3.0, the most popular charting library."
+        />
+      </CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>
-            Bar Chart
-            <DocsLink href="http://www.chartjs.org" />
-          </CCardHeader>
+          <CCardHeader>Bar Chart</CCardHeader>
           <CCardBody>
             <CChartBar
               data={{

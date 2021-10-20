@@ -5,7 +5,7 @@ import { CCallout, CLink } from '@coreui/react'
 import packageJson from '../../package.json'
 
 const DocsCallout = (props) => {
-  const { href, name } = props
+  const { content, href, name } = props
 
   const plural = name.slice(-1) === 's' ? true : false
 
@@ -13,9 +13,13 @@ const DocsCallout = (props) => {
 
   return (
     <CCallout color="info" className="bg-white">
-      A React {name} component {plural ? 'have' : 'has'} been created as a native React.js version
-      of Bootstrap {name}. {name} {plural ? 'are' : 'is'} delivered with some new features,
-      variants, and unique design that matches CoreUI Design System requirements.
+      {content
+        ? content
+        : `A React ${name} component ${
+            plural ? 'have' : 'has'
+          } been created as a native React.js version
+      of Bootstrap ${name}. ${name} ${plural ? 'are' : 'is'} delivered with some new features,
+      variants, and unique design that matches CoreUI Design System requirements.`}
       <br />
       <br />
       For more information please visit our official{' '}
@@ -28,6 +32,7 @@ const DocsCallout = (props) => {
 }
 
 DocsCallout.propTypes = {
+  content: PropTypes.string,
   href: PropTypes.string,
   name: PropTypes.string,
 }

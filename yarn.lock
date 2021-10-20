@@ -1244,18 +1244,18 @@
   resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-2.0.1.tgz#778022fe2b366abf9594d142607026e4edc667f8"
   integrity sha512-gBfFRLPUt3Bv9EZbJRbT3sQRHrhH0c4dRbeE9GpWJgJY8kvE9+3Hf5xGK9XyQhFynHx4o2WQeMxsReQLddlK9w==
 
-"@coreui/react-chartjs@2.0.0-rc.2":
-  version "2.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@coreui/react-chartjs/-/react-chartjs-2.0.0-rc.2.tgz#930f2905d485e24d4bd38f6da8dc5e6fe6d0cd6a"
-  integrity sha512-O0wrNl08m7rYW/QTGDCUBM5cuV/evK0VSOuV+Wvk4vPAWwCOnzY95QXCJV46HwWMO8jwSJZ5wVQmXXZj2+XkJw==
+"@coreui/react-chartjs@2.0.0-rc.3":
+  version "2.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@coreui/react-chartjs/-/react-chartjs-2.0.0-rc.3.tgz#0735ec13e654a3ea8ba7007b831bf00bed777bb0"
+  integrity sha512-v/AxdZvjBj2t/7i8Xmwf5GOMHLEkkRVKStv00uTWEd/rV9MyPjttGHcHLuXRLhGnSl+gJxKu7DMqeug9hQKaCA==
   dependencies:
     "@coreui/chartjs" "^3.0.0"
     chart.js "^3.5.0"
 
-"@coreui/react@4.0.0-rc.5":
-  version "4.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@coreui/react/-/react-4.0.0-rc.5.tgz#21fbdd129fe1ee1804ac18db8f03599de98b4762"
-  integrity sha512-heChA453JthuxPqDSO6shbnRQnw0UNKgpX7O2cFlMpaoiOqG3Ga776XIE70Jz25pwsMH5rHTBKbGeRT1Q+afZw==
+"@coreui/react@4.0.0-rc.6":
+  version "4.0.0-rc.6"
+  resolved "https://registry.yarnpkg.com/@coreui/react/-/react-4.0.0-rc.6.tgz#61186c11b3fd82c1e00666ccaa795a1fd7ce2fb8"
+  integrity sha512-vbWcPnN8UG2Eot1mXOTfcJBK3Sm09e7kQeIdoyEk+1vvFX3wDJemMH1x3t2AbHyrDOcCuBJEc/h4+nDTVoeNAQ==
 
 "@coreui/utils@^1.3.1":
   version "1.3.1"
@@ -1798,9 +1798,9 @@
   integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
 
 "@types/glob@^7.1.1":
-  version "7.1.4"
-  resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.4.tgz#ea59e21d2ee5c517914cb4bc8e4153b99e566672"
-  integrity sha512-w+LsMxKyYQm347Otw+IfBXOv9UWVjpHpCDdbBMt8Kz/xbvCYNjP+0qPh91Km3iKfSRLBB0P7fAMf0KHrPu+MyA==
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.2.0.tgz#bc1b5bf3aa92f25bd5dd39f35c57361bdce5b2eb"
+  integrity sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==
   dependencies:
     "@types/minimatch" "*"
     "@types/node" "*"
@@ -3255,9 +3255,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001265:
-  version "1.0.30001269"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001269.tgz#3a71bee03df627364418f9fd31adfc7aa1cc2d56"
-  integrity sha512-UOy8okEVs48MyHYgV+RdW1Oiudl1H6KolybD6ZquD0VcrPSgj25omXO1S7rDydjpqaISCwA8Pyx+jUQKZwWO5w==
+  version "1.0.30001270"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001270.tgz#cc9c37a4ec5c1a8d616fc7bace902bb053b0cdea"
+  integrity sha512-TcIC7AyNWXhcOmv2KftOl1ShFAaHQYcB/EPL/hEyMrcS7ZX0/DvV1aoy6BzV0+16wTpoAyTMGDNAJfSqS/rz7A==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -4390,9 +4390,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.867:
-  version "1.3.871"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.871.tgz#6e87365fd72037a6c898fb46050ad4be3ac9ef62"
-  integrity sha512-qcLvDUPf8DSIMWarHT2ptgcqrYg62n3vPA7vhrOF24d8UNzbUBaHu2CySiENR3nEDzYgaN60071t0F6KLYMQ7Q==
+  version "1.3.873"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.873.tgz#c238c9199e4951952fe815a65c1beab5db4826b8"
+  integrity sha512-TiHlCgl2uP26Z0c67u442c0a2MZCWZNCRnPTQDPhVJ4h9G6z2zU0lApD9H0K9R5yFL5SfdaiVsVD2izOY24xBQ==
 
 elliptic@^6.5.3:
   version "6.5.4"

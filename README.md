@@ -4,7 +4,6 @@
 [![@coreui react](https://img.shields.io/badge/@coreui%20-react-lightgrey.svg?style=flat-square)](https://github.com/coreui/react)
 [![npm package][npm-coreui-react-badge]][npm-coreui-react]
 [![NPM downloads][npm-coreui-react-download]][npm-coreui-react]  
-[![npm next][npm-next]][npm]
 
 [npm-coreui]: https://www.npmjs.com/package/@coreui/coreui
 [npm-coreui-badge]: https://img.shields.io/npm/v/@coreui/coreui.png?style=flat-square
@@ -12,7 +11,6 @@
 [npm-coreui-react]: https://www.npmjs.com/package/@coreui/react
 [npm-coreui-react-badge]: https://img.shields.io/npm/v/@coreui/react.png?style=flat-square
 [npm-coreui-react-download]: https://img.shields.io/npm/dm/@coreui/react.svg?style=flat-square
-[npm-next]: https://img.shields.io/npm/v/@coreui/react/next.png?style=flat-square
 [npm]: https://www.npmjs.com/package/@coreui/react
 
 # CoreUI Free React Admin Template v4
@@ -42,8 +40,6 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ## CoreUI Pro
 
-**Only customers with [Enterpise Membership Plan](https://coreui.io/pro/#buy) have access to private github CoreUI Pro repository.**
-
 * 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/pro/)
 * 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/pro/angular)
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
@@ -51,7 +47,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ## Quick Start
 
-- [Download the latest release](https://github.com/coreui/coreui-free-react-admin-template/archive/refs/heads/v4.zip)
+- [Download the latest release](https://github.com/coreui/coreui-free-react-admin-template/archive/refs/heads/main.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-free-react-admin-template.git`
 
 ### Instalation

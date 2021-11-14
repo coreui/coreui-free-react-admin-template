@@ -2,17 +2,14 @@ import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { CBadge, CNavGroup, CNavGroupItems, CNavItem, CNavLink, CNavTitle } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+import { CBadge } from '@coreui/react'
 
 export const AppSidebarNav = ({ items }) => {
-  const components = { CNavGroup, CNavGroupItems, CNavItem, CNavLink, CNavTitle }
   const location = useLocation()
-
   const navLink = (name, icon, badge) => {
     return (
       <>
-        {icon && typeof icon === 'string' ? <CIcon name={icon} customClassName="nav-icon" /> : icon}
+        {icon && icon}
         {name && name}
         {badge && (
           <CBadge color={badge.color} className="ms-auto">
@@ -25,13 +22,14 @@ export const AppSidebarNav = ({ items }) => {
 
   const navItem = (item, index) => {
     const { component, name, badge, icon, ...rest } = item
-    const Component = components[component] || component
+    const Component = component
     return (
       <Component
-        {...(component === 'CNavItem' && {
-          component: NavLink,
-          activeClassName: 'active',
-        })}
+        {...(rest.to &&
+          !rest.items && {
+            component: NavLink,
+            activeClassName: 'active',
+          })}
         key={index}
         {...rest}
       >
@@ -40,17 +38,17 @@ export const AppSidebarNav = ({ items }) => {
     )
   }
   const navGroup = (item, index) => {
-    const { component, name, icon, items, to, ...rest } = item
-    const Component = components[component] || component
+    const { component, name, icon, to, ...rest } = item
+    const Component = component
     return (
       <Component
-        toggler={navLink(name, icon)}
-        visible={location.pathname.startsWith(to)}
         idx={String(index)}
         key={index}
+        toggler={navLink(name, icon)}
+        visible={location.pathname.startsWith(to)}
         {...rest}
       >
-        {item.items.map((item, index) =>
+        {item.items?.map((item, index) =>
           item.items ? navGroup(item, index) : navItem(item, index),
         )}
       </Component>

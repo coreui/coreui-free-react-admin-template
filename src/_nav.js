@@ -93,6 +93,11 @@ const _nav = [
       },
       {
         component: CNavItem,
+        name: 'Placeholders',
+        to: '/base/placeholders',
+      },
+      {
+        component: CNavItem,
         name: 'Popovers',
         to: '/base/popovers',
       },

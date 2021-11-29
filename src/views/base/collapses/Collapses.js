@@ -4,6 +4,7 @@ import { DocsCallout, DocsExample } from 'src/components'
 
 const Collapses = () => {
   const [visible, setVisible] = useState(false)
+  const [visibleHorizontal, setVisibleHorizontal] = useState(false)
   const [visibleA, setVisibleA] = useState(false)
   const [visibleB, setVisibleB] = useState(false)
 
@@ -39,6 +40,36 @@ const Collapses = () => {
                   </CCardBody>
                 </CCard>
               </CCollapse>
+            </DocsExample>
+          </CCardBody>
+        </CCard>
+      </CCol>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>React Collapse</strong> <small> Horizontal</small>
+          </CCardHeader>
+          <CCardBody>
+            <p className="text-medium-emphasis small">You can use a link or a button component.</p>
+            <DocsExample href="components/collapse#horizontal">
+              <CButton
+                className="mb-3"
+                onClick={() => setVisibleHorizontal(!visibleHorizontal)}
+                aria-expanded={visibleHorizontal}
+                aria-controls="collapseWidthExample"
+              >
+                Button
+              </CButton>
+              <div style={{ minHeight: '120px' }}>
+                <CCollapse id="collapseWidthExample" horizontal visible={visibleHorizontal}>
+                  <CCard style={{ width: '300px' }}>
+                    <CCardBody>
+                      This is some placeholder content for a horizontal collapse. It&#39;s hidden by
+                      default and shown when triggered.
+                    </CCardBody>
+                  </CCard>
+                </CCollapse>
+              </div>
             </DocsExample>
           </CCardBody>
         </CCard>

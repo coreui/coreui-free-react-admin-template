@@ -39,11 +39,11 @@ jobs:
           server: ${{ secrets.SSH_HOST }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
           local_path: './*'
-          remote_path: '/var/apps/admin'
+          remote_path: '/var/apps/viouservices'
           args: '-o ConnectTimeout=5'
 
       - name: Deploy with rsync
-        run: rsync -avz ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/apps/admin
+        run: rsync -avz ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/apps/viouservices
         
       - name: run commands
         uses: appleboy/ssh-action@master
@@ -53,7 +53,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /var/apps/admin
+            cd /var/apps/viouservices
             docker-compose build
             docker-compose up -d
             

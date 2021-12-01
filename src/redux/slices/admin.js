@@ -37,7 +37,7 @@ const isLogin = createAsyncThunk("admin/isLogin", async () => {
 });
 
 const initialState = {
-    admin: false,
+    admin: true,
     authLoading: false,
     loading: false
 };
@@ -59,7 +59,6 @@ const adminSlice = createSlice({
             })
             .addCase(login.fulfilled, (state, action) => {
                 console.log('fulfilled')
-                console.log(action)
                 state.admin = true;
                 localStorage.setItem("session_id", action.payload.$id);
                 state.authLoading = false;

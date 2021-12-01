@@ -1,5 +1,6 @@
-let history
+/* eslint-disable */
+let history;
 
-const setHistory = (historyObj) => (history = historyObj)
+const setHistory = (historyObj) => (history = historyObj);
 
-export { history, setHistory }
+export { history, setHistory };

@@ -10,7 +10,7 @@ export const withAdminAuth = (auth) => (WrappedComponent) => {
         console.log('need to replace')
         console.log(admin)
         useEffect(() => {
-            (!admin) ? replace("/login") : replace("/dashboard")
+        //    (!admin) ? replace("/login") : replace("/dashboard")
         }, [admin]);
 
         return <WrappedComponent {...props} />;

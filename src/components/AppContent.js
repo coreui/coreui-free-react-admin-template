@@ -11,7 +11,7 @@ import { adminRoutes } from "../routes/adminRoutes";
 
 const AppContent = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.admin.admin);
+  const auth = useSelector((state) => state.admin);
   const history = useHistory();
 
   useEffect(() => {
@@ -23,11 +23,10 @@ const AppContent = () => {
     dispatch(isLogin());
   }, []);
 
-  console.log(isLoggedIn)
 
   return (
     <>
-      {isLoggedIn ? (
+      {auth.admin ? (
         <CContainer lg>
           <Suspense fallback={<CSpinner color="primary" />}>
             <Switch>
@@ -48,13 +47,15 @@ const AppContent = () => {
                   )
                 )
               })}
-
+              {/*   <Redirect to="/login" />  */}
             </Switch>
           </Suspense>
         </CContainer>
       ) : (
-        <Redirect from="/" to="/login" />
+        <Redirect to="/login" />
       )}
+
+
     </>
   )
 }

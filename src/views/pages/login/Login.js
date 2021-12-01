@@ -20,7 +20,7 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import { login } from '../../../redux/slices/admin'
 import { withAdminAuth } from "../../../hoc/withAdminAuth"
 
-export const Login = withAdminAuth()((props) => {
+export const Login = withAdminAuth(true)((props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()

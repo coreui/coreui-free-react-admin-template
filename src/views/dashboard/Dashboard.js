@@ -56,9 +56,6 @@ const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
 
 export const Dashboard = () => {
-  const sesssion = localStorage.getItem("session_id")
-  console.log('this is dashboard')
-  console.log(sesssion)
   const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }

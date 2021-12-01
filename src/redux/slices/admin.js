@@ -28,8 +28,7 @@ const isLogin = createAsyncThunk("admin/isLogin", async () => {
         console.log(session_id)
         if (!session_id) throw "ERROR!";
 
-        const res = await api.getSession(session_id);
-        console.log(res)
+        const res = await api.getSession(session_id)
         return res;
     } catch (error) {
         console.log(error)
@@ -38,7 +37,7 @@ const isLogin = createAsyncThunk("admin/isLogin", async () => {
 });
 
 const initialState = {
-    admin: true,
+    admin: false,
     authLoading: false,
     loading: false
 };
@@ -46,6 +45,12 @@ const initialState = {
 const adminSlice = createSlice({
     name: "admin",
     initialState,
+    reducers: {
+        logout(state, action) {
+            localStorage.removeItem("session_id")
+            state.admin = false
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(login.pending, (state, action) => {
@@ -60,6 +65,7 @@ const adminSlice = createSlice({
                 state.authLoading = false;
             })
             .addCase(login.rejected, (state, action) => {
+                console.log('error')
                 state.authLoading = false;
                 console.log(action.error.message)
                 // NotificationManager.error(action.error.message);
@@ -74,7 +80,7 @@ const adminSlice = createSlice({
                 state.loading = false;
             })
             .addCase(isLogin.rejected, (state, action) => {
-                console.log('log out')
+                console.log('rejected log out')
                 state.loading = false;
                 state.admin = false;
                 localStorage.removeItem("session_id");
@@ -84,5 +90,7 @@ const adminSlice = createSlice({
 
 
 export { login, isLogin }
+
+export const { logout } = adminSlice.actions;
 
 export default adminSlice.reducer;

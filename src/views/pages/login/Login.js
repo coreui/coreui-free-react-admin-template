@@ -1,5 +1,7 @@
-import React from 'react'
+/* eslint-disable */
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   CButton,
   CCard,
@@ -15,8 +17,23 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import { login } from '../../../redux/slices/admin'
+import { withAdminAuth } from "../../../hoc/withAdminAuth"
 
-const Login = () => {
+export const Login = withAdminAuth()((props) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+  const loading = useSelector((state) => state.admin.authLoading);
+
+  const changeEmailHandler = (e) => setEmail(e.target.value)
+  const changePasswordHandler = (e) => setPassword(e.target.value)
+
+  const loginHandler = (e) => {
+    e.preventDefault()
+    dispatch(login({ email, password }))
+  }
+
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -25,14 +42,20 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm>
+                  <CForm className="row g-3 needs-validation" onSubmit={loginHandler}>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <CFormInput
+                        type="email"
+                        placeholder="Email address"
+                        autoComplete="email"
+                        value={email}
+                        onChange={changeEmailHandler}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -42,11 +65,13 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
+                        value={password}
+                        onChange={changePasswordHandler}
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton type="submit" color="primary" className="px-4">
                           Login
                         </CButton>
                       </CCol>
@@ -81,6 +106,5 @@ const Login = () => {
       </CContainer>
     </div>
   )
-}
+})
 
-export default Login

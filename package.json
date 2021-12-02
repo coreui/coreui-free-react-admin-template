@@ -42,14 +42,18 @@
     "classnames": "^2.3.1",
     "core-js": "^3.19.1",
     "enzyme": "^3.11.0",
+    "match-sorter": "^6.3.1",
+    "namor": "^2.0.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
+    "react-table": "^7.7.0",
     "redux": "4.0.5",
-    "simplebar-react": "^2.3.6"
+    "simplebar-react": "^2.3.6",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "auto-changelog": "~2.3.0",

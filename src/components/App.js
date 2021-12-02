@@ -14,8 +14,7 @@ const loading = (
 export const App = () => {
   const history = useHistory();
 
-  useEffect(() => setHistory(history), []);
-  console.log('history is:', history)
+  useEffect(() => setHistory(history), [])
   return (
     <HashRouter>
       <React.Suspense fallback={loading}>
@@ -23,7 +22,6 @@ export const App = () => {
           {appRoutes.map((route) => (
             <Route {...route} />
           ))}
-          {/* <Redirect from="#/" to="#/login" /> */}
         </Switch>
       </React.Suspense>
     </HashRouter>

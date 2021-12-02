@@ -16,4 +16,10 @@ export const appRoutes = [
         name: "Home",
         component: DefaultLayout,
     },
+    {
+        path: "/assets",
+        key: "/",
+        name: "Assets",
+        component: DefaultLayout,
+    },
 ];

@@ -5,6 +5,7 @@ import React from 'react'
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 const Dashboard = React.lazy(() => import('./views/pages/dashboard/Dashboard'))
+const Assets = React.lazy(() => import('./views/pages/assets/Assets'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
@@ -63,6 +64,7 @@ const routes = [
   { path: '/login', exact: true, name: 'Login', component: Login },
   { path: '/', exact: true, name: 'Home', component: DefaultLayout },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/assets', name: 'Assets', component: Assets },
   
   // { path: '/theme', name: 'Theme', component: Colors, exact: true },
   // { path: '/theme/colors', name: 'Colors', component: Colors },

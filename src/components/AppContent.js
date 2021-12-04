@@ -5,6 +5,7 @@ import { isLogin } from "../redux/slices/admin";
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
 
+
 // routes config
 // import routes from '../routes'
 import { adminRoutes } from "../routes/adminRoutes";
@@ -19,7 +20,6 @@ const AppContent = () => {
   }, [history.location.pathname]);
 
   useEffect(() => {
-    console.log('is logged in')
     dispatch(isLogin());
   }, []);
 

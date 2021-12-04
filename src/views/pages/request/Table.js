@@ -1,44 +1,54 @@
 /* eslint-disable */
-import React from 'react'
-import styled from 'styled-components'
-import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, usePagination } from 'react-table'
+import React, { useState, lazy } from 'react'
+import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, usePagination, useRowSelect } from 'react-table'
 // A great library for fuzzy filtering/sorting items
 import { matchSorter } from 'match-sorter'
+import { Table, TableHead, TableBody, TableRow, TableCell, makeStyles } from '@material-ui/core'
+import CIcon from '@coreui/icons-react'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    CButton,
+    CModal,
+    CModalBody,
+    CModalFooter,
+    CModalHeader,
+    CModalTitle,
+    CTooltip
+} from '@coreui/react'
+import { cilPencil, cilCheck, cilTrash, cilRecycle } from '@coreui/icons';
+import { useHistory } from "react-router-dom";
+import { approveRequest } from '../../../redux/slices/request'
+const WidgetsDropdown = lazy(() => import('../../components/WidgetsDropdown.js'))
 
-import makeData from './makeData'
+const useStyles = makeStyles(theme => ({
+    table: {
+        marginTop: theme.spacing(3),
+        '& thead th': {
+            fontWeight: '600',
+            color: theme.palette.primary.main,
+            backgroundColor: theme.palette.primary.light,
+        },
+        '& tbody td': {
+            fontWeight: '300',
+        },
+        '& tbody tr:hover': {
+            backgroundColor: '#fffbf2',
+            cursor: 'pointer',
+        },
+    },
+    icon: {
+        color: '#246bce',
+        marginLeft: '5px'
 
-const Styles = styled.div`
-  padding: 1rem;
-
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
-
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
+    },
+    success: {
+        color: '#33cc33'
+    },
+    delete: {
+        color: "#e30022",
+        marginLeft: '5px'
     }
-
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-
-  .pagination {
-    padding: 0.5rem;
-  }
-`
+}))
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -75,7 +85,7 @@ function GlobalFilter({
 function DefaultColumnFilter({
     column: { filterValue, preFilteredRows, setFilter },
 }) {
-    const count = preFilteredRows.length
+    const count = preFilteredRows.length + 1
 
     return (
         <input
@@ -90,9 +100,9 @@ function DefaultColumnFilter({
 
 // This is a custom filter UI for selecting
 // a unique option from a list
-function SelectColumnFilter({
+export const SelectColumnFilter = ({
     column: { filterValue, setFilter, preFilteredRows, id },
-}) {
+}) => {
     // Calculate the options for filtering
     // using the preFilteredRows
     const options = React.useMemo(() => {
@@ -216,8 +226,50 @@ function fuzzyTextFilterFn(rows, id, filterValue) {
 // Let the table remove the filter if the string is empty
 fuzzyTextFilterFn.autoRemove = val => !val
 
+// Define a custom filter filter function!
+function filterGreaterThan(rows, id, filterValue) {
+    return rows.filter(row => {
+        const rowValue = row.values[id]
+        return rowValue >= filterValue
+    })
+}
+
+// This is an autoRemove method on the filter function that
+// when given the new filter value and returns true, the filter
+// will be automatically removed. Normally this is just an undefined
+// check, but here, we want to remove the filter if it's not a number
+filterGreaterThan.autoRemove = val => typeof val !== 'number'
+
+const IndeterminateCheckbox = React.forwardRef(
+    ({ indeterminate, ...rest }, ref) => {
+        const defaultRef = React.useRef()
+        const resolvedRef = ref || defaultRef
+
+        React.useEffect(() => {
+            resolvedRef.current.indeterminate = indeterminate
+        }, [resolvedRef, indeterminate])
+
+        return (
+            <>
+                <input type="checkbox" ref={resolvedRef} {...rest} />
+            </>
+        )
+    }
+)
+
 // Our table component
-function Table({ columns, data }) {
+export const RequestTable = ({ columns, data, pageIndex, pageSize }) => {
+    const classes = useStyles();
+    const { push } = useHistory();
+    const dispatch = useDispatch();
+
+    const [requestModal, setRequestModal] = useState({ visible: false, row: null });
+
+
+    const approve = (id) => {
+        dispatch(approveRequest({ id, user_id: localStorage.getItem("admin_id") }))
+    }
+
     const filterTypes = React.useMemo(
         () => ({
             // Add a new fuzzyTextFilterFn filter type.
@@ -251,6 +303,7 @@ function Table({ columns, data }) {
         getTableBodyProps,
         headerGroups,
         prepareRow,
+        selectedFlatRows,
         // rows,
         page,
         canPreviousPage,
@@ -262,7 +315,7 @@ function Table({ columns, data }) {
         previousPage,
         setPageSize,
         state,
-        state: { pageIndex, pageSize },
+        state: { selectedRowIds },
         visibleColumns,
         preGlobalFilteredRows,
         setGlobalFilter,
@@ -272,50 +325,100 @@ function Table({ columns, data }) {
             data,
             defaultColumn, // Be sure to pass the defaultColumn option
             filterTypes,
-            initialState: { pageIndex: 2 }
+            initialState: { pageIndex: 0 }
         },
-       
+
         useFilters, // useFilters!
         useGlobalFilter, // useGlobalFilter!
-        usePagination
-    )
+        usePagination,
+        useRowSelect,
+        hooks => {
+            hooks.visibleColumns.push(columns => [
+                // Let's make a column for selection
+                ...columns,
+                {
+                    id: 'selection',
+                    Cell: ({ row }) => (
+                        <div>
+                            {row.original.status === 'pending admin approval' && (
+                                <CTooltip
+                                    content="Click to approve this request"
+                                    placement="top"
+                                >
+                                    <CIcon
+                                        className={classes.success}
+                                        icon={cilCheck} size="sm"
+                                        {...row.getToggleRowSelectedProps()}
+                                        onClick={() => setRequestModal({ visible: !requestModal.visible, row: row })}
+                                    />
+                                </CTooltip>
+                            )}
 
-    // We don't want to render all of the rows for this example, so cap
-    // it for this use case
-    const firstPageRows = page.slice(0, 10)
+                            {row.original.status === 'approved' && (
+                                <CTooltip
+                                    content="Click to match this request to creatives."
+                                    placement="top"
+                                >
+                                    <CIcon
+                                        className={classes.primary}
+                                        icon={cilRecycle} size="sm"
+                                        {...row.getToggleRowSelectedProps()}
+                                        onClick={() => push(`/request/match/${row.original.id}`)}
+                                    />
+                                </CTooltip>
+                            )}
+
+                            <CTooltip
+                                content="Click to view request details."
+                                placement="top"
+                            >
+                                <CIcon
+                                    className={classes.icon}
+                                    icon={cilPencil} size="sm"
+                                    {...row.getToggleRowSelectedProps()}
+                                    onClick={() =>
+                                        push(`/request/${row.original.id}`)
+                                    }
+                                />
+                            </CTooltip>
+                            <CIcon className={classes.delete} icon={cilTrash} size="sm" {...row.getToggleRowSelectedProps()} />
+                        </div>
+                    ),
+                },
+            ])
+        }
+    )
 
     return (
         <>
-            <pre>
-                <code>
-                    {JSON.stringify(
-                        {
-                            pageIndex,
-                            pageSize,
-                            pageCount,
-                            canNextPage,
-                            canPreviousPage,
-                        },
-                        null,
-                        2
-                    )}
-                </code>
-            </pre>
-            <table {...getTableProps()}>
-                <thead>
+            <CModal visible={requestModal.visible} onClose={() => setRequestModal({ visible: !requestModal.visible, row: null })}>
+                <CModalHeader onClose={() => setRequestModal({ visible: !requestModal.visible, row: null })}>
+                    <CModalTitle>Do you want to approve this request for {requestModal.visible ? requestModal.row.original.title : null}?</CModalTitle>
+                </CModalHeader>
+                <CModalBody>{requestModal.visible ? requestModal.row.original.description : null}</CModalBody>
+                <CModalFooter>
+                    {/* <CButton color="secondary" onClick={() => setRequestModal({ visible: false, row: row })}>
+                        Close
+                    </CButton> */}
+                    <CButton color="primary" onClick={() => approve(requestModal.row.original.id)} >Approve</CButton>
+                </CModalFooter>
+            </CModal>
+            <WidgetsDropdown props={data} />
+            <Table className={classes.table}>
+                <TableHead>
                     {headerGroups.map(headerGroup => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                        <TableRow {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps()}>
+                                <TableCell {...column.getHeaderProps()}>
                                     {column.render('Header')}
                                     {/* Render the columns filter UI */}
                                     <div>{column.canFilter ? column.render('Filter') : null}</div>
-                                </th>
+                                </TableCell>
                             ))}
-                        </tr>
+                        </TableRow>
                     ))}
-                    <tr>
-                        <th
+                    <TableRow>
+                        <TableCell
                             colSpan={visibleColumns.length}
                             style={{
                                 textAlign: 'left',
@@ -326,22 +429,26 @@ function Table({ columns, data }) {
                                 globalFilter={state.globalFilter}
                                 setGlobalFilter={setGlobalFilter}
                             />
-                        </th>
-                    </tr>
-                </thead>
-                <tbody {...getTableBodyProps()}>
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     {page.map((row, i) => {
                         prepareRow(row)
                         return (
-                            <tr {...row.getRowProps()}>
+                            <TableRow {...row.getRowProps()}>
                                 {row.cells.map(cell => {
-                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    return (
+                                        <TableCell {...cell.getCellProps()}>
+                                            {cell.render('Cell')}
+                                        </TableCell>
+                                    )
                                 })}
-                            </tr>
+                            </TableRow>
                         )
                     })}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
             <br />
             <div className="pagination">
                 <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
@@ -387,88 +494,29 @@ function Table({ columns, data }) {
                     ))}
                 </select>
             </div>
-            <div>Showing the first 20 results of {page.length} rows</div>
-            <div>
+            <div>Showing the first {page.length} results of {pageOptions.length} rows</div>
+            {/* <div>
                 <pre>
                     <code>{JSON.stringify(state.filters, null, 2)}</code>
                 </pre>
-            </div>
+            </div> */}
+            {/* <p>Selected Rows: {Object.keys(selectedRowIds).length}</p>
+            <pre>
+                <code>
+                    {JSON.stringify(
+                        {
+                            selectedRowIds: selectedRowIds,
+                            'selectedFlatRows[].original': selectedFlatRows.map(
+                                d => d.original
+                            ),
+                        },
+                        null,
+                        2
+                    )}
+                </code>
+            </pre> */}
         </>
     )
 }
 
-// Define a custom filter filter function!
-function filterGreaterThan(rows, id, filterValue) {
-    return rows.filter(row => {
-        const rowValue = row.values[id]
-        return rowValue >= filterValue
-    })
-}
-
-// This is an autoRemove method on the filter function that
-// when given the new filter value and returns true, the filter
-// will be automatically removed. Normally this is just an undefined
-// check, but here, we want to remove the filter if it's not a number
-filterGreaterThan.autoRemove = val => typeof val !== 'number'
-
-function ViouTable() {
-    const columns = React.useMemo(
-        () => [
-            {
-                Header: 'Name',
-                columns: [
-                    {
-                        Header: 'First Name',
-                        accessor: 'firstName',
-                    },
-                    {
-                        Header: 'Last Name',
-                        accessor: 'lastName',
-                        // Use our custom `fuzzyText` filter on this column
-                        filter: 'fuzzyText',
-                    },
-                ],
-            },
-            {
-                Header: 'Info',
-                columns: [
-                    {
-                        Header: 'Age',
-                        accessor: 'age',
-                        Filter: SliderColumnFilter,
-                        filter: 'equals',
-                    },
-                    {
-                        Header: 'Visits',
-                        accessor: 'visits',
-                        Filter: NumberRangeColumnFilter,
-                        filter: 'between',
-                    },
-                    {
-                        Header: 'Status',
-                        accessor: 'status',
-                        Filter: SelectColumnFilter,
-                        filter: 'includes',
-                    },
-                    {
-                        Header: 'Profile Progress',
-                        accessor: 'progress',
-                        Filter: SliderColumnFilter,
-                        filter: filterGreaterThan,
-                    },
-                ],
-            },
-        ],
-        []
-    )
-
-    const data = React.useMemo(() => makeData(100000), [])
-
-    return (
-        <Styles>
-            <Table columns={columns} data={data} />
-        </Styles>
-    )
-}
-
-export default ViouTable
+// export default { RequestTable, SelectColumnFilter }

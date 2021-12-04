@@ -19,6 +19,7 @@ import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import { login } from '../../../redux/slices/admin'
 import { withAdminAuth } from "../../../hoc/withAdminAuth"
+import { NotificationContainer } from "react-notifications";
 
 export const Login = withAdminAuth(true)((props) => {
   const [email, setEmail] = useState('')

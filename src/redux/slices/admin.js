@@ -1,17 +1,25 @@
 /* eslint-disable */
-import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { NotificationManager } from "react-notifications"
 import { history } from '../../utils/utils'
 import api from "../../api/api";
+
 
 const login = createAsyncThunk('login', async ({ email, password }) => {
     try {
         const res = await api.createSession(email, password);
+        const resp = await api.getAccount()
 
-        history.push('/#/dashboard')
-        window.location.reload(false)
-        return res
+        if (resp.prefs.role.toUpperCase() === "ADMIN") {
+            NotificationManager.success("Logged in!")
+            history.push('/#/dashboard')
+            window.location.reload(false)
+        
+            return res
+        }
+        throw Error
+
     } catch (error) {
-        console.log(error)
         throw error?.response?.data || error.message
     }
 })
@@ -48,17 +56,17 @@ const adminSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(login.pending, (state, action) => {
-                console.log('loading')
                 state.authLoading = true;
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.admin = true;
+                localStorage.setItem("admin_id", action.payload.userId)
                 localStorage.setItem("session_id", action.payload.$id);
                 state.authLoading = false;
             })
             .addCase(login.rejected, (state, action) => {
                 state.authLoading = false;
-                // NotificationManager.error(action.error.message);
+                NotificationManager.error('Unable to login. Try again!!!');
             })
             .addCase(isLogin.pending, (state, action) => {
                 state.loading = true;
@@ -66,10 +74,12 @@ const adminSlice = createSlice({
             .addCase(isLogin.fulfilled, (state, action) => {
                 state.admin = true;
                 state.loading = false;
+                
             })
             .addCase(isLogin.rejected, (state, action) => {
                 state.loading = false;
                 state.admin = false;
+                localStorage.removeItem("admin_id");
                 localStorage.removeItem("session_id");
             })
     },

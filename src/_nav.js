@@ -135,6 +135,11 @@ const _nav = [
     to: '/request',
     icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
     items: [
+      // {
+      //   component: CNavItem,
+      //   name: 'Table',
+      //   to: '/table',
+      // },
       {
         component: CNavItem,
         name: 'All',
@@ -154,11 +159,6 @@ const _nav = [
         component: CNavItem,
         name: 'Request Creative',
         to: '/request/creative',
-      },
-      {
-        component: CNavItem,
-        name: 'Table',
-        to: '/table',
       },
     ],
   },

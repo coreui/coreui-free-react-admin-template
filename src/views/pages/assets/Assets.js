@@ -67,35 +67,23 @@ import avatar6 from 'src/assets/images/avatars/6.jpg'
 import lock from 'src/assets/images/lock.png'
 import play from 'src/assets/images/play.png'
 import rect from 'src/assets/images/rect.png'
+import toast from 'react-hot-toast';
 
 const WidgetsDropdown = lazy(() => import('../../widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../../widgets/WidgetsBrand.js'))
 import MyDrag, { Basic }  from '../../../components/AttachFiles.js'
 
 
-const AssetsModal = () => {
-  const [visible, setVisible] = useState(false)
-  return (
-    <>
-      <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal visible={visible} onClose={() => setVisible(false)}>
-        <CModalHeader>
-          <CModalTitle>Assets Title</CModalTitle>
-        </CModalHeader>
-        <CModalBody>Woohoo, you&#39;re reading this text in a modal!</CModalBody>
-        <CModalFooter style={{textAlign: 'center'}}>
-          <CButton color="secondary" onClick={() => setVisible(false)}>
-            Close
-          </CButton>
-          <CButton color="primary">Save changes</CButton>
-        </CModalFooter>
-      </CModal>
-    </>
-  )
-}
-
 export const Assets = () => {
   const [visible, setVisible] = useState(false)
+  const [items, setItems] = useState([])
+  const [approveLoading, setApproveLoading] = useState(false)
+  const [approveToggle, setApproveToggle] = useState(0)
+  const [chosenItem, setChosenItem] = useState({
+    id: '',
+    type: '',
+    url: ''
+  })
 
   const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
@@ -227,9 +215,9 @@ export const Assets = () => {
     
     const viewcreatives = async () => {
       try{
-        const res = await axios.get(`https://services.projects.sbs/library/content?page=0&size=100&admin_id=${adminId}`)
+        const res = await axios.get(`https://services.projects.sbs/library/content?page=0&size=100&admin_id=61989dc4b4693`)
         console.log(res.data.data.items)
-        // setItems(res.data.data.items)
+        setItems(res.data.data.items)
       }catch(error) {
         console.log(error)
       }
@@ -237,18 +225,30 @@ export const Assets = () => {
 
   const aproveAsset = async (id) => {
     try {
+      setApproveLoading(true)
       const res = await axios.patch(
         `https://services.projects.sbs/library/content`,
         {
-        user_id: adminId,
+        user_id: '61989dc4b4693',
         visibility: 1,
         id: id,
         price: 3456
        }
       );
       console.log(res.data);
+      toast.success('Assets has been approved', {
+        duration: 2000
+      })
+      setApproveLoading(false)
     } catch (error) {
-      console.log(error);
+      setApproveLoading(false)
+      console.log('error approving assets', error?.response?.data?.message, error?.response?.data?.error);
+      toast.error(`unable to update asset ${error?.response?.data?.message} ${error?.response?.data?.error}`, {
+        duration: 2000,
+        style: {
+          minWidth: '120px',
+        },
+      })
     }
   };
 
@@ -256,6 +256,16 @@ export const Assets = () => {
     viewcreatives()
   }, [])
 
+  const handleVisible = (id, type, url, status) => {
+    if(status === 1){
+      setApproveToggle(status)
+    }
+    setVisible(!visible)
+    setChosenItem({
+      ...chosenItem,
+      id: id, type: type, url: url
+    })
+  }
   return (
     <>
     {/* <div className="d-flex p-2 docs-highlight border-bottom">
@@ -271,26 +281,34 @@ export const Assets = () => {
         <CModalHeader>
           <CModalTitle>Assets title</CModalTitle>
         </CModalHeader>
-        <>
-        {/* <div style={{position: "relative", width: '100%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={play} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div> */}
-
+        <div style={{width: '100%', minHeight:'300px'}}>
+          {
+                  chosenItem &&
+                  chosenItem?.type === 'image' ? 
+                  <div style={{position: "relative", width: '100%', height: '160px'}}>
+                <img src={chosenItem?.url} alt="rect" style={{width: '100%', margin: '10px 20px', objectFit: 'contain',  height: '300px'}} />
+                {/* <img src={play} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} /> */}
+                </div> 
+                :
                 <video controls>
                   <source src="myVideo.webm" type="video/webm" />
                   <source src="myVideo.mp4" type="video/mp4" />
-                  <img src={rect} title="Your browser does not support the <video> tag" />
+                  <img src={chosenItem?.url} title="Your browser does not support the <video> tag" style={{width: '100%', height: '300px'}} />
                   <p>Your browser doesn't support HTML5 video. Here is
                       a <a href="myVideo.mp4">link to the video</a> instead.</p>
                 </video>
-        </>
-        <CModalBody>Woohoo, you&#39;re reading this text in a modal!</CModalBody>
+                }
+        </div>
         <CModalFooter style={{textAlign: 'center'}}>
-          <CButton color="primary"  style={{color: 'white'}} onClick={() => aproveAsset(1)}>
-            Approve
-          </CButton>
-          <CButton color="danger" style={{color: 'white'}} onClick={() => setVisible(false)}>Reject</CButton>
+          {
+            approveToggle === 0 &&
+            <>
+              <CButton color="primary" disabled={approveLoading}  style={{color: 'white'}} onClick={() => aproveAsset(chosenItem?.id)}>
+                { approveLoading ? 'Approving' : 'Approve' }
+              </CButton>
+              <CButton color="danger" style={{color: 'white'}} onClick={() => setVisible(false)}>Reject</CButton>
+            </>
+          }
         </CModalFooter>
       </CModal>
     <CContainer fluid class="border-bottom"  style={{margin: '0 .5em 1em .5em'}}>
@@ -384,7 +402,25 @@ export const Assets = () => {
             <CCardHeader>Review and Approve Videos</CCardHeader>
             <CCardBody>
               <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
+              {
+          items.filter(item => item.visibility === 0).map((each)=> {
+            return (
+              <div key={each?.id} style={{position: "relative", width: '24%', height: '160px'}}>
+                  {
+                    each?.asset_url ?  <>
+                    <img src={each?.asset_url} alt={each?.title} style={{width: '100%', height: '160px'}} />
+                    <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
+                    </>: <>
+                            <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
+                            <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
+                        </>
+                  }
+                  {/* <button onClick={()=>aproveAsset(each.id)}>approve assets {each.id}</button> */}
+                  </div>
+            )
+          })
+        }
+                {/* <div style={{position: "relative", width: '24%', height: '160px'}}>
                 <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
                 <img src={lock} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
                 </div>
@@ -403,7 +439,7 @@ export const Assets = () => {
                 <div style={{position: "relative", width: '24%', height: '160px'}}>
                 <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
                 <img src={lock} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
+                </div> */}
               </div>
                 
             </CCardBody>
@@ -418,29 +454,25 @@ export const Assets = () => {
             <CCardHeader>Videos Library</CCardHeader>
             <CCardBody>
             <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={play} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={play} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={play} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={play} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={play} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
+            {
+          items.filter(item => item.visibility === 1).map((each)=> {
+            return (
+              <div key={each?.id} style={{position: "relative", width: '24%', height: '160px'}}>
+                  {
+                    each?.asset_url ?  <>
+                    <img src={each?.asset_url} alt={each?.title} style={{width: '100%', height: '160px'}} />
+                    <img src={play} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url, 1)} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
+                    </>: <>
+                            <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
+                            <img src={play} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url, 1)} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
+                        </>
+                  }
+                  {/* <button onClick={()=>aproveAsset(each.id)}>approve assets {each.id}</button> */}
+                  </div>
+            )
+          })
+        }
               </div>
-
-              
             </CCardBody>
           </CCard>
         </CCol>

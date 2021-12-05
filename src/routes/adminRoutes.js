@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { ViouTable } from '../views/pages/request/Request';
-import { UserTable } from '../views/pages/user/User';
+import { UserTablePage } from '../views/pages/user/User';
 import DefaultLayout from "../layout/DefaultLayout";
 import { RequestForm } from "../views/pages/request/RequestForm"
 import { MatchRequest } from "../views/pages/request/MatchRequest"
@@ -45,7 +45,7 @@ export const adminRoutes = [
         path: "/user/all",
         key: "/user/all",
         name: "Users",
-        component: UserTable,
+        component: UserTablePage,
         exact: true
     },
     // {

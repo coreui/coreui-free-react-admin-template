@@ -41,7 +41,7 @@ const Styles = styled.div`
   }
 `
 
-export const ViouTable = withAdminAuth(true)(() => {
+export const UserTablePage = withAdminAuth(true)(() => {
   const { push } = useHistory();
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
@@ -119,7 +119,7 @@ export const ViouTable = withAdminAuth(true)(() => {
     <div>
       {loading ? (<div>loading</div >) : (
         <Styles>
-          <RequestTable columns={columns} data={requests} pageIndex={currentPage} pageSize={totalItems} />
+          <UserTable columns={columns} data={requests} pageIndex={currentPage} pageSize={totalItems} />
         </Styles>)}
 
     </div>

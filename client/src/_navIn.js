@@ -35,6 +35,13 @@ const _navIn = [
     to: '/matching',
     icon: <CIcon icon="sidebar_icon" name="sidebar_icon" customClassName="nav-icon" />,
   },
+  {
+    _component: 'CNavItem',
+    as: NavLink,
+    anchor: 'MATCHING',
+    to: '/matching',
+    icon: <CIcon name="sidebar_icon" customClassName="nav-icon" />,
+  },
   /* {
     _component: 'CNavItem',
     as: NavLink,

@@ -26,6 +26,7 @@ import {
   EditProfile,
   SearchProfile,
   Study,
+  Matching,
 } from './views/in'
 
 import Dashboard from './views/dashboard/Dashboard'
@@ -104,6 +105,12 @@ const routes_in = [
     exact: true,
     name: 'Study',
     component: Study,
+  },
+  {
+    path: '/matching',
+    exact: true,
+    name: 'Matching',
+    component: Matching,
   },
 ]
 

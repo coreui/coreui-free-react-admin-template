@@ -28,6 +28,13 @@ const _navIn = [
     to: '/column_summary',
     icon: <CIcon name="sidebar_icon" customClassName="nav-icon" />,
   },
+  {
+    _component: 'CNavItem',
+    as: NavLink,
+    anchor: 'MATCHING',
+    to: '/matching',
+    icon: <CIcon name="sidebar_icon" customClassName="nav-icon" />,
+  },
   /* {
     _component: 'CNavItem',
     as: NavLink,

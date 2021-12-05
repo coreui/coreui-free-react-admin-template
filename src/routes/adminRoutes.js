@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React from 'react'
 import { ViouTable } from '../views/pages/request/Request';
+import { UserTable } from '../views/pages/user/User';
 import DefaultLayout from "../layout/DefaultLayout";
 import { RequestForm } from "../views/pages/request/RequestForm"
 import { MatchRequest } from "../views/pages/request/MatchRequest"
@@ -40,5 +40,19 @@ export const adminRoutes = [
         name: "MatchRequestById",
         component: MatchRequest,
         exatc: true
-    }
+    },
+    {
+        path: "/user/all",
+        key: "/user/all",
+        name: "Users",
+        component: UserTable,
+        exact: true
+    },
+    // {
+    //     path: "/user/:id",
+    //     key: "/user/:id",
+    //     name: "UserById",
+    //     component: UserForm,
+    //     exact: true
+    // },
 ];

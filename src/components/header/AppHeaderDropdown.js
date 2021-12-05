@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import {
   CAvatar,
@@ -21,10 +22,12 @@ import {
   cilUser,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-
+import { useDispatch } from "react-redux"
+import { logout } from "../../redux/slices/admin"
 import avatar8 from './../../assets/images/avatars/8.jpg'
 
-const AppHeaderDropdown = () => {
+const AppHeaderDropdown = (props) => {
+  const dispatch = useDispatch();
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
@@ -84,9 +87,12 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem href="#">
+        <CDropdownItem href="#/login" onClick={() => {
+          dispatch(logout());
+        
+        }}>
           <CIcon icon={cilLockLocked} className="me-2" />
-          Lock Account
+          Log out
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

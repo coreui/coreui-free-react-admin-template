@@ -1,1 +1,27 @@
 // Here you can add other styles
+.dropzone {
+    width: 100%;
+    height: 184px;
+    // border: 1px solid red;
+    background: #c4c4c4;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.my-btn {
+    padding: .5rem 1rem;
+    background: #1EAAB2;
+border-radius: 5px;
+color: #fff;
+min-width: 120px;
+border: none;
+}
+.my-paginate-container {
+    display: flex;
+    background-color: red;
+    width: 100%;
+    height: 100px;
+    color: #fff;
+}

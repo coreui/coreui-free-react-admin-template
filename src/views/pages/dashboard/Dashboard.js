@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { lazy } from 'react'
 
 import {
@@ -51,10 +52,10 @@ import avatar4 from 'src/assets/images/avatars/4.jpg'
 import avatar5 from 'src/assets/images/avatars/5.jpg'
 import avatar6 from 'src/assets/images/avatars/6.jpg'
 
-const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
-const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
+const WidgetsDropdown = lazy(() => import('../../widgets/WidgetsDropdown.js'))
+const WidgetsBrand = lazy(() => import('../../widgets/WidgetsBrand.js'))
 
-const Dashboard = () => {
+export const Dashboard = () => {
   const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
@@ -460,4 +461,3 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard

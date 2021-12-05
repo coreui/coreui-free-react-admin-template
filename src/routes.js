@@ -1,8 +1,17 @@
+/* eslint-disable */
 import React from 'react'
 
-const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
+// Containers
+const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+
+const Dashboard = React.lazy(() => import('./views/pages/dashboard/Dashboard'))
+const Assets = React.lazy(() => import('./views/pages/assets/Assets'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
+
+const Login = React.lazy(() => import('./views/pages/login/Login'))
+const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
+const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
 // Base
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
@@ -51,50 +60,54 @@ const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const routes = [
-  { path: '/', exact: true, name: 'Home' },
+ 
+  { path: '/login', exact: true, name: 'Login', component: Login },
+  { path: '/', exact: true, name: 'Home', component: DefaultLayout },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/theme', name: 'Theme', component: Colors, exact: true },
-  { path: '/theme/colors', name: 'Colors', component: Colors },
-  { path: '/theme/typography', name: 'Typography', component: Typography },
-  { path: '/base', name: 'Base', component: Cards, exact: true },
-  { path: '/base/accordion', name: 'Accordion', component: Accordion },
-  { path: '/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
-  { path: '/base/cards', name: 'Cards', component: Cards },
-  { path: '/base/carousels', name: 'Carousel', component: Carousels },
-  { path: '/base/collapses', name: 'Collapse', component: Collapses },
-  { path: '/base/list-groups', name: 'List Groups', component: ListGroups },
-  { path: '/base/navs', name: 'Navs', component: Navs },
-  { path: '/base/paginations', name: 'Paginations', component: Paginations },
-  { path: '/base/placeholders', name: 'Placeholders', component: Placeholders },
-  { path: '/base/popovers', name: 'Popovers', component: Popovers },
-  { path: '/base/progress', name: 'Progress', component: Progress },
-  { path: '/base/spinners', name: 'Spinners', component: Spinners },
-  { path: '/base/tables', name: 'Tables', component: Tables },
-  { path: '/base/tooltips', name: 'Tooltips', component: Tooltips },
-  { path: '/buttons', name: 'Buttons', component: Buttons, exact: true },
-  { path: '/buttons/buttons', name: 'Buttons', component: Buttons },
-  { path: '/buttons/dropdowns', name: 'Dropdowns', component: Dropdowns },
-  { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
-  { path: '/charts', name: 'Charts', component: Charts },
-  { path: '/forms', name: 'Forms', component: FormControl, exact: true },
-  { path: '/forms/form-control', name: 'Form Control', component: FormControl },
-  { path: '/forms/select', name: 'Select', component: Select },
-  { path: '/forms/checks-radios', name: 'Checks & Radios', component: ChecksRadios },
-  { path: '/forms/range', name: 'Range', component: Range },
-  { path: '/forms/input-group', name: 'Input Group', component: InputGroup },
-  { path: '/forms/floating-labels', name: 'Floating Labels', component: FloatingLabels },
-  { path: '/forms/layout', name: 'Layout', component: Layout },
-  { path: '/forms/validation', name: 'Validation', component: Validation },
-  { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
-  { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
-  { path: '/icons/flags', name: 'Flags', component: Flags },
-  { path: '/icons/brands', name: 'Brands', component: Brands },
-  { path: '/notifications', name: 'Notifications', component: Alerts, exact: true },
-  { path: '/notifications/alerts', name: 'Alerts', component: Alerts },
-  { path: '/notifications/badges', name: 'Badges', component: Badges },
-  { path: '/notifications/modals', name: 'Modals', component: Modals },
-  { path: '/notifications/toasts', name: 'Toasts', component: Toasts },
-  { path: '/widgets', name: 'Widgets', component: Widgets },
+  { path: '/assets', name: 'Assets', component: Assets },
+  
+  // { path: '/theme', name: 'Theme', component: Colors, exact: true },
+  // { path: '/theme/colors', name: 'Colors', component: Colors },
+  // { path: '/theme/typography', name: 'Typography', component: Typography },
+  // { path: '/base', name: 'Base', component: Cards, exact: true },
+  // { path: '/base/accordion', name: 'Accordion', component: Accordion },
+  // { path: '/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
+  // { path: '/base/cards', name: 'Cards', component: Cards },
+  // { path: '/base/carousels', name: 'Carousel', component: Carousels },
+  // { path: '/base/collapses', name: 'Collapse', component: Collapses },
+  // { path: '/base/list-groups', name: 'List Groups', component: ListGroups },
+  // { path: '/base/navs', name: 'Navs', component: Navs },
+  // { path: '/base/paginations', name: 'Paginations', component: Paginations },
+  // { path: '/base/placeholders', name: 'Placeholders', component: Placeholders },
+  // { path: '/base/popovers', name: 'Popovers', component: Popovers },
+  // { path: '/base/progress', name: 'Progress', component: Progress },
+  // { path: '/base/spinners', name: 'Spinners', component: Spinners },
+  // { path: '/base/tables', name: 'Tables', component: Tables },
+  // { path: '/base/tooltips', name: 'Tooltips', component: Tooltips },
+  // { path: '/buttons', name: 'Buttons', component: Buttons, exact: true },
+  // { path: '/buttons/buttons', name: 'Buttons', component: Buttons },
+  // { path: '/buttons/dropdowns', name: 'Dropdowns', component: Dropdowns },
+  // { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
+  // { path: '/charts', name: 'Charts', component: Charts },
+  // { path: '/forms', name: 'Forms', component: FormControl, exact: true },
+  // { path: '/forms/form-control', name: 'Form Control', component: FormControl },
+  // { path: '/forms/select', name: 'Select', component: Select },
+  // { path: '/forms/checks-radios', name: 'Checks & Radios', component: ChecksRadios },
+  // { path: '/forms/range', name: 'Range', component: Range },
+  // { path: '/forms/input-group', name: 'Input Group', component: InputGroup },
+  // { path: '/forms/floating-labels', name: 'Floating Labels', component: FloatingLabels },
+  // { path: '/forms/layout', name: 'Layout', component: Layout },
+  // { path: '/forms/validation', name: 'Validation', component: Validation },
+  // { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
+  // { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
+  // { path: '/icons/flags', name: 'Flags', component: Flags },
+  // { path: '/icons/brands', name: 'Brands', component: Brands },
+  // { path: '/notifications', name: 'Notifications', component: Alerts, exact: true },
+  // { path: '/notifications/alerts', name: 'Alerts', component: Alerts },
+  // { path: '/notifications/badges', name: 'Badges', component: Badges },
+  // { path: '/notifications/modals', name: 'Modals', component: Modals },
+  // { path: '/notifications/toasts', name: 'Toasts', component: Toasts },
+  // { path: '/widgets', name: 'Widgets', component: Widgets },
 ]
 
 export default routes

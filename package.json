@@ -35,6 +35,7 @@
     "@coreui/react-chartjs": "^2.0.0",
     "@coreui/utils": "^1.3.1",
     "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@reduxjs/toolkit": "^1.6.2",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
     "appwrite": "^5.0.0",

@@ -9,6 +9,8 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from './redux/store'
 import { Axios } from "./api/instances";
 import { Toaster } from 'react-hot-toast';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-notifications/lib/notifications.css";
 
 Axios.interceptors.request.use(
   null,

@@ -9,6 +9,12 @@ const initialState = {
     creative: null,
     customerLoading: false,
     creativeLoading: false,
+    matchRequestsLoading: false,
+    usersLoading: false,
+    users: {
+        users: [],
+        sum: 0
+    }
 };
 
 const fetchCustomerByID = createAsyncThunk(
@@ -26,6 +32,16 @@ const fetchCreativeByID = createAsyncThunk(
         return res.data.data;
     }
 );
+
+const fetchAllUsers = createAsyncThunk(
+    "users/allUsers",
+    async ({ id, limit, offset }) => {
+        const res = await Axios.get(`${Api.GET_USERS(id)}?limit=${limit}&offset=${offset}&orderType=DESC`)
+        console.log(res)
+        console.log('i go user')
+        return res.data.data.res;
+    }
+)
 
 const usersSlice = createSlice({
     name: "users",
@@ -54,9 +70,22 @@ const usersSlice = createSlice({
                 state.creativeLoading = false;
                 //NotificationManager.error(action.error.message);
             })
+            .addCase(fetchAllUsers.pending, (state, action) => {
+                state.usersLoading = true;
+            })
+            .addCase(fetchAllUsers.fulfilled, (state, action) => {
+                console.log('payload is ', action.payload)
+                state.users = action.payload;
+                state.usersLoading = false
+                //  NotificationManager.success('Creative Found')
+            })
+            .addCase(fetchAllUsers.rejected, (state, action) => {
+                state.usersLoading = false;
+                NotificationManager.error(action.error.message);
+            })
     },
 });
 
-export { fetchCustomerByID, fetchCreativeByID };
+export { fetchCustomerByID, fetchCreativeByID, fetchAllUsers };
 
 export default usersSlice.reducer;

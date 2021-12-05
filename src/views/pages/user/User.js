@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-
+import Pagination from "@material-ui/lab/Pagination";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { withAdminAuth } from "../../../hoc/withAdminAuth";
-import { fetchAllRequests } from "../../../redux/slices/request";
+import { fetchAllUsers } from "../../../redux/slices/user";
 import { UserTable, SelectColumnFilter } from './UserTable'
 
 const Styles = styled.div`
@@ -42,73 +42,46 @@ const Styles = styled.div`
 `
 
 export const UserTablePage = withAdminAuth(true)(() => {
-  const { push } = useHistory();
-  const [data, setData] = useState([]);
+
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.requests.loading);
-  const requests = useSelector((state) => state.requests.requests.items);
-  const totalPages = useSelector((state) => state.requests.requests.totalPages);
+  const users = useSelector((state) => state.users.users.users);
+  const totalPages = useSelector((state) => state.users.users.sum);
   const currentPage = useSelector((state) => state.requests.requests.currentPage);
-  const totalItems = useSelector((state) => state.requests.requests.totalItems + 1);
+  // const totalItems = useSelector((state) => state.requests.requests.totalItems + 1);
   const deleteLoading = useSelector((state) => state.admin.authLoading);
   // get user_id from the appwrite getUser or localstorage
   useEffect(() => {
     (async () => {
-      dispatch(fetchAllRequests(localStorage.getItem("admin_id")))
+
+      dispatch(fetchAllUsers({ id: localStorage.getItem("admin_id"), limit: 100, offset: 0 }))
+
     })()
   }, [])
 
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Request Information',
+        Header: 'User Information',
         columns: [
           {
-            Header: 'Request ID',
-            accessor: 'id',
+            Header: 'Name',
+            accessor: 'name',
+            // Filter: SelectColumnFilter
           },
           {
-            Header: 'Service',
-            accessor: 'service',
+            Header: 'Email',
+            accessor: 'email',
+          },
+          {
+            Header: 'Role',
+            accessor: 'prefs.role',
             Filter: SelectColumnFilter
           },
           {
-            Header: 'Title',
-            accessor: 'title',
+            Header: 'Address',
+            accessor: 'prefs.location',
           },
-          // {
-          //     Header: 'Description',
-          //     accessor: 'description',
-          // },
-          // {
-          //     Header: 'Address',
-          //     accessor: 'address',
-          // },
-          {
-            Header: 'Status',
-            accessor: 'status',
-            Filter: SelectColumnFilter
-          },
-          {
-            Header: 'Equipment',
-            accessor: 'equipment',
-          },
-          // {
-          //     Header: 'Admin Approval',
-          //     accessor: 'admin_approval',
-          // },
-          // {
-          //     Header: 'Submission Date',
-          //     accessor: 'submission_date',
-          // },
-          // {
-          //     Header: 'Creative ID',
-          //     accessor: 'creative_id',
-          // },
-          // {
-          //     Header: 'Customer ID',
-          //     accessor: 'customer_id',
-          // },
         ],
       },
     ],
@@ -119,7 +92,7 @@ export const UserTablePage = withAdminAuth(true)(() => {
     <div>
       {loading ? (<div>loading</div >) : (
         <Styles>
-          <UserTable columns={columns} data={requests} pageIndex={currentPage} pageSize={totalItems} />
+          <UserTable columns={columns} data={users} pageIndex={currentPage} pageSize={totalPages} />
         </Styles>)}
 
     </div>

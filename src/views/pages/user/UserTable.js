@@ -18,7 +18,7 @@ import {
 import { cilPencil, cilCheck, cilTrash, cilRecycle } from '@coreui/icons';
 import { useHistory } from "react-router-dom";
 import { approveRequest } from '../../../redux/slices/request'
-const WidgetsDropdown = lazy(() => import('../../components/WidgetsDropdown.js'))
+const UserWidgets = lazy(() => import('../../components/UserWidgets.js'))
 
 const useStyles = makeStyles(theme => ({
     table: {
@@ -258,17 +258,11 @@ const IndeterminateCheckbox = React.forwardRef(
 )
 
 // Our table component
-export const UserTable = ({ columns, data, pageIndex, pageSize }) => {
+export const UserTable = ({ columns, data, pageIndex, pageSize, perPage }) => {
     const classes = useStyles();
     const { push } = useHistory();
     const dispatch = useDispatch();
 
-    const [requestModal, setRequestModal] = useState({ visible: false, row: null });
-
-
-    const approve = (id) => {
-        dispatch(approveRequest({ id, user_id: localStorage.getItem("admin_id") }))
-    }
 
     const filterTypes = React.useMemo(
         () => ({
@@ -315,7 +309,6 @@ export const UserTable = ({ columns, data, pageIndex, pageSize }) => {
         previousPage,
         setPageSize,
         state,
-        state: { selectedRowIds },
         visibleColumns,
         preGlobalFilteredRows,
         setGlobalFilter,
@@ -323,85 +316,22 @@ export const UserTable = ({ columns, data, pageIndex, pageSize }) => {
         {
             columns,
             data,
+            pageSize,
+            perPage: 100,
             defaultColumn, // Be sure to pass the defaultColumn option
             filterTypes,
-            initialState: { pageIndex: 0 }
+            initialState: { pageIndex: pageIndex }
         },
 
         useFilters, // useFilters!
         useGlobalFilter, // useGlobalFilter!
         usePagination,
         useRowSelect,
-        hooks => {
-            hooks.visibleColumns.push(columns => [
-                // Let's make a column for selection
-                ...columns,
-                {
-                    id: 'selection',
-                    Cell: ({ row }) => (
-                        <div>
-                            {row.original.status === 'pending admin approval' && (
-                                <CTooltip
-                                    content="Click to approve this request"
-                                    placement="top"
-                                >
-                                    <CIcon
-                                        className={classes.success}
-                                        icon={cilCheck} size="sm"
-                                        {...row.getToggleRowSelectedProps()}
-                                        onClick={() => setRequestModal({ visible: !requestModal.visible, row: row })}
-                                    />
-                                </CTooltip>
-                            )}
-
-                            {row.original.status === 'approved' && (
-                                <CTooltip
-                                    content="Click to match this request to creatives."
-                                    placement="top"
-                                >
-                                    <CIcon
-                                        className={classes.primary}
-                                        icon={cilRecycle} size="sm"
-                                        {...row.getToggleRowSelectedProps()}
-                                        onClick={() => push(`/request/match/${row.original.id}`)}
-                                    />
-                                </CTooltip>
-                            )}
-
-                            <CTooltip
-                                content="Click to view request details."
-                                placement="top"
-                            >
-                                <CIcon
-                                    className={classes.icon}
-                                    icon={cilPencil} size="sm"
-                                    {...row.getToggleRowSelectedProps()}
-                                    onClick={() =>
-                                        push(`/request/${row.original.id}`)
-                                    }
-                                />
-                            </CTooltip>
-                            <CIcon className={classes.delete} icon={cilTrash} size="sm" {...row.getToggleRowSelectedProps()} />
-                        </div>
-                    ),
-                },
-            ])
-        }
     )
 
     return (
         <>
-            <CModal visible={requestModal.visible} onClose={() => setRequestModal({ visible: !requestModal.visible, row: null })}>
-                <CModalHeader onClose={() => setRequestModal({ visible: !requestModal.visible, row: null })}>
-                    <CModalTitle>Do you want to approve this request for {requestModal.visible ? requestModal.row.original.title : null}?</CModalTitle>
-                </CModalHeader>
-                <CModalBody>{requestModal.visible ? requestModal.row.original.description : null}</CModalBody>
-                <CModalFooter>
-
-                    <CButton color="primary" onClick={() => approve(requestModal.row.original.id)} >Approve</CButton>
-                </CModalFooter>
-            </CModal>
-            <WidgetsDropdown props={data} />
+            <UserWidgets props={data} />
             <Table className={classes.table}>
                 <TableHead>
                     {headerGroups.map(headerGroup => (

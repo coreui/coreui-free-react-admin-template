@@ -42,10 +42,10 @@ const _nav = [
   //   to: '/theme/typography',
   //   icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
   // },
-  {
-    component: CNavTitle,
-    name: 'Options',
-  },
+  // {
+  //   component: CNavTitle,
+  //   name: 'Options',
+  // },
   {
     component: CNavGroup,
     name: 'Assets',

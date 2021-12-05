@@ -73,66 +73,25 @@ const WidgetsDropdown = lazy(() => import('../../widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../../widgets/WidgetsBrand.js'))
 import MyDrag, { Basic }  from '../../../components/AttachFiles.js'
 
-function Items({ currentItems }) {
-  return (
-    <>
-      {
-        currentItems &&
-        currentItems.filter(item => item.visibility === 0).map((each)=> {
-            return (
-              <div key={each?.id} style={{position: "relative", width: '24%', height: '160px'}}>
-                  {
-                    each?.asset_url ?  <>
-                    <img src={each?.asset_url} alt={each?.title} style={{width: '100%', height: '160px'}} />
-                    <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                    </>: <>
-                            <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                            <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                        </>
-                  }
-                  {/* <button onClick={()=>aproveAsset(each.id)}>approve assets {each.id}</button> */}
-                  </div>
-            )
-          })
-        }
-    </>
-  );
-}
-
-export const Assets = () => {
+function Items({ currentItems, itemsLoading }) {
   const [visible, setVisible] = useState(false)
-  const [items, setItems] = useState([])
-  const [approveLoading, setApproveLoading] = useState(false)
   const [approveToggle, setApproveToggle] = useState(0)
+  const [approveLoading, setApproveLoading] = useState(false)
   const [chosenItem, setChosenItem] = useState({
     id: '',
     type: '',
     url: ''
   })
 
-  const random = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
-
-  const [adminId, setAdminId] = useState(localStorage.getItem('session_id'))
-
-  // We start with an empty list of items.
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
-  const [itemOffset, setItemOffset] = useState(0);
-  const [itemsPerPage, stItemsPerPage] = useState(20);
-
-    
-    const viewcreatives = async () => {
-      try{
-        const res = await axios.get(`https://services.projects.sbs/library/content?page=${pageCount}&size=${itemsPerPage}&admin_id=61989dc4b4693`)
-        console.log(res.data.data.items)
-        setItems(res.data.data.items)
-      }catch(error) {
-        console.log(error)
-      }
+  const handleVisible = (id, type, url, status) => {
+    if(status === 1){
+      setApproveToggle(status)
+    }
+    setVisible(!visible)
+    setChosenItem({
+      ...chosenItem,
+      id: id, type: type, url: url
+    })
   }
 
   const aproveAsset = async (id) => {
@@ -152,6 +111,7 @@ export const Assets = () => {
         duration: 2000
       })
       setApproveLoading(false)
+      setVisible(false)
     } catch (error) {
       setApproveLoading(false)
       console.log('error approving assets', error?.response?.data?.message, error?.response?.data?.error);
@@ -163,45 +123,11 @@ export const Assets = () => {
       })
     }
   };
-
-  useEffect(()=>{
-    viewcreatives()
-    // Fetch items from another resources.
-    const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setItems(items.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage])
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
-    setItemOffset(newOffset);
-  };
-
-  const handleVisible = (id, type, url, status) => {
-    if(status === 1){
-      setApproveToggle(status)
-    }
-    setVisible(!visible)
-    setChosenItem({
-      ...chosenItem,
-      id: id, type: type, url: url
-    })
-  }
+  
   return (
-    <>
-    {/* <div className="d-flex p-2 docs-highlight border-bottom">
-      <div>
-        <div>Browse Library</div>
-        <div>Welcome back, Asabe! We missed you.</div>
-      </div>
-      <div>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-      </div>
-    </div> */}
+    <React.Fragment>
+      {
+        visible && 
     <CModal alignment="center" size="lg" visible={visible} onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Assets title</CModalTitle>
@@ -236,6 +162,113 @@ export const Assets = () => {
           }
         </CModalFooter>
       </CModal>
+      }
+  {
+    itemsLoading && 'assets loading ....'
+  }
+      {
+        currentItems ?
+        currentItems.filter(item => item.visibility === 0).map((each)=> {
+            return (
+              <div key={each?.id} style={{position: "relative", width: '24%', height: '160px'}}>
+                  {
+                    each?.asset_url ?  <>
+                    <img src={each?.asset_url} alt={each?.title} style={{width: '100%', height: '160px'}} />
+                    <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
+                    </>: <>
+                            <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
+                            <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
+                        </>
+                  }
+                  {/* <button onClick={()=>aproveAsset(each.id)}>approve assets {each.id}</button> */}
+                  </div>
+            )
+          }):
+          <div style={{position: "relative", width: '24%', height: '160px'}}>
+              <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
+              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'fit-content'}}>No content to show</div>
+          </div>
+        }
+    </React.Fragment>
+  );
+}
+
+export const Assets = () => {
+  const [items, setItems] = useState([])
+  const [itemsLoading, setItemsLoading] = useState(false)
+  const [updateDom, setUpdateDom] = useState('0')
+ 
+
+  const random = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+  const [adminId, setAdminId] = useState(localStorage.getItem('admin_id'))
+
+  // We start with an empty list of items.
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  // Here we use item offsets; we could also use page offsets
+  // following the API or data you're working with.
+  const [itemOffset, setItemOffset] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(20);
+
+    
+    const viewcreatives = async () => {
+      try{
+        setItemsLoading(true)
+        const res = await axios.get(`https://services.projects.sbs/library/content?page=${pageCount}&size=${itemsPerPage}&admin_id=${adminId}`)
+        console.log(res.data.data.items)
+        setItems(res.data.data.items)
+        setItemsLoading(false)
+      }catch(error) {
+        console.log(error)
+        setItemsLoading(false)
+      }
+  }
+
+  
+
+  useEffect(()=>{
+    viewcreatives()
+    // Fetch items from another resources.
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage])
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+
+  
+
+  const filterByType = (params) =>{
+    if(params !== ""){
+      console.log(params)
+      let newItems;
+      newItems = items.filter(item => item.content_type === params)
+      setItems(newItems)
+    }
+    setItems(items)
+  };
+  return (
+    <>
+    {/* <div className="d-flex p-2 docs-highlight border-bottom">
+      <div>
+        <div>Browse Library</div>
+        <div>Welcome back, Asabe! We missed you.</div>
+      </div>
+      <div>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+      </div>
+    </div> */}
+    
     <CContainer fluid class="border-bottom"  style={{margin: '0 .5em 1em .5em'}}>
 
     <CRow>
@@ -294,27 +327,27 @@ export const Assets = () => {
         <div style={{display: 'flex', margin :'0 0 20px 0', padding: '.5em 0', width: '100%', justifyContent: 'space-between'}}>
           <div style={{display: 'flex'}}>
             <div style={{margin: '0 1em 0 0'}}>
-              Media Type:
-              <select>
+              <span style={{display: 'inline-block', marginRight: '20px'}}>Media Type:</span>
+              <select style={{padding: '.5em .2em', borderRadius: '5px', minWidth: '60px'}} onChange={(e)=>filterByType(e.target.value)}>
                 <option value="">Pick Asset Type</option>
                 <option value="videos">Videos</option>
-                <option value="photos">Photos</option>
+                <option value="image">Photos</option>
               </select>
             </div>
             <div style={{margin: '0 1em'}}>
-              Tags: 
-              <select>
+              <span style={{display: 'inline-block', marginRight: '20px'}}>Tags: </span>
+              <select style={{padding: '.5em .2em', borderRadius: '5px', minWidth: '60px'}}>
               <option value="">Pick a tag</option>
               <option value="documentary">Documentary</option>
               <option>Pick a tag</option>
               </select>
             </div>
-            <div style={{ padding :'.5em 1em', margin :'0 1em', borderRadius: '5px', color: '#1EAAB2', border: '1px solid #1EAAB2', fontSize: '12px', textAlign: 'center'}}>
+            <div style={{ padding :'.5em 1em', display: 'flex', alignItems: 'center', margin :'0 1em', borderRadius: '5px', color: '#1EAAB2', border: '1px solid #1EAAB2', fontSize: '12px', textAlign: 'center'}}>
               Bulk Select
             </div>
           </div>
 
-          <div style={{backgroundColor: '#c4c4c4', padding :'.5em 1em', marginRight: '10px', borderRadius: '5px', color: '#fff', fontSize: '12px', textAlign: 'center'}}>
+          <div style={{backgroundColor: '#c4c4c4', display: 'flex', alignItems: 'center', padding :'.5em 1em', marginRight: '10px', borderRadius: '5px', color: '#fff', fontSize: '12px', textAlign: 'center'}}>
             Today - Oct, 21
           </div>
 
@@ -327,7 +360,7 @@ export const Assets = () => {
             <CCardHeader>Review and Approve Videos</CCardHeader>
             <CCardBody>
               <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
-                <Items currentItems={items} />
+                <Items currentItems={items} itemsLoading={itemsLoading} />
               </div>
             </CCardBody>
           </CCard>
@@ -341,24 +374,61 @@ export const Assets = () => {
             <CCardHeader>Videos Library</CCardHeader>
             <CCardBody>
               <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
-                <Items currentItems={items} />
+                <Items currentItems={items} itemsLoading={itemsLoading} />
               </div>
             </CCardBody>
           </CCard>
         </CCol>
       </CRow>
+      <div style={{display: 'flex', margin: '0 0 10px 0', justifyContent: 'space-between'}}>
+          <div style={{display: 'flex'}}>
+            <div style={{marginRight: '20px'}}>Showing 80 of 1089 media items</div>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={5}
+              pageCount={pageCount}
+              previousLabel="<"
+              renderOnZeroPageCount={null}
+              containerClassName="my-paginate-container"
+              className=""
+              activeClassName="activePage"
+              pageLinkClassName="pageLinkClassName"
+            />
+{/* 
+containerClassName	String	The classname of the pagination container.
+ */}
+ {/* 
+ className	String	Same as containerClassName. For use with styled-components & other CSS-in-JS.
+  */}
+  {/* 
+  pageClassName	String	The classname on tag li of each page element.
+   */}
+   {/* 
+   pageLinkClassName	String	The classname on tag a of each page element.
+   */}
+
+{/* activeClassName	String	The classname for the active page. */}
+
+{/* activeLinkClassName	String	The classname on the active tag a. */}
+
+{/* previousClassName	String	The classname on tag li of the previous button. */}
+
+{/* nextClassName	String	The classname on tag li of the next button. */}
+
+{/* previousLinkClassName	String	The classname on tag a of the previous button. */}
+
+{/* nextLinkClassName	String	The classname on tag a of the next button. */}
+
+{/* disabledClassName	String	The classname for disabled previous and next buttons. */}
+
+{/* disabledLinkClassName	String	The classname on tag a for disabled previous and next buttons. */}
+
+          </div>
       <div>
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      />
-      <div>
-        <select>
+        <span style={{display: 'inline-block', marginRight: '20px'}}>items per page</span>
+        <select style={{minWidth: '70px', textAlign: 'center'}} onChange={(e)=> setItemsPerPage(e.target.value)}>
           <option value="50">50</option>
           <option value="100">100</option>
           <option value="150">150</option>

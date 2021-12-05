@@ -67,13 +67,10 @@ const AppHeader = () => {
           <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>
-<<<<<<< HEAD
       {/* <CHeaderDivider />
       <CContainer fluid>
         <AppBreadcrumb />
       </CContainer> */}
-=======
->>>>>>> test_dev
     </CHeader>
   )
 }

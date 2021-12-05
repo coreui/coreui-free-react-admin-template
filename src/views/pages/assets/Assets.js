@@ -67,12 +67,37 @@ import avatar6 from 'src/assets/images/avatars/6.jpg'
 import lock from 'src/assets/images/lock.png'
 import play from 'src/assets/images/play.png'
 import rect from 'src/assets/images/rect.png'
-import toast from 'react-hot-toast';
-
+import toast from 'react-hot-toast'
+import ReactPaginate from 'react-paginate'
 const WidgetsDropdown = lazy(() => import('../../widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../../widgets/WidgetsBrand.js'))
 import MyDrag, { Basic }  from '../../../components/AttachFiles.js'
 
+function Items({ currentItems }) {
+  return (
+    <>
+      {
+        currentItems &&
+        currentItems.filter(item => item.visibility === 0).map((each)=> {
+            return (
+              <div key={each?.id} style={{position: "relative", width: '24%', height: '160px'}}>
+                  {
+                    each?.asset_url ?  <>
+                    <img src={each?.asset_url} alt={each?.title} style={{width: '100%', height: '160px'}} />
+                    <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
+                    </>: <>
+                            <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
+                            <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
+                        </>
+                  }
+                  {/* <button onClick={()=>aproveAsset(each.id)}>approve assets {each.id}</button> */}
+                  </div>
+            )
+          })
+        }
+    </>
+  );
+}
 
 export const Assets = () => {
   const [visible, setVisible] = useState(false)
@@ -91,131 +116,18 @@ export const Assets = () => {
 
   const [adminId, setAdminId] = useState(localStorage.getItem('session_id'))
 
-  const progressExample = [
-    { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
-    { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
-    { title: 'Pageviews', value: '78.706 Views', percent: 60, color: 'warning' },
-    { title: 'New Users', value: '22.123 Users', percent: 80, color: 'danger' },
-    { title: 'Bounce Rate', value: 'Average Rate', percent: 40.15, color: 'primary' },
-  ]
-
-  const progressGroupExample1 = [
-    { title: 'Monday', value1: 34, value2: 78 },
-    { title: 'Tuesday', value1: 56, value2: 94 },
-    { title: 'Wednesday', value1: 12, value2: 67 },
-    { title: 'Thursday', value1: 43, value2: 91 },
-    { title: 'Friday', value1: 22, value2: 73 },
-    { title: 'Saturday', value1: 53, value2: 82 },
-    { title: 'Sunday', value1: 9, value2: 69 },
-  ]
-
-  const progressGroupExample2 = [
-    { title: 'Male', icon: cilUser, value: 53 },
-    { title: 'Female', icon: cilUserFemale, value: 43 },
-  ]
-
-  const progressGroupExample3 = [
-    { title: 'Organic Search', icon: cibGoogle, percent: 56, value: '191,235' },
-    { title: 'Facebook', icon: cibFacebook, percent: 15, value: '51,223' },
-    { title: 'Twitter', icon: cibTwitter, percent: 11, value: '37,564' },
-    { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
-  ]
-
-  const tableExample = [
-    {
-      avatar: { src: avatar1, status: 'success' },
-      user: {
-        name: 'Yiorgos Avraamu',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'USA', flag: cifUs },
-      usage: {
-        value: 50,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
-      },
-      payment: { name: 'Mastercard', icon: cibCcMastercard },
-      activity: '10 sec ago',
-    },
-    {
-      avatar: { src: avatar2, status: 'danger' },
-      user: {
-        name: 'Avram Tarasios',
-        new: false,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Brazil', flag: cifBr },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'info',
-      },
-      payment: { name: 'Visa', icon: cibCcVisa },
-      activity: '5 minutes ago',
-    },
-    {
-      avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2021' },
-      country: { name: 'India', flag: cifIn },
-      usage: {
-        value: 74,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'warning',
-      },
-      payment: { name: 'Stripe', icon: cibCcStripe },
-      activity: '1 hour ago',
-    },
-    {
-      avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2021' },
-      country: { name: 'France', flag: cifFr },
-      usage: {
-        value: 98,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'danger',
-      },
-      payment: { name: 'PayPal', icon: cibCcPaypal },
-      activity: 'Last month',
-    },
-    {
-      avatar: { src: avatar5, status: 'success' },
-      user: {
-        name: 'Agapetus Tadeáš',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Spain', flag: cifEs },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'primary',
-      },
-      payment: { name: 'Google Wallet', icon: cibCcApplePay },
-      activity: 'Last week',
-    },
-    {
-      avatar: { src: avatar6, status: 'danger' },
-      user: {
-        name: 'Friderik Dávid',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Poland', flag: cifPl },
-      usage: {
-        value: 43,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
-      },
-      payment: { name: 'Amex', icon: cibCcAmex },
-      activity: 'Last week',
-    },
-  ]
+  // We start with an empty list of items.
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  // Here we use item offsets; we could also use page offsets
+  // following the API or data you're working with.
+  const [itemOffset, setItemOffset] = useState(0);
+  const [itemsPerPage, stItemsPerPage] = useState(20);
 
     
     const viewcreatives = async () => {
       try{
-        const res = await axios.get(`https://services.projects.sbs/library/content?page=0&size=100&admin_id=61989dc4b4693`)
+        const res = await axios.get(`https://services.projects.sbs/library/content?page=${pageCount}&size=${itemsPerPage}&admin_id=61989dc4b4693`)
         console.log(res.data.data.items)
         setItems(res.data.data.items)
       }catch(error) {
@@ -254,7 +166,20 @@ export const Assets = () => {
 
   useEffect(()=>{
     viewcreatives()
-  }, [])
+    // Fetch items from another resources.
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage])
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
 
   const handleVisible = (id, type, url, status) => {
     if(status === 1){
@@ -402,46 +327,8 @@ export const Assets = () => {
             <CCardHeader>Review and Approve Videos</CCardHeader>
             <CCardBody>
               <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
-              {
-          items.filter(item => item.visibility === 0).map((each)=> {
-            return (
-              <div key={each?.id} style={{position: "relative", width: '24%', height: '160px'}}>
-                  {
-                    each?.asset_url ?  <>
-                    <img src={each?.asset_url} alt={each?.title} style={{width: '100%', height: '160px'}} />
-                    <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                    </>: <>
-                            <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                            <img src={lock} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                        </>
-                  }
-                  {/* <button onClick={()=>aproveAsset(each.id)}>approve assets {each.id}</button> */}
-                  </div>
-            )
-          })
-        }
-                {/* <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={lock} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={lock} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={lock} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={lock} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div>
-                <div style={{position: "relative", width: '24%', height: '160px'}}>
-                <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                <img src={lock} onClick={() => setVisible(!visible)} alt="lock" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                </div> */}
+                <Items currentItems={items} />
               </div>
-                
             </CCardBody>
           </CCard>
         </CCol>
@@ -453,30 +340,34 @@ export const Assets = () => {
           <CCard className="mb-4">
             <CCardHeader>Videos Library</CCardHeader>
             <CCardBody>
-            <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
-            {
-          items.filter(item => item.visibility === 1).map((each)=> {
-            return (
-              <div key={each?.id} style={{position: "relative", width: '24%', height: '160px'}}>
-                  {
-                    each?.asset_url ?  <>
-                    <img src={each?.asset_url} alt={each?.title} style={{width: '100%', height: '160px'}} />
-                    <img src={play} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url, 1)} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                    </>: <>
-                            <img src={rect} alt="rect" style={{width: '100%', height: '160px'}} />
-                            <img src={play} onClick={() => handleVisible(each?.id, each.content_type, each.asset_url, 1)} alt="play" style={{position: 'absolute', display: 'flex', bottom:'45% ', left:'45% ', cursor: 'pointer',  width: '30px', height: '30px'}} />
-                        </>
-                  }
-                  {/* <button onClick={()=>aproveAsset(each.id)}>approve assets {each.id}</button> */}
-                  </div>
-            )
-          })
-        }
+              <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap', width: '100%'}}>
+                <Items currentItems={items} />
               </div>
             </CCardBody>
           </CCard>
         </CCol>
       </CRow>
+      <div>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+      />
+      <div>
+        <select>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="150">150</option>
+          <option value="200">200</option>
+          <option value="250">250</option>
+          <option value="300">300</option>
+        </select>
+      </div>
+      </div>
     </>
   )
 }

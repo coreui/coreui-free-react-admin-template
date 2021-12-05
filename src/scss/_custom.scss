@@ -19,9 +19,29 @@ min-width: 120px;
 border: none;
 }
 .my-paginate-container {
+    color: #fff;
+    width: 500px;
+    margin: 0;
     display: flex;
-    background-color: red;
-    width: 100%;
-    height: 100px;
+    list-style-type: none;
+    text-align: center;
+    justify-content:center;
+}
+.my-paginate-container li {
+    padding: 0 .5em;
+}
+.my-paginate-container li a {
+    text-decoration: none;
     color: #fff;
 }
+.activePage {
+    background: #1EAAB2;
+    border-radius: 50%;
+}
+.pageLinkClassName {
+    // font-size: 12px;
+}
+svg {
+    display: inline-block;
+    vertical-align: middle;
+  }

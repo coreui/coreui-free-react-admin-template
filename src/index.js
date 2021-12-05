@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from "react-router-dom";
 import { store } from './redux/store'
 import { Axios } from "./api/instances";
+import { Toaster } from 'react-hot-toast';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notifications/lib/notifications.css";
 
@@ -21,6 +22,15 @@ render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
+        <Toaster 
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+          }}
+        />
       </BrowserRouter>
     </Provider>
   </StrictMode>,

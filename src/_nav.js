@@ -25,7 +25,21 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'Users',
+
+    name: 'Assets',
+    to: '/assets',
+    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'All',
+        to: '/assets',
+      },
+    ]
+  },
+  {
+    component: CNavGroup,
+    name: 'User',
     to: '/user',
     icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
     items: [

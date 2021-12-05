@@ -2,9 +2,16 @@
 import { ViouTable } from '../views/pages/request/Request';
 import { UserTablePage } from '../views/pages/user/User';
 import DefaultLayout from "../layout/DefaultLayout";
+const Colors = React.lazy(() => import('../views/theme/colors/Colors'))
+const Typography = React.lazy(() => import('../views/theme/typography/Typography'))
+
+import { Dashboard } from "../views/pages/dashboard/Dashboard";
+import { Assets } from "../views/pages/assets/Assets";
+const Page404 = React.lazy(() => import('../views/pages/page404/Page404'))
+const Page500 = React.lazy(() => import('../views/pages/page500/Page500'))
 import { RequestForm } from "../views/pages/request/RequestForm"
 import { MatchRequest } from "../views/pages/request/MatchRequest"
-import { Dashboard } from "../views/pages/dashboard/Dashboard"
+// import { Dashboard } from "../views/pages/dashboard/Dashboard"
 
 export const adminRoutes = [
     {
@@ -25,6 +32,14 @@ export const adminRoutes = [
         key: "/request/all",
         name: "Requests",
         component: ViouTable,
+        // exact: true
+    },
+    {
+        path: "/assets",
+        key: "/assets",
+        name: "Assets",
+        component: Assets,
+        // exact: true
         exact: true
     },
     {

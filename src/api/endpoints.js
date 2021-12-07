@@ -16,3 +16,6 @@ export const GET_USERS = (admin_id) => `/admin/auth/getUsers/${admin_id}`
 export const GET_CATEGORY = `/library/categories`
 export const CREATE_CATEGORY = `/library/category`
 export const EDIT_CATEGORY = `/library/category`
+
+// Campaign routes
+export const GET_CAMPAIGN = `/campaign/`

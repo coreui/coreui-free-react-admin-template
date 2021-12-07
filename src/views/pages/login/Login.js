@@ -44,7 +44,7 @@ export const Login = withAdminAuth(true)((props) => {
               <CCard className="p-4">
                 <CCardBody>
                   <CForm className="row g-3 needs-validation" onSubmit={loginHandler}>
-                    <h1>Login</h1>
+                    <h1>Viou Admin</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -76,18 +76,18 @@ export const Login = withAdminAuth(true)((props) => {
                           Login
                         </CButton>
                       </CCol>
-                      <CCol xs={6} className="text-right">
+                      {/* <CCol xs={6} className="text-right">
                         <CButton color="link" className="px-0">
                           Forgot password?
                         </CButton>
-                      </CCol>
+                      </CCol> */}
                     </CRow>
                   </CForm>
                 </CCardBody>
               </CCard>
               <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
                 <CCardBody className="text-center">
-                  <div>
+                  {/* <div>
                     <h2>Sign up</h2>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -98,7 +98,7 @@ export const Login = withAdminAuth(true)((props) => {
                         Register Now!
                       </CButton>
                     </Link>
-                  </div>
+                  </div> */}
                 </CCardBody>
               </CCard>
             </CCardGroup>

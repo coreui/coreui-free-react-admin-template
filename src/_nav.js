@@ -3,8 +3,11 @@ import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
   cilCursor,
+  cilUser,
   cilPuzzle,
   cilSpeedometer,
+  cilListRich,
+  cilShareAll
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -57,7 +60,7 @@ const _nav = [
     component: CNavGroup,
     name: 'User',
     to: '/user',
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
@@ -92,20 +95,33 @@ const _nav = [
         name: 'All',
         to: '/request/all',
       },
+      // {
+      //   component: CNavItem,
+      //   name: 'Photo shoot',
+      //   to: '/request/photo',
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: 'Video shoot',
+      //   to: '/request/video',
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: 'Request Creative',
+      //   to: '/request/creative',
+      // },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Campaign',
+    to: '/campaign',
+    icon: <CIcon icon={cilShareAll} customClassName="nav-icon" />,
+    items: [
       {
         component: CNavItem,
-        name: 'Photo shoot',
-        to: '/request/photo',
-      },
-      {
-        component: CNavItem,
-        name: 'Video shoot',
-        to: '/request/video',
-      },
-      {
-        component: CNavItem,
-        name: 'Request Creative',
-        to: '/request/creative',
+        name: 'All',
+        to: '/campaign/all',
       },
     ],
   },
@@ -113,15 +129,16 @@ const _nav = [
     component: CNavGroup,
     name: 'Category',
     to: '/category',
-    icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilListRich} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: 'View Categories',
+        name: 'All',
         to: '/category/all',
       },
     ],
   },
+
 ]
 
 export default _nav

@@ -76,12 +76,12 @@ const CNavbars = () => {
         <CCardBody>
           <CNavbar color="faded" light>
             <CNavbarBrand>
-              <CImage
+              {/* <CImage
                 src="https://placekitten.com/g/30/30"
                 className="d-inline-block align-top"
                 alt="CoreuiVue"
-              />
-              CoreUI React
+              /> */}
+              Viou Digital Admin
             </CNavbarBrand>
           </CNavbar>
         </CCardBody>

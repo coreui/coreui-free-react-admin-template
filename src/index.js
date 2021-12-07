@@ -11,6 +11,7 @@ import { Axios } from "./api/instances";
 import { Toaster } from 'react-hot-toast';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notifications/lib/notifications.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 Axios.interceptors.request.use(
   null,

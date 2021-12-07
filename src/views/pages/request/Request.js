@@ -63,10 +63,10 @@ export const ViouTable = withAdminAuth(true)(() => {
       {
         Header: 'Request Information',
         columns: [
-          {
-            Header: 'Request ID',
-            accessor: 'id',
-          },
+          // {
+          //   Header: 'Request ID',
+          //   accessor: 'id',
+          // },
           {
             Header: 'Service',
             accessor: 'service',
@@ -117,7 +117,11 @@ export const ViouTable = withAdminAuth(true)(() => {
 
   return (
     <div>
-      {loading ? (<div>loading</div >) : (
+      {loading ? (<div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </div>) : (
         <Styles>
           <RequestTable columns={columns} data={requests} pageIndex={currentPage} pageSize={totalItems} />
         </Styles>)}

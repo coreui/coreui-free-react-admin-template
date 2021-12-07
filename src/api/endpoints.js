@@ -10,3 +10,9 @@ export const SUGGEST_CREATIVE = '/admin/request/match'
 // User routes
 export const GET_USER_BY_ID = (user_id) => `/auth/getUser/${user_id}`
 export const GET_USERS = (admin_id) => `/admin/auth/getUsers/${admin_id}`
+
+
+// Category routes
+export const GET_CATEGORY = `/library/categories`
+export const CREATE_CATEGORY = `/library/category`
+export const EDIT_CATEGORY = `/library/category`

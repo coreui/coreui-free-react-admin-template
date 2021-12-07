@@ -78,10 +78,10 @@ export const UserTablePage = withAdminAuth(true)(() => {
             accessor: 'prefs.role',
             Filter: SelectColumnFilter
           },
-          {
-            Header: 'Address',
-            accessor: 'prefs.location',
-          },
+          // {
+          //   Header: 'Address',
+          //   accessor: 'prefs.location',
+          // },
         ],
       },
     ],
@@ -90,7 +90,11 @@ export const UserTablePage = withAdminAuth(true)(() => {
 
   return (
     <div>
-      {loading ? (<div>loading</div >) : (
+      {loading ? (<div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </div>) : (
         <Styles>
           <UserTable columns={columns} data={users} pageIndex={currentPage} pageSize={totalPages} />
         </Styles>)}

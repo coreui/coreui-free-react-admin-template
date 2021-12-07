@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { ViouTable } from '../views/pages/request/Request';
 import { UserTablePage } from '../views/pages/user/User';
+import { CategoryTablePage } from '../views/pages/category/Category';
 import DefaultLayout from "../layout/DefaultLayout";
 
 import { Dashboard } from "../views/pages/dashboard/Dashboard";
@@ -59,11 +60,11 @@ export const adminRoutes = [
         component: UserTablePage,
         exact: true
     },
-    // {
-    //     path: "/user/:id",
-    //     key: "/user/:id",
-    //     name: "UserById",
-    //     component: UserForm,
-    //     exact: true
-    // },
+    {
+        path: "/category/all",
+        key: "/category/all",
+        name: "Categories",
+        component: CategoryTablePage,
+        exact: true
+    },
 ];

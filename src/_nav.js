@@ -109,6 +109,19 @@ const _nav = [
       },
     ],
   },
+  {
+    component: CNavGroup,
+    name: 'Category',
+    to: '/category',
+    icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'View Categories',
+        to: '/category/all',
+      },
+    ],
+  },
 ]
 
 export default _nav

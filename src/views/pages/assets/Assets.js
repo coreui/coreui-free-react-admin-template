@@ -77,6 +77,10 @@ function Items({ currentItems, itemsLoading }) {
   const [visible, setVisible] = useState(false)
   const [approveToggle, setApproveToggle] = useState(0)
   const [approveLoading, setApproveLoading] = useState(false)
+  const [prize, setPrize] = useState(null)
+  const [adminId, setAdminId] = useState(localStorage.getItem('admin_id'))
+
+
   const [chosenItem, setChosenItem] = useState({
     id: '',
     type: '',
@@ -95,15 +99,19 @@ function Items({ currentItems, itemsLoading }) {
   }
 
   const aproveAsset = async (id) => {
+    if(!prize){
+      toast.error('You must place a prize for this asset')
+      return
+    }
     try {
       setApproveLoading(true)
       const res = await axios.patch(
         `https://services.projects.sbs/library/content`,
         {
-        user_id: '61989dc4b4693',
+        user_id: adminId,
         visibility: 1,
         id: id,
-        price: 3456
+        price: prize
        }
       );
       console.log(res.data);
@@ -123,6 +131,7 @@ function Items({ currentItems, itemsLoading }) {
       })
     }
   };
+
   
   return (
     <React.Fragment>
@@ -151,6 +160,10 @@ function Items({ currentItems, itemsLoading }) {
                 }
         </div>
         <CModalFooter style={{textAlign: 'center'}}>
+          <div>
+            <label htmlFor="setprize" style={{marginRight: '20px'}}>Prize{' '}{' '}</label>
+            <input type="number" id="setprize" value={prize} onChange={(e)=>setPrize(e.target.value)}  placeholder="Set prize" />
+          </div>
           {
             approveToggle === 0 &&
             <>
@@ -211,7 +224,7 @@ export const Assets = () => {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage, setItemsPerPage] = useState(10000);
 
     
     const viewcreatives = async () => {
@@ -334,22 +347,22 @@ export const Assets = () => {
                 <option value="image">Photos</option>
               </select>
             </div>
-            <div style={{margin: '0 1em'}}>
+            {/* <div style={{margin: '0 1em'}}>
               <span style={{display: 'inline-block', marginRight: '20px'}}>Tags: </span>
               <select style={{padding: '.5em .2em', borderRadius: '5px', minWidth: '60px'}}>
               <option value="">Pick a tag</option>
               <option value="documentary">Documentary</option>
               <option>Pick a tag</option>
               </select>
-            </div>
-            <div style={{ padding :'.5em 1em', display: 'flex', alignItems: 'center', margin :'0 1em', borderRadius: '5px', color: '#1EAAB2', border: '1px solid #1EAAB2', fontSize: '12px', textAlign: 'center'}}>
+            </div> */}
+            {/* <div style={{ padding :'.5em 1em', display: 'flex', alignItems: 'center', margin :'0 1em', borderRadius: '5px', color: '#1EAAB2', border: '1px solid #1EAAB2', fontSize: '12px', textAlign: 'center'}}>
               Bulk Select
-            </div>
+            </div> */}
           </div>
 
-          <div style={{backgroundColor: '#c4c4c4', display: 'flex', alignItems: 'center', padding :'.5em 1em', marginRight: '10px', borderRadius: '5px', color: '#fff', fontSize: '12px', textAlign: 'center'}}>
+          {/* <div style={{backgroundColor: '#c4c4c4', display: 'flex', alignItems: 'center', padding :'.5em 1em', marginRight: '10px', borderRadius: '5px', color: '#fff', fontSize: '12px', textAlign: 'center'}}>
             Today - Oct, 21
-          </div>
+          </div> */}
 
         </div>
       </>

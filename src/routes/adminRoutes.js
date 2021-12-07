@@ -6,6 +6,7 @@ import DefaultLayout from "../layout/DefaultLayout";
 
 import { Dashboard } from "../views/pages/dashboard/Dashboard";
 import { Assets } from "../views/pages/assets/Assets";
+import { Settings } from "../views/pages/settings/Settings";
 import { RequestForm } from "../views/pages/request/RequestForm"
 import { MatchRequest } from "../views/pages/request/MatchRequest"
 // import { Dashboard } from "../views/pages/dashboard/Dashboard"
@@ -65,6 +66,13 @@ export const adminRoutes = [
         key: "/category/all",
         name: "Categories",
         component: CategoryTablePage,
+        exact: true
+    },
+    {
+        path: "/settings",
+        key: "/settings",
+        name: "Settings",
+        component: Settings,
         exact: true
     },
 ];

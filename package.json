@@ -13,11 +13,13 @@
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
-    "build": "react-scripts --openssl-legacy-provider build",
+    "build": "react-scripts build",
+    "build:n17": "react-scripts --openssl-legacy-provider build",
     "changelog": "auto-changelog --starting-version 4.1.0 --commit-limit false --hide-credit",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.js\"",
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
+    "start:n17": "react-scripts --openssl-legacy-provider start",
     "test": "react-scripts test",
     "test:cov": "npm test -- --coverage --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand"

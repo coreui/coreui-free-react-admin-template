@@ -188,7 +188,7 @@ const ColumnSummary = () => {
               }}
               color="light"
             >
-              <CIcon name="cil-home" />
+              <CIcon icon="cil-home" />
             </CButton>
             <CFormControl
               type="search"
@@ -197,7 +197,7 @@ const ColumnSummary = () => {
               value={keywords ? keywords : ''}
             ></CFormControl>
             <CButton color="light" type="submit">
-              <CIcon name="cil-search" />
+              <CIcon icon="cil-search" />
             </CButton>
           </CInputGroup>
         </form>

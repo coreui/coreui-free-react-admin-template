@@ -111,7 +111,7 @@ const Contact = () => {
                 <h3>Contact Info</h3>
                 <p>
                   <span>
-                    <CIcon name="cil-home" /> Address
+                    <CIcon icon="cil-home" /> Address
                   </span>
                   台灣大學博理館 B1 系學會辦
                 </p>
@@ -119,7 +119,7 @@ const Contact = () => {
               <div className="contact-item">
                 <p>
                   <span>
-                    <CIcon name="cib-gmail" /> Email
+                    <CIcon icon="cib-gmail" /> Email
                   </span>{' '}
                   eeplus2020@gmail.com
                 </p>
@@ -127,7 +127,7 @@ const Contact = () => {
               <div className="contact-item">
                 <p>
                   <span>
-                    <CIcon name="cil-dollar" /> Support
+                    <CIcon icon="cil-dollar" /> Support
                   </span>{' '}
                   700-0001236-0553850(Taiwan)
                 </p>
@@ -139,17 +139,17 @@ const Contact = () => {
                   <ul>
                     <li>
                       <a href="https://www.facebook.com/groups/ntueeplus" target="_blank">
-                        <CIcon name="cib-facebook" customClassName="social-icon" />
+                        <CIcon icon="cib-facebook" customClassName="social-icon" />
                       </a>
                     </li>
                     <li>
                       <a href="https://www.instagram.com/ntueeplus/" target="_blank">
-                        <CIcon name="cib-instagram" customClassName="social-icon" />
+                        <CIcon icon="cib-instagram" customClassName="social-icon" />
                       </a>
                     </li>
                     <li>
                       <a href="https://github.com/NTUEE-PLUS/EndOfWeb/" target="_blank">
-                        <CIcon name="cib-github" customClassName="social-icon" />
+                        <CIcon icon="cib-github" customClassName="social-icon" />
                       </a>
                     </li>
                   </ul>

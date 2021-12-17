@@ -77,7 +77,7 @@ const Recommendation = () => {
               }}
               color="light"
             >
-              <CIcon name="cil-home" />
+              <CIcon icon="cil-home" />
             </CButton>
             <CFormControl
               type="search"
@@ -88,7 +88,7 @@ const Recommendation = () => {
               }}
             ></CFormControl>
             <CButton color="light" onClick={(e) => searchData(e)}>
-              <CIcon name="cil-search" />
+              <CIcon icon="cil-search" />
             </CButton>
           </CInputGroup>
         </form>

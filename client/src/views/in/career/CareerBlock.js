@@ -70,14 +70,10 @@ const CareerBlock = ({ post, setData, index }) => {
           {own ? (
             <>
               <Link to={`/edit_recruitment/${post._id}`}>
-                <CIcon icon="cil-pencil" name="cil-pencil"></CIcon>
+                <CIcon icon="cil-pencil"></CIcon>
               </Link>
               <CAvatar className="hover-pointer">
-                <CIcon
-                  icon="cil-trash"
-                  name="cil-trash"
-                  onClick={() => deleteCareer(post._id)}
-                ></CIcon>
+                <CIcon icon="cil-trash" onClick={() => deleteCareer(post._id)}></CIcon>
               </CAvatar>
             </>
           ) : (
@@ -119,14 +115,10 @@ const CareerBlock = ({ post, setData, index }) => {
           {own ? (
             <>
               <Link to={`/edit_recommendation/${post._id}`}>
-                <CIcon icon="cil-pencil" name="cil-pencil"></CIcon>
+                <CIcon icon="cil-pencil"></CIcon>
               </Link>
               <CAvatar className="hover-pointer">
-                <CIcon
-                  icon="cil-trash"
-                  name="cil-trash"
-                  onClick={() => deleteCareer(post._id)}
-                ></CIcon>
+                <CIcon icon="cil-trash" onClick={() => deleteCareer(post._id)}></CIcon>
               </CAvatar>
             </>
           ) : (

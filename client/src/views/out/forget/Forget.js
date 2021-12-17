@@ -51,7 +51,7 @@ const Forget = () => {
                   <p>We{"'"}ll help you!</p>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
-                      <CIcon icon="cil-education" name="cil-education" />
+                      <CIcon icon="cil-education" />
                     </CInputGroupText>
                     <CFormControl
                       placeholder="Student ID"

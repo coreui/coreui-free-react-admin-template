@@ -5,87 +5,73 @@ const fillForm = async (req, res) => {
   const { identity } = req.body
   try {
     if (identity === 'senior') {
-      const account = req.session.loginAccount
-      const { name, degree, major, gpa, email, number, school, admission } = req.body
-      const oldForm = await seniorForm.findOne({ account })
-      if (oldForm) {
-        try {
-          await seniorForm.updateOne(
-            { account },
-            {
-              name,
-              degree,
-              major,
-              gpa,
-              email,
-              number,
-              school,
-              admission: admission,
-            },
-          )
-        } catch (error) {
-          console.log(error)
-        }
-      } else {
-        try {
-          await new seniorForm({
-            account,
+      const { studentID, name, major, email, number, school, admission } = req.body
+      const oldForm = await seniorForm.find({ studentID })
+      if (oldForm)
+        await seniorForm.updateOne(
+          { studentID },
+          {
             name,
-            degree,
             major,
-            gpa,
             email,
             number,
             school,
-            admission: admission,
-          }).save()
-        } catch (error) {
-          console.log(error)
-        }
+            admission,
+          },
+        )
+      else {
+        await new seniorForm({
+          studentID,
+          name,
+          major,
+          email,
+          number,
+          school,
+          admission,
+        }).save()
       }
     } else if (identity === 'junior') {
-      const account = req.session.loginAccount
-      const { name, degree, hasPaper, major, gpa, email, studentID, school1, school2, school3 } =
-        req.body
-      const oldForm = await juniorForm.findOne({ account })
-      if (oldForm) {
-        try {
-          await juniorForm.updateOne(
-            { account },
-            {
-              name,
-              degree: degree,
-              hasPaper,
-              major: major,
-              gpa,
-              email,
-              studentID,
-              school1: school1,
-              school2: school2,
-              school3: school3,
-            },
-          )
-        } catch (error) {
-          console.log(error)
-        }
-      } else {
-        try {
-          await new juniorForm({
-            account,
+      const {
+        studentID,
+        name,
+        degree,
+        hasPaper,
+        major,
+        email,
+        account,
+        school1,
+        school2,
+        school3,
+      } = req.body
+      const oldForm = await juniorForm.find({ studentID })
+      if (oldForm)
+        await juniorForm.updateOne(
+          { studentID },
+          {
             name,
-            degree: degree,
+            degree,
             hasPaper,
-            major: major,
-            gpa,
+            major,
             email,
-            studentID,
-            school1: school1,
-            school2: school2,
-            school3: school3,
-          }).save()
-        } catch (error) {
-          console.log(error)
-        }
+            account,
+            school1,
+            school2,
+            school3,
+          },
+        )
+      else {
+        await new juniorForm({
+          studentID,
+          name,
+          degree,
+          hasPaper,
+          major,
+          email,
+          account,
+          school1,
+          school2,
+          school3,
+        }).save()
       }
     }
     res.status(200).send('Form saved!')

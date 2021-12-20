@@ -5,6 +5,11 @@
     0px 1px 10px 0px rgb(0 0 0 / 12%);
   box-sizing: border-box;
   background-size: cover;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-40%) translateY(-50%);
+  left: 50%;
+  text-align: center;
 }
 .form-check > label {
   font-size: 1.5rem;
@@ -38,4 +43,14 @@
 .aboard-experience button {
   font-size: 1.3rem;
   margin: 2rem 0;
+}
+.OpenMatching {
+  padding: 3rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: black;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-40%) translateY(-50%);
+  left: 50%;
 }

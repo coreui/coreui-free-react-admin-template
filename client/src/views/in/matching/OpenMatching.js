@@ -7,7 +7,7 @@ const OpenMatching = ({ setOpened }) => {
   const [identity, setIdentity] = useState('')
   let tempIdentity = ''
   return (
-    <div className="OpenMatching p-5 rounded bg-white text-black w-50 mx-auto mt-5">
+    <div className="OpenMatching w-50">
       {identity === '' ? (
         <div className="d-flex flex-column justify-content-center align-items-center">
           <h1 className="my-5">

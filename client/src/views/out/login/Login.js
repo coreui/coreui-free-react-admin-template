@@ -109,7 +109,7 @@ const Login = () => {
                       <p className="text-medium-emphasis">Sign In to your account</p>
                       <CInputGroup className="mb-3">
                         <CInputGroupText>
-                          <CIcon icon="cil-education" />
+                          <CIcon icon="cil-education" name="cil-education" />
                         </CInputGroupText>
                         <CFormControl
                           placeholder="Student ID"
@@ -119,7 +119,7 @@ const Login = () => {
                       </CInputGroup>
                       <CInputGroup className="mb-2">
                         <CInputGroupText>
-                          <CIcon icon="cil-lock-locked" />
+                          <CIcon icon="cil-lock-locked" name="cil-lock-locked" />
                         </CInputGroupText>
                         <CFormControl
                           type="password"
@@ -165,6 +165,7 @@ const Login = () => {
                             callback={handleFBSubmit}
                             cssClass="btnFacebook d-flex justify-content-center mt-2"
                             icon="fa-facebook"
+                            name="fa-facebook"
                             textButton=""
                           />
                         </div>

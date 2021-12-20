@@ -6,7 +6,7 @@ import MatchResult from './MatchResult'
 import Experience from './Experience'
 
 const Matching = () => {
-  const [opened, setOpened] = useState(true)
+  const [opened, setOpened] = useState(false)
   const [page, setPage] = useState(1)
   const sdata = {
     num: 'B03901023 ',

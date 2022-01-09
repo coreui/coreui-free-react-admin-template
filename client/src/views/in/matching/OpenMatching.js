@@ -7,17 +7,12 @@ const OpenMatching = ({ setOpened }) => {
   const [identity, setIdentity] = useState('')
   let tempIdentity = ''
   return (
-    <div className="OpenMatching w-50">
+    <div className="OpenMatching" style={{ color: 'white' }}>
       {identity === '' ? (
-        <div className="d-flex flex-column justify-content-center align-items-center">
-          <h1 className="my-5">
-            歡迎使用留學交流（原EE Chain）功能！
-            <br />
-            您是第一次開通，所以請選擇您的身份
-          </h1>
-          <br />
-          <div className="d-flex align-items-around justify-content-around mb-5">
-            <div className="col-6 h4 px-2">
+        <div>
+          <h2>歡迎使用留學交流（原EE Chain）功能！ 您是第一次開通，所以請選擇您的身份</h2>
+          <div className="d-flex">
+            <div className="col-5">
               <CFormCheck
                 type="radio"
                 name="identity"

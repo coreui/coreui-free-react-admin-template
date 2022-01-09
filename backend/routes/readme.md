@@ -1745,8 +1745,8 @@ Request body 會依據身分(學長姐 or 學弟妹)不同而有些微不同
   | Key | Type | value | description |
   | -------- | ------ | ----- | ----------- |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-  | degree | `Number` | `0`, `1` | 申請的學位(0: MS, 1: PhD) |
-  | major | `String` | `"CS"` | 專長領域 |
+  | degree | `String` | `"ms"` | 學位 |
+  | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
   | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
   | email | `String` | `example@gmail.com` | 電子信箱 |
   | number | `Number` | `2` | 願意提供分享的學弟妹人數 |
@@ -1757,15 +1757,15 @@ Request body 會依據身分(學長姐 or 學弟妹)不同而有些微不同
   | Key | Type | value | description |
   | -------- | ------ | ----- | ----------- |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-  | degree | `Number[]` | `[0, 1]` | 欲申請的學位(0: MS, 1: PhD) |
+  | degree | `String` | `"ms"` | 學位 |
   | hasPaper | `Number` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
   | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
   | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
   | email | `String` | `example@gmail.com` | 電子信箱 |
   | account | `String` | `"B12345678"` | 學號 |
-  | school1 | `String[]` | `["MIT", "Stanford"]` | 夢幻學校(沒有填 "無") |
-  | school2 | `String[]` | `["NTU"]` | 有把握的學校 |
-  | school3 | `String[]` | `["無"]` | 保底學校 |
+  | school1 | `String` | `"MIT"` | 第一志願、夢幻學校(沒有填 "無") |
+  | school2 | `String` | `"NTU"` | 第二志願、有把握的學校 |
+  | school3 | `String` | `"無"` | 第三志願、保底學校 |
 
 ### Success response
 
@@ -1804,8 +1804,8 @@ GET /study/form
   | -------- | ------ | ----- | ----------- |
   | identity | `String` | `"senior"` | 身分為學長姐 |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-  | degree | `String` | `0` | 申請到的學位(0: MS, 1: PhD) |
-  | major | `String` | `CS` | 專長領域 |
+  | degree | `String` | `"ms"` | 學位 |
+  | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
   | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
   | email | `String` | `example@gmail.com` | 電子信箱 |
   | number | `Number` | `2` | 願意提供分享的學弟妹人數 |
@@ -1817,15 +1817,11 @@ GET /study/form
   | -------- | ------ | ----- | ----------- |
   | identity | `String` | `"senior"` | 身分為學長姐 |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-  | degree | `Number[]` | `[0, 1]` | 欲申請的學位(0: MS, 1: PhD) |
-  | hasPaper | `Number` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
-  | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
-  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
+  | degree | `String` | `"ms"` | 學位 |
   | email | `String` | `example@gmail.com` | 電子信箱 |
-  | studentID | `String` | `"B12345678"` | 學號 |
-  | school1 | `String[]` | `["MIT"]` | 夢幻學校(沒有填 "無") |
-  | school2 | `String[]` | `["NTU"]` | 有把握的學校 |
-  | school3 | `String[]` | `["無"]` | 保底學校 |
+  | school1 | `String` | `"MIT"` | 第一志願、夢幻學校(沒有填 "無") |
+  | school2 | `String` | `"NTU"` | 第二志願、有把握的學校 |
+  | school3 | `String` | `"無"` | 第三志願、保底學校 |
 
 ### Error response
 

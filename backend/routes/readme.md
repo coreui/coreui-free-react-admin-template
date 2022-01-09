@@ -45,6 +45,9 @@ EE+ api 文件
   - [show my recommendation](#show-my-recommendation)
   - [update recommendation](#update-recommendation)
 - [In/study](#instudy)
+  - [填配對表單](#填配對表單)
+  - [拿取個人表單](#拿取個人表單)
+  - [清空表單資料庫](#清空表單資料庫)
   - [拿取本年表單連結](#拿取本年表單連結)
   - [配對](#配對)
   - [寄配對通知](#寄配對通知)
@@ -1720,6 +1723,155 @@ header-config
 | description | `String` | 資料庫錯誤  |
 
 # In/study
+
+## 填配對表單
+
+[Back to top](#top)
+
+填寫配對表單以提供資料供學長姊、學弟妹配對時使用
+
+```
+POST /study/fillForm
+```
+
+### Request body
+
+Request body 會依據身分(學長姐 or 學弟妹)不同而有些微不同
+| Key | Type | value | description |
+| -------- | ------ | ----- | ----------- |
+| Identity | `String` | `"senior"` / `"junior"` | 填表單者的身分 |
+
+- seniorForm: 若上面的 `Identity` 值為 `"senior"`，後端會將資料填入 seniorForm
+  | Key | Type | value | description |
+  | -------- | ------ | ----- | ----------- |
+  | name | `String` | `"王小明"` | 填表單者的姓名 |
+  | degree | `String` | `"ms"` | 學位 |
+  | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
+  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
+  | email | `String` | `example@gmail.com` | 電子信箱 |
+  | number | `Number` | `2` | 願意提供分享的學弟妹人數 |
+  | admission | `String[]` | `["MIT", "Stanford"]` | 當時錄取了哪些學校 |
+  | school | `String` | `"MIT"` | 最後去哪一間學校 |
+
+- juniorForm: 若上面的 `Identity` 值為 `"junior"`，後端會將資料填入 juniorForm
+  | Key | Type | value | description |
+  | -------- | ------ | ----- | ----------- |
+  | name | `String` | `"王小明"` | 填表單者的姓名 |
+  | degree | `String` | `"ms"` | 學位 |
+  | hasPaper | `Number` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
+  | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
+  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
+  | email | `String` | `example@gmail.com` | 電子信箱 |
+  | account | `String` | `"B12345678"` | 學號 |
+  | school1 | `String` | `"MIT"` | 第一志願、夢幻學校(沒有填 "無") |
+  | school2 | `String` | `"NTU"` | 第二志願、有把握的學校 |
+  | school3 | `String` | `"無"` | 第三志願、保底學校 |
+
+### Success response
+
+#### Success response - `200`
+
+| Name | Type | Description  |
+| ---- | ---- | ------------ |
+| -    |      | "Form saved" |
+
+### Error response
+
+#### Error response - `403`
+
+| Name | Type | Description                          |
+| ---- | ---- | ------------------------------------ |
+| -    |      | "Encounter error when filling forms" |
+
+## 拿取個人表單
+
+[Back to top](#top)
+
+拿取個人表單
+
+```
+GET /study/form
+```
+
+### Success response
+
+#### Success response - `201`
+
+依照此人的身分(學長姐 or 學弟妹)有些許不同
+
+- 學長姐
+  | Key | Type | value | description |
+  | -------- | ------ | ----- | ----------- |
+  | identity | `String` | `"senior"` | 身分為學長姐 |
+  | name | `String` | `"王小明"` | 填表單者的姓名 |
+  | degree | `String` | `"ms"` | 學位 |
+  | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
+  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
+  | email | `String` | `example@gmail.com` | 電子信箱 |
+  | number | `Number` | `2` | 願意提供分享的學弟妹人數 |
+  | admission | `String[]` | `["MIT", "Stanford"]` | 當時錄取了哪些學校 |
+  | school | `String` | `"MIT"` | 最後去哪一間學校 |
+
+- 學弟妹
+  | Key | Type | value | description |
+  | -------- | ------ | ----- | ----------- |
+  | identity | `String` | `"senior"` | 身分為學長姐 |
+  | name | `String` | `"王小明"` | 填表單者的姓名 |
+  | degree | `String` | `"ms"` | 學位 |
+  | hasPaper | `Number` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
+  | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
+  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
+  | email | `String` | `example@gmail.com` | 電子信箱 |
+  | studentID | `String` | `"B12345678"` | 學號 |
+  | school1 | `String` | `"MIT"` | 第一志願、夢幻學校(沒有填 "無") |
+  | school2 | `String` | `"NTU"` | 第二志願、有把握的學校 |
+  | school3 | `String` | `"無"` | 第三志願、保底學校 |
+
+### Error response
+
+#### Error response - `404`
+
+| Name        | Type     | Description         |
+| ----------- | -------- | ------------------- |
+| description | `String` | form data not found |
+
+#### Error response - `500`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 資料庫錯誤  |
+
+## 清空表單資料庫
+
+[Back to top](#top)
+
+清空表單資料庫
+
+```
+DELETE /study/form
+```
+
+### success response
+
+#### Success rersponse - `200`
+
+| Name        | Type     | Description  |
+| ----------- | -------- | ------------ |
+| description | `String` | 資料庫已清空 |
+
+### Error response
+
+#### Error response - `403`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 權限錯誤    |
+
+#### Error response - `500`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 資料庫錯誤  |
 
 ## 拿取本年表單連結
 

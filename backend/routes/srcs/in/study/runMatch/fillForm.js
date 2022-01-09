@@ -5,69 +5,67 @@ const fillForm = async (req, res) => {
   const { identity } = req.body
   try {
     if (identity === 'senior') {
-      const { studentID, name, major, email, number, school, admission } = req.body
-      const oldForm = await seniorForm.find({ studentID })
+      const account = req.session.loginAccount
+      const { name, degree, major, gpa, email, number, school, admission } = req.body
+      const oldForm = await seniorForm.findOne({ account })
       if (oldForm)
         await seniorForm.updateOne(
-          { studentID },
+          { account },
           {
             name,
-            major,
+            degree,
+            major: JSON.parse(major),
+            gpa,
             email,
             number,
             school,
-            admission,
+            admission: JSON.parse(admission),
           },
         )
       else {
         await new seniorForm({
-          studentID,
+          account,
           name,
-          major,
+          degree,
+          major: JSON.parse(major),
+          gpa,
           email,
           number,
           school,
-          admission,
+          admission: JSON.parse(admission),
         }).save()
       }
     } else if (identity === 'junior') {
-      const {
-        studentID,
-        name,
-        degree,
-        hasPaper,
-        major,
-        email,
-        account,
-        school1,
-        school2,
-        school3,
-      } = req.body
-      const oldForm = await juniorForm.find({ studentID })
-      if (oldForm)
+      const account = req.session.loginAccount
+      const { name, degree, hasPaper, major, gpa, email, studentID, school1, school2, school3 } =
+        req.body
+      const oldForm = await juniorForm.findOne({ account })
+      if (oldForm) {
         await juniorForm.updateOne(
-          { studentID },
+          { account },
           {
             name,
             degree,
             hasPaper,
-            major,
+            major: JSON.parse(major),
+            gpa,
             email,
-            account,
+            studentID,
             school1,
             school2,
             school3,
           },
         )
-      else {
+      } else {
         await new juniorForm({
-          studentID,
+          account,
           name,
           degree,
           hasPaper,
-          major,
+          major: JSON.parse(major),
+          gpa,
           email,
-          account,
+          studentID,
           school1,
           school2,
           school3,

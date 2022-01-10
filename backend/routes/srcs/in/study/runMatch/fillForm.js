@@ -14,7 +14,7 @@ const fillForm = async (req, res) => {
           {
             name,
             degree,
-            major: JSON.parse(major),
+            major,
             gpa,
             email,
             number,
@@ -27,7 +27,7 @@ const fillForm = async (req, res) => {
           account,
           name,
           degree,
-          major: JSON.parse(major),
+          major,
           gpa,
           email,
           number,
@@ -45,30 +45,30 @@ const fillForm = async (req, res) => {
           { account },
           {
             name,
-            degree,
+            degree: JSON.parse(degree),
             hasPaper,
             major: JSON.parse(major),
             gpa,
             email,
             studentID,
-            school1,
-            school2,
-            school3,
+            school1: JSON.parse(school1),
+            school2: JSON.parse(school2),
+            school3: JSON.parse(school3),
           },
         )
       } else {
         await new juniorForm({
           account,
           name,
-          degree,
+          degree: JSON.parse(degree),
           hasPaper,
           major: JSON.parse(major),
           gpa,
           email,
           studentID,
-          school1,
-          school2,
-          school3,
+          school1: JSON.parse(school1),
+          school2: JSON.parse(school2),
+          school3: JSON.parse(school3),
         }).save()
       }
     }

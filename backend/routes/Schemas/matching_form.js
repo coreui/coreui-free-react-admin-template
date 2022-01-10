@@ -4,11 +4,11 @@ const Schema = mongoose.Schema
 const sForm = new Schema({
   account: String,
   name: String,
-  degree: Number,
+  degree: String,
   major: String,
-  gpa: Number,
+  gpa: String,
   email: String,
-  number: Number,
+  number: String,
   admission: [{ type: String }],
   school: String,
 })
@@ -16,10 +16,10 @@ const sForm = new Schema({
 const jForm = new Schema({
   account: String,
   name: String,
-  degree: [{ type: Number }],
-  hasPaper: Number,
+  degree: [{ type: String }],
+  hasPaper: String,
   major: [{ type: String }],
-  gpa: Number,
+  gpa: String,
   email: String,
   studentID: String,
   school1: [{ type: String }],

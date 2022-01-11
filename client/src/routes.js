@@ -26,7 +26,10 @@ import {
   EditProfile,
   SearchProfile,
   Study,
+  Matching,
 } from './views/in'
+// auth pages
+import { AuthMatching } from './views/auth'
 
 import Dashboard from './views/dashboard/Dashboard'
 
@@ -105,6 +108,19 @@ const routes_in = [
     name: 'Study',
     component: Study,
   },
+  {
+    path: '/matching',
+    exact: true,
+    name: 'Matching',
+    component: Matching,
+  },
 ]
-
-export { routes_out, routes_in }
+const routes_auth = [
+  {
+    path: '/auth/matching',
+    exact: true,
+    name: 'AuthMatching',
+    component: AuthMatching,
+  },
+]
+export { routes_out, routes_in, routes_auth }

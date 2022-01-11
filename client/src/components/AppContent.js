@@ -15,7 +15,7 @@ import default_male from '../assets/images/default_male.png'
 import { AppBackground } from '.'
 
 // routes config
-import { routes_out, routes_in } from '../routes'
+import { routes_out, routes_in, routes_auth } from '../routes'
 
 const AppContent = () => {
   const ContentStyle = {
@@ -24,7 +24,7 @@ const AppContent = () => {
   }
 
   const dispatch = useDispatch()
-  const { isLogin } = useSelector(selectLogin)
+  const { isLogin, isAuth } = useSelector(selectLogin)
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -77,7 +77,6 @@ const AppContent = () => {
               )
             )
           })}
-          <Redirect exact from="/" to="/home" />
           {/* {!isLogin ? <Redirect to="/login" /> : null} */}
           {isLogin
             ? routes_in.map((route, idx) => {
@@ -98,6 +97,31 @@ const AppContent = () => {
                 )
               })
             : null}
+          {isAuth
+            ? routes_auth.map((route, idx) => {
+                console.log('auth')
+                return (
+                  route.component && (
+                    <Route
+                      key={idx}
+                      path={route.path}
+                      exact={route.exact}
+                      name={route.name}
+                      render={(props) => (
+                        <>
+                          <route.component {...props} />
+                        </>
+                      )}
+                    />
+                  )
+                )
+              })
+            : null}
+          {isAuth ? (
+            <Redirect exact from="/" to="/auth/matching" />
+          ) : (
+            <Redirect exact from="/" to="/home" />
+          )}
         </Switch>
       </Suspense>
     </div>

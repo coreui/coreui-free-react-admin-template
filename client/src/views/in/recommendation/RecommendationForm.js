@@ -232,7 +232,7 @@ const RecommendationForm = ({ data }) => {
                     </p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-image" />
+                        <CIcon icon="cil-image" name="cil-image" />
                       </CInputGroupText>
                       <CFormControl
                         data-for="image"
@@ -246,7 +246,7 @@ const RecommendationForm = ({ data }) => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-user" />
+                        <CIcon icon="cil-user" name="cil-user" />
                       </CInputGroupText>
                       <CFormControl
                         className={requiredStyle.title}
@@ -261,7 +261,7 @@ const RecommendationForm = ({ data }) => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-user" />
+                        <CIcon icon="cil-user" name="cil-user" />
                       </CInputGroupText>
                       <CFormControl
                         className={requiredStyle.name}
@@ -276,7 +276,7 @@ const RecommendationForm = ({ data }) => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-braille" />
+                        <CIcon icon="cil-braille" name="cil-braille" />
                       </CInputGroupText>
                       <CFormControl
                         className={requiredStyle.desireWorkType}
@@ -291,7 +291,7 @@ const RecommendationForm = ({ data }) => {
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
-                        <CIcon name="cil-phone" />
+                        <CIcon icon="cil-phone" name="cil-phone" />
                       </CInputGroupText>
                       <CFormControl
                         data-for="phone"
@@ -317,7 +317,7 @@ const RecommendationForm = ({ data }) => {
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
-                        <CIcon name="cil-education" />
+                        <CIcon icon="cil-education" name="cil-education" />
                       </CInputGroupText>
                       <CFormControl
                         data-for="diploma"
@@ -333,7 +333,7 @@ const RecommendationForm = ({ data }) => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon name="cil-address-book" />
+                            <CIcon icon="cil-address-book" name="cil-address-book" />
                           </CInputGroupText>
                           <CFormControl
                             data-for="experience"
@@ -356,7 +356,7 @@ const RecommendationForm = ({ data }) => {
                     })}
                     <CInputGroup className="mb-4 d-flex flex-row">
                       <CInputGroupText>
-                        <CIcon name="cil-address-book" />
+                        <CIcon icon="cil-address-book" name="cil-address-book" />
                       </CInputGroupText>
                       <CButton
                         type="button"
@@ -371,7 +371,7 @@ const RecommendationForm = ({ data }) => {
                       return (
                         <CInputGroup className="mb-3" key={index}>
                           <CInputGroupText>
-                            <CIcon name="cil-thumb-up" />
+                            <CIcon icon="cil-thumb-up" name="cil-thumb-up" />
                           </CInputGroupText>
                           <CFormControl
                             data-for="specialty"
@@ -394,7 +394,7 @@ const RecommendationForm = ({ data }) => {
                     })}
                     <CInputGroup className="mb-4 d-flex flex-row">
                       <CInputGroupText>
-                        <CIcon name="cil-thumb-up" />
+                        <CIcon icon="cil-thumb-up" name="cil-thumb-up" />
                       </CInputGroupText>
                       <CButton
                         type="button"

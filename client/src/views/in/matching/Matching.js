@@ -42,7 +42,7 @@ const Matching = () => {
       </CNav>
       <CTabContent>
         <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={page === 1}>
-          <MatchResult jdata={{}} sdata={sdata} />
+          <MatchResult jdata={jdata} sdata={sdata} />
         </CTabPane>
         <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={page === 2}>
           <Experience />

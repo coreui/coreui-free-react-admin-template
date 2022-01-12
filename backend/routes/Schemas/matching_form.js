@@ -5,12 +5,13 @@ const sForm = new Schema({
   account: String,
   name: String,
   degree: String,
-  major: String,
+  major: [{ type: String }],
   gpa: String,
   email: String,
   number: String,
   admission: [{ type: String }],
   school: String,
+  junior: [{ type: String }],
 })
 
 const jForm = new Schema({
@@ -25,6 +26,7 @@ const jForm = new Schema({
   school1: [{ type: String }],
   school2: [{ type: String }],
   school3: [{ type: String }],
+  senior: String,
 })
 
 const seniorForm = mongoose.model('seniorForm', sForm)

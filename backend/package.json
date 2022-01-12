@@ -8,7 +8,8 @@
     "watch:server": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dbstart": "sudo service mongodb start",
-    "doc": "apidoc -i routes -o routes/apidoc-out && apidoc-markdown -p routes/apidoc-out -o routes/readme.md -t routes/doctemplate/plate.md"
+    "doc": "apidoc -i routes -o routes/apidoc-out && apidoc-markdown -p routes/apidoc-out -o routes/readme.md -t routes/doctemplate/plate.md",
+    "insert-sample": "node routes/srcs/in/study/runMatch/uploads/writeSample.js"
   },
   "author": "",
   "license": "ISC",

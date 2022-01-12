@@ -16,7 +16,7 @@ const toInsert = [
     },
     spec: {
       requirement:
-        '熟悉 HTML, CSS, JavaScript 與 Browser API\n熟悉 RWD, SPA 開發\n熟悉前端開發工具如 Webpack, ESLint\n熟悉常見 Design Patterns\n熟悉 React 及其 ecosystem 例如 redux, react-router, styled-components\n具備 CSS Frameworks 使用經驗，例如 Bootstrap, Material-UI\n熟悉 Git 開發流程',
+        '熟悉 HTML, CSS, JavaScript 與 Browser API\n熟悉 RWD, SPA 開發\n熟悉前端開發工具如 webpack, ESLint\n熟悉常見 Design Patterns\n熟悉 React 及其 ecosystem 例如 redux, react-router, styled-components\n具備 CSS Frameworks 使用經驗，例如 Bootstrap, Material-UI\n熟悉 Git 開發流程',
       description:
         '網站前端需求設計與開發\n與PM和Designer合作規劃新功能，迭代產品設計\n前端架構設計與優化，確保系統可維護性與擴展性\n提升團隊前端技術能力',
     },

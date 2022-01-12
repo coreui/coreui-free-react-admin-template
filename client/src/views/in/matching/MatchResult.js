@@ -1,8 +1,10 @@
 /* eslint-disable prettier/prettier */
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-
+import { CButton } from '@coreui/react'
+import OpenMatching from './OpenMatching'
 const MatchResult = ({ jdata, sdata }) => {
+  const [edit, setEdit] = useState(false)
   return (
     <div className="p-4">
       {jdata.name && sdata.name ? (
@@ -42,12 +44,17 @@ const MatchResult = ({ jdata, sdata }) => {
             </div>
           </div>
         </>
+      ) : edit ? (
+        <OpenMatching setOpened={setEdit} />
       ) : (
-        <h3>
-          配對結果尚未公佈！
-          <br />
-          DEADLINE一到，我們便會公佈這一期所有的配對結果～
-        </h3>
+        <>
+          <h3>
+            配對結果尚未公佈！
+            <br />
+            DEADLINE一到，我們便會公佈這一期所有的配對結果～
+          </h3>
+          <CButton onClick={() => setEdit(true)}>重填表單</CButton>
+        </>
       )}
     </div>
   )

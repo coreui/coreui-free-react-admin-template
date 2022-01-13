@@ -14,10 +14,9 @@ const getForm = async (req, res) => {
     } else {
       savedForm = await juniorForm.findOne({ account })
       if (savedForm) {
-        console.log(savedForm)
         res.status(201).send({ identity: 'junior', ...savedForm._doc })
       } else {
-        res.status(404).send('form data not found')
+        res.status(200).send({})
       }
     }
   } catch (err) {

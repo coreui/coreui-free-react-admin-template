@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { selectLogin } from '../../../slices/loginSlice'
+import { selectLogin } from '../../../../slices/loginSlice'
+import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import {
   CRow,
@@ -31,9 +32,13 @@ const strToArray = (str) => {
   ad = ad.map((a) => (a = a.trim()))
   return ad
 }
-const MatchForm = ({ identity, setIdentity, setOpened }) => {
+const MatchForm = () => {
+  const { identity } = useParams()
+  const history = useHistory()
   const senior = identity === 'senior' ? true : false
   const { email: userEmail, name: userName, studentID } = useSelector(selectLogin)
+  const [degrees, setDegrees] = useState([false, false, false])
+  const [hasPapers, setHasPapers] = useState([false, false, false, false])
 
   const formTemplate = senior
     ? {
@@ -41,7 +46,7 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
         name: userName,
         email: userEmail,
         major: [],
-        degree: '0',
+        degree: '',
         school: '',
         gpa: '',
         number: '',
@@ -53,9 +58,9 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
         email: userEmail,
         studentID: studentID,
         major: [],
-        degree: [],
+        degree: '',
         gpa: '',
-        hasPaper: '0',
+        hasPaper: '',
         school1: [],
         school2: [],
         school3: [],
@@ -80,6 +85,7 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
   const [dataForm, setDataForm] = useState(formTemplate)
   const handleInputChange = (e) => {
     setDataForm({ ...dataForm, [e.target.name]: e.target.value })
+    handleInputRadio(e)
     if (requiredStyle.hasOwnProperty(e.target.name)) {
       if (e.target.value === '')
         setRequiredStyle({ ...requiredStyle, [e.target.name]: 'border-3 border-danger' })
@@ -95,6 +101,40 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
       else setRequiredStyle({ ...requiredStyle, [e.target.name]: '' })
     }
   }
+  const handleInputRadio = (e) => {
+    if (e.target.name === 'hasPaper') {
+      switch (e.target.value) {
+        case '0':
+          setHasPapers([true, false, false, false])
+          break
+        case '1':
+          setHasPapers([false, true, false, false])
+          break
+        case '2':
+          setHasPapers([false, false, true, false])
+          break
+        case '3':
+          setHasPapers([false, false, false, true])
+          break
+        default:
+          break
+      }
+    } else if (e.target.name === 'degree') {
+      switch (e.target.value) {
+        case '0':
+          setDegrees([true, false, false])
+          break
+        case '1':
+          setDegrees([false, true, false])
+          break
+        case '2':
+          setDegrees([false, false, true])
+          break
+        default:
+          break
+      }
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
     if (dataForm.gpa > 4.3 || isNaN(dataForm.gpa)) {
@@ -105,12 +145,69 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
       .post('/api/study/fillForm', dataForm)
       .then(() => {
         alert('已送出')
-        setOpened(true)
+        history.push('/matching')
       })
       .catch((err) => {
         err.response.data.description && alert('錯誤\n' + err.response.data.description)
       })
   }
+  const handleBack = (e) => {
+    e.preventDefault()
+    history.push('/matching')
+  }
+  const getPrevForm = () => {
+    axios
+      .get('/api/study/form')
+      .then((res) => {
+        console.log('degree', res.data)
+        if (res.data.degree) {
+          setDataForm({ ...res.data, ['degree']: res.data.degree[0] })
+          switch (res.data.degree[0]) {
+            case '0':
+              setDegrees([true, false, false])
+              console.log('degree0')
+              break
+            case '1':
+              setDegrees([false, true, false])
+              console.log('degree1')
+              break
+            case '2':
+              setDegrees([false, false, true])
+              console.log('degree2')
+              break
+
+            default:
+              break
+          }
+        }
+        if (res.data.hasPaper) {
+          switch (res.data.hasPaper) {
+            case '0':
+              setHasPapers([true, false, false, false])
+              break
+            case '1':
+              setHasPapers([false, true, false, false])
+              break
+            case '2':
+              setHasPapers([false, false, true, false])
+              break
+            case '3':
+              setHasPapers([false, false, false, true])
+              break
+
+            default:
+              break
+          }
+        }
+      })
+      .then(() => console.log('hp', dataForm.hasPaper))
+      .catch(
+        (err) => err.response.data.description && alert('錯誤\n' + err.response.data.description),
+      )
+  }
+  useEffect(() => {
+    getPrevForm()
+  }, [studentID])
   return (
     <div className="matching-form">
       <div className="d-flex flex-row align-items-center text-color-black">
@@ -120,7 +217,7 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
               <CCardBody className="px-5">
                 <button
                   className="align-self-baseline btn btn-ghost-info my-3"
-                  onClick={() => setIdentity('')}
+                  onClick={handleBack}
                 >
                   <CIcon name="cil-arrow-left" size="lg" />
                 </button>
@@ -204,7 +301,7 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
                           value="0"
                           label="MS"
                           onChange={handleInputChange}
-                          defaultChecked
+                          checked={degrees[0]}
                         />
                       </div>
                       <div style={{ 'margin-right': '1.2rem' }}>
@@ -214,6 +311,7 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
                           value="1"
                           label="PhD"
                           onChange={handleInputChange}
+                          checked={degrees[1]}
                         />
                       </div>
                       {senior ? null : (
@@ -224,6 +322,7 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
                             value="2"
                             label="Both"
                             onChange={handleInputChange}
+                            checked={degrees[2]}
                           />
                         </div>
                       )}
@@ -307,7 +406,7 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
                               value="0"
                               label="無論文經驗"
                               onChange={handleInputChange}
-                              defaultChecked
+                              checked={hasPapers[0]}
                             />
                           </div>
                           <div className="col-3">
@@ -318,6 +417,7 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
                               value="1"
                               label="已投稿但尚未公佈"
                               onChange={handleInputChange}
+                              checked={hasPapers[1]}
                             />
                           </div>
                           <div className="col-3">
@@ -328,16 +428,18 @@ const MatchForm = ({ identity, setIdentity, setOpened }) => {
                               value="2"
                               label="已發表 1 篇"
                               onChange={handleInputChange}
+                              checked={hasPapers[2]}
                             />
                           </div>
                           <div className="col-3">
                             <CFormCheck
                               type="radio"
                               name="hasPaper"
-                              id="gridRadios3"
-                              value="2"
+                              id="gridRadios4"
+                              value="3"
                               label="已發表 2 篇以上"
                               onChange={handleInputChange}
+                              checked={hasPapers[3]}
                             />
                           </div>
                         </CInputGroup>

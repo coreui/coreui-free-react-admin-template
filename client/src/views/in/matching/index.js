@@ -1,3 +1,3 @@
 /* eslint-disable prettier/prettier */
-import Matching from './matching'
+import Matching from './Matching'
 export default Matching

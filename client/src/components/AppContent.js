@@ -99,7 +99,6 @@ const AppContent = () => {
             : null}
           {isAuth
             ? routes_auth.map((route, idx) => {
-                console.log('auth')
                 return (
                   route.component && (
                     <Route

@@ -29,7 +29,7 @@ const login = async (req, res, next) => {
   const newPsw = crypto.createHash('md5').update(password).digest('hex')
 
   const query = { account }
-  const obj = await Login.findOne(query, 'userpsw username account').catch(dbCatch)
+  const obj = await Login.findOne(query, 'userpsw username account isAuth').catch(dbCatch)
   if (!obj) throw new ErrorHandler(404, '帳號不存在')
   if (obj.userpsw !== newPsw) throw new ErrorHandler(401, '密碼錯誤')
   req.session.loginName = obj.username

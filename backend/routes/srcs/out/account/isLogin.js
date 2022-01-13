@@ -1,6 +1,8 @@
-const { ErrorHandler } = require('../../../error')
+const { dbCatch, ErrorHandler } = require('../../../error')
 const Visual = require('../../../Schemas/user_visual_new')
+const Login = require('../../../Schemas/user_login')
 const asyncHandler = require('express-async-handler')
+
 /**
  * @api {post} /isLogin isLogin
  * @apiName IsLogin
@@ -14,8 +16,18 @@ const asyncHandler = require('express-async-handler')
 module.exports = asyncHandler(async (req, res, next) => {
   const session_account = req.session.loginAccount
   if (session_account) {
-    const user = await Visual.findOne({ account: session_account })
+    const vuser = await Visual.findOne({ account: session_account })
+    if (!vuser) throw new ErrorHandler(404, 'profile不存在')
+    const user = await Login.findOne({ account: session_account }, 'isAuth').catch(dbCatch)
     if (!user) throw new ErrorHandler(404, 'profile不存在')
-    return res.status(200).send({ account: session_account, userimage: user.imgSrc, userCellphone:user.cellphone, userName:user.username,userEmail:user.publicEmail })
+    console.log(user)
+    return res.status(200).send({
+      account: session_account,
+      userimage: vuser.imgSrc,
+      userCellphone: vuser.cellphone,
+      userName: vuser.username,
+      userEmail: vuser.publicEmail,
+      isAuth: user.isAuth,
+    })
   } else throw new ErrorHandler(403, '未登入')
 })

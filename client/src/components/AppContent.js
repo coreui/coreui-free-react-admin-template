@@ -36,7 +36,7 @@ const AppContent = () => {
     axios
       .post('/api/isLogin', {})
       .then((res) => {
-        dispatch(login())
+        dispatch(login(res.data.isAuth))
         dispatch(setImgSrc(res.data.userimage === '' ? default_male : res.data.userimage))
         dispatch(setStudentInfo(res.data))
       })

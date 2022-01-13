@@ -52,6 +52,9 @@ EE+ api 文件
   - [配對](#配對)
   - [寄配對通知](#寄配對通知)
   - [新增本年表單連結](#新增本年表單連結)
+- [In/time](#intime)
+  - [拿取活動時間](#拿取活動時間)
+  - [設定活動時間](#設定活動時間)
 - [Out/account](#outaccount)
   - [accountActivate](#accountactivate)
   - [isLogin](#islogin)
@@ -2011,6 +2014,63 @@ POST /study/addLink
 | Name        | Type     | Description |
 | ----------- | -------- | ----------- |
 | description | `String` | 資料庫錯誤  |
+
+# In/time
+
+## 拿取活動時間
+
+[Back to top](#top)
+
+拿取特定活動的時間
+
+```
+GET /time/getTime
+```
+
+### Parameters - `Parameter`
+
+| Name   | Type     | Description |
+| ------ | -------- | ----------- |
+| target | `String` | 活動名稱    |
+
+### Success response
+
+#### Success response - `200`
+
+| Name | Type     | Description      |
+| ---- | -------- | ---------------- |
+| -    | `String` | yyyy-mm-dd-hh-mm |
+
+## 設定活動時間
+
+[Back to top](#top)
+
+設定特定活動的時間
+
+```
+POST /time/setTime
+```
+
+### Parameters - `Parameter`
+
+| Name   | Type     | Description |
+| ------ | -------- | ----------- |
+| target | `String` | 活動名稱    |
+| time   | `Date`   | 時間        |
+
+#### Success response - `200`
+
+| Name | Type     | Description                         |
+| ---- | -------- | ----------------------------------- |
+| -    | `String` | successfully set {target} at {time} |
+
+### Error response
+
+#### Error response - `403`
+
+| Name | Type     | Description                               |
+| ---- | -------- | ----------------------------------------- |
+| -    | `String` | Encounter error when settinng time: + err |
 
 # Out/account
 

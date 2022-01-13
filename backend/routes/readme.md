@@ -1817,13 +1817,6 @@ GET /study/form
   | -------- | ------ | ----- | ----------- |
   | identity | `String` | `"senior"` | 身分為學長姐 |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-<<<<<<< HEAD
-  | degree | `String` | `"ms"` | 學位 |
-  | email | `String` | `example@gmail.com` | 電子信箱 |
-  | school1 | `String` | `"MIT"` | 第一志願、夢幻學校(沒有填 "無") |
-  | school2 | `String` | `"NTU"` | 第二志願、有把握的學校 |
-  | school3 | `String` | `"無"` | 第三志願、保底學校 |
-=======
   | degree | `Number[]` | `[0, 1]` | 欲申請的學位(0: MS, 1: PhD) |
   | hasPaper | `Number` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
   | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
@@ -1833,7 +1826,6 @@ GET /study/form
   | school1 | `String[]` | `["MIT"]` | 夢幻學校(沒有填 "無") |
   | school2 | `String[]` | `["NTU"]` | 有把握的學校 |
   | school3 | `String[]` | `["無"]` | 保底學校 |
->>>>>>> NTUEEPLUS-202. fix matching form schema (#159)
 
 ### Error response
 

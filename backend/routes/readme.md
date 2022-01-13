@@ -47,6 +47,8 @@ EE+ api 文件
 - [In/study](#instudy)
   - [填配對表單](#填配對表單)
   - [拿取個人表單](#拿取個人表單)
+  - [拿取個人分發結果](#拿取分發結果)
+  - [拿取全部表單](#拿取全部表單)
   - [清空表單資料庫](#清空表單資料庫)
   - [拿取本年表單連結](#拿取本年表單連結)
   - [配對](#配對)
@@ -1745,11 +1747,11 @@ Request body 會依據身分(學長姐 or 學弟妹)不同而有些微不同
   | Key | Type | value | description |
   | -------- | ------ | ----- | ----------- |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-  | degree | `Number` | `0`, `1` | 申請的學位(0: MS, 1: PhD) |
+  | degree | `String` | `"0"`, `"1"` | 申請的學位(0: MS, 1: PhD) |
   | major | `String` | `"CS"` | 專長領域 |
-  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
+  | gpa | `String` | `"4.3"` | gpa (0 ~ 4.3) |
   | email | `String` | `example@gmail.com` | 電子信箱 |
-  | number | `Number` | `2` | 願意提供分享的學弟妹人數 |
+  | number | `String` | `"2"` | 願意提供分享的學弟妹人數 |
   | admission | `String[]` | `["MIT", "Stanford"]` | 當時錄取了哪些學校 |
   | school | `String` | `"MIT"` | 最後去哪一間學校 |
 
@@ -1757,15 +1759,15 @@ Request body 會依據身分(學長姐 or 學弟妹)不同而有些微不同
   | Key | Type | value | description |
   | -------- | ------ | ----- | ----------- |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-  | degree | `Number[]` | `[0, 1]` | 欲申請的學位(0: MS, 1: PhD) |
-  | hasPaper | `Number` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
+  | degree | `String` | `0 ~ 2` | 欲申請的學位(0: MS, 1: PhD) |
+  | hasPaper | `String` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
   | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
-  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
+  | gpa | `String` | `"4.3"` | gpa (0 ~ 4.3) |
   | email | `String` | `example@gmail.com` | 電子信箱 |
   | account | `String` | `"B12345678"` | 學號 |
   | school1 | `String[]` | `["MIT", "Stanford"]` | 夢幻學校(沒有填 "無") |
   | school2 | `String[]` | `["NTU"]` | 有把握的學校 |
-  | school3 | `String[]` | `["無"]` | 保底學校 |
+  | school3 | `String[]` | `[]` | 保底學校 |
 
 ### Success response
 
@@ -1804,11 +1806,11 @@ GET /study/form
   | -------- | ------ | ----- | ----------- |
   | identity | `String` | `"senior"` | 身分為學長姐 |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-  | degree | `String` | `0` | 申請到的學位(0: MS, 1: PhD) |
-  | major | `String` | `CS` | 專長領域 |
-  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
-  | email | `String` | `example@gmail.com` | 電子信箱 |
-  | number | `Number` | `2` | 願意提供分享的學弟妹人數 |
+  | degree | `String` | `"0"` | 申請到的學位(0: MS, 1: PhD) |
+  | major | `String[]` | `["CS"]` | 專長領域 |
+  | gpa | `String` | `"4.3"` | gpa (0 ~ 4.3) |
+  | email | `String` | `"example@gmail.com"` | 電子信箱 |
+  | number | `String` | `"2"` | 願意提供分享的學弟妹人數 |
   | admission | `String[]` | `["MIT", "Stanford"]` | 當時錄取了哪些學校 |
   | school | `String` | `"MIT"` | 最後去哪一間學校 |
 
@@ -1817,15 +1819,15 @@ GET /study/form
   | -------- | ------ | ----- | ----------- |
   | identity | `String` | `"senior"` | 身分為學長姐 |
   | name | `String` | `"王小明"` | 填表單者的姓名 |
-  | degree | `Number[]` | `[0, 1]` | 欲申請的學位(0: MS, 1: PhD) |
-  | hasPaper | `Number` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
+  | degree | `String` | `0 ~ 2` | 欲申請的學位(0: MS, 1: PhD) |
+  | hasPaper | `String` | `0 ~ 3` | 0: 無論文經驗, 1: 已投稿但尚未公佈, 2: 已發表 1 篇, 3: 已發表 2 篇以上 |
   | major | `String[]` | `["通信", "電磁"]` | 專長領域 |
-  | gpa | `Number` | `4.3` | gpa (0 ~ 4.3) |
-  | email | `String` | `example@gmail.com` | 電子信箱 |
+  | gpa | `String` | `"4.3"` | gpa (0 ~ 4.3) |
+  | email | `String` | `"example@gmail.com"` | 電子信箱 |
   | studentID | `String` | `"B12345678"` | 學號 |
   | school1 | `String[]` | `["MIT"]` | 夢幻學校(沒有填 "無") |
   | school2 | `String[]` | `["NTU"]` | 有把握的學校 |
-  | school3 | `String[]` | `["無"]` | 保底學校 |
+  | school3 | `String[]` | `[]` | 保底學校 |
 
 ### Error response
 
@@ -1840,6 +1842,81 @@ GET /study/form
 | Name        | Type     | Description |
 | ----------- | -------- | ----------- |
 | description | `String` | 資料庫錯誤  |
+
+## 拿取分發個人結果
+
+[Back to top](#top)
+
+拿取個人分發結果
+
+```
+GET /study/result
+```
+
+### success response
+
+#### Success response - `200`
+
+分為 senior 跟 junior
+
+- 若身分為 junior:
+  | Name | Type | Description |
+  | ----------- | -------- | ------------ |
+  | name | `String` | 配對到的學長姐姓名 |
+  | email | `String` | 配對到的學長姐 email |
+  | school | `String` | 配對到的學長姐就讀的學校 |
+  | major | `String[]` | 配對到的學長姐領域 |
+
+如果沒有配對到將回傳一個空的 `Object`
+
+- 若身分為 senior:
+  回傳值的型態為`Object[]`，每個`Object`裡面存有配對到的學弟妹資訊
+
+| Name  | Type       | Description          |
+| ----- | ---------- | -------------------- |
+| name  | `String`   | 配對到的學弟妹姓名   |
+| email | `String`   | 配對到的學弟妹 email |
+| major | `String[]` | 配對到的學弟妹領域   |
+
+如果沒有配對到將回傳一個空的 `Array`
+
+### error response
+
+#### Error response - `404`
+
+在資料庫中查無此人的表單將發生此錯誤
+| Name | Type | Description |
+| ----------- | -------- | ------------ |
+| description | `String` | form data not found |
+
+## 拿取全部表單
+
+[Back to top](#top)
+
+拿取全部表單
+
+```
+GET /study/allForms
+```
+
+### success response
+
+#### Success response - `200`
+
+| Name        | Type       | Description                                                       |
+| ----------- | ---------- | ----------------------------------------------------------------- |
+| junior      | `Object[]` | 所有學弟妹表單，詳細欄位可以參見`GET /study/form`中的 junior 部分 |
+| senior      | `Object[]` | 所有學長姐表單，詳細欄位可以參見`GET /study/form`中的 senior 部分 |
+| juniorCount | `Number`   | 學弟妹表單數                                                      |
+| seniorCount | `Number`   | 學長姐表單數                                                      |
+
+### error response
+
+#### Error response - `403`
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| description | `String` | 權限錯誤    |
 
 ## 清空表單資料庫
 

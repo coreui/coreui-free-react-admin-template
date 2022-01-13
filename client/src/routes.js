@@ -27,6 +27,7 @@ import {
   SearchProfile,
   Study,
   Matching,
+  MatchForm,
 } from './views/in'
 // auth pages
 import { AuthMatching } from './views/auth'
@@ -113,6 +114,12 @@ const routes_in = [
     exact: true,
     name: 'Matching',
     component: Matching,
+  },
+  {
+    path: '/match_form/:identity',
+    exact: false,
+    name: 'MatchForm',
+    component: MatchForm,
   },
 ]
 const routes_auth = [

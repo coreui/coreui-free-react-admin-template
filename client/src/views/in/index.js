@@ -21,6 +21,7 @@ const SearchProfile = React.lazy(() => import('./profile/search'))
 const Study = React.lazy(() => import('./study'))
 
 const Matching = React.lazy(() => import('./matching'))
+const MatchForm = React.lazy(() => import('./matching/matchForm'))
 
 export {
   ColumnSummary,
@@ -39,4 +40,5 @@ export {
   SearchProfile,
   Study,
   Matching,
+  MatchForm,
 }

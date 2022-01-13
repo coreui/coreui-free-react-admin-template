@@ -42,9 +42,9 @@ const Login = () => {
     axios
       .post('api/login', loginForm)
       .then((res) => {
-        const { username } = res.data
+        const { username, isAuth } = res.data
         alert(`歡迎回來! ${username}`)
-        dispatch(login())
+        dispatch(login(isAuth))
       })
       .catch((err) => {
         switch (err.response.status) {
@@ -68,9 +68,9 @@ const Login = () => {
     axios
       .post('/api/loginFB', { facebookID: res.userID })
       .then((res) => {
-        const { username } = res.data
+        const { username, isAuth } = res.data
         alert(`歡迎回來! ${username}`)
-        dispatch(login())
+        dispatch(login(isAuth))
       })
       .catch((err) => {
         switch (err.response.status) {

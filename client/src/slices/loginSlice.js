@@ -4,7 +4,7 @@ export const loginSlice = createSlice({
   name: 'login',
   initialState: {
     isLogin: false,
-    isAuth: true,
+    isAuth: false,
     imgSrc: null,
     studentID: '',
     email: '',
@@ -12,9 +12,9 @@ export const loginSlice = createSlice({
     name: '',
   },
   reducers: {
-    login: (state) => {
+    login: (state, action) => {
       state.isLogin = true
-      state.isAuth = true
+      state.isAuth = action.payload
     },
     logout: (state) => {
       state.isLogin = false
@@ -31,17 +31,12 @@ export const loginSlice = createSlice({
       state.cellphone = action.payload.userCellphone
       state.name = action.payload.userName
       state.email = action.payload.userEmail
-      if (action.payload.isAuth !== undefined) {
-        console.log('is auth?', action.payload.isAuth)
-        state.isAuth = action.payload.isAuth
-      }
     },
     clearStudentInfo: (state, action) => {
       state.studentID = ''
       state.cellphone = ''
       state.name = ''
       state.email = ''
-      state.isAuth = false
     },
   },
 })

@@ -37,7 +37,6 @@ const matching = async (oPath) => {
       },
     )
   })
-
   const finalResult = []
   for (let i = 0; i < 3; i++) {
     //最多配對3次

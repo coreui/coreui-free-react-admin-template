@@ -87,8 +87,8 @@ const transSenior = (data) => {
   ]
 }
 const main = async () => {
-  const seniorSampleRaw = await parseXls('./senior_2021v2.xlsx', sKeys)
-  const juniorSampleRaw = await parseXls('./junior_2021v2.xlsx', jKeys)
+  const seniorSampleRaw = await parseXls('./senior_sample.xlsx', sKeys)
+  const juniorSampleRaw = await parseXls('./junior_sample.xlsx', jKeys)
   const [seniorSampleData, extra] = transSenior(seniorSampleRaw)
   const juniorSampleData = transJunior(juniorSampleRaw)
   seniorSampleData.forEach(async ({ degree, school, gpa, number, name, major, email }) => {

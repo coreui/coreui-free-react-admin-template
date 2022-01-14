@@ -1923,7 +1923,7 @@ GET /study/links
 給學長姊跟學弟妹留學配對的.xlsx 檔，幫他們配對
 
 ```
-POST /study_matching
+POST /study/matching
 ```
 
 ### Header examples
@@ -1934,20 +1934,13 @@ config
 { "content-type": "multipart/form-data" }
 ```
 
-### Parameters - `Parameter`
-
-| Name   | Type   | Description          |
-| ------ | ------ | -------------------- |
-| senior | `File` | 學長姐的 senior.xlsx |
-| junior | `File` | 學弟妹的 junior.xlsx |
-
 ### Success response
 
 #### Success response - `200`
 
 | Name | Type   | Description |
 | ---- | ------ | ----------- |
-| -    | `File` | output.xlsx |
+| -    | `File` | result.xlsx |
 
 ## 寄配對通知
 

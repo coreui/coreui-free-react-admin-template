@@ -3,7 +3,7 @@ const xlsx = require('xlsx')
 const munkres = require('munkres-js')
 
 const cmp2arr = (a1, a2) => a1.filter((e) => a2.indexOf(e) >= 0).length
-const matching = async (oPath) => {
+const matching = async () => {
   const seniorData = await seniorForm.find()
   const juniorData = await juniorForm.find()
   console.log(juniorData.length, seniorData.length)
@@ -79,25 +79,52 @@ const matching = async (oPath) => {
 
   let matchedJunior = []
   let sjPair = []
+  const wb = xlsx.utils.book_new()
+  const ws = xlsx.utils.aoa_to_sheet([
+    [
+      '學弟妹姓名',
+      '學弟妹學號',
+      '學弟妹信箱',
+      '學弟妹領域',
+      '學長姊姓名',
+      '學長姊學校',
+      '學長姊信箱',
+      '匹配分數',
+    ],
+  ])
   finalResult.forEach(([i, j, type, score], ind) => {
     const jRow = juniorData[j]
     if (!matchedJunior.includes(jRow.name)) {
       matchedJunior.push(jRow.name)
-      sjPair.push([i, j])
+      sjPair.push([i, j, score])
     }
   })
-  console.log(sjPair)
-  sjPair.forEach(async ([i, j], ind) => {
+  sjPair.forEach(async ([i, j, score], ind) => {
     const sRow = seniorData[i]
     const jRow = juniorData[j]
-    console.log(sRow.name + ' - ' + jRow.name)
+    xlsx.utils.sheet_add_aoa(
+      ws,
+      [
+        [
+          jRow.name,
+          jRow.studentID,
+          jRow.email,
+          jRow.major.join(','),
+          sRow.name,
+          sRow.school,
+          sRow.email,
+          -score,
+        ],
+      ],
+      { origin: -1 },
+    )
     await juniorForm.updateOne({ _id: jRow._id }, { senior: sRow._id })
     const junior = (await seniorForm.findById(sRow.id)).junior
     if (!junior.includes(jRow.id)) {
       await seniorForm.updateOne({ _id: sRow._id }, { junior: [...junior, jRow._id] })
     }
   })
-  /*
+  xlsx.utils.book_append_sheet(wb, ws, '配對名單')
   //sheet
   const ws4 = xlsx.utils.aoa_to_sheet([['分數規則']])
   xlsx.utils.sheet_add_aoa(ws4, [['a,b,c代表\n夢幻,有把握,保底']], { origin: -1 }) //,{origin:`A${ind+2}`})
@@ -106,8 +133,8 @@ const matching = async (oPath) => {
   xlsx.utils.book_append_sheet(wb, ws4, '分數規則')
 
   //寫檔
-  xlsx.writeFile(wb, oPath)
-  */
+  xlsx.writeFile(wb, __dirname + '/uploads/result.xlsx')
+  return wb
 }
 
 module.exports = matching

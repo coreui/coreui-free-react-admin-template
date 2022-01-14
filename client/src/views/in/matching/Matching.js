@@ -20,31 +20,36 @@ const Matching = () => {
         setIdentity(res.data.identity)
         if (res.data.identity === 'senior') setSdata(res.data)
         else if (res.data.identity === 'junior') setJdata(res.data)
-      })
-      .then(() => {
-        setLoading(false)
-        console.log('jdata', jdata)
-        console.log('sdata', sdata)
+        else setLoading(false)
       })
       .catch(
         (err) => err.response.data.description && alert('錯誤\n' + err.response.data.description),
       )
   }
+  const checkResult = () => {
+    axios
+      .get('/api/study/result')
+      .then((res) => {
+        if (identity === 'junior') {
+          setSdata(res.data)
+          setLoading(false)
+        }
+        if (identity === 'senior') {
+          setJdata(res.data)
+          setLoading(false)
+        }
+      })
+      .catch((err) => {
+        console.log('Error while fetching match results')
+      })
+  }
   useEffect(() => {
     checkOpen()
   }, [])
-  // useEffect(() => {
-  //   setSdata({
-  //     num: 'B03901023 ',
-  //     name: '許秉鈞',
-  //     school: 'Stanford University',
-  //     department: 'EE MS',
-  //     field: ['通信', '電波', '計算機'],
-  //     gpa: 4.3,
-  //     mail: 'b03901023@ntu.edu.tw',
-  //     image: 'https://picsum.photos/200',
-  //   })
-  // }, [jdata])
+
+  useEffect(() => {
+    checkResult()
+  }, [identity])
   return loading ? (
     <Spinner />
   ) : identity ? (
@@ -63,7 +68,7 @@ const Matching = () => {
       </CNav>
       <CTabContent>
         <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={page === 1}>
-          <MatchResult jdata={jdata} sdata={sdata} identity={identity} />
+          <MatchResult jdata={jdata} sdata={sdata} identity={identity} prepared={setLoading} />
         </CTabPane>
         <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={page === 2}>
           <Experience />

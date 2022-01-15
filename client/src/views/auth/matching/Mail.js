@@ -11,13 +11,15 @@ const Mail = ({ hasSent, setHasSent, setHasMatched }) => {
   const handleUpload = () => {
     inputRef.current?.click()
   }
-  const handleDisplayFileDetails = () => {
+  const handleInputFile = () => {
     inputRef.current?.files && setUploadedFile(inputRef.current.files[0])
     console.log(inputRef.current.files[0])
   }
   const sendMail = () => {
     const config = { 'content-type': 'multipart/form-data' }
-    axios.post('/api/study/sendMail', uploadedFile, config).then(() => {
+    let data = new FormData()
+    data.append('result', uploadedFile)
+    axios.post('/api/study/sendMail', data, config).then(() => {
       console.log('mails sent!!')
       setHasSent(true)
     })
@@ -47,12 +49,7 @@ const Mail = ({ hasSent, setHasSent, setHasMatched }) => {
           <img src={success_icon} alt="success" className="img-fluid w-25" />
           <div className="m-3">
             <label className="h3 mt-1 mx-3">上傳配對結果:</label>
-            <input
-              ref={inputRef}
-              onChange={handleDisplayFileDetails}
-              className="d-none"
-              type="file"
-            />
+            <input ref={inputRef} onChange={handleInputFile} className="d-none" type="file" />
             <button
               onClick={handleUpload}
               className={`btn btn-outline-${uploadedFile ? 'success' : 'primary'}`}

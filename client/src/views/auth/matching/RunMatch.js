@@ -34,7 +34,7 @@ const RunMatch = ({ hasSent, setHasSent, setHasMatched }) => {
         console.log('url', url)
         const link = document.createElement('a')
         link.href = url
-        link.setAttribute('download', 'result.xlsx')
+        link.setAttribute('download', 'output.xlsx')
         document.body.appendChild(link)
         link.click()
       })

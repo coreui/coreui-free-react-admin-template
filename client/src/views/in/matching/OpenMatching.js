@@ -8,10 +8,14 @@ const OpenMatching = () => {
   const [identity, setIdentity] = useState('')
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (!identity) {
+      alert('請選擇身分')
+      return
+    }
     history.push(`/match_form/${identity}`)
   }
   return (
-    <form onSubmit={handleSubmit} className="matching p-5 rounded bg-white text-black mt-5">
+    <form onSubmit={handleSubmit} className="mt-3 p-3">
       <h2>
         歡迎使用留學交流（原EE Chain）功能！
         <br />

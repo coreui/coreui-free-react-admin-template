@@ -106,7 +106,7 @@ const Matching = () => {
               </h3>
             </div>
           ) : (
-            <div className="d-flex align-items-center m-4 justify-content-around p-2 result-block">
+            <div className="d-flex align-items-center justify-content-around p-2">
               {identity ? (
                 <MatchResult
                   jdata={jdata}
@@ -115,14 +115,14 @@ const Matching = () => {
                   ended={!earlier(Date(), endTime)}
                 />
               ) : (
-                <>
+                <div className="d-flex flex-column">
                   <h2>
                     本期表單開放時間: {startTime[0]}/{startTime[1]}/{startTime[2]} {startTime[3]}:
                     {startTime[4]} ~ {endTime[0]}/{endTime[1]}/{endTime[2]} {endTime[3]}:
                     {endTime[4]}
                   </h2>
                   <OpenMatching />
-                </>
+                </div>
               )}
             </div>
           )}

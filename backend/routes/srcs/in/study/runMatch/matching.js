@@ -118,11 +118,6 @@ const matching = async () => {
       ],
       { origin: -1 },
     )
-    // await juniorForm.updateOne({ _id: jRow._id }, { senior: sRow._id })
-    // const junior = (await seniorForm.findById(sRow.id)).junior
-    // if (!junior.includes(jRow.id)) {
-    //   await seniorForm.updateOne({ _id: sRow._id }, { junior: [...junior, jRow._id] })
-    // }
   })
   xlsx.utils.book_append_sheet(wb, ws, '配對名單')
   //sheet

@@ -63,7 +63,10 @@ const getMatchResult = async (req, res) => {
   } else {
     // junior's match result
     const sID = savedForm.senior
-    if (!sID) res.status(200).send('unmatched')
+    if (!sID) {
+      res.status(200).send('unmatched')
+      return
+    }
     const matchResult = await seniorForm.findById(sID)
     const { name, email, school, major, gpa, account: sAccount } = matchResult
     const sImage = await user_login.findOne({ account: sAccount })

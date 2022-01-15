@@ -1,6 +1,6 @@
 const { seniorForm, juniorForm } = require('../../../../Schemas/matching_form')
 const asyncHandler = require('express-async-handler')
-const user_login = require('../../../../Schemas/user_login')
+const user_login = require('../../../../Schemas/user_visual_new')
 
 const getForm = async (req, res) => {
   if (!req.session) {
@@ -54,20 +54,21 @@ const getMatchResult = async (req, res) => {
         const { name, email, major, account: jAccount } = jData
         const jImage = await user_login.findOne({ account: jAccount })
         let image = 'default'
-        if (jImage && jImage.img) image = jImage.img
+        if (jImage && jImage.imgSrc) image = jImage.imgSrc
         matchResult.push({ name, email, major, identity: 'junior', image })
       }
-      res.status(200).send(matchResult)
+      if (!matchResult.length) res.status(200).send('unmatched')
+      else res.status(200).send(matchResult)
     }
   } else {
     // junior's match result
     const sID = savedForm.senior
-    if (!sID) res.status(200).send({})
+    if (!sID) res.status(200).send('unmatched')
     const matchResult = await seniorForm.findById(sID)
     const { name, email, school, major, gpa, account: sAccount } = matchResult
     const sImage = await user_login.findOne({ account: sAccount })
     let image = 'default'
-    if (sImage && sImage.img) image = sImage.img
+    if (sImage && sImage.imgSrc) image = sImage.imgSrc
     res.status(200).send({ name, email, school, major, gpa, identity: 'senior', image })
   }
 }

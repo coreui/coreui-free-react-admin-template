@@ -7,7 +7,7 @@ import ResultBlock from './ResultBlock'
 import { useSelector } from 'react-redux'
 import { selectLogin } from '../../../slices/loginSlice'
 
-const MatchResult = ({ sdata, jdata, identity }) => {
+const MatchResult = ({ sdata, jdata, identity, ended }) => {
   const history = useHistory()
   const reFill = (e) => {
     e.preventDefault()
@@ -16,7 +16,8 @@ const MatchResult = ({ sdata, jdata, identity }) => {
   const { imgSrc } = useSelector(selectLogin)
   return (
     <div className="p-4">
-      {(identity === 'senior' && jdata.length) || (identity === 'junior' && sdata.name) ? (
+      {(identity === 'senior' && jdata !== 'unmatched') ||
+      (identity === 'junior') !== 'unmatched' ? (
         identity === 'junior' ? (
           <>
             <ResultBlock data={sdata} />
@@ -34,12 +35,24 @@ const MatchResult = ({ sdata, jdata, identity }) => {
         )
       ) : (
         <>
-          <h3>
-            配對結果尚未公佈！
-            <br />
-            DEADLINE一到，我們便會公佈這一期所有的配對結果～
-          </h3>
-          <CButton onClick={reFill}>修改表單</CButton>
+          {ended ? (
+            identity === 'junior' && sdata === 'unmatched' ? (
+              <h3>很抱歉我們無法為您配對到適合的學長姐</h3>
+            ) : identity === 'senior' && jdata === 'unmatched' ? (
+              <h3>感謝您願意提供經驗分享，但目前沒有需要的學弟妹</h3>
+            ) : (
+              <>
+                <h3>配對結果尚未公佈！</h3>
+                <h3>請靜待結果</h3>
+              </>
+            )
+          ) : (
+            <>
+              <h3>配對結果尚未公佈！</h3>
+              <h3>DEADLINE一到，我們便會公佈這一期所有的配對結果～</h3>
+              <CButton onClick={reFill}>修改表單</CButton>
+            </>
+          )}
         </>
       )}
     </div>
@@ -49,5 +62,6 @@ MatchResult.propTypes = {
   jdata: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   sdata: PropTypes.object,
   identity: PropTypes.string,
+  ended: PropTypes.bool,
 }
 export default MatchResult

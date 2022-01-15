@@ -55,7 +55,6 @@
     "react-easy-crop": "^3.5.2",
     "react-facebook-login": "^4.1.1",
     "react-masonry-css": "^1.0.16",
-    "react-particles-js": "^3.5.3",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.4.3",
@@ -66,7 +65,7 @@
     "simplebar-react": "^2.3.4",
     "stream-browserify": "^3.0.0",
     "style-loader": "^3.2.1",
-    "tsparticles": "^1.34.0",
+    "tsparticles": "^1.39.0",
     "webpack": "^5.47.1",
     "webpack-cli": "^4.8.0"
   },

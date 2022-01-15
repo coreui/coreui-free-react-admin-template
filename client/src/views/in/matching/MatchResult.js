@@ -16,8 +16,8 @@ const MatchResult = ({ sdata, jdata, identity, ended }) => {
   const { imgSrc } = useSelector(selectLogin)
   return (
     <div className="p-4">
-      {(identity === 'senior' && jdata !== 'unmatched') ||
-      (identity === 'junior') !== 'unmatched' ? (
+      {(identity === 'senior' && jdata.length && jdata !== 'unmatched') ||
+      (identity === 'junior' && sdata !== 'unmatched') ? (
         identity === 'junior' ? (
           <>
             <ResultBlock data={sdata} />
@@ -60,7 +60,8 @@ const MatchResult = ({ sdata, jdata, identity, ended }) => {
 }
 MatchResult.propTypes = {
   jdata: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  sdata: PropTypes.object,
+  sdata: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+
   identity: PropTypes.string,
   ended: PropTypes.bool,
 }

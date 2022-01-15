@@ -2,11 +2,12 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import CIcon from '@coreui/icons-react'
-import { success_icon, mail_sent } from './index'
+import { success_icon, mail_sent, Spinner } from './index'
 import axios from 'axios'
 const Mail = ({ hasSent, setHasSent, setHasMatched }) => {
   const [uploadedFile, setUploadedFile] = useState(null)
   const inputRef = useRef(null)
+  const [loading, setLoading] = useState(false)
 
   const handleUpload = () => {
     inputRef.current?.click()
@@ -16,15 +17,19 @@ const Mail = ({ hasSent, setHasSent, setHasMatched }) => {
     console.log(inputRef.current.files[0])
   }
   const sendMail = () => {
+    setLoading(true)
     const config = { 'content-type': 'multipart/form-data' }
     let data = new FormData()
     data.append('result', uploadedFile)
     axios.post('/api/study/sendMail', data, config).then(() => {
       console.log('mails sent!!')
       setHasSent(true)
+      setLoading(false)
     })
   }
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <div className="d-flex flex-column align-items-center">
       {hasSent ? (
         <>

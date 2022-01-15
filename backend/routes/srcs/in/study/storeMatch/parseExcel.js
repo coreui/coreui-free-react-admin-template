@@ -12,8 +12,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   fileFilter: function (req, file, cb) {
-    console.log('file', file)
-    console.log('req', req)
     if (!file.originalname.match(/\.(xlsx)$/)) {
       req.fileValidationError = '請傳送.xlsx檔'
       return cb(new Error('請傳送.xlsx檔'), false)

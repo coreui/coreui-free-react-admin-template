@@ -29,9 +29,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
     }),
-    // new webpack.ProvidePlugin({
-    //   process: 'process/browser',
-    // }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
     new webpack.DefinePlugin({
       'process.env.REACT_APP_fbAPIid': process.env.REACT_APP_fbAPIid,
     }),

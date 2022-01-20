@@ -48,6 +48,7 @@ const matching = async () => {
       })
       .filter((e, i) => seniorInv.includes(i))
     // console.log(score1.length, score1[0].length)
+    if (!score1.length) break
     const result = munkres(score1)
     result.forEach(([se, ju]) => {
       if (score1[se][ju] !== 99) {

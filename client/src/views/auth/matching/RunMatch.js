@@ -14,7 +14,7 @@ import {
 } from '@coreui/react'
 import axios from 'axios'
 import Spinner from '../../components/Spinner'
-const RunMatch = ({ hasSent, setHasSent, setHasMatched }) => {
+const RunMatch = ({ hasSent, setHasSent, hasMatched, setHasMatched }) => {
   const [isModal, setIsModal] = useState(false)
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
@@ -189,6 +189,7 @@ const RunMatch = ({ hasSent, setHasSent, setHasMatched }) => {
 }
 RunMatch.propTypes = {
   hasSent: PropTypes.bool,
+  hasMatched: PropTypes.bool,
   setHasSent: PropTypes.func,
   setHasMatched: PropTypes.func,
 }

@@ -11,7 +11,12 @@ const Matching = () => {
       {hasMatched ? (
         <Mail hasSent={hasSent} setHasSent={setHasSent} setHasMatched={setHasMatched} />
       ) : (
-        <RunMatch hasSent={hasSent} setHasSent={setHasSent} setHasMatched={setHasMatched} />
+        <RunMatch
+          hasSent={hasSent}
+          setHasSent={setHasSent}
+          hasMatched={hasMatched}
+          setHasMatched={setHasMatched}
+        />
       )}
     </div>
   )

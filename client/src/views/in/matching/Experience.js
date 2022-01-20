@@ -10,9 +10,12 @@ const Experience = () => {
         alt="Google Drive"
         className="img-fluid my-3"
       />
-      <button className="btn btn-primary h3" onClick="location.href='#'">
+      <a
+        href="https://drive.google.com/drive/folders/1_yuxj4UDDwlwC26yxTMBu8yE7BaRyZS6?usp=sharing"
+        className="btn btn-primary h3"
+      >
         點此進入GDrive精華區
-      </button>
+      </a>
     </div>
   )
 }

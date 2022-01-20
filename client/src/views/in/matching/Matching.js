@@ -93,13 +93,9 @@ const Matching = () => {
       </CNav>
       <CTabContent>
         <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={page === 1}>
-          {earlier(Date(), startTime) || !earlier(Date(), endTime) ? (
+          {earlier(Date(), startTime) ? (
             <div>
-              {earlier(Date(), startTime) ? (
-                <h2>抱歉，配對表單填寫尚未開始</h2>
-              ) : (
-                <h2>抱歉，配對表單填寫已經結束</h2>
-              )}
+              <h2>抱歉，配對表單填寫尚未開始</h2>
               <h3>
                 本期表單開放時間: {startTime[0]}/{startTime[1]}/{startTime[2]} {startTime[3]}:
                 {startTime[4]} ~ {endTime[0]}/{endTime[1]}/{endTime[2]} {endTime[3]}:{endTime[4]}
@@ -114,7 +110,7 @@ const Matching = () => {
                   identity={identity}
                   ended={!earlier(Date(), endTime)}
                 />
-              ) : (
+              ) : earlier(Date(), endTime) ? (
                 <div className="d-flex flex-column">
                   <h2>
                     本期表單開放時間: {startTime[0]}/{startTime[1]}/{startTime[2]} {startTime[3]}:
@@ -122,6 +118,15 @@ const Matching = () => {
                     {endTime[4]}
                   </h2>
                   <OpenMatching />
+                </div>
+              ) : (
+                <div>
+                  <h2>抱歉，配對表單填寫已經結束</h2>
+                  <h3>
+                    本期表單開放時間: {startTime[0]}/{startTime[1]}/{startTime[2]} {startTime[3]}:
+                    {startTime[4]} ~ {endTime[0]}/{endTime[1]}/{endTime[2]} {endTime[3]}:
+                    {endTime[4]}
+                  </h3>
                 </div>
               )}
             </div>

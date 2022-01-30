@@ -9,7 +9,7 @@ import FB from 'fb-react-sdk'
 import RegisterAccount from './images/Register_Account.png'
 import RegisterFB from './images/Register_Facebook.png'
 
-const RegisterEntry = () => {
+const registerEntryAlumni = () => {
   const dispatch = useDispatch()
   const { isLogin } = useSelector(selectLogin)
 
@@ -48,9 +48,9 @@ const RegisterEntry = () => {
     axios
       .post('/api/loginFB', { facebookID: res.userID })
       .then((res) => {
-        const { username, isAuth } = res.data
+        const { username } = res.data
         alert(`歡迎回來! ${username}`)
-        dispatch(login(isAuth))
+        dispatch(login())
       })
       .catch((err) => {
         switch (err.response.status) {
@@ -65,17 +65,42 @@ const RegisterEntry = () => {
   }
 
   const buttonAccount = (
-    <Link className="d-flex justify-content-center" to="register_entry_student">
+    <Link className="d-flex justify-content-center" to="/register">
       <CImage fluid src={RegisterAccount} alt="Register by Account" />
     </Link>
   )
   const buttonFB = (
-    <Link className="d-flex justify-content-center" to="/register_entry_alumni">
-      <CImage fluid src={RegisterFB} alt="Register by FB" />
-    </Link>
+    <div className="d-flex justify-content-center">
+      <FacebookLogin
+        appId={process.env.REACT_APP_fbAPIid || '571174603253755'}
+        autoLoad={false}
+        isMobile={false}
+        fields="name,email,picture"
+        callback={handleFBSubmit}
+        textButton=""
+        render={(renderProps) => (
+          <CImage
+            src={RegisterFB}
+            fluid
+            alt="Register by Facebook"
+            onClick={renderProps.onClick}
+            style={{ cursor: 'pointer' }}
+          />
+        )}
+      />
+    </div>
   )
   if (isLogin) {
     return <Redirect to="/home" />
+  } else if (needRegister) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/register_fb',
+          state: { facebookID: userId },
+        }}
+      />
+    )
   } else {
     return (
       <div className="min-vh-100 d-flex flex-row align-items-center">
@@ -100,4 +125,4 @@ const RegisterEntry = () => {
     )
   }
 }
-export default RegisterEntry
+export default registerEntryAlumni

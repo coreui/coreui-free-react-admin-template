@@ -77,7 +77,7 @@ const AppContent = () => {
               )
             )
           })}
-          {!isLogin ? <Redirect to="/login" /> : null}
+          {!isLogin ? <Redirect to="/home" /> : null}
           {isLogin
             ? routes_in.map((route, idx) => {
                 return (

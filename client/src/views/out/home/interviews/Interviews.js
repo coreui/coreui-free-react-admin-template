@@ -31,11 +31,7 @@ const Interviews = () => {
                       李昀樵曾是李琳山教授語音實驗室的研究生，研究所時期除了研究外，更有進行小型創業，開發出新聞摘要軟件及搜尋公共腳踏車的APP，前者以兩萬元售出，後者成為該領域當時市占率最高的APP。
                     </p>
                   </div>
-                  <img
-                    src={columnOutline2012}
-                    className="img-fluid p-2 rounded"
-                    alt="Project Title"
-                  />{' '}
+                  <img src={columnOutline2012} className="img-fluid rounded" alt="Project Title" />{' '}
                 </Link>{' '}
               </div>
             </div>
@@ -79,11 +75,7 @@ const Interviews = () => {
                       的團隊技術領導者和軟體主管工程師的鄭恆之，從事大規模機器學習的研究與軟體開發。
                     </p>
                   </div>
-                  <img
-                    src={columnOutline2008}
-                    className="img-fluid p-2 rounded"
-                    alt="Project Title"
-                  />{' '}
+                  <img src={columnOutline2008} className="img-fluid rounded" alt="Project Title" />{' '}
                 </Link>{' '}
               </div>
             </div>

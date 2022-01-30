@@ -33,6 +33,30 @@
         { "img": "https://i.imgur.com/bkdii7Y.png", "name": "鄭謹譯" },
         { "img": "https://i.imgur.com/NfzeSWo.png", "name": "李筠婕" }
       ]
+    },
+    {
+      "grade": "B07",
+      "title": "5th NTUEE+",
+      "people": [
+        { "img": "https://i.imgur.com/umMRS1L.png", "name": "陳君輔" },
+        { "img": "https://i.imgur.com/IYmBNEr.png", "name": "余欣澄" }
+      ]
+    },
+    {
+      "grade": "B08",
+      "title": "6th NTUEE+",
+      "people": [
+        { "img": "https://i.imgur.com/x6Q9l52.png", "name": "王友廷" },
+        { "img": "https://i.imgur.com/eOWLfEO.png", "name": "卓昱辰" }
+      ]
+    },
+    {
+      "grade": "B09",
+      "title": "7th NTUEE+",
+      "people": [
+        { "img": "https://i.imgur.com/5psCEQS.png", "name": "巫竑儒" },
+        { "img": "https://i.imgur.com/GsStb6e.png", "name": "賀崇恩" }
+      ]
     }
   ]
 }

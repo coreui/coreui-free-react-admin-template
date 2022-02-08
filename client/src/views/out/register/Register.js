@@ -22,7 +22,7 @@ import {
   CLink,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 
 const RegisterFormTemplate = {
   account: '',
@@ -43,6 +43,8 @@ const Register = () => {
 
   // data to backend
   const [registerForm, setRegisterForm] = useState(RegisterFormTemplate)
+
+  const { identity } = useParams()
 
   const expand = (e) => {
     e.preventDefault()
@@ -87,9 +89,11 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (registerForm.password != registerForm.ConfirmPassword) {
+    if (registerForm.password !== registerForm.ConfirmPassword) {
       return alert('密碼不一致')
     } else {
+      if (identity === 'student')
+        setRegisterForm({ ...registerForm, Email: `${registerForm.Email}@ntu.edu.tw` })
       let data = new FormData()
       for (let key in registerForm) {
         data.append(key, registerForm[key])
@@ -104,7 +108,11 @@ const Register = () => {
       axios
         .post('api/register', data, config)
         .then((res) => {
-          alert('註冊成功,跳轉至登入頁面')
+          alert(
+            identity === 'student'
+              ? '請至學校信箱接收開通信，您的帳號就會被激活！'
+              : '等待管理員確認您的身分後就會寄開通信至您的信箱，請耐心等候！',
+          )
           setToLogin(true)
         })
         .catch((err) => {
@@ -188,49 +196,66 @@ const Register = () => {
                         onChange={handleInputChange}
                       />
                     </CInputGroup>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>@</CInputGroupText>
-                      <CFormControl placeholder="Email" name="Email" onChange={handleInputChange} />
-                    </CInputGroup>
-                    <CInputGroup
-                      className="mb-3"
-                      onMouseEnter={expand}
-                      onFocus={expand}
-                      onBlur={constract}
-                    >
-                      <CInputGroupText>
-                        <CIcon icon="cil-image" name="cil-image" />
-                      </CInputGroupText>
-                      <CFormControl
-                        id="formFile"
-                        type="file"
-                        onChange={handleChangeImage}
-                      ></CFormControl>
-                    </CInputGroup>
-                    <CCollapse visible={isExpand} onMouseLeave={constract}>
-                      <CListGroup>
-                        <CListGroupItem color="info">
-                          ID photo should contain your <b>full name</b> and{' '}
-                          <b>intact, clear face</b>.
-                        </CListGroupItem>
-                        <CListGroupItem color="success">
-                          ID photo is used to confirm your identity, and will be auto deleted after
-                          account is activated
-                        </CListGroupItem>
-                        <CListGroupItem color="warning">
-                          The size of photo is at most <b>1MB</b>.
-                        </CListGroupItem>
-                      </CListGroup>
-                      <div className="d-flex justify-content-end">
-                        {previewURL ? (
-                          <CLink color="link" onClick={openModal} style={{ cursor: 'pointer' }}>
-                            Preview Again?
-                          </CLink>
-                        ) : (
-                          <></>
-                        )}
-                      </div>
-                    </CCollapse>
+                    {identity === 'alumni' && (
+                      <>
+                        <CInputGroup className="mb-3">
+                          <CInputGroupText>@</CInputGroupText>
+                          <CFormControl
+                            placeholder="Email"
+                            name="Email"
+                            onChange={handleInputChange}
+                          />
+                        </CInputGroup>
+                        <CInputGroup
+                          className="mb-3"
+                          onMouseEnter={expand}
+                          onFocus={expand}
+                          onBlur={constract}
+                        >
+                          <CInputGroupText>
+                            <CIcon icon="cil-image" name="cil-image" />
+                          </CInputGroupText>
+                          <CFormControl
+                            id="formFile"
+                            type="file"
+                            onChange={handleChangeImage}
+                          ></CFormControl>
+                        </CInputGroup>
+                        <CCollapse visible={isExpand} onMouseLeave={constract}>
+                          <CListGroup>
+                            <CListGroupItem color="info">
+                              Please go to{' '}
+                              <a
+                                href="https://my.ntu.edu.tw/alumnusJobManage/cst01-1.aspx"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-warning fw-bold"
+                              >
+                                this website
+                              </a>{' '}
+                              and <b>take a screenshot</b> to prove your identity of alumni of NTUEE
+                              <br /> It should contain your <b>full name</b> and <b>studentID</b>.
+                            </CListGroupItem>
+                            <CListGroupItem color="success">
+                              Screenshot is used to confirm your identity, and will be auto deleted
+                              after account is activated
+                            </CListGroupItem>
+                            <CListGroupItem color="warning">
+                              The size of screenshot is at most <b>1MB</b>.
+                            </CListGroupItem>
+                          </CListGroup>
+                          <div className="d-flex justify-content-end">
+                            {previewURL ? (
+                              <CLink color="link" onClick={openModal} style={{ cursor: 'pointer' }}>
+                                Preview Again?
+                              </CLink>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </CCollapse>
+                      </>
+                    )}
                     <CRow className="justify-content-center mt-3">
                       <div className="d-flex justify-content-center">
                         <CButton color="dark" onClick={handleSubmit}>

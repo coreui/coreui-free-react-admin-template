@@ -48,7 +48,6 @@ import {
   cilBold,
   cilBookmark,
   cilBraille,
-  cilBrowser,
   cilBuilding,
   cilCalculator,
   cilCalendar,

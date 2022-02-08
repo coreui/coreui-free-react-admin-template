@@ -107,7 +107,7 @@ const reg_v3 = async (req, res) => {
   const { username, password, Email } = req.body
   const newPsw = crypto.createHash('md5').update(password).digest('hex')
 
-  const active = Math.random().toString(36).substr(2)
+  const active = Math.random().toString(36).substring(2)
   const data = {
     username,
     account,

@@ -32,7 +32,7 @@ import {
   MatchForm,
 } from './views/in'
 // auth pages
-import { AuthMatching } from './views/auth'
+import { AuthMatching, AuthRegister } from './views/auth'
 
 import Dashboard from './views/dashboard/Dashboard'
 
@@ -142,6 +142,12 @@ const routes_auth = [
     exact: true,
     name: 'AuthMatching',
     component: AuthMatching,
+  },
+  {
+    path: '/auth/register',
+    exact: true,
+    name: 'Register',
+    component: AuthRegister,
   },
 ]
 export { routes_out, routes_in, routes_auth }

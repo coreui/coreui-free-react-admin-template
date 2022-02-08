@@ -75,10 +75,14 @@ const RegisterEntry = () => {
           {/* for desktop and ipad */}
           <CRow className="justify-content-between d-sm-none d-lg-flex">
             <CCol xs="4">
-              <Link to="register/student" className='display-3 text-white'>I am student now</Link>
+              <Link to="register/student" className="display-3 text-white">
+                I am student now
+              </Link>
             </CCol>
             <CCol xs="4">
-              <Link to="register/alumni" className='display-3 text-white'>I am alumni now</Link>
+              <Link to="register/alumni" className="display-3 text-white">
+                I am alumni now
+              </Link>
             </CCol>
           </CRow>
           {/* for mobile */}

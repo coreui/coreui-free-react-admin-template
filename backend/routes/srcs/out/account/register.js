@@ -130,7 +130,7 @@ const reg_v3 = async (req, res) => {
     const email = `${account}@ntu.edu.tw`
     const link = `${req.protocol}://${req.get('host')}/api/regact/${account}/${active}`
     const htmlText = await template(link, link)
-    await sendmail(email, 'eeplus website account activation', htmlText).catch((e) => {
+    await sendmail(email, 'eeplus website account activaiton', htmlText).catch((e) => {
       console.log(e)
       throw new ErrorHandler(400, 'sendemail fail')
     })

@@ -147,7 +147,7 @@ const Login = () => {
                           </CButton>
                         </CCol>
                       </CRow>
-                      <CRow className="justify-content-center">
+                      {/* <CRow className="justify-content-center">
                         <div
                           className="w-75 text-center mt-3 pt-3"
                           style={{ borderTop: '1px solid gray' }}
@@ -169,7 +169,7 @@ const Login = () => {
                             textButton=""
                           />
                         </div>
-                      </CRow>
+                      </CRow> */}
                     </CForm>
                   </CCardBody>
                 </CCard>

@@ -3,6 +3,7 @@ const Login = require('../../../../Schemas/user_login')
 const Pending = require('../../../../Schemas/user_pending')
 const Visual = require('../../../../Schemas/user_visual_new')
 const asyncHandler = require('express-async-handler')
+const sendmail = require('../../../../middleware/mail')
 
 /**
  * @api {post} /handlePending 身分驗證

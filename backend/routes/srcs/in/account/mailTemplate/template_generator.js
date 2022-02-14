@@ -15,6 +15,6 @@ module.exports = async (link) => {
   })
   const { window } = DOM
   const $ = jquery(window)
-  $('#start').attr('href', href)
+  $('#start').attr('href', link)
   return window.document.documentElement.outerHTML
 }

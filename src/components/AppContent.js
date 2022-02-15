@@ -12,13 +12,13 @@ const AppContent = () => {
         <Routes>
           {routes.map((route, idx) => {
             return (
-              route.component && (
+              route.element && (
                 <Route
                   key={idx}
                   path={route.path}
                   exact={route.exact}
                   name={route.name}
-                  element={<route.component />}
+                  element={<route.element />}
                 />
               )
             )

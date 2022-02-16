@@ -26,7 +26,7 @@ const Recruitment = () => {
     setIsPending(true)
     setIsSearch(true)
     axios
-      .post('/api/smartsearchRecruitment', { keyword: keywords })
+      .post('/api/smartsearchRecruitment', { keyword: keywords, perpage: 99 })
       .then((res) => {
         setData(res.data)
         setIsPending(false)

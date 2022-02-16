@@ -35,7 +35,7 @@ const smartSearch = async (req, res, next) => {
   const { keyword, page, perpage } = req.body
   const query = Recmd.smartQuery(keyword)
   const [recmds, maxPage] = await findWithLimit(Recmd, query, page, perpage)
-  return res.status(201).send(recmds.map((recmd) => recmd.getPublic()).reverse())
+  return res.status(201).send({ data: recmds.map((recmd) => recmd.getPublic()).reverse() })
 }
 
 const valid = require('../../../middleware/validation')

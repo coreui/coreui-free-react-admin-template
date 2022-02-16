@@ -27,7 +27,7 @@ const Recommendation = () => {
     setIsPending(true)
     setIsSearch(true)
     axios
-      .post('/api/smartsearchrecommendation', { keyword: keywords })
+      .post('/api/smartsearchrecommendation', { keyword: keywords, perpage: 99 })
       .then((res) => {
         setData(res.data)
         setIsPending(false)

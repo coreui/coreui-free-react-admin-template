@@ -31,7 +31,7 @@ const smartSrh = async (req, res, next) => {
   const { keyword, page, perpage } = req.body
   const query = Recruitment.smartQuery(keyword)
   const [recrus, maxPage] = await findWithLimit(Recruitment, query, page, perpage)
-  res.status(201).send(recrus.map((recru) => recru.getPublic()).reverse())
+  res.status(201).send({ data: recrus.map((recru) => recru.getPublic()).reverse() })
 }
 
 const valid = require('../../../middleware/validation')

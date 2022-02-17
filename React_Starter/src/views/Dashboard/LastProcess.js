@@ -11,7 +11,7 @@ class LastProcess extends Component {
   }
 
   componentDidMount() {
-   	axios.post(`http://lgc-sandbox-dev:9200/console/_search`, {
+   	axios.post(`http://remove_leclerc_interne_uri:9200/console/_search`, {
   		version: true,
   		size: 1,
   		sort: [

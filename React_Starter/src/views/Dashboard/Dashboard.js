@@ -81,6 +81,8 @@ class Dashboard extends Component {
                     }
                 })
                 .then(res => {
+                    // Je met des commentaire pour tester l'edit :D
+
                     const results = res.data.hits.hits.map(obj => obj._source);
                     this.setState({
                         results : results,

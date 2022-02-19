@@ -24,16 +24,17 @@ import {
 import CIcon from '@coreui/icons-react'
 import { Redirect, useParams } from 'react-router-dom'
 
-const RegisterFormTemplate = {
-  account: '',
-  password: '',
-  ConfirmPassword: '',
-  username: '',
-  Email: '',
-  file: null,
-}
-
 const Register = () => {
+  const { identity } = useParams()
+  const RegisterFormTemplate = {
+    account: '',
+    password: '',
+    ConfirmPassword: '',
+    username: '',
+    Email: '',
+    file: null,
+    isGraduated: identity === 'alumni',
+  }
   // for web control
   const [isExpand, setIsExpand] = useState(false)
   const [isModal, setIsModal] = useState(false)
@@ -43,8 +44,6 @@ const Register = () => {
 
   // data to backend
   const [registerForm, setRegisterForm] = useState(RegisterFormTemplate)
-
-  const { identity } = useParams()
 
   const expand = (e) => {
     e.preventDefault()
@@ -92,12 +91,17 @@ const Register = () => {
     if (registerForm.password !== registerForm.ConfirmPassword) {
       return alert('密碼不一致')
     } else {
-      if (identity === 'student')
-        setRegisterForm({ ...registerForm, Email: `${registerForm.Email}@ntu.edu.tw` })
       let data = new FormData()
-      for (let key in registerForm) {
-        data.append(key, registerForm[key])
-      }
+      if (identity === 'student')
+        for (let key in registerForm) {
+          if (key === 'Email') data.append(key, `${registerForm.account}@ntu.edu.tw`)
+          data.append(key, registerForm[key])
+        }
+      else if (identity === 'alumni')
+        for (let key in registerForm) {
+          data.append(key, registerForm[key])
+        }
+
       const config = {
         headers: {
           'content-type': 'multipart/form-data',

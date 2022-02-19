@@ -225,11 +225,13 @@ const Profile = () => {
           </CRow>
           {studentID === id ? (
             <CRow>
-              <Link to="/edit_profile">
-                <CButton size="lg" color="info">
-                  Edit
-                </CButton>
-              </Link>
+              <CCol col-sm-3>
+                <Link to="/edit_profile">
+                  <CButton size="lg" color="info">
+                    Edit
+                  </CButton>
+                </Link>
+              </CCol>
             </CRow>
           ) : null}
         </CCol>

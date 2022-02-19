@@ -16,12 +16,13 @@ import {
   CAvatar,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import ProfileImageEditor from './ProfileImageEditor'
 import axios from 'axios'
 
 const ProfileEdit = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const { imgSrc, studentID } = useSelector(selectLogin)
   const [data, setData] = useState(null)
   const getProfile = () => {
@@ -47,6 +48,7 @@ const ProfileEdit = () => {
       .patch('api/profile', data)
       .then((res) => {
         alert(`completed`)
+        history.push(`/profile/${studentID}`)
       })
       .catch((err) => {
         console.log(err)
@@ -330,11 +332,11 @@ const ProfileEdit = () => {
               </CCol>
             </CRow>
             <CRow>
-              <Link to={`/profile/${studentID}`}>
-                <CButton color="info" onClick={handleSave}>
+              <CCol col-sm-3>
+                <CButton size="lg" color="info" onClick={handleSave}>
                   Save
                 </CButton>
-              </Link>
+              </CCol>
             </CRow>
           </CCol>
         </CRow>

@@ -28,6 +28,7 @@ import {
   Study,
   Matching,
   MatchForm,
+  ChangePsw,
 } from './views/in'
 // auth pages
 import { AuthMatching, AuthRegister } from './views/auth'
@@ -120,6 +121,12 @@ const routes_in = [
     exact: false,
     name: 'MatchForm',
     component: MatchForm,
+  },
+  {
+    path: '/change_password',
+    exact: true,
+    name: 'ChangePsw',
+    component: ChangePsw,
   },
 ]
 const routes_auth = [

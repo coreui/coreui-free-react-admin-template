@@ -40,7 +40,7 @@ const AppHeaderDropdown = () => {
         <CAvatar size="md" src={imgSrc} />
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>
+        <CDropdownHeader className="bg-light fw-semibold py-2">Your Space</CDropdownHeader>
         <CDropdownItem component={Link} to={`/profile/${studentID}`}>
           <CIcon icon="cil-user" name="cil-user" className="me-2" />
           Profile
@@ -56,10 +56,11 @@ const AppHeaderDropdown = () => {
           Your Recommendation
         </CDropdownItem>
 
-        <CDropdownItem href="#">
-          <CIcon icon="cil-settings" name="cil-settings" className="me-2" />
-          Settings
+        <CDropdownItem component={Link} to={`/change_password`}>
+          <CIcon icon="cil-lock-locked" name="cil-lock-locked" className="me-2" />
+          Change Password
         </CDropdownItem>
+
         {/* <CDropdownItem href="#">
           <CIcon name="cil-credit-card" className="me-2" />
           Payments

@@ -23,6 +23,7 @@ const Study = React.lazy(() => import('./study'))
 const Matching = React.lazy(() => import('./matching'))
 const MatchForm = React.lazy(() => import('./matching/matchForm'))
 
+const ChangePsw = React.lazy(() => import('./changePsw'))
 export {
   ColumnSummary,
   Column,
@@ -41,4 +42,5 @@ export {
   Study,
   Matching,
   MatchForm,
+  ChangePsw,
 }

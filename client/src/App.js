@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import AOS from 'aos'
 import './scss/style.scss'
 
@@ -8,7 +8,7 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 const App = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <React.Suspense
         fallback={
           <div className="d-flex flex-row justify-content-center">
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/" name="Home" render={(props) => <DefaultLayout {...props} />} />
         </Switch>
       </React.Suspense>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 

@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
+import { ErrorBoundary } from 'react-error-boundary'
 import {
   login,
   logout,
@@ -12,7 +13,7 @@ import {
 } from '../slices/loginSlice'
 import axios from 'axios'
 import default_male from '../assets/images/default_male.png'
-import { AppBackground } from '.'
+import { AppBackground, AppFallbackRender } from '.'
 
 // routes config
 import { routes_out, routes_in, routes_auth } from '../routes'
@@ -46,7 +47,6 @@ const AppContent = () => {
         dispatch(clearStudentInfo())
       })
   }, [isLogin])
-
   return (
     <div style={ContentStyle}>
       <AppBackground />
@@ -69,9 +69,9 @@ const AppContent = () => {
                   exact={route.exact}
                   name={route.name}
                   render={(props) => (
-                    <>
+                    <ErrorBoundary fallbackRender={AppFallbackRender}>
                       <route.component {...props} />
-                    </>
+                    </ErrorBoundary>
                   )}
                 />
               )
@@ -88,9 +88,9 @@ const AppContent = () => {
                       exact={route.exact}
                       name={route.name}
                       render={(props) => (
-                        <>
+                        <ErrorBoundary fallbackRender={AppFallbackRender}>
                           <route.component {...props} />
-                        </>
+                        </ErrorBoundary>
                       )}
                     />
                   )

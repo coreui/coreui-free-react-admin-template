@@ -13,7 +13,11 @@ const toJunior = async (data) => {
   await sendmail(data.jmail, '留學配對結果', mail_to_junior)
 }
 
-const sendmails = async (seniorData, juniorData) => {
+const toAdmin = async (filepath) => {
+  await sendmail('ntueeplus2020@gmail.com', '留學配對結果', '', filepath)
+}
+
+const sendmails = async (seniorData, juniorData, filepath) => {
   //Error Handling
   errors = []
   const sent = [] //for skip
@@ -33,7 +37,15 @@ const sendmails = async (seniorData, juniorData) => {
       errors.push(data.jname)
     }
   })
+  const promises3 = [1].map(async () => {
+    try {
+      await toAdmin(filepath)
+    } catch {
+      errors.push('admin')
+    }
+  })
   await Promise.all([...promises1, ...promises2])
+  await Promise.all([...promises3])
   console.log(errors)
   return errors
 }

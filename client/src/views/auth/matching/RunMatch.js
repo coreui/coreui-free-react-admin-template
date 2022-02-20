@@ -16,6 +16,7 @@ import axios from 'axios'
 import Spinner from '../../components/Spinner'
 const RunMatch = ({ hasSent, setHasSent, hasMatched, setHasMatched }) => {
   const [isModal, setIsModal] = useState(false)
+  const [isUpdateTime, setIsUpdateTime] = useState(false)
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [newStartTime, setNewStartTime] = useState('')
@@ -91,32 +92,49 @@ const RunMatch = ({ hasSent, setHasSent, hasMatched, setHasMatched }) => {
   useEffect(() => {
     getMatchInfo()
   }, [hasSent])
-  const startNewMatch = () => {
+  const updateMatch = () => {
     if (newStartTime === '') alert('請輸入起始日期')
     if (newEndTime === '') alert('請輸入截止日期')
     setMatchTime()
-    clearDB()
+    if (!isUpdateTime) {
+      clearDB()
+    }
     setIsModal(false)
+    setIsUpdateTime(false)
   }
   return loading ? (
     <Spinner />
   ) : (
     <>
-      <CModal size="lg" visible={isModal} onDismiss={() => setIsModal(false)} alignment="center">
-        <CModalHeader onDismiss={() => setIsModal(false)}>
-          <CModalTitle>開啟新一期配對</CModalTitle>
+      <CModal
+        size="lg"
+        visible={isModal}
+        onDismiss={() => {
+          setIsModal(false)
+          setIsUpdateTime(false)
+        }}
+        alignment="center"
+      >
+        <CModalHeader
+          onDismiss={() => {
+            setIsModal(false)
+            setIsUpdateTime(false)
+          }}
+        >
+          {isUpdateTime ? (
+            <CModalTitle>修改配對時間</CModalTitle>
+          ) : (
+            <CModalTitle>開啟新一期配對</CModalTitle>
+          )}
         </CModalHeader>
         <CModalBody>
-          <h3 className="mb-2">請選擇新一期的起始與結束時間：</h3>
+          <h3 className="mb-2">請選擇起始與結束時間：</h3>
           <CInputGroup className="mb-4">
             <CInputGroupText>起始日期</CInputGroupText>
             <CFormControl
               type="date"
               onChange={(e) => {
-                if (
-                  new Date(e.target.value) < nowDate ||
-                  new Date(e.target.value) > new Date(newEndTime)
-                ) {
+                if (new Date(e.target.value) > new Date(newEndTime)) {
                   e.target.value = ''
                   setNewStartTime('')
                   alert('無效的起始日期')
@@ -131,10 +149,7 @@ const RunMatch = ({ hasSent, setHasSent, hasMatched, setHasMatched }) => {
             <CFormControl
               type="date"
               onChange={(e) => {
-                if (
-                  new Date(e.target.value) < new Date(newStartTime) ||
-                  !new Date(e.target.value) > nowDate
-                ) {
+                if (new Date(e.target.value) < new Date(newStartTime)) {
                   e.target.value = ''
                   setNewEndTime('')
                   alert('無效的截止日期')
@@ -146,10 +161,16 @@ const RunMatch = ({ hasSent, setHasSent, hasMatched, setHasMatched }) => {
           </CInputGroup>
         </CModalBody>
         <CModalFooter>
-          <CButton color="warning" onClick={() => setIsModal(false)}>
+          <CButton
+            color="warning"
+            onClick={() => {
+              setIsModal(false)
+              setIsUpdateTime(false)
+            }}
+          >
             Cancel
           </CButton>
-          <CButton color="dark" onClick={startNewMatch}>
+          <CButton color="dark" onClick={updateMatch}>
             Yes
           </CButton>
         </CModalFooter>
@@ -177,11 +198,20 @@ const RunMatch = ({ hasSent, setHasSent, hasMatched, setHasMatched }) => {
             : '要先將本期的配對結果寄給大家後才能再開一期喔~'}
         </h2>
         <button
-          className="btn btn-danger mt-3"
+          className="btn btn-danger mt-3 mx-1"
           disabled={!hasSent && (snumber !== 0 || jnumber !== 0)}
           onClick={() => setIsModal(true)}
         >
           <h5 className="m-0">我要開新的一期</h5>
+        </button>
+        <button
+          className="btn btn-danger mt-3 mx-1"
+          onClick={() => {
+            setIsModal(true)
+            setIsUpdateTime(true)
+          }}
+        >
+          <h5 className="m-0">修改配對時間</h5>
         </button>
       </div>
     </>

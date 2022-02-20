@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
  * @param {String} subject 主旨
  * @param  {String} text mail content
  */
-module.exports = async function (recipient, subject, text) {
+module.exports = async function (recipient, subject, text, attachment_filepath = null) {
   const mail = {
     // 設定寄信參數
     // 發信人
@@ -27,6 +27,10 @@ module.exports = async function (recipient, subject, text) {
     to: recipient,
     // 信件內容，HTML格式
     html: text,
+
+    attachments: attachment_filepath
+      ? [{ filename: 'result.xlsx', path: attachment_filepath }]
+      : undefined,
   }
   const info = await transporter.sendMail(mail).catch((e) => {
     console.log(e.message)

@@ -62,7 +62,7 @@ const post = async (filepath) => {
   //   seniorForm.updateOne({ _id: s._id }, { junior: ['抱歉，沒有配對到適合的學弟妹'] })
   // })
 
-  const errors = await sendmails(seniorData, juniorData)
+  const errors = await sendmails(seniorData, juniorData, filepath)
   if (!errors) console.log('no errors')
   else console.log('errors', errors)
   return errors

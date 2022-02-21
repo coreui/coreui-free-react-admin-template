@@ -7,6 +7,9 @@ import { Link, Redirect } from 'react-router-dom'
 import { CCol, CContainer, CRow, CImage } from '@coreui/react'
 import FB from 'fb-react-sdk'
 
+import Alumnus from './images/Alumnus.png'
+import Student from './images/Student.png'
+
 const RegisterEntry = () => {
   const dispatch = useDispatch()
   const { isLogin } = useSelector(selectLogin)
@@ -73,26 +76,25 @@ const RegisterEntry = () => {
             </p>
           </CRow>
           {/* for desktop and ipad */}
-          <CRow className="justify-content-between d-sm-none d-lg-flex">
-            <CCol xs="4">
-              <Link to="register/student" className="display-3 text-white">
-                I am student now
+          <CRow className="justify-content-around d-flex">
+            <CCol md="4" sm="8">
+              <Link
+                to="register/student"
+                className="d-flex justify-content-center display-3 text-white"
+              >
+                <CImage src={Student} alt="Register as Student" className="img-fluid" />
               </Link>
+              <h3 className="text-light text-center mt-4">我是未畢業學生!</h3>
             </CCol>
-            <CCol xs="4">
-              <Link to="register/alumni" className="display-3 text-white">
-                I am alumni now
+            <CCol md="4" sm="8">
+              <Link
+                to="register/alumni"
+                className="d-flex justify-content-center display-3 text-white"
+              >
+                <CImage src={Alumnus} alt="Register as Alumnus" className="img-fluid" />
               </Link>
+              <h3 className="text-light text-center mt-4">我是已畢業系友!</h3>
             </CCol>
-          </CRow>
-          {/* for mobile */}
-          <CRow className="justify-content-center d-sm-flex d-lg-none">
-            <CRow className="justify-content-center mb-3">
-              <Link to="register/student">I am student now</Link>
-            </CRow>
-            <CRow className="justify-content-center mt-3">
-              <Link to="register/alumni">I am alumni now</Link>
-            </CRow>
           </CRow>
         </CContainer>
       </div>

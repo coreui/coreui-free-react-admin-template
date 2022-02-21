@@ -65,7 +65,7 @@ const Team = () => {
             <div className="thumbnail">
               {' '}
               <img
-                src="https://i.imgur.com/5psCEQS.png"
+                src="https://i.imgur.com/TT53RQB.png"
                 alt="..."
                 className="team-img img-fluid"
                 style={{
@@ -73,8 +73,8 @@ const Team = () => {
                 }}
               />
               <div className="caption">
-                <h4>巫竑儒</h4>
-                <p>網頁維護負責人</p>
+                <h4>何明翰</h4>
+                <p>美術設計負責人</p>
               </div>
             </div>
           </div>

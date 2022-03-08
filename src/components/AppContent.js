@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
 
 // routes config
@@ -9,26 +9,22 @@ const AppContent = () => {
   return (
     <CContainer lg>
       <Suspense fallback={<CSpinner color="primary" />}>
-        <Switch>
+        <Routes>
           {routes.map((route, idx) => {
             return (
-              route.component && (
+              route.element && (
                 <Route
                   key={idx}
                   path={route.path}
                   exact={route.exact}
                   name={route.name}
-                  render={(props) => (
-                    <>
-                      <route.component {...props} />
-                    </>
-                  )}
+                  element={<route.element />}
                 />
               )
             )
           })}
-          <Redirect from="/" to="/dashboard" />
-        </Switch>
+          <Route path="/" element={<Navigate to="dashboard" replace />} />
+        </Routes>
       </Suspense>
     </CContainer>
   )

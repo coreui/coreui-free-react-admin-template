@@ -28,7 +28,6 @@ export const AppSidebarNav = ({ items }) => {
         {...(rest.to &&
           !rest.items && {
             component: NavLink,
-            activeClassName: 'active',
           })}
         key={index}
         {...rest}

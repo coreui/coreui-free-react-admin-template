@@ -1,15 +1,16 @@
 import React from 'react'
 import Particles from 'react-tsparticles'
-import { randomInRange } from 'tsparticles/Utils'
+import { loadFull } from 'tsparticles'
 
 const AppBackground = () => {
+  const particleSize = Math.floor(Math.random() * 45) + 30
   return (
     <>
       <Particles
         params={{
           particles: {
             number: {
-              value: randomInRange({ min: 30, max: 75 }),
+              value: particleSize,
               density: {
                 enable: true,
                 value_area: 2000,
@@ -49,10 +50,18 @@ const AppBackground = () => {
                 minimumValue: 30,
               },
             },
+            collisions: {
+              enable: true,
+            },
             move: {
+              direction: 'none',
+              enable: true,
+              outModes: {
+                default: 'bounce',
+              },
               random: true,
-              speed: 0.5,
-              out_mode: 'bounce',
+              speed: 1,
+              straight: false,
             },
             line_linked: {
               width: 2.5,

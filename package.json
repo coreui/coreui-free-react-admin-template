@@ -1,6 +1,6 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "description": "CoreUI Free React Admin Template",
   "homepage": ".",
   "bugs": {
@@ -14,7 +14,7 @@
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
     "build": "react-scripts build",
-    "changelog": "auto-changelog --starting-version 4.1.0 --commit-limit false --hide-credit",
+    "changelog": "auto-changelog --starting-version 4.3.1 --commit-limit false --hide-credit",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.js\"",
     "start": "react-scripts start",
@@ -23,7 +23,7 @@
     "test:debug": "react-scripts --inspect-brk test --runInBand"
   },
   "config": {
-    "coreui_library_short_version": "4.1"
+    "coreui_library_short_version": "4.2"
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",

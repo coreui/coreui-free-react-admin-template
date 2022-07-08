@@ -1,6 +1,9 @@
 name: NPM Installation
 
 on:
+  push:
+    branches-ignore:
+      - "dependabot/**"
   schedule:
   - cron: '0 0 * * *'
 
@@ -10,7 +13,7 @@ env:
 
 jobs:
   run:
-    name: JS Tests
+    name: NPM Installation
     runs-on: ubuntu-latest
 
     steps:

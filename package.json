@@ -22,9 +22,6 @@
     "test:cov": "npm test -- --coverage --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand"
   },
-  "config": {
-    "coreui_library_short_version": "4.3"
-  },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
     "@coreui/coreui": "^4.2.0",

@@ -13,14 +13,11 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const Tables = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Table" href="components/table" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

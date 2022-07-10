@@ -16,7 +16,7 @@ import {
   CInputGroupText,
   CRow,
 } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const CustomStyles = () => {
   const [validated, setValidated] = useState(false)
@@ -252,9 +252,6 @@ const Tooltips = () => {
 const Validation = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Validation" href="forms/validation" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

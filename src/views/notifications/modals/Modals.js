@@ -15,7 +15,7 @@ import {
   CRow,
   CTooltip,
 } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const LiveDemo = () => {
   const [visible, setVisible] = useState(false)
@@ -460,9 +460,6 @@ const FullscreenModal = () => {
 const Modals = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Modal" href="components/modal" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

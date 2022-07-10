@@ -11,16 +11,13 @@ import {
   CPlaceholder,
   CRow,
 } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 import ReactImg from 'src/assets/images/react.jpg'
 
 const Placeholders = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Placeholder" href="components/placeholder" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

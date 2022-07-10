@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CRow } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const Collapses = () => {
   const [visible, setVisible] = useState(false)
@@ -10,9 +10,6 @@ const Collapses = () => {
 
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Collapse" href="components/collapse" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

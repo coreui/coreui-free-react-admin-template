@@ -1,13 +1,10 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CCol, CFormCheck, CFormSwitch, CRow } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const ChecksRadios = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Check and Radios" href="forms/checks-radios" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

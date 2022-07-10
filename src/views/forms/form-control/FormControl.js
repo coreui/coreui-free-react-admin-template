@@ -11,14 +11,11 @@ import {
   CFormTextarea,
   CRow,
 } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const FormControl = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Form Control" href="forms/form-control" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

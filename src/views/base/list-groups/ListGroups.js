@@ -10,14 +10,11 @@ import {
   CListGroupItem,
   CRow,
 } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const ListGroups = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="List Group" href="components/list-group" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

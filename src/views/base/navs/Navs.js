@@ -13,14 +13,11 @@ import {
   CNavItem,
   CNavLink,
 } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const Navs = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Nav" href="components/nav" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

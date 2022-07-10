@@ -2,14 +2,11 @@ import React from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilBell } from '@coreui/icons'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const Buttons = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Button" href="components/buttons" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

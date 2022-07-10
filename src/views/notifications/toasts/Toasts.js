@@ -12,7 +12,7 @@ import {
   CToastHeader,
   CToaster,
 } from '@coreui/react'
-import { DocsCallout, DocsExample } from 'src/components'
+import { DocsExample } from 'src/components'
 
 const ExampleToast = () => {
   const [toast, addToast] = useState(0)
@@ -48,9 +48,6 @@ const ExampleToast = () => {
 const Toasts = () => {
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout name="Toast" href="components/toast" />
-      </CCol>
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>

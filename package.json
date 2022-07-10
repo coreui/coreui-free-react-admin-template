@@ -23,38 +23,38 @@
     "test:debug": "react-scripts --inspect-brk test --runInBand"
   },
   "config": {
-    "coreui_library_short_version": "4.2"
+    "coreui_library_short_version": "4.3"
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
-    "@coreui/coreui": "^4.1.5",
+    "@coreui/coreui": "^4.2.0",
     "@coreui/icons": "^2.1.0",
     "@coreui/icons-react": "^2.1.0",
-    "@coreui/react": "^4.2.2",
+    "@coreui/react": "^4.3.0",
     "@coreui/react-chartjs": "^2.1.0",
     "@coreui/utils": "^1.3.1",
-    "chart.js": "^3.7.1",
+    "chart.js": "^3.8.0",
     "classnames": "^2.3.1",
-    "core-js": "^3.22.6",
+    "core-js": "^3.23.4",
     "prop-types": "^15.8.1",
-    "react": "^18.1.0",
+    "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
-    "react-dom": "^18.1.0",
+    "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "redux": "4.2.0",
-    "simplebar-react": "^2.3.7"
+    "simplebar-react": "^2.4.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^14.2.0",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.2.1",
     "auto-changelog": "~2.4.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "2.6.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "2.7.1",
     "react-scripts": "5.0.1",
-    "sass": "^1.52.1",
+    "sass": "^1.53.0",
     "web-vitals": "^2.1.4"
   },
   "engines": {

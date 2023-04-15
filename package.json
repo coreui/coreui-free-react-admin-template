@@ -13,7 +13,7 @@
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
-    "build": "react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.js\"",
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",

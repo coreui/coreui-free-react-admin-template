@@ -28,14 +28,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showErrorModal, setShowErrorModal] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const token = Cookies.get('authToken');
-  //   if (token) {
-  //     navigate('/dashboard');
-  //   }
-  // }, []);
 
   const doLogin = async () => {
     try {

@@ -21,7 +21,6 @@ import axios from 'axios';
 import { BACKEND_HOST } from '../../../constant';
 import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
-import UserCreateModal from "../../modal/UserCreateModal";
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -29,14 +28,17 @@ const Login = () => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
   const doLogin = async () => {
     try {
       const response = await axios.post(`${BACKEND_HOST}/auth/login`, {username, password});
       const token = response?.data?.token;
       dispatch({ type: 'set', authToken: token });
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       Cookies.set('authToken', token, { expires: 1 });
       navigate('/dashboard');
     } catch (err) {
+      console.log('Error while login', err);
       setShowErrorModal(true);
     }
   }

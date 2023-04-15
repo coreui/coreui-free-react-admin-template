@@ -8,7 +8,9 @@ export default function Auth() {
   useEffect(() => {
     const token = Cookies.get('authToken');
     if (!token) {
-      navigate('/login');
+      setTimeout(() => {
+        navigate('/login');
+      }, 100)
     }
   }, []);
 

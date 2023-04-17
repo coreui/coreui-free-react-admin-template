@@ -1,4 +1,4 @@
-import React, { useState, useImperativeHandle } from 'react';
+import React, { useState, useImperativeHandle } from 'react'
 import {
   CButton,
   CModal,
@@ -10,71 +10,77 @@ import {
   CInputGroupText,
   CFormInput,
   CInputGroup,
-  CAlert, CProgress
-} from '@coreui/react';
-import CIcon from "@coreui/icons-react";
-import {cilLockLocked, cilUser, cilText} from "@coreui/icons";
-import axios from "axios";
-import { BACKEND_HOST } from "../../constant";
-import * as PropTypes from "prop-types";
+  CAlert,
+  CProgress,
+} from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilLockLocked, cilUser, cilText } from '@coreui/icons'
+import axios from 'axios'
+import { BACKEND_HOST } from '../../constant'
+import * as PropTypes from 'prop-types'
 
 function CFormGroup(props) {
-  return null;
+  return null
 }
 
-CFormGroup.propTypes = {children: PropTypes.node};
+CFormGroup.propTypes = { children: PropTypes.node }
 
 function CLabel(props) {
-  return null;
+  return null
 }
 
-CLabel.propTypes = {children: PropTypes.node};
+CLabel.propTypes = { children: PropTypes.node }
 
 function CInputFile(props) {
-  return null;
+  return null
 }
 
 CInputFile.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.string,
   id: PropTypes.string,
-  required: PropTypes.bool
-};
+  required: PropTypes.bool,
+}
 const UploadFileModal = ({}, ref) => {
-  const [visible, setVisible] = useState(false);
-  const [file, setFile] = useState(null);
-  const [uploading, setUploading] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(false)
+  const [file, setFile] = useState(null)
+  const [uploading, setUploading] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(false)
 
   useImperativeHandle(ref, () => ({
     show: () => {
-      setVisible(true);
-    }
+      setVisible(true)
+    },
   }))
 
   const handleUpload = () => {
-    setUploading(true);
-    axios.post(`${BACKEND_HOST}/file/upload`, {
-      file
-    }, {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-      onUploadProgress: (progressEvent) => {
-        const percentCompleted = Math.round(
-          (progressEvent.loaded * 100) / progressEvent.total
-        );
-        setProgress(percentCompleted);
-      },
-    })
-      .then(res => {
-        setSuccess(true);
+    setUploading(true)
+    axios
+      .post(
+        `${BACKEND_HOST}/file/upload`,
+        {
+          file,
+        },
+        {
+          headers: {
+            'content-type': 'multipart/form-data',
+          },
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+            setProgress(percentCompleted)
+          },
+        },
+      )
+      .then((res) => {
+        setSuccess(true)
       })
-      .catch(err => {
-        console.log('Error', err);
-        setError(true);
-      });
-  };
+      .catch((err) => {
+        console.log('Error', err)
+        setError(true)
+      })
+  }
 
   return (
     <CModal visible={visible} onClose={() => setVisible(false)}>
@@ -87,16 +93,11 @@ const UploadFileModal = ({}, ref) => {
             onChange={(event) => setFile(event.target.files[0])}
             type="file"
             id="formFile"
-            label="Choose file" />
+            label="Choose file"
+          />
         </div>
         {uploading && (
-          <CProgress
-            value={progress}
-            max="100"
-            animated
-            color="primary"
-            className="mt-3 mb-0"
-          />
+          <CProgress value={progress} max="100" animated color="primary" className="mt-3 mb-0" />
         )}
       </CModalBody>
       <CModalFooter>
@@ -108,7 +109,7 @@ const UploadFileModal = ({}, ref) => {
         </CButton>
       </CModalFooter>
     </CModal>
-  );
-};
+  )
+}
 
-export default React.forwardRef(UploadFileModal);
+export default React.forwardRef(UploadFileModal)

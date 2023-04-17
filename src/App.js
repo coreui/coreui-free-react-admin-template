@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from 'react'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import './scss/style.scss'
-import './checkToken';
+import './checkToken'
 
 const loading = (
   <div className="pt-3 text-center">

@@ -1,50 +1,57 @@
 import {
-  CButton, CCol,
-  CPagination, CPaginationItem,
+  CButton,
+  CCol,
+  CPagination,
+  CPaginationItem,
   CRow,
-  CTable, CTableBody, CTableDataCell,
+  CTable,
+  CTableBody,
+  CTableDataCell,
   CTableHead,
   CTableHeaderCell,
-  CTableRow
-} from '@coreui/react';
-import React, {useEffect, useState, useRef} from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { BACKEND_HOST } from '../../constant';
-import UserCreateModal from "../modal/UserCreateModal";
+  CTableRow,
+} from '@coreui/react'
+import React, { useEffect, useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { BACKEND_HOST } from '../../constant'
+import UserCreateModal from '../modal/UserCreateModal'
+import Actions from './Actions'
 
 const User = () => {
-  const [users, setUsers] = useState([]);
-  const [limit, setLimit] = useState(20);
-  const [offset, setOffset] = useState(0);
+  const [users, setUsers] = useState([])
+  const [limit, setLimit] = useState(20)
+  const [offset, setOffset] = useState(0)
 
-  const createUserModalRef = useRef();
+  const createUserModalRef = useRef()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    getUsersData();
+    getUsersData()
   }, [])
 
   const getUsersData = () => {
-    axios.get(`${BACKEND_HOST}/user`, {
-      params: {
-        limit,
-        offset
-      }
-    })
-      .then(res => {
-        const newUsers = res.data.users;
-        setUsers(newUsers);
+    axios
+      .get(`${BACKEND_HOST}/user`, {
+        params: {
+          limit,
+          offset,
+        },
       })
-      .catch(err => {
-        console.log('Error while getting user', err);
+      .then((res) => {
+        const newUsers = res.data.users
+        setUsers(newUsers)
+      })
+      .catch((err) => {
+        console.log('Error while getting user', err)
       })
   }
 
   const openCreateUser = () => {
-    createUserModalRef.current?.show();
+    createUserModalRef.current?.show()
   }
+  console.log(users)
 
   return (
     <CRow>
@@ -56,15 +63,19 @@ const User = () => {
       <CTable>
         <CTableHead>
           <CTableRow>
-            <CTableHeaderCell scope='col'>Username</CTableHeaderCell>
-            <CTableHeaderCell scope='col'>Role</CTableHeaderCell>
-            <CTableHeaderCell scope='col'>Name</CTableHeaderCell>
+            <CTableHeaderCell scope="col">Action</CTableHeaderCell>
+            <CTableHeaderCell scope="col">Username</CTableHeaderCell>
+            <CTableHeaderCell scope="col">Role</CTableHeaderCell>
+            <CTableHeaderCell scope="col">Name</CTableHeaderCell>
           </CTableRow>
         </CTableHead>
         <CTableBody>
           {users.map((item, index) => {
             return (
               <CTableRow key={index}>
+                <CTableDataCell>
+                  <Actions />
+                </CTableDataCell>
                 <CTableDataCell>{item.username}</CTableDataCell>
                 <CTableDataCell>{item.role}</CTableDataCell>
                 <CTableDataCell>{item.name}</CTableDataCell>
@@ -82,8 +93,7 @@ const User = () => {
           <span aria-hidden="true">&raquo;</span>
         </CPaginationItem>
       </CPagination>
-      <UserCreateModal
-        ref={createUserModalRef}/>
+      <UserCreateModal ref={createUserModalRef} />
     </CRow>
   )
 }

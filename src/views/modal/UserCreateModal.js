@@ -1,4 +1,4 @@
-import React, { useState, useImperativeHandle } from 'react';
+import React, { useState, useImperativeHandle } from 'react'
 import {
   CButton,
   CModal,
@@ -10,41 +10,42 @@ import {
   CInputGroupText,
   CFormInput,
   CInputGroup,
-  CAlert
-} from '@coreui/react';
-import CIcon from "@coreui/icons-react";
-import {cilLockLocked, cilUser, cilText} from "@coreui/icons";
-import axios from "axios";
-import { BACKEND_HOST } from "../../constant";
+  CAlert,
+} from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilLockLocked, cilUser, cilText } from '@coreui/icons'
+import axios from 'axios'
+import { BACKEND_HOST } from '../../constant'
 
 const UserCreateModal = ({}, ref) => {
-  const [visible, setVisible] = useState(false);
-  const [username, setUsername] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [visible, setVisible] = useState(false)
+  const [username, setUsername] = useState('')
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   useImperativeHandle(ref, () => ({
     show: () => {
-      setVisible(true);
-    }
+      setVisible(true)
+    },
   }))
 
   const handleSubmit = () => {
-    axios.post(`${BACKEND_HOST}/user/create`, {
-      username,
-      password,
-      name
-    })
-      .then(res => {
-        setSuccess(true);
+    axios
+      .post(`${BACKEND_HOST}/user/create`, {
+        username,
+        password,
+        name,
       })
-      .catch(err => {
-        console.log('Error', err);
-        setError(true);
-      });
-  };
+      .then((res) => {
+        setSuccess(true)
+      })
+      .catch((err) => {
+        console.log('Error', err)
+        setError(true)
+      })
+  }
 
   return (
     <CModal visible={visible} onClose={() => setVisible(false)}>
@@ -63,7 +64,8 @@ const UserCreateModal = ({}, ref) => {
               value={username}
               onChange={(event) => setUsername(event.target.value)}
               placeholder="Username"
-              autoComplete="username"/>
+              autoComplete="username"
+            />
           </CInputGroup>
           <CInputGroup className="mb-3">
             <CInputGroupText>
@@ -98,7 +100,7 @@ const UserCreateModal = ({}, ref) => {
         </CButton>
       </CModalFooter>
     </CModal>
-  );
-};
+  )
+}
 
-export default React.forwardRef(UserCreateModal);
+export default React.forwardRef(UserCreateModal)

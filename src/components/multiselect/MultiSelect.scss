@@ -1,0 +1,37 @@
+.multi-select {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 38px;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    .search-item {
+      width: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: #ccc;
+      margin: 4px;
+      border-radius: 2px;
+      padding: 2px;
+      .item-icon {
+        font-size: 10px;
+      }
+    }
+    .search-input {
+      border: none;
+      padding: 4px;
+      outline: none;
+    }
+  }
+  .search-option {
+    position: absolute;
+    display: none;
+  }
+}

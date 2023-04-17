@@ -1,48 +1,53 @@
 import {
-  CButton, CCol,
-  CPagination, CPaginationItem,
+  CButton,
+  CCol,
+  CPagination,
+  CPaginationItem,
   CRow,
-  CTable, CTableBody, CTableDataCell,
+  CTable,
+  CTableBody,
+  CTableDataCell,
   CTableHead,
   CTableHeaderCell,
-  CTableRow
-} from '@coreui/react';
-import React, {useEffect, useState, useRef} from 'react';
-import axios from 'axios';
-import { BACKEND_HOST } from '../../constant';
-import UploadFileModal from "../modal/UploadFileModal";
+  CTableRow,
+} from '@coreui/react'
+import React, { useEffect, useState, useRef } from 'react'
+import axios from 'axios'
+import { BACKEND_HOST } from '../../constant'
+import UploadFileModal from '../modal/UploadFileModal'
 
 const File = () => {
-  const [files, setFiles] = useState([]);
-  const [limit, setLimit] = useState(20);
-  const [offset, setOffset] = useState(0);
+  const [files, setFiles] = useState([])
+  const [limit, setLimit] = useState(20)
+  const [offset, setOffset] = useState(0)
 
-  const uploadFileRef = useRef();
+  const uploadFileRef = useRef()
 
   useEffect(() => {
-    console.log('shit');
-    getFilesData();
+    console.log('shit')
+    getFilesData()
   }, [])
 
   const getFilesData = () => {
-    axios.get(`${BACKEND_HOST}/file`, {
-      params: {
-        limit,
-        offset
-      }
-    })
-      .then(res => {
-        const newFiles = res.data.files;
-        console.log('123123', newFiles);
-        setFiles(newFiles);
+    axios
+      .get(`${BACKEND_HOST}/file`, {
+        params: {
+          limit,
+          offset,
+        },
       })
-      .catch(err => {
-        console.log('Error while getting user', err);
+      .then((res) => {
+        const newFiles = res.data.files
+        console.log('123123', newFiles)
+        setFiles(newFiles)
+      })
+      .catch((err) => {
+        console.log('Error while getting user', err)
       })
   }
 
   const openUploadFile = () => {
-    uploadFileRef.current?.show();
+    uploadFileRef.current?.show()
   }
 
   return (
@@ -55,7 +60,7 @@ const File = () => {
       <CTable>
         <CTableHead>
           <CTableRow>
-            <CTableHeaderCell scope='col'>Filename</CTableHeaderCell>
+            <CTableHeaderCell scope="col">Filename</CTableHeaderCell>
           </CTableRow>
         </CTableHead>
         <CTableBody>
@@ -77,10 +82,9 @@ const File = () => {
           <span aria-hidden="true">&raquo;</span>
         </CPaginationItem>
       </CPagination>
-      <UploadFileModal
-        ref={uploadFileRef}/>
+      <UploadFileModal ref={uploadFileRef} />
     </CRow>
   )
 }
 
-export default File;
+export default File

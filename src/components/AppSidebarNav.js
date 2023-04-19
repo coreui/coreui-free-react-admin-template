@@ -37,7 +37,7 @@ export const AppSidebarNav = ({ items }) => {
     )
   }
   const navGroup = (item, index) => {
-    const { component, name, icon, to, ...rest } = item
+    const { component, name, icon, to, items, ...rest } = item
     const Component = component
     return (
       <Component
@@ -47,8 +47,8 @@ export const AppSidebarNav = ({ items }) => {
         visible={location.pathname.startsWith(to)}
         {...rest}
       >
-        {item.items?.map((item, index) =>
-          item.items ? navGroup(item, index) : navItem(item, index),
+        {items?.map((item, index) =>
+          items ? navGroup(item, index) : navItem(item, index),
         )}
       </Component>
     )

@@ -26,7 +26,7 @@
     "@coreui/coreui": "4.3.0-alpha.0",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.1.0",
-    "@coreui/react": "^4.6.0",
+    "@coreui/react": "^4.9.0-alpha.1",
     "@coreui/react-chartjs": "^2.1.2",
     "@coreui/utils": "^2.0.1",
     "chart.js": "^3.9.1",

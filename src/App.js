@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { CSpinner } from '@coreui/react'
 import './scss/style.scss'
@@ -34,20 +34,25 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
 const App = () => {
+  const dispatch = useDispatch()
   const theme = useSelector((state) => state.theme)
-
-  if (theme) {
-    document.documentElement.dataset.coreuiTheme =
-      theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : theme
-  }
+  const urlParams = new URLSearchParams(window.location.href.split('?')[1])
 
   useEffect(() => {
+    if (urlParams.get('theme')) {
+      dispatch({ type: 'setTheme', theme: urlParams.get('theme') })
+    }
+
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       if (theme !== 'light' || theme !== 'dark') {
         setTheme(getPreferredTheme(theme))
       }
     })
   }, [])
+
+  useEffect(() => {
+    setTheme(getPreferredTheme(theme))
+  }, [theme])
 
   return (
     <HashRouter>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
   CRow,
   CCol,
@@ -14,6 +14,27 @@ import CIcon from '@coreui/icons-react'
 import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
 
 const WidgetsDropdown = () => {
+  const widgetChartRef1 = useRef(null)
+  const widgetChartRef2 = useRef(null)
+
+  useEffect(() => {
+    document.documentElement.addEventListener('ColorSchemeChange', () => {
+      if (widgetChartRef1.current) {
+        setTimeout(() => {
+          widgetChartRef1.current.data.datasets[0].pointBackgroundColor = getStyle('--cui-primary')
+          widgetChartRef1.current.update()
+        })
+      }
+
+      if (widgetChartRef2.current) {
+        setTimeout(() => {
+          widgetChartRef2.current.data.datasets[0].pointBackgroundColor = getStyle('--cui-info')
+          widgetChartRef2.current.update()
+        })
+      }
+    })
+  }, [widgetChartRef1, widgetChartRef2])
+
   return (
     <CRow>
       <CCol sm={6} lg={3}>
@@ -44,6 +65,7 @@ const WidgetsDropdown = () => {
           }
           chart={
             <CChartLine
+              ref={widgetChartRef1}
               className="mt-3 mx-3"
               style={{ height: '70px' }}
               data={{
@@ -131,6 +153,7 @@ const WidgetsDropdown = () => {
           }
           chart={
             <CChartLine
+              ref={widgetChartRef2}
               className="mt-3 mx-3"
               style={{ height: '70px' }}
               data={{

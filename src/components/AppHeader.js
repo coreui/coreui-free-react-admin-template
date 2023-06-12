@@ -14,6 +14,7 @@ import {
   CHeaderToggler,
   CNavLink,
   CNavItem,
+  useColorModes,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
@@ -31,9 +32,11 @@ import { AppHeaderDropdown } from './header/index'
 import { logo } from 'src/assets/brand/logo'
 
 const AppHeader = () => {
+  const { getColorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
+  const colorMode = getColorMode()
+
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
-  const theme = useSelector((state) => state.theme)
 
   return (
     <CHeader position="sticky" className="mb-4">
@@ -81,9 +84,9 @@ const AppHeader = () => {
           </li>
           <CDropdown variant="nav-item" placement="bottom-end">
             <CDropdownToggle caret={false}>
-              {theme === 'dark' ? (
+              {colorMode === 'dark' ? (
                 <CIcon icon={cilMoon} size="xl" />
-              ) : theme === 'auto' ? (
+              ) : colorMode === 'auto' ? (
                 <CIcon icon={cilContrast} size="xl" />
               ) : (
                 <CIcon icon={cilSun} size="xl" />
@@ -91,29 +94,29 @@ const AppHeader = () => {
             </CDropdownToggle>
             <CDropdownMenu>
               <CDropdownItem
-                active={theme === 'light'}
+                active={colorMode === 'light'}
                 className="d-flex align-items-center"
                 component="button"
                 type="button"
-                onClick={() => dispatch({ type: 'setTheme', theme: 'light' })}
+                onClick={() => setColorMode('light')}
               >
                 <CIcon className="me-2" icon={cilSun} size="lg" /> Light
               </CDropdownItem>
               <CDropdownItem
-                active={theme === 'dark'}
+                active={colorMode === 'dark'}
                 className="d-flex align-items-center"
                 component="button"
                 type="button"
-                onClick={() => dispatch({ type: 'setTheme', theme: 'dark' })}
+                onClick={() => setColorMode('dark')}
               >
                 <CIcon className="me-2" icon={cilMoon} size="lg" /> Dark
               </CDropdownItem>
               <CDropdownItem
-                active={theme === 'auto'}
+                active={colorMode === 'auto'}
                 className="d-flex align-items-center"
                 component="button"
                 type="button"
-                onClick={() => dispatch({ type: 'setTheme', theme: 'auto' })}
+                onClick={() => setColorMode('auto')}
               >
                 <CIcon className="me-2" icon={cilContrast} size="lg" /> Auto
               </CDropdownItem>

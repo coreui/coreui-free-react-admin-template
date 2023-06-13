@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
@@ -14,14 +15,21 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
 const App = () => {
-  const { setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
-  const urlParams = new URLSearchParams(window.location.href.split('?')[1])
+  const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
+  const theme = useSelector((state) => state.theme)
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.href.split('?')[1])
     if (urlParams.get('theme')) {
       setColorMode(urlParams.get('theme'))
     }
-  }, [])
+
+    if (isColorModeSet()) {
+      return
+    }
+
+    setColorMode(theme)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <HashRouter>

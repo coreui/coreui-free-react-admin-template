@@ -314,16 +314,20 @@ const Dashboard = () => {
               <br />
 
               <CTable align="middle" className="mb-0 border" hover responsive>
-                <CTableHead className="bg-body-secondary">
+                <CTableHead>
                   <CTableRow>
-                    <CTableHeaderCell className="text-center">
+                    <CTableHeaderCell className="bg-body-tertiary text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell>User</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
-                    <CTableHeaderCell>Usage</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Payment Method</CTableHeaderCell>
-                    <CTableHeaderCell>Activity</CTableHeaderCell>
+                    <CTableHeaderCell className="bg-body-tertiary">User</CTableHeaderCell>
+                    <CTableHeaderCell className="bg-body-tertiary text-center">
+                      Country
+                    </CTableHeaderCell>
+                    <CTableHeaderCell className="bg-body-tertiary">Usage</CTableHeaderCell>
+                    <CTableHeaderCell className="bg-body-tertiary text-center">
+                      Payment Method
+                    </CTableHeaderCell>
+                    <CTableHeaderCell className="bg-body-tertiary">Activity</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
@@ -334,7 +338,7 @@ const Dashboard = () => {
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>{item.user.name}</div>
-                        <div className="small text-medium-emphasis">
+                        <div className="small text-medium-emphasis text-nowrap">
                           <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
                           {item.user.registered}
                         </div>
@@ -343,11 +347,9 @@ const Dashboard = () => {
                         <CIcon size="xl" icon={item.country.flag} title={item.country.name} />
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="clearfix">
-                          <div className="float-start">
-                            <strong>{item.usage.value}%</strong>
-                          </div>
-                          <div className="float-end">
+                        <div className="d-flex justify-content-between text-nowrap">
+                          <div className="fw-semibold">{item.usage.value}%</div>
+                          <div className="ms-3">
                             <small className="text-medium-emphasis">{item.usage.period}</small>
                           </div>
                         </div>
@@ -357,8 +359,8 @@ const Dashboard = () => {
                         <CIcon size="xl" icon={item.payment.icon} />
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="small text-medium-emphasis">Last login</div>
-                        <strong>{item.activity}</strong>
+                        <div className="small text-medium-emphasis text-nowrap">Last login</div>
+                        <div className="fw-semibold text-nowrap">{item.activity}</div>
                       </CTableDataCell>
                     </CTableRow>
                   ))}

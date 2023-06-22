@@ -15,11 +15,28 @@ import CIcon from '@coreui/icons-react'
 import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
 
 import { AppBreadcrumb } from './index'
-import { AppHeaderDropdown } from './header/index'
+import { AuthHeaderDropdown } from './header/auth/index'
 import { logo } from 'src/assets/brand/logo'
+
+// Wagnumi Auth //
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
+import { Web3Modal } from '@web3modal/react'
+import { configureChains, createConfig, WagmiConfig } from 'wagmi'
+import { arbitrum, mainnet, polygon } from 'wagmi/chains'
+
+const chains = [arbitrum, mainnet, polygon]
+const projectId = 'YOUR_PROJECT_ID'
+
+const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors: w3mConnectors({ projectId, version: 1, chains }),
+  publicClient
+})
 
 const AppHeader = () => {
   const dispatch = useDispatch()
+  const ethereumClient = new EthereumClient(wagmiConfig, chains)
   const sidebarShow = useSelector((state) => state.sidebarShow)
 
   return (
@@ -47,6 +64,13 @@ const AppHeader = () => {
             <CNavLink href="#">Settings</CNavLink>
           </CNavItem>
         </CHeaderNav>
+
+        <CHeaderNav>
+          <WagmiConfig config={wagmiConfig}>
+            <AuthHeaderDropdown />
+          </WagmiConfig>
+          <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        </CHeaderNav>
         <CHeaderNav>
           <CNavItem>
             <CNavLink href="#">
@@ -63,9 +87,6 @@ const AppHeader = () => {
               <CIcon icon={cilEnvelopeOpen} size="lg" />
             </CNavLink>
           </CNavItem>
-        </CHeaderNav>
-        <CHeaderNav className="ms-3">
-          <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>
       <CHeaderDivider />

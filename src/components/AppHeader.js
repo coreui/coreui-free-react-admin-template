@@ -32,8 +32,7 @@ import { AppHeaderDropdown } from './header/index'
 import { logo } from 'src/assets/brand/logo'
 
 const AppHeader = () => {
-  const { getColorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
-  const colorMode = getColorMode()
+  const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
 
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)

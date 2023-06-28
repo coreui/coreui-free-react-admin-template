@@ -26,7 +26,7 @@
     "@coreui/coreui": "4.3.0-beta.0",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.1.0",
-    "@coreui/react": "^4.9.0-beta.1",
+    "@coreui/react": "^4.9.0-beta.2",
     "@coreui/react-chartjs": "^2.1.3",
     "@coreui/utils": "^2.0.2",
     "chart.js": "^3.9.1",
@@ -36,8 +36,8 @@
     "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.1.0",
-    "react-router-dom": "^6.12.1",
+    "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.0",
     "redux": "4.2.1",
     "simplebar-react": "^3.2.4"
   },
@@ -49,7 +49,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "2.8.8",
     "react-scripts": "5.0.1",
-    "sass": "^1.63.3",
+    "sass": "^1.63.6",
     "web-vitals": "^3.3.2"
   },
   "engines": {

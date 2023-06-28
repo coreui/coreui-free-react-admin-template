@@ -9,7 +9,7 @@
   }
 
   .tab-content {
-    background-color: var(--#{$prefix}tertiary-bg) !important;
+    background-color: rgba(var(--#{$prefix}tertiary-bg-rgb), var(--#{$prefix}bg-opacity, 1)) !important;
   }
 
   & + p {

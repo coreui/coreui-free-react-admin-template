@@ -5,7 +5,7 @@ import CIcon from '@coreui/icons-react'
 import { cilCode, cilMediaPlay } from '@coreui/icons'
 
 const DocsExample = (props) => {
-  const { children, href } = props
+  const { children, href, tabContentClassName } = props
 
   const _href = `https://coreui.io/react/docs/${href}`
 
@@ -25,7 +25,7 @@ const DocsExample = (props) => {
           </CNavLink>
         </CNavItem>
       </CNav>
-      <CTabContent className="rounded-bottom">
+      <CTabContent className={`rounded-bottom ${tabContentClassName ? tabContentClassName : ''}`}>
         <CTabPane className="p-3 preview" visible>
           {children}
         </CTabPane>
@@ -37,6 +37,7 @@ const DocsExample = (props) => {
 DocsExample.propTypes = {
   children: PropTypes.node,
   href: PropTypes.string,
+  tabContentClassName: PropTypes.string,
 }
 
 export default React.memo(DocsExample)

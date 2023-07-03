@@ -22,7 +22,7 @@
     "test:debug": "react-scripts --inspect-brk test --runInBand"
   },
   "dependencies": {
-    "@coreui/chartjs": "^3.1.1",
+    "@coreui/chartjs": "^3.1.2",
     "@coreui/coreui": "^4.2.6",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.1.0",
@@ -45,7 +45,7 @@
     "react-dom": "^18.2.0",
     "react-ranger": "^2.1.0",
     "react-redux": "^8.1.1",
-    "react-router-dom": "^6.8.2",
+    "react-router-dom": "^6.14.0",
     "react-toastify": "^9.1.3",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
@@ -62,13 +62,12 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "dotenv": "^16.3.1",
-    "eslint-config-prettier": "^8.7.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "2.8.4",
+    "prettier": "2.8.8",
     "react-scripts": "5.0.1",
-    "sass": "^1.58.3",
-    "web-vitals": "^3.1.1"
+    "sass": "^1.63.6",
+    "web-vitals": "^3.3.2"
   },
   "engines": {
     "node": ">=10",

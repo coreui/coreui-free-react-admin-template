@@ -32,6 +32,18 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [Support CoreUI Development](#support-coreui-development)
 * [Copyright and License](#copyright-and-license)
 
+## Login and Connect Wallet
+
+If you want to add login and connect wallet functionality to your application, you can use the Wagmi library. Wagmi is a collection of React Hooks that makes it easy to work with Ethereum, including connecting wallets, displaying ENS and balance information, signing messages, interacting with contracts, and more.
+
+To get started with Wagmi, you can follow these steps:
+
+1. Install the Wagmi library and the necessary dependencies in your React project:
+
+   ```bash
+   npm install wagmi viem
+  You can read more about that [here](https://wagmi.sh)
+
 ## Versions
 
 * [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)

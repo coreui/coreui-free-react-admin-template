@@ -52,6 +52,7 @@
     "redux-saga": "^1.2.3",
     "redux-thunk": "^2.4.2",
     "simplebar-react": "^2.4.3",
+    "viem": "^1.0.7",
     "wagmi": "^1.2.0",
     "web3": "^4.0.2",
     "web3-core": "^4.0.1",

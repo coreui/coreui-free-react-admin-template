@@ -8,7 +8,6 @@ import {
   CDropdownMenu,
   CDropdownToggle,
   CHeader,
-  CHeaderBrand,
   CHeaderNav,
   CHeaderToggler,
   CNavLink,

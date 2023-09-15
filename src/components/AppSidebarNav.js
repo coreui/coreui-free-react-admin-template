@@ -6,10 +6,16 @@ import { CBadge } from '@coreui/react'
 
 export const AppSidebarNav = ({ items }) => {
   const location = useLocation()
-  const navLink = (name, icon, badge) => {
+  const navLink = (name, icon, badge, indent = false) => {
     return (
       <>
-        {icon && icon}
+        {icon
+          ? icon
+          : indent && (
+              <span className="nav-icon">
+                <span className="nav-icon-bullet"></span>
+              </span>
+            )}
         {name && name}
         {badge && (
           <CBadge color={badge.color} className="ms-auto">
@@ -20,7 +26,7 @@ export const AppSidebarNav = ({ items }) => {
     )
   }
 
-  const navItem = (item, index) => {
+  const navItem = (item, index, indent = false) => {
     const { component, name, badge, icon, ...rest } = item
     const Component = component
     return (
@@ -32,7 +38,7 @@ export const AppSidebarNav = ({ items }) => {
         key={index}
         {...rest}
       >
-        {navLink(name, icon, badge)}
+        {navLink(name, icon, badge, indent)}
       </Component>
     )
   }
@@ -48,7 +54,7 @@ export const AppSidebarNav = ({ items }) => {
         {...rest}
       >
         {item.items?.map((item, index) =>
-          item.items ? navGroup(item, index) : navItem(item, index),
+          item.items ? navGroup(item, index) : navItem(item, index, true),
         )}
       </Component>
     )

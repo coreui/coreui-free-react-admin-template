@@ -43,10 +43,11 @@ export const AppSidebarNav = ({ items }) => {
     )
   }
   const navGroup = (item, index) => {
-    const { component, name, icon, to, ...rest } = item
+    const { component, name, icon, items, to, ...rest } = item
     const Component = component
     return (
       <Component
+        compact
         idx={String(index)}
         key={index}
         toggler={navLink(name, icon)}

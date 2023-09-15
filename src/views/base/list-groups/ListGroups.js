@@ -21,7 +21,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Basic example</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               The default list group is an unordered list with items and the proper CSS classes.
               Build upon it with the options that follow, or with your CSS as required.
             </p>
@@ -43,7 +43,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Active items</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>active</code> boolean property to a <code>&lt;CListGroupItem&gt;</code> to
               show the current active selection.
             </p>
@@ -65,7 +65,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Disabled items</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>disabled</code> boolean property to a <code>&lt;CListGroupItem&gt;</code> to
               make it appear disabled.
             </p>
@@ -87,7 +87,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Links and buttons</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Use <code>&lt;a&gt;</code>s or <code>&lt;button&gt;</code>s to create{' '}
               <em>actionable</em> list group items with hover, disabled, and active states by adding{' '}
               <code>component=&#34;a|button&#34;</code>. We separate these pseudo-classes to ensure
@@ -123,7 +123,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Flush</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>flush</code> boolean property to remove some borders and rounded corners to
               render list group items edge-to-edge in a parent container (e.g., cards).
             </p>
@@ -145,7 +145,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Horizontal</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>layout=&#34;horizontal&#34;</code> to change the layout of list group items
               from vertical to horizontal across all breakpoints. Alternatively, choose a responsive
               variant <code>.layout=&#34;horizontal-&#123;sm | md | lg | xl | xxl&#125;&#34;</code>{' '}
@@ -171,7 +171,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Contextual classes</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Use contextual classes to style list items with a stateful background and color.
             </p>
             <DocsExample href="components/list-group/#contextual-classes">
@@ -193,7 +193,7 @@ const ListGroups = () => {
                 ))}
               </CListGroup>
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Contextual classes also work with <code>&lt;a&gt;</code>s or{' '}
               <code>&lt;button&gt;</code>s. Note the addition of the hover styles here not present
               in the previous example. Also supported is the <code>active</code> state; apply it to
@@ -229,7 +229,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>With badges</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add badges to any list group item to show unread counts, activity, and more.
             </p>
             <DocsExample href="components/list-group/#with-badges">
@@ -263,7 +263,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Custom content</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add nearly any HTML within, even for linked list groups like the one below, with the
               help of <a href="https://coreui.io/docs/utilities/flex/">flexbox utilities</a>.
             </p>
@@ -283,24 +283,24 @@ const ListGroups = () => {
                 <CListGroupItem component="a" href="#">
                   <div className="d-flex w-100 justify-content-between">
                     <h5 className="mb-1">List group item heading</h5>
-                    <small className="text-medium-emphasis">3 days ago</small>
+                    <small className="text-body-secondary">3 days ago</small>
                   </div>
                   <p className="mb-1">
                     Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                     varius blandit.
                   </p>
-                  <small className="text-medium-emphasis">Donec id elit non mi porta.</small>
+                  <small className="text-body-secondary">Donec id elit non mi porta.</small>
                 </CListGroupItem>
                 <CListGroupItem component="a" href="#">
                   <div className="d-flex w-100 justify-content-between">
                     <h5 className="mb-1">List group item heading</h5>
-                    <small className="text-medium-emphasis">3 days ago</small>
+                    <small className="text-body-secondary">3 days ago</small>
                   </div>
                   <p className="mb-1">
                     Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                     varius blandit.
                   </p>
-                  <small className="text-medium-emphasis">Donec id elit non mi porta.</small>
+                  <small className="text-body-secondary">Donec id elit non mi porta.</small>
                 </CListGroupItem>
               </CListGroup>
             </DocsExample>
@@ -313,7 +313,7 @@ const ListGroups = () => {
             <strong>React List Group</strong> <small>Checkboxes and radios</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Place CoreUI&#39;s checkboxes and radios within list group items and customize as
               needed.
             </p>

@@ -47,7 +47,7 @@ const FormControl = () => {
             <strong>React Form Control</strong> <small>Sizing</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Set heights using <code>size</code> property like <code>size=&#34;lg&#34;</code> and{' '}
               <code>size=&#34;sm&#34;</code>.
             </p>
@@ -81,7 +81,7 @@ const FormControl = () => {
             <strong>React Form Control</strong> <small>Disabled</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add the <code>disabled</code> boolean attribute on an input to give it a grayed out
               appearance and remove pointer events.
             </p>
@@ -111,7 +111,7 @@ const FormControl = () => {
             <strong>React Form Control</strong> <small>Readonly</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add the <code>readOnly</code> boolean attribute on an input to prevent modification of
               the input&#39;s value. Read-only inputs appear lighter (just like disabled inputs),
               but retain the standard cursor.
@@ -133,7 +133,7 @@ const FormControl = () => {
             <strong>React Form Control</strong> <small>Readonly plain text</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               If you want to have <code>&lt;input readonly&gt;</code> elements in your form styled
               as plain text, use the <code>plainText</code> boolean property to remove the default
               form field styling and preserve the correct margin and padding.

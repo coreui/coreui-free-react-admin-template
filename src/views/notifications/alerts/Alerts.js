@@ -20,7 +20,7 @@ const Alerts = () => {
             <strong>React Alert</strong>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               React Alert is prepared for any length of text, as well as an optional close button.
               For a styling, use one of the <strong>required</strong> contextual <code>color</code>{' '}
               props (e.g., <code>primary</code>). For inline dismissal, use the{' '}
@@ -48,7 +48,7 @@ const Alerts = () => {
             <strong>React Alert</strong> <small>Link color</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Use the <code>&lt;CAlertLink&gt;</code> component to immediately give matching colored
               links inside any alert.
             </p>
@@ -95,7 +95,7 @@ const Alerts = () => {
             <strong>React Alert</strong> <small>Additional content</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Alert can also incorporate supplementary components &amp; elements like heading,
               paragraph, and divider.
             </p>
@@ -123,7 +123,7 @@ const Alerts = () => {
             <strong>React Alert</strong> <small>Dismissing</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Alerts can also be easily dismissed. Just add the <code>dismissible</code> prop.
             </p>
             <DocsExample href="components/alert#dismissing">

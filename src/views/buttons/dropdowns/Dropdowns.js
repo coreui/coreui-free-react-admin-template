@@ -24,7 +24,7 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Single button</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Here&#39;s how you can put them to work with either <code>&lt;button&gt;</code>{' '}
               elements:
             </p>
@@ -38,7 +38,7 @@ const Dropdowns = () => {
                 </CDropdownMenu>
               </CDropdown>
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               The best part is you can do this with any button variant, too:
             </p>
             <DocsExample href="components/dropdown#single-button">
@@ -68,12 +68,12 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Split button</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Similarly, create split button dropdowns with virtually the same markup as single
               button dropdowns, but with the addition of boolean prop <code>split</code> for proper
               spacing around the dropdown caret.
             </p>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               We use this extra class to reduce the horizontal <code>padding</code> on either side
               of the caret by 25% and remove the <code>margin-left</code> that&#39;s attached for
               normal button dropdowns. Those additional changes hold the caret centered in the split
@@ -107,7 +107,7 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Sizing</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Button dropdowns work with buttons of all sizes, including default and split dropdown
               buttons.
             </p>
@@ -174,7 +174,7 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Single button</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Opt into darker dropdowns to match a dark navbar or custom style by set{' '}
               <code>dark</code> property. No changes are required to the dropdown items.
             </p>
@@ -190,7 +190,7 @@ const Dropdowns = () => {
                 </CDropdownMenu>
               </CDropdown>
             </DocsExample>
-            <p className="text-medium-emphasis small">And putting it to use in a navbar:</p>
+            <p className="text-body-secondary small">And putting it to use in a navbar:</p>
             <DocsExample href="components/dropdown#dark-dropdowns">
               <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
@@ -234,7 +234,7 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Dropup</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Trigger dropdown menus above elements by adding{' '}
               <code>direction=&#34;dropup&#34;</code> to the <code>&lt;CDropdown&gt;</code>{' '}
               component.
@@ -271,7 +271,7 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Dropright</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Trigger dropdown menus at the right of the elements by adding{' '}
               <code>direction=&#34;dropend&#34;</code> to the <code>&lt;CDropdown&gt;</code>{' '}
               component.
@@ -308,7 +308,7 @@ const Dropdowns = () => {
             <strong>React Dropdown</strong> <small>Dropleft</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Trigger dropdown menus at the left of the elements by adding{' '}
               <code>direction=&#34;dropstart&#34;</code> to the <code>&lt;CDropdown&gt;</code>{' '}
               component.

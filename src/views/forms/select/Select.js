@@ -28,7 +28,7 @@ const Select = () => {
             <strong>React Select</strong> <small>Sizing</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               You may also choose from small and large custom selects to match our similarly sized
               text inputs.
             </p>
@@ -46,7 +46,7 @@ const Select = () => {
                 <option value="3">Three</option>
               </CFormSelect>
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               The <code>multiple</code> attribute is also supported:
             </p>
             <DocsExample href="forms/select#sizing">
@@ -57,7 +57,7 @@ const Select = () => {
                 <option value="3">Three</option>
               </CFormSelect>
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               As is the <code>htmlSize</code> property:
             </p>
             <DocsExample href="forms/select#sizing">
@@ -77,7 +77,7 @@ const Select = () => {
             <strong>React Select</strong> <small>Disabled</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add the <code>disabled</code> boolean attribute on a select to give it a grayed out
               appearance and remove pointer events.
             </p>

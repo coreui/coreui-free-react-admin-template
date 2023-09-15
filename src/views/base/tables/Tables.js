@@ -24,7 +24,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Basic example</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Using the most basic table CoreUI, here&#39;s how <code>&lt;CTable&gt;</code>-based
               tables look in CoreUI.
             </p>
@@ -68,7 +68,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Variants</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Use contextual classes to color tables, table rows or individual cells.
             </p>
             <DocsExample href="components/table#variants">
@@ -138,7 +138,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Striped rows</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Use <code>striped</code> property to add zebra-striping to any table row within the{' '}
               <code>&lt;CTableBody&gt;</code>.
             </p>
@@ -173,7 +173,7 @@ const Tables = () => {
                 </CTableBody>
               </CTable>
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               These classes can also be added to table variants:
             </p>
             <DocsExample href="components/table#striped-rows">
@@ -247,7 +247,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Hoverable rows</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Use <code>hover</code> property to enable a hover state on table rows within a{' '}
               <code>&lt;CTableBody&gt;</code>.
             </p>
@@ -428,7 +428,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Bordered tables</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>bordered</code> property for borders on all sides of the table and cells.
             </p>
             <DocsExample href="components/table#bordered-tables">
@@ -462,7 +462,7 @@ const Tables = () => {
                 </CTableBody>
               </CTable>
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               <a href="https://coreui.io/docs/4.0/utilities/borders#border-color">
                 Border color utilities
               </a>{' '}
@@ -508,7 +508,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Tables without borders</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>borderless</code> property for a table without borders.
             </p>
             <DocsExample href="components/table#tables-without-borders">
@@ -582,7 +582,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Small tables</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>small</code> property to make any <code>&lt;CTable&gt;</code> more compact
               by cutting all cell <code>padding</code> in half.
             </p>
@@ -626,7 +626,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Vertical alignment</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Table cells of <code>&lt;CTableHead&gt;</code> are always vertical aligned to the
               bottom. Table cells in <code>&lt;CTableBody&gt;</code> inherit their alignment from{' '}
               <code>&lt;CTable&gt;</code> and are aligned to the the top by default. Use the align
@@ -709,7 +709,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Nesting</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Border styles, active styles, and table variants are not inherited by nested tables.
             </p>
             <DocsExample href="components/table#nesting">
@@ -776,7 +776,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Table head</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Similar to tables and dark tables, use the modifier prop{' '}
               <code>color=&#34;light&#34;</code> or <code>color=&#34;dark&#34;</code> to make{' '}
               <code>&lt;CTableHead&gt;</code>s appear light or dark gray.
@@ -901,7 +901,7 @@ const Tables = () => {
             <strong>React Table</strong> <small>Captions</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               A <code>&lt;CTableCaption&gt;</code> functions like a heading for a table. It helps
               users with screen readers to find a table and understand what it&#39;s about and
               decide if they want to read it.
@@ -939,7 +939,7 @@ const Tables = () => {
                 </CTableBody>
               </CTable>
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               You can also put the <code>&lt;CTableCaption&gt;</code> on the top of the table with{' '}
               <code>caption=&#34;top&#34;</code>.
             </p>

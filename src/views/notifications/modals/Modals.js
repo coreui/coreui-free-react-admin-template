@@ -466,7 +466,7 @@ const Modals = () => {
             <strong>React Modal</strong>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Below is a static modal example (meaning its <code>position</code> and{' '}
               <code>display</code> have been overridden). Included are the modal header, modal body
               (required for <code>padding</code>), and modal footer (optional). We ask that you
@@ -500,7 +500,7 @@ const Modals = () => {
             <strong>React Modal</strong> <small>Live demo</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Toggle a working modal demo by clicking the button below. It will slide down and fade
               in from the top of the page.
             </p>
@@ -514,7 +514,7 @@ const Modals = () => {
             <strong>React Modal</strong> <small>Static backdrop</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               If you don’t provide an <code>onDimsiss</code> handler to the Modal component, your
               modal will behave as though the backdrop is static, meaning it will not close when
               clicking outside it. Click the button below to try it.
@@ -529,7 +529,7 @@ const Modals = () => {
             <strong>React Modal</strong> <small>Scrolling long content</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               If you don’t provide an <code>onDimsiss</code> handler to the Modal component, your
               modal will behave as though the backdrop is static, meaning it will not close when
               clicking outside it. Click the button below to try it.
@@ -537,7 +537,7 @@ const Modals = () => {
             <DocsExample href="components/modal#scrolling-long-content">
               {ScrollingLongContent()}
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               You can also create a scrollable modal that allows scroll the modal body by adding{' '}
               <code>scrollable</code> prop.
             </p>
@@ -553,7 +553,7 @@ const Modals = () => {
             <strong>React Modal</strong> <small>Vertically centered</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>alignment=&#34;center&#34;</code> to <code>&lt;CModal&gt;</code> to
               vertically center the modal.
             </p>
@@ -572,7 +572,7 @@ const Modals = () => {
             <strong>React Modal</strong> <small>Tooltips and popovers</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               <code>&lt;CTooltips&gt;</code> and <code>&lt;CPopovers&gt;</code> can be placed within
               modals as needed. When modals are closed, any tooltips and popovers within are also
               automatically dismissed.
@@ -589,7 +589,7 @@ const Modals = () => {
             <strong>React Modal</strong> <small>Optional sizes</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Modals have three optional sizes, available via modifier classes to be placed on a{' '}
               <code>&lt;CModal&gt;</code>. These sizes kick in at certain breakpoints to avoid
               horizontal scrollbars on narrower viewports.
@@ -614,7 +614,7 @@ const Modals = () => {
                 </tr>
                 <tr>
                   <td>Default</td>
-                  <td className="text-medium-emphasis">None</td>
+                  <td className="text-body-secondary">None</td>
                   <td>
                     <code>500px</code>
                   </td>
@@ -649,7 +649,7 @@ const Modals = () => {
             <strong>React Modal</strong> <small>Fullscreen Modal</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Another override is the option to pop up a modal that covers the user viewport,
               available via property <code>fullscrean</code>.
             </p>

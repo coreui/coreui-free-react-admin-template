@@ -21,7 +21,7 @@ const Accordion = () => {
             <strong>React Accordion</strong>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Click the accordions below to expand/collapse the accordion content.
             </p>
             <DocsExample href="components/accordion">
@@ -71,7 +71,7 @@ const Accordion = () => {
             <strong>React Accordion</strong> <small>Flush</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>flush</code> to remove the default <code>background-color</code>, some
               borders, and some rounded corners to render accordions edge-to-edge with their parent
               container.
@@ -123,7 +123,7 @@ const Accordion = () => {
             <strong>React Accordion</strong> <small>Always open</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>alwaysOpen</code> property to make accordion items stay open when another
               item is opened.
             </p>

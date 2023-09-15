@@ -11,7 +11,7 @@ const Range = () => {
             <strong>React Range</strong> <small></small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Create custom <code>&lt;input type=&#34;range&#34;&gt;</code> controls with{' '}
               <code>&lt;CFormRange&gt;</code>.
             </p>
@@ -28,7 +28,7 @@ const Range = () => {
             <strong>React Range</strong> <small>Disabled</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add the <code>disabled</code> boolean attribute on an input to give it a grayed out
               appearance and remove pointer events.
             </p>
@@ -45,7 +45,7 @@ const Range = () => {
             <strong>React Range</strong> <small>Min and max</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Range inputs have implicit values for <code>min</code> and <code>max</code>—
               <code>0</code> and <code>100</code>, respectively. You may specify new values for
               those using the <code>min</code> and <code>max</code> attributes.
@@ -63,7 +63,7 @@ const Range = () => {
             <strong>React Range</strong> <small>Steps</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               By default, range inputs &#34;snap&#34; to integer values. To change this, you can
               specify a <code>step</code> value. In the example below, we double the number of steps
               by using <code>step=&#34;0.5&#34;</code>.

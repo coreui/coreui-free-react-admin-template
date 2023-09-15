@@ -54,7 +54,7 @@ const Toasts = () => {
             <strong>React Toast</strong> <small>Basic</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Toasts are as flexible as you need and have very little required markup. At a minimum,
               we require a single element to contain your “toasted” content and strongly encourage a
               dismiss button.
@@ -89,7 +89,7 @@ const Toasts = () => {
             <strong>React Toast</strong> <small>Translucent</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Toasts are slightly translucent to blend in with what&#39;s below them.
             </p>
             <DocsExample href="components/toast#translucent">
@@ -123,7 +123,7 @@ const Toasts = () => {
             <strong>React Toast</strong> <small>Stacking</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               You can stack toasts by wrapping them in a toast container, which will vertically add
               some spacing.
             </p>
@@ -176,7 +176,7 @@ const Toasts = () => {
             <strong>React Toast</strong> <small>Custom content</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Customize your toasts by removing sub-components, tweaking them with{' '}
               <a href="https://coreui.io/docs/4.0/utilities/api">utilities</a>, or by adding your
               own markup. Here we&#39;ve created a simpler toast by removing the default{' '}
@@ -193,7 +193,7 @@ const Toasts = () => {
                 </div>
               </CToast>
             </DocsExample>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Alternatively, you can also add additional controls and components to toasts.
             </p>
             <DocsExample href="components/toast#custom-content">
@@ -220,7 +220,7 @@ const Toasts = () => {
             <strong>React Toast</strong> <small>Custom content</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Building on the above example, you can create different toast color schemes with our{' '}
               <a href="https://coreui.io/docs/4.0/utilities/colors">color</a> and{' '}
               <a href="https://coreui.io/docs/4.0//utilities/background">background</a> utilities.

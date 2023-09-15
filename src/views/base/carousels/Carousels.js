@@ -30,7 +30,7 @@ const Carousels = () => {
             <strong>Carousel</strong> <small>Slide only</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">Here’s a carousel with slides</p>
+            <p className="text-body-secondary small">Here’s a carousel with slides</p>
             <DocsExample href="components/carousel">
               <CCarousel>
                 <CCarouselItem>
@@ -53,7 +53,7 @@ const Carousels = () => {
             <strong>Carousel</strong> <small>With controls</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Adding in the previous and next controls by <code>controls</code> property.
             </p>
             <DocsExample href="components/carousel/#with-controls">
@@ -78,7 +78,7 @@ const Carousels = () => {
             <strong>Carousel</strong> <small>With indicators</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               You can attach the indicators to the carousel, lengthwise the controls, too.
             </p>
             <DocsExample href="components/carousel/#with-indicators">
@@ -103,7 +103,7 @@ const Carousels = () => {
             <strong>Carousel</strong> <small>With captions</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               You can add captions to slides with the <code>&lt;CCarouselCaption&gt;</code> element
               within any <code>&lt;CCarouselItem&gt;</code>. They can be immediately hidden on
               smaller viewports, as shown below, with optional{' '}
@@ -145,7 +145,7 @@ const Carousels = () => {
             <strong>Carousel</strong> <small>Crossfade</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>transition=&#34;crossfade&#34;</code> to your carousel to animate slides
               with a fade transition instead of a slide.
             </p>
@@ -171,7 +171,7 @@ const Carousels = () => {
             <strong>Carousel</strong> <small>Dark variant</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Add <code>dark</code> property to the <code>CCarousel</code> for darker controls,
               indicators, and captions. Controls have been inverted from their default white fill
               with the <code>filter</code> CSS property. Captions and controls have additional Sass

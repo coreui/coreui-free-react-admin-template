@@ -258,7 +258,7 @@ const Validation = () => {
             <strong>Validation</strong> <small>Custom styles</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               For custom CoreUI form validation messages, you&#39;ll need to add the{' '}
               <code>noValidate</code> boolean property to your <code>&lt;CForm&gt;</code>. This
               disables the browser default feedback tooltips, but still provides access to the form
@@ -267,7 +267,7 @@ const Validation = () => {
               you&#39;ll see the <code>:invalid</code> and <code>:valid</code> styles applied to
               your form controls.
             </p>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Custom feedback styles apply custom colors, borders, focus styles, and background
               icons to better communicate feedback.{' '}
             </p>
@@ -281,13 +281,13 @@ const Validation = () => {
             <strong>Validation</strong> <small>Browser defaults</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Not interested in custom validation feedback messages or writing JavaScript to change
               form behaviors? All good, you can use the browser defaults. Try submitting the form
               below. Depending on your browser and OS, you&#39;ll see a slightly different style of
               feedback.
             </p>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               While these feedback styles cannot be styled with CSS, you can still customize the
               feedback text through JavaScript.
             </p>
@@ -301,12 +301,12 @@ const Validation = () => {
             <strong>Validation</strong> <small>Server side</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               We recommend using client-side validation, but in case you require server-side
               validation, you can indicate invalid and valid form fields with <code>invalid</code>{' '}
               and <code>valid</code> boolean properties.
             </p>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               For invalid fields, ensure that the invalid feedback/error message is associated with
               the relevant form field using <code>aria-describedby</code> (noting that this
               attribute allows more than one <code>id</code> to be referenced, in case the field
@@ -395,7 +395,7 @@ const Validation = () => {
             <strong>Validation</strong> <small>Supported elements</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               Validation styles are available for the following form controls and components:
             </p>
             <ul>
@@ -485,7 +485,7 @@ const Validation = () => {
             <strong>Validation</strong> <small>Tooltips</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               If your form layout allows it, you can swap the text for the tooltip to display
               validation feedback in a styled tooltip. Be sure to have a parent with{' '}
               <code>position: relative</code> on it for tooltip positioning. In the example below,

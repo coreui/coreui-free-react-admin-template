@@ -16,7 +16,7 @@ const Collapses = () => {
             <strong>React Collapse</strong>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">You can use a link or a button component.</p>
+            <p className="text-body-secondary small">You can use a link or a button component.</p>
             <DocsExample href="components/collapse">
               <CButton
                 href="#"
@@ -47,7 +47,7 @@ const Collapses = () => {
             <strong>React Collapse</strong> <small> Horizontal</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">You can use a link or a button component.</p>
+            <p className="text-body-secondary small">You can use a link or a button component.</p>
             <DocsExample href="components/collapse#horizontal">
               <CButton
                 className="mb-3"
@@ -77,7 +77,7 @@ const Collapses = () => {
             <strong>React Collapse</strong> <small> multi target</small>
           </CCardHeader>
           <CCardBody>
-            <p className="text-medium-emphasis small">
+            <p className="text-body-secondary small">
               A <code>&lt;CButton&gt;</code> can show and hide multiple elements.
             </p>
             <DocsExample href="components/collapse#multiple-targets">

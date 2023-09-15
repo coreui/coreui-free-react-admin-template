@@ -185,7 +185,7 @@ const Dashboard = () => {
               <h4 id="traffic" className="card-title mb-0">
                 Traffic
               </h4>
-              <div className="small text-medium-emphasis">January - July 2021</div>
+              <div className="small text-body-secondary">January - July 2021</div>
             </CCol>
             <CCol sm={7} className="d-none d-md-block">
               <CButton color="primary" className="float-end">
@@ -211,7 +211,7 @@ const Dashboard = () => {
           <CRow xs={{ cols: 1 }} md={{ cols: 5 }} className="text-center">
             {progressExample.map((item, index) => (
               <CCol className="mb-sm-2 mb-0" key={index}>
-                <div className="text-medium-emphasis">{item.title}</div>
+                <div className="text-body-secondary">{item.title}</div>
                 <strong>
                   {item.value} ({item.percent}%)
                 </strong>
@@ -234,13 +234,13 @@ const Dashboard = () => {
                   <CRow>
                     <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-info py-1 px-3">
-                        <div className="text-medium-emphasis small">New Clients</div>
+                        <div className="text-body-secondary small">New Clients</div>
                         <div className="fs-5 fw-semibold">9,123</div>
                       </div>
                     </CCol>
                     <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small">Recurring Clients</div>
+                        <div className="text-body-secondary small">Recurring Clients</div>
                         <div className="fs-5 fw-semibold">22,643</div>
                       </div>
                     </CCol>
@@ -250,7 +250,7 @@ const Dashboard = () => {
                   {progressGroupExample1.map((item, index) => (
                     <div className="progress-group mb-4" key={index}>
                       <div className="progress-group-prepend">
-                        <span className="text-medium-emphasis small">{item.title}</span>
+                        <span className="text-body-secondary small">{item.title}</span>
                       </div>
                       <div className="progress-group-bars">
                         <CProgress thin color="info" value={item.value1} />
@@ -264,13 +264,13 @@ const Dashboard = () => {
                   <CRow>
                     <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small">Pageviews</div>
+                        <div className="text-body-secondary small">Pageviews</div>
                         <div className="fs-5 fw-semibold">78,623</div>
                       </div>
                     </CCol>
                     <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-success py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small">Organic</div>
+                        <div className="text-body-secondary small">Organic</div>
                         <div className="fs-5 fw-semibold">49,123</div>
                       </div>
                     </CCol>
@@ -300,7 +300,7 @@ const Dashboard = () => {
                         <span>{item.title}</span>
                         <span className="ms-auto fw-semibold">
                           {item.value}{' '}
-                          <span className="text-medium-emphasis small">({item.percent}%)</span>
+                          <span className="text-body-secondary small">({item.percent}%)</span>
                         </span>
                       </div>
                       <div className="progress-group-bars">
@@ -338,7 +338,7 @@ const Dashboard = () => {
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>{item.user.name}</div>
-                        <div className="small text-medium-emphasis text-nowrap">
+                        <div className="small text-body-secondary text-nowrap">
                           <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
                           {item.user.registered}
                         </div>
@@ -350,7 +350,7 @@ const Dashboard = () => {
                         <div className="d-flex justify-content-between text-nowrap">
                           <div className="fw-semibold">{item.usage.value}%</div>
                           <div className="ms-3">
-                            <small className="text-medium-emphasis">{item.usage.period}</small>
+                            <small className="text-body-secondary">{item.usage.period}</small>
                           </div>
                         </div>
                         <CProgress thin color={item.usage.color} value={item.usage.value} />
@@ -359,7 +359,7 @@ const Dashboard = () => {
                         <CIcon size="xl" icon={item.payment.icon} />
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="small text-medium-emphasis text-nowrap">Last login</div>
+                        <div className="small text-body-secondary text-nowrap">Last login</div>
                         <div className="fw-semibold text-nowrap">{item.activity}</div>
                       </CTableDataCell>
                     </CTableRow>

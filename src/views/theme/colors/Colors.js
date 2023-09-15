@@ -19,11 +19,11 @@ const ThemeView = () => {
     <table className="table w-100" ref={ref}>
       <tbody>
         <tr>
-          <td className="text-medium-emphasis">HEX:</td>
+          <td className="text-body-secondary">HEX:</td>
           <td className="font-weight-bold">{rgbToHex(color)}</td>
         </tr>
         <tr>
-          <td className="text-medium-emphasis">RGB:</td>
+          <td className="text-body-secondary">RGB:</td>
           <td className="font-weight-bold">{color}</td>
         </tr>
       </tbody>

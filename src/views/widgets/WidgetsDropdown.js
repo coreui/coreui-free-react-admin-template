@@ -89,6 +89,9 @@ const WidgetsDropdown = () => {
                 maintainAspectRatio: false,
                 scales: {
                   x: {
+                    border: {
+                      display: false,
+                    },
                     grid: {
                       display: false,
                       drawBorder: false,
@@ -177,6 +180,9 @@ const WidgetsDropdown = () => {
                 maintainAspectRatio: false,
                 scales: {
                   x: {
+                    border: {
+                      display: false,
+                    },
                     grid: {
                       display: false,
                       drawBorder: false,
@@ -362,6 +368,9 @@ const WidgetsDropdown = () => {
                     },
                   },
                   y: {
+                    border: {
+                      display: false,
+                    },
                     grid: {
                       display: false,
                       drawBorder: false,

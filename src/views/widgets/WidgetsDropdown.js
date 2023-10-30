@@ -52,7 +52,7 @@ const WidgetsDropdown = () => {
           title="Users"
           action={
             <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
+              <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
                 <CIcon icon={cilOptions} />
               </CDropdownToggle>
               <CDropdownMenu>
@@ -140,7 +140,7 @@ const WidgetsDropdown = () => {
           title="Income"
           action={
             <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
+              <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
                 <CIcon icon={cilOptions} />
               </CDropdownToggle>
               <CDropdownMenu>
@@ -227,7 +227,7 @@ const WidgetsDropdown = () => {
           title="Conversion Rate"
           action={
             <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
+              <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
                 <CIcon icon={cilOptions} />
               </CDropdownToggle>
               <CDropdownMenu>
@@ -300,7 +300,7 @@ const WidgetsDropdown = () => {
           title="Sessions"
           action={
             <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
+              <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
                 <CIcon icon={cilOptions} />
               </CDropdownToggle>
               <CDropdownMenu>

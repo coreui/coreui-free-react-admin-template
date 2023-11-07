@@ -224,7 +224,7 @@ const WidgetsDropdown = () => {
           color="warning"
           value={
             <>
-              2.49{' '}
+              2.49%{' '}
               <span className="fs-6 fw-normal">
                 (84.7% <CIcon icon={cilArrowTop} />)
               </span>

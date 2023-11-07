@@ -92,27 +92,25 @@ const Toasts = () => {
             <p className="text-body-secondary small">
               Toasts are slightly translucent to blend in with what&#39;s below them.
             </p>
-            <DocsExample href="components/toast#translucent">
-              <div className="bg-dark p-3">
-                <CToast title="CoreUI for React.js" autohide={false} visible={true}>
-                  <CToastHeader closeButton>
-                    <svg
-                      className="rounded me-2"
-                      width="20"
-                      height="20"
-                      xmlns="http://www.w3.org/2000/svg"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
-                      role="img"
-                    >
-                      <rect width="100%" height="100%" fill="#007aff"></rect>
-                    </svg>
-                    <strong className="me-auto">CoreUI for React.js</strong>
-                    <small>7 min ago</small>
-                  </CToastHeader>
-                  <CToastBody>Hello, world! This is a toast message.</CToastBody>
-                </CToast>
-              </div>
+            <DocsExample href="components/toast#translucent" tabContentClassName="bg-dark">
+              <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+                <CToastHeader closeButton>
+                  <svg
+                    className="rounded me-2"
+                    width="20"
+                    height="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                    role="img"
+                  >
+                    <rect width="100%" height="100%" fill="#007aff"></rect>
+                  </svg>
+                  <strong className="me-auto">CoreUI for React.js</strong>
+                  <small>7 min ago</small>
+                </CToastHeader>
+                <CToastBody>Hello, world! This is a toast message.</CToastBody>
+              </CToast>
             </DocsExample>
           </CCardBody>
         </CCard>
@@ -128,7 +126,7 @@ const Toasts = () => {
               some spacing.
             </p>
             <DocsExample href="components/toast#stacking">
-              <CToaster>
+              <CToaster className="position-static">
                 <CToast title="CoreUI for React.js" autohide={false} visible={true}>
                   <CToastHeader closeButton>
                     <svg

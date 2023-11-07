@@ -23,7 +23,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 ## Table of Contents
 
 * [Versions](#versions)
-* [CoreUI Pro](#coreui-pro)
+* [CoreUI PRO](#coreui-pro)
 * [CoreUI PRO React Admin Templates](#coreui-pro-react-admin-templates)
 * [Quick Start](#quick-start)
 * [Installation](#installation)
@@ -43,22 +43,22 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
 * [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
 
-## CoreUI Pro
+## CoreUI PRO
 
-* 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/product/angular-dashboard-template/)
-* 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/product/bootstrap-dashboard-template/)
-* 💪  [CoreUI Pro React Admin Template](https://coreui.io/product/react-dashboard-template/)
-* 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/product/vue-dashboard-template/)
+* 💪  [CoreUI PRO Angular Admin Template](https://coreui.io/product/angular-dashboard-template/)
+* 💪  [CoreUI PRO Bootstrap Admin Template](https://coreui.io/product/bootstrap-dashboard-template/)
+* 💪  [CoreUI PRO React Admin Template](https://coreui.io/product/react-dashboard-template/)
+* 💪  [CoreUI PRO Vue Admin Template](https://coreui.io/product/vue-dashboard-template/)
 
 ## CoreUI PRO React Admin Templates
 
 | Default Theme | Light Theme |
 | --- | --- |
-| [![CoreUI Pro React Admin Template](https://coreui.io/images/templates/coreui_pro_default_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=default) | [![CoreUI Pro React Admin Template](https://coreui.io/images/templates/coreui_pro_light_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=light)| [![CoreUI Pro React Admin Template](https://coreui.io/images/templates/coreui_pro_dark_1440.webp)](https://coreui.io/product/react-dashboard-template/?theme=dark)
+| [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_default_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=default) | [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_light_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=light)|
 
 | Default Theme v3 | Light Theme v3 |
 | --- | --- |
-| [![CoreUI Pro React Admin Template](https://coreui.io/images/templates/coreui_pro_default_v3_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=default-v3) | [![CoreUI Pro React Admin Template](https://coreui.io/images/templates/coreui_pro_light_v3_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=light)|
+| [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_default_v3_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=default-v3) | [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_light_v3_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=light)|
 
 ## Quick Start
 
@@ -147,12 +147,19 @@ See [the Releases section of our project](https://github.com/coreui/coreui-free-
 ## Creators
 
 **Łukasz Holeczek**
+
 * <https://twitter.com/lukaszholeczek>
 * <https://github.com/mrholek>
-* <https://github.com/coreui>
 
-**CoreUI team**
-* https://github.com/orgs/coreui/people
+**Andrzej Kopański**
+
+* <https://github.com/xidedix>
+
+**CoreUI Team**
+
+* <https://twitter.com/core_ui>
+* <https://github.com/coreui>
+* <https://github.com/orgs/coreui/people>
 
 ## Community
 
@@ -163,7 +170,7 @@ Get updates on CoreUI's development and chat with the project maintainers and co
 
 ## Support CoreUI Development
 
-CoreUI is an MIT-licensed open source project and is completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by buying the [CoreUI PRO](https://coreui.io/pricing/?framework=bootstrap&src=github-coreui-free-react-admin-template) or by becoming a sponsor via [Open Collective](https://opencollective.com/coreui/).
+CoreUI is an MIT-licensed open source project and is completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by buying the [CoreUI PRO](https://coreui.io/pricing/?framework=react&src=github-coreui-free-react-admin-template) or by becoming a sponsor via [Open Collective](https://opencollective.com/coreui/).
 
 ## Copyright and License
 

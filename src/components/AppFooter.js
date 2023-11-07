@@ -3,7 +3,7 @@ import { CFooter } from '@coreui/react'
 
 const AppFooter = () => {
   return (
-    <CFooter>
+    <CFooter className="px-4">
       <div>
         <a href="https://coreui.io" target="_blank" rel="noopener noreferrer">
           CoreUI

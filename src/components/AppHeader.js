@@ -44,10 +44,10 @@ const AppHeader = () => {
 
   return (
     <CHeader position="sticky" className="mb-4 p-0" ref={headerRef}>
-      <CContainer className="border-bottom" fluid>
+      <CContainer className="border-bottom px-4" fluid>
         <CHeaderToggler
-          className="ps-1"
           onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
+          style={{ marginInlineStart: '-14px' }}
         >
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
@@ -80,17 +80,19 @@ const AppHeader = () => {
               <CIcon icon={cilEnvelopeOpen} size="lg" />
             </CNavLink>
           </CNavItem>
-          <li className="nav-item py-2 py-lg-1">
+        </CHeaderNav>
+        <CHeaderNav>
+          <li className="nav-item py-1">
             <div className="vr h-100 mx-2 text-body text-opacity-75"></div>
           </li>
           <CDropdown variant="nav-item" placement="bottom-end">
             <CDropdownToggle caret={false}>
               {colorMode === 'dark' ? (
-                <CIcon icon={cilMoon} size="xl" />
+                <CIcon icon={cilMoon} size="lg" />
               ) : colorMode === 'auto' ? (
-                <CIcon icon={cilContrast} size="xl" />
+                <CIcon icon={cilContrast} size="lg" />
               ) : (
-                <CIcon icon={cilSun} size="xl" />
+                <CIcon icon={cilSun} size="lg" />
               )}
             </CDropdownToggle>
             <CDropdownMenu>
@@ -123,15 +125,13 @@ const AppHeader = () => {
               </CDropdownItem>
             </CDropdownMenu>
           </CDropdown>
-          <li className="nav-item py-2 py-lg-1">
+          <li className="nav-item py-1">
             <div className="vr h-100 mx-2 text-body text-opacity-75"></div>
           </li>
-        </CHeaderNav>
-        <CHeaderNav className="ms-3">
           <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>
-      <CContainer fluid>
+      <CContainer className="px-4" fluid>
         <AppBreadcrumb />
       </CContainer>
     </CHeader>

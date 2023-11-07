@@ -24,9 +24,7 @@ const Alerts = () => {
               React Alert is prepared for any length of text, as well as an optional close button.
               For a styling, use one of the <strong>required</strong> contextual <code>color</code>{' '}
               props (e.g., <code>primary</code>). For inline dismissal, use the{' '}
-              <a href="https://coreui.io/react/docs/4.0/components/alert#dismissing">
-                dismissing prop
-              </a>
+              <a href="https://coreui.io/react/docs/components/alert#dismissing">dismissing prop</a>
               .
             </p>
             <DocsExample href="components/alert">

@@ -463,7 +463,7 @@ const Tables = () => {
               </CTable>
             </DocsExample>
             <p className="text-body-secondary small">
-              <a href="https://coreui.io/docs/4.0/utilities/borders#border-color">
+              <a href="https://coreui.io/docs/utilities/borders#border-color">
                 Border color utilities
               </a>{' '}
               can be added to change colors:

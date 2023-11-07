@@ -51,6 +51,9 @@
     }
 
     // Buttons
+    .col > .btn,
+    .col-auto > .btn,
+    .d-md-block > .btn,
     > .btn,
     > .btn-group {
       margin: .25rem .125rem;

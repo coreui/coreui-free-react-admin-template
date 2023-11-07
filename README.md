@@ -189,4 +189,4 @@ Thanks to all the backers and sponsors! Support this project by [becoming a back
 
 copyright 2023 creativeLabs Łukasz Holeczek.   
 
-Code released under [the MIT license](https://github.com/coreui/coreui-free-react-admin-template/blob/master/LICENSE).
+Code released under [the MIT license](https://github.com/coreui/coreui-free-react-admin-template/blob/main/LICENSE).

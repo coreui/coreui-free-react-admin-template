@@ -102,7 +102,9 @@ const Layout = () => {
                   <CFormCheck type="checkbox" id="gridCheck" label="Check me out" />
                 </CCol>
                 <CCol xs={12}>
-                  <CButton type="submit">Sign in</CButton>
+                  <CButton color="primary" type="submit">
+                    Sign in
+                  </CButton>
                 </CCol>
               </CForm>
             </DocsExample>
@@ -178,7 +180,9 @@ const Layout = () => {
                     <CFormCheck type="checkbox" id="gridCheck1" label="Example checkbox" />
                   </div>
                 </CRow>
-                <CButton type="submit">Sign in</CButton>
+                <CButton color="primary" type="submit">
+                  Sign in
+                </CButton>
               </CForm>
             </DocsExample>
           </CCardBody>
@@ -314,7 +318,9 @@ const Layout = () => {
                   <CFormCheck type="checkbox" id="autoSizingCheck" label="Remember me" />
                 </CCol>
                 <CCol xs="auto">
-                  <CButton type="submit">Submit</CButton>
+                  <CButton color="primary" type="submit">
+                    Submit
+                  </CButton>
                 </CCol>
               </CForm>
             </DocsExample>
@@ -353,7 +359,9 @@ const Layout = () => {
                   <CFormCheck type="checkbox" id="autoSizingCheck2" label="Remember me" />
                 </CCol>
                 <CCol xs="auto">
-                  <CButton type="submit">Submit</CButton>
+                  <CButton color="primary" type="submit">
+                    Submit
+                  </CButton>
                 </CCol>
               </CForm>
             </DocsExample>
@@ -400,7 +408,9 @@ const Layout = () => {
                   <CFormCheck type="checkbox" id="inlineFormCheck" label="Remember me" />
                 </CCol>
                 <CCol xs={12}>
-                  <CButton type="submit">Submit</CButton>
+                  <CButton color="primary" type="submit">
+                    Submit
+                  </CButton>
                 </CCol>
               </CForm>
             </DocsExample>

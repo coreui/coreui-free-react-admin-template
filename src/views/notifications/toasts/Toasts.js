@@ -39,7 +39,9 @@ const ExampleToast = () => {
   )
   return (
     <>
-      <CButton onClick={() => addToast(exampleToast)}>Send a toast</CButton>
+      <CButton color="primary" onClick={() => addToast(exampleToast)}>
+        Send a toast
+      </CButton>
       <CToaster ref={toaster} push={toast} placement="top-end" />
     </>
   )

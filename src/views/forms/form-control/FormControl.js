@@ -183,7 +183,7 @@ const FormControl = () => {
                   <CFormInput type="password" id="inputPassword2" placeholder="Password" />
                 </div>
                 <div className="col-auto">
-                  <CButton type="submit" className="mb-3">
+                  <CButton color="primary" type="submit" className="mb-3">
                     Confirm identity
                   </CButton>
                 </div>

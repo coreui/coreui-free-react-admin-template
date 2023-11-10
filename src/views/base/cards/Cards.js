@@ -54,7 +54,9 @@ const Cards = () => {
                     Some quick example text to build on the card title and make up the bulk of the
                     card&#39;s content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
             </DocsExample>
@@ -235,7 +237,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
             </DocsExample>
@@ -250,7 +254,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
             </DocsExample>
@@ -278,7 +284,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
                 <CCardFooter className="text-body-secondary">2 days ago</CCardFooter>
               </CCard>
@@ -310,7 +318,9 @@ const Cards = () => {
                       <CCardText>
                         With supporting text below as a natural lead-in to additional content.
                       </CCardText>
-                      <CButton href="#">Go somewhere</CButton>
+                      <CButton color="primary" href="#">
+                        Go somewhere
+                      </CButton>
                     </CCardBody>
                   </CCard>
                 </CCol>
@@ -321,7 +331,9 @@ const Cards = () => {
                       <CCardText>
                         With supporting text below as a natural lead-in to additional content.
                       </CCardText>
-                      <CButton href="#">Go somewhere</CButton>
+                      <CButton color="primary" href="#">
+                        Go somewhere
+                      </CButton>
                     </CCardBody>
                   </CCard>
                 </CCol>
@@ -340,7 +352,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
               <CCard className="w-50">
@@ -349,7 +363,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
             </DocsExample>
@@ -364,7 +380,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
             </DocsExample>
@@ -390,7 +408,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
               <CCard className="text-center" style={{ width: '18rem' }}>
@@ -399,7 +419,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
               <CCard className="text-end" style={{ width: '18rem' }}>
@@ -408,7 +430,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
             </DocsExample>
@@ -449,7 +473,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
             </DocsExample>
@@ -477,7 +503,9 @@ const Cards = () => {
                   <CCardText>
                     With supporting text below as a natural lead-in to additional content.
                   </CCardText>
-                  <CButton href="#">Go somewhere</CButton>
+                  <CButton color="primary" href="#">
+                    Go somewhere
+                  </CButton>
                 </CCardBody>
               </CCard>
             </DocsExample>

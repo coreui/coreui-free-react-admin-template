@@ -93,19 +93,19 @@ const Accordion = () => {
               as needed.
             </p>
             <DocsExample href="components/spinner#buttons">
-              <CButton disabled>
+              <CButton color="primary" disabled>
                 <CSpinner component="span" size="sm" aria-hidden="true" />
               </CButton>
-              <CButton disabled>
+              <CButton color="primary" disabled>
                 <CSpinner component="span" size="sm" aria-hidden="true" />
                 Loading...
               </CButton>
             </DocsExample>
             <DocsExample href="components/spinner#buttons">
-              <CButton disabled>
+              <CButton color="primary" disabled>
                 <CSpinner component="span" size="sm" variant="grow" aria-hidden="true" />
               </CButton>
-              <CButton disabled>
+              <CButton color="primary" disabled>
                 <CSpinner component="span" size="sm" variant="grow" aria-hidden="true" />
                 Loading...
               </CButton>

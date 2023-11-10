@@ -39,7 +39,9 @@ const Placeholders = () => {
                       Some quick example text to build on the card title and make up the bulk of the
                       card&#39;s content.
                     </CCardText>
-                    <CButton href="#">Go somewhere</CButton>
+                    <CButton color="primary" href="#">
+                      Go somewhere
+                    </CButton>
                   </CCardBody>
                 </CCard>
                 <CCard style={{ width: '18rem' }}>

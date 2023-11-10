@@ -27,7 +27,9 @@ const Collapses = () => {
               >
                 Link
               </CButton>
-              <CButton onClick={() => setVisible(!visible)}>Button</CButton>
+              <CButton color="primary" onClick={() => setVisible(!visible)}>
+                Button
+              </CButton>
               <CCollapse visible={visible}>
                 <CCard className="mt-3">
                   <CCardBody>
@@ -81,8 +83,12 @@ const Collapses = () => {
               A <code>&lt;CButton&gt;</code> can show and hide multiple elements.
             </p>
             <DocsExample href="components/collapse#multiple-targets">
-              <CButton onClick={() => setVisibleA(!visibleA)}>Toggle first element</CButton>
-              <CButton onClick={() => setVisibleB(!visibleB)}>Toggle second element</CButton>
+              <CButton color="primary" onClick={() => setVisibleA(!visibleA)}>
+                Toggle first element
+              </CButton>
+              <CButton color="primary" onClick={() => setVisibleB(!visibleB)}>
+                Toggle second element
+              </CButton>
               <CButton
                 onClick={() => {
                   setVisibleA(!visibleA)

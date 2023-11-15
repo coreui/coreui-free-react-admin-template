@@ -244,7 +244,7 @@ const Dashboard = () => {
                   <CRow>
                     <CCol xs={6}>
                       <div className="border-start border-start-4 border-start-info py-1 px-3">
-                        <div className="text-body-secondary text-truncate xsall">New Clients</div>
+                        <div className="text-body-secondary text-truncate small">New Clients</div>
                         <div className="fs-5 fw-semibold">9,123</div>
                       </div>
                     </CCol>

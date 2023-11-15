@@ -22,12 +22,12 @@
     "test:debug": "react-scripts --inspect-brk test --runInBand"
   },
   "dependencies": {
-    "@coreui/chartjs": "^4.0.0-beta.1",
-    "@coreui/coreui": "^5.0.0-beta.2",
+    "@coreui/chartjs": "^4.0.0-rc.0",
+    "@coreui/coreui": "^5.0.0-rc.0",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.2.1",
-    "@coreui/react": "^5.0.0-beta.1",
-    "@coreui/react-chartjs": "^3.0.0-beta.0",
+    "@coreui/react": "^5.0.0-rc.0",
+    "@coreui/react-chartjs": "^3.0.0-rc.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
     "chart.js": "^4.4.0",
@@ -43,12 +43,13 @@
     "simplebar-react": "^3.2.4"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.0",
     "@testing-library/user-event": "^14.5.1",
-    "eslint-config-prettier": "^8.10.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "2.8.8",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "3.1.0",
     "react-scripts": "5.0.1",
     "sass": "^1.69.5",
     "web-vitals": "^3.5.0"

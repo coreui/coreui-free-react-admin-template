@@ -70,7 +70,6 @@ const WidgetsBrand = (props) => {
           }}
         />
       </CCol>
-
       <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsD
           {...(props.withCharts && {
@@ -105,7 +104,6 @@ const WidgetsBrand = (props) => {
           }}
         />
       </CCol>
-
       <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsD
           {...(props.withCharts && {
@@ -140,7 +138,6 @@ const WidgetsBrand = (props) => {
           }}
         />
       </CCol>
-
       <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsD
           color="warning"

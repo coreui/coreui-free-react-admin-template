@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
+
 import {
   CRow,
   CCol,
@@ -13,7 +15,7 @@ import { CChartBar, CChartLine } from '@coreui/react-chartjs'
 import CIcon from '@coreui/icons-react'
 import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
 
-const WidgetsDropdown = () => {
+const WidgetsDropdown = (props) => {
   const widgetChartRef1 = useRef(null)
   const widgetChartRef2 = useRef(null)
 
@@ -36,10 +38,9 @@ const WidgetsDropdown = () => {
   }, [widgetChartRef1, widgetChartRef2])
 
   return (
-    <CRow>
-      <CCol sm={6} lg={3}>
+    <CRow className={props.className} xs={{ gutter: 4 }}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
-          className="mb-4"
           color="primary"
           value={
             <>
@@ -128,9 +129,8 @@ const WidgetsDropdown = () => {
           }
         />
       </CCol>
-      <CCol sm={6} lg={3}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
-          className="mb-4"
           color="info"
           value={
             <>
@@ -218,9 +218,8 @@ const WidgetsDropdown = () => {
           }
         />
       </CCol>
-      <CCol sm={6} lg={3}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
-          className="mb-4"
           color="warning"
           value={
             <>
@@ -291,9 +290,8 @@ const WidgetsDropdown = () => {
           }
         />
       </CCol>
-      <CCol sm={6} lg={3}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
-          className="mb-4"
           color="danger"
           value={
             <>
@@ -388,6 +386,11 @@ const WidgetsDropdown = () => {
       </CCol>
     </CRow>
   )
+}
+
+WidgetsDropdown.propTypes = {
+  className: PropTypes.string,
+  withCharts: PropTypes.bool,
 }
 
 export default WidgetsDropdown

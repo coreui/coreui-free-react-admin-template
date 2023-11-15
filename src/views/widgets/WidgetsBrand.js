@@ -5,7 +5,7 @@ import CIcon from '@coreui/icons-react'
 import { cibFacebook, cibLinkedin, cibTwitter, cilCalendar } from '@coreui/icons'
 import { CChart } from '@coreui/react-chartjs'
 
-const WidgetsBrand = ({ withCharts }) => {
+const WidgetsBrand = (props) => {
   const chartOptions = {
     elements: {
       line: {
@@ -35,11 +35,10 @@ const WidgetsBrand = ({ withCharts }) => {
   }
 
   return (
-    <CRow>
-      <CCol sm={6} lg={3}>
+    <CRow className={props.className} xs={{ gutter: 4 }}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsD
-          className="mb-4"
-          {...(withCharts && {
+          {...(props.withCharts && {
             chart: (
               <CChart
                 className="position-absolute w-100 h-100"
@@ -72,10 +71,9 @@ const WidgetsBrand = ({ withCharts }) => {
         />
       </CCol>
 
-      <CCol sm={6} lg={3}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsD
-          className="mb-4"
-          {...(withCharts && {
+          {...(props.withCharts && {
             chart: (
               <CChart
                 className="position-absolute w-100 h-100"
@@ -108,10 +106,9 @@ const WidgetsBrand = ({ withCharts }) => {
         />
       </CCol>
 
-      <CCol sm={6} lg={3}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsD
-          className="mb-4"
-          {...(withCharts && {
+          {...(props.withCharts && {
             chart: (
               <CChart
                 className="position-absolute w-100 h-100"
@@ -144,11 +141,10 @@ const WidgetsBrand = ({ withCharts }) => {
         />
       </CCol>
 
-      <CCol sm={6} lg={3}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsD
-          className="mb-4"
           color="warning"
-          {...(withCharts && {
+          {...(props.withCharts && {
             chart: (
               <CChart
                 className="position-absolute w-100 h-100"
@@ -182,6 +178,7 @@ const WidgetsBrand = ({ withCharts }) => {
 }
 
 WidgetsBrand.propTypes = {
+  className: PropTypes.string,
   withCharts: PropTypes.bool,
 }
 

@@ -1,0 +1,116 @@
+/* stylelint-disable declaration-no-important, scss/selector-no-redundant-nesting-selector */
+$enable-deprecation-messages: false; /* stylelint-disable-line scss/dollar-variable-default */
+
+@import "@coreui/coreui/scss/functions";
+@import "@coreui/coreui/scss/variables";
+@import "@coreui/coreui/scss/mixins";
+
+.example {
+  &:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+
+  .tab-content {
+    background-color: var(--#{$prefix}tertiary-bg);
+  }
+
+  & + p {
+    margin-top: 1.5rem;
+  }
+
+  // Components examples
+  .preview {
+    + p {
+      margin-top: 2rem;
+    }
+
+    > .form-control {
+      + .form-control {
+        margin-top: .5rem;
+      }
+    }
+
+    > .nav + .nav,
+    > .alert + .alert,
+    > .navbar + .navbar,
+    > .progress + .progress {
+      margin-top: 1rem;
+    }
+
+    > .dropdown-menu {
+      position: static;
+      display: block;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+    // Images
+    > svg + svg,
+    > img + img {
+      margin-left: .5rem;
+    }
+
+    // Buttons
+    > .btn,
+    > .btn-group {
+      margin: .25rem .125rem;
+    }
+    > .btn-toolbar + .btn-toolbar {
+      margin-top: .5rem;
+    }
+
+    // List groups
+    > .list-group {
+      max-width: 400px;
+    }
+
+    > [class*="list-group-horizontal"] {
+      max-width: 100%;
+    }
+
+    // Navbars
+    .fixed-top,
+    .sticky-top {
+      position: static;
+      margin: -1rem -1rem 1rem;
+    }
+
+    .fixed-bottom {
+      position: static;
+      margin: 1rem -1rem -1rem;
+    }
+
+    @include media-breakpoint-up(sm) {
+      .fixed-top,
+      .sticky-top {
+        margin: -1.5rem -1.5rem 1rem;
+      }
+      .fixed-bottom {
+        margin: 1rem -1.5rem -1.5rem;
+      }
+    }
+
+    // Pagination
+    .pagination {
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
+
+    .docs-example-modal {
+      .modal {
+        position: static;
+        display: block;
+      }
+    }
+  }
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .example .tab-content {
+      background-color: var(--#{$prefix}secondary-bg) !important;
+    }
+  }
+}

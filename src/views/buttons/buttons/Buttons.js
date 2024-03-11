@@ -118,15 +118,15 @@ const Buttons = () => {
               meaning to assistive technologies such as screen readers.
             </p>
             <DocsExample href="components/buttons#button-components">
-              <CButton component="a" color="primary" href="#" role="button">
+              <CButton as="a" color="primary" href="#" role="button">
                 Link
               </CButton>
               <CButton type="submit" color="primary">
                 Button
               </CButton>
-              <CButton component="input" type="button" color="primary" value="Input" />
-              <CButton component="input" type="submit" color="primary" value="Submit" />
-              <CButton component="input" type="reset" color="primary" value="Reset" />
+              <CButton as="input" type="button" color="primary" value="Input" />
+              <CButton as="input" type="submit" color="primary" value="Submit" />
+              <CButton as="input" type="reset" color="primary" value="Reset" />
             </DocsExample>
           </CCardBody>
         </CCard>
@@ -329,10 +329,10 @@ const Buttons = () => {
               to assistive technologies.
             </p>
             <DocsExample href="components/buttons#disabled-state">
-              <CButton component="a" href="#" color="primary" size="lg" disabled>
+              <CButton as="a" href="#" color="primary" size="lg" disabled>
                 Primary link
               </CButton>
-              <CButton component="a" href="#" color="secondary" size="lg" disabled>
+              <CButton as="a" href="#" color="secondary" size="lg" disabled>
                 Link
               </CButton>
             </DocsExample>

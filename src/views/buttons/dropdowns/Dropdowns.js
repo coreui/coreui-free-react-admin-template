@@ -210,7 +210,7 @@ const Dropdowns = () => {
                   </button>
                   <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul className="navbar-nav">
-                      <CDropdown dark component="li" variant="nav-item">
+                      <CDropdown dark as="li" variant="nav-item">
                         <CDropdownToggle>Dropdown</CDropdownToggle>
                         <CDropdownMenu>
                           <CDropdownItem href="#">Action</CDropdownItem>

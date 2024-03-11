@@ -34,7 +34,7 @@ const FormControl = () => {
                 </div>
                 <div className="mb-3">
                   <CFormLabel htmlFor="exampleFormControlTextarea1">Example textarea</CFormLabel>
-                  <CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
+                  <CFormTextarea id="exampleFormControlTextarea1" rows={3}></CFormTextarea>
                 </div>
               </CForm>
             </DocsExample>

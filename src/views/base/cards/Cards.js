@@ -248,7 +248,7 @@ const Cards = () => {
             </p>
             <DocsExample href="components/card/#header-and-footer">
               <CCard>
-                <CCardHeader component="h5">Header</CCardHeader>
+                <CCardHeader as="h5">Header</CCardHeader>
                 <CCardBody>
                   <CCardTitle>Special title treatment</CCardTitle>
                   <CCardText>

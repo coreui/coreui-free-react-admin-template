@@ -97,19 +97,19 @@ const ListGroups = () => {
             </p>
             <DocsExample href="components/list-group/#links-and-buttons">
               <CListGroup>
-                <CListGroupItem component="a" href="#" active>
+                <CListGroupItem as="a" href="#" active>
                   Cras justo odio
                 </CListGroupItem>
-                <CListGroupItem component="a" href="#">
+                <CListGroupItem as="a" href="#">
                   Dapibus ac facilisis in
                 </CListGroupItem>
-                <CListGroupItem component="a" href="#">
+                <CListGroupItem as="a" href="#">
                   Morbi leo risus
                 </CListGroupItem>
-                <CListGroupItem component="a" href="#">
+                <CListGroupItem as="a" href="#">
                   Porta ac consectetur ac
                 </CListGroupItem>
-                <CListGroupItem component="a" href="#" disabled>
+                <CListGroupItem as="a" href="#" disabled>
                   Vestibulum at eros
                 </CListGroupItem>
               </CListGroup>
@@ -201,7 +201,7 @@ const ListGroups = () => {
             </p>
             <DocsExample href="components/list-group/#contextual-classes">
               <CListGroup>
-                <CListGroupItem component="a" href="#">
+                <CListGroupItem as="a" href="#">
                   Dapibus ac facilisis in
                 </CListGroupItem>
                 {[
@@ -214,7 +214,7 @@ const ListGroups = () => {
                   'light',
                   'dark',
                 ].map((color, index) => (
-                  <CListGroupItem component="a" href="#" color={color} key={index}>
+                  <CListGroupItem as="a" href="#" color={color} key={index}>
                     A simple {color} list group item
                   </CListGroupItem>
                 ))}
@@ -269,7 +269,7 @@ const ListGroups = () => {
             </p>
             <DocsExample href="components/list-group/#custom-content">
               <CListGroup>
-                <CListGroupItem component="a" href="#" active>
+                <CListGroupItem as="a" href="#" active>
                   <div className="d-flex w-100 justify-content-between">
                     <h5 className="mb-1">List group item heading</h5>
                     <small>3 days ago</small>
@@ -280,7 +280,7 @@ const ListGroups = () => {
                   </p>
                   <small>Donec id elit non mi porta.</small>
                 </CListGroupItem>
-                <CListGroupItem component="a" href="#">
+                <CListGroupItem as="a" href="#">
                   <div className="d-flex w-100 justify-content-between">
                     <h5 className="mb-1">List group item heading</h5>
                     <small className="text-body-secondary">3 days ago</small>
@@ -291,7 +291,7 @@ const ListGroups = () => {
                   </p>
                   <small className="text-body-secondary">Donec id elit non mi porta.</small>
                 </CListGroupItem>
-                <CListGroupItem component="a" href="#">
+                <CListGroupItem as="a" href="#">
                   <div className="d-flex w-100 justify-content-between">
                     <h5 className="mb-1">List group item heading</h5>
                     <small className="text-body-secondary">3 days ago</small>

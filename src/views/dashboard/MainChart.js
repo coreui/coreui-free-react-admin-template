@@ -98,16 +98,16 @@ const MainChart = () => {
               },
             },
             y: {
+              beginAtZero: true,
               border: {
                 color: getStyle('--cui-border-color-translucent'),
               },
               grid: {
                 color: getStyle('--cui-border-color-translucent'),
               },
+              max: 250,
               ticks: {
-                beginAtZero: true,
                 color: getStyle('--cui-body-color'),
-                max: 250,
                 maxTicksLimit: 5,
                 stepSize: Math.ceil(250 / 5),
               },

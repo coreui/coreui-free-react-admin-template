@@ -62,7 +62,7 @@ const Toasts = () => {
               dismiss button.
             </p>
             <DocsExample href="components/toast">
-              <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+              <CToast autohide={false} visible={true}>
                 <CToastHeader closeButton>
                   <svg
                     className="rounded me-2"
@@ -95,7 +95,7 @@ const Toasts = () => {
               Toasts are slightly translucent to blend in with what&#39;s below them.
             </p>
             <DocsExample href="components/toast#translucent" tabContentClassName="bg-dark">
-              <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+              <CToast autohide={false} visible={true}>
                 <CToastHeader closeButton>
                   <svg
                     className="rounded me-2"
@@ -129,7 +129,7 @@ const Toasts = () => {
             </p>
             <DocsExample href="components/toast#stacking">
               <CToaster className="position-static">
-                <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+                <CToast autohide={false} visible={true}>
                   <CToastHeader closeButton>
                     <svg
                       className="rounded me-2"
@@ -147,7 +147,7 @@ const Toasts = () => {
                   </CToastHeader>
                   <CToastBody>Hello, world! This is a toast message.</CToastBody>
                 </CToast>
-                <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+                <CToast autohide={false} visible={true}>
                   <CToastHeader closeButton>
                     <svg
                       className="rounded me-2"
@@ -204,7 +204,7 @@ const Toasts = () => {
                     <CButton type="button" color="primary" size="sm">
                       Take action
                     </CButton>
-                    <CToastClose component={CButton} color="secondary" size="sm" className="ms-1">
+                    <CToastClose as={CButton} color="secondary" size="sm" className="ms-1">
                       Close
                     </CToastClose>
                   </div>

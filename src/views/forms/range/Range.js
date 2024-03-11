@@ -52,7 +52,7 @@ const Range = () => {
             </p>
             <DocsExample href="forms/range#min-and-max" tabContentClassName="bg-opacity-10">
               <CFormLabel htmlFor="customRange2">Example range</CFormLabel>
-              <CFormRange min="0" max="5" defaultValue="3" id="customRange2" />
+              <CFormRange min={0} max={5} defaultValue="3" id="customRange2" />
             </DocsExample>
           </CCardBody>
         </CCard>
@@ -70,7 +70,7 @@ const Range = () => {
             </p>
             <DocsExample href="forms/range#steps" tabContentClassName="bg-opacity-10">
               <CFormLabel htmlFor="customRange3">Example range</CFormLabel>
-              <CFormRange min="0" max="5" step="0.5" defaultValue="3" id="customRange3" />
+              <CFormRange min={0} max={5} step={0.5} defaultValue="3" id="customRange3" />
             </DocsExample>
           </CCardBody>
         </CCard>

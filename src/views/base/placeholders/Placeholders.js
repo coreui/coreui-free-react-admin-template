@@ -71,6 +71,7 @@ const Placeholders = () => {
                       <CPlaceholder xs={8} />
                     </CPlaceholder>
                     <CPlaceholder
+                      color="primary"
                       component={CButton}
                       disabled
                       href="#"
@@ -99,6 +100,7 @@ const Placeholders = () => {
                 <CPlaceholder xs={6} />
               </p>
               <CPlaceholder
+                color="primary"
                 component={CButton}
                 aria-hidden="true"
                 disabled

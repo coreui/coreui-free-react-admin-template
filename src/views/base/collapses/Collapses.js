@@ -19,6 +19,7 @@ const Collapses = () => {
             <p className="text-body-secondary small">You can use a link or a button component.</p>
             <DocsExample href="components/collapse">
               <CButton
+                color="primary"
                 href="#"
                 onClick={(e) => {
                   e.preventDefault()
@@ -53,6 +54,7 @@ const Collapses = () => {
             <DocsExample href="components/collapse#horizontal">
               <CButton
                 className="mb-3"
+                color="primary"
                 onClick={() => setVisibleHorizontal(!visibleHorizontal)}
                 aria-expanded={visibleHorizontal}
                 aria-controls="collapseWidthExample"
@@ -90,6 +92,7 @@ const Collapses = () => {
                 Toggle second element
               </CButton>
               <CButton
+                color="primary"
                 onClick={() => {
                   setVisibleA(!visibleA)
                   setVisibleB(!visibleB)

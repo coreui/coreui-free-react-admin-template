@@ -21,7 +21,7 @@ import {
 } from '@coreui/react'
 import { DocsExample } from 'src/components'
 
-const Select = () => {
+const InputGroup = () => {
   return (
     <CRow>
       <CCol xs={12}>
@@ -394,7 +394,7 @@ const Select = () => {
           <CCardBody>
             <DocsExample href="forms/input-group#custom-select">
               <CInputGroup className="mb-3">
-                <CInputGroupText component="label" htmlFor="inputGroupSelect01">
+                <CInputGroupText as="label" htmlFor="inputGroupSelect01">
                   Options
                 </CInputGroupText>
                 <CFormSelect id="inputGroupSelect01">
@@ -411,7 +411,7 @@ const Select = () => {
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </CFormSelect>
-                <CInputGroupText component="label" htmlFor="inputGroupSelect02">
+                <CInputGroupText as="label" htmlFor="inputGroupSelect02">
                   Options
                 </CInputGroupText>
               </CInputGroup>
@@ -449,14 +449,14 @@ const Select = () => {
           <CCardBody>
             <DocsExample href="forms/input-group#custom-file-input">
               <CInputGroup className="mb-3">
-                <CInputGroupText component="label" htmlFor="inputGroupFile01">
+                <CInputGroupText as="label" htmlFor="inputGroupFile01">
                   Upload
                 </CInputGroupText>
                 <CFormInput type="file" id="inputGroupFile01" />
               </CInputGroup>
               <CInputGroup className="mb-3">
                 <CFormInput type="file" id="inputGroupFile02" />
-                <CInputGroupText component="label" htmlFor="inputGroupFile02">
+                <CInputGroupText as="label" htmlFor="inputGroupFile02">
                   Upload
                 </CInputGroupText>
               </CInputGroup>
@@ -500,4 +500,4 @@ const Select = () => {
   )
 }
 
-export default Select
+export default InputGroup

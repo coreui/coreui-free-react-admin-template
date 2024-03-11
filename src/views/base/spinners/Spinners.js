@@ -2,7 +2,7 @@ import React from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CSpinner, CRow } from '@coreui/react'
 import { DocsExample } from 'src/components'
 
-const Accordion = () => {
+const Spinners = () => {
   return (
     <CRow>
       <CCol xs={12}>
@@ -94,19 +94,19 @@ const Accordion = () => {
             </p>
             <DocsExample href="components/spinner#buttons">
               <CButton color="primary" disabled>
-                <CSpinner component="span" size="sm" aria-hidden="true" />
+                <CSpinner as="span" size="sm" aria-hidden="true" />
               </CButton>
               <CButton color="primary" disabled>
-                <CSpinner component="span" size="sm" aria-hidden="true" />
+                <CSpinner as="span" size="sm" aria-hidden="true" />
                 Loading...
               </CButton>
             </DocsExample>
             <DocsExample href="components/spinner#buttons">
               <CButton color="primary" disabled>
-                <CSpinner component="span" size="sm" variant="grow" aria-hidden="true" />
+                <CSpinner as="span" size="sm" variant="grow" aria-hidden="true" />
               </CButton>
               <CButton color="primary" disabled>
-                <CSpinner component="span" size="sm" variant="grow" aria-hidden="true" />
+                <CSpinner as="span" size="sm" variant="grow" aria-hidden="true" />
                 Loading...
               </CButton>
             </DocsExample>
@@ -117,4 +117,4 @@ const Accordion = () => {
   )
 }
 
-export default Accordion
+export default Spinners

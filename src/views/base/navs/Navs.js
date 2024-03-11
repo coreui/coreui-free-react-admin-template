@@ -58,7 +58,7 @@ const Navs = () => {
               without the extra markup.
             </p>
             <DocsExample href="components/nav#base-nav">
-              <CNav component="nav">
+              <CNav as="nav">
                 <CNavLink href="#" active>
                   Active
                 </CNavLink>
@@ -308,7 +308,7 @@ const Navs = () => {
               horizontal layout that fills the available width starting from the small breakpoint.
             </p>
             <DocsExample href="components/nav#working-with-flex-utilities">
-              <CNav component="nav" variant="pills" className="flex-column flex-sm-row">
+              <CNav as="nav" variant="pills" className="flex-column flex-sm-row">
                 <CNavLink href="#" active>
                   Active
                 </CNavLink>

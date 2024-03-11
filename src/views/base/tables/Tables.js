@@ -53,7 +53,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -167,7 +167,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -201,7 +201,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -232,7 +232,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -276,7 +276,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -307,7 +307,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -338,7 +338,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -378,7 +378,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2" active>
+                    <CTableDataCell colSpan={2} active>
                       Larry the Bird
                     </CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
@@ -411,7 +411,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2" active>
+                    <CTableDataCell colSpan={2} active>
                       Larry the Bird
                     </CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
@@ -456,7 +456,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -493,7 +493,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -536,7 +536,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -567,7 +567,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -611,7 +611,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -730,7 +730,7 @@ const Tables = () => {
                     <CTableDataCell>@mdo</CTableDataCell>
                   </CTableRow>
                   <CTableRow>
-                    <CTableHeaderCell colSpan="4">
+                    <CTableHeaderCell colSpan={4}>
                       <CTable>
                         <CTableHead>
                           <CTableRow>
@@ -761,7 +761,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -838,7 +838,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -878,7 +878,7 @@ const Tables = () => {
                   </CTableRow>
                   <CTableRow>
                     <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                    <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+                    <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
                     <CTableDataCell>@twitter</CTableDataCell>
                   </CTableRow>
                 </CTableBody>

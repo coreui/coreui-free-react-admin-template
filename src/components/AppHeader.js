@@ -53,7 +53,7 @@ const AppHeader = () => {
         </CHeaderToggler>
         <CHeaderNav className="d-none d-md-flex">
           <CNavItem>
-            <CNavLink to="/dashboard" component={NavLink}>
+            <CNavLink to="/dashboard" as={NavLink}>
               Dashboard
             </CNavLink>
           </CNavItem>
@@ -99,7 +99,7 @@ const AppHeader = () => {
               <CDropdownItem
                 active={colorMode === 'light'}
                 className="d-flex align-items-center"
-                component="button"
+                as="button"
                 type="button"
                 onClick={() => setColorMode('light')}
               >
@@ -108,7 +108,7 @@ const AppHeader = () => {
               <CDropdownItem
                 active={colorMode === 'dark'}
                 className="d-flex align-items-center"
-                component="button"
+                as="button"
                 type="button"
                 onClick={() => setColorMode('dark')}
               >
@@ -117,7 +117,7 @@ const AppHeader = () => {
               <CDropdownItem
                 active={colorMode === 'auto'}
                 className="d-flex align-items-center"
-                component="button"
+                as="button"
                 type="button"
                 onClick={() => setColorMode('auto')}
               >

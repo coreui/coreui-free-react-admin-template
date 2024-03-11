@@ -116,7 +116,8 @@ Within the download you'll find the following directories and files, logically g
 ```
 coreui-free-react-admin-template
 ├── public/          # static files
-│   └── index.html   # html template
+│   ├── favicon.ico
+│   └── manifest.json
 │
 ├── src/             # project root
 │   ├── assets/      # images, icons, etc.
@@ -126,12 +127,15 @@ coreui-free-react-admin-template
 │   ├── views/       # application views
 │   ├── _nav.js      # sidebar navigation config
 │   ├── App.js
-│   ├── ...
 │   ├── index.js
 │   ├── routes.js    # routes config
 │   └── store.js     # template state example 
 │
-└── package.json
+├── index.html       # html template
+├── ...
+├── package.json
+├── ...
+└── vite.config.mjs  # vite config
 ```
 
 ## Documentation

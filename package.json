@@ -23,13 +23,13 @@
     "@coreui/coreui": "^5.0.0-rc-2",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.2.1",
-    "@coreui/react": "^5.0.0-rc.2",
+    "@coreui/react": "^5.0.0-rc.3",
     "@coreui/react-chartjs": "^3.0.0-rc.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
     "chart.js": "^4.4.2",
     "classnames": "^2.5.1",
-    "core-js": "^3.36.0",
+    "core-js": "^3.36.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,15 +40,15 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.18",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "postcss": "^8.4.35",
+    "postcss": "^8.4.38",
     "prettier": "3.2.5",
-    "sass": "^1.71.1",
-    "vite": "^5.1.6"
+    "sass": "^1.72.0",
+    "vite": "^5.2.2"
   }
 }

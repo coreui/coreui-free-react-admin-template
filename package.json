@@ -19,12 +19,12 @@
     "start": "vite"
   },
   "dependencies": {
-    "@coreui/chartjs": "^4.0.0-rc.0",
-    "@coreui/coreui": "^5.0.0-rc-2",
+    "@coreui/chartjs": "^4.0.0",
+    "@coreui/coreui": "^5.0.0",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.2.1",
-    "@coreui/react": "^5.0.0-rc.3",
-    "@coreui/react-chartjs": "^3.0.0-rc.0",
+    "@coreui/react": "^5.0.0",
+    "@coreui/react-chartjs": "^3.0.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
     "chart.js": "^4.4.2",
@@ -49,6 +49,6 @@
     "postcss": "^8.4.38",
     "prettier": "3.2.5",
     "sass": "^1.72.0",
-    "vite": "^5.2.2"
+    "vite": "^5.2.6"
   }
 }

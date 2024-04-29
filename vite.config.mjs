@@ -4,10 +4,6 @@ import path from 'node:path'
 import autoprefixer from 'autoprefixer'
 
 export default defineConfig(({ mode }) => {
-  // Load .env
-  const env = loadEnv(mode, process.cwd(), '')
-  process.env = { ...process.env, ...env }
-
   return {
     base: './',
     build: {
@@ -19,10 +15,6 @@ export default defineConfig(({ mode }) => {
           autoprefixer({}), // add options if needed
         ],
       },
-    },
-    define: {
-      // vitejs does not support process.env so we have to redefine it
-      'process.env': process.env,
     },
     esbuild: {
       loader: 'jsx',

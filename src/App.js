@@ -1,6 +1,9 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
@@ -17,6 +20,20 @@ const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const App = () => {
   const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
   const storedTheme = useSelector((state) => state.theme)
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    // Firebase kullanıcı oturum durumunu izle
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
+    });
+    // ComponentWillUnmount
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.href.split('?')[1])
@@ -42,11 +59,11 @@ const App = () => {
         }
       >
         <Routes>
-          <Route exact path="/login" name="Login Page" element={<Login />} />
-          <Route exact path="/register" name="Register Page" element={<Register />} />
-          <Route exact path="/404" name="Page 404" element={<Page404 />} />
-          <Route exact path="/500" name="Page 500" element={<Page500 />} />
-          <Route path="*" name="Home" element={<DefaultLayout />} />
+          <Route exact path="/register" name="Register Page" element={<Register />}  currentUser={currentUser} />
+          <Route exact path="*" name="dasb" element={<DefaultLayout />}  currentUser={currentUser} />
+          <Route exact path="/404" name="Page 404" element={<Page404 />}  currentUser={currentUser} />
+          <Route exact path="/500" name="Page 500" element={<Page500 />}  currentUser={currentUser} />
+          <Route path="/" name="Home" element={<Login />} />
         </Routes>
       </Suspense>
     </HashRouter>

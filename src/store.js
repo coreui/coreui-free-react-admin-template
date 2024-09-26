@@ -1,18 +1,17 @@
+import React from 'react'
 import { legacy_createStore as createStore } from 'redux'
+import { Provider } from 'react-redux'
+import PropTypes from 'prop-types'
+import rootReducer from './reducers'
 
-const initialState = {
-  sidebarShow: true,
-  theme: 'light',
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+)
+
+const StoreProvider = ({ children }) => <Provider store={store}>{children}</Provider>
+
+StoreProvider.propTypes = {
+  children: PropTypes.node,
 }
-
-const changeState = (state = initialState, { type, ...rest }) => {
-  switch (type) {
-    case 'set':
-      return { ...state, ...rest }
-    default:
-      return state
-  }
-}
-
-const store = createStore(changeState)
-export default store
+export default StoreProvider

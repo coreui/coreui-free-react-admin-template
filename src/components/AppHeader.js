@@ -27,13 +27,12 @@ import {
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
-
+import { switchThemeMode, toggleSideBar } from '../actions/appActions'
 const AppHeader = () => {
   const headerRef = useRef()
   const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
-
   const dispatch = useDispatch()
-  const sidebarShow = useSelector((state) => state.sidebarShow)
+  const { theme } = useSelector((state) => state.app)
 
   useEffect(() => {
     document.addEventListener('scroll', () => {
@@ -42,11 +41,19 @@ const AppHeader = () => {
     })
   }, [])
 
+  const switchColorMode = (color) => {
+    dispatch(switchThemeMode(color))
+  }
+
+  useEffect(() => {
+    setColorMode(theme)
+  }, [theme])
+
   return (
     <CHeader position="sticky" className="mb-4 p-0" ref={headerRef}>
       <CContainer className="border-bottom px-4" fluid>
         <CHeaderToggler
-          onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
+          onClick={() => dispatch(toggleSideBar())}
           style={{ marginInlineStart: '-14px' }}
         >
           <CIcon icon={cilMenu} size="lg" />
@@ -89,9 +96,9 @@ const AppHeader = () => {
             <CDropdownToggle caret={false}>
               {colorMode === 'dark' ? (
                 <CIcon icon={cilMoon} size="lg" />
-              ) : colorMode === 'auto' ? (
-                <CIcon icon={cilContrast} size="lg" />
               ) : (
+                // ) : colorMode === 'auto' ? (
+                // <CIcon icon={cilContrast} size="lg" />
                 <CIcon icon={cilSun} size="lg" />
               )}
             </CDropdownToggle>
@@ -101,7 +108,7 @@ const AppHeader = () => {
                 className="d-flex align-items-center"
                 as="button"
                 type="button"
-                onClick={() => setColorMode('light')}
+                onClick={() => switchColorMode('light')}
               >
                 <CIcon className="me-2" icon={cilSun} size="lg" /> Light
               </CDropdownItem>
@@ -110,19 +117,19 @@ const AppHeader = () => {
                 className="d-flex align-items-center"
                 as="button"
                 type="button"
-                onClick={() => setColorMode('dark')}
+                onClick={() => switchColorMode('dark')}
               >
                 <CIcon className="me-2" icon={cilMoon} size="lg" /> Dark
               </CDropdownItem>
-              <CDropdownItem
+              {/* <CDropdownItem
                 active={colorMode === 'auto'}
                 className="d-flex align-items-center"
                 as="button"
                 type="button"
-                onClick={() => setColorMode('auto')}
+                onClick={() => switchColorMode('auto')}
               >
                 <CIcon className="me-2" icon={cilContrast} size="lg" /> Auto
-              </CDropdownItem>
+              </CDropdownItem> */}
             </CDropdownMenu>
           </CDropdown>
           <li className="nav-item py-1">

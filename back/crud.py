@@ -1,11 +1,8 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import extract
 from . import models, schemas
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
-import jwt
-
-SECRET_KEY = "02b11ec3ea564e5372ca7be5bee87afd6bcb181974d8f5d058f1c18abc042848"
-ALGORITHM = "HS256"
 
 def registration(db: Session, user: schemas.UserCreate):
     _hashed_password = get_password_hash(user.password)
@@ -20,15 +17,23 @@ def registration(db: Session, user: schemas.UserCreate):
     create_wallet(db, schemas.WalletCreate(user_id=db_user.id))
     return db_user
 
-def create_access_token(data: dict, expires_delta: timedelta | None = None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.now(timezone.utc) + expires_delta
-    else:
-        expire = datetime.now(timezone.utc) + timedelta(minutes=15)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
+def incomes_by_wallet_id_and_month(db: Session, wallet_id: int, month: int):
+    return db.query(models.Income).filter(models.Income.wallet_id == wallet_id, extract('month', models.Income.date) == month).all()
+
+def incomes_by_wallet_id_and_year(db: Session, wallet_id: int, year: int):
+    return db.query(models.Income).filter(models.Income.wallet_id == wallet_id, extract('year', models.Income.date) == year).all()
+
+def incomes_by_wallet_id_and_category(db: Session, wallet_id: int, category: str):
+    return db.query(models.Income).filter(models.Income.wallet_id == wallet_id, models.Income.category == category).all()
+
+def expenses_by_wallet_id_and_month(db: Session, wallet_id: int, month: int):
+    return db.query(models.Expense).filter(models.Expense.wallet_id == wallet_id, extract('month', models.Expense.date) == month).all()
+
+def expenses_by_wallet_id_and_year(db: Session, wallet_id: int, year: int): 
+    return db.query(models.Expense).filter(models.Expense.wallet_id == wallet_id, extract('year', models.Expense.date) == year).all()
+
+def expenses_by_wallet_id_and_category(db: Session, wallet_id: int, category: str):
+    return db.query(models.Expense).filter(models.Expense.wallet_id == wallet_id, models.Expense.category == category).all()
 
 def get_user_by_id( db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
@@ -53,7 +58,7 @@ def get_wallet_by_user_id(db: Session, user_id: int):
 def create_wallet(db: Session, wallet: schemas.WalletCreate):
     db_wallet = models.Wallet(
         user_id=wallet.user_id, 
-        personal_account=wallet.personal_account
+        currency=wallet.currency,
         )
     db.add(db_wallet)
     db.commit()

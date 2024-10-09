@@ -1,5 +1,5 @@
 from database import Base
-from sqlalchemy import Integer, String, Column, Boolean, ForeignKey, Float
+from sqlalchemy import Integer, String, Column, Boolean, ForeignKey, Float, DATE
 from sqlalchemy.orm import relationship
 
 class User(Base):
@@ -13,16 +13,19 @@ class User(Base):
     failed_logins = Column(Integer, default=0)
     locked_until = Column(Float, default=0)
     wallets = relationship("Wallet", back_populates="user")
+    token = Column(String)
+
 
 class Wallet(Base):
     __tablename__ = "app_wallets"
 
     id = Column(Integer, primary_key=True, index=True)
-    personal_account = Column(Integer)
     balance = Column(Float)
     currency = Column(String, default="USD")
     user_id = Column(Integer, ForeignKey("app_users.id"))
     user = relationship("User", back_populates="wallets")
+    incomes = relationship("Income", back_populates="wallet")
+    expenses = relationship("Expense", back_populates="wallet")
 
 
 class Transaction(Base):
@@ -37,14 +40,19 @@ class Income(Base):
     __tablename__ = "app_incomes"
 
     id = Column(Integer, primary_key=True, index=True)
+    date = Column(DATE)
     wallet_id = Column(Integer, ForeignKey("app_wallets.id"))
     amount = Column(Float)
-    type = Column(String)
+    category = Column(String)
+    wallet = relationship("Wallet", back_populates="incomes")
+    
 
 class Expense(Base):
     __tablename__ = "app_expenses"
 
     id = Column(Integer, primary_key=True, index=True)
+    date = Column(DATE)
     wallet_id = Column(Integer, ForeignKey("app_wallets.id"))
     amount = Column(Float)
-    type = Column(String)
+    category = Column(String)
+    wallet = relationship("Wallet", back_populates="expenses")

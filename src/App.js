@@ -13,8 +13,8 @@ const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
-const ResetPasswordEmail = React.lazy(() => import('./views/pages/resetpasswordemail/'))
-const ResetPasswordCode = React.lazy(() => import('./views/pages/resetpasswordecode/ResetPasswordCode'))
+const ResetPasswordEmail = React.lazy(() => import('./views/pages/resetpasswordemail/ResetPasswordEmail'))
+const ResetPasswordCode = React.lazy(() => import('./views/pages/resetpasswordcode/ResetPasswordCode'))
 const ResetPasswordNew = React.lazy(() => import('./views/pages/resetpasswordnew/ResetPasswordNew'))
 
 const App = () => {

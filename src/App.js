@@ -13,6 +13,9 @@ const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
+const ResetPasswordEmail = React.lazy(() => import('./views/pages/resetpasswordemail/ResetPasswordEmail'))
+const ResetPasswordCode = React.lazy(() => import('./views/pages/resetpasswordcode/ResetPasswordCode'))
+const ResetPasswordNew = React.lazy(() => import('./views/pages/resetpasswordnew/ResetPasswordNew'))
 
 const App = () => {
   const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
@@ -46,6 +49,9 @@ const App = () => {
           <Route exact path="/register" name="Register Page" element={<Register />} />
           <Route exact path="/404" name="Page 404" element={<Page404 />} />
           <Route exact path="/500" name="Page 500" element={<Page500 />} />
+          <Route exact path="/reset-password/email" name="Reset Password Email" element={<ResetPasswordEmail />} />
+          <Route exact path="/reset-password/code" name="Reset Password Code" element={<ResetPasswordCode />} />
+          <Route exact path="/reset-password/new" name="Reset Password New" element={<ResetPasswordNew />} />
           <Route path="*" name="Home" element={<DefaultLayout />} />
         </Routes>
       </Suspense>

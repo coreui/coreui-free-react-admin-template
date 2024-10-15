@@ -4,7 +4,6 @@ about: Tell us about a bug you may have identified in CoreUI Free React Admin Te
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 Before opening:

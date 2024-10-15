@@ -3,9 +3,9 @@ name: NPM Installation
 on:
   push:
     branches-ignore:
-      - "dependabot/**"
+      - 'dependabot/**'
   schedule:
-  - cron: '0 0 * * *'
+    - cron: '0 0 * * *'
 
 env:
   FORCE_COLOR: 2

@@ -13,7 +13,6 @@ import {
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 import { cilEnvelopeOpen } from '@coreui/icons';
-import { Link } from 'react-router-dom';
 
 const ResetPasswordEmail = ({ onContinue }) => {
   const [email, setEmail] = useState('');
@@ -36,7 +35,7 @@ const ResetPasswordEmail = ({ onContinue }) => {
 
       if (response.ok) {
         setSuccess('An email with the code has been sent to your email.');
-        onContinue(); // Move to the next form
+        onContinue(); // Переход к следующей форме
       } else {
         const errorText = await response.text();
         setError(errorText || 'Error sending email');

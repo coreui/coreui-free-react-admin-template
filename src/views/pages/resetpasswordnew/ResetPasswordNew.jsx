@@ -3,7 +3,6 @@ import {
   CButton,
   CCard,
   CCardBody,
-  CCardGroup,
   CCol,
   CContainer,
   CForm,
@@ -14,34 +13,36 @@ import {
 } from '@coreui/react';
 
 const ResetPasswordNew = () => {
+  const [code, setCode] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
   const handleResetPasswordNew = async (e) => {
     e.preventDefault();
-    setError(''); // Reset errors before submission
-    setSuccess(''); // Reset success message before submission
+    setError('');
+    setSuccess('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/reset-password', {
+      const response = await fetch('http://localhost:5000/api/reset-password-new', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ password: newPassword }),
+        body: JSON.stringify({ code, password: newPassword }),
       });
 
       if (response.ok) {
-        setSuccess('Password successfully updated.'); // Success message
-        setNewPassword(''); // Clear password field
+        setSuccess('Password successfully updated.');
+        setCode('');
+        setNewPassword('');
       } else {
         const errorText = await response.text();
-        setError(errorText || 'Error updating password'); // Error message
+        setError(errorText || 'Error updating password');
       }
     } catch (error) {
       console.error('Error:', error);
-      setError('An error occurred. Please try again.'); // Error message
+      setError('An error occurred. Please try again.');
     }
   };
 
@@ -50,35 +51,43 @@ const ResetPasswordNew = () => {
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md={8}>
-            <CCardGroup>
-              <CCard className="p-4">
-                <CCardBody>
-                  <CForm onSubmit={handleResetPasswordNew}>
-                    <h1>Password Reset</h1> {/* Title */}
-                    <p className="text-body-secondary">Enter a new password for your account.</p> {/* Instruction */}
-                    {error && <p className="text-danger">{error}</p>} {/* Error message */}
-                    {success && <p className="text-success">{success}</p>} {/* Success message */}
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>New Password</CInputGroupText> {/* Label */}
-                      <CFormInput
-                        type="password"
-                        placeholder="Enter new password"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                        required
-                      />
-                    </CInputGroup>
-                    <CRow>
-                      <CCol xs={12}>
-                        <CButton color="primary" className="px-4" type="submit">
-                          Save
-                        </CButton>
-                      </CCol>
-                    </CRow>
-                  </CForm>
-                </CCardBody>
-              </CCard>
-            </CCardGroup>
+            <CCard className="mx-4">
+              <CCardBody className="p-4">
+                <CForm onSubmit={handleResetPasswordNew}>
+                  <h1>Reset Password</h1>
+                  <p className="text-body-secondary">Enter the code and your new password.</p>
+                  {error && <p className="text-danger">{error}</p>}
+                  {success && <p className="text-success">{success}</p>}
+                  
+                  <CInputGroup className="mb-3">
+                    <CInputGroupText>Code</CInputGroupText>
+                    <CFormInput
+                      type="text"
+                      placeholder="Enter code"
+                      value={code}
+                      onChange={(e) => setCode(e.target.value)}
+                      required
+                    />
+                  </CInputGroup>
+
+                  <CInputGroup className="mb-3">
+                    <CInputGroupText>New Password</CInputGroupText>
+                    <CFormInput
+                      type="password"
+                      placeholder="Enter new password"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      required
+                    />
+                  </CInputGroup>
+                  <div className="d-grid">
+                    <CButton color="primary" type="submit">
+                      Save
+                    </CButton>
+                  </div>
+                </CForm>
+              </CCardBody>
+            </CCard>
           </CCol>
         </CRow>
       </CContainer>

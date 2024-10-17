@@ -17,23 +17,39 @@ def registration(db: Session, user: schemas.UserCreate):
     create_wallet(db, schemas.WalletCreate(user_id=db_user.id))
     return db_user
 
-def incomes_by_wallet_id_and_month(db: Session, wallet_id: int, month: int):
-    return db.query(models.Income).filter(models.Income.wallet_id == wallet_id, extract('month', models.Income.date) == month).all()
+def incomes_by_wallet_id_and_month(db: Session, wallet_id: int, month: int, user:models.User):
+    return db.query(models.Income.category, sum(models.Income.amount).label('amount')).filter(
+        models.Wallet.user_id == user.id,
+        models.Income.wallet_id == wallet_id,
+        extract('month', models.Income.date) == month
+        ).group_by(models.Income.category).all()
 
-def incomes_by_wallet_id_and_year(db: Session, wallet_id: int, year: int):
-    return db.query(models.Income).filter(models.Income.wallet_id == wallet_id, extract('year', models.Income.date) == year).all()
+def expenses_by_wallet_id_and_month(db: Session, wallet_id: int, month: int, user:models.User):
+    return db.query(models.Expense.category, sum(models.Income.amount).label('amount')).filter(
+        models.Wallet.user_id == user.id,
+        models.Expense.wallet_id == wallet_id,
+        extract('month', models.Expense.date) == month
+        ).group_by(models.Expense.category).all()
 
-def incomes_by_wallet_id_and_category(db: Session, wallet_id: int, category: str):
-    return db.query(models.Income).filter(models.Income.wallet_id == wallet_id, models.Income.category == category).all()
+def incomes_by_wallet_id_and_year(db: Session, wallet_id: int, year: int, user:models.User):
+    return db.query(extract('year',models.Income.date).label('year'), sum(models.Income.amount).label('amount')).filter(
+        models.Wallet.user_id == user.id,
+        models.Income.wallet_id == wallet_id,
+        extract('year',models.Income.date) == year
+        ).group_by(extract('year',models.Income.date)).all()
 
-def expenses_by_wallet_id_and_month(db: Session, wallet_id: int, month: int):
-    return db.query(models.Expense).filter(models.Expense.wallet_id == wallet_id, extract('month', models.Expense.date) == month).all()
+def expenses_by_wallet_id_and_year(db: Session, wallet_id: int, year: int, user:models.User): 
+    return db.query(extract('year',models.Expense.date).label('year'), sum(models.Expense.amount).label('amount')).filter(
+        models.Wallet.user_id == user.id,
+        models.Expense.wallet_id == wallet_id,
+        extract('year', models.Expense.date) == year
+        ).group_by(extract('year',models.Expense.date)).all()
 
-def expenses_by_wallet_id_and_year(db: Session, wallet_id: int, year: int): 
-    return db.query(models.Expense).filter(models.Expense.wallet_id == wallet_id, extract('year', models.Expense.date) == year).all()
+#def incomes_by_wallet_id_and_category(db: Session, wallet_id: int, category: str):
+   # return db.query(models.Income).filter(models.Income.wallet_id == wallet_id, models.Income.category == category).all()
 
-def expenses_by_wallet_id_and_category(db: Session, wallet_id: int, category: str):
-    return db.query(models.Expense).filter(models.Expense.wallet_id == wallet_id, models.Expense.category == category).all()
+#def expenses_by_wallet_id_and_category(db: Session, wallet_id: int, category: str):
+    #return db.query(models.Expense).filter(models.Expense.wallet_id == wallet_id, models.Expense.category == category).all()
 
 def get_user_by_id( db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
@@ -55,9 +71,9 @@ def get_wallet_by_id(db: Session, wallet_id: int):
 def get_wallet_by_user_id(db: Session, user_id: int):
     return db.query(models.Wallet).filter(models.Wallet.user_id == user_id).first()
 
-def create_wallet(db: Session, wallet: schemas.WalletCreate):
+def create_wallet(db: Session, wallet: schemas.WalletCreate, user:models.User):
     db_wallet = models.Wallet(
-        user_id=wallet.user_id, 
+        user_id=user.id, 
         currency=wallet.currency,
         )
     db.add(db_wallet)

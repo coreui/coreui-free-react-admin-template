@@ -101,7 +101,8 @@ def registration(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 @app.post("/wallet", response_model=schemas.WalletCreate)
 def create_wallet(wallet: schemas.WalletCreate, db: Session = Depends(get_db)):
-    return crud.create_wallet(db=db, wallet=wallet)
+    user = Depends(get_current_user)
+    return crud.create_wallet(db=db, wallet=wallet, user=user)
 
 @app.get("/users/me/", response_model=schemas.User)
 async def read_users_me(
@@ -143,24 +144,32 @@ async def reset_password(password_reset: schemas.UserResetPassword, db: Session 
 
 @app.get("/incomes_by_month", response_model=schemas.IncomesByMonth)
 async def get_incomes_month(wallet_id: schemas.IncomesByMonth, month: schemas.IncomesByMonth, db: Session = Depends(get_db)):
-    return crud.incomes_by_wallet_id_and_month(db, wallet_id, month)
+    user = Depends(get_current_user)
+    return crud.incomes_by_wallet_id_and_month(db, wallet_id, month, user)
 
 @app.get("/expenses_by_month", response_model=schemas.ExpensesByMonth)
 async def get_expenses_month(wallet_id: schemas.ExpensesByMonth, month: schemas.ExpensesByMonth, db: Session = Depends(get_db)):
-    return crud.expenses_by_wallet_id_and_month(db, wallet_id, month)
-
-@app.get("/incomes_by_category", response_model=schemas.IncomesByCategory)
-async def get_incomes_category(wallet_id: schemas.IncomesByCategory, category: schemas.IncomesByCategory, db: Session = Depends(get_db)):
-    return crud.incomes_by_wallet_id_and_category(db, wallet_id, category)
-
-@app.get("/expenses_by_category", response_model=schemas.ExpensesByCategory)
-async def get_expenses_category(wallet_id: schemas.ExpensesByCategory, category: schemas.ExpensesByCategory, db: Session = Depends(get_db)):
-    return crud.expenses_by_wallet_id_and_category(db, wallet_id, category)
+    user = Depends(get_current_user)
+    return crud.expenses_by_wallet_id_and_month(db, wallet_id, month, user)
 
 @app.get("/incomes_by_year", response_model=schemas.IncomesByYear)
 async def get_incomes_year(wallet_id: schemas.IncomesByYear, year: schemas.IncomesByYear, db: Session = Depends(get_db)):
-    return crud.incomes_by_wallet_id_and_year(db, wallet_id, year)
+    user = Depends(get_current_user)
+    return crud.incomes_by_wallet_id_and_year(db, wallet_id, year, user)
 
 @app.get("/expenses_by_year", response_model=schemas.ExpensesByYear)
 async def get_expenses_year(wallet_id: schemas.ExpensesByYear, year: schemas.ExpensesByYear, db: Session = Depends(get_db)):
-    return crud.expenses_by_wallet_id_and_year(db, wallet_id, year)
+    user = Depends(get_current_user)
+    return crud.expenses_by_wallet_id_and_year(db, wallet_id, year, user)
+
+#@app.get("/incomes_by_category", response_model=schemas.IncomesByCategory)
+#async def get_incomes_category(wallet_id: schemas.IncomesByCategory, category: schemas.IncomesByCategory, db: Session = Depends(get_db)):
+   # user = Depends(get_current_user)
+   # return crud.incomes_by_wallet_id_and_category(db, wallet_id, category, user)
+
+#@app.get("/expenses_by_category", response_model=schemas.ExpensesByCategory)
+#async def get_expenses_category(wallet_id: schemas.ExpensesByCategory, category: schemas.ExpensesByCategory, db: Session = Depends(get_db)):
+   # user = Depends(get_current_user)
+    #return crud.expenses_by_wallet_id_and_category(db, wallet_id, category, user)
+
+

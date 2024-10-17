@@ -17,7 +17,6 @@ class User(UserBase):
         orm_mode = True
 
 class WalletCreate(BaseModel):
-    user_id: int
     currency: str
 
 class UserLogin(BaseModel):

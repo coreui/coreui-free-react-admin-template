@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/errors/connection/connection-refused-error.ts"],
+  "sourcesContent": ["import ConnectionError from '../connection-error';\n\n/**\n * Thrown when a connection to a database is refused\n */\nclass ConnectionRefusedError extends ConnectionError {\n  constructor(parent: Error) {\n    super(parent);\n    this.name = 'SequelizeConnectionRefusedError';\n  }\n}\n\nexport default ConnectionRefusedError;\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,8BAA4B;AAK5B,qCAAqC,gCAAgB;AAAA,EACnD,YAAY,QAAe;AACzB,UAAM;AACN,SAAK,OAAO;AAAA;AAAA;AAIhB,IAAO,mCAAQ;",
+  "names": []
+}

@@ -1,0 +1,547 @@
+{
+  "name": "@azure/msal-node",
+  "entries": [
+    {
+      "date": "Tue, 09 Feb 2021 01:48:22 GMT",
+      "tag": "@azure/msal-node_v1.0.0-beta.6",
+      "version": "1.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix version.json import errors (#2993)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "6dc3bc9e2148bc53b181d9f079f6e11e0159620b",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Ignore OIDC scopes during cache lookup or replacement (#2969)",
+            "author": "prkanher@microsoft.com",
+            "commit": "b113b562ffc33ad44b8d98417753db397256aadf",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Set the validateStatus locally than globally for `axios` (#2959)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "55617cb8bc5289c29fd4357a16605b6720195cbc",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Add API Extractor for msal-node",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "01747296efdf08eefe585930097d9bbbf6b00789",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 01:56:47 GMT",
+      "tag": "@azure/msal-node_v1.0.0-beta.5",
+      "version": "1.0.0-beta.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Typedocs Updates (#2926)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "3fd4a48143ed4fb62b9e3266338b1abda920d68a",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Add project references (#2930)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "a836e77e372f1b4da28195d4ad8c0c75d6794875",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Test updates (#2949)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "cbdd4cd8ba23b5794aeb1f0788b828f1248f7236",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Get package version from version.json (#2915)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "a6f4702f9439e318a8cb6dc65d1def16351a84fd",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Add interfaces to public APIs in msal-node (#2623)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "baa4aa037f90209006eb3fb1ba1263fd09690343",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 21:48:01 GMT",
+      "tag": "@azure/msal-node_v1.0.0-beta.4",
+      "version": "1.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Authority metadata caching (#2758)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "28b3268b1385e99249c0b7a95b0b14299011ca46",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jan 2021 00:51:26 GMT",
+      "tag": "@azure/msal-node_v1.0.0-beta.3",
+      "version": "1.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "ClientAssertion.parseCertificate - allow newlines in cert (#2721).",
+            "author": "email not defined",
+            "commit": "199c99ef23aeb013f8dcec94e3210332fbc42ed0",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "feat: bump up the axios version on msal-node",
+            "author": "samuel.kamau@microsoft.com",
+            "commit": "0d8e60f38340cb7b9a49dc3e0be28503105b5857",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Add getKVStore to tokenCache (#2771)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "bb8ef90bcd20f111b903214c10429c1d507eafcf",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "none": [
+          {
+            "comment": "package-lock changes",
+            "author": "prkanher@microsoft.com",
+            "commit": "c092667cd997935625eafbc491ede54417d4b657",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "package.lock change",
+            "author": "samuel.kamau@microsoft.com",
+            "commit": "4e50ca592f5a17578072be9e4ac28e05b3e6d594",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Fix npm audit warnings",
+            "author": "janutter@microsoft.com",
+            "commit": "751026cdaa24dd370c50ad714bf0b1d54c71fbde",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "change the code challenge encoding to uniform base64",
+            "author": "samuel.kamau@microsoft.com",
+            "commit": "c0cce3b6f6199bf0db5d77a07c557c8cdb4e383c",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Dec 2020 22:19:03 GMT",
+      "tag": "@azure/msal-node_v1.0.0-beta.2",
+      "version": "1.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Expose idTokenClaims on AccountInfo (#2554)",
+            "author": "janutter@microsoft.com",
+            "commit": "cb2165aad7995d904ec49ade565d907dc314ce16",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Add null to API response signatures (#2602)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "ebf18c6daead16f8cfd2afb3b63cbd59fc63046a",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Enforce triple equals in eslint",
+            "author": "janutter@microsoft.com",
+            "commit": "5975eb4077a2b4372683e68af4d748b0808134ab",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Log messages contain package name and version (#2589)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "4568c16bd425e242cdb799ec59b3508654cc2e45",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Update request types (#2512)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "5b891222d674eb5664af9187f319a61b50341f55",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Nov 2020 23:33:20 GMT",
+      "tag": "@azure/msal-node_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Documentation update for new account retrieval APIs (#2585)",
+            "author": "hemoral@microsoft.com",
+            "commit": "cb782967cc8f07581488de71c4509fa12a702774",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Add support for SubjectName/Issuer authentication (#2471).",
+            "author": "jamckenn@microsoft.com",
+            "commit": "4e889b3f8e28b8fd46c0e63d0f142fb61b442510",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Nov 2020 01:48:44 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.16",
+      "version": "1.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Enhance lookup for IdTokens/AppMetadata (#2530)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "e51446295f8c857f1abc7f6874a4c7fde157699e",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Nov 2020 01:50:14 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.15",
+      "version": "1.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixing a bug and adding `localAccountId` in AccountInfo interface (#2516)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "98f43038608fe66a256dabfff0810476e9e6b3ab",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Filtered lookup of IdTokens, AppMetadata; Error handling in Node Storage (#2530)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "354dd86449d792b7369fb240c5e2cfd70ca73488",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Implement Password Grant Flow (#2204)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "baf6d157e7bbeae439526aee13eb08962974925b",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Build Pipeline Changes (#2406)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "af8459c0d53a4dc2bf495017608c0bb03004d006",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Nov 2020 23:33:39 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.14",
+      "version": "1.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add getLogger and setLogger to msal-node (#2520)",
+            "author": "joarroyo@microsoft.com",
+            "commit": "6fff8c1ed4d3dab2a74ff4b44a159645a6c2f535",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Remove `debug` from the `msal-node` library (#2496)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "e354c26ae74632943109fb9101319acf6c6a691c",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Oct 2020 21:00:29 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.13",
+      "version": "1.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "msal-browser and msal-node cache Interfaces to msal-common updated (#2415)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "9d4c4a18de10eb3d918810dc10766fbd5547165d",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Export Node Cache Serializer for use in end-to-end testing framework (#2414)",
+            "author": "hemoral@microsoft.com",
+            "commit": "ba3fad77b2f6ea5034c423aa44096c5698cbcb3d",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update samples path",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "971ff811cb00a3d97b8ceff32999cd80d3d5a7ac",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Oct 2020 23:47:28 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.12",
+      "version": "1.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds support for any OIDC-compliant authority (#2389).",
+            "author": "jamckenn@microsoft.com",
+            "commit": "2b6b9ec9033a8b829393e44c3feb7b19b163d2cd",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Updated eslint rules (#2345)",
+            "author": "janutter@microsoft.com",
+            "commit": "64a4f9e868e63346dfd711dec717abe7fd14d949",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Oct 2020 00:49:18 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.11",
+      "version": "1.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Export all \"Request\" types in msal-node",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "145602c7ced2c9f77a249f0abdca76f3358bd7db",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Oct 2020 23:45:07 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.10",
+      "version": "1.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Docs update for msal-node release",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "20718209d5d567c02223a7f1b220b4aa40ad6817",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Export error types for msal-node",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "7a493ee25d80a31cbfa21f04aa952a9ac3528dfb",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Add uuid as dependency in msal-node package.json so it is installed with the library",
+            "author": "hectormgdev@gmail.com",
+            "commit": "cedeefacc09b755fc2edf59440ef7c60c4b872f8",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Update TokenCache interface (#2348)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "26723689e35918c59bd6ce58ba8cb886118676c6",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Oct 2020 17:42:35 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.9",
+      "version": "1.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Dummy implementation of access token proof-of-possession",
+            "author": "prkanher@microsoft.com",
+            "commit": "3cffbc99730532bbd0b35f2e3a9df17f032c0675",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Sep 2020 17:58:33 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.8",
+      "version": "1.0.0-alpha.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating the pre-release version(#2342)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "bc3f324edd6cf83937c31f73d3aefc6dbaf5f748",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Update changelog versions for msal-node and extensions (#2336)",
+            "author": "hemoral@microsoft.com",
+            "commit": "323875a725e0d5049ff6742a9ca5160c2d4b7d0d",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 21:13:48 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.7",
+      "version": "1.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Make network interface public (#2335)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "aecc41e9f23b350a25bba9dd23e739627e61f8ab",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Rename TokenCache.cacheHasChanged to TokenCache.hasChanged (#2332)",
+            "author": "sagonzal@microsoft.com",
+            "commit": "536a335dd405c5ce070461a302d9a6ed24067b2b",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "FOCI - Family of Client IDs feature (#2201)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "209789cdffdfd38087819cbb23688bcd5ce47b60",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Fix issue with token cache not removing old cache entities (#2304)",
+            "author": "sagonzal@microsoft.com",
+            "commit": "efd00413c32c6c4ac36eaeaaf8b9de33c4839484",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 23:16:22 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.6",
+      "version": "1.0.0-alpha.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update msal node to use central eslint configuration",
+            "author": "janutter@microsoft.com",
+            "commit": "fc49c6f16b3f7a62a67d249107fc484272133305",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Address tsdx warnings (#2202)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "d147c4053cced20f0b1964f01dba02b3eba644cd",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Implement Telemetry in msal-node (#1921)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "1872900d149b60436ef59fd41ab542c58c32e8f1",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Changes node storage: getItem(), setItem() and removeItem() simplified and no longer need a 'type'",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "9760b6ff6c0ad403ac1b26968cb10d3d7e72a6fd",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Add support for on-behalf-of flow",
+            "author": "sagonzal@microsoft.com",
+            "commit": "53c018c8ea0d1877c12641fc1a749e6d66e7ff78",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 00:40:45 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.5",
+      "version": "1.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update APP_META_DATA to APP_METADATA",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "282035aecb07956dca323d65275fdaa703c4a325",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Client Capabilities Support (#2169)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "0cdad1b8a3855b2414be9740862df29524897a22",
+            "package": "@azure/msal-node"
+          },
+          {
+            "comment": "Remove log statement",
+            "author": "email not defined",
+            "commit": "9e2836306bd6efd16cfd9c825ea4797ffddb0936",
+            "package": "@azure/msal-node"
+          },
+          {
+            "author": "sagonzal@microsoft.com",
+            "commit": "98647b7a8a40e1a5f7855f0bcee4594e080a8398",
+            "package": "@azure/msal-node"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update tests (#2128)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "c9b65c59797cd3240aad2b4f1e0e866a90373c4a",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 02:20:48 GMT",
+      "tag": "@azure/msal-node_v1.0.0-alpha.4",
+      "version": "1.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "updating files for automated release steps",
+            "author": "prkanher@microsoft.com",
+            "commit": "2c937a52cef36cbc84231f8868b4251529fa38c9",
+            "package": "@azure/msal-node"
+          }
+        ]
+      }
+    }
+  ]
+}

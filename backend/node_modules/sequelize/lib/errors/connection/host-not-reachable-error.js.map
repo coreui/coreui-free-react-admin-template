@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/errors/connection/host-not-reachable-error.ts"],
+  "sourcesContent": ["import ConnectionError from '../connection-error';\n\n/**\n * Thrown when a connection to a database has a hostname that was not reachable\n */\nclass HostNotReachableError extends ConnectionError {\n  constructor(parent: Error) {\n    super(parent);\n    this.name = 'SequelizeHostNotReachableError';\n  }\n}\n\nexport default HostNotReachableError;\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,8BAA4B;AAK5B,oCAAoC,gCAAgB;AAAA,EAClD,YAAY,QAAe;AACzB,UAAM;AACN,SAAK,OAAO;AAAA;AAAA;AAIhB,IAAO,mCAAQ;",
+  "names": []
+}

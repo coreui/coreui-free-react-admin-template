@@ -1,0 +1,1 @@
+{"version":3,"file":"operationResponse.d.ts","sourceRoot":"","sources":["../../lib/operationResponse.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,MAAM,EAAE,MAAM,cAAc,CAAC;AAEtC;;GAEG;AACH,MAAM,WAAW,iBAAiB;IAChC;;OAEG;IACH,aAAa,CAAC,EAAE,MAAM,CAAC;IAEvB;;OAEG;IACH,UAAU,CAAC,EAAE,MAAM,CAAC;CACrB"}

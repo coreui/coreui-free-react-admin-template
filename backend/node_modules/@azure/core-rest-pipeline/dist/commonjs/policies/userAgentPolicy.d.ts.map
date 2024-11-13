@@ -1,0 +1,1 @@
+{"version":3,"file":"userAgentPolicy.d.ts","sourceRoot":"","sources":["../../../src/policies/userAgentPolicy.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,gBAAgB,CAAC;AAKrD;;GAEG;AACH,eAAO,MAAM,mBAAmB,oBAAoB,CAAC;AAErD;;GAEG;AACH,MAAM,WAAW,sBAAsB;IACrC;;;OAGG;IACH,eAAe,CAAC,EAAE,MAAM,CAAC;CAC1B;AAED;;;;GAIG;AACH,wBAAgB,eAAe,CAAC,OAAO,GAAE,sBAA2B,GAAG,cAAc,CAWpF"}

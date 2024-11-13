@@ -1,0 +1,621 @@
+v7.3.5 (2022-05-27)
+-------------------
+[fix] quote identifiers in table constraint declaration ([#1397](https://github.com/tediousjs/node-mssql/pull/1397))
+
+v7.3.4 (2022-05-18)
+-------------------
+[fix] msnodesqlv8.js file was missing from previous release
+
+v7.3.3 (2022-05-18)
+-------------------
+Duplicate tag
+
+v7.3.2 (2022-05-18)
+-------------------
+[fix] nodemsqlv8 driver tests working against Node 10 ([#1368](https://github.com/tediousjs/node-mssql/pull/1368))
+[fix] quote identifiers in table primary keys ([#1394](https://github.com/tediousjs/node-mssql/pull/1394))
+
+v7.3.1 (2022-02-24)
+-------------------
+[fix] Bump debug dependency ([#1361](https://github.com/tediousjs/node-mssql/pull/1361))
+
+v7.3.0 (2021-11-18)
+-------------------
+[new] Transaction/PreparedStatements expose the config from their parent connection
+[fix] Fix inherited request configs from the pool. Specifically stream and arrayRowMode now inherit accurately from the connection config ([#1338](https://github.com/tediousjs/node-mssql/pull/1338))
+
+v7.2.1 (2021-08-19)
+-------------------
+[fix] Fix issue with bulk insert of dates ((#1298)[https://github.com/tediousjs/node-mssql/pull/1298])
+
+v7.2.0 (2021-07-29)
+-------------------
+[new] Update Geography field parsing to provide lat/lng props from Geography Point ((#1282)[https://github.com/tediousjs/node-mssql/pull/1282])
+[fix] Handle errors when adding rows to bulk operations ((#1264)[https://github.com/tediousjs/node-mssql/pull/1264])
+[fix] Input/Output parameter passing fix for msnodesqlv8 driver ((#1275)[https://github.com/tediousjs/node-mssql/pull/1275])
+
+v7.1.3 (2021-06-11)
+-------------------
+[fix] Request timeout settings now respect value parsed from connection strings ((#1257)[https://github.com/tediousjs/node-mssql/pull/1257)
+
+v7.1.1 (2021-06-09)
+-------------------
+[fix] Errors from tedious connection creation now cause connection promise to reject ((#1254)[https://github.com/tediousjs/node-mssql/pull/1254])
+[fix] Encrypt and transaction binding settings now respect value parsed from connection strings ((#1252)[https://github.com/tediousjs/node-mssql/pull/1252)
+
+v7.1.0 (2021-05-13)
+-------------------
+[new] Add `parseJSON` support to query strings
+[fix] Bump various dependencies for security fixes
+
+v7.0.0 (2021-05-06)
+-------------------
+[new] Result sets with duplicate keys can now be handled using `request.arrayRowMode` ([#1130](https://github.com/tediousjs/node-mssql/pull/1130))
+[new] Requests in stream mode now emit a `rowsaffected` event ([#1213](https://github.com/tediousjs/node-mssql/pull/1213))
+[new] msnodesqlv8 driver now has detailed error support ([#1212](https://github.com/tediousjs/node-mssql/pull/1212))
+[new] Connection validation checks before releasing connections from the pool. This can be turned of via `validateConnection: false` config option ([#1192](https://github.com/tediousjs/node-mssql/pull/1192))
+[new] UseUTC is now supported on msnodesqlv8 connections ([#1222](https://github.com/tediousjs/node-mssql/pull/1222))
+[change] Updated to latest Tedious 11
+[change] Updated tarnjs to v3
+[change] Updated to support latest msnodesqlv8 v2 ([#1157](https://github.com/tediousjs/node-mssql/pull/1157))
+[change] Piped streams no longer have errors forwarded on to them ([#1028](https://github.com/tediousjs/node-mssql/pull/1028))
+[change] tedious config option `trustServerCertificate` defaults to `false` if not supplied ([#1030](https://github.com/tediousjs/node-mssql/pull/1030))
+[change] Request.pipe now pipes a true node stream for better support of backpressure ([#1078](https://github.com/tediousjs/node-mssql/pull/1078))
+[change] drop support for NodeJS < 10 ([#1070](https://github.com/tediousjs/node-mssql/pull/1070))
+[fix] Ensure line endings are unix style (LF)
+[fix] Avoid using deprecated `.inspect` on Objects ([#1071](https://github.com/tediousjs/node-mssql/pull/1071))
+[fix] Bump various dependencies for security fixes ([#1102](https://github.com/tediousjs/node-mssql/pull/1102))
+[fix] Trailing rows from request streams using msnodesqlv8 driver fail to be emitted ([#1109](https://github.com/tediousjs/node-mssql/pull/1109))
+[fix] Issue with geography v2 parsing resolve ([#1138](https://github.com/tediousjs/node-mssql/pull/1138))
+[fix] Connection config objects are now deep cloned when stored against a connection pool ([#1217](https://github.com/tediousjs/node-mssql/pull/1217))
+[removed] Support for connection uri format has been removed (eg: `mssql://user:password@host/?params=values`)
+
+v6.4.1 (2022-02-24)
+-------------------
+[fix] Bump debug dependency ([#1361](https://github.com/tediousjs/node-mssql/pull/1361))
+
+v6.4.0 (2021-11-18)
+-------------------
+[new] Transaction/PreparedStatements expose the config from their parent connection
+[fix] Fix inherited request configs from the pool. Specifically stream and arrayRowMode now inherit accurately from the connection config ([#1338](https://github.com/tediousjs/node-mssql/pull/1338))
+
+v6.3.2 (2021-05-13)
+-------------------
+[fix] Bump various dependencies for security fixes
+
+v6.3.1 (2021-01-01)
+-------------------
+[fix] Ensure line endings are unix style (LF)
+
+v6.3.0 (2020-12-14)
+-------------------
+[new] Result sets with duplicate keys can now be handled using `request.arrayRowMode` ([#1130](https://github.com/tediousjs/node-mssql/pull/1130))
+[fix] Issue with geography v2 parsing resolve ([#1138](https://github.com/tediousjs/node-mssql/pull/1138))
+[fix] Fixed issue where msnodesqlv8 could sometimes terminate queries before all errors has been emitted causing queries to hang ([#1145](https://github.com/tediousjs/node-mssql/pull/1145))
+
+v6.2.3 (2020-09-25)
+-------------------
+[fix] Remove reference to global pool on connection error ([#1107](https://github.com/tediousjs/node-mssql/pull/1107))
+[fix] Trailing rows from request streams using msnodesqlv8 driver fail to be emitted ([#1109](https://github.com/tediousjs/node-mssql/pull/1109))
+
+v6.2.2 (2020-09-18)
+-------------------
+[fix] Avoid using deprecated `.inspect` on Objects ([#1071](https://github.com/tediousjs/node-mssql/pull/1071))
+[fix] Bump various dependencies for security fixes ([#1102](https://github.com/tediousjs/node-mssql/pull/1102))
+
+v6.2.1 (2020-07-22)
+-------------------
+[fix] Bump various dependencies for security fixes
+
+v6.2.0 (2020-03-13)
+-------------------
+[new] Set default isolationLevel for all transactions ([#1005](https://github.com/tediousjs/node-mssql/pull/1005))
+[new] sql.Date now is coerced into a date object ([#1007](https://github.com/tediousjs/node-mssql/pull/1007))
+[fix] Bump acorn dependency for security fix
+
+v6.1.0 (2020-02-17)
+-------------------
+[new] Add `Request.template` helper for providing templated strings to queries ([#960](https://github.com/tediousjs/node-mssql/pull/960))
+[new] Repeat calls to `ConnectionPool.connect()` resolve ([#941](https://github.com/tediousjs/node-mssql/pull/941))
+[new] Stored procedure params are now logged to debug log ([#979](https://github.com/tediousjs/node-mssql/pull/979))
+[fix] Repeat calls to `mssql.connect()` will now resolve correctly ([#986](https://github.com/tediousjs/node-mssql/pull/986))
+[fix] Connections are encrypted by default as documented ([#977](https://github.com/tediousjs/node-mssql/pull/977))
+[fix] Tagged template literal queries with empty array values now work ([#990](https://github.com/tediousjs/node-mssql/pull/990))
+
+v6.0.1 (2019-11-15)
+-------------------
+[fix] Fix an issue with connection strings where usernames have url encoded values ([#945](https://github.com/tediousjs/node-mssql/pull/945)
+
+v6.0.0 (2019-11-05)
+-------------------
+[fix] Fixed bug when trying to bulk insert columns that were `NVarChar(MAX)` ([#901](https://github.com/tediousjs/node-mssql/pull/901))
+[fix] Fixed an issue where Object prototype pollution could cause errors ([#879](https://github.com/tediousjs/node-mssql/pull/879))
+[fix] Fixed an issue where Request.input didn't validate against 0 parameters being passed ([#885](https://github.com/tediousjs/node-mssql/pull/885))
+[new] Implement pause/resume for msnodesqlv8 driver ([#877](https://github.com/tediousjs/node-mssql/pull/877))
+[new] Added `healthy` flag to the pool to help determine if the pool is safe to use or not ([#816](https://github.com/tediousjs/node-mssql/pull/816))
+[new] Invalid isolation levels passed to transactions will now throw an error
+[new] Duplicate parameter names in queries/stored procedures will now throw an error
+[new] `replaceInput` and `replaceOutput` functions added to `Request` and `PreparedStatement` to facilitate replacing existing parameters
+[new] Calls to the global `connect` function will return the global connection if it exists
+[new] Bulk table inserts now attempt to coerce Date objects out of non Date values
+[change] Closing the global connection by reference will now cleanup the internally managed globalConnection
+[change] Upgraded tedious to v6 ([#818](https://github.com/tediousjs/node-mssql/pull/818) and [#933](https://github.com/tediousjs/node-mssql/pull/933))
+[change] Upgraded msnodesqlv8 support to v0.7 ([#877](https://github.com/tediousjs/node-mssql/pull/877))
+[change] Remove references to deprecated `TYPES.Null` from tedious
+[change] `options.encrypt` is now set to true by default
+[change] Upgraded `debug` dependency to v4
+[change] Config objects are cloned so that the original object is not modified
+[change] Replaced pool library (`generic-pool`) with `tarn.js` ([#808](https://github.com/tediousjs/node-mssql/pull/808))
+[removed] Backoff try strategy for creating connections removed, `tarn.js` built-in retry strategy used instead
+
+v5.1.5 (2021-05-13)
+-------------------
+[fix] Bump various dependencies for security fixes
+
+v5.1.4 (2021-01-01)
+-------------------
+[fix] Ensure line endings are unix style (LF)
+
+v5.1.3 (2020-09-18)
+-------------------
+[fix] Avoid using deprecated `.inspect` on Objects ([#1071](https://github.com/tediousjs/node-mssql/pull/1071))
+[fix] Bump various dependencies for security fixes ([#1102](https://github.com/tediousjs/node-mssql/pull/1102))
+
+v5.1.2 (2020-07-22)
+-------------------
+[fix] Bump various dependencies for security fixes
+
+v5.1.1 (2020-03-13)
+-------------------
+[fix] Bump acorn dependency for security fix
+
+v5.1.0 (2019-04-17)
+-------------------
+[new] Add readOnlyIntent to connection string parser ([#853](https://github.com/tediousjs/node-mssql/pull/853))
+
+v5.0.6 (2019-04-17)
+-------------------
+[fix] Ensure callbacks don't block the event loop by executing them with `setImmediate` ([#855](https://github.com/tediousjs/node-mssql/pull/855))
+
+v5.0.5 (2019-03-28)
+-------------------
+[fix] Fix an issue where connections that error can deplete the pool ([#842](https://github.com/tediousjs/node-mssql/pull/842))
+
+v5.0.4 (2019-03-27)
+-------------------
+[fix] Fix a bug where msnodesqlv8 driver could execute callbacks twice ([#834](https://github.com/tediousjs/node-mssql/pull/834))
+[fix] npm audit fix on vulnerable dependencies
+
+v5.0.3 (2019-03-13)
+-------------------
+[fix] Fix a bug with streamed requests that start paused ([#833](https://github.com/tediousjs/node-mssql/pull/833))
+
+v5.0.2 (2019-03-09)
+-------------------
+[change] Remove references to deprecated `TYPES.Null` from tedious
+
+v5.0.1 (2019-03-09)
+-------------------
+[change] Config objects are cloned so that the original object is not modified
+
+v5.0.0 (2019-03-07)
+-------------------
+[new] Added pause / resume feature to streamed requests ([#775](https://github.com/tediousjs/node-mssql/pull/775))
+[new] Added options argument to bulk requests for compatibility with tedious driver
+[new] Added a backoff retry strategy for failed connection creation to mitigate issue with `generic-pool` connection creation logic ([#806](https://github.com/tediousjs/node-mssql/pull/806)
+[change] Updated to latest Tedious 4.1.1
+[removed] Node.js < 6 is no longer supported
+[removed] Support dropped for deprecated tedious configuration values and types
+
+v4.3.9 (2020-07-22)
+-------------------
+[fix] Bump various dependencies for security fixes
+
+v4.3.8 (2020-03-13)
+-------------------
+[fix] Bump acorn dependency for security fix
+
+v4.3.7 (2019-03-29)
+-------------------
+[fix] Fix an issue where connections that error can deplete the pool ([#842](https://github.com/tediousjs/node-mssql/pull/842))
+
+v4.3.6 (2019-03-27)
+-------------------
+[fix] Fix a bug where msnodesqlv8 driver could execute callbacks twice ([#834](https://github.com/tediousjs/node-mssql/pull/834))
+[fix] Bump js-yaml dependency for security fix
+
+v4.3.5 (2019-03-09)
+-------------------
+[change] Remove references to deprecated `TYPES.Null` from tedious
+
+v4.3.4 (2019-03-09)
+-------------------
+[change] Config objects are cloned so that the original object is not modified
+
+v4.3.3 (2019-03-07)
+-------------------
+[change] Updated to latest generic-pool 3.6.1
+
+v4.3.0 (2018-11-20)
+-------------------
+[new] Add beforeConnect handler
+[change] Interpret connection timeout in seconds (not milliseconds)
+
+v4.2.3 (2018-11-03)
+-------------------
+[new] Add info event for execute function
+[fix] Fix JSON parsing with empty recordsets
+[new] Array / string literal template query preparation fixes
+[new] Passing encrypt option from mssql connection options to tedious options
+[change] Return the _poolDestroy promise before connecting again
+
+v4.2.2 (2018-10-17)
+-------------------
+[change] Updated to latest Tedious 2.7.1
+
+v4.2.1 (2018-08-05)
+-------------------
+[fix] Fix connections in the pool depleting due to unfulfilled Promises and timeouts
+[change] Updated to latest Tedious 2.6.4
+
+v4.2.0 (2018-07-05)
+-------------------
+[new] Added TVP support for msnodesqlv8 driver
+[new] Added support for information messages in msnodesqlv8 driver
+[new] Added support for request cancellation in msnodesqlv8 driver
+[fix] Fixed Tedious deprecation warnings
+[fix] Fixed ResourceRequest timed out error
+[fix] All query and batch methods now have the same interface
+[fix] Fixed msnodesqlv8 issue where the encrypt option was getting ignored
+[change] Updated to latest Tedious 2.3.1
+
+v4.1.0 (2017-09-29)
+-------------------
+[new] Adding support for the MultiSubnetFailover option in connection strings (Paul Kehrer)
+[new] Add request timeout support for msnodesqlv8 queries (Michael Parque)
+[fix] Fix type inference of non-integer numbers (Andrew Crites)
+[fix] Set acquireTimeout on generic pool (Karl Wiggisser)
+
+v4.0.4 (2017-04-25)
+-------------------
+[fix] Fix auto-closing of idle connections
+
+v4.0.3 (2017-04-25)
+-------------------
+[fix] Fixed broken CLI & debugging
+
+v4.0.2 (2017-04-19)
+-------------------
+[fix] Fixed broken JSON parser
+
+v4.0.1 (2017-04-02)
+-------------------
+[fix] Fixed stream in pipe mode
+
+v4.0.0 (2017-04-01)
+-------------------
+[new] Completly rewritten to ES6
+[new] Library is now compatible with Webpack
+[new] Library is ready for async/await
+[change] Removed support for < Node.js 4
+[change] Removed support for outdated node-tds and msnodesql drivers
+[change] Removed require('mssql/nofix') syntax
+[change] Removed verbose and debug mode
+[change] Removed 'driver' from options
+[change] Removed Transaction and Prepared Statement queues
+[change] Removed 'multiple' directive
+[change] Connection renamed to ConnectionPool
+[change] Updated to latest Tedious 2.0.0
+
+v3.3.0 (2016-05-06)
+-------------------
+[new] Added support for receiving informational messages
+[new] Added JSON support for msnodesql and msnodesqlv8 drivers
+[fix] Minor fixes in connection string parsing
+
+v3.2.1 (2016-04-16)
+-------------------
+[fix] Added PreparedStatement.lastRequest to access internal Request when using Promises
+
+v3.2.0 (2016-04-11)
+-------------------
+[new] Added experimental support for ES6 tagged template literals
+[new] Added support for Variant data type
+[change] Updated to latest Tedious 1.14.0
+
+v3.1.2 (2016-03-08)
+-------------------
+[fix] Correctly release connection after transaction error
+
+v3.1.1 (2016-02-21)
+-------------------
+[change] Minor internal changes because of connect-mssql module
+
+v3.1.0 (2016-02-13)
+-------------------
+[new] Added support for creating columns with primary keys in TVP Tables
+
+v3.0.1 (2016-02-04)
+-------------------
+[fix] Fix error causing app to crash when parsing json/xml from stored procedure
+[fix] Correctly check connection health after socket error
+
+v3.0.0 (2016-01-08)
+-------------------
+[new] Version bump because of breakinch change introduced in release 2.6
+
+v2.6.2 (2015-12-25) - unpublished from npm
+-------------------
+[new] Added support for receiving number of affected rows
+[new] Automatically concat chunks of FOR XML / FOR JSON recordset
+[fix] Correctly preserve domains
+
+v2.5.0 (2015-12-17)
+-------------------
+[new] Added support for new TDS driver msnodesqlv8
+[new] Support for configs formated as Connection String, Connection String URI
+
+v2.4.0 (2015-12-11)
+-------------------
+[new] Connection.connect, PreparedStatement.prepare and Transaction.begin now returns instance of itself as a first argument to Promise resolver.
+[fix] Correctly handle Socket Errors inside Requests (Jørgen Elgaard Larsen)
+
+v2.3.2 (2015-11-11)
+-------------------
+[change] Updated to latest Tedious 1.13.1
+
+v2.3.1 (2015-09-21)
+-------------------
+[fix] JSON fixes
+
+v2.3.0 (2015-09-20)
+-------------------
+[new] Experimental JSON support
+
+v2.2.1 (2015-09-19)
+-------------------
+[change] Updated to latest Tedious 1.12.3
+[fix] Promise not returns rowCount in bulk load (Ben Farr)
+
+v2.2.0 (2015-08-17)
+-------------------
+[new] Added column metadata identity, caseSensitive and readOnly (nino-porcino)
+
+v2.1.8 (2015-08-11)
+-------------------
+[change] Updated to latest Tedious 1.12.2
+
+v2.1.7 (2015-08-09)
+-------------------
+[change] Updated to latest Tedious 1.11.4
+
+v2.1.6 (2015-06-17)
+-------------------
+[change] Updated to latest Tedious 1.11.2
+
+v2.1.5 (2015-06-05)
+-------------------
+[fix] Correctly resolve database and schema name from table path.
+
+v2.1.4 (2015-06-05)
+-------------------
+[new] Better test coverage, automated integration tests.
+[fix] msnodesql: Manual transaction aborting.
+[fix] msnodesql: Tests.
+
+v2.1.3 (2015-05-03)
+-------------------
+[fix] msnodesql: Release connection to pool on query error (Farhan Khan)
+
+v2.1.2 (2015-03-28)
+-------------------
+[fix] Fix name parsing in Table constructor (David Mercer)
+
+v2.1.1 (2015-02-25)
+-------------------
+[fix] Fix Promise in Prepared Statement
+
+v2.1.0 (2015-02-20)
+-------------------
+[new] Detailed SQL errors
+[fix] Precise detection of column data types
+
+v2.0.0 (2015-02-17)
+-------------------
+[change] Updated to latest Tedious 1.10.0
+[new] Promises
+[new] Pipe request to object stream
+[new] Integrated type checks
+[new] CLI
+[fix] Transaction Abort Handling
+[fix] Allow rollback on transaction with queued requests
+[fix] Connection pool fixes
+[fix] Minor fixes
+
+v1.3.0 (2014-10-27)
+-------------------
+[change] Updated to latest Tedious 1.7.0
+[new] Tedious: Char and NChar types are now available as input parameters
+
+v1.2.1 (2014-10-07)
+-------------------
+[change] Updated to latest Tedious 1.5.3
+
+v1.2.0 (2014-08-26)
+-------------------
+[change] Updated to latest Tedious 1.4.0
+[new] Added support for bulk insert.
+
+v1.1.1 (2014-08-07)
+-------------------
+[new] Added column index to recordset metadata.
+[fix] Minor fixes in Tedious driver
+
+v1.1.0 (2014-07-13)
+-------------------
+[change] Updated to latest Tedious 1.1.0
+[new] Added support for domain logins (NTLM)
+
+v1.0.2 (2014-07-04)
+-------------------
+[new] Added support for input and output parameters in batch method.
+[new] Added checks for SQL injection in parameter names
+
+v1.0.1 (2014-07-04)
+-------------------
+[new] Added support for Streaming in Prepared Statements
+
+v1.0.0 (2014-07-04)
+-------------------
+[new] Start of semantic versioning, and commitment to stable API until 2.0.0
+
+v0.6.2 (2014-07-04)
+-------------------
+[new] Added batch() method to execute sql commands like "create procedure"
+[new] Cancel request in node-tds driver
+[fix] Fixed VarChar/NVarChar/VarBinary MAX in prepared statements
+
+v0.6.1 (2014-07-04)
+-------------------
+[change] TDS debugging simplified
+
+v0.6.0 (2014-07-03)
+-------------------
+[change] Updated to latest Tedious 1.0.0
+[new] Added support for Streaming
+[new] Added option to set request timeout (config.requestTimeout = 15000)
+[new] Errors documented
+[change] Connection timeout renamed from config.timeout to config.connectionTimeout
+[fix] Minor bug fixes
+
+v0.5.5 (2014-06-24)
+-------------------
+[fix] Failed login left open connection pool
+
+v0.5.4 (2014-06-15)
+-------------------
+[new] Multiple errors handling
+
+v0.5.3 (2014-04-04)
+-------------------
+[fix] Multiple recordsets in Prepared Statements
+
+v0.5.2 (2014-04-04)
+-------------------
+[new] Support for Prepared Statements
+[fix] Fixed order of output parameters
+[fix] Minor fixes in node-tds driver
+
+v0.5.1 (2014-04-01)
+-------------------
+[change] Updated to new Tedious 0.2.1
+[new] You can now easily setup type's length/scale (sql.VarChar(50))
+[new] Serialization of Geography and Geometry CLR types
+[new] Support for creating Table-Value Parameters (var tvp = new sql.Table())
+[new] Output parameters are now Input-Output and can handle initial value
+[new] Option to choose whether to pass/receive times in UTC or local time
+[new] Connecting to named instances simplified
+[change] Default SQL data type for JS String type is now NVarChar (was VarChar)
+
+v0.5.0 (2014-01-25)
+-------------------
+[new] You can now attach event listeners to Connection (connect, close), Transaction (begin, commit, rollback) and Request (row, recordset, done)
+[new] You can now set length of Char, NChar and Binary output parameters
+[new] You can now change default transaction isolation level
+[change] Errors are now splitted to three categories for better error handling - ConnectionError, TransactionError, ReqestError
+[new] Tedious: Binary and VarBinary types are now available as input and output parameters
+[new] Tedious: Image type is now available as input parameter
+[change] Tedious: Binary, VarBinary and Image types are now returned as buffer (was byte array)
+[change] Tedious: Transaction isolationLevel default is now READ_COMMITED (was READ_UNCOMMITED)
+[fix] Tedious: Fixed issue when zero value was casted as null when using BigInt as input parameter
+[fix] Tedious: Fixed issue when dates before 1900/01/01 in input parameters resulted in "Out of bounds" error
+[new] node-tds: UniqueIdentifier type in now available as input and output parameter
+[fix] node-tds: UniqueIdentifier type is now parsed correctly as string value (was buffer)
+[fix] node-tds: Text, NText, Char, NChar, VarChar and NVarChar input parameters has correct lengths
+[fix] node-tds: Fixed Error messages
+[fix] Msnodesql: Char, NChar, Xml, Text, NText and VarBinary types are now correctly functional as output parameters
+
+v0.4.5 (2014-01-23)
+-------------------
+[new] Added support for "co" flow controller via co-mssql module
+
+v0.4.4 (2014-01-22)
+-------------------
+[change] returnValue also accessible as property of recordsets
+
+v0.4.3 (2014-01-14)
+-------------------
+[fix] Even better network error handling in tedious
+[new] Module is compatible with Node.js 0.11
+
+v0.4.2 (2014-01-06)
+-------------------
+[new] Added connection timeout for node-tds
+[fix] Module now handle tedious network errors correctly
+[fix] Connection pool now destroy failed connections correctly
+[fix] Connection to instance name via tedious now works correctly
+[change] Option 'timeout' is now common option for all drivers (see documentation)
+
+v0.4.1 (2013-12-13)
+-------------------
+[fix] Filter empty recordsets when NOCOUNT is OFF
+
+v0.4.0 (2013-12-12)
+-------------------
+[new] Added support for transactions.
+[new] node-tds is now available as an optional TDS driver.
+[new] Documentation updated to CSDoc spec.
+[change] Tedious driver no longer use tedious-connection-pool for connection pooling
+[change] Msnodesql is now pooled
+
+v0.3.4 (2013-10-23)
+-------------------
+[new] Queries with input and output parameters.
+
+v0.3.3 (2013-10-23)
+-------------------
+[new] Test connection when tedious pool is created.
+
+v0.3.2 (2013-09-30)
+-------------------
+[new] Added support for multiple connections.
+
+v0.3.1 (2013-09-13)
+-------------------
+[fix] NaN values of input parameters are automatically converted to null.
+
+v0.3.0 (2013-09-08)
+-------------------
+[new] Documentation extended
+[new] Microsoft Driver for Node.js for SQL Server is now available as an optional TDS driver.
+[new] Metadata are now accesible trough recordset.columns property.
+[new] Support for multiple recordsets in query.
+[fix] SQL null values are now correctly casted as JS null.
+[change] Default SQL data type for JS Number is now sql.Int (was sql.BigInt).
+
+v0.2.5 (2013-09-05)
+-------------------
+[fix] Multiple columns with identical name in same recordset are now handled correctly.
+
+v0.2.4 (2013-08-15)
+-------------------
+[fix] Errors are now instance of Error.
+[fix] Empty recordsets fixed.
+
+v0.2.3 (2013-08-14)
+-------------------
+[new] Verbose mode for query.
+
+v0.2.2 (2013-08-11)
+-------------------
+[new] Verbose mode for stored procedure.
+[fix] Null values fixed.
+
+v0.2.0 (2013-08-10)
+-------------------
+[change] Project was renamed from xsp-mssql to node-mssql.
+[fix] Some minor bug fixes.
+
+v0.1.0 (2013-07-10)
+-------------------
+Initial release.

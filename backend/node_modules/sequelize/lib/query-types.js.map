@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/query-types.js"],
+  "sourcesContent": ["'use strict';\n\n/**\n * An enum of query types used by `sequelize.query`\n *\n * @see {@link Sequelize#query}\n *\n * @property SELECT\n * @property INSERT\n * @property UPDATE\n * @property BULKUPDATE\n * @property BULKDELETE\n * @property DELETE\n * @property UPSERT\n * @property VERSION\n * @property SHOWTABLES\n * @property SHOWINDEXES\n * @property DESCRIBE\n * @property RAW\n * @property FOREIGNKEYS\n * @property SHOWCONSTRAINTS\n */\nconst QueryTypes = module.exports = { // eslint-disable-line\n  SELECT: 'SELECT',\n  INSERT: 'INSERT',\n  UPDATE: 'UPDATE',\n  BULKUPDATE: 'BULKUPDATE',\n  BULKDELETE: 'BULKDELETE',\n  DELETE: 'DELETE',\n  UPSERT: 'UPSERT',\n  VERSION: 'VERSION',\n  SHOWTABLES: 'SHOWTABLES',\n  SHOWINDEXES: 'SHOWINDEXES',\n  DESCRIBE: 'DESCRIBE',\n  RAW: 'RAW',\n  FOREIGNKEYS: 'FOREIGNKEYS',\n  SHOWCONSTRAINTS: 'SHOWCONSTRAINTS'\n};\n"],
+  "mappings": ";AAsBA,MAAM,aAAa,OAAO,UAAU;AAAA,EAClC,QAAQ;AAAA,EACR,QAAQ;AAAA,EACR,QAAQ;AAAA,EACR,YAAY;AAAA,EACZ,YAAY;AAAA,EACZ,QAAQ;AAAA,EACR,QAAQ;AAAA,EACR,SAAS;AAAA,EACT,YAAY;AAAA,EACZ,aAAa;AAAA,EACb,UAAU;AAAA,EACV,KAAK;AAAA,EACL,aAAa;AAAA,EACb,iBAAiB;AAAA;",
+  "names": []
+}

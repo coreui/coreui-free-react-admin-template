@@ -1,0 +1,1 @@
+{"version":3,"file":"nodeHttpClient.d.ts","sourceRoot":"","sources":["../../src/nodeHttpClient.ts"],"names":[],"mappings":"AAQA,OAAO,KAAK,EACV,UAAU,EAIV,eAAe,EAGhB,MAAM,iBAAiB,CAAC;AAqVzB,gBAAgB;AAChB,wBAAgB,aAAa,CAAC,IAAI,EAAE,eAAe,GAAG,MAAM,GAAG,IAAI,CAclE;AAED;;;GAGG;AACH,wBAAgB,oBAAoB,IAAI,UAAU,CAEjD"}

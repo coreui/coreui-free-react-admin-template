@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/errors/query-error.ts"],
+  "sourcesContent": ["import BaseError from './base-error';\n\n/**\n * Thrown when a query is passed invalid options (see message for details)\n */\nclass QueryError extends BaseError {\n  constructor(message: string) {\n    super(message);\n    this.name = 'SequelizeQueryError';\n  }\n}\n\nexport default QueryError;\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,wBAAsB;AAKtB,yBAAyB,0BAAU;AAAA,EACjC,YAAY,SAAiB;AAC3B,UAAM;AACN,SAAK,OAAO;AAAA;AAAA;AAIhB,IAAO,sBAAQ;",
+  "names": []
+}

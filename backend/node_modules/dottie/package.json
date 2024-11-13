@@ -1,0 +1,22 @@
+{
+  "name": "dottie",
+  "version": "2.0.6",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^10.2.0"
+  },
+  "license": "MIT",
+  "files": [
+    "dottie.js"
+  ],
+  "description": "Fast and safe nested object access and manipulation in JavaScript",
+  "author": "Mick Hansen <maker@mhansen.io>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mickhansen/dottie.js.git"
+  },
+  "main": "dottie.js",
+  "scripts": {
+    "test": "mocha -t 5000 -s 100 --reporter spec test"
+  }
+}

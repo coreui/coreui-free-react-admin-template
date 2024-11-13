@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/dialects/sqlite/sqlite-utils.ts"],
+  "sourcesContent": ["import type { Sequelize } from '../../sequelize.js';\nimport type { QueryOptions } from '../abstract/query-interface.js';\n\nexport async function withSqliteForeignKeysOff<T>(sequelize: Sequelize, options: QueryOptions, cb: () => Promise<T>): Promise<T> {\n  try {\n    await sequelize.query('PRAGMA foreign_keys = OFF', options);\n\n    return await cb();\n  } finally {\n    await sequelize.query('PRAGMA foreign_keys = ON', options);\n  }\n}\n"],
+  "mappings": ";;;;;;;AAAA;AAAA;AAAA;AAGA,wCAAkD,WAAsB,SAAuB,IAAkC;AAC/H,MAAI;AACF,UAAM,UAAU,MAAM,6BAA6B;AAEnD,WAAO,MAAM;AAAA,YACb;AACA,UAAM,UAAU,MAAM,4BAA4B;AAAA;AAAA;",
+  "names": []
+}

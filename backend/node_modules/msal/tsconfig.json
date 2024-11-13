@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [ "es2015", "dom", "es2015.promise" ],
+    "outDir": "lib-commonjs",
+    "allowUnusedLabels": false,
+    "noImplicitReturns": true,
+    "esModuleInterop": true
+  },
+  "include": ["src", "test"],
+  "types": [
+    "node",
+    "jest"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "adal-node",
+  "author": {
+    "name": "Microsoft Open Technologies Inc",
+    "email": "msopentech@microsoft.com",
+    "url": "http://msopentech.com/"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AzureAD/microsoft-authentication-library-for-js.git"
+  },
+  "version": "0.2.4",
+  "description": "Windows Azure Active Directory Client Library for node",
+  "keywords": [
+    "node",
+    "azure",
+    "AAD",
+    "adal",
+    "adfs",
+    "oauth"
+  ],
+  "main": "./lib/adal.js",
+  "types": "./lib/adal.d.ts",
+  "engines": {
+    "node": ">= 0.6.15"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.8.3",
+    "async": "^2.6.3",
+    "axios": "^0.21.1",
+    "date-utils": "*",
+    "jws": "3.x.x",
+    "underscore": ">= 1.3.1",
+    "uuid": "^3.1.0",
+    "xpath.js": "~1.1.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.44",
+    "@types/nock": "^8.2.1",
+    "@types/node": "^14.17.10",
+    "@types/sinon": "^2.3.7",
+    "@types/underscore": "^1.8.4",
+    "jshint": "^2.10.2",
+    "mocha": "*",
+    "nock": "^10.0.6",
+    "sinon": "^7.3.2",
+    "typescript": "^3.9.10"
+  },
+  "scripts": {
+    "test": "npm run tsc && mocha -R spec --ui tdd test",
+    "cover": "./test/util/cover",
+    "doc": "jsdoc lib",
+    "tsc": "tsc -p tsconfig.json"
+  }
+}

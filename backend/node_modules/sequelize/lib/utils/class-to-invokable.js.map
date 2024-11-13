@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/utils/class-to-invokable.ts"],
+  "sourcesContent": ["/**\n * Utility type for a class which can be called in addion to being used as a constructor.\n */\ninterface Invokeable<Args extends Array<any>, Instance> {\n  (...args: Args): Instance;\n  new (...args: Args): Instance;\n}\n\n/**\n * Wraps a constructor to not need the `new` keyword using a proxy.\n * Only used for data types.\n *\n * @param {ProxyConstructor} Class The class instance to wrap as invocable.\n * @returns {Proxy} Wrapped class instance.\n * @private\n */\nexport function classToInvokable<Args extends Array<any>, Instance extends object>(\n  Class: new (...args: Args) => Instance\n): Invokeable<Args, Instance> {\n  return new Proxy<Invokeable<Args, Instance>>(Class as any, {\n    apply(_target, _thisArg, args: Args) {\n      return new Class(...args);\n    },\n    construct(_target, args: Args) {\n      return new Class(...args);\n    }\n  });\n}\n"],
+  "mappings": ";;;;;;;AAAA;AAAA;AAAA;AAgBO,0BACL,OAC4B;AAC5B,SAAO,IAAI,MAAkC,OAAc;AAAA,IACzD,MAAM,SAAS,UAAU,MAAY;AACnC,aAAO,IAAI,MAAM,GAAG;AAAA;AAAA,IAEtB,UAAU,SAAS,MAAY;AAC7B,aAAO,IAAI,MAAM,GAAG;AAAA;AAAA;AAAA;",
+  "names": []
+}

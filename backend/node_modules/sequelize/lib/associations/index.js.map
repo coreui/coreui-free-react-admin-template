@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/associations/index.js"],
+  "sourcesContent": ["'use strict';\n\nconst Association = require('./base');\n\nAssociation.BelongsTo = require('./belongs-to');\nAssociation.HasOne = require('./has-one');\nAssociation.HasMany = require('./has-many');\nAssociation.BelongsToMany = require('./belongs-to-many');\n\nmodule.exports = Association;\nmodule.exports.default = Association;\nmodule.exports.Association = Association;\n"],
+  "mappings": ";AAEA,MAAM,cAAc,QAAQ;AAE5B,YAAY,YAAY,QAAQ;AAChC,YAAY,SAAS,QAAQ;AAC7B,YAAY,UAAU,QAAQ;AAC9B,YAAY,gBAAgB,QAAQ;AAEpC,OAAO,UAAU;AACjB,OAAO,QAAQ,UAAU;AACzB,OAAO,QAAQ,cAAc;",
+  "names": []
+}

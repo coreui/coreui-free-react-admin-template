@@ -1,0 +1,74 @@
+{
+  "name": "@azure/msal-node",
+  "version": "1.0.0-beta.6",
+  "author": {
+    "name": "Microsoft",
+    "email": "nugetaad@microsoft.com",
+    "url": "https://www.microsoft.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AzureAD/microsoft-authentication-library-for-js.git"
+  },
+  "description": "Microsoft Authentication Library for Node",
+  "keywords": [
+    "js",
+    "ts",
+    "node",
+    "AAD",
+    "msal",
+    "oauth"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch --tsconfig ./tsconfig.build.json",
+    "build": "tsdx build --tsconfig ./tsconfig.build.json",
+    "build:modules:watch": "tsdx watch --verbose",
+    "test": "tsdx test .*.spec.*",
+    "test:watch": "tsdx test .*.spec.* --watch",
+    "test:coverage": "tsdx test .*.spec.* --coverage",
+    "lint": "cd ../../ && npm run lint:node",
+    "lint:fix": "npm run lint -- -- --fix",
+    "build:all": "npm run build:common && npm run build",
+    "build:common": "cd ../msal-common && npm run build",
+    "prepack": "npm run build:all"
+  },
+  "peerDependencies": {},
+  "jest": {
+    "verbose": true,
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx",
+      "node"
+    ],
+    "testMatch": [
+      "<rootDir>/test/**/*.spec.ts"
+    ]
+  },
+  "module": "dist/msal-node.esm.js",
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^13.13.4",
+    "@types/uuid": "^7.0.0",
+    "husky": "^4.2.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.8.3",
+    "@microsoft/api-extractor": "^7.13.0"
+  },
+  "dependencies": {
+    "@azure/msal-common": "^4.0.0",
+    "axios": "^0.21.1",
+    "jsonwebtoken": "^8.5.1",
+    "uuid": "^8.3.0"
+  }
+}

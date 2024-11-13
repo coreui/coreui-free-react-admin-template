@@ -1,0 +1,10 @@
+{
+  "name": "date-utils",
+  "version": "1.2.16",
+  "main": "lib/date-utils.min.js",
+  "ignore": [
+    "package.json",
+    ".gitignore",
+    "test"
+  ]
+}

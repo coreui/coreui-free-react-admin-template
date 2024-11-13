@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.js"],
+  "sourcesContent": ["'use strict';\n\n/**\n  * A Sequelize module that contains the sequelize entry point.\n  *\n  * @module sequelize\n  */\n\n/** Exports the sequelize entry point. */\nmodule.exports = require('./sequelize');\n"],
+  "mappings": ";AASA,OAAO,UAAU,QAAQ;",
+  "names": []
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"ServerTelemetryEntity.d.ts","sourceRoot":"","sources":["../../../src/cache/entities/ServerTelemetryEntity.ts"],"names":[],"mappings":"AAOA,qBAAa,qBAAqB;IAC9B,cAAc,EAAE,KAAK,CAAC,MAAM,GAAC,MAAM,CAAC,CAAC;IACrC,MAAM,EAAE,MAAM,EAAE,CAAC;IACjB,SAAS,EAAE,MAAM,CAAC;;IAQlB;;;;OAIG;IACH,MAAM,CAAC,uBAAuB,CAAC,GAAG,EAAE,MAAM,EAAE,MAAM,CAAC,EAAE,MAAM,GAAG,OAAO;CAcxE"}

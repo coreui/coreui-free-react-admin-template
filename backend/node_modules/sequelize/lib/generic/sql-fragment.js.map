@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/generic/sql-fragment.ts"],
+  "sourcesContent": ["import { Falsy } from './falsy';\n\nexport type SQLFragment = string | Falsy | SQLFragment[];\nexport type TruthySQLFragment = string | SQLFragment[];\n"],
+  "mappings": ";;AAAA;",
+  "names": []
+}

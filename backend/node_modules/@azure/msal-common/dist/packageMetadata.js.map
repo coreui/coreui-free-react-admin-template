@@ -1,0 +1,1 @@
+{"version":3,"file":"packageMetadata.js","sources":["../src/packageMetadata.ts"],"sourcesContent":["/* eslint-disable header/header */\nexport const name = \"@azure/msal-common\";\nexport const version = \"4.5.1\";\n"],"names":[],"mappings":";;AAAA;IACa,IAAI,GAAG,qBAAqB;IAC5B,OAAO,GAAG;;;;"}

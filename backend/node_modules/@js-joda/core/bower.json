@@ -1,0 +1,21 @@
+{
+  "name": "@js-joda/core",
+  "description": "a date and time library for javascript",
+  "main": "dist/js-joda.js",
+  "authors": [
+    "pithu",
+    "phueper"
+  ],
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "date",
+    "time",
+    "timezone"
+  ],
+  "homepage": "https://github.com/js-joda/joda-js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "xpath.js",
+    "version": "1.1.0",
+    "description": "Xpath pure javascript implementation for node.js",
+    "engines": { "node": ">=0.4.0" },
+    "author": "Cameron McCormack (http://mcc.id.au/xpathjs), Yaron Naveh (yaronn01@gmail.com, http://webservices20.blogspot.com/)",
+    "dependencies": {
+
+     },
+     "devDependencies": {
+        "nodeunit": ">=0.6.4"
+     },
+    "repository" : {
+        "type":"git",
+        "url":"https://github.com/yaronn/xpath.js.git" },
+    "main": "./xpath.js",
+    "directories": { },
+    "scripts":    {
+        "test": "nodeunit tests/test.js"
+    },
+    "keywords": ["xpath", "xml"],
+    "license": "MIT"
+}

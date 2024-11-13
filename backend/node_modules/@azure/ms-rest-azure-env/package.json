@@ -1,0 +1,71 @@
+{
+  "name": "@azure/ms-rest-azure-env",
+  "author": {
+    "name": "Microsoft Corporation",
+    "email": "azsdkteam@microsoft.com",
+    "url": "https://github.com/Azure/ms-rest-azure-env"
+  },
+  "version": "2.0.0",
+  "description": "Isomorphic library that provides Azure endpoints for different Azure Environments/Clouds.",
+  "tags": [
+    "node",
+    "isomorphic",
+    "azure",
+    "environment",
+    "endpoint"
+  ],
+  "keywords": [
+    "node",
+    "isomorphic",
+    "azure",
+    "environment",
+    "endpoint"
+  ],
+  "main": "./dist/msRestAzureEnv.js",
+  "module": "./es/lib/azureEnvironment.js",
+  "types": "./es/lib/azureEnvironment.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.js.map",
+    "es/lib/**/*.js",
+    "es/lib/**/*.js.map",
+    "es/lib/**/*.d.ts",
+    "es/lib/**/*.d.ts.map",
+    "lib/**/*.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/should": "^13.0.0",
+    "mocha": "^5.2.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^0.67.3",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "should": "13.2.3",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6",
+    "uglify-js": "^3.4.9"
+  },
+  "homepage": "https://github.com/Azure/ms-rest-azure-env",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/ms-rest-azure-env.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/ms-rest-azure-env/issues"
+  },
+  "scripts": {
+    "build": "run-s build:tsc build:rollup build:minify",
+    "build:tsc": "tsc -p tsconfig.es.json",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build:minify": "uglifyjs -c -m --comments --source-map \"content='./dist/msRestAzureEnv.js.map'\" -o ./dist/msRestAzureEnv.min.js ./dist/msRestAzureEnv.js",
+    "prepack": "npm install && npm run build",
+    "test": "npm run build && run-p test:tslint test:unit",
+    "test:tslint": "tslint -p . -c tslint.json --exclude test/**/*.ts",
+    "test:unit": "mocha"
+  },
+  "sideEffects": false
+}

@@ -1,0 +1,149 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var tls = _interopRequireWildcard(require("tls"));
+
+var _events = require("events");
+
+var _message = _interopRequireDefault(require("./message"));
+
+var _packet = require("./packet");
+
+var _incomingMessageStream = _interopRequireDefault(require("./incoming-message-stream"));
+
+var _outgoingMessageStream = _interopRequireDefault(require("./outgoing-message-stream"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const DuplexPair = require('native-duplexpair');
+
+class MessageIO extends _events.EventEmitter {
+  constructor(socket, packetSize, debug) {
+    super();
+    this.socket = void 0;
+    this.debug = void 0;
+    this.tlsNegotiationComplete = void 0;
+    this.incomingMessageStream = void 0;
+    this.outgoingMessageStream = void 0;
+    this.securePair = void 0;
+    this.socket = socket;
+    this.debug = debug;
+    this.tlsNegotiationComplete = false;
+    this.incomingMessageStream = new _incomingMessageStream.default(this.debug);
+    this.incomingMessageStream.on('data', message => {
+      this.emit('data', message);
+    });
+    this.incomingMessageStream.on('error', message => {
+      this.emit('error', message);
+    });
+    this.outgoingMessageStream = new _outgoingMessageStream.default(this.debug, {
+      packetSize: packetSize
+    });
+    this.socket.pipe(this.incomingMessageStream);
+    this.outgoingMessageStream.pipe(this.socket);
+  }
+
+  packetSize(...args) {
+    if (args.length > 0) {
+      const packetSize = args[0];
+      this.debug.log('Packet size changed from ' + this.outgoingMessageStream.packetSize + ' to ' + packetSize);
+      this.outgoingMessageStream.packetSize = packetSize;
+    }
+
+    if (this.securePair) {
+      this.securePair.cleartext.setMaxSendFragment(this.outgoingMessageStream.packetSize);
+    }
+
+    return this.outgoingMessageStream.packetSize;
+  }
+
+  startTls(secureContext, hostname, trustServerCertificate) {
+    const duplexpair = new DuplexPair();
+    const securePair = this.securePair = {
+      cleartext: tls.connect({
+        socket: duplexpair.socket1,
+        servername: hostname,
+        secureContext: secureContext,
+        rejectUnauthorized: !trustServerCertificate
+      }),
+      encrypted: duplexpair.socket2
+    }; // If an error happens in the TLS layer, there is nothing we can do about it.
+    // Forward the error to the socket so the connection gets properly cleaned up.
+
+    securePair.cleartext.on('error', err => {
+      // Streams in node.js versions before 8.0.0 don't support `.destroy`
+      if (typeof securePair.encrypted.destroy === 'function') {
+        securePair.encrypted.destroy();
+      }
+
+      this.socket.destroy(err);
+    });
+    securePair.cleartext.on('secureConnect', () => {
+      const cipher = securePair.cleartext.getCipher();
+
+      if (cipher) {
+        this.debug.log('TLS negotiated (' + cipher.name + ', ' + cipher.version + ')');
+      }
+
+      this.emit('secure', securePair.cleartext);
+      this.encryptAllFutureTraffic();
+    });
+    securePair.encrypted.on('data', data => {
+      this.sendMessage(_packet.TYPE.PRELOGIN, data, false);
+    });
+  }
+
+  encryptAllFutureTraffic() {
+    const securePair = this.securePair;
+    securePair.cleartext.setMaxSendFragment(this.outgoingMessageStream.packetSize);
+    securePair.encrypted.removeAllListeners('data');
+    this.outgoingMessageStream.unpipe(this.socket);
+    this.socket.unpipe(this.incomingMessageStream);
+    this.socket.pipe(securePair.encrypted);
+    securePair.encrypted.pipe(this.socket);
+    securePair.cleartext.pipe(this.incomingMessageStream);
+    this.outgoingMessageStream.pipe(securePair.cleartext);
+    this.tlsNegotiationComplete = true;
+  }
+
+  tlsHandshakeData(data) {
+    const securePair = this.securePair;
+    securePair.encrypted.write(data);
+  } // TODO listen for 'drain' event when socket.write returns false.
+  // TODO implement incomplete request cancelation (2.2.1.6)
+
+
+  sendMessage(packetType, data, resetConnection) {
+    const message = new _message.default({
+      type: packetType,
+      resetConnection: resetConnection
+    });
+    message.end(data);
+    this.outgoingMessageStream.write(message);
+    return message;
+  } // Temporarily suspends the flow of incoming packets.
+
+
+  pause() {
+    this.incomingMessageStream.pause();
+  } // Resumes the flow of incoming packets.
+
+
+  resume() {
+    this.incomingMessageStream.resume();
+  }
+
+}
+
+var _default = MessageIO;
+exports.default = _default;
+module.exports = MessageIO;

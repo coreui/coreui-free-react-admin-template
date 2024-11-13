@@ -1,0 +1,35 @@
+{
+  "parser": "babel-eslint",
+  "env":    {
+    "node":    true,
+    "mocha":   true,
+    "browser": true
+  },
+  "rules":  {
+    "strict":                   0, //taken care of automatically by babel
+    "no-mixed-spaces-and-tabs": 2,
+    "eqeqeq":                   2,
+    "no-eq-null":               2,
+    "consistent-this":          2,
+    "guard-for-in":             2,
+    "no-caller":                2,
+    "no-underscore-dangle":     2,
+    "curly":                    2,
+    "no-multi-spaces":          2,
+    "key-spacing": 0,
+    "no-return-assign":         2,
+    "consistent-return":        2,
+    "no-shadow":                2,
+    "comma-dangle":             2,
+    "no-use-before-define":     2,
+    "no-empty":                 2,
+    "new-parens":               2,
+    "no-cond-assign":           2,
+    "no-fallthrough":           2,
+    "new-cap":                  2,
+    "no-loop-func":             2,
+    "no-unreachable":           2,
+    "no-process-exit":          2,
+    "quotes":                   [2, "double", "avoid-escape"]
+  }
+}

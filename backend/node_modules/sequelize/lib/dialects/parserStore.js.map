@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/dialects/parserStore.js"],
+  "sourcesContent": ["'use strict';\n\nconst stores = new Map();\n\nmodule.exports = dialect => {\n  if (!stores.has(dialect)) {\n    stores.set(dialect, new Map());\n  }\n\n  return {\n    clear() {\n      stores.get(dialect).clear();\n    },\n    refresh(dataType) {\n      for (const type of dataType.types[dialect]) {\n        stores.get(dialect).set(type, dataType.parse);\n      }\n    },\n    get(type) {\n      return stores.get(dialect).get(type);\n    }\n  };\n};\n"],
+  "mappings": ";AAEA,MAAM,SAAS,oBAAI;AAEnB,OAAO,UAAU,aAAW;AAC1B,MAAI,CAAC,OAAO,IAAI,UAAU;AACxB,WAAO,IAAI,SAAS,oBAAI;AAAA;AAG1B,SAAO;AAAA,IACL,QAAQ;AACN,aAAO,IAAI,SAAS;AAAA;AAAA,IAEtB,QAAQ,UAAU;AAChB,iBAAW,QAAQ,SAAS,MAAM,UAAU;AAC1C,eAAO,IAAI,SAAS,IAAI,MAAM,SAAS;AAAA;AAAA;AAAA,IAG3C,IAAI,MAAM;AACR,aAAO,OAAO,IAAI,SAAS,IAAI;AAAA;AAAA;AAAA;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/errors/instance-error.ts"],
+  "sourcesContent": ["import BaseError from './base-error';\n\n/**\n * Thrown when a some problem occurred with Instance methods (see message for details)\n */\nclass InstanceError extends BaseError {\n  constructor(message: string) {\n    super(message);\n    this.name = 'SequelizeInstanceError';\n  }\n}\n\nexport default InstanceError;\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,wBAAsB;AAKtB,4BAA4B,0BAAU;AAAA,EACpC,YAAY,SAAiB;AAC3B,UAAM;AACN,SAAK,OAAO;AAAA;AAAA;AAIhB,IAAO,yBAAQ;",
+  "names": []
+}

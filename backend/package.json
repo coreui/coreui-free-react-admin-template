@@ -1,0 +1,16 @@
+{
+    "name": "coreui-mssql-backend",
+    "version": "1.0.0",
+    "description": "Backend for CoreUI React app using MSSQL",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "mssql": "^7.2.1",
+        "sequelize": "^6.3.5",
+        "tedious": "^9.2.1"
+    }
+}

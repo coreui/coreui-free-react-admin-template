@@ -1,0 +1,1 @@
+{"version":3,"file":"OpenIdConfigResponse.d.ts","sourceRoot":"","sources":["../../src/authority/OpenIdConfigResponse.ts"],"names":[],"mappings":"AAKA;;GAEG;AACH,oBAAY,oBAAoB,GAAG;IAC/B,sBAAsB,EAAE,MAAM,CAAC;IAC/B,cAAc,EAAE,MAAM,CAAC;IACvB,oBAAoB,EAAE,MAAM,CAAC;IAC7B,MAAM,EAAE,MAAM,CAAC;CAClB,CAAC;AAEF,wBAAgB,sBAAsB,CAAC,QAAQ,EAAE,MAAM,GAAG,OAAO,CAOhE"}

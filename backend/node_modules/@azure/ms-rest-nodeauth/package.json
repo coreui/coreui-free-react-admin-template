@@ -1,0 +1,75 @@
+{
+  "name": "@azure/ms-rest-nodeauth",
+  "author": {
+    "name": "Microsoft Corporation",
+    "email": "azsdkteam@microsoft.com",
+    "url": "https://github.com/Azure/ms-rest-nodeauth"
+  },
+  "version": "3.1.1",
+  "description": "Azure Authentication library in node.js with type definitions.",
+  "keywords": [
+    "node",
+    "azure",
+    "autorest",
+    "authentication",
+    "environment",
+    "adal"
+  ],
+  "main": "./dist/lib/msRestNodeAuth.js",
+  "types": "./dist/lib/msRestNodeAuth.d.ts",
+  "files": [
+    "dist/lib/**/*.js",
+    "dist/lib/**/*.js.map",
+    "dist/lib/**/*.d.ts",
+    "dist/lib/**/*.d.ts.map",
+    "lib/**/*.ts",
+    "LICENSE",
+    "README.md",
+    "tsconfig.json"
+  ],
+  "dependencies": {
+    "@azure/ms-rest-azure-env": "^2.0.0",
+    "@azure/ms-rest-js": "^2.0.4",
+    "adal-node": "^0.2.2"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@azure/arm-subscriptions": "^2.0.0",
+    "@ts-common/azure-js-dev-tools": "^22.2.0",
+    "@types/chai": "^4.1.7",
+    "@types/dotenv": "^6.1.1",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.12.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.0.0",
+    "mocha": "^6.2.0",
+    "nock": "^10.0.6",
+    "npm-run-all": "^4.1.5",
+    "nyc": "^14.1.1",
+    "prettier": "2.2.1",
+    "rollup": "^1.18.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typescript": "~3.5.3"
+  },
+  "homepage": "https://github.com/Azure/ms-rest-nodeauth",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/ms-rest-nodeauth.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/ms-rest-nodeauth/issues"
+  },
+  "scripts": {
+    "build": "run-s build:tsc build:rollup",
+    "build:tsc": "tsc -p tsconfig.json",
+    "build:rollup": "rollup -c rollup.config.js",
+    "format": "prettier --write \"./**/*.ts\"",
+    "prepack": "npm install && npm run build",
+    "test": "npm run build && run-p test:tslint test:unit",
+    "test:tslint": "tslint -p . -c tslint.json",
+    "test:unit": "mocha",
+    "check:packagejsonversion": "ts-node ./.scripts/checkPackageJsonVersion.ts"
+  }
+}

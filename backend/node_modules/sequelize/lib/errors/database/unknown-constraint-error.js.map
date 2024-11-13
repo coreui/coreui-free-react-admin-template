@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/errors/database/unknown-constraint-error.ts"],
+  "sourcesContent": ["import DatabaseError, { DatabaseErrorSubclassOptions } from '../database-error';\n\ninterface UnknownConstraintErrorOptions {\n  constraint?: string;\n  fields?: Record<string, string | number>;\n  table?: string;\n}\n\n/**\n * Thrown when constraint name is not found in the database\n */\nclass UnknownConstraintError extends DatabaseError implements UnknownConstraintErrorOptions {\n  constraint: string | undefined;\n  fields: Record<string, string | number> | undefined;\n  table: string | undefined;\n\n  constructor(\n    options: UnknownConstraintErrorOptions & DatabaseErrorSubclassOptions\n  ) {\n    options = options || {};\n    options.parent = options.parent || { sql: '', name: '', message: '' };\n\n    super(options.parent, { stack: options.stack });\n    this.name = 'SequelizeUnknownConstraintError';\n\n    this.message = options.message || 'The specified constraint does not exist';\n    this.constraint = options.constraint;\n    this.fields = options.fields;\n    this.table = options.table;\n  }\n}\n\nexport default UnknownConstraintError;\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,4BAA4D;AAW5D,qCAAqC,8BAAuD;AAAA,EAK1F,YACE,SACA;AACA,cAAU,WAAW;AACrB,YAAQ,SAAS,QAAQ,UAAU,EAAE,KAAK,IAAI,MAAM,IAAI,SAAS;AAEjE,UAAM,QAAQ,QAAQ,EAAE,OAAO,QAAQ;AAVzC;AACA;AACA;AASE,SAAK,OAAO;AAEZ,SAAK,UAAU,QAAQ,WAAW;AAClC,SAAK,aAAa,QAAQ;AAC1B,SAAK,SAAS,QAAQ;AACtB,SAAK,QAAQ,QAAQ;AAAA;AAAA;AAIzB,IAAO,mCAAQ;",
+  "names": []
+}

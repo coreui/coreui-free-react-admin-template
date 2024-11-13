@@ -1,0 +1,1 @@
+{"version":3,"file":"AccountInfo.d.ts","sourceRoot":"","sources":["../../src/account/AccountInfo.ts"],"names":[],"mappings":"AAKA;;;;;;;;;;GAUG;AACH,oBAAY,WAAW,GAAG;IACtB,aAAa,EAAE,MAAM,CAAC;IACtB,WAAW,EAAE,MAAM,CAAC;IACpB,QAAQ,EAAE,MAAM,CAAC;IACjB,QAAQ,EAAE,MAAM,CAAC;IACjB,cAAc,EAAE,MAAM,CAAC;IACvB,IAAI,CAAC,EAAE,MAAM,CAAC;IACd,aAAa,CAAC,EAAE,MAAM,CAAC;CAC1B,CAAC"}

@@ -1,0 +1,21 @@
+<div>
+  <div class="box box_1">
+    <h4>Alabama</h4>
+    <ul>
+      <li>
+        <a href="http://auburn.craigslist.org">alabama-city111</a>
+      </li>
+      <li>
+        <a href="http://auburn.craigslist.org">alabama-city222</a>
+      </li>
+    </ul>
+  </div>
+  <div class="box box_2">
+    <h4>Illinois</h4>
+    <ul>
+      <li>
+        <a href="http://bn.craigslist.org">llinois-city</a>
+      </li>          
+    </ul>
+  </div>
+</div>

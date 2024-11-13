@@ -1,0 +1,50 @@
+{
+  "name": "wkx",
+  "version": "0.5.0",
+  "description": "A WKT/WKB/EWKT/EWKB/TWKB/GeoJSON parser and serializer",
+  "main": "lib/wkx.js",
+  "types": "lib/wkx.d.ts",
+  "files": [
+    "dist/",
+    "lib/"
+  ],
+  "scripts": {
+    "test": "jshint . && nyc mocha",
+    "build": "mkdirp ./dist && browserify -r buffer -r ./lib/wkx.js:wkx ./lib/wkx.js > ./dist/wkx.js && uglifyjs -c -m -- ./dist/wkx.js > ./dist/wkx.min.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "author": "Christian Schwarz",
+  "license": "MIT",
+  "devDependencies": {
+    "async": "^3.2.0",
+    "browserify": "^16.5.0",
+    "coveralls": "^3.0.11",
+    "deep-eql": "^4.0.0",
+    "jshint": "^2.11.0",
+    "json-stringify-pretty-compact": "^2.0.0",
+    "mkdirp": "^1.0.3",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.0",
+    "pg": "^7.18.2",
+    "uglify-js": "^3.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/cschwarz/wkx.git"
+  },
+  "keywords": [
+    "wkt",
+    "wkb",
+    "ewkt",
+    "ewkb",
+    "twkb",
+    "geojson",
+    "ogc",
+    "geometry",
+    "geography",
+    "spatial"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  }
+}

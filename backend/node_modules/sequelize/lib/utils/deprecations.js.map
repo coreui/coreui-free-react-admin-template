@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/utils/deprecations.ts"],
+  "sourcesContent": ["import { deprecate } from 'util';\n\nconst noop = () => { /* noop */ };\n\nexport const noTrueLogging = deprecate(noop, 'The logging-option should be either a function or false. Default: console.log', 'SEQUELIZE0002');\nexport const noStringOperators = deprecate(noop, 'String based operators are deprecated. Please use Symbol based operators for better security, read more at https://sequelize.org/master/manual/querying.html#operators', 'SEQUELIZE0003');\nexport const noBoolOperatorAliases = deprecate(noop, 'A boolean value was passed to options.operatorsAliases. This is a no-op with v5 and should be removed.', 'SEQUELIZE0004');\nexport const noDoubleNestedGroup = deprecate(noop, 'Passing a double nested nested array to `group` is unsupported and will be removed in v6.', 'SEQUELIZE0005');\nexport const unsupportedEngine = deprecate(noop, 'This database engine version is not supported, please update your database server. More information https://github.com/sequelize/sequelize/blob/main/ENGINE.md', 'SEQUELIZE0006');\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,kBAA0B;AAE1B,MAAM,OAAO,MAAM;AAAA;AAEZ,MAAM,gBAAgB,2BAAU,MAAM,iFAAiF;AACvH,MAAM,oBAAoB,2BAAU,MAAM,0KAA0K;AACpN,MAAM,wBAAwB,2BAAU,MAAM,0GAA0G;AACxJ,MAAM,sBAAsB,2BAAU,MAAM,6FAA6F;AACzI,MAAM,oBAAoB,2BAAU,MAAM,kKAAkK;",
+  "names": []
+}

@@ -1,0 +1,51 @@
+{
+  "name": "sequelize-pool",
+  "description": "Resource pooling for Node.JS",
+  "version": "7.1.0",
+  "author": "Sushant <sushantdhiman@outlook.com>",
+  "keywords": [
+    "pool",
+    "pooling",
+    "throttle",
+    "sequelize"
+  ],
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/sushantdhiman/sequelize-pool.git"
+  },
+  "files": [
+    "lib",
+    "types"
+  ],
+  "types": "types",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^10.17.54",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.2",
+    "tap": "^14.10.7",
+    "typedoc": "^0.20.30",
+    "typedoc-plugin-markdown": "^3.6.0",
+    "typescript": "~4.2.2"
+  },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run lint && npm run test:raw",
+    "lint": "eslint --ext .js,.ts src/**/* test/**/*",
+    "pretty": "prettier src/**/*.ts test/**/*.js --write",
+    "docs": "typedoc",
+    "test:raw": "tap test/**/*-test.js"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "license": "MIT"
+}

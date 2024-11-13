@@ -1,0 +1,28 @@
+{
+  "tags"      : {
+    "allowUnknownTags" : true
+  },
+  "plugins"   : ["plugins/markdown"],
+  "templates": {
+      "cleverLinks": false,
+      "monospaceLinks": false,
+      "default": {
+          "outputSourceFiles": true
+      },
+      "systemName"      : "Date-Utils",
+      "footer"          : "",
+      "navType"         : "vertical",
+      "theme"           : "journal",
+      "linenums"        : true,
+      "collapseSymbols" : false,
+      "inverseNav"      : true
+  },
+  "markdown"  : {
+    "parser"   : "gfm",
+    "hardwrap" : true
+  },
+  "opts" : {
+    "version": false,
+    "verbose": true
+  }
+}

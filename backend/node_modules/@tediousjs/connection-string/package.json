@@ -1,0 +1,46 @@
+{
+  "name": "@tediousjs/connection-string",
+  "version": "0.3.0",
+  "description": "SQL ConnectionString parser",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tediousjs/connection-string"
+  },
+  "bugs": {
+    "url": "https://github.com/tediousjs/connection-string/issues"
+  },
+  "homepage": "https://github.com/tediousjs/connection-string#readme",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "prepare": "rm -rf lib && tsc",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "mocha test/**/*",
+    "test-pipeline": "mocha --forbid-only test/**/*"
+  },
+  "keywords": [
+    "mssql",
+    "tsql",
+    "connectionstring"
+  ],
+  "author": "Dan Hensby <git@hens.by>",
+  "license": "MIT",
+  "files": [
+    "/lib/**"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,90 @@
+{
+    "name": "@types/validator",
+    "version": "13.12.0",
+    "description": "TypeScript definitions for validator",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/validator",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "tgfjt",
+            "githubUsername": "tgfjt",
+            "url": "https://github.com/tgfjt"
+        },
+        {
+            "name": "Ilya Mochalov",
+            "githubUsername": "chrootsu",
+            "url": "https://github.com/chrootsu"
+        },
+        {
+            "name": "Ayman Nedjmeddine",
+            "githubUsername": "IOAyman",
+            "url": "https://github.com/IOAyman"
+        },
+        {
+            "name": "Louay Alakkad",
+            "githubUsername": "louy",
+            "url": "https://github.com/louy"
+        },
+        {
+            "name": "Bonggyun Lee",
+            "githubUsername": "deptno",
+            "url": "https://github.com/deptno"
+        },
+        {
+            "name": "Naoto Yokoyama",
+            "githubUsername": "builtinnya",
+            "url": "https://github.com/builtinnya"
+        },
+        {
+            "name": "Philipp Katz",
+            "githubUsername": "qqilihq",
+            "url": "https://github.com/qqilihq"
+        },
+        {
+            "name": "Jace Warren",
+            "githubUsername": "keatz55",
+            "url": "https://github.com/keatz55"
+        },
+        {
+            "name": "Munif Tanjim",
+            "githubUsername": "MunifTanjim",
+            "url": "https://github.com/MunifTanjim"
+        },
+        {
+            "name": "Vlad Poluch",
+            "githubUsername": "vlapo",
+            "url": "https://github.com/vlapo"
+        },
+        {
+            "name": "Piotr Błażejewicz",
+            "githubUsername": "peterblazejewicz",
+            "url": "https://github.com/peterblazejewicz"
+        },
+        {
+            "name": "Matteo Nista",
+            "githubUsername": "Mattewn99",
+            "url": "https://github.com/Mattewn99"
+        },
+        {
+            "name": "Roman Babiak",
+            "githubUsername": "Almost-Infinity",
+            "url": "https://github.com/Almost-Infinity"
+        },
+        {
+            "name": "Daniel Freire",
+            "githubUsername": "dcfreire",
+            "url": "https://github.com/dcfreire"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/validator"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "7f42e4450fe2158eac91ad1bcc578bf8d353390362895a0b2aa4d0d106ff4dae",
+    "typeScriptVersion": "4.7"
+}

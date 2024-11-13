@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: date-utils.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: date-utils.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+
+© 2011 by Jerry Sievert
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+
+
+(function () {
+    /** @class Date */
+    // constants
+    var monthsAbbr = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+    ];
+
+    var monthsFull = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ];
+
+    var daysAbbr = [
+        'Sun',
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat'
+    ];
+
+    var daysFull = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+    ];
+
+    var dayNames = {
+        'su':         0,
+        'sun':        0,
+        'sunday':     0,
+        'mo':         1,
+        'mon':        1,
+        'monday':     1,
+        'tu':         2,
+        'tue':        2,
+        'tuesday':    2,
+        'we':         3,
+        'wed':        3,
+        'wednesday':  3,
+        'th':         4,
+        'thu':        4,
+        'thursday':   4,
+        'fr':         5,
+        'fri':        5,
+        'friday':     5,
+        'sa':         6,
+        'sat':        6,
+        'saturday':   6
+    };
+    var monthsAll = monthsFull.concat(monthsAbbr);
+    var daysAll = [
+        'su',
+        'sun',
+        'sunday',
+        'mo',
+        'mon',
+        'monday',
+        'tu',
+        'tue',
+        'tuesday',
+        'we',
+        'wed',
+        'wednesday',
+        'th',
+        'thu',
+        'thursday',
+        'fr',
+        'fri',
+        'friday',
+        'sa',
+        'sat',
+        'saturday'
+    ];
+
+    var monthNames = {
+        'jan':        0,
+        'january':    0,
+        'feb':        1,
+        'february':   1,
+        'mar':        2,
+        'march':      2,
+        'apr':        3,
+        'april':      3,
+        'may':        4,
+        'jun':        5,
+        'june':       5,
+        'jul':        6,
+        'july':       6,
+        'aug':        7,
+        'august':     7,
+        'sep':        8,
+        'september':  8,
+        'oct':        9,
+        'october':    9,
+        'nov':        10,
+        'november':   10,
+        'dec':        11,
+        'december':   11
+    };
+
+    var daysInMonth = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+
+    // private helper functions
+    /** @ignore */
+    function pad(str, length) {
+        str = String(str);
+        while (str.length &lt; length) {
+            str = '0' + str;
+        }
+        return str;
+    }
+
+    var isInteger = function (str) {
+        if (str.match(/^(\d+)$/)) {
+            return true;
+        }
+        return false;
+    };
+    var getInt = function (str, i, minlength, maxlength) {
+        for (var x = maxlength; x >= minlength; x--) {
+            var token = str.substring(i, i + x);
+            if (token.length &lt; minlength) {
+                return null;
+            }
+            if (isInteger(token)) {
+                return token;
+            }
+        }
+        return null;
+    };
+
+    // static class methods
+    var origParse = Date.parse;
+    // ------------------------------------------------------------------
+    // getDateFromFormat( date_string , format_string )
+    //
+    // This function takes a date string and a format string. It matches
+    // If the date string matches the format string, it returns the
+    // getTime() of the date. If it does not match, it returns NaN.
+    // Original Author: Matt Kruse &lt;matt@mattkruse.com>
+    // WWW: http://www.mattkruse.com/
+    // Adapted from: http://www.mattkruse.com/javascript/date/source.html
+    // ------------------------------------------------------------------
+
+
+    var getDateFromFormat = function (val, format) {
+        val = val + "";
+        format = format + "";
+        var iVal = 0;
+        var iFormat = 0;
+        var c = "";
+        var token = "";
+        var token2 = "";
+        var x, y;
+        var now = new Date();
+        var year = now.getYear();
+        var month = now.getMonth() + 1;
+        var date = 1;
+        var hh = 0;
+        var mm = 0;
+        var ss = 0;
+        var ampm = "";
+
+
+
+        while (iFormat &lt; format.length) {
+            // Get next token from format string
+            c = format.charAt(iFormat);
+            token = "";
+            while ((format.charAt(iFormat) === c) &amp;&amp; (iFormat &lt; format.length)) {
+                token += format.charAt(iFormat++);
+            }
+            // Extract contents of value based on format token
+            if (token === "yyyy" || token === "yy" || token === "y") {
+                if (token === "yyyy") {
+                    x = 4;
+                    y = 4;
+                }
+                if (token === "yy") {
+                    x = 2;
+                    y = 2;
+                }
+                if (token === "y") {
+                    x = 2;
+                    y = 4;
+                }
+                year = getInt(val, iVal, x, y);
+                if (year === null) {
+                    return NaN;
+                }
+                iVal += year.length;
+                if (year.length === 2) {
+                    if (year > 70) {
+                        year = 1900 + (year - 0);
+                    } else {
+                        year = 2000 + (year - 0);
+                    }
+                }
+            } else if (token === "MMM" || token === "NNN") {
+                month = 0;
+                for (var i = 0; i &lt; monthsAll.length; i++) {
+                    var monthName = monthsAll[i];
+                    if (val.substring(iVal, iVal + monthName.length).toLowerCase() === monthName.toLowerCase()) {
+                        if (token === "MMM" || (token === "NNN" &amp;&amp; i > 11)) {
+                            month = i + 1;
+                            if (month > 12) {
+                                month -= 12;
+                            }
+                            iVal += monthName.length;
+                            break;
+                        }
+                    }
+                }
+                if ((month &lt; 1) || (month > 12)) {
+                    return NaN;
+                }
+            } else if (token === "EE" || token === "E") {
+                for (var n = 0; n &lt; daysAll.length; n++) {
+                    var dayName = daysAll[n];
+                    if (val.substring(iVal, iVal + dayName.length).toLowerCase() === dayName.toLowerCase()) {
+                        iVal += dayName.length;
+                        break;
+                    }
+                }
+            } else if (token === "MM" || token === "M") {
+                month = getInt(val, iVal, token.length, 2);
+                if (month === null || (month &lt; 1) || (month > 12)) {
+                    return NaN;
+                }
+                iVal += month.length;
+            } else if (token === "dd" || token === "d") {
+                date = getInt(val, iVal, token.length, 2);
+                if (date === null || (date &lt; 1) || (date > 31)) {
+                    return NaN;
+                }
+                iVal += date.length;
+            } else if (token === "hh" || token === "h") {
+                hh = getInt(val, iVal, token.length, 2);
+                if (hh === null || (hh &lt; 1) || (hh > 12)) {
+                    return NaN;
+                }
+                iVal += hh.length;
+            } else if (token === "HH" || token === "H") {
+                hh = getInt(val, iVal, token.length, 2);
+                if (hh === null || (hh &lt; 0) || (hh > 23)) {
+                    return NaN;
+                }
+                iVal += hh.length;
+            } else if (token === "KK" || token === "K") {
+                hh = getInt(val, iVal, token.length, 2);
+                if (hh === null || (hh &lt; 0) || (hh > 11)) {
+                    return NaN;
+                }
+                iVal += hh.length;
+            } else if (token === "kk" || token === "k") {
+                hh = getInt(val, iVal, token.length, 2);
+                if (hh === null || (hh &lt; 1) || (hh > 24)) {
+                    return NaN;
+                }
+                iVal += hh.length;
+                hh--;
+            } else if (token === "mm" || token === "m") {
+                mm = getInt(val, iVal, token.length, 2);
+                if (mm === null || (mm &lt; 0) || (mm > 59)) {
+                    return NaN;
+                }
+                iVal += mm.length;
+            } else if (token === "ss" || token === "s") {
+                ss = getInt(val, iVal, token.length, 2);
+                if (ss === null || (ss &lt; 0) || (ss > 59)) {
+                    return NaN;
+                }
+                iVal += ss.length;
+            } else if (token === "a") {
+                if (val.substring(iVal, iVal + 2).toLowerCase() === "am") {
+                    ampm = "AM";
+                } else if (val.substring(iVal, iVal + 2).toLowerCase() === "pm") {
+                    ampm = "PM";
+                } else {
+                    return NaN;
+                }
+                iVal += 2;
+            } else {
+                if (val.substring(iVal, iVal + token.length) !== token) {
+                    return NaN;
+                } else {
+                    iVal += token.length;
+                }
+            }
+        }
+        // If there are any trailing characters left in the value, it doesn't match
+        if (iVal !== val.length) {
+            return NaN;
+        }
+        // Is date valid for month?
+        if (month === 2) {
+            // Check for leap year
+            if (((year % 4 === 0) &amp;&amp; (year % 100 !== 0)) || (year % 400 === 0)) { // leap year
+                if (date > 29) {
+                    return NaN;
+                }
+            } else {
+                if (date > 28) {
+                    return NaN;
+                }
+            }
+        }
+        if ((month === 4) || (month === 6) || (month === 9) || (month === 11)) {
+            if (date > 30) {
+                return NaN;
+            }
+        }
+        // Correct hours value
+        if (hh &lt; 12 &amp;&amp; ampm === "PM") {
+            hh = hh - 0 + 12;
+        } else if (hh > 11 &amp;&amp; ampm === "AM") {
+            hh -= 12;
+        }
+        var newdate = new Date(year, month - 1, date, hh, mm, ss);
+        return newdate.getTime();
+    };
+
+
+    /** @ignore */
+    Date.parse = function (date, format) {
+        if (format) {
+            return getDateFromFormat(date, format);
+        }
+        var timestamp = origParse(date), minutesOffset = 0, match;
+        if (isNaN(timestamp) &amp;&amp; (match = /^(\d{4}|[+\-]\d{6})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3,}))?)?(?:(Z)|([+\-])(\d{2})(?::?(\d{2}))?))?/.exec(date))) {
+            if (match[8] !== 'Z') {
+                minutesOffset = +match[10] * 60 + (+match[11]);
+
+                if (match[9] === '+') {
+                    minutesOffset = 0 - minutesOffset;
+                }
+            }
+
+            match[7] = match[7] || '000';
+
+            timestamp = Date.UTC(+match[1], +match[2] - 1, +match[3], +match[4], +match[5] + minutesOffset, +match[6], +match[7].substr(0, 3));
+        }
+
+        return timestamp;
+    };
+
+    function polyfill(name, func) {
+        if (Date.prototype[name] === undefined) {
+            Date.prototype[name] = func;
+        }
+    }
+
+    /**
+        Returns new instance of Date object with the date set to today and
+        the time set to midnight
+        @static
+        @returns {Date} Today's Date
+        @function today
+        @memberof Date
+     */
+    Date.today = function () {
+        return new Date().clearTime();
+    };
+
+    /**
+        Returns new instance of Date object with the date set to today and
+        the time set to midnight in UTC
+        @static
+        @returns {Date} Today's Date in UTC
+        @function UTCtoday
+        @memberof Date
+     */
+    Date.UTCtoday = function () {
+        return new Date().clearUTCTime();
+    };
+
+    /**
+        Returns new instance of Date object with the date set to tomorrow and
+        the time set to midnight
+        @static
+        @returns {Date} Tomorrow's Date
+        @function tomorrow
+        @memberof Date
+     */
+    Date.tomorrow = function () {
+        return Date.today().add({days: 1});
+    };
+
+    /**
+        Returns new instance of Date object with the date set to tomorrow and
+        the time set to midnight in UTC
+        @static
+        @returns {Date} Tomorrow's Date in UTC
+        @function UTCtomorrow
+        @memberof Date
+     */
+    Date.UTCtomorrow = function () {
+        return Date.UTCtoday().add({days: 1});
+    };
+
+    /**
+        Returns new instance of Date object with the date set to yesterday and
+        the time set to midnight
+        @static
+        @returns {Date} Yesterday's Date
+        @function yesterday
+        @memberof Date
+     */
+    Date.yesterday = function () {
+        return Date.today().add({days: -1});
+    };
+
+    /**
+        Returns new instance of Date object with the date set to yesterday and
+        the time set to midnight in UTC
+        @static
+        @returns {Date} Yesterday's Date in UTC
+        @function UTCyesterday
+        @memberof Date
+     */
+    Date.UTCyesterday = function () {
+        return Date.UTCtoday().add({days: -1});
+    };
+
+   /**
+       Returns whether the day is valid
+       @static
+       @param day {Number} day of the month
+       @param year {Number} year
+       @param month {Number} month of the year [0-11]
+       @returns {Boolean}
+       @function validateDay
+       @memberof Date
+    */
+    Date.validateDay = function (day, year, month) {
+        var date = new Date(year, month, day);
+        return (date.getFullYear() === year &amp;&amp;
+            date.getMonth() === month &amp;&amp;
+            date.getDate() === day);
+    };
+
+    /**
+       Returns whether the year is valid
+       @static
+       @param year {Number} year
+       @returns {Boolean}
+       @function validateYear
+       @memberof Date
+    */
+    Date.validateYear = function (year) {
+        return (year >= 0 &amp;&amp; year &lt;= 9999);
+    };
+
+    /**
+       Returns whether the second is valid
+       @static
+       @param second {Number} second
+       @returns {Boolean}
+       @function validateSecond
+       @memberof Date
+    */
+    Date.validateSecond = function (second) {
+        return (second >= 0 &amp;&amp; second &lt; 60);
+    };
+
+    /**
+       Returns whether the month is valid [0-11]
+       @static
+       @param month {Number} month
+       @returns {Boolean}
+       @function validateMonth
+       @memberof Date
+    */
+    Date.validateMonth = function (month) {
+        return (month >= 0 &amp;&amp; month &lt; 12);
+    };
+
+    /**
+       Returns whether the minute is valid
+       @static
+       @param minute {Number} minute
+       @returns {Boolean}
+       @function validateMinute
+       @memberof Date
+    */
+    Date.validateMinute = function (minute) {
+        return (minute >= 0 &amp;&amp; minute &lt; 60);
+    };
+
+  /**
+     Returns whether the millisecond is valid
+     @static
+     @param millisecond {Number} millisecond
+     @returns {Boolean}
+     @function validateMillisecond
+     @memberof Date
+  */
+    Date.validateMillisecond = function (milli) {
+        return (milli >= 0 &amp;&amp; milli &lt; 1000);
+    };
+
+    /**
+       Returns whether the hour is valid [0-23]
+       @static
+       @param hour {Number} hour
+       @returns {Boolean}
+       @function validateHour
+       @memberof Date
+    */
+    Date.validateHour = function (hour) {
+        return (hour >= 0 &amp;&amp; hour &lt; 24);
+    };
+
+    /**
+       Compares two dates
+       @static
+       @param date1 {Date} first date
+       @param date2 {Date} second date
+       @returns {Number} -1 if date1 is less than date2, 0 if they are equal, 1 if date1 is more than date2
+       @function compare
+       @memberof Date
+    */
+    Date.compare = function (date1, date2) {
+        if (date1.valueOf() &lt; date2.valueOf()) {
+            return -1;
+        } else if (date1.valueOf() > date2.valueOf()) {
+            return 1;
+        }
+        return 0;
+    };
+
+    /**
+       Compares two dates to the millisecond
+       @static
+       @param date1 {Date} first date
+       @param date2 {Date} second date
+       @returns {Boolean}
+       @function equals
+       @memberof Date
+    */
+    Date.equals = function (date1, date2) {
+        return date1.valueOf() === date2.valueOf();
+    };
+
+    /**
+       Compares two dates by day
+       @static
+       @param date1 {Date} first date
+       @param date2 {Date} second date
+       @returns {Boolean}
+       @function equalsDay
+       @memberof Date
+    */
+    Date.equalsDay = function (date1, date2) {
+        return date1.toYMD() === date2.toYMD();
+    };
+
+    /**
+       Returns the day number for a day [0-6]
+       @static
+       @param day {String} day name
+       @returns {Number}
+       @function getDayNumberFromName
+       @memberof Date
+    */
+    Date.getDayNumberFromName = function (name) {
+        return dayNames[name.toLowerCase()];
+    };
+
+    /**
+       Returns the day number for a month [0-11]
+       @static
+       @param month {String} month name
+       @returns {Number}
+       @function getMonthNumberFromName
+       @memberof Date
+    */
+    Date.getMonthNumberFromName = function (name) {
+        return monthNames[name.toLowerCase()];
+    };
+
+    /**
+       Returns the month name for a month [0-11]
+       @static
+       @param month {Number} month
+       @returns {String}
+       @function getMonthNameFromNumber
+       @memberof Date
+    */
+    Date.getMonthNameFromNumber = function (number) {
+        return monthsFull[number];
+    };
+
+    /**
+       Returns the month name abbreviated for a month [0-11]
+       @static
+       @param month {Number} month
+       @returns {String}
+       @function getMonthAbbrNameFromNumber
+       @memberof Date
+    */
+    Date.getMonthAbbrFromNumber = function (number) {
+        return monthsAbbr[number];
+    };
+
+    /**
+       Returns whether or not the year is a leap year
+       @static
+       @param year {Number} year
+       @returns {Boolean}
+       @function isLeapYear
+       @memberof Date
+    */
+    Date.isLeapYear = function (year) {
+        return (new Date(year, 1, 29).getDate() === 29);
+    };
+
+    /**
+       Returns the number of days in a month
+       @static
+       @param year {Number} year
+       @param month {Number} month
+       @returns {String}
+       @function getDaysInMonth
+       @memberof Date
+    */
+    Date.getDaysInMonth = function (year, month) {
+        if (month === 1) {
+            return Date.isLeapYear(year) ? 29 : 28;
+        }
+        return daysInMonth[month];
+    };
+
+    polyfill('getMonthAbbr', function () {
+        return monthsAbbr[this.getMonth()];
+    });
+
+    polyfill('getMonthName', function () {
+        return monthsFull[this.getMonth()];
+    });
+
+    polyfill('getLastMonthName', function () {
+        var i = this.getMonth();
+        i = (i === 0 ? 11 : i - 1);
+        return monthsFull[i];
+    });
+
+    polyfill('getUTCOffset', function () {
+        var tz = pad(Math.abs(this.getTimezoneOffset() / 0.6), 4);
+        if (this.getTimezoneOffset() > 0) {
+            tz = '-' + tz;
+        }
+        return tz;
+    });
+
+    polyfill('toCLFString',  function () {
+        return pad(this.getDate(), 2) + '/' + this.getMonthAbbr() + '/' +
+               this.getFullYear() + ':' + pad(this.getHours(), 2) + ':' +
+               pad(this.getMinutes(), 2) + ':' + pad(this.getSeconds(), 2) +
+               ' ' + this.getUTCOffset();
+    });
+
+    polyfill('toYMD', function (separator) {
+        separator = typeof separator === 'undefined' ? '-' : separator;
+        return this.getFullYear() + separator + pad(this.getMonth() + 1, 2) +
+            separator + pad(this.getDate(), 2);
+    });
+
+    polyfill('toDBString', function () {
+        return this.getUTCFullYear() + '-' +  pad(this.getUTCMonth() + 1, 2) +
+               '-' + pad(this.getUTCDate(), 2) + ' ' + pad(this.getUTCHours(), 2) +
+               ':' + pad(this.getUTCMinutes(), 2) + ':' + pad(this.getUTCSeconds(), 2);
+    });
+
+    polyfill('clearTime', function () {
+        this.setHours(0);
+        this.setMinutes(0);
+        this.setSeconds(0);
+        this.setMilliseconds(0);
+
+        return this;
+    });
+
+    polyfill('clearUTCTime', function () {
+        this.setUTCHours(0);
+        this.setUTCMinutes(0);
+        this.setUTCSeconds(0);
+        this.setUTCMilliseconds(0);
+
+        return this;
+    });
+
+    polyfill('add', function (obj) {
+        if (obj.milliseconds !== undefined) {
+            this.setMilliseconds(this.getMilliseconds() + obj.milliseconds);
+        }
+        if (obj.seconds !== undefined) {
+            this.setSeconds(this.getSeconds() + obj.seconds);
+        }
+        if (obj.minutes !== undefined) {
+            this.setMinutes(this.getMinutes() + obj.minutes);
+        }
+        if (obj.hours !== undefined) {
+            this.setHours(this.getHours() + obj.hours);
+        }
+        if (obj.days !== undefined) {
+            this.setDate(this.getDate() + obj.days);
+        }
+        if (obj.weeks !== undefined) {
+            this.setDate(this.getDate() + (obj.weeks * 7));
+        }
+        if (obj.months !== undefined) {
+            this.setMonth(this.getMonth() + obj.months);
+        }
+        if (obj.years !== undefined) {
+            this.setFullYear(this.getFullYear() + obj.years);
+        }
+        return this;
+    });
+
+    polyfill('addMilliseconds', function (milliseconds) {
+        return this.add({ milliseconds: milliseconds });
+    });
+
+    polyfill('addSeconds', function (seconds) {
+        return this.add({ seconds: seconds });
+    });
+
+    polyfill('addMinutes', function (minutes) {
+        return this.add({ minutes: minutes });
+    });
+
+    polyfill('addHours', function (hours) {
+        return this.add({ hours: hours });
+    });
+
+    polyfill('addDays', function (days) {
+        return this.add({ days: days });
+    });
+
+    polyfill('addWeeks', function (weeks) {
+        return this.add({ days: (weeks * 7) });
+    });
+
+    polyfill('addMonths', function (months) {
+        return this.add({ months: months });
+    });
+
+    polyfill('addYears', function (years) {
+        return this.add({ years: years });
+    });
+
+    polyfill('remove', function (obj) {
+        if (obj.seconds !== undefined) {
+            this.setSeconds(this.getSeconds() - obj.seconds);
+        }
+        if (obj.minutes !== undefined) {
+            this.setMinutes(this.getMinutes() - obj.minutes);
+        }
+        if (obj.hours !== undefined) {
+            this.setHours(this.getHours() - obj.hours);
+        }
+        if (obj.days !== undefined) {
+            this.setDate(this.getDate() - obj.days);
+        }
+        if (obj.weeks !== undefined) {
+            this.setDate(this.getDate() - (obj.weeks * 7));
+        }
+        if (obj.months !== undefined) {
+            this.setMonth(this.getMonth() - obj.months);
+        }
+        if (obj.years !== undefined) {
+            this.setFullYear(this.getFullYear() - obj.years);
+        }
+        return this;
+    });
+
+    polyfill('removeMilliseconds', function (milliseconds) {
+        throw new Error('Not implemented');
+    });
+
+    polyfill('removeSeconds', function (seconds) {
+        return this.remove({ seconds: seconds });
+    });
+
+    polyfill('removeMinutes', function (minutes) {
+        return this.remove({ minutes: minutes });
+    });
+
+    polyfill('removeHours', function (hours) {
+        return this.remove({ hours: hours });
+    });
+
+    polyfill('removeDays', function (days) {
+        return this.remove({ days: days });
+    });
+
+    polyfill('removeWeeks', function (weeks) {
+        return this.remove({ days: (weeks * 7) });
+    });
+
+    polyfill('removeMonths', function (months) {
+        return this.remove({ months: months });
+    });
+
+    polyfill('removeYears', function (years) {
+        return this.remove({ years: years });
+    });
+
+    //addWeekdays is based on the Mon-Fri work week schedule
+    polyfill('addWeekdays', function (weekdays) {
+        var day = this.getDay();
+        if (day === 0) { day = 7; }
+        var daysOffset = weekdays;
+        var weekspan = Math.floor(( weekdays + day - 1 ) / 5.0);
+        if (weekdays > 0){
+            daysOffset += weekspan * 2;
+            if ( day > 5 ) { daysOffset -= day - 5; }
+        } else {
+            daysOffset += Math.min( weekspan * 2, 0);
+            if ( day > 6 ) { daysOffset -= 1; }
+        }
+        return this.addDays( daysOffset );
+    });
+
+    polyfill('setTimeToNow', function () {
+        var n = new Date();
+        this.setMilliseconds(n.getMilliseconds());
+        this.setSeconds(n.getSeconds());
+        this.setMinutes(n.getMinutes());
+        this.setHours(n.getHours());
+    });
+
+    polyfill('clone', function () {
+        return new Date(this.valueOf());
+    });
+
+    polyfill('between', function (start, end) {
+        return (this.valueOf() >= start.valueOf() &amp;&amp;
+                this.valueOf() &lt;= end.valueOf());
+    });
+
+    polyfill('compareTo', function (date) {
+        return Date.compare(this, date);
+    });
+
+    polyfill('equals', function (date) {
+        return Date.equals(this, date);
+    });
+
+    polyfill('equalsDay', function (date) {
+        return Date.equalsDay(this, date);
+    });
+
+    polyfill('isToday', function () {
+        return Date.equalsDay(this, Date.today());
+    });
+
+    polyfill('isAfter', function (date) {
+        date = date ? date : new Date();
+        return (this.compareTo(date) > 0);
+    });
+
+    polyfill('isBefore', function (date) {
+        date = date ? date : new Date();
+        return (this.compareTo(date) &lt; 0);
+    });
+
+    //isWeekend is based on the Sat, Sun weekend definition.
+    polyfill('isWeekend', function (date) {
+        return (this.getDay() % 6 === 0);
+    });
+
+    polyfill('getDaysBetween', function (date) {
+        return ((date.clone().valueOf() - this.valueOf()) / 86400000) | 0;
+    });
+
+    polyfill('getHoursBetween', function (date) {
+        return ((date.clone().valueOf() - this.valueOf()) / 3600000) | 0;
+    });
+
+    polyfill('getMinutesBetween', function (date) {
+        return ((date.clone().valueOf() - this.valueOf()) / 60000) | 0;
+    });
+
+    polyfill('getSecondsBetween', function (date) {
+        return ((date.clone().valueOf() - this.valueOf()) / 1000) | 0;
+    });
+
+    polyfill('getMillisecondsBetween', function (date) {
+        return ((date.clone().valueOf() - this.valueOf())) | 0;
+    });
+
+    polyfill('getMonthsBetween', function (date) {
+		// make a guess at the answer; using 31 means that we'll be close but won't exceed
+		var daysDiff, daysInMonth,
+			months = Math.ceil( new Date(date - this).getUTCDate() / 31 ) ,
+			testDate = new Date( this.getTime() ),
+			totalDays = Date.getDaysInMonth;
+
+		// find the maximum number of months that's less than or equal to the end date
+		testDate.setUTCMonth( testDate.getUTCMonth() + months );
+		while ( testDate.getTime() &lt; date.getTime() ) {
+            testDate.setUTCMonth( testDate.getUTCMonth() + 1 );
+			months++;
+		}
+
+		if ( testDate.getTime() !== date.getTime() ) {
+			// back off 1 month since we exceeded the end date
+			testDate.setUTCMonth( testDate.getUTCMonth() - 1 );
+			months--;
+		}
+
+		if ( date.getUTCMonth() === testDate.getUTCMonth() ) {
+			daysDiff = new Date( date - testDate ).getUTCDate();
+			daysInMonth = totalDays( testDate.getUTCFullYear(), testDate.getUTCMonth() );
+
+			return months + ( daysDiff / daysInMonth );
+		} else {
+			// if two dates are on different months,
+			// the calculation must be done for each separate month
+			// because their number of days can be different
+			daysInMonth = totalDays( testDate.getUTCFullYear(), testDate.getUTCMonth() );
+			daysDiff  = daysInMonth - testDate.getUTCDate() + 1;
+
+			return months +
+					(+( daysDiff / daysInMonth ).toFixed( 5 )) +
+					(+( date.getUTCDate() / totalDays( date.getUTCFullYear(), date.getUTCMonth() ) ).toFixed( 5 ));
+		}
+	});
+
+    polyfill('getOrdinalNumber', function () {
+        return Math.ceil((this.clone().clearTime() - new Date(this.getFullYear(), 0, 1)) / 86400000) + 1;
+    });
+
+    polyfill('toFormat', function (format) {
+        return toFormat(format, getReplaceMap(this));
+    });
+
+    polyfill('toUTCFormat', function (format) {
+        return toFormat(format, getUTCReplaceMap(this));
+    });
+
+    polyfill('getWeekNumber', function() {
+        var onejan = new Date(this.getFullYear(),0,1);
+        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay()+1)/7);
+    });
+
+    polyfill('getFullWeekNumber', function() {
+        var weekNumber = '' + this.getWeekNumber();
+        if (weekNumber.length === 1) {
+            weekNumber = "0" + weekNumber;
+        }
+
+        return weekNumber;
+    });
+
+    var toFormat = function(format, replaceMap) {
+        var f = [ format ], i, l, s;
+        var replace = function (str, rep) {
+            var i = 0, l = f.length, j, ll, t, n = [];
+            for (; i &lt; l; i++) {
+                if (typeof f[i] == 'string') {
+                    t = f[i].split(str);
+                    for (j = 0, ll = t.length - 1; j &lt; ll; j++) {
+                        n.push(t[j]);
+                        n.push([rep]); // replacement pushed as non-string
+                    }
+                    n.push(t[ll]);
+                } else {
+                    // must be a replacement, don't process, just push
+                    n.push(f[i]);
+                }
+            }
+            f = n;
+        };
+
+        for (i in replaceMap) {
+            replace(i, replaceMap[i]);
+        }
+
+        s = '';
+        for (i = 0, l = f.length; i &lt; l; i++)
+          s += typeof f[i] == 'string' ? f[i] : f[i][0];
+        return f.join('');
+    };
+
+    var getReplaceMap = function(date) {
+        var hours = (date.getHours() % 12) ? date.getHours() % 12 : 12;
+        return {
+            'YYYY': date.getFullYear(),
+            'YY': String(date.getFullYear()).slice(-2),
+            'MMMM': monthsFull[date.getMonth()],
+            'MMM': monthsAbbr[date.getMonth()],
+            'MM': pad(date.getMonth() + 1, 2),
+            'MI': pad(date.getMinutes(), 2),
+            'M': date.getMonth() + 1,
+            'DDDD': daysFull[date.getDay()],
+            'DDD': daysAbbr[date.getDay()],
+            'DD': pad(date.getDate(), 2),
+            'D': date.getDate(),
+            'HH24': pad(date.getHours(), 2),
+            'HH': pad(hours, 2),
+            'H': hours,
+            'SS': pad(date.getSeconds(), 2),
+            'PP': (date.getHours() >= 12) ? 'PM' : 'AM',
+            'P': (date.getHours() >= 12) ? 'pm' : 'am',
+            'LL': pad(date.getMilliseconds(), 3)
+        };
+    };
+
+    var getUTCReplaceMap = function(date) {
+        var hours = (date.getUTCHours() % 12) ? date.getUTCHours() % 12 : 12;
+        return {
+            'YYYY': date.getUTCFullYear(),
+            'YY': String(date.getUTCFullYear()).slice(-2),
+            'MMMM': monthsFull[date.getUTCMonth()],
+            'MMM': monthsAbbr[date.getUTCMonth()],
+            'MM': pad(date.getUTCMonth() + 1, 2),
+            'MI': pad(date.getUTCMinutes(), 2),
+            'M': date.getUTCMonth() + 1,
+            'DDDD': daysFull[date.getUTCDay()],
+            'DDD': daysAbbr[date.getUTCDay()],
+            'DD': pad(date.getUTCDate(), 2),
+            'D': date.getUTCDate(),
+            'HH24': pad(date.getUTCHours(), 2),
+            'HH': pad(hours, 2),
+            'H': hours,
+            'SS': pad(date.getUTCSeconds(), 2),
+            'PP': (date.getUTCHours() >= 12) ? 'PM' : 'AM',
+            'P': (date.getUTCHours() >= 12) ? 'pm' : 'am',
+            'LL': pad(date.getUTCMilliseconds(), 3)
+        };
+    };
+}());
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="Date.html">Date</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Sun Jul 13 2014 08:52:44 GMT-0700 (PDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

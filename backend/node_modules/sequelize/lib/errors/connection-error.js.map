@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/errors/connection-error.ts"],
+  "sourcesContent": ["import BaseError from './base-error';\n\n/**\n * A base class for all connection related errors.\n */\nclass ConnectionError extends BaseError {\n  /** The connection specific error which triggered this one */\n  parent: Error;\n  original: Error;\n\n  constructor(parent: Error) {\n    super(parent ? parent.message : '');\n    this.name = 'SequelizeConnectionError';\n    this.parent = parent;\n    this.original = parent;\n  }\n}\n\nexport default ConnectionError;\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,wBAAsB;AAKtB,8BAA8B,0BAAU;AAAA,EAKtC,YAAY,QAAe;AACzB,UAAM,SAAS,OAAO,UAAU;AAJlC;AACA;AAIE,SAAK,OAAO;AACZ,SAAK,SAAS;AACd,SAAK,WAAW;AAAA;AAAA;AAIpB,IAAO,2BAAQ;",
+  "names": []
+}

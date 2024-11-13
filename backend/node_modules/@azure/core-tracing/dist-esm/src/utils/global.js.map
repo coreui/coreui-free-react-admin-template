@@ -1,0 +1,1 @@
+{"version":3,"file":"global.js","sourceRoot":"","sources":["../../../src/utils/global.ts"],"names":[],"mappings":"AAAA,uCAAuC;AACvC,kCAAkC;AAElC,MAAM,UAAU,eAAe;IAC7B,OAAO,MAAM,CAAC;AAChB,CAAC","sourcesContent":["// Copyright (c) Microsoft Corporation.\n// Licensed under the MIT license.\n\nexport function getGlobalObject(): any {\n  return global;\n}\n"]}

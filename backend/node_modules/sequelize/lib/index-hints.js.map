@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index-hints.js"],
+  "sourcesContent": ["'use strict';\n\n/**\n * An enum of index hints to be used in mysql for querying with index hints\n *\n * @property USE\n * @property FORCE\n * @property IGNORE\n */\nconst IndexHints = module.exports = { // eslint-disable-line\n  USE: 'USE',\n  FORCE: 'FORCE',\n  IGNORE: 'IGNORE'\n};\n"],
+  "mappings": ";AASA,MAAM,aAAa,OAAO,UAAU;AAAA,EAClC,KAAK;AAAA,EACL,OAAO;AAAA,EACP,QAAQ;AAAA;",
+  "names": []
+}

@@ -1,0 +1,31 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const IntN = {
+  id: 0x26,
+  type: 'INTN',
+  name: 'IntN',
+
+  declaration() {
+    throw new Error('not implemented');
+  },
+
+  generateTypeInfo() {
+    throw new Error('not implemented');
+  },
+
+  generateParameterData() {
+    throw new Error('not implemented');
+  },
+
+  validate() {
+    throw new Error('not implemented');
+  }
+
+};
+var _default = IntN;
+exports.default = _default;
+module.exports = IntN;

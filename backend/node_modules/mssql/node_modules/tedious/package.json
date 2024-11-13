@@ -1,0 +1,180 @@
+{
+  "author": "Mike D Pilsbury <mike.pilsbury@gmail.com>",
+  "contributors": [
+    "Alex Robson",
+    "Arthur Schreiber",
+    "Bret Copeland <bret@atlantisflight.org> (https://github.com/bretcope)",
+    "Bryan Ross <bryan@rossipedia.com> (https://github.com/rossipedia)",
+    "Ciaran Jessup <ciaranj@gmail.com>",
+    "Cort Fritz <cfritz@caa.com>",
+    "lastonesky",
+    "Patrik Simek <patrik@patriksimek.cz>",
+    "Phil Dodderidge <pdodde@poyntz.com>",
+    "Zach Aller"
+  ],
+  "name": "tedious",
+  "description": "A TDS driver, for connecting to MS SQLServer databases.",
+  "keywords": [
+    "sql",
+    "database",
+    "mssql",
+    "sqlserver",
+    "sql-server",
+    "tds",
+    "msnodesql",
+    "azure"
+  ],
+  "homepage": "https://github.com/tediousjs/tedious",
+  "bugs": "https://github.com/tediousjs/tedious/issues",
+  "license": "MIT",
+  "version": "11.8.0",
+  "main": "./lib/tedious.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tediousjs/tedious.git"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "publishConfig": {
+    "tag": "next"
+  },
+  "dependencies": {
+    "@azure/identity": "^1.3.0",
+    "@azure/keyvault-keys": "^4.1.0",
+    "@azure/ms-rest-nodeauth": "^3.0.6",
+    "@js-joda/core": "^3.2.0",
+    "adal-node": "^0.2.1",
+    "bl": "^5.0.0",
+    "depd": "^2.0.0",
+    "iconv-lite": "^0.6.3",
+    "jsbi": "^3.1.5",
+    "native-duplexpair": "^1.0.0",
+    "node-abort-controller": "^2.0.0",
+    "punycode": "^2.1.0",
+    "sprintf-js": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/node": "^7.14.7",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-typescript": "^7.14.5",
+    "@babel/register": "^7.14.5",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/travis-cli": "^12.1.4",
+    "@types/async": "^3.2.7",
+    "@types/bl": "^5.0.1",
+    "@types/chai": "^4.2.20",
+    "@types/depd": "^1.1.32",
+    "@types/lru-cache": "^5.1.0",
+    "@types/mocha": "^8.2.3",
+    "@types/node": "^14.14.20",
+    "@types/sprintf-js": "^1.1.2",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "async": "^3.2.0",
+    "babel-plugin-istanbul": "^6.0.0",
+    "chai": "^4.3.4",
+    "codecov": "^3.8.3",
+    "eslint": "^7.31.0",
+    "mitm": "^1.7.2",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^17.4.4",
+    "sinon": "^11.1.1",
+    "typedoc": "^0.20.37",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "docs": "typedoc",
+    "lint": "eslint src test --ext .js,.ts && tsc",
+    "test": "mocha test/unit test/unit/token test/unit/tracking-buffer",
+    "test-integration": "mocha test/integration/",
+    "test-all": "mocha test/unit/ test/unit/token/ test/unit/tracking-buffer test/integration/",
+    "build": "rimraf lib && babel src --out-dir lib --extensions .js,.ts",
+    "prepublish": "npm run build",
+    "semantic-release": "semantic-release"
+  },
+  "babel": {
+    "ignore": [
+      "./src/**/*.d.ts"
+    ],
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": 10
+          }
+        }
+      ],
+      [
+        "@babel/preset-typescript",
+        {
+          "allowDeclareFields": true
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "@babel/transform-typescript",
+        {
+          "allowDeclareFields": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-private-methods",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "body-max-line-length": [
+        1,
+        "always",
+        100
+      ],
+      "footer-max-line-length": [
+        1,
+        "always",
+        100
+      ],
+      "header-max-length": [
+        1,
+        "always",
+        100
+      ]
+    }
+  },
+  "mocha": {
+    "require": "test/setup.js",
+    "timeout": 5000,
+    "extension": [
+      "js",
+      "ts"
+    ]
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false,
+    "extension": [
+      ".ts"
+    ]
+  }
+}

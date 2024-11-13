@@ -1,0 +1,1065 @@
+{
+  "name": "@azure/msal-common",
+  "entries": [
+    {
+      "date": "Mon, 02 Aug 2021 23:19:21 GMT",
+      "tag": "@azure/msal-common_v4.5.1",
+      "version": "4.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix double encoding state #3903",
+            "author": "bmahal@microsoft.com",
+            "commit": "6a650097f99a395c7d7723ac2184a71e759d9b74",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 22:50:22 GMT",
+      "tag": "@azure/msal-common_v4.5.0",
+      "version": "4.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding ROPC for confidential client apps (#3838)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "c467d18adff33f98071837ee0fd51d4259236b9f",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "feat: add regional authority telemetry #3662",
+            "author": "samuelkamau@microsoft.com",
+            "commit": "aeeeac862e2fcd5d441bc196545f7a8a70f0a0e2",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add support for prompt=create #3773",
+            "author": "joarroyo@microsoft.com",
+            "commit": "c9314cedfe08b643e43e358243dc7f49253f77ef",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add constant for active account cache key #3755",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "f30e039bb2559a3a2ce79a22cede11dcf892a4fa",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Fix double query string for logout endpoint #3814",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "c74a548e4fda00217c7da6918e9b559392f89b5f",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 23:39:48 GMT",
+      "tag": "@azure/msal-common_v4.4.0",
+      "version": "4.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add CCS parameters to headers or form_data #3636",
+            "author": "prkanher@microsoft.com",
+            "commit": "2956380aecde38382a28c7ed15164b8dfd65cfca",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add correlationId to log messages #3601",
+            "author": "joarroyo@microsoft.com",
+            "commit": "8d58f91c9dd9d65df4a016c7bcdbbd03e9bf573e",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Export ServerAuthorizationTokenResponse type #3657",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "f6f7a7c738706668c869fcc84338d8c212a5ab4f",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Discard tokens cached after current time #3786",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "99f70d893b77ff1aaa3a81ad85135abbaf21b0c4",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Remove input params from Empty Scopes error constructors #3654",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "8c2b7f5c3c859bb4936f8409212f84a825c560be",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "feat: modify the access token filter #3375",
+            "author": "samuelkamau@microsoft.com",
+            "commit": "b8d7b2e7224bef7bebeb7e1f93b4358b77266804",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "fix: fix device code polling bug",
+            "author": "samuelkamau@microsoft.com",
+            "commit": "97f32a03df3835bf4f1be60ab7179c10196459a4",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "fix: update package lock files",
+            "author": "samuelkamau@microsoft.com",
+            "commit": "0199e41269b79de70f7d0da0fb12448db534f784",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Upgrade Jest to v27 #3719",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "6c34aa5be3ee9536bd2febd2b7781fcdf0d28786",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Component governance dependency updates #3655",
+            "author": "joarroyo@microsoft.com",
+            "commit": "3f74f3bffd88fc0b39a854da090f01aa9c072618",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 18:34:08 GMT",
+      "tag": "@azure/msal-common_v4.3.0",
+      "version": "4.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Enable no-param-reassign lint rule",
+            "author": "janutter@microsoft.com",
+            "commit": "e24f5cff944c05ccaecb180fa68814bc89512095",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 May 2021 18:35:03 GMT",
+      "tag": "@azure/msal-common_v4.3.0",
+      "version": "4.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix double query string when authority endpoints contain query strings #3620",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "32aa15fd13d1c1d9219dc7c486427a2c2bb686cc",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "change msal-browser/msal-common to preserveModules to enable treeshaking #3300",
+            "author": "oo.thomas96@gmail.com",
+            "commit": "065f107fff0e2dd37d9c8cee2fd6808988bb4038",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Revert expiresOn type to make it nullable #3557",
+            "author": "hemoral@microsoft.com",
+            "commit": "971e30f44c76b6c29546e80e69b3f881624808d8",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add logLevel Trace to Logger #3589",
+            "author": "joarroyo@microsoft.com",
+            "commit": "a214d520cc07c0113f3dfacb2344448d37458f42",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Throw untrustedAuthority error if discovery endpoint returns error in response body #3572",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "1ddbb1bec251759959be5d5962e44d9c6537ce7c",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add claims comparison to accountInfoIsEqual function #3527",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "878253750fecf12b4a865a5821df20d333ff0134",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add check for empty object string in claims request parameter #3579",
+            "author": "prkanher@microsoft.com",
+            "commit": "eeddb7ad13387c77973d8d728e1b87fd2e9feca4",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Regenerate package-lock #3510",
+            "author": "joarroyo@microsoft.com",
+            "commit": "ba0092a452f71a7bc58aaf7acdf94536d66f7493",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add support for regional authorities",
+            "author": "samuelkamau@microsoft.com",
+            "commit": "8baa387b34162b1bc96e341d7ad7158debd4b99d",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Apr 2021 23:26:08 GMT",
+      "tag": "@azure/msal-common_v4.2.1",
+      "version": "4.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix typing for expiresOn field (#2994)",
+            "author": "prkanher@microsoft.com",
+            "commit": "4f8a29cab324838993d91fda4b0ba57f731fcd1a",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Move /token headers to POST body to avoid OPTIONS request (#3094)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "f62f0cdf923c9ee4b36943d2a3a7dc618903d30f",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Change ts type from string to number in SignedHttpRequest #3474",
+            "author": "prkanher@microsoft.com",
+            "commit": "8f39845452845b47a0bdce41a92c3185d352c7c7",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add .browserslistrc #3471",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "04c6d659d4dc76183ef9043075d3b6cacc450c9b",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update and fix eslint rules",
+            "author": "janutter@microsoft.com",
+            "commit": "70debe58239b6a6fdf4e533a8a1ee057257846a8",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 18:39:53 GMT",
+      "tag": "@azure/msal-common_v4.2.0",
+      "version": "4.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding the refresh_in feature for msal.js #3005",
+            "author": "prkanher@microsoft.com",
+            "commit": "535031a4e98c88797b28f629a7cb3b9c69cbcbaa",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add support for AccessToken_With_AuthScheme credential type #3426",
+            "author": "hectormgdev@gmail.com",
+            "commit": "c35e120dd8af5dda03b2480cf559cf226fb2fc21",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Make SHR parameters optional #3320",
+            "author": "hemoral@microsoft.com",
+            "commit": "fd0dcd559af8ab0e04dec3c30cf3d4e122d6057d",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 22:25:57 GMT",
+      "tag": "@azure/msal-common_v4.1.1",
+      "version": "4.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update AccountInfo to refer to typedocs (#3266)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "ea88b22a7133f3e7001ce0690d26f84d93117d4b",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update StringUtils.matchPattern to account for queries in string #3307",
+            "author": "joarroyo@microsoft.com",
+            "commit": "53af1706880da73c5e0185756c16f285840a7f1f",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Adds tokenQueryParameters request param #3309",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "91da4f7f8dc126458dcc7b4a1e22b707f48a302a",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Ignore account hints when prompt=select_account #3315",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "6e836ce254dff695da41261d0012209cf98df13e",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Mar 2021 22:55:46 GMT",
+      "tag": "@azure/msal-common_v4.1.0",
+      "version": "4.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add client claims support for SHRs (#3089)",
+            "author": "hemoral@microsoft.com",
+            "commit": "44bc5edc3104400bef0e876c68ea529ce543e398",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Properly handle expiration timestamps when returned as strings",
+            "author": "janutter@microsoft.com",
+            "commit": "d2e0dd1a390b40fbe6225e4e214bb0df2f8b7174",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add null as possible type for account on EndSessionRequest #3044",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "866a4c8507155134282449d92d8b1cdfc384ab7e",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 23:45:17 GMT",
+      "tag": "@azure/msal-common_v4.0.3",
+      "version": "4.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use sid from account when available #3147",
+            "author": "prkanher@microsoft.com",
+            "commit": "1e98ccd91788fd8072226b9139eb109d83df1a25",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add network error for failed requests (#3146)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "07b2ea44a3f794d8812247020c729e00d49d33ec",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 21:47:05 GMT",
+      "tag": "@azure/msal-common_v4.0.2",
+      "version": "4.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix OIDC Scopes Caching Issue (#3065)",
+            "author": "prkanher@microsoft.com",
+            "commit": "03fb6e837d8b0b919118f34096dbe9e333ec733e",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 00:34:32 GMT",
+      "tag": "@azure/msal-common_v4.0.1",
+      "version": "4.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clarify Device Code Timeout units (#3031)",
+            "author": "hemoral@microsoft.com",
+            "commit": "af97180664ec257f2fdb6f04ab0921affeb9a8f3",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 01:48:22 GMT",
+      "tag": "@azure/msal-common_v4.0.0",
+      "version": "4.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix version.json import errors (#2993)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "6dc3bc9e2148bc53b181d9f079f6e11e0159620b",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Setting postLogoutRedirectUri as null will disable post logout redirect",
+            "author": "janutter@microsoft.com",
+            "commit": "cae9fa7bdd1575067d2e823402e0725f7bf8b11e",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Ignore OIDC scopes during cache lookup or replacement (#2969)",
+            "author": "prkanher@microsoft.com",
+            "commit": "554f47e8ff576c3230c36df74cd73b6101d333ab",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Add API Extractor for msal-node",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "01747296efdf08eefe585930097d9bbbf6b00789",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 01:56:47 GMT",
+      "tag": "@azure/msal-common_v3.1.0",
+      "version": "3.1.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix token timestamp calculation",
+            "author": "prkanher@microsoft.com",
+            "commit": "12f9fa2b6a9530fac5f7570ee3c49dc39232284c",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Fix B2C policy switching (#2949)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "05eb650487a800d4bb3f94ec9dacca2efa98cc82",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Get package version from version.json (#2915)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "a6f4702f9439e318a8cb6dc65d1def16351a84fd",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add wrapper SKU and version to current telemetry header (#2845)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "27597c148c718e3d001309349a4498a958688cbd",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add project references (#2930)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "a836e77e372f1b4da28195d4ad8c0c75d6794875",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Typedocs Updates (#2926)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "3fd4a48143ed4fb62b9e3266338b1abda920d68a",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 21:48:01 GMT",
+      "tag": "@azure/msal-common_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "Authority metadata caching (#2758)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "28b3268b1385e99249c0b7a95b0b14299011ca46",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add missing license files",
+            "author": "janutter@microsoft.com",
+            "commit": "bee8cbd1f3a22efccb83ba045231eb611e2a7f7d",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jan 2021 00:51:26 GMT",
+      "tag": "@azure/msal-common_v2.1.0",
+      "version": "2.1.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding account info equality check function (#2728)",
+            "author": "prkanher@microsoft.com",
+            "commit": "ca8c0d55d2abc4eefaa52c833510e313610eb424",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Adding device code timeout to the device code request(#2656)",
+            "author": "samuel.kamau@microsoft.com",
+            "commit": "4e50ca592f5a17578072be9e4ac28e05b3e6d594",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Merge angular-v2 to dev (#2709)",
+            "author": "joarroyo@microsoft.com",
+            "commit": "76a88f98fbab73fd6c0ad6d04b294814c169fc10",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Fix npm audit warnings",
+            "author": "janutter@microsoft.com",
+            "commit": "751026cdaa24dd370c50ad714bf0b1d54c71fbde",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add interface stubs (#2792)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "a6fae46d307d0a6101e926cb28298fd9f60d4a49",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Dec 2020 22:19:03 GMT",
+      "tag": "@azure/msal-common_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix login loop with empty query string (#2707)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "307307edb3d9877caca3874d17f35faf2bae6180",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Expose idTokenClaims on AccountInfo (#2554)",
+            "author": "janutter@microsoft.com",
+            "commit": "cb2165aad7995d904ec49ade565d907dc314ce16",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add matchPattern string util for wildcard matching for urls (#2678)",
+            "author": "janutter@microsoft.com",
+            "commit": "4642741f3def4cdb575cc0a228f88e19f84e3da5",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "fix: added missing async (AzureAD/microsoft-authentication-library-for-js#2652)",
+            "author": "patrick@ruhkopf.me",
+            "commit": "1c0df2fc1468fb094c76da04de91271ffb4461c7",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Log messages contain package name and version (#2589)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "4568c16bd425e242cdb799ec59b3508654cc2e45",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add clone to Logger (#2670)",
+            "author": "joarroyo@microsoft.com",
+            "commit": "9efb3ba5886eaf6f3a3cd36957ab9fcb7399278a",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Enable the instance_aware flow (#1804)",
+            "author": "prkanher@microsoft.com",
+            "commit": "3e616e162149f4e57257b70e6d481c4596d91ef9",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Support id_token_hint on logout request (#2587)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "fa9b7009f094b3c17a6d177fcec9b736320735c0",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Enable StrictNullChecks (#2602)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "ebf18c6daead16f8cfd2afb3b63cbd59fc63046a",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Rename request types and change required fields (#2512)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "5b891222d674eb5664af9187f319a61b50341f55",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Enforce triple equals in eslint",
+            "author": "janutter@microsoft.com",
+            "commit": "5975eb4077a2b4372683e68af4d748b0808134ab",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Package-lock update",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "9c029bc074ecd32483a45cfab8721f0771c31e55",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Remove console.log in unit tests (#2629)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "b89d8029a3703b2bfa1f9399456e652fe6f26e4f",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Nov 2020 23:33:20 GMT",
+      "tag": "@azure/msal-common_v1.7.2",
+      "version": "1.7.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Documentation update for new account retrieval APIs (#2585)",
+            "author": "hemoral@microsoft.com",
+            "commit": "cb782967cc8f07581488de71c4509fa12a702774",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add getAbsolutePath helper function to UrlString class (#2560)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "12ccf0441f8735e9d2875cebac6065447ecc622d",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Nov 2020 01:48:44 GMT",
+      "tag": "@azure/msal-common_v1.7.1",
+      "version": "1.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enhance lookup for IdTokens/AppMetadata (#2530)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "e51446295f8c857f1abc7f6874a4c7fde157699e",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add LocalAccountId for ADFS usecases (#2573)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "d8247d8e74fc8854ffdb5a6001df00b36fdddd62",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Nov 2020 01:50:14 GMT",
+      "tag": "@azure/msal-common_v1.7.0",
+      "version": "1.7.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Mandate localAccount in AccountInfo",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "ee770fc1f4ed1ef9e53b28a18487e9b7686ffa64",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Filtered lookup of IdTokens, AppMetadata; Error handling in Node Storage (#2530)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "354dd86449d792b7369fb240c5e2cfd70ca73488",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Build Pipeline Changes (#2406)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "af8459c0d53a4dc2bf495017608c0bb03004d006",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Implement Password Grant Flow (#2204)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "baf6d157e7bbeae439526aee13eb08962974925b",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Fixing a bug and adding `localAccountId` in AccountInfo interface (#2516)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "c2ec3b43f07d9c18eec14e109caddcf7941f50b4",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Oct 2020 21:00:29 GMT",
+      "tag": "@azure/msal-common_v1.6.3",
+      "version": "1.6.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix ServerTelemetry maxErrorToSend bug (#2491)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "81575de28b78e7c09c5d475854e14a8bc1b7b567",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add missing default headers to device code",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "e007d2b425c8ceaed409ed9b11a1a72bc64fa955",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "msal-browser and msal-node cache Interfaces to msal-common updated (#2415)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "9d4c4a18de10eb3d918810dc10766fbd5547165d",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Oct 2020 23:47:28 GMT",
+      "tag": "@azure/msal-common_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds support for any OIDC-compliant authority (#2389).",
+            "author": "jamckenn@microsoft.com",
+            "commit": "2b6b9ec9033a8b829393e44c3feb7b19b163d2cd",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Updated eslint rules (#2345)",
+            "author": "janutter@microsoft.com",
+            "commit": "64a4f9e868e63346dfd711dec717abe7fd14d949",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Oct 2020 00:49:18 GMT",
+      "tag": "@azure/msal-common_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing unused errors in msal-common and fixing possible build errors in @azure/msal-common@1.6.0 (#2432)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "c752e512993dc3a294b51fe0849c70e3cfeafa3e",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Oct 2020 23:45:07 GMT",
+      "tag": "@azure/msal-common_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Docs updates for msal-node release",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "20718209d5d567c02223a7f1b220b4aa40ad6817",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add support for persistence cache plugin (#2348)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "26723689e35918c59bd6ce58ba8cb886118676c6",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add Telemetry header size limit (#2223)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "82b982ba38d70d9060e3cf5d9c38e0203b60d963",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Oct 2020 17:42:35 GMT",
+      "tag": "@azure/msal-common_v1.5.0",
+      "version": "1.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Implementation of Access Token Proof-of-Possession Flow (#2151, #2153, #2154, #2209, #2289)",
+            "author": "prkanher@microsoft.com",
+            "commit": "3cffbc99730532bbd0b35f2e3a9df17f032c0675",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Sep 2020 17:58:33 GMT",
+      "tag": "@azure/msal-common_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating dependency versions(#2342)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "bc3f324edd6cf83937c31f73d3aefc6dbaf5f748",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Update changelog versions for msal-node and extensions (#2336)",
+            "author": "hectormgdev@gmail.com",
+            "commit": "323875a725e0d5049ff6742a9ca5160c2d4b7d0d",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 21:13:48 GMT",
+      "tag": "@azure/msal-common_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove null in function return types to be compatible with ICacheManager.ts (#2335)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "aecc41e9f23b350a25bba9dd23e739627e61f8ab",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Scopes stored case sensitive, compared case insensitive (#2302)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "60fe1e6b2e4c3fdd1f7ce0dd0fbee0febed6d0d2",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "FOCI - Family of Client IDs feature (#2201)",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "209789cdffdfd38087819cbb23688bcd5ce47b60",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 23:16:22 GMT",
+      "tag": "@azure/msal-common_v1.3.0",
+      "version": "1.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add name field to AccountInfo (#2288)",
+            "author": "jamckenn@microsoft.com",
+            "commit": "d917d6a91987522f1c4390817966945ce18fa099",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Realm should fallback to an empty string for non AAD scenarios",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "d4c4b1f53e919c226b19e3fa72f42f02baa394da",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add default scopes in all requests and ignore in cache lookups (#2267)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "3a18b100f38149a35c01cc491a9de78ea505d771",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Move refreshToken API to RefreshTokenClient (#2264)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "6923e66fc9ca44c460489b41ff6a4d104ebde864",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Track Suberrors in Telemetry (#1921)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "1872900d149b60436ef59fd41ab542c58c32e8f1",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Separate cache lookup from token refresh (#2189)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "b452afeac6bf3fc5df0535c22433709a06921b33",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update core, browser, common to use central eslint configuration",
+            "author": "janutter@microsoft.com",
+            "commit": "fc49c6f16b3f7a62a67d249107fc484272133305",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add support for On-behalf-of flow",
+            "author": "sagonzal@microsoft.com",
+            "commit": "53c018c8ea0d1877c12641fc1a749e6d66e7ff78",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "ValidCacheType adds ServerTelemetryEntity",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "9760b6ff6c0ad403ac1b26968cb10d3d7e72a6fd",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Added client-side throttling to enhance server stability (#1907)",
+            "author": "jamckenn@microsoft.com",
+            "commit": "91a1dba29dbfb8f6fc329c0381767d6b6f661281",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 00:40:45 GMT",
+      "tag": "@azure/msal-common_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ignore offline_access in scopes lookup",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "ed55b106bba3d97378b8760d711b24217a7adbbf",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Adds checks for cache entities",
+            "author": "sameera.gajjarapu@microsoft.com",
+            "commit": "282035aecb07956dca323d65275fdaa703c4a325",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add claims request to /token calls (#2138)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "a2813a0b7dc1b6ad8fa76f1fd7444b95d380e42b",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Fix Telemetry cacheHit Bug (#2170)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "a9305a0ec3405f892ff4a1926ffb3dbca26e9a83",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Get username from emails claim in B2C scenarios (#2114)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "40b1716fec63893f57762f37b55944f6c8c86e21",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Update POST header to type Record (#2128)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "c9b65c59797cd3240aad2b4f1e0e866a90373c4a",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Client Capabilities Support (#2169)",
+            "author": "thomas.norling@microsoft.com",
+            "commit": "0cdad1b8a3855b2414be9740862df29524897a22",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Add support for acquiring tokens with client credentials grant",
+            "author": "sagonzal@microsoft.com",
+            "commit": "98647b7a8a40e1a5f7855f0bcee4594e080a8398",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 02:20:48 GMT",
+      "tag": "@azure/msal-common_v1.1.1",
+      "version": "1.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "knownAuthorities enhancements (#2106)",
+            "author": "thomas.l.norling@gmail.com",
+            "commit": "7f86c1ef455deda854fc1743e8a3f687e3f8ee76",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Update typing of IdTokenClaims (#2105)",
+            "author": "hemoral@microsoft.com",
+            "commit": "a5994b5767d36476066c86822ce49a8ba4dbd3a7",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "Fix hash parsing issue from #2118 and back button cache clearing (#2129)",
+            "author": "prkanher@microsoft.com",
+            "commit": "10ab51ecd9e4bb1ba1668972b693055310c65736",
+            "package": "@azure/msal-common"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added documentation for client-side throttling (#2033)",
+            "author": "jamckenn@microsoft.com",
+            "commit": "4a45286aa7767a4f60aa0eadd4ed125d520034f7",
+            "package": "@azure/msal-common"
+          },
+          {
+            "comment": "updating files for automated release steps",
+            "author": "prkanher@microsoft.com",
+            "commit": "2c937a52cef36cbc84231f8868b4251529fa38c9",
+            "package": "@azure/msal-common"
+          }
+        ]
+      }
+    }
+  ]
+}

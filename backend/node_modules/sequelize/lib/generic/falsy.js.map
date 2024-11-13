@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/generic/falsy.ts"],
+  "sourcesContent": ["export type Falsy = false | 0 | -0 | 0n | '' | null | undefined | void;\n"],
+  "mappings": ";;AAAA;",
+  "names": []
+}

@@ -1,0 +1,14 @@
+node_modules/
+test/
+tests/
+.git**
+.vscode/
+RELEASES.md
+sample/
+tools/
+tasks/
+scripts/
+.nuget/
+packages/
+packages.config
+.ntvs_analysis.*

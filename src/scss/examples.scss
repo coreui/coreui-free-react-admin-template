@@ -1,5 +1,6 @@
-/* stylelint-disable declaration-no-important, scss/selector-no-redundant-nesting-selector */
-$enable-deprecation-messages: false; /* stylelint-disable-line scss/dollar-variable-default */
+/* stylelint-disable scss/selector-no-redundant-nesting-selector */
+
+$enable-deprecation-messages: false !default;
 
 @import "@coreui/coreui/scss/functions";
 @import "@coreui/coreui/scss/variables";
@@ -53,6 +54,8 @@ $enable-deprecation-messages: false; /* stylelint-disable-line scss/dollar-varia
     }
 
     // Buttons
+    .col > .btn,
+    .col-auto > .btn,
     > .btn,
     > .btn-group {
       margin: .25rem .125rem;
@@ -103,14 +106,6 @@ $enable-deprecation-messages: false; /* stylelint-disable-line scss/dollar-varia
         position: static;
         display: block;
       }
-    }
-  }
-}
-
-@if $enable-dark-mode {
-  @include color-mode(dark) {
-    .example .tab-content {
-      background-color: var(--#{$prefix}secondary-bg) !important;
     }
   }
 }

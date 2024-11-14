@@ -20,7 +20,7 @@ export const AppSidebarNav = ({ items }) => {
             )}
         {name && name}
         {badge && (
-          <CBadge color={badge.color} className="ms-auto">
+          <CBadge color={badge.color} className="ms-auto" size="sm">
             {badge.text}
           </CBadge>
         )}
@@ -34,7 +34,11 @@ export const AppSidebarNav = ({ items }) => {
     return (
       <Component as="div" key={index}>
         {rest.to || rest.href ? (
-          <CNavLink {...(rest.to && { as: NavLink })} {...rest}>
+          <CNavLink
+            {...(rest.to && { as: NavLink })}
+            {...(rest.href && { target: '_blank', rel: 'noopener noreferrer' })}
+            {...rest}
+          >
             {navLink(name, icon, badge, indent)}
           </CNavLink>
         ) : (

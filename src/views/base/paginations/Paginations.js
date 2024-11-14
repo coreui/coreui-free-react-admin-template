@@ -8,12 +8,13 @@ import {
   CPaginationItem,
   CRow,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Paginations = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/pagination" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Pagination</strong>

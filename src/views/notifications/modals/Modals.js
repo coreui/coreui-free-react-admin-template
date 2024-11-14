@@ -15,7 +15,7 @@ import {
   CRow,
   CTooltip,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const LiveDemo = () => {
   const [visible, setVisible] = useState(false)
@@ -493,6 +493,7 @@ const Modals = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/modal" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Modal</strong>

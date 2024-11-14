@@ -13,12 +13,13 @@ import {
   CNavItem,
   CNavLink,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Navs = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/nav" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Navs</strong> <small>Base navs</small>

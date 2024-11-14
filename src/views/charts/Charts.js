@@ -8,23 +8,19 @@ import {
   CChartPolarArea,
   CChartRadar,
 } from '@coreui/react-chartjs'
-import { DocsCallout } from 'src/components'
+import { DocsLink } from 'src/components'
 
 const Charts = () => {
   const random = () => Math.round(Math.random() * 100)
 
   return (
     <CRow>
-      <CCol xs={12}>
-        <DocsCallout
-          name="Chart"
-          href="components/chart"
-          content="React wrapper component for Chart.js 3.0, the most popular charting library."
-        />
-      </CCol>
+      <CCol xs={12}></CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>Bar Chart</CCardHeader>
+          <CCardHeader>
+            Bar Chart <DocsLink name="chart" />
+          </CCardHeader>
           <CCardBody>
             <CChartBar
               data={{
@@ -44,7 +40,9 @@ const Charts = () => {
       </CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>Line Chart</CCardHeader>
+          <CCardHeader>
+            Line Chart <DocsLink name="chart" />
+          </CCardHeader>
           <CCardBody>
             <CChartLine
               data={{
@@ -74,7 +72,9 @@ const Charts = () => {
       </CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>Doughnut Chart</CCardHeader>
+          <CCardHeader>
+            Doughnut Chart <DocsLink name="chart" />
+          </CCardHeader>
           <CCardBody>
             <CChartDoughnut
               data={{
@@ -92,7 +92,9 @@ const Charts = () => {
       </CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>Pie Chart</CCardHeader>
+          <CCardHeader>
+            Pie Chart <DocsLink name="chart" />{' '}
+          </CCardHeader>
           <CCardBody>
             <CChartPie
               data={{
@@ -111,7 +113,10 @@ const Charts = () => {
       </CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>Polar Area Chart</CCardHeader>
+          <CCardHeader>
+            Polar Area Chart
+            <DocsLink name="chart" />
+          </CCardHeader>
           <CCardBody>
             <CChartPolarArea
               data={{
@@ -129,7 +134,9 @@ const Charts = () => {
       </CCol>
       <CCol xs={6}>
         <CCard className="mb-4">
-          <CCardHeader>Radar Chart</CCardHeader>
+          <CCardHeader>
+            Radar Chart <DocsLink name="chart" />
+          </CCardHeader>
           <CCardBody>
             <CChartRadar
               data={{

@@ -16,7 +16,7 @@ import {
   CInputGroupText,
   CRow,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const CustomStyles = () => {
   const [validated, setValidated] = useState(false)
@@ -253,6 +253,7 @@ const Validation = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="forms/validation" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>Validation</strong> <small>Custom styles</small>

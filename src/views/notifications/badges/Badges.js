@@ -1,10 +1,13 @@
 import React from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CBadge, CRow } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Badges = () => {
   return (
     <CRow>
+      <CCol xs={12}>
+        <DocsComponents href="components/badge" />
+      </CCol>
       <CCol lg={6}>
         <CCard className="mb-4">
           <CCardHeader>

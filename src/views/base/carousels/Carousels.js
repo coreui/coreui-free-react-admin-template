@@ -9,7 +9,7 @@ import {
   CCol,
   CRow,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 import AngularImg from 'src/assets/images/angular.jpg'
 import ReactImg from 'src/assets/images/react.jpg'
@@ -25,6 +25,7 @@ const Carousels = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/carousel" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>Carousel</strong> <small>Slide only</small>

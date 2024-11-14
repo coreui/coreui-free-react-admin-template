@@ -9,12 +9,13 @@ import {
   CCol,
   CRow,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Alerts = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/alert" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Alert</strong>

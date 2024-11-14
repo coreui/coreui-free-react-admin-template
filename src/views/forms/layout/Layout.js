@@ -14,12 +14,13 @@ import {
   CInputGroupText,
   CRow,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Layout = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="forms/layout" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>Layout</strong> <small>Form grid</small>

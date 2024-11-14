@@ -10,12 +10,13 @@ import {
   CAccordionHeader,
   CAccordionItem,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Accordion = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/accordion" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Accordion</strong>

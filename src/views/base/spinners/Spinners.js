@@ -1,11 +1,12 @@
 import React from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CSpinner, CRow } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Spinners = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/spinner" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Spinner</strong> <small>Border</small>

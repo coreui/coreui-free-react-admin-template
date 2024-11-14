@@ -1,11 +1,12 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CCol, CFormCheck, CFormSwitch, CRow } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const ChecksRadios = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="forms/checks-radios" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Checkbox</strong>

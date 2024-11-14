@@ -1,11 +1,12 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CCol, CFormLabel, CFormRange, CRow } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Range = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="forms/range" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Range</strong> <small></small>

@@ -1,11 +1,12 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CCol, CFormSelect, CRow } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Select = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="forms/select" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Select</strong> <small>Default</small>

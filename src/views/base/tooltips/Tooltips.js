@@ -1,11 +1,12 @@
 import React from 'react'
 import { CButton, CCard, CCardBody, CCardHeader, CLink, CTooltip, CRow, CCol } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 const Tooltips = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/tooltip" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Tooltip</strong> <small>Basic example</small>

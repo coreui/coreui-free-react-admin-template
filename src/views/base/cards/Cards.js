@@ -19,7 +19,7 @@ import {
   CCol,
   CRow,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
+import { DocsComponents, DocsExample } from 'src/components'
 
 import ReactImg from 'src/assets/images/react.jpg'
 
@@ -27,6 +27,7 @@ const Cards = () => {
   return (
     <CRow>
       <CCol xs={12}>
+        <DocsComponents href="components/card" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>Card</strong> <small>Example</small>

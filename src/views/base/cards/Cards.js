@@ -27,7 +27,7 @@ const Cards = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/card" />
+        <DocsComponents href="components/card/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>Card</strong> <small>Example</small>
@@ -245,7 +245,7 @@ const Cards = () => {
               </CCard>
             </DocsExample>
             <p className="text-body-secondary small">
-              Card headers can be styled by adding ex. <code>component=&#34;h5&#34;</code>.
+              Card headers can be styled by adding ex. <code>as=&#34;h5&#34;</code>.
             </p>
             <DocsExample href="components/card/#header-and-footer">
               <CCard>

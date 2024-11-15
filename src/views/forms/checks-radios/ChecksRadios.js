@@ -6,7 +6,7 @@ const ChecksRadios = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="forms/checks-radios" />
+        <DocsComponents href="forms/checks-radios/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Checkbox</strong>

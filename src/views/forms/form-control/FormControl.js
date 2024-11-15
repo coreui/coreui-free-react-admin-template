@@ -17,7 +17,7 @@ const FormControl = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="forms/form-control" />
+        <DocsComponents href="forms/form-control/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Form Control</strong>

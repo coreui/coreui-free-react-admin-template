@@ -15,7 +15,7 @@ const Alerts = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/alert" />
+        <DocsComponents href="components/alert/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Alert</strong>

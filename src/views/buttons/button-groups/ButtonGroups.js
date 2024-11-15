@@ -24,7 +24,7 @@ const ButtonGroups = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/button-group" />
+        <DocsComponents href="components/button-group/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Button Group</strong> <span>Basic example</span>

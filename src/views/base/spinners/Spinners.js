@@ -6,7 +6,7 @@ const Spinners = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/spinner" />
+        <DocsComponents href="components/spinner/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Spinner</strong> <small>Border</small>

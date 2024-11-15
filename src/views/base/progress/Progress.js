@@ -6,7 +6,7 @@ const Progress = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/progress" />
+        <DocsComponents href="components/progress/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Progress</strong> <small>Basic example</small>

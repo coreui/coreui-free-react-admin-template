@@ -11,7 +11,7 @@ const Collapses = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/collapse" />
+        <DocsComponents href="components/collapse/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Collapse</strong>

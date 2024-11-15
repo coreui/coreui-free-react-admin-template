@@ -16,7 +16,7 @@ const ListGroups = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/list-group" />
+        <DocsComponents href="components/list-group/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React List Group</strong> <small>Basic example</small>
@@ -91,8 +91,8 @@ const ListGroups = () => {
             <p className="text-body-secondary small">
               Use <code>&lt;a&gt;</code>s or <code>&lt;button&gt;</code>s to create{' '}
               <em>actionable</em> list group items with hover, disabled, and active states by adding{' '}
-              <code>component=&#34;a|button&#34;</code>. We separate these pseudo-classes to ensure
-              list groups made of non-interactive elements (like <code>&lt;li&gt;</code>s or{' '}
+              <code>as=&#34;a|button&#34;</code>. We separate these pseudo-classes to ensure list
+              groups made of non-interactive elements (like <code>&lt;li&gt;</code>s or{' '}
               <code>&lt;div&gt;</code>
               s) don&#39;tprovide a click or tap affordance.
             </p>

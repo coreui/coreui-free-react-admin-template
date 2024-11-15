@@ -6,7 +6,7 @@ const Badges = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/badge" />
+        <DocsComponents href="components/badge/" />
       </CCol>
       <CCol lg={6}>
         <CCard className="mb-4">

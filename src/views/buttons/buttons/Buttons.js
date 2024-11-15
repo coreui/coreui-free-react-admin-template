@@ -8,7 +8,7 @@ const Buttons = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/buttons" />
+        <DocsComponents href="components/buttons/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Button</strong>

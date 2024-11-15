@@ -17,7 +17,7 @@ const FloatingLabels = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="forms/floating-labels" />
+        <DocsComponents href="forms/floating-labels/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Floating labels</strong>

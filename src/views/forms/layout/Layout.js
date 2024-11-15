@@ -20,7 +20,7 @@ const Layout = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="forms/layout" />
+        <DocsComponents href="forms/layout/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>Layout</strong> <small>Form grid</small>

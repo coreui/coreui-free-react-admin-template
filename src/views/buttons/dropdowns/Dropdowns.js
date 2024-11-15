@@ -19,7 +19,7 @@ const Dropdowns = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/dropdown" />
+        <DocsComponents href="components/dropdown/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Dropdown</strong> <small>Single button</small>

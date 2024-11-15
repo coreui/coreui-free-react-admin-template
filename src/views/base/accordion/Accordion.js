@@ -16,7 +16,7 @@ const Accordion = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/accordion" />
+        <DocsComponents href="components/accordion/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Accordion</strong>

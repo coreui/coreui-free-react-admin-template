@@ -493,7 +493,7 @@ const Modals = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/modal" />
+        <DocsComponents href="components/modal/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Modal</strong>

@@ -19,7 +19,7 @@ const Tables = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/table" />
+        <DocsComponents href="components/table/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Table</strong> <small>Basic example</small>

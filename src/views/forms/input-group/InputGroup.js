@@ -25,7 +25,7 @@ const InputGroup = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="forms/input-group" />
+        <DocsComponents href="forms/input-group/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Input group</strong> <small>Basic example</small>

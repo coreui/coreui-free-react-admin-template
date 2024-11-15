@@ -6,7 +6,7 @@ const Tooltips = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/tooltip" />
+        <DocsComponents href="components/tooltip/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Tooltip</strong> <small>Basic example</small>

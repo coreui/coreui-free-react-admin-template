@@ -19,7 +19,7 @@ const Placeholders = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/placeholder" />
+        <DocsComponents href="components/placeholder/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Placeholder</strong>
@@ -60,10 +60,10 @@ const Placeholders = () => {
                     <rect width="100%" height="100%" fill="#868e96"></rect>
                   </svg>
                   <CCardBody>
-                    <CPlaceholder component={CCardTitle} animation="glow" xs={7}>
+                    <CPlaceholder as={CCardTitle} animation="glow" xs={7}>
                       <CPlaceholder xs={6} />
                     </CPlaceholder>
-                    <CPlaceholder component={CCardText} animation="glow">
+                    <CPlaceholder as={CCardText} animation="glow">
                       <CPlaceholder xs={7} />
                       <CPlaceholder xs={4} />
                       <CPlaceholder xs={4} />
@@ -72,7 +72,7 @@ const Placeholders = () => {
                     </CPlaceholder>
                     <CPlaceholder
                       color="primary"
-                      component={CButton}
+                      as={CButton}
                       disabled
                       href="#"
                       tabIndex={-1}
@@ -101,7 +101,7 @@ const Placeholders = () => {
               </p>
               <CPlaceholder
                 color="primary"
-                component={CButton}
+                as={CButton}
                 aria-hidden="true"
                 disabled
                 href="#"
@@ -179,11 +179,11 @@ const Placeholders = () => {
               being <em>actively</em> loaded.
             </p>
             <DocsExample href="components/placeholder#animation">
-              <CPlaceholder component="p" animation="glow">
+              <CPlaceholder as="p" animation="glow">
                 <CPlaceholder xs={12} />
               </CPlaceholder>
 
-              <CPlaceholder component="p" animation="wave">
+              <CPlaceholder as="p" animation="wave">
                 <CPlaceholder xs={12} />
               </CPlaceholder>
             </DocsExample>

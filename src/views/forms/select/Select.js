@@ -6,7 +6,7 @@ const Select = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="forms/select" />
+        <DocsComponents href="forms/select/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Select</strong> <small>Default</small>

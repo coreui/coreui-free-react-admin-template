@@ -6,7 +6,7 @@ const Popovers = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/popover" />
+        <DocsComponents href="components/popover/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Popover</strong> <small>Basic example</small>

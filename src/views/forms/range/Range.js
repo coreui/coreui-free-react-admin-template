@@ -6,7 +6,7 @@ const Range = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="forms/range" />
+        <DocsComponents href="forms/range/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Range</strong> <small></small>

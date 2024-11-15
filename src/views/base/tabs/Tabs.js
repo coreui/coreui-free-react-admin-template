@@ -17,7 +17,7 @@ const Navs = () => {
   return (
     <CRow>
       <CCol xs={12}>
-        <DocsComponents href="components/tabs" />
+        <DocsComponents href="components/tabs/" />
         <CCard className="mb-4">
           <CCardHeader>
             <strong>React Tabs</strong>

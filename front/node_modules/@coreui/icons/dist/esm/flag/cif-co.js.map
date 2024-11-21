@@ -1,1 +1,0 @@
-{"version":3,"file":"cif-co.js","sources":["../../../src/flag/cif-co.ts"],"sourcesContent":["export var cifCo = [\"301 201\", \"<g fill='none'><path fill='#FCD116' d='M.5.5h300v100H.5z'/><path fill='#003893' d='M.5 100.5h300v50H.5z'/><path fill='#CE1126' d='M.5 150.5h300v50H.5z'/></g>\"];\n"],"names":[],"mappings":"AAAU,IAAC,KAAK,GAAG,CAAC,SAAS,EAAE,+JAA+J;;;;"}

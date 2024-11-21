@@ -1,1 +1,0 @@
-{"version":3,"file":"cib-bandcamp.js","sources":["../../../src/brand/cib-bandcamp.ts"],"sourcesContent":["export var cibBandcamp = [\"32 32\", \"<path d='M0 25l9.917-18h22.083l-9.917 18z'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,WAAW,GAAG,CAAC,OAAO,EAAE,8CAA8C;;;;"}

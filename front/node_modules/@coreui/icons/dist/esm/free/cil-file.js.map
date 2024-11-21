@@ -1,1 +1,0 @@
-{"version":3,"file":"cil-file.js","sources":["../../../src/free/cil-file.ts"],"sourcesContent":["export var cilFile = [\"512 512\", \"<path fill='var(--ci-primary-color, currentColor)' d='M334.627,16H48V496H472V153.373ZM440,166.627V168H320V48h1.373ZM80,464V48H288V200H440V464Z' class='ci-primary'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,OAAO,GAAG,CAAC,SAAS,EAAE,sKAAsK;;;;"}

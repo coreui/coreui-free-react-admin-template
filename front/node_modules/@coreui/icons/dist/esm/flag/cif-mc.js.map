@@ -1,1 +1,0 @@
-{"version":3,"file":"cif-mc.js","sources":["../../../src/flag/cif-mc.ts"],"sourcesContent":["export var cifMc = [\"301 241\", \"<g fill='none'><path fill='#CE1126' d='M.5.5h300v120H.5z'/><path fill='#FFF' d='M.5 120.5h300v120H.5z'/></g>\"];\n"],"names":[],"mappings":"AAAU,IAAC,KAAK,GAAG,CAAC,SAAS,EAAE,8GAA8G;;;;"}

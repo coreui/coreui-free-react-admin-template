@@ -1,1 +1,0 @@
-{"version":3,"file":"cif-ci.js","sources":["../../../src/flag/cif-ci.ts"],"sourcesContent":["export var cifCi = [\"301 201\", \"<g fill='none'><path fill='#FFF' d='M.5.5h300v200H.5z'/><path fill='#F77F00' d='M.5.5h100v200H.5z'/><path fill='#009E60' d='M200.5.5h100v200h-100z'/></g>\"];\n"],"names":[],"mappings":";;AAAU,IAAC,KAAK,GAAG,CAAC,SAAS,EAAE,2JAA2J;;;;"}

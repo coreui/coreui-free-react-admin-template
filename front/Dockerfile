@@ -1,7 +1,7 @@
 FROM node:22-alpine
 
 RUN npm install -g nodemon
-RUN npm run build
+
 
 WORKDIR /front
 COPY . .

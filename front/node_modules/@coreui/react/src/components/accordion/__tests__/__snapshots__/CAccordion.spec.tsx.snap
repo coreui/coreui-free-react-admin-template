@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CAccordion customize 1`] = `
+<div>
+  <div
+    class="accordion bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CAccordion component 1`] = `
+<div>
+  <div
+    class="accordion"
+  >
+    Test
+  </div>
+</div>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CAccordionBody customize 1`] = `
+<div>
+  <div
+    class="accordion-collapse collapse"
+  >
+    <div
+      class="accordion-body"
+    >
+      Test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CAccordionBody component 1`] = `
+<div>
+  <div
+    class="accordion-collapse collapse"
+  >
+    <div
+      class="accordion-body"
+    >
+      Test
+    </div>
+  </div>
+</div>
+`;

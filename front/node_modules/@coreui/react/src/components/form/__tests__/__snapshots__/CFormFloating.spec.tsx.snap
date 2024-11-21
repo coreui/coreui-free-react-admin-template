@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormFloating customize 1`] = `
+<div>
+  <div
+    class="form-floating bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CFormFloating component 1`] = `
+<div>
+  <div
+    class="form-floating"
+  />
+</div>
+`;

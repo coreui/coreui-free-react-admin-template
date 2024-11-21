@@ -1,0 +1,6 @@
+'use strict';
+
+var cilChevronCircleDownAlt = ["512 512", "<path fill='var(--ci-primary-color, currentColor)' d='M256,496A240,240,0,0,1,86.294,86.294,240,240,0,0,1,425.706,425.706,238.43,238.43,0,0,1,256,496Zm0-448C141.309,48,48,141.309,48,256s93.309,208,208,208,208-93.309,208-208S370.691,48,256,48Z' class='ci-primary'/><polygon fill='var(--ci-primary-color, currentColor)' points='256 342.627 132.687 219.313 155.313 196.687 256 297.372 356.687 196.687 379.313 219.313 256 342.627' class='ci-primary'/>"];
+
+exports.cilChevronCircleDownAlt = cilChevronCircleDownAlt;
+//# sourceMappingURL=cil-chevron-circle-down-alt.js.map

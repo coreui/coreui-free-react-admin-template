@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardText customize 1`] = `
+<div>
+  <h3
+    class="card-text bazinga"
+  >
+    Test
+  </h3>
+</div>
+`;
+
+exports[`loads and displays CCardText component 1`] = `
+<div>
+  <p
+    class="card-text"
+  >
+    Test
+  </p>
+</div>
+`;

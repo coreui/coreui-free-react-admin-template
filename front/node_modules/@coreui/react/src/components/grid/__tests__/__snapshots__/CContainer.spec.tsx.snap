@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CContainer customize 1`] = `
+<div>
+  <div
+    class="container-md bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CContainer customize fluid 1`] = `
+<div>
+  <div
+    class="container-fluid bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CContainer component 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    Test
+  </div>
+</div>
+`;

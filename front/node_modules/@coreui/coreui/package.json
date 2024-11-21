@@ -1,0 +1,185 @@
+{
+  "name": "@coreui/coreui",
+  "description": "The most popular front-end framework for developing responsive, mobile-first projects on the web rewritten and maintained by the CoreUI Team",
+  "version": "5.2.0",
+  "config": {
+    "version_short": "5.2"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
+  ],
+  "homepage": "https://coreui.io",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "scripts": {
+    "start": "npm-run-all --parallel watch docs-serve",
+    "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
+    "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
+    "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/:dist/css/",
+    "css-rtl": "cross-env NODE_ENV=RTL postcss --config build/postcss.config.mjs --dir \"dist/css/themes/bootstrap/\" --ext \".rtl.css\" \"dist/css/themes/bootstrap/*.css\" \"!dist/css/themes/bootstrap/*.min.css\" \"!dist/css/themes/bootstrap/*.rtl.css\"",
+    "css-lint": "npm-run-all --aggregate-output --continue-on-error --parallel css-lint-*",
+    "css-lint-stylelint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache",
+    "css-lint-vars": "fusv scss/ docs/assets/scss/",
+    "css-minify": "npm-run-all --aggregate-output --parallel css-minify-*",
+    "css-minify-main": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/**/*.css\" \"!dist/css/**/*.min.css\" \"!dist/css/**/*rtl*.css\"",
+    "css-minify-rtl": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/**/*rtl.css\" \"!dist/css/**/*.min.css\"",
+    "css-prefix": "npm-run-all --aggregate-output --parallel css-prefix-*",
+    "css-prefix-main": "postcss --config build/postcss.config.mjs --replace \"dist/css/**/*.css\" \"!dist/css/**/*.rtl*.css\" \"!dist/css/**/*.min.css\"",
+    "css-test": "jasmine --config=scss/tests/jasmine.js",
+    "js": "npm-run-all js-compile js-minify",
+    "js-compile": "npm-run-all --aggregate-output --parallel js-compile-*",
+    "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.mjs --sourcemap",
+    "js-compile-standalone-esm": "rollup --environment ESM:true,BUNDLE:false --config build/rollup.config.mjs --sourcemap",
+    "js-compile-standalone-bootstrap": "rollup --environment BOOTSTRAP:true,BUNDLE:false --config build/rollup.config.mjs --sourcemap",
+    "js-compile-standalone-bootstrap-esm": "rollup --environment ESM:true,BOOTSTRAP:true,BUNDLE:false --config build/rollup.config.mjs --sourcemap",
+    "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.mjs --sourcemap",
+    "js-compile-bundle-bootstrap": "rollup --environment BOOTSTRAP:true,BUNDLE:true --config build/rollup.config.mjs --sourcemap",
+    "js-compile-plugins": "node build/build-plugins.mjs",
+    "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .html,.js,.mjs,.md .",
+    "js-minify": "npm-run-all --aggregate-output --parallel js-minify-*",
+    "js-minify-standalone": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/coreui.js.map,includeSources,url=coreui.min.js.map\" --output dist/js/coreui.min.js dist/js/coreui.js",
+    "js-minify-standalone-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/coreui.esm.js.map,includeSources,url=coreui.esm.min.js.map\" --output dist/js/coreui.esm.min.js dist/js/coreui.esm.js",
+    "js-minify-bundle": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/coreui.bundle.js.map,includeSources,url=coreui.bundle.min.js.map\" --output dist/js/coreui.bundle.min.js dist/js/coreui.bundle.js",
+    "js-minify-standalone-bootstrap": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
+    "js-minify-standalone-bootstrap-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.esm.js.map,includeSources,url=bootstrap.esm.min.js.map\" --output dist/js/bootstrap.esm.min.js dist/js/bootstrap.esm.js",
+    "js-minify-bundle-bootstrap": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
+    "js-test": "npm-run-all --aggregate-output --parallel js-test-karma js-test-jquery js-test-integration-*",
+    "js-debug": "cross-env DEBUG=true npm run js-test-karma",
+    "js-test-karma": "karma start js/tests/karma.conf.js",
+    "js-test-integration-bundle": "rollup --config js/tests/integration/rollup.bundle.js",
+    "js-test-integration-modularity": "rollup --config js/tests/integration/rollup.bundle-modularity.js",
+    "js-test-cloud": "cross-env BROWSERSTACK=true npm run js-test-karma",
+    "js-test-jquery": "cross-env JQUERY=true npm run js-test-karma",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint css-lint lockfile-lint",
+    "docs": "npm-run-all docs-build docs-lint",
+    "docs-build": "hugo --cleanDestinationDir --printUnusedTemplates",
+    "docs-compile": "npm run docs-build",
+    "docs-vnu": "node build/vnu-jar.mjs",
+    "docs-lint": "npm run docs-vnu",
+    "docs-serve": "hugo server --port 9001 --disableFastRender --noHTTPCache --renderToMemory --printPathWarnings --printUnusedTemplates",
+    "docs-serve-only": "npx sirv-cli _gh_pages --port 9001",
+    "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
+    "update-deps": "ncu -u -x eslint,karma-browserstack-launcher,karma-rollup-preprocessor",
+    "release": "npm-run-all dist release-sri docs-build release-zip*",
+    "release-sri": "node build/generate-sri.mjs",
+    "release-version": "node build/change-version.mjs",
+    "release-zip": "cross-env-shell \"rm -rf coreui-$npm_package_version-dist coreui-$npm_package_version-dist.zip && cp -r dist/ coreui-$npm_package_version-dist && zip -qr9 coreui-$npm_package_version-dist.zip coreui-$npm_package_version-dist && rm -rf coreui-$npm_package_version-dist\"",
+    "dist": "npm-run-all --aggregate-output --parallel css js",
+    "test": "npm-run-all lint dist js-test docs-build docs-lint",
+    "watch": "npm-run-all --parallel watch-*",
+    "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile css-prefix\"",
+    "watch-css-docs": "nodemon --watch docs/assets/scss/ --ext scss --exec \"npm run css-lint\"",
+    "watch-css-test": "nodemon --watch scss/ --ext scss,js --exec \"npm run css-test\"",
+    "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
+    "watch-js-docs": "nodemon --watch docs/assets/js/ --ext js --exec \"npm run js-lint\""
+  },
+  "style": "dist/css/coreui.css",
+  "sass": "scss/coreui.scss",
+  "main": "dist/js/coreui.js",
+  "module": "dist/js/coreui.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui/issues"
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/coreui"
+    }
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@popperjs/core": "^2.11.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@docsearch/js": "^3.6.2",
+    "@popperjs/core": "^2.11.8",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-replace": "^6.0.1",
+    "autoprefixer": "^10.4.20",
+    "bootstrap": "^5.3.3",
+    "bundlewatch": "^0.4.0",
+    "clean-css-cli": "^5.6.3",
+    "clipboard": "^2.0.11",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
+    "eslint-config-xo": "^0.45.0",
+    "eslint-plugin-html": "^8.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-markdown": "^5.1.0",
+    "eslint-plugin-unicorn": "^55.0.0",
+    "find-unused-sass-variables": "^6.0.0",
+    "globby": "^14.0.2",
+    "hammer-simulator": "0.0.1",
+    "hugo-bin": "^0.133.5",
+    "ip": "^2.0.1",
+    "jasmine": "^5.4.0",
+    "jquery": "^3.7.1",
+    "karma": "^6.4.4",
+    "karma-browserstack-launcher": "1.6.0",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-detect-browsers": "^2.3.3",
+    "karma-firefox-launcher": "^2.1.3",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.1.0",
+    "karma-rollup-preprocessor": "7.0.8",
+    "lockfile-lint": "^4.14.0",
+    "nodemon": "^3.1.7",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "rollup": "^4.24.1",
+    "rollup-plugin-istanbul": "^5.0.0",
+    "rtlcss": "^4.3.0",
+    "sass": "1.78.0",
+    "sass-true": "^8.1.0",
+    "shelljs": "^0.8.5",
+    "stylelint": "^16.10.0",
+    "stylelint-config-twbs-bootstrap": "^15.1.0",
+    "terser": "5.36.0",
+    "vnu-jar": "24.10.17"
+  },
+  "files": [
+    "dist/{css,js}/**/*.{css,js,map}",
+    "js/{src,dist}/**/*.{js,map}",
+    "js/index.{esm,umd}.js",
+    "scss/**/*.scss",
+    "!scss/tests/**"
+  ],
+  "hugo-bin": {
+    "buildTags": "extended"
+  },
+  "jspm": {
+    "registry": "npm",
+    "main": "js/coreui",
+    "directories": {
+      "lib": "dist"
+    },
+    "shim": {
+      "js/coreui": {
+        "deps": [
+          "@popperjs/core"
+        ]
+      }
+    },
+    "dependencies": {},
+    "peerDependencies": {
+      "@popperjs/core": "^2.11.8"
+    }
+  }
+}

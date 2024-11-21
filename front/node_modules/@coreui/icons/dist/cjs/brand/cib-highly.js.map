@@ -1,0 +1,1 @@
+{"version":3,"file":"cib-highly.js","sources":["../../../src/brand/cib-highly.ts"],"sourcesContent":["export var cibHighly = [\"32 32\", \"<path d='M13.599 27.197h4.803v4.803h-4.803zM12 0h8v24h-8z'/>\"];\n"],"names":[],"mappings":";;AAAU,IAAC,SAAS,GAAG,CAAC,OAAO,EAAE,8DAA8D;;;;"}

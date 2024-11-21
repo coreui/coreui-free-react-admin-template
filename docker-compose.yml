@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  client:
+   build: ./front
+   container_name: client_frontend
+   ports:
+   - '3000:3000'
+   volumes:
+   - .:/app
+   stdin_open: true
+   tty: true
+     
+  backend:
+   build: ./back
+   container_name: client_backend
+   ports:
+   - "8002:80"
+   volumes:
+   - .:/app

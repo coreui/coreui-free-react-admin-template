@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModalHeader customize 1`] = `
+<div>
+  <div
+    class="modal-header bazinga"
+  >
+    Test
+    <button
+      aria-label="Close"
+      class="btn btn-close"
+      type="button"
+    />
+  </div>
+</div>
+`;
+
+exports[`loads and displays CModalHeader component 1`] = `
+<div>
+  <div
+    class="modal-header"
+  >
+    Test
+    <button
+      aria-label="Close"
+      class="btn btn-close"
+      type="button"
+    />
+  </div>
+</div>
+`;

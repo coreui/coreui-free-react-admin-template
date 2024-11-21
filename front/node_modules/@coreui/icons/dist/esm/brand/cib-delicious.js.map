@@ -1,0 +1,1 @@
+{"version":3,"file":"cib-delicious.js","sources":["../../../src/brand/cib-delicious.ts"],"sourcesContent":["export var cibDelicious = [\"32 32\", \"<path d='M16 16h-16v16h16zM32 0h-16v16h16z'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,YAAY,GAAG,CAAC,OAAO,EAAE,+CAA+C;;;;"}

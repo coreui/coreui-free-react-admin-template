@@ -1,0 +1,52 @@
+{
+  "name": "@coreui/utils",
+  "version": "2.0.2",
+  "description": "CoreUI Utilities",
+  "keywords": [
+    "coreui",
+    "js",
+    "utilities",
+    "functions",
+    "methods"
+  ],
+  "homepage": "https://coreui.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coreui/coreui-utils.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "CoreUI",
+    "url": "https://coreui.io",
+    "github": "https://github.com/coreui",
+    "twitter": "https://twitter.com/core_ui"
+  },
+  "contributors": [
+    {
+      "name": "CoreUI Team",
+      "url": "https://github.com/orgs/coreui/people"
+    }
+  ],
+  "sideEffects": false,
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "jsnext:main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "src/",
+    "dist/"
+  ],
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "lint": "eslint \"src/**/*.{js,ts,tsx}\""
+  },
+  "devDependencies": {
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "eslint": "^8.35.0",
+    "rollup": "^3.18.0",
+    "typescript": "^4.9.5"
+  }
+}

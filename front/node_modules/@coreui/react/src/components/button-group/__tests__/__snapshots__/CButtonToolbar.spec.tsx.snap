@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButtonToolbar customize 1`] = `
+<div>
+  <div
+    aria-label="Bazinga"
+    class="btn-toolbar bazinga"
+    role="group"
+  >
+    <div
+      class="btn-group"
+      role="group"
+    >
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        1
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        2
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        3
+      </button>
+    </div>
+    <div
+      class="btn-group"
+      role="group"
+    >
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        A
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        B
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        C
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CButtonToolbar component 1`] = `
+<div>
+  <div
+    class="btn-toolbar"
+  />
+</div>
+`;

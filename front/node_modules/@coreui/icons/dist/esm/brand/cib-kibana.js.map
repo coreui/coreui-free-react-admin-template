@@ -1,0 +1,1 @@
+{"version":3,"file":"cib-kibana.js","sources":["../../../src/brand/cib-kibana.ts"],"sourcesContent":["export var cibKibana = [\"32 32\", \"<path d='M28.052 31.984h-22.479l13.172-15.812c5.64 3.683 9.307 9.391 9.307 15.812zM28.052 0.052h-23.948v28.735z'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,SAAS,GAAG,CAAC,OAAO,EAAE,oHAAoH;;;;"}

@@ -1,0 +1,12 @@
+$chartjs-tooltip-zindex:              $zindex-tooltip !default;
+$chartjs-tooltip-color:               var(--#{$prefix}body-bg) !default;
+$chartjs-tooltip-bg:                  rgba(var(--#{$prefix}emphasis-color-rgb), .8) !default;
+$chartjs-tooltip-border-radius:       var(--#{$prefix}border-radius) !default;
+$chartjs-tooltip-padding-y:           $spacer * .25 !default;
+$chartjs-tooltip-padding-x:           $spacer * .5 !default;
+$chartjs-tooltip-transition:          all .15s ease !default;
+$chartjs-tooltip-header-margin:       $spacer * .5 !default;
+$chartjs-tooltip-header-font-size:    $font-size-sm !default;
+$chartjs-tooltip-header-font-weight:  $font-weight-bold !default;
+$chartjs-tooltip-body-font-size:      $font-size-sm !default;
+$chartjs-tooltip-body-font-weight:    $font-weight-normal !default;

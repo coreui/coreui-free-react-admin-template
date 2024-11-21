@@ -1,0 +1,19 @@
+@include deprecate("`list-group-item-variant()`", "v4.3.0", "v6.0.0");
+
+// List Groups
+
+// scss-docs-start list-group-mixin
+@mixin list-group-item-variant($state, $variant) {
+  $background: map-get($variant, "bg");
+  $background-hover: map-get($variant, "bg-hover");
+  $color: contrast-ratio-correction(map-get($variant, "color"), map-get($variant, "bg"), $alert-color-scale, $state);
+
+  --#{$prefix}list-group-color: #{$color};
+  --#{$prefix}list-group-bg: #{$background};
+  --#{$prefix}list-group-hover-bg: #{$background-hover};
+  --#{$prefix}list-group-action-hover-color: #{$color};
+  --#{$prefix}list-group-action-active-color: #{$white};
+  --#{$prefix}list-group-action-active-bg: #{$color};
+  --#{$prefix}list-group-action-active-border-color: #{$color};
+}
+// scss-docs-end list-group-mixin

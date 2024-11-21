@@ -1,0 +1,1 @@
+{"version":3,"file":"cib-koding.js","sources":["../../../src/brand/cib-koding.ts"],"sourcesContent":["export var cibKoding = [\"32 32\", \"<path d='M1.068 0h29.599v8h-29.333v-8zM1.068 12h22.932v8h-23.068v-8zM1.068 24h29.599v8h-29.333v-8z'/>\"];\n"],"names":[],"mappings":";;AAAU,IAAC,SAAS,GAAG,CAAC,OAAO,EAAE,uGAAuG;;;;"}

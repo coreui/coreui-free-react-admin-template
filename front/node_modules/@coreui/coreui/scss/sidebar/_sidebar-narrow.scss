@@ -1,0 +1,97 @@
+.sidebar-narrow {
+  // scss-docs-start sidebar-narrow-css-vars
+  --#{$prefix}sidebar-narrow-width: #{$sidebar-narrow-width};
+  // scss-docs-end sidebar-narrow-css-vars
+
+  @include media-breakpoint-up($mobile-breakpoint) {
+    flex: 0 0 var(--#{$prefix}sidebar-narrow-width);
+    width: var(--#{$prefix}sidebar-narrow-width);
+    padding-bottom: var(--#{$prefix}sidebar-toggler-height);
+    overflow: visible;
+
+    .sidebar-brand-full {
+      display: none;
+    }
+
+    .sidebar-brand-narrow {
+      display: block;
+    }
+
+    .sidebar-header {
+      justify-content: center;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    .sidebar-nav {
+      --#{$prefix}sidebar-nav-link-padding-x: #{$sidebar-narrow-nav-link-padding-x};
+      --#{$prefix}sidebar-nav-link-padding-y: #{$sidebar-narrow-nav-link-padding-y};
+    }
+
+    .nav-link {
+      overflow: hidden;
+    }
+
+    .nav-icon {
+      flex: 0 0 calc(var(--#{$prefix}sidebar-narrow-width) - (var(--#{$prefix}sidebar-nav-padding-x) * 2) - (var(--#{$prefix}sidebar-nav-link-padding-x) * 2)); // stylelint-disable-line function-disallowed-list
+    }
+
+    .d-narrow-none,
+    .nav-label,
+    .nav-title,
+    .nav-group-items,
+    .nav-group.show .nav-group-items,
+    .sidebar-form {
+      height: 0 !important; // stylelint-disable-line declaration-no-important
+      padding: 0 !important; // stylelint-disable-line declaration-no-important
+      margin: 0 !important; // stylelint-disable-line declaration-no-important
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .sidebar-toggler::before {
+      @include ltr-rtl("transform", rotate(-180deg), null, rotate(0deg));
+    }
+
+    &.sidebar-end .sidebar-toggler::before {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.sidebar-narrow-unfoldable {
+  // scss-docs-start sidebar-narrow-unfoldable-css-vars
+  --#{$prefix}sidebar-narrow-unfoldable-box-shadow: #{$sidebar-narrow-unfoldable-box-shadow};
+  // scss-docs-end sidebar-narrow-unfoldable-css-vars
+
+  @extend .sidebar-fixed;
+
+  &:not(:hover) {
+    @extend .sidebar-narrow;
+  }
+
+  &:hover {
+    box-shadow: var(--#{$prefix}sidebar-narrow-unfoldable-box-shadow);
+    box-shadow: $box-shadow;
+
+    .sidebar-toggler::before {
+      @include ltr-rtl("transform", rotate(-180deg), null, rotate(0deg));
+    }
+
+    &.sidebar-end .sidebar-toggler::before {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.sidebar-narrow,
+.sidebar-narrow-unfoldable {
+  @include media-breakpoint-up($mobile-breakpoint) {
+    &:not(.sidebar-end):not(.hide) ~ * {
+      --#{$prefix}sidebar-occupy-start: #{$sidebar-narrow-width};
+    }
+    &.sidebar-end:not(.hide) ~ * {
+      --#{$prefix}sidebar-occupy-end: #{$sidebar-narrow-width};
+    }
+  }
+}

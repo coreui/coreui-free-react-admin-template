@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModalFooter customize 1`] = `
+<div>
+  <div
+    class="modal-footer bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CModalFooter component 1`] = `
+<div>
+  <div
+    class="modal-footer"
+  >
+    Test
+  </div>
+</div>
+`;

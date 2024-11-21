@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CToast customize 1`] = `
+<div>
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="toast fade bg-warning border-0 show showing bazinga"
+    role="alert"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CToast component 1`] = `<div />`;

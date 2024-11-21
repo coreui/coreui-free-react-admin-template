@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavbarBrand customize 1`] = `
+<div>
+  <h3
+    class="navbar-brand bazinga"
+    href="/bazinga"
+  >
+    Test
+  </h3>
+</div>
+`;
+
+exports[`CNavbarBrand witch href 1`] = `
+<div>
+  <a
+    class="navbar-brand"
+    href="/bazinga"
+  >
+    Test
+  </a>
+</div>
+`;
+
+exports[`loads and displays CNavbarBrand component 1`] = `
+<div>
+  <span
+    class="navbar-brand"
+  >
+    Test
+  </span>
+</div>
+`;

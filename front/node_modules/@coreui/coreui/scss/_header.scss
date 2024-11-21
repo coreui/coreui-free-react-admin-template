@@ -1,0 +1,184 @@
+.header {
+  // scss-docs-start header-css-vars
+  --#{$prefix}header-padding-x: #{$header-padding-x};
+  --#{$prefix}header-padding-y: #{$header-padding-y};
+  --#{$prefix}header-bg: #{$header-bg};
+  --#{$prefix}header-color: #{$header-color};
+  --#{$prefix}header-border-color: #{$header-border-color};
+  --#{$prefix}header-border: #{$header-border-width} solid var(--#{$prefix}header-border-color);
+  --#{$prefix}header-hover-color: #{$header-hover-color};
+  --#{$prefix}header-disabled-color: #{$header-disabled-color};
+  --#{$prefix}header-active-color: #{$header-active-color};
+  --#{$prefix}header-transition: #{$header-transition};
+  --#{$prefix}header-brand-padding-y: #{$header-brand-padding-y};
+  --#{$prefix}header-brand-color: #{$header-brand-color};
+  --#{$prefix}header-brand-hover-color: #{$header-brand-hover-color};
+  --#{$prefix}header-toggler-padding-x: #{$header-toggler-padding-x};
+  --#{$prefix}header-toggler-padding-y: #{$header-toggler-padding-y};
+  --#{$prefix}header-toggler-bg: #{$header-toggler-bg};
+  --#{$prefix}header-toggler-color: #{$header-toggler-color};
+  --#{$prefix}header-toggler-border-radius: #{$header-toggler-border-radius};
+  --#{$prefix}header-toggler-hover-color: #{$header-toggler-hover-color};
+  --#{$prefix}header-toggler-icon-bg: #{escape-svg($header-toggler-icon-bg)};
+  --#{$prefix}header-toggler-hover-icon-bg: #{escape-svg($header-toggler-hover-icon-bg)};
+  --#{$prefix}header-nav-link-padding-x: #{$header-nav-link-padding-x};
+  --#{$prefix}header-nav-link-padding-y: #{$header-nav-link-padding-y};
+  --#{$prefix}header-divider-border-color: #{$header-divider-border-color};
+  --#{$prefix}header-divider-border: #{$header-divider-border-width} solid var(--#{$prefix}header-divider-border-color);
+  // scss-docs-end header-css-vars
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap; // allow us to do the line break for collapsing content
+  align-items: center;
+  justify-content: space-between; // space out brand from logo
+  padding: var(--#{$prefix}header-padding-y) var(--#{$prefix}header-padding-x);
+  background: var(--#{$prefix}header-bg);
+  border-bottom: var(--#{$prefix}header-border);
+  @include transition(var(--#{$prefix}header-transition));
+
+  // Because flex properties aren't inherited, we need to redeclare these first
+  // few properties so that content nested within behave properly.
+  // The `flex-wrap` property is inherited to simplify the expanded navbars
+  %container-flex-properties {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  > .container,
+  > .container-fluid {
+    @extend %container-flex-properties;
+  }
+
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+      @extend %container-flex-properties;
+    }
+  }
+
+  &.header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: $zindex-sticky;
+  }
+}
+
+.header-divider {
+  flex-basis: calc(100% + (2 * var(--#{$prefix}header-padding-x))); // stylelint-disable-line function-disallowed-list
+  height: 0;
+  margin: var(--#{$prefix}header-padding-y) calc(var(--#{$prefix}header-padding-x) * -1); // stylelint-disable-line function-disallowed-list
+  border-top: var(--#{$prefix}header-divider-border);
+}
+
+// Header brand
+//
+// Used for brand, project, or site names.
+
+.header-brand {
+  padding-top: var(--#{$prefix}header-brand-padding-y);
+  padding-bottom: var(--#{$prefix}header-brand-padding-y);
+  @include ltr-rtl("margin-right", $header-brand-margin-end);
+  @include font-size($header-brand-font-size);
+  color: var(--#{$prefix}header-brand-color);
+  text-decoration: if($link-decoration == none, null, none);
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: var(--#{$prefix}header-brand-hover-color);
+    text-decoration: if($link-hover-decoration == underline, none, null);
+  }
+}
+
+// Header nav
+//
+// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
+
+.header-nav {
+  display: flex;
+  flex-direction: row; // cannot use `inherit` to get the `.header`s value
+  @include ltr-rtl("padding-left", 0);
+  margin-bottom: 0;
+  list-style: none;
+
+  .nav-link {
+    padding: var(--#{$prefix}header-nav-link-padding-y) var(--#{$prefix}header-nav-link-padding-x);
+    color: var(--#{$prefix}header-color);
+
+    &:hover,
+    &:focus {
+      color: var(--#{$prefix}header-hover-color);
+    }
+
+    &.disabled {
+      color: var(--#{$prefix}header-disabled-color);
+    }
+  }
+
+  .show > .nav-link,
+  .nav-link.active {
+    color: var(--#{$prefix}header-active-color);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+  }
+}
+
+
+// Header text
+//
+//
+
+.header-text {
+  padding-top: var(--#{$prefix}header-nav-link-padding-y);
+  padding-bottom: var(--#{$prefix}header-nav-link-padding-y);
+  color: var(--#{$prefix}header-color);
+
+  a {
+    color: var(--#{$prefix}header-active-color);
+
+    &:hover,
+    &:focus {
+      color: var(--#{$prefix}header-active-color);
+    }
+  }
+}
+
+.header-toggler {
+  padding: var(--#{$prefix}header-toggler-padding-y) var(--#{$prefix}header-toggler-padding-x);
+  @include font-size($header-toggler-font-size);
+  color: var(--#{$prefix}header-toggler-color);
+  background-color: var(--#{$prefix}header-toggler-bg);
+  border: 0; // remove default button style
+  @include border-radius(var(--#{$prefix}header-toggler-border-radius));
+
+  &:hover {
+    color: var(--#{$prefix}header-toggler-hover-color);
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  // Opinionated: add "hand" cursor to non-disabled .navbar-toggler elements
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.header-toggler-icon {
+  display: block;
+  height: $header-toggler-font-size * 1.25;
+  background-image: var(--#{$prefix}header-toggler-icon-bg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+
+  &:hover {
+    background-image: var(--#{$prefix}header-toggler-hover-icon-bg);
+  }
+}

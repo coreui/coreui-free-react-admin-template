@@ -1,0 +1,1 @@
+{"version":3,"file":"cif-ye.js","sources":["../../../src/flag/cif-ye.ts"],"sourcesContent":["export var cifYe = [\"300 200\", \"<g fill='none'><path fill='#FFF' d='M0 0h300v200H0z'/><path fill='#CE1126' d='M0 0h300v66.667H0z'/><path fill='#000' d='M0 133.333h300V200H0z'/></g>\"];\n"],"names":[],"mappings":";;AAAU,IAAC,KAAK,GAAG,CAAC,SAAS,EAAE,sJAAsJ;;;;"}

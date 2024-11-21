@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModalBody customize 1`] = `
+<div>
+  <div
+    class="modal-body bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CModalBody component 1`] = `
+<div>
+  <div
+    class="modal-body"
+  >
+    Test
+  </div>
+</div>
+`;

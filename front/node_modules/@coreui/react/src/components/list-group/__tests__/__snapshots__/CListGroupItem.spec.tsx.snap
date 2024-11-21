@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CListGroupItem customize 1`] = `
+<div>
+  <button
+    aria-current="true"
+    aria-disabled="true"
+    class="list-group-item list-group-item-warning list-group-item-action active disabled bazinga active disabled"
+    disabled=""
+  >
+    Test
+  </button>
+</div>
+`;
+
+exports[`loads and displays CListGroupItem component 1`] = `
+<div>
+  <li
+    class="list-group-item"
+  >
+    Test
+  </li>
+</div>
+`;

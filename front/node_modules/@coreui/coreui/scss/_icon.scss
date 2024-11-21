@@ -1,0 +1,32 @@
+.icon {
+  display: inline-block;
+  color: inherit;
+  text-align: center;
+  vertical-align: -.125rem; // Fix the position of icon
+  fill: currentcolor;
+  &:not(.icon-c-s):not(.icon-custom-size) {
+    @include icon-size($icon-size-base);
+
+    &.icon-xxl {
+      @include icon-size($icon-size-xxl);
+    }
+
+    &.icon-xl {
+      @include icon-size($icon-size-xl);
+    }
+
+    &.icon-lg {
+      @include icon-size($icon-size-lg);
+    }
+
+    &.icon-sm {
+      @include icon-size($icon-size-sm);
+    }
+
+    @for $i from 3 through 9 {
+      &.icon-#{$i}xl {
+        @include icon-size($i * $icon-size-base);
+      }
+    }
+  }
+}

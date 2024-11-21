@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CHeaderBrand customize 1`] = `
+<div>
+  <h3
+    class="header-brand bazinga"
+  >
+    Test
+  </h3>
+</div>
+`;
+
+exports[`loads and displays CHeaderBrand component 1`] = `
+<div>
+  <a
+    class="header-brand"
+  >
+    Test
+  </a>
+</div>
+`;

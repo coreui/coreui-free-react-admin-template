@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavTitle customize 1`] = `
+<div>
+  <li
+    class="nav-title bazinga"
+  >
+    Test
+  </li>
+</div>
+`;
+
+exports[`loads and displays CNavTitle component 1`] = `
+<div>
+  <li
+    class="nav-title"
+  >
+    Test
+  </li>
+</div>
+`;

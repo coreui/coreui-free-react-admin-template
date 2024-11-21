@@ -5,7 +5,7 @@ services:
    build: ./front
    container_name: client_frontend
    ports:
-   - '3000:3000'
+   - '3001:3001'
    volumes:
    - .:/app
    stdin_open: true

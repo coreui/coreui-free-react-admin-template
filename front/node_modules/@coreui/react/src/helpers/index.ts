@@ -1,3 +1,0 @@
-import { PolymorphicRefForwardingComponent } from './polymorphicComponent'
-
-export { PolymorphicRefForwardingComponent }

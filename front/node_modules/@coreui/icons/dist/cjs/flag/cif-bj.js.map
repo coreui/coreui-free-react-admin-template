@@ -1,1 +1,0 @@
-{"version":3,"file":"cif-bj.js","sources":["../../../src/flag/cif-bj.ts"],"sourcesContent":["export var cifBj = [\"301 201\", \"<g fill='none'><path fill='#FCD116' d='M.5.5h300v200H.5z'/><path fill='#E8112D' d='M.5 100.5h300v100H.5z'/><path fill='#008751' d='M.5.5h120v200H.5z'/></g>\"];\n"],"names":[],"mappings":";;AAAU,IAAC,KAAK,GAAG,CAAC,SAAS,EAAE,6JAA6J;;;;"}

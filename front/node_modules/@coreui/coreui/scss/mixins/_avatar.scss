@@ -1,9 +1,0 @@
-@include deprecate("`avatar()`", "v5.1.0", "v6.0.0");
-
-@mixin avatar($width) {
-  --#{$prefix}avatar-width: #{$width};
-  --#{$prefix}avatar-height: #{$width};
-  --#{$prefix}avatar-font-size: #{$width * .4};
-  --#{$prefix}avatar-status-width: #{divide($width, 3.75)};
-  --#{$prefix}avatar-status-height: #{divide($width, 3.75)};
-}

@@ -15,6 +15,6 @@ services:
    build: ./back
    container_name: client_backend_2
    ports:
-   - "8002:80"
+   - "${BACKEND_PORT}:80"
    volumes:
    - .:/app

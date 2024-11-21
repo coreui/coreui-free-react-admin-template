@@ -1,4 +1,0 @@
-var cilTerrain = ["512 512", "<polygon fill='var(--ci-primary-color, currentColor)' points='40.841 312 144.493 199.12 216.397 271.024 216.397 271.024 292.687 347.313 315.313 324.687 238.244 247.617 327.738 151.73 470.836 312 496 312 496 292.136 328.262 104.27 215.603 224.976 143.507 152.88 16 291.741 16 312 40.841 312' class='ci-primary'/><rect width='480' height='32' x='16' y='392' fill='var(--ci-primary-color, currentColor)' class='ci-primary'/>"];
-
-export { cilTerrain };
-//# sourceMappingURL=cil-terrain.js.map

@@ -1,5 +1,0 @@
-.focus-ring:focus {
-  outline: 0;
-  // By default, there is no `--cui-focus-ring-x`, `--cui-focus-ring-y`, or `--cui-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
-  box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color);
-}

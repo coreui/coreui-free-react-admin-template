@@ -1,1 +1,0 @@
-{"version":3,"file":"cif-nl.js","sources":["../../../src/flag/cif-nl.ts"],"sourcesContent":["export var cifNl = [\"301 201\", \"<g fill='none'><path fill='#21468B' d='M.5.5h300v200H.5z'/><path fill='#FFF' d='M.5.5h300v133.333H.5z'/><path fill='#AE1C28' d='M.5.5h300v66.667H.5z'/></g>\"];\n"],"names":[],"mappings":";;AAAU,IAAC,KAAK,GAAG,CAAC,SAAS,EAAE,6JAA6J;;;;"}

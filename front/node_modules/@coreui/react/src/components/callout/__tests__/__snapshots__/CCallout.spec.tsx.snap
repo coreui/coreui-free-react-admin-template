@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCallout customize 1`] = `
+<div>
+  <div
+    class="callout callout-primary bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CCallout component 1`] = `
+<div>
+  <div
+    class="callout"
+  >
+    Test
+  </div>
+</div>
+`;

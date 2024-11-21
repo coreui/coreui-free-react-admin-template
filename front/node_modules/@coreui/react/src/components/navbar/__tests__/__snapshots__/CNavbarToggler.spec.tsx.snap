@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavbarToggler customize 1`] = `
+<div>
+  <button
+    class="navbar-toggler bazinga"
+    type="button"
+  >
+    <span
+      class="navbar-toggler-icon"
+    />
+  </button>
+</div>
+`;
+
+exports[`CNavbarToggler witch children 1`] = `
+<div>
+  <button
+    class="navbar-toggler"
+    type="button"
+  >
+    Test
+  </button>
+</div>
+`;
+
+exports[`CNavbarToggler witch no children 1`] = `
+<div>
+  <button
+    class="navbar-toggler"
+    type="button"
+  >
+    <span
+      class="navbar-toggler-icon"
+    />
+  </button>
+</div>
+`;

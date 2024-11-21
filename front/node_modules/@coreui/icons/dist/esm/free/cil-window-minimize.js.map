@@ -1,0 +1,1 @@
+{"version":3,"file":"cil-window-minimize.js","sources":["../../../src/free/cil-window-minimize.ts"],"sourcesContent":["export var cilWindowMinimize = [\"512 512\", \"<rect width='416' height='32' x='48' y='448' fill='var(--ci-primary-color, currentColor)' class='ci-primary'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,iBAAiB,GAAG,CAAC,SAAS,EAAE,gHAAgH;;;;"}

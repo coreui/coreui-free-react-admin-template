@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CDropdownDivider customize 1`] = `
+<div>
+  <hr
+    class="dropdown-divider bazinga"
+  />
+</div>
+`;
+
+exports[`loads and displays CDropdownDivider component 1`] = `
+<div>
+  <hr
+    class="dropdown-divider"
+  />
+</div>
+`;

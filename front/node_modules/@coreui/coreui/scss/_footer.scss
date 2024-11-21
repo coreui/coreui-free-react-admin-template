@@ -1,0 +1,35 @@
+.footer {
+  // scss-docs-start footer-css-vars
+  --#{$prefix}footer-min-height: #{$footer-min-height};
+  --#{$prefix}footer-padding-x: #{$footer-padding-x};
+  --#{$prefix}footer-padding-y: #{$footer-padding-y};
+  --#{$prefix}footer-color: #{$footer-color};
+  --#{$prefix}footer-bg: #{$footer-bg};
+  --#{$prefix}footer-border-color: #{$footer-border-color};
+  --#{$prefix}footer-border: #{$footer-border-width} solid var(--#{$prefix}footer-border-color);
+  // scss-docs-end footer-css-vars
+
+  display: flex;
+  flex-wrap: wrap; // allow us to do the line break for collapsing content
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--#{$prefix}footer-min-height);
+  padding: var(--#{$prefix}footer-padding-y) var(--#{$prefix}footer-padding-x);
+  color: var(--#{$prefix}footer-color);
+  background: var(--#{$prefix}footer-bg);
+  border-top: var(--#{$prefix}footer-border);
+}
+
+.footer-fixed {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-fixed;
+}
+
+.footer-sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: $zindex-fixed;
+}

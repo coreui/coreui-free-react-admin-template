@@ -1,0 +1,1 @@
+{"version":3,"file":"cib-zeit.js","sources":["../../../src/brand/cib-zeit.ts"],"sourcesContent":["export var cibZeit = [\"32 32\", \"<path d='M32 30.031h-32l16-28.061z'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,OAAO,GAAG,CAAC,OAAO,EAAE,uCAAuC;;;;"}

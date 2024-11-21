@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormTextarea customize 1`] = `
+<div>
+  <textarea
+    class="form-control-plaintext is-invalid is-valid bazinga"
+    disabled=""
+    readonly=""
+    rows="2"
+  >
+    Some value
+  </textarea>
+</div>
+`;
+
+exports[`loads and displays CFormTextarea component 1`] = `
+<div>
+  <textarea
+    class="form-control"
+  >
+    Some value
+  </textarea>
+</div>
+`;

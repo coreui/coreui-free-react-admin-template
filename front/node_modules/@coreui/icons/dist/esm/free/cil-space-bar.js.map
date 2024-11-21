@@ -1,0 +1,1 @@
+{"version":3,"file":"cil-space-bar.js","sources":["../../../src/free/cil-space-bar.ts"],"sourcesContent":["export var cilSpaceBar = [\"512 512\", \"<polygon fill='var(--ci-primary-color, currentColor)' points='40 288 40 416 464 416 464 288 432 288 432 384 72 384 72 288 40 288' class='ci-primary'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,WAAW,GAAG,CAAC,SAAS,EAAE,wJAAwJ;;;;"}

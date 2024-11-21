@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTabContent customize 1`] = `
+<div>
+  <div
+    class="tab-content bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CTabContent component 1`] = `
+<div>
+  <div
+    class="tab-content"
+  >
+    Test
+  </div>
+</div>
+`;

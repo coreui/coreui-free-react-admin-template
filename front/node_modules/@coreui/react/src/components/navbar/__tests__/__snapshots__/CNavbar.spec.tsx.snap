@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavbar customize - container and expand are boolean 1`] = `
+<div>
+  <nav
+    class="navbar navbar-expand"
+  >
+    <div
+      class="container"
+    >
+      Test
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`CNavbar customize 1`] = `
+<div>
+  <h3
+    class="navbar bg-warning navbar-expand-lg fixed-bottom bazinga"
+    data-coreui-theme="dark"
+  >
+    <div
+      class="container-xl"
+    >
+      Test
+    </div>
+  </h3>
+</div>
+`;
+
+exports[`loads and displays CNavbar component 1`] = `
+<div>
+  <nav
+    class="navbar"
+  >
+    Test
+  </nav>
+</div>
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTableDataCell customize 1`] = `
+<table>
+  <tbody>
+    <tr>
+      <td
+        class="align-middle table-active table-info bazinga"
+      >
+        Test
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`loads and displays CTableDataCell component 1`] = `
+<table>
+  <tbody>
+    <tr>
+      <td />
+    </tr>
+  </tbody>
+</table>
+`;

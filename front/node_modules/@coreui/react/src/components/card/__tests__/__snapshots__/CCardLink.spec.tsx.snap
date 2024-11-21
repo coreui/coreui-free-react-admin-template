@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardLink customize 1`] = `
+<div>
+  <a
+    class="card-link bazinga"
+    href="/bazinga"
+  >
+    Test
+  </a>
+</div>
+`;
+
+exports[`loads and displays CCardLink component 1`] = `
+<div>
+  <a
+    class="card-link"
+  >
+    Test
+  </a>
+</div>
+`;

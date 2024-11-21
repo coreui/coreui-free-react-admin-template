@@ -1,0 +1,1 @@
+{"version":3,"file":"cib-unsplash.js","sources":["../../../src/brand/cib-unsplash.ts"],"sourcesContent":["export var cibUnsplash = [\"32 32\", \"<path d='M10 9v-9h12v9zM22 14h10v18h-32v-18h10v9h12z'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,WAAW,GAAG,CAAC,OAAO,EAAE,yDAAyD;;;;"}

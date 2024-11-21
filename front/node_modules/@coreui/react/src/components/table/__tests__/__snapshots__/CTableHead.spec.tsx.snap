@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTableHead customize 1`] = `
+<table>
+  <thead
+    class="table-info bazinga"
+  >
+    <tr>
+      <th>
+        Test
+      </th>
+    </tr>
+  </thead>
+</table>
+`;
+
+exports[`loads and displays CTableHead component 1`] = `
+<table>
+  <thead />
+</table>
+`;

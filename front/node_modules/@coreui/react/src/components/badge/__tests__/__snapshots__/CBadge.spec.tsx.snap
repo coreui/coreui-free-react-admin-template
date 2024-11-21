@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CBadge customize 1`] = `
+<div>
+  <div
+    class="badge bg-warning text-white rounded bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CBadge component 1`] = `
+<div>
+  <span
+    class="badge bg-primary"
+  >
+    Test
+  </span>
+</div>
+`;

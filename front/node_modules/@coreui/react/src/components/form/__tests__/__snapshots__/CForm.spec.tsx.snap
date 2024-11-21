@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CForm customize 1`] = `
+<div>
+  <form
+    class="was-validated bazinga"
+  >
+    Test
+  </form>
+</div>
+`;
+
+exports[`CForm example 1`] = `
+<div>
+  <form>
+    <label
+      class="form-label"
+    >
+      A
+    </label>
+    <input
+      aria-describedby="B"
+      class="form-control"
+      type="email"
+    />
+    <div
+      class="form-text"
+    >
+      C
+    </div>
+    <div
+      class="form-check"
+    >
+      <input
+        class="form-check-input"
+        type="checkbox"
+      />
+      <label
+        class="form-check-label"
+      >
+        D
+      </label>
+    </div>
+    <button
+      class="btn btn-primary"
+      type="submit"
+    >
+      E
+    </button>
+  </form>
+</div>
+`;
+
+exports[`loads and displays CForm component 1`] = `
+<div>
+  <form>
+    Test
+  </form>
+</div>
+`;

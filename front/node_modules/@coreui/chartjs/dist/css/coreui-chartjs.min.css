@@ -1,0 +1,8 @@
+@charset "UTF-8";/*!
+ * CoreUI Plugins - Chart.js for CoreUI 3
+ * @version v4.0.0
+ * @link https://coreui.io
+ * Copyright (c) 2023 creativeLabs Łukasz Holeczek
+ * Licensed under MIT (https://github.com/coreui/coreui-chartjs/blob/main/LICENSE)
+ */.chartjs-tooltip{--cui-chartjs-tooltip-zindex:1080;--cui-chartjs-tooltip-padding-x:0.5rem;--cui-chartjs-tooltip-padding-y:0.25rem;--cui-chartjs-tooltip-color:var(--cui-body-bg);--cui-chartjs-tooltip-bg:rgba(var(--cui-emphasis-color-rgb), 0.8);--cui-chartjs-tooltip-border-radius:var(--cui-border-radius);--cui-chartjs-tooltip-transition:all 0.15s ease;--cui-chartjs-tooltip-header-margin:0.5rem;--cui-chartjs-tooltip-header-font-size:0.875rem;--cui-chartjs-tooltip-header-font-weight:700;--cui-chartjs-tooltip-body-font-size:0.875rem;--cui-chartjs-tooltip-body-font-weight:400;position:absolute;z-index:var(--cui-chartjs-tooltip-zindex);padding:var(--cui-chartjs-tooltip-padding-y) var(--cui-chartjs-tooltip-padding-x);color:var(--cui-chartjs-tooltip-color);pointer-events:none;background:var(--cui-chartjs-tooltip-bg);opacity:0;transform:translate(-50%,0);border-radius:var(--cui-chartjs-tooltip-border-radius);transition:var(--cui-chartjs-tooltip-transition)}@media (prefers-reduced-motion:reduce){.chartjs-tooltip{transition:none}}.chartjs-tooltip-header{margin-bottom:var(--cui-chartjs-tooltip-header-margin)}.chartjs-tooltip-header-item{font-size:var(--cui-chartjs-tooltip-header-font-size);font-weight:var(--cui-chartjs-tooltip-header-font-weight)}.chartjs-tooltip-body-item{align-items:center;font-size:var(--cui-chartjs-tooltip-body-font-size);font-weight:var(--cui-chartjs-tooltip-body-font-weight);white-space:nowrap}
+/*# sourceMappingURL=coreui-chartjs.min.css.map */

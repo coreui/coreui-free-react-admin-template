@@ -1,0 +1,1 @@
+{"version":3,"file":"cib-discover.js","sources":["../../../src/brand/cib-discover.ts"],"sourcesContent":["export var cibDiscover = [\"32 32\", \"<path d='M16 0c-8.839 0-16 7.161-16 16s7.161 16 16 16c8.839 0 16-7.161 16-16s-7.161-16-16-16z'/>\"];\n"],"names":[],"mappings":";;AAAU,IAAC,WAAW,GAAG,CAAC,OAAO,EAAE,kGAAkG;;;;"}

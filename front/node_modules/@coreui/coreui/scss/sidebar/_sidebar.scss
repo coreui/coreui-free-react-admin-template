@@ -1,0 +1,269 @@
+// stylelint-disable function-disallowed-list
+.sidebar {
+  // scss-docs-start sidebar-css-vars
+  --#{$prefix}sidebar-zindex: #{$zindex-sidebar};
+  --#{$prefix}sidebar-width: #{$sidebar-width};
+  --#{$prefix}sidebar-bg: #{$sidebar-bg};
+  --#{$prefix}sidebar-padding-x: #{$sidebar-padding-x};
+  --#{$prefix}sidebar-padding-y: #{$sidebar-padding-y};
+  --#{$prefix}sidebar-color: #{$sidebar-color};
+  --#{$prefix}sidebar-brand-color: #{$sidebar-brand-color};
+  --#{$prefix}sidebar-brand-bg: #{$sidebar-brand-bg};
+  // scss-docs-end sidebar-css-vars
+
+  position: relative;
+  display: flex;
+  flex: 0 0 var(--#{$prefix}sidebar-width);
+  flex-direction: column;
+  // put the nav on the left
+  order: -1;
+  width: var(--#{$prefix}sidebar-width);
+  color: var(--#{$prefix}sidebar-color);
+  background: var(--#{$prefix}sidebar-bg);
+  box-shadow: none;
+  @include transition($sidebar-transition);
+
+  &:not(.sidebar-end){
+    @include ltr-rtl("margin-left", 0);
+  }
+
+  &.sidebar-end {
+    order: 99;
+    @include ltr-rtl("margin-right", 0);
+  }
+
+  @include media-breakpoint-up($mobile-breakpoint) {
+    &:not(.hide):not(.sidebar-narrow):not(.sidebar-narrow-unfoldable):not(.sidebar-overlaid) {
+      &:not(.sidebar-end) ~ * {
+        --#{$prefix}sidebar-occupy-start: #{$sidebar-width};
+      }
+      &.sidebar-end ~ * {
+        --#{$prefix}sidebar-occupy-end: #{$sidebar-width};
+      }
+    }
+
+    &.hide {
+      &:not(.sidebar-end) {
+        @include ltr-rtl("margin-left", calc(-1 * var(--#{$prefix}sidebar-width)));
+      }
+      &.sidebar-end {
+        @include ltr-rtl("margin-right", calc(-1 * var(--#{$prefix}sidebar-width)));
+
+      }
+    }
+  }
+
+  @include media-breakpoint-down($mobile-breakpoint) {
+    // Some of our components use this property to detect if the sidebar has mobile behavior.
+    --#{$prefix}is-mobile: true;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: var(--#{$prefix}sidebar-zindex);
+
+    &:not(.sidebar-end) {
+      @include ltr-rtl("left", 0);
+
+      &:not(.show) {
+        @include ltr-rtl("margin-left", calc(-1 * var(--#{$prefix}sidebar-width)));
+      }
+    }
+
+    &.sidebar-end {
+      @include ltr-rtl("right", 0);
+
+      &:not(.show) {
+        @include ltr-rtl("margin-right", calc(-1 * var(--#{$prefix}sidebar-width)));
+      }
+    }
+  }
+}
+
+.sidebar-fixed {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: var(--#{$prefix}sidebar-zindex);
+
+  &:not(.sidebar-end) {
+    @include ltr-rtl("left", 0);
+  }
+
+  &.sidebar-end {
+    @include ltr-rtl("right", 0);
+  }
+}
+
+.sidebar-overlaid {
+  // scss-docs-start sidebar-overlaid-css-vars
+  --#{$prefix}sidebar-overlaid-box-shadow: #{$sidebar-overlaid-box-shadow};
+  // scss-docs-end sidebar-overlaid-css-vars
+
+  @extend .sidebar-fixed;
+
+  &:not(.sidebar-end){
+    @include ltr-rtl("margin-left", calc(-1 * var(--#{$prefix}sidebar-width)));
+  }
+
+  &.sidebar-end {
+    @include ltr-rtl("margin-right", calc(-1 * var(--#{$prefix}sidebar-width)));
+  }
+
+  &.show {
+    box-shadow: var(--#{$prefix}sidebar-overlaid-box-shadow);
+
+    &:not(.sidebar-end) {
+      @include ltr-rtl("margin-left", 0);
+    }
+
+    &.sidebar-end {
+      @include ltr-rtl("margin-right", 0);
+    }
+  }
+}
+
+@each $width, $value in $sidebar-widths {
+  .sidebar-#{$width} {
+    --#{$prefix}sidebar-width: #{$value};
+
+    @include media-breakpoint-up($mobile-breakpoint) {
+      &:not(.hide):not(.sidebar-narrow):not(.sidebar-narrow-unfoldable):not(.sidebar-overlaid) {
+        &:not(.sidebar-end) ~ * {
+          --#{$prefix}sidebar-occupy-start: #{$value};
+        }
+        &.sidebar-end ~ * {
+          --#{$prefix}sidebar-occupy-end: #{$value};
+        }
+      }
+    }
+  }
+}
+
+.sidebar-brand {
+  color: var(--#{$prefix}sidebar-brand-color);
+  white-space: nowrap;
+
+  .sidebar-brand-narrow {
+    display: none;
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--#{$prefix}sidebar-padding-y) var(--#{$prefix}sidebar-padding-x);
+
+  .btn-close {
+    padding: calc(var(--#{$prefix}sidebar-padding-y) * .5) calc(var(--#{$prefix}sidebar-padding-x) * .5);
+    margin-top: calc(-.5 * var(--#{$prefix}sidebar-padding-y));
+    @include ltr-rtl("margin-right", calc(-.5 * var(--#{$prefix}sidebar-padding-x)));
+    margin-bottom: calc(-.5 * var(--#{$prefix}sidebar-padding-y));
+  }
+}
+
+.sidebar-body {
+  padding: var(--#{$prefix}sidebar-padding-y) var(--#{$prefix}sidebar-padding-x);
+}
+
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--#{$prefix}sidebar-padding-y) var(--#{$prefix}sidebar-padding-x);
+}
+
+.sidebar-toggler {
+  // scss-docs-start sidebar-toggler-css-vars
+  --#{$prefix}sidebar-toggler-width: #{$sidebar-toggler-width};
+  --#{$prefix}sidebar-toggler-height: #{$sidebar-toggler-height};
+  --#{$prefix}sidebar-toggler-bg: #{$sidebar-toggler-bg};
+  --#{$prefix}sidebar-toggler-color: #{$sidebar-toggler-color};
+  --#{$prefix}sidebar-toggler-icon: #{escape-svg($sidebar-toggler-icon)};
+  --#{$prefix}sidebar-toggler-hover-color: #{$sidebar-toggler-hover-color};
+  --#{$prefix}sidebar-toggler-focus-shadow: #{$sidebar-toggler-focus-shadow};
+  --#{$prefix}sidebar-toggler-focus-color: #{$sidebar-toggler-focus-color};
+  --#{$prefix}sidebar-toggler-transition: #{$sidebar-toggler-transition};
+  // scss-docs-end sidebar-toggler-css-vars
+
+  position: relative;
+  box-sizing: content-box;
+  width: var(--#{$prefix}sidebar-toggler-width);
+  height: var(--#{$prefix}sidebar-toggler-height);
+  padding: $sidebar-toggler-padding-y $sidebar-toggler-padding-x;
+  background-color: var(--#{$prefix}sidebar-toggler-bg);
+  border: 0;
+  @include border-radius();
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-color: var(--#{$prefix}sidebar-toggler-color);
+    mask: var(--#{$prefix}sidebar-toggler-icon) no-repeat center;
+    @include transition(var(--#{$prefix}sidebar-toggler-transition));
+    @include rtl() {
+      transform: rotate(-180deg);
+    }
+  }
+
+  // Override <a>'s hover style
+  &:hover {
+    text-decoration: none;
+    &::before {
+      background-color: var(--#{$prefix}sidebar-toggler-hover-color);
+    }
+  }
+
+  &:focus {
+    position: relative;
+    outline: 0;
+    box-shadow: var(--#{$prefix}sidebar-toggler-focus-shadow);
+
+    &::before {
+      background-color: var(--#{$prefix}sidebar-toggler-focus-color);
+    }
+  }
+
+  @include media-breakpoint-down($mobile-breakpoint) {
+    display: none;
+  }
+}
+
+
+// Backdrop background
+
+.sidebar-backdrop {
+  // scss-docs-start sidebar-backdrop-css-vars
+  --#{$prefix}backdrop-zindex: #{$zindex-sidebar-backdrop};
+  --#{$prefix}backdrop-bg: #{$sidebar-backdrop-bg};
+  --#{$prefix}backdrop-opacity: #{$sidebar-backdrop-opacity};
+  // scss-docs-end sidebar-backdrop-css-vars
+
+  @include media-breakpoint-down($mobile-breakpoint) {
+    @include overlay-backdrop(var(--#{$prefix}backdrop-zindex), var(--#{$prefix}backdrop-bg), var(--#{$prefix}backdrop-opacity));
+  }
+}
+
+.sidebar-dark {
+  --#{$prefix}body-color: #{$body-color-dark};
+  --#{$prefix}body-bg: #{$body-bg-dark};
+
+  --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
+
+  --#{$prefix}secondary-color: #{$body-secondary-color-dark};
+  --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
+
+  --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
+  --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
+
+  --#{$prefix}border-color: #{$border-color-dark};
+
+  .sidebar-toggler {
+    filter: var(--#{$prefix}sidebar-toggler-white-filter);
+  }
+}

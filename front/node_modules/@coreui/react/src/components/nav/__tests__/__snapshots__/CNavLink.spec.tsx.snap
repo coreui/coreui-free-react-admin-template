@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavLink customize 1`] = `
+<div>
+  <h3
+    aria-current="page"
+    class="nav-link bazinga active disabled"
+    disabled=""
+    href="/bazinga"
+  >
+    Test
+  </h3>
+</div>
+`;
+
+exports[`CNavLink witch "to" prop 1`] = `
+<div>
+  <a
+    class="nav-link"
+    to="/bazinga"
+  >
+    Test
+  </a>
+</div>
+`;
+
+exports[`loads and displays CNavLink component 1`] = `
+<div>
+  <a
+    class="nav-link"
+  >
+    Test
+  </a>
+</div>
+`;

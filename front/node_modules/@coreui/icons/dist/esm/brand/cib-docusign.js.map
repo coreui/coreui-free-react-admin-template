@@ -1,0 +1,1 @@
+{"version":3,"file":"cib-docusign.js","sources":["../../../src/brand/cib-docusign.ts"],"sourcesContent":["export var cibDocusign = [\"32 32\", \"<path d='M12.688 4.411h6.625v8.828h4.411l-7.724 8.828-7.724-8.828h4.411zM0 25.38h32v2.203h-32z'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,WAAW,GAAG,CAAC,OAAO,EAAE,mGAAmG;;;;"}

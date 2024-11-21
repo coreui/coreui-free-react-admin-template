@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import extract
-from . import models, schemas
+import models, schemas
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 

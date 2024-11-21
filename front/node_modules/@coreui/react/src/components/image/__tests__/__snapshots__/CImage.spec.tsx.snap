@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CImage customize one 1`] = `
+<div>
+  <img
+    class="float-end"
+  />
+</div>
+`;
+
+exports[`CImage customize two 1`] = `
+<div>
+  <img
+    class="d-block mx-auto img-fluid rounded img-thumbnail bazinga"
+  />
+</div>
+`;
+
+exports[`loads and displays CImage component 1`] = `
+<div>
+  <img />
+</div>
+`;

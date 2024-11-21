@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModalDialog customize 1`] = `
+<div>
+  <div
+    class="modal-dialog modal-dialog-centered modal-fullscreen-lg-down modal-dialog-scrollable modal-xl bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CModalDialog component 1`] = `
+<div>
+  <div
+    class="modal-dialog"
+  >
+    Test
+  </div>
+</div>
+`;

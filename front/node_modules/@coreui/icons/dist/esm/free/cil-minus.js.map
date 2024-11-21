@@ -1,0 +1,1 @@
+{"version":3,"file":"cil-minus.js","sources":["../../../src/free/cil-minus.ts"],"sourcesContent":["export var cilMinus = [\"512 512\", \"<rect width='368' height='32' x='72' y='240' fill='var(--ci-primary-color, currentColor)' class='ci-primary'/>\"];\n"],"names":[],"mappings":"AAAU,IAAC,QAAQ,GAAG,CAAC,SAAS,EAAE,gHAAgH;;;;"}

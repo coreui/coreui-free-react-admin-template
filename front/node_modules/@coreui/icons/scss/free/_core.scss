@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'CoreUI-Icons-Free';
+  src:  url('#{$coreui-icons-font-path}/CoreUI-Icons-Free.eot?64h6xh');
+  src:  url('#{$coreui-icons-font-path}/CoreUI-Icons-Free.eot?64h6xh#iefix') format('embedded-opentype'),
+    url('#{$coreui-icons-font-path}/CoreUI-Icons-Free.ttf?64h6xh') format('truetype'),
+    url('#{$coreui-icons-font-path}/CoreUI-Icons-Free.woff?64h6xh') format('woff'),
+    url('#{$coreui-icons-font-path}/CoreUI-Icons-Free.svg?64h6xh#CoreUI-Icons-Free') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="#{$coreui-icons-prefix}"], [class*=" #{$coreui-icons-prefix}"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'CoreUI-Icons-Free' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@each $icon, $unicode in $icons {
+  .#{$coreui-icons-prefix}#{$icon} {
+    &:before {
+      content: unicode($unicode);
+    }
+  }
+}

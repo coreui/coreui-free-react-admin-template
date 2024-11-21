@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CRow customize cols 1`] = `
+<div>
+  <div
+    class="row row-cols-xxl-6 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CRow customize gutter 1`] = `
+<div>
+  <div
+    class="row g-xxl-6 g-xl-5 g-lg-4 g-md-3 g-sm-2 g-1 bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CRow customize gutter single gutter 1`] = `
+<div>
+  <div
+    class="row g-7 bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CRow customize gutterX 1`] = `
+<div>
+  <div
+    class="row gx-xxl-6 gx-xl-5 gx-lg-4 gx-md-3 gx-sm-2 gx-1 bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CRow customize gutterY 1`] = `
+<div>
+  <div
+    class="row gy-xxl-6 gy-xl-5 gy-lg-4 gy-md-3 gy-sm-2 gy-1 bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CRow not-customize 1`] = `
+<div>
+  <div
+    class="row"
+  >
+    Test
+  </div>
+</div>
+`;

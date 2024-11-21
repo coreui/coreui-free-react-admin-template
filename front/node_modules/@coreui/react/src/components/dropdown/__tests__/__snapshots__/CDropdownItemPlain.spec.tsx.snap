@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CDropdownItemPlain customize 1`] = `
+<div>
+  <div
+    class="dropdown-item-text bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CDropdownItemPlain component 1`] = `
+<div>
+  <span
+    class="dropdown-item-text"
+  >
+    Test
+  </span>
+</div>
+`;

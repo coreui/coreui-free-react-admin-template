@@ -1,0 +1,61 @@
+.avatar {
+  // scss-docs-start avatar-css-vars
+  --#{$prefix}avatar-width: #{$avatar-width};
+  --#{$prefix}avatar-height: #{$avatar-height};
+  --#{$prefix}avatar-font-size: #{$avatar-font-size};
+  --#{$prefix}avatar-border-radius: #{$avatar-border-radius};
+  --#{$prefix}avatar-status-width: #{$avatar-status-width};
+  --#{$prefix}avatar-status-height: #{$avatar-status-height};
+  --#{$prefix}avatar-status-border-radius: #{$avatar-status-border-radius};
+  // scss-docs-end avatar-css-vars
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--#{$prefix}avatar-width);
+  height: var(--#{$prefix}avatar-height);
+  font-size: var(--#{$prefix}avatar-font-size);
+  vertical-align: middle;
+  @include border-radius(var(--#{$prefix}avatar-border-radius));
+  @include transition($avatar-transition);
+}
+
+.avatar-img {
+  width: 100%;
+  height: auto;
+  @include border-radius(var(--#{$prefix}avatar-border-radius));
+}
+
+.avatar-status {
+  position: absolute;
+  @include ltr-rtl("right", 0);
+  bottom: 0;
+  display: block;
+  width: var(--#{$prefix}avatar-status-width);
+  height: var(--#{$prefix}avatar-status-height);
+  border: 1px solid $white;
+  @include border-radius(var(--#{$prefix}avatar-status-border-radius));
+}
+
+@each $size, $map in $avatar-sizes {
+  .avatar-#{$size} {
+    --#{$prefix}avatar-width: #{map-get($map, "width")};
+    --#{$prefix}avatar-height: #{map-get($map, "height")};
+    --#{$prefix}avatar-font-size: #{map-get($map, "font-size")};
+    --#{$prefix}avatar-status-width: #{map-get($map, "status-width")};
+    --#{$prefix}avatar-status-height: #{map-get($map, "status-height")};
+  }
+}
+
+.avatars-stack {
+  display: flex;
+
+  .avatar {
+    @include ltr-rtl("margin-right", calc(-.4 * var(--#{$prefix}avatar-width)));
+
+    &:hover {
+      @include ltr-rtl("margin-right", 0);
+    }
+  }
+}

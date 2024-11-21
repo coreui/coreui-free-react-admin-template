@@ -1,0 +1,82 @@
+{
+  "name": "@coreui/icons",
+  "version": "3.0.1",
+  "description": "CoreUI Icons Free",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "style": "css/all.css",
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "scripts": {
+    "clean": "rimraf css dist",
+    "css": "npm-run-all --parallel css-compile* --sequential css-prefix css-concat css-minify",
+    "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/:css/",
+    "css-prefix": "postcss --config build/postcss.config.js --replace \"css/*.css\" \"!css/*.min.css\"",
+    "css-concat": "concat -o css/all.css css/free.css css/brand.css css/flag.css",
+    "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output css/ --batch --batch-suffix \".min\" \"css/*.css\" \"!css/*.min.css\"",
+    "build": "npm-run-all --sequential clean css rollup",
+    "rollup": "rollup -c --bundleConfigAsCjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui-icons.git"
+  },
+  "keywords": [
+    "Icons",
+    "Font",
+    "Face",
+    "Svg",
+    "Vector"
+  ],
+  "author": {
+    "name": "creativeLabs Łukasz Holeczek",
+    "url": "https://coreui.io",
+    "github": "https://github.com/coreui",
+    "twitter": "https://twitter.com/core_ui"
+  },
+  "contributors": [
+    {
+      "name": "Jazzy Innovations sp. z o.o.",
+      "url": "https://jazzy.pro"
+    },
+    {
+      "name": "CoreUI Team",
+      "url": "https://github.com/orgs/coreui/people/"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-icons/issues"
+  },
+  "homepage": "https://github.com/coreui/coreui-icons#readme",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "autoprefixer": "^10.4.13",
+    "clean-css-cli": "^5.6.2",
+    "concat": "^1.0.3",
+    "eslint": "^8.35.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "rimraf": "^4.3.1",
+    "rollup": "^3.18.0",
+    "sass": "^1.58.3",
+    "stylelint": "^15.2.0",
+    "stylelint-config-twbs-bootstrap": "^7.0.0",
+    "typescript": "^4.9.5"
+  },
+  "files": [
+    "css/",
+    "dist",
+    "fonts/",
+    "js/",
+    "scss/",
+    "sprites/",
+    "svg/"
+  ]
+}

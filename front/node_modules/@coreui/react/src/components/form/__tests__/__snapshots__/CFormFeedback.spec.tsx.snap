@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormFeedback customize one 1`] = `
+<div>
+  <div
+    class="invalid-tooltip valid-tooltip bazinga"
+  />
+</div>
+`;
+
+exports[`CFormFeedback customize two 1`] = `
+<div>
+  <div
+    class="invalid-feedback valid-feedback bazinga"
+  />
+</div>
+`;
+
+exports[`loads and displays CFormFeedback component 1`] = `
+<div>
+  <div
+    class=""
+  />
+</div>
+`;

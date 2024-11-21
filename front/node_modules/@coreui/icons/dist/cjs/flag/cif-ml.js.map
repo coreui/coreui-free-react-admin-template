@@ -1,0 +1,1 @@
+{"version":3,"file":"cif-ml.js","sources":["../../../src/flag/cif-ml.ts"],"sourcesContent":["export var cifMl = [\"301 201\", \"<g fill='none'><path fill='#14B53A' d='M.5.5h100v200H.5z'/><path fill='#FCD116' d='M100.5.5h100v200h-100z'/><path fill='#CE1126' d='M200.5.5h100v200h-100z'/></g>\"];\n"],"names":[],"mappings":";;AAAU,IAAC,KAAK,GAAG,CAAC,SAAS,EAAE,mKAAmK;;;;"}

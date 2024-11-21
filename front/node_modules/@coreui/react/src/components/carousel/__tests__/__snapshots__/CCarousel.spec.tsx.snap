@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loads and displays CCarousel component 1`] = `
+<div>
+  <div
+    class="carousel slide"
+  >
+    <div
+      class="carousel-indicators"
+    >
+      <button
+        aria-current="true"
+        aria-label="Slide 1"
+        class="active"
+        data-coreui-target=""
+      />
+      <button
+        aria-label="Slide 2"
+        class=""
+        data-coreui-target=""
+      />
+      <button
+        aria-label="Slide 3"
+        class=""
+        data-coreui-target=""
+      />
+    </div>
+    <div
+      class="carousel-inner"
+    >
+      <div
+        class="carousel-item active"
+      >
+        Item-1
+        <div
+          class="carousel-caption"
+        >
+          Caption-1
+        </div>
+      </div>
+      <div
+        class="carousel-item"
+      >
+        Item-2
+        <div
+          class="carousel-caption"
+        >
+          Caption-2
+        </div>
+      </div>
+      <div
+        class="carousel-item"
+      >
+        Item-3
+        <div
+          class="carousel-caption"
+        >
+          Caption-3
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+    >
+      <span
+        aria-label="prev"
+        class="carousel-control-prev-icon"
+      />
+    </button>
+    <button
+      class="carousel-control-next"
+    >
+      <span
+        aria-label="next"
+        class="carousel-control-next-icon"
+      />
+    </button>
+  </div>
+</div>
+`;

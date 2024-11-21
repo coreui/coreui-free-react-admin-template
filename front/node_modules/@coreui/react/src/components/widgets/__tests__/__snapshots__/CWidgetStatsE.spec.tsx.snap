@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetStatsE customize 1`] = `
+<div>
+  <div
+    class="card bazinga"
+  >
+    <div
+      class="card-body text-center"
+    >
+      <div
+        class="text-body-secondary small text-uppercase fw-semibold"
+      >
+        title
+      </div>
+      <div
+        class="fs-6 fw-semibold py-3"
+      >
+        value
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CWidgetStatsE component 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <div
+      class="card-body text-center"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormInput customize 1`] = `
+<div>
+  <input
+    class="form-control-plaintext form-control-lg form-control-color bazinga"
+    disabled=""
+    readonly=""
+    type="color"
+    value="value"
+  />
+</div>
+`;
+
+exports[`loads and displays CFormInput component 1`] = `
+<div>
+  <input
+    class="form-control"
+    type="text"
+  />
+</div>
+`;

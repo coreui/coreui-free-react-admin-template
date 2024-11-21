@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CProgressBar customize 1`] = `
+<div>
+  <div
+    class="progress-bar bg-warning progress-bar-striped progress-bar-animated bazinga"
+    style="width: 50%;"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CProgressBar component 1`] = `
+<div>
+  <div
+    class="progress-bar bg-warning"
+    style="width: 0%;"
+  >
+    Test
+  </div>
+</div>
+`;

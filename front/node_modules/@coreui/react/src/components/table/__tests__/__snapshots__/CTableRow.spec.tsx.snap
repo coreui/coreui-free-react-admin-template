@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTableRow customize 1`] = `
+<table>
+  <tbody>
+    <tr
+      class="align-middle table-active table-info bazinga"
+    >
+      <th>
+        Test
+      </th>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`loads and displays CTableRow component 1`] = `
+<table>
+  <tbody>
+    <tr />
+  </tbody>
+</table>
+`;

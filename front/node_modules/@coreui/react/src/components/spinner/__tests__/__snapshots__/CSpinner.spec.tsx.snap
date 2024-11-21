@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSpinner customize 1`] = `
+<div>
+  <h3
+    class="spinner-grow spinner-grow-sm text-warning bazinga"
+    role="status"
+  >
+    <span
+      class="visually-hidden"
+    >
+      Loading...
+    </span>
+  </h3>
+</div>
+`;
+
+exports[`loads and displays CSpinner component 1`] = `
+<div>
+  <div
+    class="spinner-border"
+    role="status"
+  >
+    <span
+      class="visually-hidden"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;

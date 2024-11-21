@@ -3,9 +3,9 @@ version: '3.8'
 services:
   client:
    build: ./front
-   container_name: client_frontend
+   container_name: client_frontend_2
    ports:
-   - '3000:3000'
+   - '3001:3001'
    volumes:
    - .:/app
    stdin_open: true
@@ -13,7 +13,7 @@ services:
      
   backend:
    build: ./back
-   container_name: client_backend
+   container_name: client_backend_2
    ports:
    - "8002:80"
    volumes:

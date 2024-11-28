@@ -1,3 +1,0 @@
-[console_scripts]
-fastapi = fastapi.cli:main
-

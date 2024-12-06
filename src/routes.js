@@ -3,9 +3,11 @@ import React from 'react'
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
-const UserManagement = React.lazy(() => import('./views/user-management/UserManagement'))
-const ClientManagement = React.lazy(() => import('./views/client-management/ClientManagement'))
-const ProjectManagement = React.lazy(() => import('./views/project-management/ProjectManagement'))
+const UserManagement = React.lazy(() => import('./pages/user-management/UserManagement'))
+const CustomerManagement = React.lazy(() => import('./pages/customer-master/CustomerMaster'))
+const ContactMainScreen = React.lazy(() => import('./pages/customer-master/contact-details/ContactMainScreen'))
+
+const ProjectManagement = React.lazy(() => import('./pages/project-management/ProjectManagement'))
 const TaskManagement = React.lazy(() => import('./views/task-management/TaskManagement'))
 
 // Base
@@ -59,7 +61,8 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/user-management', name: 'User Management', element: UserManagement },
-  { path: '/client-management', name: 'Client Management', element: ClientManagement },
+  { path: '/customer-management', name: 'Client Management', element: CustomerManagement },
+  { path: '/contact-person', name: 'Contact Person', element: ContactMainScreen },
   { path: '/project-management', name: 'Project Management', element: ProjectManagement },
   { path: '/task-management', name: 'Task Management', element: TaskManagement },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },

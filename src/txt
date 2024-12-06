@@ -1,0 +1,14 @@
+{
+    "userType": "Admin",
+    "name": "Jishnu",
+    "officeEmailId": "ji@gmail.com",
+    "mobile": "1111111",
+    "password": "123456789",
+    "confirmPassword": "123456789",
+    "joiningDate": "2024-12-05",
+    "position": "Manager",
+    "dateOfBirth": "2024-12-03",
+    "status": "Active",
+    "language": "English",
+    "locked": "Locked"
+}

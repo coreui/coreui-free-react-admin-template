@@ -1,17 +1,17 @@
 {
-  "name": "@coreui/coreui-free-react-admin-template",
-  "version": "5.2.0",
-  "description": "CoreUI Free React Admin Template",
+  "name": "EnglishDen school",
+  "version": "2.0.0",
+  "description": "EnglishDen School management software",
   "homepage": ".",
   "bugs": {
     "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
+    "url": "git@github.com:gpimthong/coreui.git"
   },
   "license": "MIT",
-  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "author": "Govit Pimthong",
   "scripts": {
     "build": "vite build",
     "lint": "eslint \"src/**/*.js\"",
@@ -27,6 +27,7 @@
     "@coreui/react-chartjs": "^3.0.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
+    "axios": "^1.7.9",
     "chart.js": "^4.4.6",
     "classnames": "^2.5.1",
     "core-js": "^3.39.0",

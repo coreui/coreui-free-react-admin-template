@@ -7,6 +7,8 @@ import './scss/style.scss'
 
 // We use those styles to show code examples, you should remove them in your application.
 import './scss/examples.scss'
+import TwoFactorVerification from './views/pages/login/TwoFactorVerification'
+import Logout from './views/pages/logout/Logout'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
@@ -46,6 +48,8 @@ const App = () => {
       >
         <Routes>
           <Route exact path="/login" name="Login Page" element={<Login />} />
+          <Route exact path="/logout" name="logout Page" element={<Logout />} />
+          <Route exact path="/2fa-verification" name="2FA verification page" element={<TwoFactorVerification />} />
           <Route exact path="/register" name="Register Page" element={<Register />} />
           <Route exact path="/404" name="Page 404" element={<Page404 />} />
           <Route exact path="/500" name="Page 500" element={<Page500 />} />

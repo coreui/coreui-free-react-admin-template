@@ -13,6 +13,8 @@ import {
   cilPuzzle,
   cilSpeedometer,
   cilStar,
+  cilBank,
+  cilAccountLogout,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -21,11 +23,21 @@ const _nav = [
     component: CNavItem,
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    badge: {
+    icon: <CIcon icon={cilBank} customClassName="nav-icon text-primary" />,
+/*     badge: {
       color: 'info',
       text: 'NEW',
-    },
+    }, */
+  },
+  {
+    component: CNavItem,
+    name: 'Logout',
+    to: '/logout',
+    icon: <CIcon icon={cilAccountLogout} customClassName="nav-icon text-warning" />,
+/*     badge: {
+      color: 'info',
+      text: 'NEW',
+    }, */
   },
   {
     component: CNavTitle,

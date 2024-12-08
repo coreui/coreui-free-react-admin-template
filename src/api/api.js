@@ -123,9 +123,22 @@ const useTableData = (model, skipKeys = [], patternsToModify = []) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get('api/v1/RestAPI/?model_name=' + model);
+
+
+              const default_page_size = 5;
+
+               const response = await api.get('api/v1/RestAPI/?model_name=' + model + '&page_size=' + default_page_size);
                 
-               const data = response.data
+               const data = response.data.results;
+
+               const total_items = response.data.count;
+               const total_pages = response.data.count;
+               const current_page = response.data.current_page;
+               const next_url = response.data.next; //can be null
+               const prev_url = response.data.previous; //can be null
+
+
+               //console.log(response.data);
 
                 const processedData = {
                     columns: Object.keys(data[0])
@@ -170,8 +183,84 @@ const useTableData = (model, skipKeys = [], patternsToModify = []) => {
     return { tableData, loading, error };
 };
 
+
+
+
+
+const useTablePaginatedData = (model, skipKeys = [], patternsToModify = [], defaultPageSize = 5) => {
+  const [tableData, setTableData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [pagination, setPagination] = useState({
+      currentPage: 1,
+      pageSize: defaultPageSize,
+      totalItems: 0,
+      totalPages: 0,
+  });
+
+
+  useEffect(() => {
+      const fetchData = async () => {
+          setLoading(true);
+          try {
+              const response = await api.get(
+                  `api/v1/RestAPI/?model_name=${model}&page_size=${pagination.pageSize}&page=${pagination.currentPage}`
+              );
+
+              const data = response.data.results;
+              //console.log(data);
+
+              setTableData({
+                  columns: Object.keys(data[0])
+                      .filter((key) => !skipKeys.includes(key))
+                      .map((key) => ({
+                          key,
+                          label: patternsToModify
+                              .reduce((modifiedKey, { pattern, replacement }) => {
+                                  return modifiedKey.replace(pattern, replacement);
+                              }, key)
+                              .replace(/_/g, ' ')
+                              .replace(/\b\w/g, (char) => char.toUpperCase()),
+                          _props: { scope: 'col' },
+                      })),
+                  items: data.map((item) => {
+                      const row = { _cellProps: { id: { scope: 'row' } } };
+                      Object.keys(item)
+                          .filter((key) => !skipKeys.includes(key))
+                          .forEach((key) => {
+                              let value = item[key];
+                              const datePattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?[+-]\d{2}:\d{2}$/;
+                              if (typeof value === 'string' && datePattern.test(value)) {
+                                  value = new Date(value).toLocaleString();
+                              }
+                              row[key] = value;
+                          });
+                      return row;
+                  }),
+              });
+
+              setPagination({
+                  ...pagination,
+                  totalItems: response.data.count,
+                  totalPages: Math.ceil(response.data.count / pagination.pageSize),
+              });
+          } catch (err) {
+              setError(err.message);
+          } finally {
+              setLoading(false);
+          }
+      };
+
+      fetchData();
+  }, [model, pagination.currentPage, pagination.pageSize]);
+
+  return { tableData, loading, error, pagination, setPagination };
+};
+
+
 export {
     useTableData,
+    useTablePaginatedData,
     useFetchOne,
     API_BASE_URL,
     api,

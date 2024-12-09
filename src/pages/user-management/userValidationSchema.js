@@ -9,12 +9,32 @@ const userValidationSchema = yup.object().shape({
     confirmPassword: yup.string()
         .oneOf([yup.ref('password'), null], 'Passwords must match')
         .required('Confirm password is required'),
-    joiningDate: yup.date().required('Joining date is required'),
-    consultantType: yup.string().required('Consultant type is required'),
-    position: yup.string().required('Position is required'),
-    dateOfBirth: yup.date().required('Date of birth is required'),
+    customerName: yup.object().when('userType', {
+        is: (val) => val === 'Customer',  // If the user type is customer, then the customer name is required
+        then: (schema) => schema.required('Customer name is required'), //
+        otherwise: (schema) => schema.nullable() // If the user type is not customer, then the customer name is not required            
+    }),
+    joiningDate: yup.date().when('userType', {
+        is: (val) => val !== 'Customer', // If the user type is not customer, then the joining date is required
+        then: (schema) => schema.required('Joining date is required'), //   
+    }),
+    consultantType: yup.string().when('userType', {
+        is: (val) => val !== 'Customer', // If the user type is not customer, then the consultant type is required
+        then: (schema) => schema.required('Consultant type is required'), //
+    }),
+    position: yup.string().when('userType', {
+        is: (val) => val !== 'Customer', // If the user type is not customer, then the position is required
+        then: (schema) => schema.required('Position is required'), //       
+    }),
+    dateOfBirth: yup.date().when('userType', {
+        is: (val) => val !== 'Customer', // If the user type is not customer, then the date of birth is required
+        then: (schema) => schema.required('Date of birth is required'), //  
+    }),
     status: yup.string().required('Status is required'),
-    language: yup.string().required('Language is required'),
+    language: yup.string().when('userType', {
+        is: (val) => val !== 'Customer', // If the user type is not customer, then the language is required
+        then: (schema) => schema.required('Language is required'), //   
+    }),
     locked: yup.string().required('Locked status is required'),
 });
 

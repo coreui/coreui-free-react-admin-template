@@ -17,9 +17,13 @@ import EditUserModal from '../../user-management/EditUserForm';
 import DialogBox from '../../../components/common/DialogBox';
 import AutoCompleteDataGrid from '../../../components/common/AutoCompleteDataGrid';
 import ContactForm from './ContactForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
 
 
 const ContactMainScreen = () => {
+    const dispatch = useDispatch();
+    const { contactList } = useSelector((state) => state.contacts);
     const [users, setUsers] = useState([]);
     const [formData, setFormData] = useState({
         name: '',
@@ -27,6 +31,7 @@ const ContactMainScreen = () => {
         role: '',
         country: '',
     });
+
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
@@ -62,6 +67,16 @@ const ContactMainScreen = () => {
         setDialogOpen(false);
     }
 
+    const formik = useFormik({
+        initialValues: {
+            customer: null,
+        },
+        onSubmit: (values) => {
+            console.log(values);
+        },
+    });
+
+
     const columns = [
         { field: 'contactName', headerName: 'Contact Name', flex: 1 },
         { field: 'email', headerName: 'Email', flex: 1 },
@@ -94,9 +109,9 @@ const ContactMainScreen = () => {
                 </Box>
             ),
         },
-    ];
+    ]
 
-    const rows = users;
+    const rows = contactList;
 
     return (
 
@@ -116,13 +131,18 @@ const ContactMainScreen = () => {
                             Add New Contact
                         </Button>
                     </Box>
-                    <Box component="div" sx={{ width: "100%", maxWidth: "300px", mb: 2}}>
-                        
-                                <AutoCompleteDataGrid
-                                    fullWidth
-                                    label="Customer"
-                                    name="customer"
-                                />
+                    <Box component="div" sx={{ width: "100%", maxWidth: "300px", mb: 2 }}>
+
+                        <AutoCompleteDataGrid
+                            value={formik.values.customer || ''}
+                            onChange={(event, value) => {
+                                console.log("Value:", value);
+                                formik.setFieldValue('customer', value);
+                            }}
+                            onBlur={() => formik.setFieldTouched('customer', true)}
+                            error={formik.touched.customer && Boolean(formik.errors.customer)}
+                            helperText={formik.touched.customer && formik.errors.customer}
+                        />
 
                     </Box>
 
@@ -134,13 +154,15 @@ const ContactMainScreen = () => {
                         disableRowSelectionOnClick
                         hideFooterPagination
                         getRowId={(row) => row.id}
+                        showCellVerticalBorder
+                        showColumnVerticalBorder
                     />
 
                 </CardContent>
             </Card>
 
             <EditContainer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                <ContactForm onClose={() => setDrawerOpen(false)}  />
+                <ContactForm onClose={() => setDrawerOpen(false)} />
                 <DialogBox open={dialogOpen} handleCloseDialog={handleCloseDialog} />
             </EditContainer>
 

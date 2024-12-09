@@ -11,6 +11,7 @@ const initialState = {
             "mobile": "1111111",
             "password": "123456789",
             "confirmPassword": "123456789",
+            "customer": "",
             "joiningDate": "2024-12-05",
             "position": "Manager",
             "dateOfBirth": "2024-12-03",

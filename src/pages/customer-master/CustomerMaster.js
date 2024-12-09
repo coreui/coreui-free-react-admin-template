@@ -16,8 +16,16 @@ import EditContainer from '../../components/common/EditContainer';
 import DialogBox from '../../components/common/DialogBox';
 import CustomerForm from './CustomerForm';
 import { getCustomerList } from '../../components/common/apiCalls';
+import { useDispatch, useSelector } from 'react-redux';  
+import { fetchCustomerList } from '../../slices/customerSlice';
 
 const ClientManagement = () => {
+
+  const dispatch = useDispatch();
+  const {customerList, status} = useSelector((state) => state.customer); 
+  console.log("Status:", status);  
+  console.log("Customer List:", customerList);
+
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -34,12 +42,8 @@ const ClientManagement = () => {
 
   // Fetch users from backend
   useEffect(() => {
-    const fetchData = async () => {
-    const response = await getCustomerList();
-    console.log(response);
-    }
-    fetchData();
-  }, []);
+    dispatch(fetchCustomerList());
+  }, [customerList]);
 
   // Calculate Drawer Position and Height
   useEffect(() => {
@@ -59,15 +63,72 @@ const ClientManagement = () => {
     setDialogOpen(false);
   }
 
+  const rows = customerList || [];
+
+  //to fetch columns from api data
+  const generateColumnsFromData = (data) => {
+    if (!data || data.length === 0) {
+      return [];
+    }
+
+    const keys = Object.keys(data[0]).filter(key => key !== 'id' && key !== 'contactPerosn' && key !== 'connections');  
+    return keys.map(key => ({
+      field: key,
+      headerName: key,
+      editable: false,
+      flex: 1,
+      minWidth: 200,
+    }));
+  }
+
   const columns = [
-    { field: 'id', headerName: 'ID', flex: 1 },
-    { field: 'user', headerName: 'User', flex: 1 },
-    { field: 'country', headerName: 'Country', flex: 1 },
-    { field: 'role', headerName: 'Role', flex: 1 },
+    { field: 'customerName', headerName: 'Customer Name', width: 150 },
+    { field: 'customerNameInEnglish', headerName: 'Customer Name (English)', width: 200 },
+    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'phoneNumber', headerName: 'Phone Number', width: 150 },
+    { field: 'country', headerName: 'Country', width: 150 },
+    { field: 'projectType', headerName: 'Project Type', width: 150 },
+    { field: 'siteLocation', headerName: 'Site Location', width: 150 },
+    { field: 'distanceInKm', headerName: 'Distance (Km)', width: 150 },
+    { field: 'SAPVersion', headerName: 'SAP Version', width: 150 },
+    { field: 'SAPCode', headerName: 'SAP Code', width: 150 },
+    { field: 'controlCenterUser', headerName: 'Control Center User', width: 200 },
+    {
+        field: 'contactPerson',
+        headerName: 'Contact Person',
+        width: 200,
+        valueGetter: (params) => {
+          console.log("params.row", params.row);  
+          console.log("params.row.contactPerson", params.row?.contactPerson);  
+          
+          return params.row?.contactPerson && params.row?.contactPerson.length > 0
+            ? params.row.contactPerson.map((person) => person.label).join(', ') 
+            : 'N/A'; 
+        }
+      },
+      
+    {
+      field: 'connections',
+      headerName: 'Connections',
+      width: 300,
+      renderCell: (params) => (
+        <Box>
+          {params.row?.connections?.length > 0 ? (
+            params.row.connections.map((conn, index) => (
+              <Box key={index}>
+                <strong>{conn.connectionType}:</strong> {conn.address}
+              </Box>
+            ))
+          ) : (
+            <span>N/A</span>
+          )}
+        </Box>
+      ),
+    },
     {
       field: 'actions',
       headerName: 'Actions',
-      flex: 1,
+      width: 150,
       renderCell: (params) => (
         <Box>
           <Button
@@ -90,8 +151,67 @@ const ClientManagement = () => {
       ),
     },
   ];
+  // const tempColumn = [
+  //   { field: 'id', headerName: 'ID', flex: 1 },
+  //   { field: 'user', headerName: 'User', flex: 1 },
+  //   { field: 'country', headerName: 'Country', flex: 1 },
+  //   { field: 'role', headerName: 'Role', flex: 1 },
+  //   {
+  //     field: 'actions',
+  //     headerName: 'Actions',
+  //     flex: 1,
+  //     renderCell: (params) => (
+  //       <Box>
+  //         <Button
+  //           size="small"
+  //           variant="contained"
+  //           color="primary"
+  //         // onClick={() => handleEditClick(params.row)}
+  //         >
+  //           Edit
+  //         </Button>
+  //         <Button
+  //           size="small"
+  //           variant="contained"
+  //           color="secondary"
+  //         // onClick={() => handleDelete(params.row.id)}
+  //         >
+  //           Delete
+  //         </Button>
+  //       </Box>
+  //     ),
+  //   },
+  // ];
 
-  const rows = users;
+  // const girdColumns = [
+  //   {...columns},
+  //   {
+  //     field: 'actions',
+  //     headerName: 'Actions',
+  //     flex: 1,
+  //     renderCell: (params) => (
+  //       <Box>
+  //         <Button
+  //           size="small"
+  //           variant="contained"
+  //           color="primary"
+  //         // onClick={() => handleEditClick(params.row)}
+  //         >
+  //           Edit
+  //         </Button>
+  //         <Button
+  //           size="small"
+  //           variant="contained"
+  //           color="secondary"
+  //         // onClick={() => handleDelete(params.row.id)}
+  //         >
+  //           Delete
+  //         </Button>
+  //       </Box>
+  //     ),
+  //   },
+  // ];
+
 
   return (
     <div ref={dataGridRef}>
@@ -120,6 +240,8 @@ const ClientManagement = () => {
               disableRowSelectionOnClick
               hideFooterPagination
               getRowId={(row) => row.id}
+              showCellVerticalBorder
+              showColumnVerticalBorder
             />
 
           </CardContent>

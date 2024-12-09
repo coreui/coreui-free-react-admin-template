@@ -100,16 +100,32 @@ const UserManagement = () => {
     if (!data || data.length === 0) {
       return [];
     }
-
+  
     const keys = Object.keys(data[0]).filter(key => key !== 'id');
     return keys.map(key => ({
       field: key,
-      headerName: key,
+      headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize header names
       editable: false,
       flex: 1,
       minWidth: 200,
+      renderCell: (params) => {
+        
+        if (params.row.userType === "Customer" && key === "customer") {
+          const customer = params.row[key];
+          return customer ? (
+            <div>
+              <p>{customer.customerName}</p>
+              <p>{customer.projectType}</p>
+            </div>
+          ) : (
+            <p>No customer info</p>
+          );
+        }
+        return params.row[key]; 
+      },
     }));
-  }
+  };
+  
 
  //MUI DataGrid 
   return (

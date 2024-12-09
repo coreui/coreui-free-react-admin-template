@@ -1,5 +1,17 @@
-import React from 'react';
-import { Autocomplete, TextField, Paper, TableCell, TableBody, TableContainer, Table, TableHead, TableRow, Box, Popper } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  Autocomplete,
+  TextField,
+  Paper,
+  TableCell,
+  TableBody,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  Box,
+  Popper,
+} from '@mui/material';
 
 const rows = [
   { id: 1, customerName: 'John Doe', projectType: 'Web Development' },
@@ -7,17 +19,34 @@ const rows = [
   { id: 3, customerName: 'Sam Brown', projectType: 'Data Analysis' },
   { id: 4, customerName: 'Alice Johnson', projectType: 'SEO Optimization' },
   { id: 5, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
-
 ];
 
-const AutoCompleteDataGrid = () => {
+const AutoCompleteDataGrid = ({
+  value,
+  onChange,
+  onBlur,
+  error,
+  helpperText,
+}) => {
+  const [selectedContact, setSelectedContact] = useState(null);
+
   const handleRowClick = (params) => {
     console.log('Row clicked:', params.row);
-    alert(`Row clicked: ${JSON.stringify(params.row)}`);
+    onChange(null, params.row); // Update the selected contact
   };
 
   const CustomPaper = (props) => (
-    <Paper {...props} onClick={(event) => event.stopPropagation()} sx={{ width: 400, maxHeight: 'auto', overflowX: 'hidden', overflowY: 'hidden', '&::-webkit-scrollbar': { display: 'none' } }} >
+    <Paper
+      {...props}
+      onClick={(event) => event.stopPropagation()}
+      sx={{
+        width: 400,
+        maxHeight: 'auto',
+        overflowX: 'hidden',
+        overflowY: 'hidden',
+        '&::-webkit-scrollbar': { display: 'none' },
+      }}
+    >
       <TableContainer>
         <Table stickyHeader aria-label="simple table">
           <TableHead>
@@ -34,35 +63,58 @@ const AutoCompleteDataGrid = () => {
 
   const CustomPopper = (props) => {
     return (
-      <Popper {...props} sx={{ maxHeight: 350, overflow: 'hidden' }} placement="bottom-start">
-        <CustomPaper {...props} sx={{ overflowX: 'hidden', overflowY: 'hidden', '&::-webkit-scrollbar': { display: 'none' } }} />
+      <Popper
+        {...props}
+        sx={{ maxHeight: 350, overflow: 'hidden' }}
+        placement="bottom-start"
+      >
+        <CustomPaper
+          {...props}
+          sx={{
+            overflowX: 'hidden',
+            overflowY: 'hidden',
+            '&::-webkit-scrollbar': { display: 'none' },
+          }}
+        />
       </Popper>
     );
   };
 
   return (
     <Autocomplete
-      multiple
       options={rows}
-      getOptionLabel={(option) => option.customerName}
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur} // Update value on user interaction
+      getOptionLabel={(option) => option.customerName || ''}
       disableCloseOnSelect
       slots={{ popper: CustomPopper }}
       renderOption={(props, option) => (
-        <Box component="li" sx={{ width: '100%', overflowX: 'hidden', overflowY: 'scroll','&::-webkit-scrollbar': { display: 'none' } }} {...props} onClick={() => handleRowClick({ row: option })}>
+        <Box
+          component="li"
+          sx={{
+            width: '100%',
+            overflowX: 'hidden',
+            overflowY: 'scroll',
+            '&::-webkit-scrollbar': { display: 'none' },
+          }}
+          {...props}
+          onClick={() => handleRowClick({ row: option })}
+        >
           <TableContainer>
             <Table>
-          <TableBody>
-            <TableRow key={option.id} >
-              <TableCell>{option.customerName}</TableCell>
-              <TableCell>{option.projectType}</TableCell>
-            </TableRow>
-          </TableBody>
-          </Table>
+              <TableBody>
+                <TableRow key={option.id}>
+                  <TableCell>{option.customerName}</TableCell>
+                  <TableCell>{option.projectType}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </TableContainer>
         </Box>
       )}
       renderInput={(params) => (
-        <TextField {...params} label="Select a contact" />
+        <TextField {...params} label="Select a customer" error={error} helperText={helpperText} />
       )}
     />
   );

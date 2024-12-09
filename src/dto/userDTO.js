@@ -33,7 +33,7 @@ export function buildUserDTO(user) {
     uDTO.dateOfBirth = user?.dateOfBirth;
     uDTO.status = user?.status;
     uDTO.language = user?.language;
-    uDTO.customer = user?.customer;
+    uDTO.customer = user?.customerName;
     uDTO.locked = user?.locked;
     console.log("uDTO", uDTO)
     return uDTO;

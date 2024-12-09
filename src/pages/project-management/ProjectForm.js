@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField, Button, MenuItem, Select, FormControl, InputLabel, FormControlLabel, Checkbox, Divider } from '@mui/material'
+import { Box, Typography, TextField, Button, MenuItem, Select, FormControl, InputLabel, FormControlLabel, Checkbox, Divider, useTheme } from '@mui/material'
 import { Formik, useFormik } from 'formik';
 import Grid from '@mui/material/Grid2';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -8,6 +8,8 @@ import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
 import projectFormValidationSchema from './projectFormValidationSchema';
 
 const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) => {
+
+  const theme = useTheme();
 
   const [formData, setFormData] = useState({
     projectType: '',
@@ -35,18 +37,12 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
 
   return (
     <Box component="div">
-      <Box component="div" position="sticky" top={0}
-        zIndex={10}
-        bgcolor="background.paper"
-        py={1}
-      >
-      <Box component="div" py={1} px={2} display="flex" justifyContent="space-between" alignItems="center" position="sticky" top={0}
-        zIndex={10}
-        bgcolor="background.paper" >
+      <Box component="div" sx={{...theme.formControl.formHeaderOuterContainer}}>
+      <Box component="div" sx={{...theme.formControl.formHeaderContainer}}>
         <Typography variant="h6" gutterBottom>
           {isEditMode ? 'Edit Project' : 'Create New Project'}
         </Typography>
-        <Box display="flex" justifyContent="flex-end">
+        <Box component="div" sx={{...theme.formControl.formHeaderButtonContainer}}>
           <Button
             onClick={onClose}
             variant="contained"
@@ -61,7 +57,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
       </Box>
       <Divider sx={{background: 'black'}}/>
       </Box>
-      <Box padding={2} mt={1} component="form" onSubmit={formik.handleSubmit}>
+      <Box component="form" sx={{...theme.formControl.formComponent}} onSubmit={formik.handleSubmit}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }}>
             <FormControl fullWidth>

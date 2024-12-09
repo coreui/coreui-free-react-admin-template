@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Box, Paper, TextField, Typography, Button, MenuItem, Grid2 } from "@mui/material";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { createConnection } from "../../slices/connectionSlice";
 
 
 const connectionTypes = ["VPN", "Remote Desktop", "SAP", "SQL"];
 const vpnTypes = ["CheckPoint", "FortiClient", "Sohpos", "ZeroTier"];
 
 const ConnectionForm = ({ onSave, onCancel }) => {
-  const [connectionData, setConnectionData] = useState({
-    connectionType: '',
+  const dispatch = useDispatch()
+;  const [connectionData, setConnectionData] = useState({
+    connectionType: 'VPN',
     vpnType: '',
     address: '',
     user: '',
@@ -29,6 +32,8 @@ const ConnectionForm = ({ onSave, onCancel }) => {
     initialValues: connectionData,
     onSubmit: (values) => {
       console.log(values);
+      dispatch(createConnection(values));
+      onCancel();
     },
   });
 
@@ -187,7 +192,7 @@ const ConnectionForm = ({ onSave, onCancel }) => {
                 label="Connection Type"
                 name="connectionType"
                 margin="normal"
-                value={formik.values.connectionType === '' ? 'VPN' : formik.values.connectionType}
+                value={formik.values.connectionType}
                 // defaultValue={formik.values.connectionType === '' ? 'VPN' : formik.values.connectionType} 
                 onChange={formik.handleChange}
                 select
@@ -200,14 +205,14 @@ const ConnectionForm = ({ onSave, onCancel }) => {
               </TextField>
             </Grid2>
             
-              {renderingFields(formik.values.connectionType === '' ? 'VPN' : formik.values.connectionType)}
+              {renderingFields(formik.values.connectionType)}
             
           </Grid2>
         </Box>
        
         <Box display="flex" justifyContent="flex-end" gap={1} mt={2}>
           <Button variant="text" style={{ backgroundColor: '#757575', color: 'white' }} onClick={onCancel}>Cancel</Button>
-          <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
+          <Button type="submit" onClick={formik.handleSubmit} variant="contained" color="primary">Save</Button>
         </Box>
       </Paper>
     );

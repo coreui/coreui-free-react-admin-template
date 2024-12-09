@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField, Button, Popper, Divider, Paper, Grow, IconButton, Tooltip } from '@mui/material'
+import { Box, Typography, TextField, Button, Popper, Divider, Paper, Grow, IconButton, Tooltip, MenuItem } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { Formik, useFormik } from 'formik';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 // import {
 //   CButton,
 //   CModal,
@@ -21,6 +23,8 @@ import ConnectionSettingGrid from '../../components/common/ConnectionSettingGrid
 import ConnectionForm from './ConnectionsForm';
 import { Delete, Edit } from '@mui/icons-material';
 import Autocomplete from '@mui/material/Autocomplete';
+import { useDispatch, useSelector } from 'react-redux';
+import { createCustomer } from '../../slices/customerSlice';
 
 
 const userTypes = ["None", "Admin", "Consultant", "Customer"];
@@ -31,13 +35,17 @@ const languages = ["English", "Hebrew"];
 const lockStatuses = ["Locked", "Unlocked"];
 
 const CustomerForm = ({ user, show, handleClose, onClose }) => {
+
+  const dispatch = useDispatch();
+  const {connectionList} = useSelector(state => state.connection)
+  console.log("Connection List:", connectionList);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const [editedUser, setEditedUser] = useState(user)
   const [isEditMode, setIsEditMode] = useState(false);
   const [formData, setFormData] = useState({
     customerName: '',
-    contactPerson: '',
+    contactPerson: [],
     customerNameInEnglish: '',
     email: '',
     phoneNumber: '',
@@ -60,7 +68,10 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
     validationSchema: customerValidationSchema,
     onSubmit: (values) => {
       console.log(values);
-      handleOpenDialog()
+      dispatch(createCustomer({ customerObj: values, connections: connectionList }));
+      onClose();
+
+     
     },
   });
 
@@ -120,36 +131,29 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
 
   return (
     <Box component="div">
-      <Box component="div" position="sticky" top={0}
-        zIndex={10}
-        bgcolor="background.paper"
-        py={3}
-      >
-      <Box component="div" py={1} px={2} display="flex" justifyContent="space-between" alignItems="center" position="sticky" top={0}
-        zIndex={10}
-        bgcolor="background.paper" >
-        <Typography variant="h6" gutterBottom>
-          {isEditMode ? 'Edit Customer' : 'Create New Customer'}
-        </Typography>
-        <Box display="flex" justifyContent="flex-end">
-          <Button
-            onClick={onClose}
-            variant="contained"
-            color="secondary"
-            style={{ marginRight: 8, backgroundColor: '#757575', color: 'white' }}
-          >
-            Cancel
-          </Button>
-          <Button type="submit" variant="contained" color="primary" onClick={formik.handleSubmit} > //common style sheet
-            {isEditMode ? 'Save Changes' : 'Create Customer'}
-          </Button>
+      <Box component="div" sx={{ ...theme.formControl.formHeaderOuterContainer }}>
+        <Box component="div" sx={{ ...theme.formControl.formHeaderContainer }}>
+          <Typography variant="h6" gutterBottom>
+            {isEditMode ? 'Edit Customer' : 'Create New Customer'}
+          </Typography>
+          <Box componet="div" sx={{ ...theme.formControl.formHeaderButtonContainer }}>
+            <Button
+              onClick={onClose}
+              variant="contained"
+              color="secondary"
+              style={{ marginRight: 8, backgroundColor: '#757575', color: 'white' }}
+            >
+              Cancel
+            </Button>
+            <Button type="submit" variant="contained" color="primary" onClick={formik.handleSubmit} >
+              {isEditMode ? 'Save Changes' : 'Create Customer'}
+            </Button>
+          </Box>
         </Box>
-      </Box>
-      <Divider sx={{background: 'black'}}/>
+        <Divider sx={{ background: 'black' }} />
       </Box>
 
-
-      <Box paddingX={2} mt={0} component="form" >
+      <Box component="form" sx={{ ...theme.formControl.formComponent }} onSubmit={formik.handleSubmit} >
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }} >
             <TextField
@@ -165,27 +169,31 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-        
-            <Autocomplete
-              fullWidth
-              multiple
-              options={contactPersons}
-              getOptionLabel={(option) => option.label}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Contact Person"
-                  name="contactPerson"
-                  value={formik.values.contactPerson}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={formik.touched.contactPerson && Boolean(formik.errors.contactPerson)}
-                  helperText={formik.touched.contactPerson && formik.errors.contactPerson}
-                  required
-                />
-              )}
-              onChange={(event, value) => formik.setFieldValue('contactPerson', value ? value.label : '')}
-            />
+
+            <Grid xs={12} md={6}>
+              <Autocomplete
+                fullWidth
+                multiple
+                options={contactPersons} // Array of options
+                getOptionLabel={(option) => option.label} // How to display each option
+                value={formik.values.contactPerson} // Bind to Formik state
+                onChange={(event, value) => {
+                  formik.setFieldValue('contactPerson', value); // Update Formik state with selected options
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Contact Person"
+                    name="contactPerson"
+                    onBlur={formik.handleBlur}
+                    error={formik.touched.contactPerson && Boolean(formik.errors.contactPerson)}
+                    helperText={formik.touched.contactPerson && formik.errors.contactPerson}
+                    required
+                  />
+                )}
+              />
+            </Grid>
+
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
@@ -242,6 +250,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
+              select
               label="Project Type"
               name="projectType"
               value={formik.values.projectType}
@@ -250,7 +259,14 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
               error={formik.touched.projectType && Boolean(formik.errors.projectType)}
               helperText={formik.touched.projectType && formik.errors.projectType}
               required
-            />
+              
+            >
+              <MenuItem value="License">License</MenuItem>
+              <MenuItem value="Implementation">Implementation</MenuItem>
+              <MenuItem value="Support">Support</MenuItem>
+              <MenuItem value="Development">Development</MenuItem>
+              <MenuItem value="All">All</MenuItem>
+            </TextField>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
@@ -340,9 +356,6 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
           <Button
             variant="contained"
             color="primary"
-            // onClick={() => {
-            //   setDrawerOpen(true);
-            // }}
             onClick={handleClick}
             disableRipple
           >
@@ -350,11 +363,10 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
           </Button>
         </Box>
         <Popper
-          // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
-          sx={{ zIndex: 1200 }} // Ensure it appears above other elements
+          sx={{ zIndex: 1200 }}
           open={open}
           anchorEl={anchorEl}
-          placement={isSmallScreen ? "bottom-end" : "left-start"} // Adjust placement if necessary
+          placement={isSmallScreen ? "bottom-end" : "left-start"}
           transition
         >
           {({ TransitionProps }) => (
@@ -367,23 +379,15 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
         </Popper>
         <ConnectionSettingGrid columns={columns} rows={rows} />
       </Box>
-      <Box component="div" padding={2}>
-        <TextField
-          fullWidth
-          multiline
-          minRows={4}
-          label="Installation Credentials"
-          name="installationCredentials"
-          value={formik.values.installationCredentials}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.installationCredentials && Boolean(formik.errors.installationCredentials)}
-          helperText={formik.touched.installationCredentials && formik.errors.installationCredentials}
-          required
+      <Box component="div" sx={{height: "150px"}} padding={2} mb={2}>
+        <Typography variant="h6" gutterBottom>Installation Credentials</Typography>
+        <ReactQuill theme='snow' 
+          value={formik.values.installationCredentials} 
+          onChange={(value) => formik.setFieldValue('installationCredentials', value)} 
+          style={{ height: '100%', marginBottom: 16 }} 
         />
       </Box>
-      <Box component="div" padding={3}></Box>
-
+      <Box component="div" padding={4} mt={2}></Box>
     </Box>
   )
   return (

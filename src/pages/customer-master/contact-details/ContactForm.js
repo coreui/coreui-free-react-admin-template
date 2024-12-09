@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField, Button, MenuItem, Divider } from '@mui/material'
+import { Box, Typography, TextField, Button, MenuItem, Divider, useTheme } from '@mui/material'
 import { Formik, useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import Grid from '@mui/material/Grid2';
 import contactFormValidationSchema from './contactFormValidationSchema';
+import { addNewContact } from '../../../slices/contactSlice';
 
 const ContactForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) => {
-
+  const dispatch = useDispatch(); 
+  const { contactList } = useSelector((state) => state.contacts); 
+  const theme = useTheme();
   const [formData, setFormData] = useState({
     contactName: '',
     email: '',
@@ -20,24 +24,20 @@ const ContactForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
     initialValues: formData,
     validationSchema: contactFormValidationSchema,
     onSubmit: (values) => {
-      console.log(values);    
+      console.log(values); 
+      dispatch(addNewContact(values));
+      onClose();   
     },
   });
 
   return (
     <Box component="div">
-       <Box component="div" position="sticky" top={0}
-        zIndex={10}
-        bgcolor="background.paper"
-        py={1}
-      >
-      <Box component="div" py={1} px={2} display="flex" justifyContent="space-between" alignItems="center" position="sticky" top={0}
-        zIndex={10}
-        bgcolor="background.paper" >
+       <Box component="div" sx={{...theme.formControl.formHeaderOuterContainer}}>
+      <Box component="div" sx={{...theme.formControl.formHeaderContainer}}>
         <Typography variant="h6" gutterBottom>
           {isEditMode ? 'Edit Contact' : 'Create New Contact'}
         </Typography>
-        <Box display="flex" justifyContent="flex-end">
+        <Box component="div" sx={{...theme.formControl.formHeaderButtonContainer}}>
           <Button
             onClick={onClose}
             variant="contained"
@@ -52,7 +52,7 @@ const ContactForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
       </Box>
       <Divider sx={{background: 'black'}}/>
       </Box>
-      <Box padding={2} mt={1} component="form" onSubmit={formik.handleSubmit}>
+      <Box component="form" sx={{...theme.formControl.formComponent}} onSubmit={formik.handleSubmit}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField

@@ -9,7 +9,7 @@ const Logout = () => {
     clearTokens();
     
     // Redirect to login page
-    navigate('/login');
+    navigate('/#/login');
   };
 
   // Run the handleLogout function when this component is rendered

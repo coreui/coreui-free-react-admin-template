@@ -70,7 +70,7 @@ const TwoFactorVerification = () => {
 
       saveTokens({ access, refresh })
 
-      navigate('/dashboard')
+      navigate('/#/dashboard')
     } catch (err) {
       setError('Invalid 2FA code. Please try again.')
     }

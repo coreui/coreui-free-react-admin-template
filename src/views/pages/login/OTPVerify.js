@@ -96,7 +96,7 @@ const TwoFactorSetupAndVerification = () => {
                   <CButton
                     color="primary"
                     className="mt-3"
-                    onClick={() => (window.location.href = "/login")}
+                    onClick={() => (window.location.href = "/#/login")}
                   >
                     Go to Login
                   </CButton>

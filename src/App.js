@@ -8,6 +8,7 @@ import './scss/style.scss'
 // We use those styles to show code examples, you should remove them in your application.
 import './scss/examples.scss'
 import TwoFactorVerification from './views/pages/login/TwoFactorVerification'
+import TwoFactorSetupAndVerification from './views/pages/login/OTPVerify'
 import Logout from './views/pages/logout/Logout'
 
 // Containers
@@ -50,6 +51,7 @@ const App = () => {
           <Route exact path="/login" name="Login Page" element={<Login />} />
           <Route exact path="/logout" name="logout Page" element={<Logout />} />
           <Route exact path="/2fa-verification" name="2FA verification page" element={<TwoFactorVerification />} />
+          <Route exact path="/2fa-setup-and-verification" name="2FA setup and verification page" element={<TwoFactorSetupAndVerification />} />
           <Route exact path="/register" name="Register Page" element={<Register />} />
           <Route exact path="/404" name="Page 404" element={<Page404 />} />
           <Route exact path="/500" name="Page 500" element={<Page500 />} />

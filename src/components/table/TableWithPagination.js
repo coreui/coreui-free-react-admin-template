@@ -25,6 +25,9 @@ const TableWithPagination = () => {
         'comment_hub',
         'file_hub',
         'gen_hub',
+        'comment_hub_for_display',
+        'file_hub_for_display',
+        'gen_hub_for_display',
     ];
 
     const patternsToModify = [

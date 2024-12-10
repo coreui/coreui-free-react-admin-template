@@ -34,14 +34,17 @@ const Login = () => {
       const response = await api.post('api/token/', { username, password });
 
       // Assuming the API returns 'access' and 'refresh' tokens
-      const { access, refresh, requires_2fa} = response.data;
+      const { access, refresh, requires_2fa, requires_gen_otp} = response.data;
 
       // Store tokens (use localStorage or other methods as needed)
       //localStorage.setItem('access_token', access);
       //localStorage.setItem('refresh_token', refresh);
       saveTokens({ access, refresh });
 
-      if (requires_2fa){
+      if (requires_gen_otp){
+        navigate('/2fa-setup-and-verification')
+      }
+      else if (requires_2fa){
         navigate('/2fa-verification');
       }
       else{

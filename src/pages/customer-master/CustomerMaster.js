@@ -9,9 +9,10 @@ import {
   Card,
   CardContent,
   Dialog,
+  IconButton,
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { Edit } from '@mui/icons-material';
+import { Delete, Edit } from '@mui/icons-material';
 import EditContainer from '../../components/common/EditContainer';
 import DialogBox from '../../components/common/DialogBox';
 import CustomerForm from './CustomerForm';
@@ -82,21 +83,142 @@ const ClientManagement = () => {
   }
 
   const columns = [
-    { field: 'customerName', headerName: 'Customer Name', width: 150 },
-    { field: 'customerNameInEnglish', headerName: 'Customer Name (English)', width: 200 },
-    { field: 'email', headerName: 'Email', width: 200 },
-    { field: 'phoneNumber', headerName: 'Phone Number', width: 150 },
-    { field: 'country', headerName: 'Country', width: 150 },
-    { field: 'projectType', headerName: 'Project Type', width: 150 },
-    { field: 'siteLocation', headerName: 'Site Location', width: 150 },
-    { field: 'distanceInKm', headerName: 'Distance (Km)', width: 150 },
-    { field: 'SAPVersion', headerName: 'SAP Version', width: 150 },
-    { field: 'SAPCode', headerName: 'SAP Code', width: 150 },
-    { field: 'controlCenterUser', headerName: 'Control Center User', width: 200 },
+    {
+      field: 'actions',
+      headerName: '',
+      renderHeader: () => ( 
+        <strong></strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+      renderCell: (params) => (
+        <Box>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="primary"
+          // onClick={() => handleEditClick(params.row)}
+          >
+            <Edit />
+          </IconButton>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="secondary"
+          // onClick={() => handleDelete(params.row.id)}
+          >
+            <Delete />
+          </IconButton>
+        </Box>
+      ),
+    },
+    { 
+      field: 'customerName', 
+      headerName: 'Customer Name', 
+      renderHeader: () => ( 
+        <strong>Customer Name</strong>
+      ),
+      flex: 1,
+      minWidth: 150, 
+    },
+    { 
+      field: 'customerNameInEnglish', 
+      headerName: 'Customer Name (English)', 
+      renderHeader: () => ( 
+        <strong>Customer Name (English)</strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+    },
+    { 
+      field: 'email', 
+      headerName: 'Email', 
+      renderHeader: () => ( 
+        <strong>Email</strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+    },
+    { 
+      field: 'phoneNumber', 
+      headerName: 'Phone Number', 
+      renderHeader: () => ( 
+        <strong>Phone Number</strong>
+      ),
+      flex: 1,
+      minWidth: 150, 
+    },
+    { 
+      field: 'country', 
+      headerName: 'Country', 
+      renderHeader: () => ( 
+        <strong>Country</strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+    },
+    { 
+      field: 'projectType', 
+      headerName: 'Project Type', 
+      renderHeader: () => ( 
+        <strong>Project Type</strong>
+      ),
+      flex: 1,
+      minWidth: 150, 
+    },
+    { 
+      field: 'siteLocation', 
+      headerName: 'Site Location', 
+      renderHeader: () => ( 
+        <strong>Site Location</strong>
+      ),
+      flex: 1,
+      minWidth: 150, 
+    },
+    { 
+      field: 'distanceInKm', 
+      headerName: 'Distance (Km)', 
+      renderHeader: () => ( 
+        <strong>Distance (Km)</strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+    },
+    { 
+      field: 'SAPVersion', 
+      headerName: 'SAP Version', 
+      renderHeader: () => ( 
+        <strong>SAP Version</strong>
+      ),
+      flex: 1,
+      minWidth: 150, 
+    },
+    { 
+      field: 'SAPCode', 
+      headerName: 'SAP Code', 
+      renderHeader: () => ( 
+        <strong>SAP Code</strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+    },
+    { 
+      field: 'controlCenterUser', 
+      headerName: 'Control Center User', 
+      renderHeader: () => ( 
+        <strong>Control Center User</strong>
+      ),
+      flex: 1,
+      minWidth: 150, 
+    },
     {
         field: 'contactPerson',
         headerName: 'Contact Person',
-        width: 200,
+        renderHeader: () => ( 
+          <strong>Contact Person</strong>
+        ),
+        flex: 1,
+        minWidth: 150,
         valueGetter: (params) => {
           console.log("params.row", params.row);  
           console.log("params.row.contactPerson", params.row?.contactPerson);  
@@ -110,7 +232,11 @@ const ClientManagement = () => {
     {
       field: 'connections',
       headerName: 'Connections',
-      width: 300,
+      renderHeader: () => (
+        <strong>Connections</strong>
+      ),
+      flex: 1,
+      minWidth: 150,
       renderCell: (params) => (
         <Box>
           {params.row?.connections?.length > 0 ? (
@@ -125,31 +251,7 @@ const ClientManagement = () => {
         </Box>
       ),
     },
-    {
-      field: 'actions',
-      headerName: 'Actions',
-      width: 150,
-      renderCell: (params) => (
-        <Box>
-          <Button
-            size="small"
-            variant="contained"
-            color="primary"
-          // onClick={() => handleEditClick(params.row)}
-          >
-            Edit
-          </Button>
-          <Button
-            size="small"
-            variant="contained"
-            color="secondary"
-          // onClick={() => handleDelete(params.row.id)}
-          >
-            Delete
-          </Button>
-        </Box>
-      ),
-    },
+    
   ];
   // const tempColumn = [
   //   { field: 'id', headerName: 'ID', flex: 1 },
@@ -235,13 +337,15 @@ const ClientManagement = () => {
             <DataGrid
               rows={rows}
               columns={columns}
-              autoHeight
               disableColumnMenu
               disableRowSelectionOnClick
               hideFooterPagination
               getRowId={(row) => row.id}
               showCellVerticalBorder
               showColumnVerticalBorder
+              sx={{
+                height: 'calc(100vh - 300px)',  
+              }}
             />
 
           </CardContent>

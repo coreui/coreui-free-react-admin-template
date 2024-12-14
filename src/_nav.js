@@ -60,10 +60,29 @@ const _nav = [
     icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
   },
   {
-    component: CNavItem,
+    component: CNavGroup,
     name: 'Task Management',
-    to: '/task-management',
     icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'New Task',
+        to: '/new-task',
+        icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+      },
+      // {
+      //   component: CNavItem,
+      //   name: 'Task List',
+      //   to: '/task-list',
+      //   icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+      // },
+      {
+        component: CNavItem,
+        name: 'Time Sheet',
+        to: '/time-sheet',
+        icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+      },
+    ]
   },
   {
     component: CNavTitle,

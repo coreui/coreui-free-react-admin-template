@@ -8,7 +8,9 @@ const CustomerManagement = React.lazy(() => import('./pages/customer-master/Cust
 const ContactMainScreen = React.lazy(() => import('./pages/customer-master/contact-details/ContactMainScreen'))
 
 const ProjectManagement = React.lazy(() => import('./pages/project-management/ProjectManagement'))
-const TaskManagement = React.lazy(() => import('./views/task-management/TaskManagement'))
+const NewTask = React.lazy(() => import('./pages/task-management/NewTask'))
+const TaskList = React.lazy(() => import('./pages/task-management/TaskList'))
+const TimeSheetMainScreen = React.lazy(() => import('./pages/time-management/TimesheetMainScreen'))  
 
 // Base
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
@@ -64,7 +66,9 @@ const routes = [
   { path: '/customer-management', name: 'Client Management', element: CustomerManagement },
   { path: '/contact-person', name: 'Contact Person', element: ContactMainScreen },
   { path: '/project-management', name: 'Project Management', element: ProjectManagement },
-  { path: '/task-management', name: 'Task Management', element: TaskManagement },
+  { path: '/new-task', name: 'New Task', element: NewTask },
+  { path: '/task-list', name: 'Task List', element: TaskList },
+  { path: '/time-sheet', name: 'Time Sheet', element: TimeSheetMainScreen },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

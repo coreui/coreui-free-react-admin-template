@@ -3,10 +3,10 @@ import { Box, Paper, TextField, Typography, Button, MenuItem, Grid2 } from "@mui
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { createConnection } from "../../slices/connectionSlice";
+import { ConnectionTypes, VPNTypes } from "../../components/common/utils";
 
 
-const connectionTypes = ["VPN", "Remote Desktop", "SAP", "SQL"];
-const vpnTypes = ["CheckPoint", "FortiClient", "Sohpos", "ZeroTier"];
+
 
 const ConnectionForm = ({ onSave, onCancel }) => {
   const dispatch = useDispatch()
@@ -52,7 +52,7 @@ const ConnectionForm = ({ onSave, onCancel }) => {
                 onChange={formik.handleChange}
                 select
               >
-                {vpnTypes.map((type) => (
+                {VPNTypes.map((type) => (
                   <MenuItem key={type} value={type}>
                     {type}
                   </MenuItem>
@@ -197,7 +197,7 @@ const ConnectionForm = ({ onSave, onCancel }) => {
                 onChange={formik.handleChange}
                 select
               >
-                {connectionTypes.map((type) => (
+                {ConnectionTypes.map((type) => (
                   <MenuItem key={type} value={type}>
                     {type}
                   </MenuItem>

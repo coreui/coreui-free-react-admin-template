@@ -78,16 +78,14 @@ const ContactMainScreen = () => {
 
 
     const columns = [
-        { field: 'contactName', headerName: 'Contact Name', flex: 1 },
-        { field: 'email', headerName: 'Email', flex: 1 },
-        { field: 'phone', headerName: 'Phone', flex: 1 },
-        { field: 'extension', headerName: 'Extension', flex: 1 },
-        { field: 'cellular', headerName: 'Cellular', flex: 1 },
-        { field: 'position', headerName: 'Position', flex: 1 },
         {
             field: 'actions',
-            headerName: 'Actions',
+            headerName: '',
+            renderHeader: () => (
+                <strong></strong>
+            ),
             flex: 1,
+            minWidth: 150,
             renderCell: (params) => (
                 <Box>
                     <Button
@@ -109,9 +107,73 @@ const ContactMainScreen = () => {
                 </Box>
             ),
         },
+        { 
+            field: 'contactName', 
+            headerName: 'Contact Name', 
+            renderHeader: () => (
+                <strong>Contact Name</strong>
+            ),
+            flex: 1,
+            minWidth: 150, 
+        },
+        { 
+            field: 'email', 
+            headerName: 'Email', 
+            renderHeader: () => (
+                <strong>Email</strong>
+            ),
+            flex: 1,
+            minWidth: 150,
+        },
+        { 
+            field: 'phone', 
+            headerName: 'Phone', 
+            renderHeader: () => (
+                <strong>Phone</strong>
+            ),
+            flex: 1,
+            minWidth: 150,
+        },
+        { 
+            field: 'extension', 
+            headerName: 'Extension', 
+            renderHeader: () => (
+                <strong>Extension</strong>
+            ),
+            flex: 1,
+            minWidth: 150,
+        },
+        { 
+            field: 'cellular', 
+            headerName: 'Cellular', 
+            renderHeader: () => (
+                <strong>Cellular</strong>
+            ),
+            flex: 1,
+            minWidth: 150, 
+        },
+        { 
+            field: 'position', 
+            headerName: 'Position', 
+            renderHeader: () => (
+                <strong>Position</strong>
+            ),
+            flex: 1,
+            minWidth: 150,  
+        },
+        
     ]
 
     const rows = contactList;
+
+    const autoCompleteDataGridColumns = ["Customer Name", "Project Type"];
+    const autoCompleteDataGridRows = [
+        { id: 1, customerName: 'John Doe', projectType: 'Web Development' },
+        { id: 2, customerName: 'Jane Smith', projectType: 'Mobile App' },
+        { id: 3, customerName: 'Sam Brown', projectType: 'Data Analysis' },
+        { id: 4, customerName: 'Alice Johnson', projectType: 'SEO Optimization' },
+        { id: 5, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
+      ];   
 
     return (
 
@@ -134,6 +196,8 @@ const ContactMainScreen = () => {
                     <Box component="div" sx={{ width: "100%", maxWidth: "300px", mb: 2 }}>
 
                         <AutoCompleteDataGrid
+                            columns={autoCompleteDataGridColumns}
+                            rows={autoCompleteDataGridRows} 
                             value={formik.values.customer || ''}
                             onChange={(event, value) => {
                                 console.log("Value:", value);
@@ -149,13 +213,15 @@ const ContactMainScreen = () => {
                     <DataGrid
                         rows={rows}
                         columns={columns}
-                        autoHeight
                         disableColumnMenu
                         disableRowSelectionOnClick
                         hideFooterPagination
                         getRowId={(row) => row.id}
                         showCellVerticalBorder
                         showColumnVerticalBorder
+                        sx={{
+                            height: 'calc(100vh - 380px)',  
+                        }}
                     />
 
                 </CardContent>

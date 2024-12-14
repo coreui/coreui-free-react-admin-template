@@ -1,0 +1,451 @@
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  Button,
+  Drawer,
+  Grid,
+  TextField,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  Dialog,
+  IconButton,
+} from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+import { Delete, Edit } from '@mui/icons-material';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { userTypeObj } from '../../components/common/utils';
+import EditContainer from '../../components/common/EditContainer';
+import TaskForm from './TaskForm';    
+const NewTask = () => {
+
+  const dispatch = useDispatch();
+  const { taskList } = useSelector((state) => state.task);
+  console.log("Task List:", taskList);
+  const [users, setUsers] = useState([]);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    role: '',
+    country: '',
+  });
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState(null);
+  const [drawerStyles, setDrawerStyles] = useState({});
+  const dataGridRef = useRef();
+
+  // Fetch users from backend
+  // useEffect(() => {
+  //   if (user) {
+  //   dispatch(fetchUserList());
+  //   }
+  // }, [userList]);
+
+  // Calculate Drawer Position and Height
+  useEffect(() => {
+    if (dataGridRef.current) {
+      const rect = dataGridRef.current.getBoundingClientRect();
+      setDrawerStyles({
+        top: rect.top,
+        height: `calc(100vh - ${rect.top}px)`,
+      });
+    }
+  }, [users, drawerOpen]);
+
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  }
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  }
+
+  // const columns = [
+  //   {
+  //     field: 'actions',
+  //     headerName: 'Actions',
+  //     renderHeader: () => ( 
+  //       <strong>Actions</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150,
+  //     renderCell: (params) => (
+  //       <Box>
+  //         <IconButton
+  //           size="small"
+  //           variant="contained"
+  //           color="primary"
+  //         // onClick={() => handleEditClick(params.row)}
+  //         >
+  //           <Edit />
+  //         </IconButton>
+  //         <IconButton
+  //           size="small"
+  //           variant="contained"
+  //           color="secondary"
+  //         // onClick={() => handleDelete(params.row.id)}
+  //         >
+  //           <Delete />
+  //         </IconButton>
+  //       </Box>
+  //     ),
+  //   },
+  //   { 
+  //     field: 'ticketNumber',   
+  //     headerName: 'Ticket Number', 
+  //     renderHeader: () => ( 
+  //       <strong>Ticket Number</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+  //   { 
+  //     field: 'customer', 
+  //     headerName: 'Customer', 
+  //     renderHeader: () => ( 
+  //       <strong>Customer</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150,
+  //   },
+  //   { 
+  //     field: 'module', 
+  //     headerName: 'Module', 
+  //     renderHeader: () => ( 
+  //       <strong>Module</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150,
+  //   },
+  //   { 
+  //     field: 'contactName', 
+  //     headerName: 'Contact Name', 
+  //     renderHeader: () => ( 
+  //       <strong>Contact Name</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+  //   { 
+  //     field: 'form', 
+  //     headerName: 'Form', 
+  //     renderHeader: () => ( 
+  //       <strong>Form</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150,
+  //   },
+  //   { 
+  //     field: 'projectName', 
+  //     headerName: 'Project Name', 
+  //     renderHeader: () => ( 
+  //       <strong>Project Name</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+  //   { 
+  //     field: 'subject', 
+  //     headerName: 'Subject', 
+  //     renderHeader: () => ( 
+  //       <strong>Subject</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+  //   { 
+  //     field: 'attachment', 
+  //     headerName: 'Attachment', 
+  //     renderHeader: () => ( 
+  //       <strong>Attachment</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150,
+  //   },
+  //   { 
+  //     field: 'status', 
+  //     headerName: 'Status', 
+  //     renderHeader: () => ( 
+  //       <strong>Status</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+  //   { 
+  //     field: 'approvedHours', 
+  //     headerName: 'Approved Hours', 
+  //     renderHeader: () => ( 
+  //       <strong>Approved Hours</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150,
+  //   },
+  //   { 
+  //     field: 'balanceHours', 
+  //     headerName: 'Balance Hours',   
+  //     renderHeader: () => ( 
+  //       <strong>Balance Hours</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+  //   { 
+  //     field: 'priority', 
+  //     headerName: 'Priority',   
+  //     renderHeader: () => ( 
+  //       <strong>Priority</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+  //   { 
+  //     field: 'detailDescription',  
+  //     headerName: 'Detail Description',    
+  //     renderHeader: () => ( 
+  //       <strong>Detail Description</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+  //   { 
+  //     field: 'user',  
+  //     headerName: 'User',    
+  //     renderHeader: () => ( 
+  //       <strong>User</strong>
+  //     ),
+  //     flex: 1,
+  //     minWidth: 150, 
+  //   },
+    
+    
+  // ];
+
+  const rows = users;
+
+  const generateColumnsFromData = (data) => {
+    if (!data || data.length === 0) {
+      return [];
+    }
+
+    const firstColumn = {
+      field: 'actions',
+      headerName: 'Actions',
+      renderHeader: () => ( 
+        <strong>Actions</strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+      renderCell: (params) => (
+        <Box>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="primary"
+          // onClick={() => handleEditClick(params.row)}
+          >
+            <Edit />
+          </IconButton>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="secondary"
+          // onClick={() => handleDelete(params.row.id)}
+          >
+            <Delete />
+          </IconButton>
+        </Box>
+      ),
+    }
+  
+    const keys = Object.keys(data[0]).filter(key => key !== 'id');
+    const dataColumn = keys.map(key => ({
+      field: key,
+      headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize header names
+      renderHeader: () => <strong>{key.charAt(0).toUpperCase() + key.slice(1)}</strong>,
+      renderCell: (params) => {
+        const value = params.row[key];
+        if (value === null || value === undefined) {
+          return <p>No {key} info</p>;
+        }
+
+        if (typeof value === 'object') {
+          return Object.keys(value).filter(value => value !== 'id' ).map((k) => (
+            <div key={k}>
+              <p>{value[k]}</p>
+            </div>
+          ));   
+        // return value ? (
+        //   <div>
+        //     <p>{value}</p>
+        //   </div>
+        // ) : (
+        //   <p>No {key} info</p>
+        // );
+        }
+        return (
+          <div>
+            <p>{value}</p>
+          </div>
+        );
+      },
+      editable: false,
+      flex: 1,
+      minWidth: 200,
+      
+    }));
+
+    const columns = [firstColumn, ...dataColumn];
+    return columns;
+  };
+
+  const columns = [
+    {
+      field: 'actions',
+      headerName: '',
+      renderHeader: () => ( 
+        <strong></strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+      renderCell: (params) => (
+        <Box>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="primary"
+          // onClick={() => handleEditClick(params.row)}
+          >
+            <Edit />
+          </IconButton>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="secondary"
+          // onClick={() => handleDelete(params.row.id)}
+          >
+            <Delete />
+          </IconButton>
+        </Box>
+      ),
+    },
+    { 
+      field: 'ticketNumber',   
+      headerName: 'Ticket Number', 
+      renderHeader: () => ( 
+        <strong>Ticket Number</strong>
+      ),
+      flex: 1,
+      minWidth: 150, 
+    },
+    { 
+      field: 'customer', 
+      headerName: 'Customer', 
+      renderHeader: () => ( 
+        <strong>Customer</strong>
+      ),
+      renderCell: (params) => {
+        const customer = params.row.customer;
+        return customer ? (
+          <div>
+            <p>{customer.customerName}</p>
+            <p>{customer.projectType}</p> 
+          </div>
+        ) : (
+          <p>No customer info</p>
+        );
+      },
+      flex: 1,
+      minWidth: 150,
+    },
+    { 
+      field: 'contactName', 
+      headerName: 'Contact Name', 
+      renderHeader: () => ( 
+        <strong>Contact Name</strong>
+      ),
+      renderCell: (params) => {
+        const contactName = params.row.contactName;
+        return contactName ? (  
+          <div>
+            <p>{contactName.contactName}</p>
+          </div>
+        ) : ( 
+          <p>No contact name</p>
+        );
+      },
+      flex: 1,
+      minWidth: 150, 
+    },
+    
+    { 
+      field: 'projectName', 
+      headerName: 'Project Name', 
+      renderHeader: () => ( 
+        <strong>Project Name</strong>
+      ),
+      flex: 1,
+      minWidth: 150, 
+    },
+    { 
+      field: 'subject', 
+      headerName: 'Subject', 
+      renderHeader: () => ( 
+        <strong>Subject</strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+    }
+  ]
+  
+
+ //MUI DataGrid 
+  return (
+    <div ref={dataGridRef}>
+      <Box padding={1}>
+        <Card>
+          <CardContent>
+            <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+              <Typography variant="h6">New Task </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  setDrawerOpen(true);
+                }}
+                disableRipple
+              >
+                Create New Task
+              </Button>
+            </Box>
+            <Box width="100%" height="100%">
+              <DataGrid
+                rows={taskList}
+                columns={taskList.length > 0 ? generateColumnsFromData(taskList) : columns} 
+                disableColumnMenu
+                disableRowSelectionOnClick
+                hideFooterPagination
+                getRowId={(row) => row.id}
+                showCellVerticalBorder
+                showColumnVerticalBorder
+                sx={{
+                  height: 'calc(100vh - 300px)',  
+                }}
+              />
+            </Box>
+
+          </CardContent>
+        </Card>
+
+        <EditContainer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+          <TaskForm onClose={() => setDrawerOpen(false)} handleOpenDialog={handleOpenDialog} />
+        </EditContainer>
+
+
+      </Box>
+    </div>
+  );
+};
+
+export default NewTask;

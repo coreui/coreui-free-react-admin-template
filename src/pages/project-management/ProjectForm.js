@@ -1,13 +1,23 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField, Button, MenuItem, Select, FormControl, InputLabel, FormControlLabel, Checkbox, Divider, useTheme } from '@mui/material'
+import { Box, Typography, TextField, Button, MenuItem, Select, FormControl, InputLabel, FormControlLabel, Checkbox, Divider, useTheme, IconButton } from '@mui/material'
 import { Formik, useFormik } from 'formik';
 import Grid from '@mui/material/Grid2';
 import Autocomplete from '@mui/material/Autocomplete';
 import contactFormValidationSchema from '../customer-master/contact-details/contactFormValidationSchema';
 import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
 import projectFormValidationSchema from './projectFormValidationSchema';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewProject } from '../../slices/projectSlice';
+import { ProjectMethod, ProjectTypes, Status } from '../../components/common/utils';
+import { Search } from '@mui/icons-material';
+import PopperComponent from '../../components/common/popper';
+import ContactForm from '../task-management/ContactForm';
+import HourForm from './HourForm';
 
 const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) => {
+
+  const dispatch = useDispatch();
+  const { hours } = useSelector((state) => state.hours);
 
   const theme = useTheme();
 
@@ -16,7 +26,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
     fromDate: '',
     status: '',
     toDate: '',
-    customer: '',
+    customer: null,
     additionalHours: '',
     projectName: '',
     projectMethod: '',
@@ -26,38 +36,69 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
     balanceHours: '',
   });
   const [isEditMode, setIsEditMode] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [isEditContact, setIsEditContact] = useState(false);
+
 
   const formik = useFormik({
     initialValues: formData,
     validationSchema: projectFormValidationSchema,
     onSubmit: (values) => {
       console.log(values);
+      dispatch(addNewProject(values));
+      onClose();
     },
   });
 
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget); // Correctly sets the anchor element
+    setOpen((prev) => !prev); // Toggles the Popper
+    setIsEditContact(false);
+  };
+
+  const handleClosePopper = () => {
+    setOpen(false);
+  };
+
+  const autoCompleteDataGridColumns = ["Customer Name", "Project Type"];
+  const autoCompleteDataGridRows = [
+    { id: 1, customerName: 'John Doe', projectType: 'Web Development' },
+    { id: 2, customerName: 'Jane Smith', projectType: 'Mobile App' },
+    { id: 3, customerName: 'Sam Brown', projectType: 'Data Analysis' },
+    { id: 4, customerName: 'Alice Johnson', projectType: 'SEO Optimization' },
+    { id: 6, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
+    { id: 7, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
+    { id: 8, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
+
+    { id: 9, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
+
+  ];
+
   return (
     <Box component="div">
-      <Box component="div" sx={{...theme.formControl.formHeaderOuterContainer}}>
-      <Box component="div" sx={{...theme.formControl.formHeaderContainer}}>
-        <Typography variant="h6" gutterBottom>
-          {isEditMode ? 'Edit Project' : 'Create New Project'}
-        </Typography>
-        <Box component="div" sx={{...theme.formControl.formHeaderButtonContainer}}>
-          <Button
-            onClick={onClose}
-            variant="contained"
-            style={{ marginRight: 8, backgroundColor: '#757575', color: 'white' }}
-          >
-            Cancel
-          </Button>
-          <Button type="submit" variant="contained" color="primary" onClick={formik.handleSubmit} >
-            {isEditMode ? 'Save Changes' : 'Create Project'}
-          </Button>
+      <Box component="div" sx={{ ...theme.formControl.formHeaderOuterContainer }}>
+        <Box component="div" sx={{ ...theme.formControl.formHeaderContainer }}>
+          <Typography variant="h6" gutterBottom>
+            {isEditMode ? 'Edit Project' : 'Create New Project'}
+          </Typography>
+          <Box component="div" sx={{ ...theme.formControl.formHeaderButtonContainer }}>
+            <Button
+              onClick={onClose}
+              variant="contained"
+              style={{ marginRight: 8, backgroundColor: '#757575', color: 'white' }}
+            >
+              Cancel
+            </Button>
+            <Button type="submit" variant="contained" color="primary" onClick={formik.handleSubmit} >
+              {isEditMode ? 'Save Changes' : 'Create Project'}
+            </Button>
+          </Box>
         </Box>
+        <Divider sx={{ background: 'black' }} />
       </Box>
-      <Divider sx={{background: 'black'}}/>
-      </Box>
-      <Box component="form" sx={{...theme.formControl.formComponent}} onSubmit={formik.handleSubmit}>
+      <Box component="form" sx={{ ...theme.formControl.formComponent }} onSubmit={formik.handleSubmit}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }}>
             <FormControl fullWidth>
@@ -70,9 +111,14 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
                 onBlur={formik.handleBlur}
                 error={formik.touched.projectType && Boolean(formik.errors.projectType)}
               >
-                <MenuItem value="implementation">Implementation</MenuItem>
-                <MenuItem value="support">Support</MenuItem>
-                <MenuItem value="development">Development</MenuItem>
+                {
+                  ProjectTypes.map((type) => (
+                    <MenuItem key={type} value={type}>
+                      {type}
+                    </MenuItem>
+                  ))
+                }
+
               </Select>
             </FormControl>
           </Grid>
@@ -101,8 +147,14 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
                 onBlur={formik.handleBlur}
                 error={formik.touched.status && Boolean(formik.errors.status)}
               >
-                <MenuItem value="active">Active</MenuItem>
-                <MenuItem value="inactive">Inactive</MenuItem>
+                {
+                  Status.map((type) => (
+                    <MenuItem key={type} value={type}>
+                      {type}
+                    </MenuItem>
+                  ))
+                }
+
               </Select>
             </FormControl>
           </Grid>
@@ -122,28 +174,52 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <AutoCompleteDataGrid
-              fullWidth
-              label="Customer"
-              name="customer"
-              value={formik.values.customer}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              label="Select Customer" 
+              columns={autoCompleteDataGridColumns}
+              rows={autoCompleteDataGridRows}
+              value={formik.values.customer || ''}
+              onChange={(event, value) => {
+                console.log("Value:", value);
+                formik.setFieldValue('customer', value);
+              }}
+              onBlur={() => formik.setFieldTouched('customer', true)}
               error={formik.touched.customer && Boolean(formik.errors.customer)}
               helperText={formik.touched.customer && formik.errors.customer}
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-            <TextField
-              fullWidth
-              label="Additional Hours"
-              name="additionalHours"
-              type='number'
-              value={formik.values.additionalHours}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.additionalHours && Boolean(formik.errors.additionalHours)}
-              helperText={formik.touched.additionalHours && formik.errors.additionalHours}
-            />
+            <Grid container spacing={1} justifyContent="center" alignItems="center">
+              <Grid item size={{ xs: 12, md: 10 }}>
+                <TextField
+                  fullWidth
+                  label="Additional Hours"
+                  name="additionalHours"
+                  type='number'
+                  value={formik.values.additionalHours || hours.hours}  
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.additionalHours && Boolean(formik.errors.additionalHours)}
+                  helperText={formik.touched.additionalHours && formik.errors.additionalHours}
+                  InputLabelProps={{ shrink: true }}  
+                  disabled
+                />
+              </Grid>
+              <Grid item size={{ xs: 12, md: 2 }}>
+                <IconButton
+                  size='small'
+                  variant='contained'
+                  sx={{
+                    background: 'red',
+                    color: 'white',
+                  }}
+                  onClick={handleClick}
+                  disableRipple
+                >
+                  <Search />
+                </IconButton>
+              </Grid>
+            </Grid>
+
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
@@ -168,11 +244,13 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
                 onBlur={formik.handleBlur}
                 error={formik.touched.projectMethod && Boolean(formik.errors.projectMethod)}
               >
-                <MenuItem value="Project">Project</MenuItem>
-                <MenuItem value="Bank Hour">Bank Hour</MenuItem>
-                <MenuItem value="Actual hours">Actual hours</MenuItem>
-                <MenuItem value="Monthly retainer">Monthly retainer</MenuItem>
-                <MenuItem value="Yearly retainer">Yearly retainer</MenuItem>
+                {
+                  ProjectMethod.map((type) => (
+                    <MenuItem key={type} value={type}>
+                      {type}
+                    </MenuItem>
+                  ))
+                }
               </Select>
             </FormControl>
           </Grid>
@@ -237,6 +315,9 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
             />
           </Grid>
         </Grid>
+        <PopperComponent open={open} anchorEl={anchorEl}>
+          <HourForm isEditContact={isEditContact} onClose={handleClosePopper} />
+        </PopperComponent>
       </Box>
       <Box component="div" padding={4}></Box>
     </Box>

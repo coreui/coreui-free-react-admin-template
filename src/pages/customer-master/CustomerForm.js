@@ -25,6 +25,7 @@ import { Delete, Edit } from '@mui/icons-material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCustomer } from '../../slices/customerSlice';
+import { ContactPersons, ProjectTypes } from '../../components/common/utils';
 
 
 const userTypes = ["None", "Admin", "Consultant", "Customer"];
@@ -86,14 +87,40 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
 
 
   const columns = [
-    { field: 'connectionType', headerName: 'Connection Type', flex: 1 },
-    { field: 'vpnType', headerName: 'VPN Type', flex: 1 },
-    { field: 'address', headerName: 'Address', flex: 1 },
-    { field: 'user', headerName: 'User', flex: 1 },
-    { field: 'password', headerName: 'Password', flex: 1 },
+    { 
+      field: 'connectionType', 
+      headerName: 'Connection Type', 
+      renderHeader: () => <strong>Connection Type</strong>, 
+      flex: 1 
+    },
+    { 
+      field: 'vpnType', 
+      headerName: 'VPN Type',
+      renderHeader: () => <strong>VPN Type</strong>, 
+      flex: 1 
+    },
+    { 
+      field: 'address', 
+      headerName: 'Address', 
+      renderHeader: () => <strong>Address</strong>,
+      flex: 1 
+    },
+    { 
+      field: 'user', 
+      headerName: 'User',
+      renderHeader: () => <strong>User</strong>,   
+      flex: 1 
+    },
+    { 
+      field: 'password', 
+      headerName: 'Password',
+      renderHeader: () => <strong>Password</strong>,   
+      flex: 1 
+    },
     {
       field: 'actions',
       headerName: '',
+      renderHeader: () => <strong>Actions</strong>,
       flex: 1,
       renderCell: (params) => (
         <Box>
@@ -119,13 +146,6 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
     { id: 3, connectionType: 'SAP', vpnType: 'None', address: 'None', user: 'user', password: 'password456' },
     { id: 4, connectionType: 'SQL', vpnType: 'None', address: 'None', user: 'user', password: 'password456' },
 
-  ];
-
-  const contactPersons = [
-    { label: 'John Doe', id: 1 },
-    { label: 'Jane Smith', id: 2 },
-    { label: 'Alice Johnson', id: 3 },
-    { label: 'Bob Brown', id: 4 },
   ];
 
 
@@ -174,7 +194,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
               <Autocomplete
                 fullWidth
                 multiple
-                options={contactPersons} // Array of options
+                options={ContactPersons} // Array of options
                 getOptionLabel={(option) => option.label} // How to display each option
                 value={formik.values.contactPerson} // Bind to Formik state
                 onChange={(event, value) => {
@@ -261,11 +281,14 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
               required
               
             >
-              <MenuItem value="License">License</MenuItem>
-              <MenuItem value="Implementation">Implementation</MenuItem>
-              <MenuItem value="Support">Support</MenuItem>
-              <MenuItem value="Development">Development</MenuItem>
-              <MenuItem value="All">All</MenuItem>
+              {
+                ProjectTypes.map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))
+
+              }
             </TextField>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -379,60 +402,18 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
         </Popper>
         <ConnectionSettingGrid columns={columns} rows={rows} />
       </Box>
-      <Box component="div" sx={{height: "150px"}} padding={2} mb={2}>
+      <Box component="div" sx={{height: "auto"}} padding={2} mb={2}>
         <Typography variant="h6" gutterBottom>Installation Credentials</Typography>
         <ReactQuill theme='snow' 
           value={formik.values.installationCredentials} 
           onChange={(value) => formik.setFieldValue('installationCredentials', value)} 
-          style={{ height: '100%', marginBottom: 16 }} 
+          style={{ height: '90px', marginBottom: 16 }} 
         />
       </Box>
       <Box component="div" padding={4} mt={2}></Box>
     </Box>
   )
-  return (
-    <CModal visible={show} onClose={handleClose}>
-      <CModalHeader>
-        <CModalTitle>Edit User</CModalTitle>
-      </CModalHeader>
-      <CModalBody>
-        <CForm>
-          <CFormLabel>Name</CFormLabel>
-          <CFormInput
-            type="text"
-            name="name"
-            value={editedUser.name}
-            onChange={handleChange}
-          />
-          <CFormLabel>Email</CFormLabel>
-          <CFormInput
-            type="email"
-            name="email"
-            value={editedUser.email}
-            onChange={handleChange}
-          />
-          <CFormLabel>Role</CFormLabel>
-          <CFormInput
-            type="text"
-            name="role"
-            value={editedUser.role}
-            onChange={handleChange}
-          />
-          <CFormLabel>Country</CFormLabel>
-          <CFormInput
-            type="text"
-            name="country"
-            value={editedUser.country}
-            onChange={handleChange}
-          />
-        </CForm>
-      </CModalBody>
-      <CModalFooter>
-        <CButton color="secondary" onClick={handleClose}>Cancel</CButton>
-        <CButton color="primary" onClick={() => handleSave(editedUser)}>Save changes</CButton>
-      </CModalFooter>
-    </CModal>
-  )
+  
 }
 
 export default CustomerForm;

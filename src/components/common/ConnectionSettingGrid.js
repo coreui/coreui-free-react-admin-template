@@ -16,6 +16,7 @@ const ConnectionSettingGrid = ({  columns }) => {
     return keys.map(key => ({
       field: key,
       headerName: key,
+      renderHeader: () => <strong>{key}</strong>,
       editable: false,
       flex: 1,
       minWidth: 200,

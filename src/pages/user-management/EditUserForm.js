@@ -18,12 +18,8 @@ import Grid from '@mui/material/Grid2';
 import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
 import { createUser } from '../../slices/userSlice';
 import { userDTO } from '../../dto/userDTO';
-const userTypes = ["None", "Admin", "Consultant", "Customer"];
-const consultantTypes = ["Technical", "Functional", "Implementation", "Support", "Development"];
-const positions = ["Manager", "Senior", "Junior"];
-const statuses = ["Active", "Inactive"];
-const languages = ["English", "Hebrew"];
-const lockStatuses = ["Locked", "Unlocked"];
+import { ConsultantTypes, Languages, LockStatus, Positions, Status, UserTypeArray, userTypeObj } from '../../components/common/utils';
+
 
 const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
   const dispatch = useDispatch();
@@ -58,6 +54,15 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
       onClose();
     },
   });
+
+  const autoCompleteDataGridColumns = ["Customer Name", "Project Type"];
+  const autoCompleteDataGridRows = [
+    { id: 1, customerName: 'John Doe', projectType: 'Web Development' },
+    { id: 2, customerName: 'Jane Smith', projectType: 'Mobile App' },
+    { id: 3, customerName: 'Sam Brown', projectType: 'Data Analysis' },
+    { id: 4, customerName: 'Alice Johnson', projectType: 'SEO Optimization' },
+    { id: 5, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
+  ];
 
 
   return (
@@ -97,7 +102,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
               error={formik.touched.userType && Boolean(formik.errors.userType)} //grid v2
               helperText={formik.touched.userType && formik.errors.userType}
             >
-              {userTypes.map((type) => (
+              {UserTypeArray.map((type) => (
                 <MenuItem key={type} value={type}>
                   {type}
                 </MenuItem>
@@ -168,7 +173,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
             />
           </Grid>
           {
-            formik.values.userType === 'Admin' || formik.values.userType === '' || formik.values.userType === 'Consultant' ? (
+            formik.values.userType === userTypeObj.ADMIN || formik.values.userType === '' || formik.values.userType === userTypeObj.CONSULTANT || formik.values.userType === userTypeObj.NONE ? (
               <>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <TextField
@@ -196,7 +201,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     error={formik.touched.consultantType && Boolean(formik.errors.consultantType)}
                     helperText={formik.touched.consultantType && formik.errors.consultantType}
                   >
-                    {consultantTypes.map((type) => (
+                    {ConsultantTypes.map((type) => (
                       <MenuItem key={type} value={type}>
                         {type}
                       </MenuItem>
@@ -215,7 +220,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     error={formik.touched.position && Boolean(formik.errors.position)}
                     helperText={formik.touched.position && formik.errors.position}
                   >
-                    {positions.map((type) => (
+                    {Positions.map((type) => (
                       <MenuItem key={type} value={type}>
                         {type}
                       </MenuItem>
@@ -248,7 +253,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     error={formik.touched.status && Boolean(formik.errors.status)}
                     helperText={formik.touched.status && formik.errors.status}
                   >
-                    {statuses.map((type) => (
+                    {Status.map((type) => (
                       <MenuItem key={type} value={type}>
                         {type}
                       </MenuItem>
@@ -267,7 +272,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     error={formik.touched.language && Boolean(formik.errors.language)}
                     helperText={formik.touched.language && formik.errors.language}
                   >
-                    {languages.map((type) => (
+                    {Languages.map((type) => (
                       <MenuItem key={type} value={type}>
                         {type}
                       </MenuItem>
@@ -286,7 +291,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     error={formik.touched.locked && Boolean(formik.errors.locked)}
                     helperText={formik.touched.locked && formik.errors.locked}
                   >
-                    {lockStatuses.map((type) => (
+                    {LockStatus.map((type) => (
                       <MenuItem key={type} value={type}>
                         {type}
                       </MenuItem>
@@ -308,7 +313,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     error={formik.touched.status && Boolean(formik.errors.status)}
                     helperText={formik.touched.status && formik.errors.status}
                   >
-                    {statuses.map((type) => (
+                    {Status.map((type) => (
                       <MenuItem key={type} value={type}>
                         {type}
                       </MenuItem>
@@ -317,10 +322,13 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <AutoCompleteDataGrid
+                    columns={autoCompleteDataGridColumns}
+                    rows={autoCompleteDataGridRows} 
                     value={formik.values.customerName || ''}
                     onChange={(event, value) => {
-                      console.log("Value:", value); 
-                      formik.setFieldValue('customerName', value);}}
+                      console.log("Value:", value);
+                      formik.setFieldValue('customerName', value);
+                    }}
                     onBlur={() => formik.setFieldTouched('customerName', true)}
                     error={formik.touched.customerName && Boolean(formik.errors.customerName)}
                     helperText={formik.touched.customerName && formik.errors.customerName}
@@ -339,7 +347,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     error={formik.touched.locked && Boolean(formik.errors.locked)}
                     helperText={formik.touched.locked && formik.errors.locked}
                   >
-                    {lockStatuses.map((type) => (
+                    {LockStatus.map((type) => (
                       <MenuItem key={type} value={type}>
                         {type}
                       </MenuItem>
@@ -352,12 +360,12 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
           }
 
         </Grid>
-      
+
       </Box>
       <Box component="div" padding={4}></Box>
     </Box>
   )
-  
+
 }
 
 export default EditUserModal

@@ -9,14 +9,16 @@ import {
   Card,
   CardContent,
   Dialog,
+  IconButton,
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { Edit } from '@mui/icons-material';
+import { Delete, Edit } from '@mui/icons-material';
 import EditContainer from '../../components/common/EditContainer';
 import EditUserModal from './EditUserForm';
 import DialogBox from '../../components/common/DialogBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserList } from '../../slices/userSlice';
+import { userTypeObj } from '../../components/common/utils';
 
 const UserManagement = () => {
 
@@ -100,17 +102,47 @@ const UserManagement = () => {
     if (!data || data.length === 0) {
       return [];
     }
-  
+    
+    const actionField = {
+      field: 'actions',
+      headerName: '',
+      renderHeader: () => ( 
+        <strong></strong>
+      ),
+      flex: 1,
+      minWidth: 150,
+      renderCell: (params) => (
+        <Box>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="primary"
+          // onClick={() => handleEditClick(params.row)}
+          >
+            <Edit />
+          </IconButton>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="secondary"
+          // onClick={() => handleDelete(params.row.id)}
+          >
+            <Delete />
+          </IconButton>
+        </Box>
+      ),
+    }
     const keys = Object.keys(data[0]).filter(key => key !== 'id');
-    return keys.map(key => ({
+    const gridColumns =  keys.map(key => ({
       field: key,
       headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize header names
+      renderHeader: () => <strong>{key.charAt(0).toUpperCase() + key.slice(1)}</strong>,
       editable: false,
       flex: 1,
       minWidth: 200,
       renderCell: (params) => {
         
-        if (params.row.userType === "Customer" && key === "customer") {
+        if (params.row.userType === userTypeObj.CUSTOMER && key === "customer") {
           const customer = params.row[key];
           return customer ? (
             <div>
@@ -124,6 +156,8 @@ const UserManagement = () => {
         return params.row[key]; 
       },
     }));
+    const columns = [actionField, ...gridColumns];
+    return columns;
   };
   
 
@@ -150,13 +184,15 @@ const UserManagement = () => {
               <DataGrid
                 rows={userList}
                 columns={generateColumnsFromData(userList)}
-                autoHeight
                 disableColumnMenu
                 disableRowSelectionOnClick
                 hideFooterPagination
                 getRowId={(row) => row.id}
                 showCellVerticalBorder
                 showColumnVerticalBorder
+                sx={{
+                  height: 'calc(100vh - 300px)',  
+                }}
               />
             </Box>
 

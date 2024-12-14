@@ -8,18 +8,23 @@ import {
     Card,
     CardContent,
     Dialog,
+    IconButton,
 } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { DataGrid } from '@mui/x-data-grid';
-import { Edit } from '@mui/icons-material';
+import { Delete, Edit } from '@mui/icons-material';
 import EditContainer from '../../components/common/EditContainer';
 import ContactForm from '../customer-master/contact-details/ContactForm';
 import DialogBox from '../../components/common/DialogBox';
 import ProjectForm from './ProjectForm';
+import { useSelector } from 'react-redux';
 
 
 
 const ProjectManagement = () => {
+
+    const { projectList } = useSelector(state => state.project);
+
     const [users, setUsers] = useState([]);
     const [formData, setFormData] = useState({
         name: '',
@@ -63,40 +68,173 @@ const ProjectManagement = () => {
     }
 
     const columns = [
-        { field: 'contactName', headerName: 'Contact Name', flex: 1 },
-        { field: 'email', headerName: 'Email', flex: 1 },
-        { field: 'phone', headerName: 'Phone', flex: 1 },
-        { field: 'extension', headerName: 'Extension', flex: 1 },
-        { field: 'cellular', headerName: 'Cellular', flex: 1 },
-        { field: 'position', headerName: 'Position', flex: 1 },
         {
             field: 'actions',
-            headerName: 'Actions',
+            headerName: '',
+            renderHeader: () => (
+                <strong></strong>
+
+            ),
             flex: 1,
             renderCell: (params) => (
                 <Box>
-                    <Button
+                    <IconButton
                         size="small"
                         variant="contained"
                         color="primary"
                     // onClick={() => handleEditClick(params.row)}
                     >
-                        Edit
-                    </Button>
-                    <Button
+                        <Edit />
+                    </IconButton>
+                    <IconButton
                         size="small"
                         variant="contained"
                         color="secondary"
                     // onClick={() => handleDelete(params.row.id)}
                     >
-                        Delete
-                    </Button>
+                        <Delete />
+                    </IconButton>
                 </Box>
             ),
+            minWidth: 150,
         },
+        {
+            field: 'projectType', 
+            headerName: 'Project Type', 
+            renderHeader: () => (
+                <strong>Project Type</strong>
+
+            ), 
+            flex: 1,
+            minWidth: 150
+        },
+        { 
+            field: 'fromDate', 
+            headerName: 'From Date', 
+
+            renderHeader: () => (
+                <strong>From Date</strong>
+
+            ), 
+            flex: 1, 
+            minWidth: 150 
+        },
+        { 
+            field: 'status', 
+            headerName: 'Status',
+            renderHeader: () => (
+                <strong>Status</strong>
+
+            ), 
+            flex: 1, 
+            minWidth: 150 
+        },
+        { 
+            field: 'toDate', 
+            headerName: 'To Date',
+            renderHeader: () => (
+                <strong>To Date</strong>
+
+            ),  
+            flex: 1, 
+            minWidth: 150 
+        },
+        {
+            field: 'customer',
+            headerName: 'Customer',
+            renderHeader: () => (
+                <strong>Customer</strong>
+
+            ), 
+            renderCell: (params) => {
+
+                const customer = params.row.customer;
+                return customer ? (
+                    <div>
+                        <p>{customer.customerName}</p>
+                        <p>{customer.projectType}</p>
+                    </div>
+                ) : (
+                    <p>No customer info</p>
+                );
+            },
+            flex: 1,
+            minWidth: 150,
+        },
+        { 
+            field: 'additionalHours', 
+            headerName: 'Additional Hours', 
+            renderHeader: () => (
+                <strong>Additional Hours</strong>
+
+            ), 
+            flex: 1, 
+            minWidth: 150 
+        },
+        { 
+            field: 'projectName', 
+            headerName: 'Project Name', 
+            renderHeader: () => (
+                <strong>Project Name</strong>
+
+            ), 
+            flex: 1, 
+            minWidth: 150 
+        },
+        { 
+            field: 'projectNameInEnglish', 
+            headerName: 'Project Name In English',
+            renderHeader: () => (
+                <strong>Project Name In English</strong>
+
+            ),  
+            flex: 1, 
+            minWidth: 150 
+        },
+        { 
+            field: 'projectMethod', 
+            headerName: 'Project Method',
+            renderHeader: () => (
+                <strong>Project Method</strong>
+
+            ), 
+            flex: 1, 
+            minWidth: 150 
+        },
+        { 
+            field: 'budget', 
+            headerName: 'Budget',
+            renderHeader: () => (
+                <strong>Budget</strong>
+
+            ),  
+            flex: 1, 
+            minWidth: 150 
+        },
+        { 
+            field: 'consumedHours', 
+            headerName: 'Consumed Hours', 
+            renderHeader: () => (
+                <strong>Consumed Hours</strong>
+
+            ),  
+            flex: 1, 
+            minWidth: 150 
+        },
+        { 
+            field: 'balanceHours', 
+            headerName: 'Balance Hours',
+            renderHeader: () => (
+                <strong>Balance Hours</strong>
+
+            ),   
+            flex: 1, 
+            minWidth: 150 
+        },
+
     ];
 
-    const rows = users;
+    const rows = projectList;
 
     return (
 
@@ -120,18 +258,24 @@ const ProjectManagement = () => {
                     <DataGrid
                         rows={rows}
                         columns={columns}
-                        autoHeight
                         disableColumnMenu
                         disableRowSelectionOnClick
                         hideFooterPagination
                         getRowId={(row) => row.id}
+                        showCellVerticalBorder
+                        showColumnVerticalBorder
+                        sx={{
+                            height: 'calc(100vh - 300px)',  
+                          }}
+
                     />
+
 
                 </CardContent>
             </Card>
 
             <EditContainer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                <ProjectForm onClose={() => setDrawerOpen(false)}  />
+                <ProjectForm onClose={() => setDrawerOpen(false)} />
                 <DialogBox open={dialogOpen} handleCloseDialog={handleCloseDialog} />
             </EditContainer>
 

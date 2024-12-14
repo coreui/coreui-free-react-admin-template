@@ -45,6 +45,7 @@ const theme = createTheme({
             display: 'flex',
             justifyContent: 'flex-end',
             alignItems: 'center',
+            marginBottom: '0.35em',    
         },
         formComponent: {
             padding: 2,

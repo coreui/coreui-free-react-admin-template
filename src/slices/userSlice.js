@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { buildUserDTO, buildUserListDTO, userDTO } from '../dto/userDTO';
+import { createNewUser, getUserList } from '../components/common/apiCalls';
 
 const initialState = {
     userList: [
@@ -27,12 +28,18 @@ const initialState = {
 
 // Async Thunk for Fetching User List
 export const fetchUserList = createAsyncThunk('user/fetchUserList', async (userObj) => {
-    return buildUserListDTO(userObj); 
+    const userList = await getUserList(userObj);
+    const response = buildUserListDTO(userList);
+    // Await async result
+    console.log("Processed User List Response:", response);
+    return response; 
 });
 
 // Async Thunk for Creating User
 export const createUser = createAsyncThunk('user/createUser', async (userObj) => {
-    const response = await buildUserDTO(userObj); // Await async result
+    const user = await createNewUser(userObj);
+    const response = buildUserDTO(user);    
+     // Await async result
     console.log("Processed User Response:", response);
     return response;
 });
@@ -41,9 +48,9 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        createNewUser: (state, action) => {
-            state.user = action.payload;
-        },
+        deleteUser: (state, action) => {
+            state.userList = state.userList.filter((user) => user.id !== action.payload);
+        }       
     },
     extraReducers: (builder) => {
         builder
@@ -77,5 +84,5 @@ const userSlice = createSlice({
             });
     },
 });
-export const { createNewUser } = userSlice.actions;
+export const {  deleteUser } = userSlice.actions;
 export default userSlice.reducer;

@@ -18,6 +18,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userTypeObj } from '../../components/common/utils';
 import EditContainer from '../../components/common/EditContainer';
 import TaskForm from './TaskForm';    
+import MyAlert from '../../components/common/Alert';
+import { deleteTask } from '../../slices/taskSlice';
+import { showAlert } from '../../slices/alertSlice';
+import { showPopup } from '../../slices/popoverSlice';
+import DeletePopover from '../../components/common/DeletePopover';
 const NewTask = () => {
 
   const dispatch = useDispatch();
@@ -35,6 +40,13 @@ const NewTask = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
   const [drawerStyles, setDrawerStyles] = useState({});
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: 'success',
+  });
+  const [anchorEl, setAnchorEl] = useState(null);
+
   const dataGridRef = useRef();
 
   // Fetch users from backend
@@ -61,6 +73,31 @@ const NewTask = () => {
   const handleCloseDialog = () => {
     setDialogOpen(false);
   }
+
+  const handleDeleteClick = (event, row) => {
+    event.stopPropagation();
+    setAnchorEl(event.currentTarget); // Capture the button element as anchorEl
+    dispatch(showPopup(row));
+  }
+
+  const handlePopoverClose = (event, reason) => {
+    setAnchorEl(null); // Reset the anchorEl to close the popover 
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteTask(id));
+    const alert ={
+      open: true,
+      message: "Task deleted successfully",
+      severity: "success",
+    };
+    dispatch(showAlert(alert));
+    handlePopoverClose(); 
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar((prev) => ({ ...prev, open: false }));
+  };
 
   // const columns = [
   //   {
@@ -231,9 +268,9 @@ const NewTask = () => {
 
     const firstColumn = {
       field: 'actions',
-      headerName: 'Actions',
+      headerName: '',
       renderHeader: () => ( 
-        <strong>Actions</strong>
+        <strong></strong>
       ),
       flex: 1,
       minWidth: 150,
@@ -251,10 +288,11 @@ const NewTask = () => {
             size="small"
             variant="contained"
             color="secondary"
-          // onClick={() => handleDelete(params.row.id)}
+            onClick={(event) => handleDeleteClick(event,params.row)}
           >
             <Delete />
           </IconButton>
+          <DeletePopover anchorEl={anchorEl} handleClose={handlePopoverClose} handleDelete={handleDelete} />
         </Box>
       ),
     }
@@ -323,7 +361,7 @@ const NewTask = () => {
             size="small"
             variant="contained"
             color="secondary"
-          // onClick={() => handleDelete(params.row.id)}
+            onClick={() => handleDelete(params.row.id)}
           >
             <Delete />
           </IconButton>
@@ -404,6 +442,9 @@ const NewTask = () => {
   return (
     <div ref={dataGridRef}>
       <Box padding={1}>
+      <Box display="flex" justifyContent="center" alignItems="center" mb={2} width="100%">
+          <MyAlert />
+        </Box>
         <Card>
           <CardContent>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>

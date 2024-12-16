@@ -130,7 +130,14 @@ const AutoCompleteDataGrid = ({
             <Table>
               <TableBody>
 
-                <TableRow key={`row-${option.id}`}  >
+                <TableRow key={`row-${option.id}`} 
+                  sx={{
+                    '&:hover': {
+                      backgroundColor: 'lightgray', // Example hover background color
+                      cursor: 'pointer', // Example hover cursor
+                    },
+                  }}
+                >
                   {
                     Object.keys(option).filter(key => key !== 'id').map((key) => (
                         <TableCell component="th"   key={`cell-${option.id}-${key}`} sx={{  width: '50%'}}>

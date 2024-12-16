@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { buildTaskDTO, buildTaskListDTO, buildTaskListsDTO, taskDTO } from '../dto/taskDTO';
+import { createNewTask } from '../components/common/apiCalls';
 
 
 // Initial State    
@@ -17,7 +18,8 @@ export const createTask = createAsyncThunk(
     async (taskData, { rejectWithValue }) => {
         console.log('Task Data:', taskData);
         try {
-            const response = await buildTaskDTO(taskData);  
+            const newTask = await createNewTask(taskData);  
+            const response = await buildTaskDTO(newTask);  
             return response;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -40,7 +42,11 @@ export const fetchTaskList = createAsyncThunk(
 const taskSlice = createSlice({
     name: 'task',
     initialState: initialState, 
-    reducers: {},
+    reducers: {
+        deleteTask: (state, action) => {
+            state.taskList = state.taskList.filter((task) => task.id !== action.payload);
+        }   
+    },
     extraReducers: (builder) => {
         builder
             .addCase(createTask.pending, (state) => {
@@ -72,4 +78,5 @@ const taskSlice = createSlice({
     },
 });
 
+export const { deleteTask } = taskSlice.actions;
 export default taskSlice.reducer;

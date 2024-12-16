@@ -25,6 +25,8 @@ import { Add, Edit } from '@mui/icons-material';
 import { auto } from '@popperjs/core';
 import timeFormValidationSchema from './timeFormValidationSchema';
 import { createTimeSheet } from '../../slices/timeSheetSlice';
+import MyAlert from '../../components/common/Alert';
+import { showAlert } from '../../slices/alertSlice';
 
 
 const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
@@ -51,6 +53,11 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
         status: null,
         allUsers: false,
     });
+    const [snackbar, setSnackbar] = useState({
+        open: false,
+        message: '',
+        severity: 'success',
+    });
 
     const theme = useTheme();
 
@@ -59,15 +66,23 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
         validationSchema: timeFormValidationSchema,
         onSubmit: (values) => {
             console.log(values);
-            dispatch(createTimeSheet(values));  
+            dispatch(createTimeSheet(values));
             // dispatch(createUser(values));
             // handleOpenDialog()
+           const alert = {
+                open: true,
+                message: 'Time Sheet Created Successfully',
+                severity: 'success',
+            }
+            dispatch(showAlert(alert)); 
             onClose();
         },
     });
 
 
-
+    const handleCloseSnackbar = () => {
+        setSnackbar((prev) => ({ ...prev, open: false }));
+    };
     const handleClosePopper = () => {
         setOpen(false);
     };
@@ -81,7 +96,7 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
         { id: 5, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
     ];
 
-    const contactColumns = ["Customer Name"]; // Corrected typo
+    const contactColumns = ["Contact Name"]; // Corrected typo
     const contactRows = [
         { id: 1, contactName: 'John Doe' },
         { id: 2, contactName: 'Jane Smith' },
@@ -91,10 +106,30 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
 
     ];
 
+    const userColumns = ["User Name"]; // Corrected typo
+    const userRows = [
+        { id: 1, contactName: 'John Doe' },
+        { id: 2, contactName: 'Jane Smith' },
+        { id: 3, contactName: 'Sam Brown' },
+        { id: 4, contactName: 'Alice Johnson' },
+        { id: 5, contactName: 'Michael Lee' },
+
+    ];
+
+    const taskColumns = ["Task Name"]; // Corrected typo
+    const taskRows = [
+        { id: 1, taskName: 'Task 1' },  
+        { id: 2, taskName: 'Task 2' },  
+        { id: 3, taskName: 'Task 3' },  
+        { id: 4, taskName: 'Task 4' },  
+        { id: 5, taskName: 'Task 5' },  
+    ]
+
 
 
     return (
         <Box component="div">
+           
             <Box component="div" sx={{ ...theme.formControl.formHeaderOuterContainer }}>
                 <Box component="div" sx={{ ...theme.formControl.formHeaderContainer }} >
                     <Typography variant="h6" gutterBottom>
@@ -173,8 +208,8 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                     <Grid item size={{ xs: 12, md: 6 }}>
                         <AutoCompleteDataGrid
                             label="Select User"
-                            columns={contactColumns}
-                            rows={contactRows}
+                            columns={userColumns}
+                            rows={userRows}
                             value={formik.values.user || ''}
                             onChange={(event, value) => {
                                 console.log("value", value);
@@ -189,8 +224,8 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                     <Grid item size={{ xs: 12, md: 6 }}>
                         <AutoCompleteDataGrid
                             label="Select Task"
-                            columns={contactColumns}
-                            rows={contactRows}
+                            columns={taskColumns}
+                            rows={taskRows}
                             value={formik.values.task || ''}
                             onChange={(event, value) => {
                                 console.log("value", value);

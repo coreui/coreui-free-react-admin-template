@@ -26,6 +26,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCustomer } from '../../slices/customerSlice';
 import { ContactPersons, ProjectTypes } from '../../components/common/utils';
+import MyAlert from '../../components/common/Alert';
+import { deleteConnection } from '../../slices/connectionSlice';
+import { showAlert } from '../../slices/alertSlice';
+import { showPopup } from '../../slices/popoverSlice';
+import DeletePopover from '../../components/common/DeletePopover';
 
 
 const userTypes = ["None", "Admin", "Consultant", "Customer"];
@@ -60,6 +65,12 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
     controlCenterPass: '',
     installationCredentials: '',
   });
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success"
+  })
+  const [anchorElement, setAnchorElement] = useState(null);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -70,6 +81,12 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
     onSubmit: (values) => {
       console.log(values);
       dispatch(createCustomer({ customerObj: values, connections: connectionList }));
+      const alert ={
+        open: true,
+        message: "Customer created successfully",
+        severity: "success",
+      };
+      dispatch(showAlert(alert));
       onClose();
 
      
@@ -83,6 +100,31 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
 
   const handleCancelPopper = () => {
     setOpen(false);
+  };
+
+  const handleDeleteClick = (event, row) => {
+    event.stopPropagation();
+    setAnchorElement(event.currentTarget); // Capture the button element as anchorEl
+    dispatch(showPopup(row));
+  }
+
+  const handlePopoverClose = (event, reason) => {
+    setAnchorElement(null); // Reset the anchorEl to close the popover 
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteConnection(id));
+    const alert ={
+      open: true,
+      message: "Connection deleted successfully",
+      severity: "success",
+    };
+    dispatch(showAlert(alert)); 
+    handlePopoverClose();
+  }
+
+  const handleCloseSnackbar = () => {
+    setSnackbar((prev) => ({ ...prev, open: false }));
   };
 
 
@@ -120,7 +162,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
     {
       field: 'actions',
       headerName: '',
-      renderHeader: () => <strong>Actions</strong>,
+      renderHeader: () => <strong></strong>,
       flex: 1,
       renderCell: (params) => (
         <Box>
@@ -130,11 +172,12 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
               variant="contained"
               color="primary"
               title="Delete"
-            // onClick={() => handleEditClick(params.row)}
+              onClick={(event) => handleDeleteClick(event, params.row)}
             >
               <Delete />
             </IconButton>
           </Tooltip>
+          <DeletePopover anchorEl={anchorElement} handleClose={handlePopoverClose} handleDelete={handleDelete} /> 
         </Box>
       ),
     },
@@ -151,6 +194,9 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
 
   return (
     <Box component="div">
+      <Box display="flex" justifyContent="center" alignItems="center" mb={2} width="100%">
+          <MyAlert snackbar={snackbar} onClose={handleCloseSnackbar} />
+      </Box>
       <Box component="div" sx={{ ...theme.formControl.formHeaderOuterContainer }}>
         <Box component="div" sx={{ ...theme.formControl.formHeaderContainer }}>
           <Typography variant="h6" gutterBottom>

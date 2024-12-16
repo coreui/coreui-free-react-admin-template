@@ -10,6 +10,8 @@ export const contactDTO = {
 
 export const buildContactDTO = (contact) => {
 
+    console.log("contact: ", contact);
+
     const contDTO = {...contactDTO};
     let id = 1;
     contDTO.id = id + 1;
@@ -18,7 +20,8 @@ export const buildContactDTO = (contact) => {
     contDTO.phone = contact?.phone; 
     contDTO.extension = contact?.extension; 
     contDTO.cellular = contact?.cellular;   
-    contDTO.position = contact?.position;   
+    contDTO.position = contact?.position;
+    console.log("contDTO: ", contDTO);   
     return contDTO;
 }
 

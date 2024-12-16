@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { buildConnectionDTO } from '../dto/connectionDTO';
+import { createNewConnection } from '../components/common/apiCalls';
 
 const initialState = {
     connectionList: [],
@@ -11,7 +12,8 @@ const initialState = {
 
 //Async Thunk for creating a new connection
 export const createConnection = createAsyncThunk('connection/createConnection', async (connectionObj) => {
-    const response = await buildConnectionDTO(connectionObj);
+    const newConnection = await createNewConnection(connectionObj); 
+    const response = await buildConnectionDTO(newConnection);
     console.log("Processed Connection Response:", response);
     return response;
 });
@@ -20,7 +22,9 @@ const connectionSlice = createSlice({
     name: 'connection',
     initialState,
     reducers: {
-        
+        deleteConnection: (state, action) => {
+            state.connectionList = state.connectionList.filter((connection) => connection.id !== action.payload);
+        }   
     },
     extraReducers: (builder) => {
         builder
@@ -47,5 +51,5 @@ const connectionSlice = createSlice({
 
 });
 
-
+export const { deleteConnection } = connectionSlice.actions;    
 export default connectionSlice.reducer;

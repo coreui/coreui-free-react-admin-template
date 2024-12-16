@@ -13,6 +13,7 @@ import { Search } from '@mui/icons-material';
 import PopperComponent from '../../components/common/popper';
 import ContactForm from '../task-management/ContactForm';
 import HourForm from './HourForm';
+import { showAlert } from '../../slices/alertSlice';
 
 const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) => {
 
@@ -47,6 +48,12 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
     onSubmit: (values) => {
       console.log(values);
       dispatch(addNewProject(values));
+      const alert ={
+        open: true,
+        message: "Project added successfully",
+        severity: "success",
+      };
+      dispatch(showAlert(alert));
       onClose();
     },
   });

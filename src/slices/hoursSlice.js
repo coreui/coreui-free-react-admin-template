@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { buildHoursDTO, hoursDTO } from '../dto/hoursDTO';
+import { createNewHours, getHoursList } from '../components/common/apiCalls';
 
 const initialState = {
     hoursList: [],
@@ -11,13 +12,15 @@ const initialState = {
 
 // Async thunk for fetching hours list
 export const fetchHoursList = createAsyncThunk('hours/fetchHoursList', async () => {
-    const response = initialState.hoursList;
-    return response;
+    const hoursList = await getHoursList(initialState.hoursList);   
+    
+    return hoursList;
 });
 
 // Async thunk for creating hours
 export const createHours = createAsyncThunk('hours/createHours', async (newHour) => {
-    const response = await buildHoursDTO(newHour);  
+    const hour = await createNewHours(newHour);
+    const response = await buildHoursDTO(hour);  
     return response;
 });
 

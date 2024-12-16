@@ -8,6 +8,8 @@ import projectSlice from './slices/projectSlice';
 import taskSlice from './slices/taskSlice';
 import hoursSlice from './slices/hoursSlice'; 
 import timeSheetSlice from './slices/timeSheetSlice';
+import alertSlice from './slices/alertSlice'; 
+import popoverSlice from './slices/popoverSlice';
 
 
 const store = configureStore({
@@ -19,7 +21,9 @@ const store = configureStore({
     project: projectSlice,
     task: taskSlice,
     hours: hoursSlice,  
-    timeSheet: timeSheetSlice,  
+    timeSheet: timeSheetSlice, 
+    alert: alertSlice,
+    delete: popoverSlice,
     dataGridConnection: dataGridConnectionSlice,
   },
 });

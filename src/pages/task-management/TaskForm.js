@@ -26,6 +26,7 @@ import PopperComponent from '../../components/common/popper';
 import ContactForm from './ContactForm';
 import { auto } from '@popperjs/core';
 import { createTask } from '../../slices/taskSlice';
+import { showAlert } from '../../slices/alertSlice';
 
 
 const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
@@ -38,9 +39,9 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
   const [formData, setFormData] = useState({
     ticketNumber: null,
     customer: null,
-    module: null,
+    // module: null,
     contactName: null,
-    form: null,
+    // form: null,
     projectName: null,
     subject: null, // Only for customer
     attachment: null,
@@ -60,7 +61,12 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
     onSubmit: (values) => {
       console.log(values);
       dispatch(createTask(values)); 
-      // handleOpenDialog()
+      const alert = {
+        open: true,
+        message: 'Task Created Successfully',
+        severity: 'success',
+      }
+      dispatch(showAlert(alert)); 
       onClose();
     },
   });
@@ -90,7 +96,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
     { id: 5, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
   ];
 
-  const contactColumns = ["Customer Name"]; // Corrected typo
+  const contactColumns = ["Contact Name"]; // Corrected typo
   const contactRows = [
     { id: 1, contactName: 'John Doe' },
     { id: 2, contactName: 'Jane Smith' },
@@ -140,6 +146,27 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
             />
           </Grid>
           <Grid item size={{ xs: 12, md: 6 }}>
+            <TextField
+              fullWidth
+              select
+              id="status"
+              name="status"
+              label="Status"
+              value={formik.values.status || ''}
+              onChange={formik.handleChange}
+              error={formik.touched.status && Boolean(formik.errors.status)}
+              helperText={formik.touched.status && formik.errors.status}
+            >
+              {
+                TaskStatus.map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))
+              }
+            </TextField>
+          </Grid>
+          <Grid item size={{ xs: 12, md: 6 }}>
             <AutoCompleteDataGrid
               label="Select Customer" 
               columns={autoCompleteDataGridColumns}
@@ -153,7 +180,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
               helperText={formik.touched.customer && formik.errors.customer}
             />
           </Grid>
-          <Grid item size={{ xs: 12, md: 6 }}>
+          {/* <Grid item size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               select
@@ -174,7 +201,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
               }
 
             </TextField>
-          </Grid>
+          </Grid> */}
           <Grid item size={{ xs: 12, md: 6 }}>
             <Grid container spacing={2}>
               <Grid item size={{ xs: 12, md: 8 }}>
@@ -220,10 +247,10 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                   <IconButton
                     size='small'
                     variant="contained"
-                    sx={{
-                      background: 'red',
-                      color: 'white',
-                    }}
+                    color='primary' 
+                    // sx={{
+                    //   color: 'white',
+                    // }}
                     onClick={handleClick}
                     disabled={!formik.values.customer}
                     disableRipple
@@ -232,12 +259,8 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                   </IconButton>
                   <IconButton
                     size='small'
+                    color='primary'
                     variant="contained"
-                    sx={{
-                      background: 'blue',
-                      color: 'white',
-                      ml: 2
-                    }}
                     onClick={handleEditButtonClick}
                     disabled={!formik.values.customer}
                     disableRipple>
@@ -247,7 +270,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item size={{ xs: 12, md: 6 }}>
+          {/* <Grid item size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               select
@@ -268,7 +291,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                 ))
               }
             </TextField>
-          </Grid>
+          </Grid> */}
           <Grid item size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
@@ -322,21 +345,20 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
               // helperText={formik.touched.attachment && formik.errors.attachment}
             />
           </Grid>
-
           <Grid item size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
+              id="priority"
+              name="priority"
+              label="Priority"
               select
-              id="status"
-              name="status"
-              label="Status"
-              value={formik.values.status || ''}
+              value={formik.values.priority || ''}
               onChange={formik.handleChange}
-              error={formik.touched.status && Boolean(formik.errors.status)}
-              helperText={formik.touched.status && formik.errors.status}
+              error={formik.touched.priority && Boolean(formik.errors.priority)}
+              helperText={formik.touched.priority && formik.errors.priority}
             >
               {
-                TaskStatus.map((option) => (
+                TaskPriority.map((option) => (
                   <MenuItem key={option} value={option}>
                     {option}
                   </MenuItem>
@@ -344,6 +366,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
               }
             </TextField>
           </Grid>
+
           <Grid item size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
@@ -367,27 +390,6 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
               error={formik.touched.balanceHours && Boolean(formik.errors.balanceHours)}
               helperText={formik.touched.balanceHours && formik.errors.balanceHours}
             />
-          </Grid>
-          <Grid item size={{ xs: 12, md: 6 }}>
-            <TextField
-              fullWidth
-              id="priority"
-              name="priority"
-              label="Priority"
-              select
-              value={formik.values.priority || ''}
-              onChange={formik.handleChange}
-              error={formik.touched.priority && Boolean(formik.errors.priority)}
-              helperText={formik.touched.priority && formik.errors.priority}
-            >
-              {
-                TaskPriority.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))
-              }
-            </TextField>
           </Grid>
           <Grid item size={{ xs: 12, md: 6 }}>
             <Autocomplete

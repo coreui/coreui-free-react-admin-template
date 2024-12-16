@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { buildCustomerDTO, buildCustomerListDTO, customerDTO } from '../dto/customerDTO';
+import { createNewCustomer, getCustomerList } from '../components/common/apiCalls';
 
 const initialState = {
     customerList: [],
@@ -13,7 +14,8 @@ const initialState = {
 export const createCustomer = createAsyncThunk('customer/createCustomer', async ({ customerObj, connections }) => {
     console.log("Creating Customer:", customerObj);
     console.log("Creating Customer Connections:", connections);
-    const response = await buildCustomerDTO(customerObj, connections);
+    const newCustomer = await createNewCustomer(customerObj, connections);  
+    const response = await buildCustomerDTO(newCustomer.customerObj, newCustomer.connections);
     console.log("Processed Customer Response:", response);
     return response;
 });
@@ -21,7 +23,8 @@ export const createCustomer = createAsyncThunk('customer/createCustomer', async 
 // Async Thunk for fetching the customer list
 export const fetchCustomerList = createAsyncThunk('customer/fetchCustomerList', async (customers) => {
     console.log("Fetching Customer List");
-    const response = await buildCustomerListDTO(customers);
+    const customerList = await getCustomerList(customers);
+    const response = await buildCustomerListDTO(customerList);
     console.log("Processed Customer List Response:", response);
     return response;
 });
@@ -31,6 +34,9 @@ const customerSlice = createSlice({
     name: 'customer',
     initialState,
     reducers: {
+        deleteCustomer: (state, action) => {    
+            state.customerList = state.customerList.filter((customer) => customer.id !== action.payload);
+        },
 
     },
     extraReducers: (builder) => {
@@ -74,4 +80,5 @@ const customerSlice = createSlice({
     }
 });
 
+export const { deleteCustomer } = customerSlice.actions;    
 export default customerSlice.reducer;

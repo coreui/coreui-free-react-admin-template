@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { buildTimeSheetObjDTO, timeSheetObjDTO } from '../dto/timesDTO';
+import { createNewTimeSheet, getTimeSheetList } from '../components/common/apiCalls';
 
 
 const initialState = {
@@ -15,7 +16,8 @@ export const createTimeSheet = createAsyncThunk(
     'timeSheet/createTimeSheet',
     async (timeSheetData, { rejectWithValue }) => {
         try {
-            const response = await buildTimeSheetObjDTO(timeSheetData);
+            const newTimeSheet = await createNewTimeSheet(timeSheetData);   
+            const response = await buildTimeSheetObjDTO(newTimeSheet);
             return response;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -28,6 +30,7 @@ export const fetchTimeSheetList = createAsyncThunk(
     'timeSheet/fetchTimeSheetList',
     async (_, { rejectWithValue }) => {
         try {
+            const timeSheetList = await getTimeSheetList();
             const response = initialState.timeSheetList;
             return response.data;
         } catch (error) {
@@ -39,7 +42,11 @@ export const fetchTimeSheetList = createAsyncThunk(
 const timeSheetSlice = createSlice({
     name: 'timeSheet',
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        deleteTimeSheet: (state, action) => {
+            state.timeSheetList = state.timeSheetList.filter((timeSheet) => timeSheet.id !== action.payload);
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(createTimeSheet.pending, (state) => {
@@ -70,4 +77,5 @@ const timeSheetSlice = createSlice({
     },
 });
 
+export const { deleteTimeSheet } = timeSheetSlice.actions;  
 export default timeSheetSlice.reducer;

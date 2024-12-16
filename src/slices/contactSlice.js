@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { buildContactDTO, buildContactListDTO, contactDTO } from '../dto/contactDTO';
+import { createNewContact, getContactList } from '../components/common/apiCalls';
 
 const initialState = {
     contactList: [],
@@ -9,12 +10,16 @@ const initialState = {
 };
 
 export const fetchContacts = createAsyncThunk('contacts/fetchContacts', async (contacts) => {
-    const response = await buildContactListDTO(contacts);   
+    const contactList = await getContactList(contacts);   
+    const response = await buildContactListDTO(contactList);   
     return response;
 })
 
-export const addNewContact = createAsyncThunk('contacts/addNewContact', async (contact) => {    
-    const response = await buildContactDTO(contact);
+export const addNewContact = createAsyncThunk('contacts/addNewContact', async (contact) => { 
+
+    const newContact = await createNewContact(contact); 
+    console.log("newContact: ", newContact);     
+    const response = await buildContactDTO(newContact);
     return response;
 })  
 
@@ -23,6 +28,9 @@ const contactSlice = createSlice({
     name: 'contacts',
     initialState,
     reducers: {
+        deleteContact: (state, action) => {
+            state.contactList = state.contactList.filter((contact) => contact.id !== action.payload);
+        }   
     },
     extraReducers: (builder) => {
         builder
@@ -44,6 +52,7 @@ const contactSlice = createSlice({
                 state.status = 'succeeded';
                 state.contact = action.payload;
                 state.contactList.push(action.payload);
+                console.log("contactList: ", state.contactList);    
             })
             .addCase(addNewContact.rejected, (state, action) => {
                 state.status = 'failed';
@@ -52,6 +61,6 @@ const contactSlice = createSlice({
     }
 });
 
-export const { addContact, removeContact, updateContact } = contactSlice.actions;
+export const { deleteContact } = contactSlice.actions;
 
 export default contactSlice.reducer;

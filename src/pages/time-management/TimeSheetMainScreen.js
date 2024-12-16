@@ -19,12 +19,18 @@ import { userTypeObj } from '../../components/common/utils';
 import EditContainer from '../../components/common/EditContainer';
 import TaskForm from '../task-management/TaskForm';
 import TimeForm from './TimeForm';
+import { deleteTimeSheet } from '../../slices/timeSheetSlice';
+import MyAlert from '../../components/common/Alert';
+import { showAlert } from '../../slices/alertSlice';
+import DeletePopover from '../../components/common/DeletePopover';
+import { showPopup } from '../../slices/popoverSlice';
 
 
 const TimeSheetMainScreen = () => {
 
   const dispatch = useDispatch();
-  const { timeSheetList } = useSelector((state) => state.timeSheet);  
+  const { timeSheetList } = useSelector((state) => state.timeSheet);
+  const { alert } = useSelector((state) => state.alert);
   console.log("Time sheet List:", timeSheetList);
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
@@ -38,6 +44,12 @@ const TimeSheetMainScreen = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
   const [drawerStyles, setDrawerStyles] = useState({});
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: 'success',
+  });
+  const [anchorEl, setAnchorEl] = useState(null);
   const dataGridRef = useRef();
 
   // Fetch users from backend
@@ -65,11 +77,37 @@ const TimeSheetMainScreen = () => {
     setDialogOpen(false);
   }
 
+  const handleDeleteClick = (event, row) => {
+    event.stopPropagation();
+    setAnchorEl(event.currentTarget); // Capture the button element as anchorEl
+    dispatch(showPopup(row));
+  }
+
+  const handlePopoverClose = (event, reason) => {
+    setAnchorEl(null); // Reset the anchorEl to close the popover 
+  };
+
+  const handleDelete = (id) => {
+    console.log("Delete data", id);
+    dispatch(deleteTimeSheet(id));
+    const alert = {
+      open: true,
+      message: "Time entry deleted successfully",
+      severity: "success",
+    }
+    dispatch(showAlert(alert));
+    handlePopoverClose(); 
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar((prev) => ({ ...prev, open: false }));
+  };
+
   const columns = [
     {
       field: 'actions',
       headerName: '',
-      renderHeader: () => ( 
+      renderHeader: () => (
         <strong></strong>
       ),
       flex: 1,
@@ -88,17 +126,18 @@ const TimeSheetMainScreen = () => {
             size="small"
             variant="contained"
             color="secondary"
-          // onClick={() => handleDelete(params.row.id)}
+            onClick={(event) => handleDeleteClick(event, params.row)}
           >
             <Delete />
           </IconButton>
+          <DeletePopover anchorEl={anchorEl} handleClose={handlePopoverClose} handleDelete={handleDelete} />
         </Box>
       ),
     },
-    { 
-      field: 'customer',   
-      headerName: 'Customer', 
-      renderHeader: () => ( 
+    {
+      field: 'customer',
+      headerName: 'Customer',
+      renderHeader: () => (
         <strong>Customer</strong>
       ),
       renderCell: (params) => {
@@ -113,12 +152,12 @@ const TimeSheetMainScreen = () => {
         );
       },
       flex: 1,
-      minWidth: 150, 
+      minWidth: 150,
     },
-    { 
-      field: 'contactPerson',    
-      headerName: 'Contact Person',  
-      renderHeader: () => ( 
+    {
+      field: 'contactPerson',
+      headerName: 'Contact Person',
+      renderHeader: () => (
         <strong>Contact Person</strong>
       ),
       renderCell: (params) => {
@@ -132,12 +171,12 @@ const TimeSheetMainScreen = () => {
         );
       },
       flex: 1,
-      minWidth: 150, 
+      minWidth: 150,
     },
-    { 
-      field: 'user',    
-      headerName: 'User',  
-      renderHeader: () => ( 
+    {
+      field: 'user',
+      headerName: 'User',
+      renderHeader: () => (
         <strong>User</strong>
       ),
       renderCell: (params) => {
@@ -151,19 +190,19 @@ const TimeSheetMainScreen = () => {
         );
       },
       flex: 1,
-      minWidth: 150, 
+      minWidth: 150,
     },
-    { 
-      field: 'task', 
-      headerName: 'Task', 
-      renderHeader: () => ( 
+    {
+      field: 'task',
+      headerName: 'Task',
+      renderHeader: () => (
         <strong>Task</strong>
       ),
       renderCell: (params) => {
         const task = params.row.task;
         return task ? (
           <div>
-            <p>{task.contactName}</p>
+            <p>{task.taskName}</p>
           </div>
         ) : (
           <p>No task info</p>
@@ -172,91 +211,91 @@ const TimeSheetMainScreen = () => {
       flex: 1,
       minWidth: 150,
     },
-    { 
-      field: 'taskDate', 
-      headerName: 'Task Date', 
-      renderHeader: () => ( 
+    {
+      field: 'taskDate',
+      headerName: 'Task Date',
+      renderHeader: () => (
         <strong>Task Date</strong>
       ),
       flex: 1,
       minWidth: 150,
     },
-    { 
-      field: 'status', 
-      headerName: 'Status', 
-      renderHeader: () => ( 
+    {
+      field: 'status',
+      headerName: 'Status',
+      renderHeader: () => (
         <strong>Status</strong>
       ),
       flex: 1,
       minWidth: 150,
-    },  
-    { 
-      field: 'startTime', 
-      headerName: 'Start Time',  
-      renderHeader: () => ( 
+    },
+    {
+      field: 'startTime',
+      headerName: 'Start Time',
+      renderHeader: () => (
         <strong>Start Time</strong>
       ),
       flex: 1,
-      minWidth: 150, 
+      minWidth: 150,
     },
-    { 
-      field: 'endTime', 
-      headerName: 'End Time',  
-      renderHeader: () => ( 
+    {
+      field: 'endTime',
+      headerName: 'End Time',
+      renderHeader: () => (
         <strong>End Time</strong>
       ),
       flex: 1,
-      minWidth: 150, 
+      minWidth: 150,
     },
-    { 
-      field: 'approvedHours', 
-      headerName: 'Approved Hours', 
-      renderHeader: () => ( 
+    {
+      field: 'approvedHours',
+      headerName: 'Approved Hours',
+      renderHeader: () => (
         <strong>Approved Hours</strong>
       ),
       flex: 1,
       minWidth: 150,
     },
-    { 
-      field: 'remainingHours', 
-      headerName: 'Remaining Hours',   
-      renderHeader: () => ( 
+    {
+      field: 'remainingHours',
+      headerName: 'Remaining Hours',
+      renderHeader: () => (
         <strong>Remaining Hours</strong>
       ),
       flex: 1,
-      minWidth: 150, 
+      minWidth: 150,
     },
-    { 
-      field: 'totalTime',  
-      headerName: 'Total Time',  
-      renderHeader: () => ( 
+    {
+      field: 'totalTime',
+      headerName: 'Total Time',
+      renderHeader: () => (
         <strong>Total Time</strong>
       ),
       flex: 1,
-      minWidth: 150, 
+      minWidth: 150,
     },
-    { 
-      field: 'totalWorkingTime',   
-      headerName: 'Total Working Time', 
-      renderHeader: () => ( 
+    {
+      field: 'totalWorkingTime',
+      headerName: 'Total Working Time',
+      renderHeader: () => (
         <strong>Total Working Time</strong>
       ),
       flex: 1,
-      minWidth: 150, 
+      minWidth: 150,
     },
-    { 
-      field: 'description', 
-      headerName: 'Description',   
-      renderHeader: () => ( 
+    {
+      field: 'description',
+      headerName: 'Description',
+      renderHeader: () => (
         <strong>Description</strong>
       ),
       flex: 1,
       minWidth: 150,
     },
-    { 
-      field: 'internalNotes', 
-      headerName: 'Internal Notes', 
-      renderHeader: () => ( 
+    {
+      field: 'internalNotes',
+      headerName: 'Internal Notes',
+      renderHeader: () => (
         <strong>Internal Notes</strong>
       ),
       flex: 1,
@@ -270,7 +309,7 @@ const TimeSheetMainScreen = () => {
     if (!data || data.length === 0) {
       return [];
     }
-  
+
     const keys = Object.keys(data[0]).filter(key => key !== 'id');
     return keys.map(key => ({
       field: key,
@@ -280,7 +319,7 @@ const TimeSheetMainScreen = () => {
       flex: 1,
       minWidth: 200,
       renderCell: (params) => {
-        
+
         if (params.row.userType === userTypeObj.CUSTOMER && key === "customer") {
           const customer = params.row[key];
           return customer ? (
@@ -292,16 +331,19 @@ const TimeSheetMainScreen = () => {
             <p>No customer info</p>
           );
         }
-        return params.row[key]; 
+        return params.row[key];
       },
     }));
   };
-  
 
- //MUI DataGrid 
+
+  //MUI DataGrid 
   return (
     <div ref={dataGridRef}>
       <Box padding={1}>
+        <Box display="flex" justifyContent="center" alignItems="center" mb={2} width="100%">
+          <MyAlert />
+        </Box>
         <Card>
           <CardContent>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
@@ -328,7 +370,7 @@ const TimeSheetMainScreen = () => {
                 showCellVerticalBorder
                 showColumnVerticalBorder
                 sx={{
-                  height: 'calc(100vh - 300px)',  
+                  height: 'calc(100vh - 300px)',
                 }}
               />
             </Box>

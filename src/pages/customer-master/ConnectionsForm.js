@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { createConnection } from "../../slices/connectionSlice";
 import { ConnectionTypes, VPNTypes } from "../../components/common/utils";
+import { showAlert } from "../../slices/alertSlice";
 
 
 
@@ -33,6 +34,12 @@ const ConnectionForm = ({ onSave, onCancel }) => {
     onSubmit: (values) => {
       console.log(values);
       dispatch(createConnection(values));
+      const alert ={
+        open: true,
+        message: "Connection created successfully",
+        severity: "success",
+      };
+      dispatch(showAlert(alert));
       onCancel();
     },
   });

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Grid from '@mui/material/Grid2';
 import contactFormValidationSchema from './contactFormValidationSchema';
 import { addNewContact } from '../../../slices/contactSlice';
+import { showAlert } from '../../../slices/alertSlice';
 
 const ContactForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) => {
   const dispatch = useDispatch(); 
@@ -26,6 +27,12 @@ const ContactForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
     onSubmit: (values) => {
       console.log(values); 
       dispatch(addNewContact(values));
+      const alert ={
+        open: true,
+        message: "Contact created successfully",
+        severity: "success",
+      };
+      dispatch(showAlert(alert));
       onClose();   
     },
   });

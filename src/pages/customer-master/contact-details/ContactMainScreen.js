@@ -8,10 +8,11 @@ import {
     Card,
     CardContent,
     Dialog,
+    IconButton,
 } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { DataGrid } from '@mui/x-data-grid';
-import { Edit } from '@mui/icons-material';
+import { Delete, Edit } from '@mui/icons-material';
 import EditContainer from '../../../components/common/EditContainer';
 import EditUserModal from '../../user-management/EditUserForm';
 import DialogBox from '../../../components/common/DialogBox';
@@ -19,11 +20,17 @@ import AutoCompleteDataGrid from '../../../components/common/AutoCompleteDataGri
 import ContactForm from './ContactForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
+import { deleteContact } from '../../../slices/contactSlice';
+import MyAlert from '../../../components/common/Alert';
+import { showAlert } from '../../../slices/alertSlice';
+import { showPopup } from '../../../slices/popoverSlice';
+import DeletePopover from '../../../components/common/DeletePopover';
 
 
 const ContactMainScreen = () => {
     const dispatch = useDispatch();
     const { contactList } = useSelector((state) => state.contacts);
+    console.log("contactList: ", contactList);  
     const [users, setUsers] = useState([]);
     const [formData, setFormData] = useState({
         name: '',
@@ -37,6 +44,12 @@ const ContactMainScreen = () => {
     const [isEditMode, setIsEditMode] = useState(false);
     const [currentUserId, setCurrentUserId] = useState(null);
     const [drawerStyles, setDrawerStyles] = useState({});
+    const [snackbar, setSnackbar] = useState({
+        open: false,
+        message: '',
+        severity: 'success',
+    });
+    const [anchorEl, setAnchorEl] = useState(null);     
     const dataGridRef = useRef();
 
     // Fetch users from backend
@@ -67,6 +80,31 @@ const ContactMainScreen = () => {
         setDialogOpen(false);
     }
 
+    const handleDeleteClick = (event, row) => {
+        event.stopPropagation();
+        setAnchorEl(event.currentTarget); // Capture the button element as anchorEl
+        dispatch(showPopup(row));
+    }
+    
+    const handlePopoverClose = (event, reason) => {
+        setAnchorEl(null); // Reset the anchorEl to close the popover 
+    };
+
+    const handleDelete = (id) => {
+        dispatch(deleteContact(id));
+        const alert = {
+            open: true,
+            message: "Contact deleted successfully",
+            severity: "success",
+        };
+        dispatch(showAlert(alert));
+        handlePopoverClose();   
+    }
+
+    const handleCloseSnackbar = () => {
+        setSnackbar((prev) => ({ ...prev, open: false }));
+    }
+
     const formik = useFormik({
         initialValues: {
             customer: null,
@@ -88,80 +126,81 @@ const ContactMainScreen = () => {
             minWidth: 150,
             renderCell: (params) => (
                 <Box>
-                    <Button
+                    <IconButton
                         size="small"
                         variant="contained"
                         color="primary"
                     // onClick={() => handleEditClick(params.row)}
                     >
-                        Edit
-                    </Button>
-                    <Button
+                        <Edit />
+                    </IconButton>
+                    <IconButton
                         size="small"
                         variant="contained"
                         color="secondary"
-                    // onClick={() => handleDelete(params.row.id)}
+                        onClick={(event) => handleDeleteClick(event, params.row)}
                     >
-                        Delete
-                    </Button>
+                        <Delete />
+                    </IconButton>
+                    <DeletePopover  anchorEl={anchorEl} handleClose={handlePopoverClose} handleDelete={handleDelete} />
                 </Box>
             ),
         },
-        { 
-            field: 'contactName', 
-            headerName: 'Contact Name', 
+        {
+            field: 'contactName',
+            headerName: 'Contact Name',
             renderHeader: () => (
                 <strong>Contact Name</strong>
             ),
             flex: 1,
-            minWidth: 150, 
+            minWidth: 150,
         },
-        { 
-            field: 'email', 
-            headerName: 'Email', 
+        {
+            field: 'email',
+            headerName: 'Email',
             renderHeader: () => (
                 <strong>Email</strong>
             ),
             flex: 1,
             minWidth: 150,
         },
-        { 
-            field: 'phone', 
-            headerName: 'Phone', 
+        {
+            field: 'phone',
+            headerName: 'Phone',
             renderHeader: () => (
                 <strong>Phone</strong>
             ),
             flex: 1,
             minWidth: 150,
         },
-        { 
-            field: 'extension', 
-            headerName: 'Extension', 
+        {
+            field: 'extension',
+            headerName: 'Extension',
             renderHeader: () => (
                 <strong>Extension</strong>
             ),
             flex: 1,
             minWidth: 150,
         },
-        { 
-            field: 'cellular', 
-            headerName: 'Cellular', 
+        {
+            field: 'cellular',
+            headerName: 'Cellular',
             renderHeader: () => (
                 <strong>Cellular</strong>
             ),
             flex: 1,
-            minWidth: 150, 
+            minWidth: 150,
         },
-        { 
-            field: 'position', 
-            headerName: 'Position', 
+        {
+            field: 'position',
+            headerName: 'Position',
             renderHeader: () => (
                 <strong>Position</strong>
             ),
             flex: 1,
-            minWidth: 150,  
+            minWidth: 150,
         },
-        
+
     ]
 
     const rows = contactList;
@@ -173,11 +212,16 @@ const ContactMainScreen = () => {
         { id: 3, customerName: 'Sam Brown', projectType: 'Data Analysis' },
         { id: 4, customerName: 'Alice Johnson', projectType: 'SEO Optimization' },
         { id: 5, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
-      ];   
+        { id: 6, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
+        { id: 7, customerName: 'Michael Lee', projectType: 'Cloud Computing' },
+    ];
 
     return (
 
         <Box padding={1}>
+            <Box display="flex" justifyContent="center" alignItems="center" mb={2} width="100%">
+                <MyAlert snackbar={snackbar} onClose={handleCloseSnackbar} />
+            </Box>
             <Card>
                 <CardContent>
                     <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
@@ -196,8 +240,9 @@ const ContactMainScreen = () => {
                     <Box component="div" sx={{ width: "100%", maxWidth: "300px", mb: 2 }}>
 
                         <AutoCompleteDataGrid
+                            label="Select Customer" 
                             columns={autoCompleteDataGridColumns}
-                            rows={autoCompleteDataGridRows} 
+                            rows={autoCompleteDataGridRows}
                             value={formik.values.customer || ''}
                             onChange={(event, value) => {
                                 console.log("Value:", value);
@@ -220,7 +265,7 @@ const ContactMainScreen = () => {
                         showCellVerticalBorder
                         showColumnVerticalBorder
                         sx={{
-                            height: 'calc(100vh - 380px)',  
+                            height: 'calc(100vh - 380px)',
                         }}
                     />
 

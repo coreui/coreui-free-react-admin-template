@@ -94,8 +94,8 @@ const HourForm = ({ isEditContact, onClose }) => {
 
     const rows = hoursList;
 
-    const contactColumns = ["Customer Name"]; // Corrected typo
-    const contactRows = [
+    const userColumns = ["User Name"]; // Corrected typo
+    const userRows = [
         { id: 1, contactName: 'John Doe' },
         { id: 2, contactName: 'Jane Smith' },
         { id: 3, contactName: 'Sam Brown' },
@@ -162,8 +162,8 @@ const HourForm = ({ isEditContact, onClose }) => {
                     <Grid item size={{ xs: 12 }}>
                         <AutoCompleteDataGrid
                             label="Select User"
-                            columns={contactColumns}
-                            rows={contactRows}
+                            columns={userColumns}
+                            rows={userRows}
                             value={formik.values.user || ''}
                             onChange={(event, value) => {
                                 console.log("value", value);

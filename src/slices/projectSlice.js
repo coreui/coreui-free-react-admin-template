@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { buildProjectDTO, buildProjectListDTO, projectDTO } from '../dto/projectDTO';
+import { createNewProject, getProjectList } from '../components/common/apiCalls';
 
 const initialState = {
     projectList: [],
@@ -11,20 +12,26 @@ const initialState = {
 
 // Async thunk for fetching the project list
 export const fetchProjects = createAsyncThunk('projects/fetchProjects', async (projects) => {
-    const response = await buildProjectListDTO(projects);
+    const projectList = await getProjectList(projects); 
+    const response = await buildProjectListDTO(projectList);
     return response;
 });
 
 // Async thunk for adding a new project
 export const addNewProject = createAsyncThunk('projects/addNewProject', async (newProject) => {
-    const response = await buildProjectDTO(newProject); 
+    const project = await createNewProject(newProject);      
+    const response = await buildProjectDTO(project);     
     return response;
 });
 
 const projectSlice = createSlice({
     name: 'projects',
     initialState,
-    reducers: {},
+    reducers: {
+        deleteProject: (state, action) => {
+            state.projectList = state.projectList.filter((project) => project.id !== action.payload);
+        }   
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProjects.pending, (state) => {
@@ -53,4 +60,5 @@ const projectSlice = createSlice({
     },
 });
 
+export const { deleteProject } = projectSlice.actions;
 export default projectSlice.reducer;

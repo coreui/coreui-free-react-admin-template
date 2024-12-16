@@ -17,8 +17,12 @@ import EditContainer from '../../components/common/EditContainer';
 import EditUserModal from './EditUserForm';
 import DialogBox from '../../components/common/DialogBox';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserList } from '../../slices/userSlice';
+import { deleteUser, fetchUserList } from '../../slices/userSlice';
 import { userTypeObj } from '../../components/common/utils';
+import MyAlert from '../../components/common/Alert';
+import { showAlert } from '../../slices/alertSlice';
+import { showPopup } from '../../slices/popoverSlice';
+import DeletePopover from '../../components/common/DeletePopover';
 
 const UserManagement = () => {
 
@@ -37,6 +41,12 @@ const UserManagement = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
   const [drawerStyles, setDrawerStyles] = useState({});
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success"
+  });
+  const [anchorEl, setAnchorEl] = useState(null);
   const dataGridRef = useRef();
 
   // Fetch users from backend
@@ -64,6 +74,31 @@ const UserManagement = () => {
     setDialogOpen(false);
   }
 
+  const handleDeleteClick = (event, row) => {
+    event.stopPropagation();
+    setAnchorEl(event.currentTarget); // Capture the button element as anchorEl
+    dispatch(showPopup(row));
+  }
+
+  const handlePopoverClose = (event, reason) => {
+    setAnchorEl(null); // Reset the anchorEl to close the popover 
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteUser(id));
+    const alert = {
+      open: true,
+      message: "User deleted successfully",
+      severity: "success"
+    }
+    dispatch(showAlert(alert)); 
+    handlePopoverClose();
+  }
+
+  const handleCloseSnackbar = () => {
+    setSnackbar((prev) => ({ ...prev, open: false }));
+  };
+
   const columns = [
     { field: 'id', headerName: 'ID', flex: 1 },
     { field: 'user', headerName: 'User', flex: 1 },
@@ -87,7 +122,7 @@ const UserManagement = () => {
             size="small"
             variant="contained"
             color="secondary"
-          // onClick={() => handleDelete(params.row.id)}
+            onClick={(event) => handleDeleteClick(event,params.row)}
           >
             Delete
           </Button>
@@ -102,11 +137,11 @@ const UserManagement = () => {
     if (!data || data.length === 0) {
       return [];
     }
-    
+
     const actionField = {
       field: 'actions',
       headerName: '',
-      renderHeader: () => ( 
+      renderHeader: () => (
         <strong></strong>
       ),
       flex: 1,
@@ -125,15 +160,16 @@ const UserManagement = () => {
             size="small"
             variant="contained"
             color="secondary"
-          // onClick={() => handleDelete(params.row.id)}
+            onClick={(event) => handleDeleteClick(event, params.row)}
           >
             <Delete />
           </IconButton>
+          <DeletePopover anchorEl={anchorEl} handleDelete={handleDelete} handleClose={handlePopoverClose} />  
         </Box>
       ),
     }
     const keys = Object.keys(data[0]).filter(key => key !== 'id');
-    const gridColumns =  keys.map(key => ({
+    const gridColumns = keys.map(key => ({
       field: key,
       headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize header names
       renderHeader: () => <strong>{key.charAt(0).toUpperCase() + key.slice(1)}</strong>,
@@ -141,7 +177,7 @@ const UserManagement = () => {
       flex: 1,
       minWidth: 200,
       renderCell: (params) => {
-        
+
         if (params.row.userType === userTypeObj.CUSTOMER && key === "customer") {
           const customer = params.row[key];
           return customer ? (
@@ -153,20 +189,25 @@ const UserManagement = () => {
             <p>No customer info</p>
           );
         }
-        return params.row[key]; 
+        return params.row[key];
       },
     }));
     const columns = [actionField, ...gridColumns];
     return columns;
   };
-  
 
- //MUI DataGrid 
+
+  //MUI DataGrid 
   return (
     <div ref={dataGridRef}>
       <Box padding={1}>
+        <Box display="flex" justifyContent="center" alignItems="center" mb={2} width="100%">
+          <MyAlert snackbar={snackbar} onClose={handleCloseSnackbar} />
+        </Box>
+
         <Card>
           <CardContent>
+
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
               <Typography variant="h6">User Management</Typography>
               <Button
@@ -191,7 +232,7 @@ const UserManagement = () => {
                 showCellVerticalBorder
                 showColumnVerticalBorder
                 sx={{
-                  height: 'calc(100vh - 300px)',  
+                  height: 'calc(100vh - 300px)',
                 }}
               />
             </Box>

@@ -19,6 +19,7 @@ import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
 import { createUser } from '../../slices/userSlice';
 import { userDTO } from '../../dto/userDTO';
 import { ConsultantTypes, Languages, LockStatus, Positions, Status, UserTypeArray, userTypeObj } from '../../components/common/utils';
+import { showAlert } from '../../slices/alertSlice';
 
 
 const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
@@ -51,6 +52,12 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
       console.log(values);
       dispatch(createUser(values));
       // handleOpenDialog()
+      const alert = {
+        open: true,
+        message: 'User Created Successfully!',
+        severity: 'success',  
+      }
+      dispatch(showAlert(alert)); 
       onClose();
     },
   });

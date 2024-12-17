@@ -193,7 +193,7 @@ const HourForm = ({ isEditContact, onClose }) => {
 
                 </Grid>
             </Box>
-            <Box component="div" paddingY={3} paddingX={2}>
+            <Box component="div" paddingY={0} paddingX={2}>
                 <DataGrid
                     rows={rows}
                     columns={columns}

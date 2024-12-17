@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addNewProject } from '../../slices/projectSlice';
 import { ProjectMethod, ProjectTypes, Status } from '../../components/common/utils';
 import { Search } from '@mui/icons-material';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PopperComponent from '../../components/common/popper';
 import ContactForm from '../task-management/ContactForm';
 import HourForm from './HourForm';
@@ -215,14 +216,11 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
                 <IconButton
                   size='small'
                   variant='contained'
-                  sx={{
-                    background: 'red',
-                    color: 'white',
-                  }}
+                  color='primary' 
                   onClick={handleClick}
                   disableRipple
                 >
-                  <Search />
+                  <FormatListBulletedIcon />
                 </IconButton>
               </Grid>
             </Grid>

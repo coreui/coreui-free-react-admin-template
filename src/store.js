@@ -10,6 +10,7 @@ import hoursSlice from './slices/hoursSlice';
 import timeSheetSlice from './slices/timeSheetSlice';
 import alertSlice from './slices/alertSlice'; 
 import popoverSlice from './slices/popoverSlice';
+import loginSlice from './slices/loginSlice';
 
 
 const store = configureStore({
@@ -24,6 +25,7 @@ const store = configureStore({
     timeSheet: timeSheetSlice, 
     alert: alertSlice,
     delete: popoverSlice,
+    login: loginSlice,  
     dataGridConnection: dataGridConnectionSlice,
   },
 });

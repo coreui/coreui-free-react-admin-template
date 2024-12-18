@@ -19,6 +19,11 @@ await fetch('connection.json')
 
 // }
 
+//user login
+export const userLogin = async (credentials) => {
+    return credentials;
+}   
+
 //Get user list
 export const getUserList = async (taskList) => {
     return taskList;

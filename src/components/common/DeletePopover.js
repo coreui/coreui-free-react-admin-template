@@ -28,7 +28,8 @@ const DeletePopover = (props) => {
                     sx={{
                         '& .MuiPaper-root': {
                             boxShadow: 'none',
-                            padding: '0'
+                            padding: '0',
+                            backgroundColor: '#e0e0e0',
                         }
                     }}
                 >

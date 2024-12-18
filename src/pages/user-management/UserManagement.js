@@ -91,7 +91,7 @@ const UserManagement = () => {
       message: "User deleted successfully",
       severity: "success"
     }
-    dispatch(showAlert(alert)); 
+    dispatch(showAlert(alert));
     handlePopoverClose();
   }
 
@@ -100,35 +100,115 @@ const UserManagement = () => {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', flex: 1 },
-    { field: 'user', headerName: 'User', flex: 1 },
-    { field: 'country', headerName: 'Country', flex: 1 },
-    { field: 'role', headerName: 'Role', flex: 1 },
     {
       field: 'actions',
-      headerName: 'Actions',
+      headerName: '',
+      renderHeader: () => (
+        <strong></strong>
+      ),
       flex: 1,
+      minWidth: 150,
       renderCell: (params) => (
         <Box>
-          <Button
+          <IconButton
             size="small"
             variant="contained"
             color="primary"
           // onClick={() => handleEditClick(params.row)}
           >
-            Edit
-          </Button>
-          <Button
+            <Edit />
+          </IconButton>
+          <IconButton
             size="small"
             variant="contained"
             color="secondary"
-            onClick={(event) => handleDeleteClick(event,params.row)}
+            onClick={(event) => handleDeleteClick(event, params.row)}
           >
-            Delete
-          </Button>
+            <Delete />
+          </IconButton>
+          <DeletePopover anchorEl={anchorEl} handleDelete={handleDelete} handleClose={handlePopoverClose} />
         </Box>
       ),
     },
+    {
+      field: 'userType',
+      headerName: 'User Type',
+      renderHeader: () => <strong>User Type</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'name',
+      headerName: 'Name',
+      renderHeader: () => <strong>Name</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'officeEmailId',
+      headerName: 'Office Email Id',
+      renderHeader: () => <strong>Office Email Id</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'mobile',
+      headerName: 'Mobile',
+      renderHeader: () => <strong>Mobile</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'password',
+      headerName: 'Password',
+      renderHeader: () => <strong>Password</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'customer',
+      headerName: 'Customer',
+      renderHeader: () => (
+        <strong>Customer</strong>
+
+      ),
+      renderCell: (params) => {
+
+        const customer = params.row.customer;
+        return customer ? (
+          <div>
+            <p>{customer.customerName}</p>
+            <p>{customer.projectType}</p>
+          </div>
+        ) : (
+          <p>No customer info</p>
+        );
+      },
+      flex: 1,
+      minWidth: 150,
+    },
+    {
+      field: 'joiningDate',
+      headerName: 'Joining Date',
+      renderHeader: () => <strong>Joining Date</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'position',
+      headerName: 'Position',
+      renderHeader: () => <strong>Position</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      renderHeader: () => <strong>Status</strong>,
+      flex: 1,
+      minWidth: 150 
+    }
+    
   ];
 
   const rows = users;
@@ -164,7 +244,7 @@ const UserManagement = () => {
           >
             <Delete />
           </IconButton>
-          <DeletePopover anchorEl={anchorEl} handleDelete={handleDelete} handleClose={handlePopoverClose} />  
+          <DeletePopover anchorEl={anchorEl} handleDelete={handleDelete} handleClose={handlePopoverClose} />
         </Box>
       ),
     }
@@ -224,7 +304,7 @@ const UserManagement = () => {
             <Box width="100%" height="100%">
               <DataGrid
                 rows={userList}
-                columns={generateColumnsFromData(userList)}
+                columns={columns}
                 disableColumnMenu
                 disableRowSelectionOnClick
                 hideFooterPagination

@@ -1,3 +1,7 @@
+import Cookies from 'universal-cookie';
+
+
+
 //enums
 export const userTypeObj = {
     NONE: 'None',
@@ -32,7 +36,30 @@ export const Form = ["Form 1", "Form 2", "Form 3", "Form 4", "Form 5"];
 export const ProjectName = ["Project 1", "Project 2", "Project 3", "Project 4", "Project 5"]; 
 export const TaskStatus = ["Open", "Assigned", "In Progress", "Deployed", "Confirmed"];
 export const TaskPriority = ["Low", "Medium", "High"]; 
-export const Users = ["User 1", "User 2", "User 3", "User 4", "User 5"];        
+export const Users = ["User 1", "User 2", "User 3", "User 4", "User 5"];
+
+
+//Api status
+export const Api_Status = {
+    Idle: 'idle',
+    Loading: 'loading',
+    Succeeded: 'succeeded',
+    Failed: 'failed'
+}
+
+//get login user
+export const getLoginUser=()=>{
+    const cookies = new Cookies(null, { path: '/' });
+    return cookies.get('user');
+
+}
+
+//remove cookie 
+export const removeCookie=()=>{
+    const cookies = new Cookies(null, { path: '/' });
+     cookies.remove("user", { path: '/' })
+
+}
 
 
 

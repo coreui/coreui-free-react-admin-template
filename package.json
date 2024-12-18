@@ -30,6 +30,7 @@
     "@emotion/styled": "^11.13.5",
     "@mui/icons-material": "^6.1.9",
     "@mui/material": "^6.1.9",
+    "@mui/styles": "^6.2.1",
     "@mui/x-data-grid": "^7.22.3",
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^2.4.0",
@@ -50,6 +51,7 @@
     "sequelize": "^6.37.3",
     "simplebar-react": "^3.2.5",
     "tedious": "^18.3.0",
+    "universal-cookie": "^7.2.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {

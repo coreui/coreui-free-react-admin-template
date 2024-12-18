@@ -1,5 +1,6 @@
 import React from 'react'
 
+const Login = React.lazy(() => import('./pages/login/Login')) 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))

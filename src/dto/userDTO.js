@@ -23,7 +23,7 @@ export function buildUserDTO(user) {
     uDTO.id = id + 1;
     uDTO.userType = user?.userType;
     uDTO.name = user?.name;
-    uDTO.officeEmailId = user?.officeEmailId;
+    uDTO.officeEmailId = user?.officeEmailId || user?.email;
     uDTO.mobile = user?.mobile;
     uDTO.password = user?.password;
     uDTO.confirmPassword = user?.confirmPassword;

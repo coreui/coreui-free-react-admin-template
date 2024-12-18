@@ -53,8 +53,12 @@ import avatar6 from 'src/assets/images/avatars/6.jpg'
 import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import MainChart from './MainChart'
+import { getLoginUser } from '../../components/common/utils'
 
 const Dashboard = () => {
+
+  const user = getLoginUser();
+  console.log("User Cookie:", user);
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },

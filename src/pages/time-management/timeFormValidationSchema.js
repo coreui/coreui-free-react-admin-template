@@ -14,7 +14,7 @@ const timeFormValidationSchema = yup.object().shape({
     contactPerson: yup.object().required('Contact person is required'),
     user: yup.object().required('User is required'),
     internalNotes: yup.string().nullable(),
-    status: yup.string().required('Status is required'),
+    status: yup.boolean().required('Status is required'),
     allUsers: yup.boolean().required('All users flag is required'),
 });
 

@@ -1,5 +1,7 @@
 import Cookies from 'universal-cookie';
-
+import LowPriorityIcon from '@mui/icons-material/LowPriority'; // Example icon
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+import MediumPriorityIcon from '@mui/icons-material/Flag'; // Custom medium icon
 
 
 //enums
@@ -61,6 +63,21 @@ export const removeCookie=()=>{
 
 }
 
+
+//icons helper function
+export const getPriorityIcon = (priority) => {
+    switch (priority.toLowerCase()) {
+      case 'low':
+        return <LowPriorityIcon style={{ marginRight: 10, color: 'green' }} />;
+      case 'medium':
+        return <MediumPriorityIcon style={{ marginRight: 10, color: 'orange' }} />;
+      case 'high':
+        return <PriorityHighIcon style={{ marginRight: 10, color: 'red' }} />;
+      default:
+        return null;
+    }
+  };
+  
 
 
 

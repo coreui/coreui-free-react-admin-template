@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 const customerValidationSchema = Yup.object().shape({
     customerName: Yup.string().required('Customer name is required'),
-    contactPerson: Yup.array().required('Contact person is required'),
+    contactPerson: Yup.object().required('Contact person is required'),
     customerNameInEnglish: Yup.string().required('Customer name in English is required'),
     email: Yup.string().email('Invalid email format').required('Email is required'),
     phoneNumber: Yup.string().required('Phone number is required'),

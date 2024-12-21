@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField, Button, MenuItem, Divider, useTheme, Autocomplete, FormControlLabel, IconButton, Checkbox } from '@mui/material'
+import { Box, Typography, TextField, Button, MenuItem, Divider, useTheme, Autocomplete, FormControlLabel, IconButton, Checkbox, Stack, Switch } from '@mui/material'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Formik, useFormik } from 'formik';
@@ -50,7 +50,7 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
         contactPerson: null,
         user: null,
         internalNotes: null,
-        status: null,
+        status: false,
         allUsers: false,
     });
     const [snackbar, setSnackbar] = useState({
@@ -69,12 +69,12 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
             dispatch(createTimeSheet(values));
             // dispatch(createUser(values));
             // handleOpenDialog()
-           const alert = {
+            const alert = {
                 open: true,
                 message: 'Time Sheet Created Successfully',
                 severity: 'success',
             }
-            dispatch(showAlert(alert)); 
+            dispatch(showAlert(alert));
             onClose();
         },
     });
@@ -118,18 +118,18 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
 
     const taskColumns = ["Task Name"]; // Corrected typo
     const taskRows = [
-        { id: 1, taskName: 'Task 1' },  
-        { id: 2, taskName: 'Task 2' },  
-        { id: 3, taskName: 'Task 3' },  
-        { id: 4, taskName: 'Task 4' },  
-        { id: 5, taskName: 'Task 5' },  
+        { id: 1, taskName: 'Task 1' },
+        { id: 2, taskName: 'Task 2' },
+        { id: 3, taskName: 'Task 3' },
+        { id: 4, taskName: 'Task 4' },
+        { id: 5, taskName: 'Task 5' },
     ]
 
 
 
     return (
         <Box component="div">
-           
+
             <Box component="div" sx={{ ...theme.formControl.formHeaderOuterContainer }}>
                 <Box component="div" sx={{ ...theme.formControl.formHeaderContainer }} >
                     <Typography variant="h6" gutterBottom>
@@ -167,7 +167,7 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                             helperText={formik.touched.customer && formik.errors.customer}
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12, md: 6 }}>
+                    {/* <Grid item size={{ xs: 12, md: 6 }}>
                         <TextField
                             fullWidth
                             select
@@ -188,7 +188,7 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                             }
                         </TextField>
 
-                    </Grid>
+                    </Grid> */}
                     <Grid item size={{ xs: 12, md: 6 }}>
                         <AutoCompleteDataGrid
                             label="Select Contact Person"
@@ -333,6 +333,7 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                             helperText={formik.touched.totalWorkingTime && formik.errors.totalWorkingTime}
                         />
                     </Grid>
+                    <Grid item size={{ xs: 12, md: 6 }}></Grid>
                     <Grid item size={{ xs: 12, md: 6 }}>
                         <TextField
                             fullWidth
@@ -362,7 +363,47 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                         />
                     </Grid>
                     <Grid item size={{ xs: 12, md: 6 }}>
-                        <FormControlLabel
+                        <Grid container spacing={1}>
+                            <Grid item size={{ xs: 12, md: 6 }}>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            id="allUsers"
+                                            name="allUsers"
+                                            checked={formik.values.allUsers}
+                                            onChange={formik.handleChange}
+                                        />
+                                    }
+                                    label="All Users"
+                                />
+                            </Grid>
+                            <Grid item size={{ xs: 12, md: 6 }}>
+                                <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                                    <Typography>Inactive</Typography>
+                                    <Switch
+                                        id="status"
+                                        name="status"
+                                        checked={formik.values.status}
+                                        onChange={formik.handleChange}
+                                        inputProps={{ 'aria-label': 'controlled' }}
+                                    />
+                                    <Typography>Active</Typography>
+                                </Stack>
+                            </Grid>
+
+                            {/* // <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                                //     <Typography>Inactive</Typography>
+                                //     <Switch
+                                //         id="status"
+                                //         name="status"
+                                //         checked={formik.values.status}
+                                //         onChange={formik.handleChange}
+                                //         inputProps={{ 'aria-label': 'controlled' }}
+                                //     />
+                                //     <Typography>Active</Typography>
+                                // </Stack> */}
+                        </Grid>
+                        {/* <FormControlLabel
                             control={
                                 <Checkbox
                                     id="allUsers"
@@ -372,8 +413,21 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                                 />
                             }
                             label="All Users"
-                        />
+                        /> */}
                     </Grid>
+                    {/* <Grid item size={{ xs: 12, md: 6 }}>
+                        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                            <Typography>Inactive</Typography>
+                            <Switch
+                                id="status"
+                                name="status"
+                                checked={formik.values.status}
+                                onChange={formik.handleChange}
+                                inputProps={{ 'aria-label': 'controlled' }}
+                            />
+                            <Typography>Active</Typography>
+                        </Stack>
+                    </Grid> */}
 
 
                 </Grid>

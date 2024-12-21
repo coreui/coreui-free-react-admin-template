@@ -64,7 +64,7 @@ const ContactForm = ({isEditContact, onClose}) => {
             </Box>
             <Box component="form" sx={{ ...theme.formControl.formComponent }} onSubmit={formik.handleSubmit}>
                 <Grid container spacing={2}>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6 }}>
                         <TextField
                             fullWidth
                             id="contactName"
@@ -76,7 +76,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                             helperText={formik.touched.contactName && formik.errors.contactName}
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6  }}>
                         <TextField
                             fullWidth
                             id="email"
@@ -88,7 +88,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                             helperText={formik.touched.email && formik.errors.email}
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6  }}>
                         <TextField
                             fullWidth
                             id="phone"
@@ -100,7 +100,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                             helperText={formik.touched.phone && formik.errors.phone}
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6  }}>
                         <TextField
                             fullWidth
                             id="extension"
@@ -112,7 +112,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                             helperText={formik.touched.extension && formik.errors.extension}
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6  }}>
                         <TextField
                             fullWidth
                             id="cellular"
@@ -124,7 +124,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                             helperText={formik.touched.cellular && formik.errors.cellular}
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6  }}>
                         <TextField
                             fullWidth
                             id="position"
@@ -136,7 +136,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                             helperText={formik.touched.position && formik.errors.position}
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6  }}>
                         <FormControl fullWidth>
                             <InputLabel id="locked-label">Locked</InputLabel>
                             <Select
@@ -154,7 +154,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6  }}>
                         <FormControlLabel
                             control={
                                 <Checkbox
@@ -167,7 +167,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                             label="Access Portal"
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12 }}>
+                    <Grid item size={{ xs: 12, md: 6  }}>
                         <FormControlLabel
                             control={
                                 <Checkbox
@@ -183,6 +183,7 @@ const ContactForm = ({isEditContact, onClose}) => {
                     
                 </Grid>
             </Box>
+            <Box component="div" py={4}></Box>   
             
         </Box>
     );

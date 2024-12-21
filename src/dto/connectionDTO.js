@@ -5,6 +5,7 @@ export const connectionDTO = {
     address: null,
     user: null,
     password: null,
+    comments: null,
 }
 
 export function buildConnectionDTO(connectionObj) {
@@ -16,6 +17,7 @@ export function buildConnectionDTO(connectionObj) {
     connDTO.address = connectionObj?.address;
     connDTO.user = connectionObj?.user;
     connDTO.password = connectionObj?.password;
+    connDTO.comments = connectionObj?.comments;
     return connDTO;
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Popover, Typography, Button } from '@mui/material';
+import { Box, Popover, Typography, Button, IconButton } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { Cancel, Done } from '@mui/icons-material';
 
 
 const DeletePopover = (props) => {
@@ -35,9 +36,9 @@ const DeletePopover = (props) => {
                 >
                     <Box 
                       sx={{
-                         padding: 2,
+                         padding: 1,
                          display: 'flex',
-                         flexDirection: 'row',
+                         flexDirection: 'column',
                          justifyContent: 'center',
                          alignItems: 'center',
                          gap: 1 
@@ -55,19 +56,28 @@ const DeletePopover = (props) => {
                                 gap: 1,
                             }}
                         >
-                            <Typography
-                                variant="body1"
-                                color="primary"
+                            <Button
+                                variant="contained"
+                                // color="primary"
                                 onClick={() => handleDelete(data.id)}
                                 sx={{
-                                    cursor: 'pointer'
+                                    cursor: 'pointer',
+                                    backgroundColor: 'green',
+                                    color: 'white', 
                                 }}
+                                startIcon={<Done />}    
                             >
-                               yes
-                            </Typography>
-                            <Typography variant="body1" color="#9e9e9e" onClick={handleClose} sx={{ cursor: 'pointer'}}>
-                                no
-                            </Typography>
+                                Yes
+                            </Button>
+                            <Button 
+                              variant="contained" 
+                              color="#9e9e9e" 
+                              onClick={handleClose} 
+                              sx={{ cursor: 'pointer', background: '9e9e9e'}}
+                              startIcon={<Cancel />}
+                            >
+                                No 
+                            </Button>
                         </Box>
                     </Box>
                 </Popover>

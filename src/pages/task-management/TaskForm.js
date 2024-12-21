@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField, Button, MenuItem, Divider, useTheme, Autocomplete, FormControlLabel, IconButton } from '@mui/material'
+import { Box, Typography, TextField, Button, MenuItem, Divider, useTheme, Autocomplete, FormControlLabel, IconButton, Avatar, SpeedDial } from '@mui/material'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Formik, useFormik } from 'formik';
@@ -19,14 +19,17 @@ import Grid from '@mui/material/Grid2';
 import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
 import { createUser } from '../../slices/userSlice';
 import { userDTO } from '../../dto/userDTO';
-import { ConsultantTypes, ContactPersons, Form, Languages, LockStatus, Module, Positions, ProjectName, Status, TaskPriority, TaskStatus, Users, UserTypeArray, userTypeObj } from '../../components/common/utils';
+import { ConsultantTypes, ContactPersons, Form, getPriorityIcon, Languages, LockStatus, Module, Positions, ProjectName, Status, TaskPriority, TaskStatus, Users, UserTypeArray, userTypeObj } from '../../components/common/utils';
 import taskFormValidationSchema from './taskFormValidationSchema';
-import { Add, Edit } from '@mui/icons-material';
+import { Add, Edit, Person } from '@mui/icons-material';
 import PopperComponent from '../../components/common/popper';
 import ContactForm from './ContactForm';
 import { auto } from '@popperjs/core';
 import { createTask } from '../../slices/taskSlice';
 import { showAlert } from '../../slices/alertSlice';
+import ChatDrawer from '../../components/common/ChatDrawer';
+import ChatIcon from '@mui/icons-material/Chat';
+
 
 
 const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
@@ -52,6 +55,8 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
     detailDescription: null,
     user: null,
   });
+  const [chatDrawerOpen, setChatDrawerOpen] = useState(false);
+
 
   const theme = useTheme();
 
@@ -60,16 +65,19 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
     validationSchema: taskFormValidationSchema,
     onSubmit: (values) => {
       console.log(values);
-      dispatch(createTask(values)); 
+      dispatch(createTask(values));
       const alert = {
         open: true,
         message: 'Task Created Successfully',
         severity: 'success',
       }
-      dispatch(showAlert(alert)); 
+      dispatch(showAlert(alert));
       onClose();
     },
   });
+
+  const toggleDrawer = () => setChatDrawerOpen(!chatDrawerOpen);
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget); // Correctly sets the anchor element
@@ -103,7 +111,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
     { id: 3, contactName: 'Sam Brown' },
     { id: 4, contactName: 'Alice Johnson' },
     { id: 5, contactName: 'Michael Lee' },
-    
+
   ];
 
 
@@ -168,7 +176,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
           </Grid>
           <Grid item size={{ xs: 12, md: 6 }}>
             <AutoCompleteDataGrid
-              label="Select Customer" 
+              label="Select Customer"
               columns={autoCompleteDataGridColumns}
               rows={autoCompleteDataGridRows}
               value={formik.values.customer || ''}
@@ -225,20 +233,20 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                     ))
                   }
                 </TextField> */}
-                
+
                 <AutoCompleteDataGrid
-                  label="Select Contact Person" 
+                  label="Select Contact Person"
                   columns={contactColumns}
-                  rows={contactRows} 
+                  rows={contactRows}
                   value={formik.values.contactName || ''}
                   onChange={(event, value) => {
-                    console.log("value",value);
+                    console.log("value", value);
                     formik.setFieldValue('contactName', value);
                   }}
                   onBlur={() => formik.setFieldTouched('contactName', true)}
                   error={formik.touched.contactName && Boolean(formik.errors.contactName)}
                   helperText={formik.touched.contactName && formik.errors.contactName}
-                  disabled={!formik.values.customer}  
+                  disabled={!formik.values.customer}
                 />
               </Grid>
               <Grid item size={{ xs: 12, md: 4 }} justifyContent="center" alignItems="center">
@@ -247,7 +255,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                   <IconButton
                     size='small'
                     variant="contained"
-                    color='primary' 
+                    color='primary'
                     // sx={{
                     //   color: 'white',
                     // }}
@@ -341,8 +349,8 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                 // Use formik's setFieldValue to set the file
                 formik.setFieldValue("attachment", event.currentTarget.files[0]);
               }}
-              // error={formik.touched.attachment && Boolean(formik.errors.attachment)}
-              // helperText={formik.touched.attachment && formik.errors.attachment}
+            // error={formik.touched.attachment && Boolean(formik.errors.attachment)}
+            // helperText={formik.touched.attachment && formik.errors.attachment}
             />
           </Grid>
           <Grid item size={{ xs: 12, md: 6 }}>
@@ -360,6 +368,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
               {
                 TaskPriority.map((option) => (
                   <MenuItem key={option} value={option}>
+                    {getPriorityIcon(option)} 
                     {option}
                   </MenuItem>
                 ))
@@ -398,27 +407,52 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                 formik.setFieldValue('user', value);
               }}
               options={Users}
-              getOptionLabel={(option) => option}
+              getOptionLabel={(option) => option} // Assuming 'name' is the property with the user's name
               onBlur={() => formik.setFieldTouched('user', true)}
-              renderInput={(params) => <TextField {...params} label="User"
-                 error={formik.touched.user && Boolean(formik.errors.user)}
-               helperText={formik.touched.user && formik.errors.user}
-                />}
-              />
-              
+              renderOption={(props, option) => (
+                <li {...props}>
+                  <Avatar
+                    src="" // Assuming 'avatar' is the property with the image URL
+                    alt={option.name}
+                    style={{
+                      width: 30,
+                      height: 30,
+                      // borderRadius: '50%',
+                      marginRight: 10,
+                    }}
+                  />
+                  {option}
+                </li>
+              )}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="User"
+                  error={formik.touched.user && Boolean(formik.errors.user)}
+                  helperText={formik.touched.user && formik.errors.user}
+                />
+              )}
+            />
+            <Button variant='text' color='primary' startIcon={<Person />}>
+              Assign to me
+            </Button>
           </Grid>
-          <Grid item size={{ xs: 12, md: 6 }}></Grid>
+
+          <Grid item size={{ xs: 12, md: 6 }}>
+            <SpeedDial
+              ariaLabel="SpeedDial example"
+              sx={{ position: 'fixed', bottom: 16, right: 16 }}
+              icon={<ChatIcon />}
+              direction="up"
+              open={false}
+              onClick={toggleDrawer}
+              onOpen={() => { }}
+              onClose={() => { }}
+              />
+                <ChatDrawer open={chatDrawerOpen} toggleDrawer={toggleDrawer} />
+          </Grid>
           <Grid item size={{ xs: 12, md: 12 }}>
-            {/* <TextField
-              fullWidth
-              id="detailDescription"
-              name="detailDescription"
-              label="Detail Description"
-              value={formik.values.detailDescription}
-              onChange={formik.handleChange}
-              error={formik.touched.detailDescription && Boolean(formik.errors.detailDescription)}
-              helperText={formik.touched.detailDescription && formik.errors.detailDescription}
-            /> */}
+            
             <Box component="div" sx={{ height: "auto" }} paddingY={2} mb={2}>
               <Typography variant="h6" gutterBottom>Detail Description</Typography>
               <ReactQuill theme='snow'

@@ -21,7 +21,7 @@ import Grid from '@mui/material/Grid2';
 import customerValidationSchema from './customerValidationSchema';
 import ConnectionSettingGrid from '../../components/common/ConnectionSettingGrid';
 import ConnectionForm from './ConnectionsForm';
-import { Delete, Edit } from '@mui/icons-material';
+import { Add, Delete, Edit } from '@mui/icons-material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCustomer } from '../../slices/customerSlice';
@@ -31,6 +31,9 @@ import { deleteConnection } from '../../slices/connectionSlice';
 import { showAlert } from '../../slices/alertSlice';
 import { showPopup } from '../../slices/popoverSlice';
 import DeletePopover from '../../components/common/DeletePopover';
+import PopperComponent from '../../components/common/popper';
+import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
+import ContactForm from '../task-management/ContactForm';
 
 
 const userTypes = ["None", "Admin", "Consultant", "Customer"];
@@ -47,11 +50,14 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
   console.log("Connection List:", connectionList);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const [isOpenContact, setIsOpenContact] = useState(false);
+  const [isEditContact, setIsEditContact] = useState(false);
+  const [anchorElm, setAnchorElm] = useState(null);
   const [editedUser, setEditedUser] = useState(user)
   const [isEditMode, setIsEditMode] = useState(false);
   const [formData, setFormData] = useState({
     customerName: '',
-    contactPerson: [],
+    contactPerson: null,
     customerNameInEnglish: '',
     email: '',
     phoneNumber: '',
@@ -127,6 +133,22 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
     setSnackbar((prev) => ({ ...prev, open: false }));
   };
 
+  const handleAddContactButtonClick = (event) => {
+    setAnchorElm(event.currentTarget); // Correctly sets the anchor element
+    setIsOpenContact((prev) => !prev); // Toggles the Popper
+    setIsEditContact(false);
+  };
+
+  const handleEditContactButtonClick = (event) => {
+    setAnchorElm(event.currentTarget); // Correctly sets the anchor element
+    setIsOpenContact((prev) => !prev); // Toggles the Popper
+    setIsEditContact(true);
+  };
+
+  const handleCloseContactPopper = () => {
+    setIsOpenContact(false);
+  };
+
 
   const columns = [
     { 
@@ -159,6 +181,12 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
       renderHeader: () => <strong>Password</strong>,   
       flex: 1 
     },
+    { 
+      field: 'comments', 
+      headerName: 'Comments',
+      renderHeader: () => <strong>Comments</strong>,   
+      flex: 1 
+    },
     {
       field: 'actions',
       headerName: '',
@@ -188,6 +216,16 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
     { id: 2, connectionType: 'RMT', vpnType: 'None', address: '10.0.0.1', user: 'user', password: 'password456' },
     { id: 3, connectionType: 'SAP', vpnType: 'None', address: 'None', user: 'user', password: 'password456' },
     { id: 4, connectionType: 'SQL', vpnType: 'None', address: 'None', user: 'user', password: 'password456' },
+
+  ];
+
+  const contactColumns = ["Contact Name"]; // Corrected typo
+  const contactRows = [
+    { id: 1, contactName: 'John Doe' },
+    { id: 2, contactName: 'Jane Smith' },
+    { id: 3, contactName: 'Sam Brown' },
+    { id: 4, contactName: 'Alice Johnson' },
+    { id: 5, contactName: 'Michael Lee' },
 
   ];
 
@@ -234,7 +272,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
               required
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          {/* <Grid size={{ xs: 12, md: 6 }}>
 
             <Grid xs={12} md={6}>
               <Autocomplete
@@ -260,6 +298,51 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
               />
             </Grid>
 
+          </Grid> */}
+          <Grid item size={{ xs: 12, md: 6 }}>
+            <Grid container spacing={2}>
+              <Grid item size={{ xs: 12, md: 8 }}>
+                <AutoCompleteDataGrid
+                  label="Select Contact Person"
+                  columns={contactColumns}
+                  rows={contactRows}
+                  value={formik.values.contactPerson || ''}
+                  onChange={(event, value) => {
+                    console.log("value", value);
+                    formik.setFieldValue('contactPerson', value);
+                  }}
+                  onBlur={() => formik.setFieldTouched('contactPerson', true)}
+                  error={formik.touched.contactPerson && Boolean(formik.errors.contactPerson)}
+                  helperText={formik.touched.contactPerson && formik.errors.contactPerson}
+                  disabled={false}
+                />
+              </Grid>
+              <Grid item size={{ xs: 12, md: 4 }} justifyContent="center" alignItems="center">
+                {/* form and module */}
+                <Box py={1}>
+                  <IconButton
+                    size='small'
+                    variant="contained"
+                    color='primary'
+                    // sx={{
+                    //   color: 'white',
+                    // }}
+                    onClick={handleAddContactButtonClick}
+                    disableRipple
+                  >
+                    <Add />
+                  </IconButton>
+                  <IconButton
+                    size='small'
+                    color='primary'
+                    variant="contained"
+                    onClick={handleEditContactButtonClick}
+                    disableRipple>
+                    <Edit />
+                  </IconButton>
+                </Box>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
@@ -417,6 +500,9 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
             />
           </Grid>
         </Grid>
+        <PopperComponent open={isOpenContact} anchorEl={anchorElm}>
+          <ContactForm isEditContact={isEditContact} onClose={handleCloseContactPopper} />
+        </PopperComponent>
       </Box>
       <Divider sx={{ bgcolor: "black" }} />
       <Box padding={2} component="div">

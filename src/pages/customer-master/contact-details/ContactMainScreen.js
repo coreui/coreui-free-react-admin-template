@@ -17,7 +17,8 @@ import EditContainer from '../../../components/common/EditContainer';
 import EditUserModal from '../../user-management/EditUserForm';
 import DialogBox from '../../../components/common/DialogBox';
 import AutoCompleteDataGrid from '../../../components/common/AutoCompleteDataGrid';
-import ContactForm from './ContactForm';
+// import ContactForm from './ContactForm';
+import ContactForm from '../../task-management/ContactForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { deleteContact } from '../../../slices/contactSlice';
@@ -273,7 +274,8 @@ const ContactMainScreen = () => {
             </Card>
 
             <EditContainer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                <ContactForm onClose={() => setDrawerOpen(false)} />
+                {/* <ContactForm onClose={() => setDrawerOpen(false)} /> */}
+                <ContactForm onClose={() => setDrawerOpen(false)} isEditContact={isEditMode} />  
                 <DialogBox open={dialogOpen} handleCloseDialog={handleCloseDialog} />
             </EditContainer>
 

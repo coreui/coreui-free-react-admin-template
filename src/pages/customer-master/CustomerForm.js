@@ -501,7 +501,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
           </Grid>
         </Grid>
         <PopperComponent open={isOpenContact} anchorEl={anchorElm}>
-          <ContactForm isEditContact={isEditContact} onClose={handleCloseContactPopper} />
+          <ContactForm isEditContact={isEditContact} onClose={handleCloseContactPopper} page={"popupScreen"} />
         </PopperComponent>
       </Box>
       <Divider sx={{ bgcolor: "black" }} />

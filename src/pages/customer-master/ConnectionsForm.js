@@ -195,7 +195,7 @@ const ConnectionForm = ({ onSave, onCancel }) => {
     <Paper elevation={3} style={{ padding: '16px', maxWidth: '500px' }}>
       <Typography variant="h6">Add Connection</Typography>
       <Box component="form" onSubmit={formik.handleSubmit}>
-        <Grid2 container spacing={1}>
+        <Grid2 container columnSpacing={1}>
           <Grid2 size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth

@@ -94,21 +94,21 @@ export default function ChatDrawer({ open, toggleDrawer }) {
                     }
                 }}
             >
-                <Box width="100%" p={2}>
+                <Box width="100%" p={1}>
                     <Typography variant="h6">Activity</Typography>
                     <Divider sx={{ background: 'black' }} />
 
                     {/* Chat Messages */}
-                    <List sx={{ height: 500, overflow: 'auto' }}>
+                    <List sx={{ height: 500, overflow: 'auto', mt: 2}}>
                         {messages.map((msg, index) => (
-                            <ListItem key={index} alignItems="flex-start">
+                            <ListItem key={index} alignItems="flex-start" sx={{padding: "3px"}}>
                                 <Box
                                     sx={{
                                         border: '1px solid #eceff1',
                                         borderRadius: 1,
-                                        padding: 2,
+                                        paddingX: 1,
                                         width: '100%',
-                                        boxShadow: 1,
+                                        // boxShadow: 1,
                                     }}
                                 >
                                     {/* Message Text */}
@@ -136,7 +136,7 @@ export default function ChatDrawer({ open, toggleDrawer }) {
                                     </Box>
 
                                     {/* Reactions and Emoji Button */}
-                                    <Box mt={1} display="flex" alignItems="center">
+                                    <Box mt={1} display="flex" padding={0} alignItems="center">
                                         {/* {msg.reactions.map((emoji, idx) => (
                                             <Typography key={idx} sx={{ marginRight: 1 }}>
                                                 {emoji}
@@ -176,14 +176,15 @@ export default function ChatDrawer({ open, toggleDrawer }) {
 
                     <Divider sx={{ background: 'black' }} />
 
+
                      {/* File Preview (Before Sending) */}
                      {attachment && (
                         <Box
                             sx={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                p: 1,
-                                my: 1,
+                                p: 0,
+                                mt: 1,
                                 bgcolor: '#f5f5f5',
                                 borderRadius: 1
                             }}

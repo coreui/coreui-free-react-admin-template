@@ -335,7 +335,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
               helperText={formik.touched.subject && formik.errors.subject}
             />
           </Grid>
-          <Grid item size={{ xs: 12, md: 6 }}>
+          {/* <Grid item size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               type="file"
@@ -352,7 +352,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
             // error={formik.touched.attachment && Boolean(formik.errors.attachment)}
             // helperText={formik.touched.attachment && formik.errors.attachment}
             />
-          </Grid>
+          </Grid> */}
           <Grid item size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth

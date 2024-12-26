@@ -99,9 +99,9 @@ export default function ChatDrawer({ open, toggleDrawer }) {
                     <Divider sx={{ background: 'black' }} />
 
                     {/* Chat Messages */}
-                    <List sx={{ height: 500, overflow: 'auto', mt: 2}}>
+                    <List sx={{ height: 470, overflow: 'auto', mt: 2 }}>
                         {messages.map((msg, index) => (
-                            <ListItem key={index} alignItems="flex-start" sx={{padding: "3px"}}>
+                            <ListItem key={index} alignItems="flex-start" sx={{ padding: "3px", mb: 1 }}>
                                 <Box
                                     sx={{
                                         border: '1px solid #eceff1',
@@ -118,6 +118,14 @@ export default function ChatDrawer({ open, toggleDrawer }) {
                                             paddingBottom: 1
                                         }}
                                     >
+                                        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 1 }}>
+                                            <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+                                                User Name
+                                            </Typography>
+                                            <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                                                2 hours ago
+                                            </Typography>
+                                        </Box>
                                         <Typography>{msg.text}</Typography>
                                         {msg.file && (
                                             <Paper
@@ -177,8 +185,8 @@ export default function ChatDrawer({ open, toggleDrawer }) {
                     <Divider sx={{ background: 'black' }} />
 
 
-                     {/* File Preview (Before Sending) */}
-                     {attachment && (
+                    {/* File Preview (Before Sending) */}
+                    {attachment ? (
                         <Box
                             sx={{
                                 display: 'flex',
@@ -195,31 +203,37 @@ export default function ChatDrawer({ open, toggleDrawer }) {
                                 <CloseIcon />
                             </IconButton>
                         </Box>
-                    )}
+                    ) : <Box mt={4}></Box>}
 
                     {/* Chat Input Section */}
-                    <Box display="flex" justifyContent="center" alignItems="center" width="100%" mt={2}>
-                        <TextField
-                            fullWidth
-                            variant="outlined"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            placeholder="Type a message..."
-                        />
-                        <input
-                            type="file"
-                            style={{ display: 'none' }}
-                            id="file-upload"
-                            onChange={handleFileChange}
-                        />
-                        <label htmlFor="file-upload">
-                            <IconButton component="span">
-                                <AttachFileIcon />
+                    <Box display="flex" justifyContent="start" alignItems="" flexDirection="column" width="100%" mt={2}>
+                        <Box display="flex" justifyContent="start" alignItems="center">
+                            <TextField
+                                fullWidth
+                                variant="outlined"
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                placeholder="Type a message..."
+                            />
+                            <IconButton onClick={handleSend} color="primary">
+                                <SendIcon />
                             </IconButton>
-                        </label>
-                        <IconButton onClick={handleSend} color="primary">
-                            <SendIcon />
-                        </IconButton>
+                        </Box>
+                        <Box>
+                            <input
+                                type="file"
+                                style={{ display: 'none' }}
+                                id="file-upload"
+                                onChange={handleFileChange}
+                            />
+                            <label htmlFor="file-upload">
+                                <IconButton component="span">
+                                    <AttachFileIcon />
+                                </IconButton>
+                            </label>
+
+                        </Box>
+
                     </Box>
                 </Box>
             </Drawer>

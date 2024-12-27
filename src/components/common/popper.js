@@ -7,7 +7,7 @@ const PopperComponent = ({children, open, anchorEl}) => {
 
     return (
         <Popper
-          sx={{ zIndex: 1200, height: 'auto', }}  
+          sx={{ zIndex: 1200, height: 'auto','&::-webkit-scrollbar': { display: 'none'}}}   
           open={open}
           anchorEl={anchorEl}
           placement={"left-start"}

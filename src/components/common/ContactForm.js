@@ -3,10 +3,14 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { TextField, Button, Select, MenuItem, FormControl, InputLabel, FormControlLabel, Checkbox, Box, useTheme, Typography, Divider } from '@mui/material';
 import Grid from '@mui/material/Grid2';
+import { useDispatch } from 'react-redux';
+import { showAlert } from '../../slices/alertSlice';
+import { addNewContact } from '../../slices/contactSlice';
 
 const ContactForm = (props) => {
 
     const theme = useTheme();
+    const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues: {
@@ -30,11 +34,19 @@ const ContactForm = (props) => {
         }),
         onSubmit: (values) => {
             console.log(values);
+            dispatch(addNewContact(values));
+            const alert = {
+                open: true,
+                message: "Contact created successfully",
+                severity: "success",
+            };
+            dispatch(showAlert(alert));
+            props?.onClose();
         },
     });
 
     return (
-        <Box component="div" height="100vh">
+        <Box component="div" height="100vh" >
             <Box component="div" sx={{ ...theme.formControl.formHeaderOuterContainer }}>
                 <Box component="div" sx={{ ...theme.formControl.formHeaderContainer }}>
                     <Typography variant="h6" gutterBottom>
@@ -45,16 +57,37 @@ const ContactForm = (props) => {
                             onClick={props?.onClose}
                             variant="contained"
                             color="secondary"
-                            style={{ marginRight: 8, backgroundColor: '#757575', color: 'white', padding: '3px 6px' }}
+                            style={
+                                props?.page === "popupScreen" ?
+                                    {
+                                        marginRight: 8,
+                                        backgroundColor: '#757575',
+                                        color: 'white',
+                                        padding: '3px 6px'
+                                    }
+                                    :
+                                    {
+                                        marginRight: 8,
+                                        backgroundColor: '#757575',
+                                        color: 'white'
+                                    }
+                            }
                         >
                             Cancel
                         </Button>
-                        <Button 
-                          type="submit" 
-                          variant="contained" 
-                          color="primary" 
-                          onClick={formik.handleSubmit}
-                          sx={{ padding: '3px 6px' }}    
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            onClick={formik.handleSubmit}
+                            style={
+                                props?.page === "popupScreen" ?
+                                    {
+                                        padding: '3px 6px'
+                                    }
+                                    :
+                                    {}
+                            }
                         >
                             Save Contact
                         </Button>
@@ -64,9 +97,9 @@ const ContactForm = (props) => {
             </Box>
             <Box component="form" sx={{ ...theme.formControl.formComponent }} onSubmit={formik.handleSubmit}>
                 <Grid container spacing={2}>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <TextField
                             fullWidth
@@ -79,9 +112,9 @@ const ContactForm = (props) => {
                             helperText={formik.touched.contactName && formik.errors.contactName}
                         />
                     </Grid>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <TextField
                             fullWidth
@@ -94,9 +127,9 @@ const ContactForm = (props) => {
                             helperText={formik.touched.email && formik.errors.email}
                         />
                     </Grid>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <TextField
                             fullWidth
@@ -109,9 +142,9 @@ const ContactForm = (props) => {
                             helperText={formik.touched.phone && formik.errors.phone}
                         />
                     </Grid>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <TextField
                             fullWidth
@@ -124,9 +157,9 @@ const ContactForm = (props) => {
                             helperText={formik.touched.extension && formik.errors.extension}
                         />
                     </Grid>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <TextField
                             fullWidth
@@ -139,9 +172,9 @@ const ContactForm = (props) => {
                             helperText={formik.touched.cellular && formik.errors.cellular}
                         />
                     </Grid>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <TextField
                             fullWidth
@@ -154,9 +187,9 @@ const ContactForm = (props) => {
                             helperText={formik.touched.position && formik.errors.position}
                         />
                     </Grid>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <FormControl fullWidth>
                             <InputLabel id="locked-label">Locked</InputLabel>
@@ -168,16 +201,16 @@ const ContactForm = (props) => {
                                 onChange={formik.handleChange}
                                 InputLabelProps={{
                                     shrink: true,
-                                }} 
+                                }}
                             >
                                 <MenuItem value="locked">Locked</MenuItem>
                                 <MenuItem value="unlocked">Unlocked</MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <FormControlLabel
                             control={
@@ -191,9 +224,9 @@ const ContactForm = (props) => {
                             label="Access Portal"
                         />
                     </Grid>
-                    <Grid 
-                      item 
-                      size={props?.page === "popupScreen" ? { xs: 12} : { xs: 12, md: 6 }}
+                    <Grid
+                        item
+                        size={props?.page === "popupScreen" ? { xs: 12 } : { xs: 12, md: 6 }}
                     >
                         <FormControlLabel
                             control={
@@ -207,11 +240,11 @@ const ContactForm = (props) => {
                             label="Send Email"
                         />
                     </Grid>
-                    
+
                 </Grid>
             </Box>
-            <Box component="div" py={4}></Box>   
-            
+            <Box component="div" py={0}></Box>
+
         </Box>
     );
 };

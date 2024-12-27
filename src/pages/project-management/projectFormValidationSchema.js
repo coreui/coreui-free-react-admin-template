@@ -3,7 +3,7 @@ import * as yup from 'yup';
 const projectFormValidationSchema = yup.object().shape({
     projectType: yup.string().required('Project Type is required'),
     fromDate: yup.date().required('From Date is required'),
-    status: yup.string().required('Status is required'),
+    status: yup.boolean().required('Status is required'),
     toDate: yup.date().required('To Date is required'),
     customer: yup.object().required('Customer is required'),
     additionalHours: yup.object().required('Additional Hours is required'),

@@ -364,7 +364,7 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                     </Grid>
                     <Grid item size={{ xs: 12, md: 6 }}>
                         <Grid container spacing={1}>
-                            <Grid item size={{ xs: 12, md: 6 }}>
+                            {/* <Grid item size={{ xs: 12, md: 6 }}>
                                 <FormControlLabel
                                     control={
                                         <Checkbox
@@ -376,7 +376,7 @@ const TimeForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
                                     }
                                     label="All Users"
                                 />
-                            </Grid>
+                            </Grid> */}
                             <Grid item size={{ xs: 12, md: 6 }}>
                                 <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                                     <Typography>Inactive</Typography>

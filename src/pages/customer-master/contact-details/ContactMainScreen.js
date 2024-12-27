@@ -18,7 +18,7 @@ import EditUserModal from '../../user-management/EditUserForm';
 import DialogBox from '../../../components/common/DialogBox';
 import AutoCompleteDataGrid from '../../../components/common/AutoCompleteDataGrid';
 // import ContactForm from './ContactForm';
-import ContactForm from '../../task-management/ContactForm';
+import ContactForm from '../../../components/common/ContactForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { deleteContact } from '../../../slices/contactSlice';

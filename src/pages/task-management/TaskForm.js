@@ -23,7 +23,7 @@ import { ConsultantTypes, ContactPersons, Form, getPriorityIcon, Languages, Lock
 import taskFormValidationSchema from './taskFormValidationSchema';
 import { Add, Edit, Person } from '@mui/icons-material';
 import PopperComponent from '../../components/common/popper';
-import ContactForm from './ContactForm';
+import ContactForm from '../../components/common/ContactForm';
 import { auto } from '@popperjs/core';
 import { createTask } from '../../slices/taskSlice';
 import { showAlert } from '../../slices/alertSlice';
@@ -465,7 +465,7 @@ const TaskForm = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
 
         </Grid>
         <PopperComponent open={open} anchorEl={anchorEl}>
-          <ContactForm isEditContact={isEditContact} onClose={handleClosePopper} />
+          <ContactForm isEditContact={isEditContact} page={"popupScreen"} onClose={handleClosePopper} />
         </PopperComponent>
 
       </Box>

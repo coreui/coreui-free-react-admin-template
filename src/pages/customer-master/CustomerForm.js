@@ -33,7 +33,7 @@ import { showPopup } from '../../slices/popoverSlice';
 import DeletePopover from '../../components/common/DeletePopover';
 import PopperComponent from '../../components/common/popper';
 import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
-import ContactForm from '../task-management/ContactForm';
+import ContactForm from '../../components/common/ContactForm';
 
 
 const userTypes = ["None", "Admin", "Consultant", "Customer"];
@@ -232,7 +232,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
 
   return (
     <Box component="div">
-      <Box display="flex" justifyContent="center" alignItems="center" mb={2} width="100%">
+      <Box display={snackbar.open ? "flex" : "none"} justifyContent="center" alignItems="center" mb={2} width="100%" >
           <MyAlert snackbar={snackbar} onClose={handleCloseSnackbar} />
       </Box>
       <Box component="div" sx={{ ...theme.formControl.formHeaderOuterContainer }}>

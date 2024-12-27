@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Paper, TextField, Typography, Button, MenuItem, Grid2, Autocomplete } from "@mui/material";
+import { Box, Paper, TextField, Typography, Button, MenuItem, Grid2, Autocomplete, Stack, Switch } from "@mui/material";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { createConnection } from "../../slices/connectionSlice";
@@ -18,6 +18,7 @@ const ConnectionForm = ({ onSave, onCancel }) => {
     user: '',
     password: '',
     comments: '',
+    status: false,
   });
 
   const handleChange = (e) => {
@@ -193,7 +194,20 @@ const ConnectionForm = ({ onSave, onCancel }) => {
 
   return (
     <Paper elevation={3} style={{ padding: '16px', maxWidth: '500px' }}>
-      <Typography variant="h6">Add Connection</Typography>
+      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <Typography variant="h6">Add Connection</Typography>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+            <Typography>Inactive</Typography>
+            <Switch
+              id="status"
+              name="status"
+              checked={formik.values.status}
+              onChange={formik.handleChange}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
+            <Typography>Active</Typography>
+          </Stack>
+      </Box>
       <Box component="form" onSubmit={formik.handleSubmit}>
         <Grid2 container columnSpacing={1}>
           <Grid2 size={{ xs: 12, md: 6 }}>

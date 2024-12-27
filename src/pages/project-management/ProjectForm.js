@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField, Button, MenuItem, Select, FormControl, InputLabel, FormControlLabel, Checkbox, Divider, useTheme, IconButton } from '@mui/material'
+import { Box, Typography, TextField, Button, MenuItem, Select, FormControl, InputLabel, FormControlLabel, Checkbox, Divider, useTheme, IconButton, Stack, Switch } from '@mui/material'
 import { Formik, useFormik } from 'formik';
 import Grid from '@mui/material/Grid2';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -12,7 +12,7 @@ import { ProjectMethod, ProjectTypes, Status } from '../../components/common/uti
 import { Search } from '@mui/icons-material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PopperComponent from '../../components/common/popper';
-import ContactForm from '../task-management/ContactForm';
+import ContactForm from '../../components/common/ContactForm';
 import HourForm from './HourForm';
 import { showAlert } from '../../slices/alertSlice';
 
@@ -26,7 +26,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
   const [formData, setFormData] = useState({
     projectType: '',
     fromDate: '',
-    status: '',
+    status: false,
     toDate: '',
     customer: null,
     additionalHours: '',
@@ -49,7 +49,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
     onSubmit: (values) => {
       console.log(values);
       dispatch(addNewProject(values));
-      const alert ={
+      const alert = {
         open: true,
         message: "Project added successfully",
         severity: "success",
@@ -144,7 +144,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
               InputLabelProps={{ shrink: true }}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          {/* <Grid size={{ xs: 12, md: 6 }}>
             <FormControl fullWidth>
               <InputLabel>Status</InputLabel>
               <Select
@@ -165,7 +165,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
 
               </Select>
             </FormControl>
-          </Grid>
+          </Grid> */}
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
@@ -182,7 +182,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
             <AutoCompleteDataGrid
-              label="Select Customer" 
+              label="Select Customer"
               columns={autoCompleteDataGridColumns}
               rows={autoCompleteDataGridRows}
               value={formik.values.customer || ''}
@@ -203,12 +203,12 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
                   label="Additional Hours"
                   name="additionalHours"
                   type='number'
-                  value={formik.values.additionalHours || hours.hours}  
+                  value={formik.values.additionalHours || hours.hours}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   error={formik.touched.additionalHours && Boolean(formik.errors.additionalHours)}
                   helperText={formik.touched.additionalHours && formik.errors.additionalHours}
-                  InputLabelProps={{ shrink: true }}  
+                  InputLabelProps={{ shrink: true }}
                   disabled
                 />
               </Grid>
@@ -216,7 +216,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
                 <IconButton
                   size='small'
                   variant='contained'
-                  color='primary' 
+                  color='primary'
                   onClick={handleClick}
                   disableRipple
                 >
@@ -307,7 +307,20 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
               helperText={formik.touched.balanceHours && formik.errors.balanceHours}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid item size={{ xs: 12, md: 6 }}>
+            <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+              <Typography>Inactive</Typography>
+              <Switch
+                id="status"
+                name="status"
+                checked={formik.values.status}
+                onChange={formik.handleChange}
+                inputProps={{ 'aria-label': 'controlled' }}
+              />
+              <Typography>Active</Typography>
+            </Stack>
+          </Grid>
+          {/* <Grid size={{ xs: 12, md: 6 }}>
             <FormControlLabel
               control={
                 <Checkbox
@@ -318,7 +331,7 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
               }
               label="Is Approved Hours"
             />
-          </Grid>
+          </Grid> */}
         </Grid>
         <PopperComponent open={open} anchorEl={anchorEl}>
           <HourForm isEditContact={isEditContact} onClose={handleClosePopper} />

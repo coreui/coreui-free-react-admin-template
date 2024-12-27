@@ -10,12 +10,14 @@ import {
     Typography,
     Box,
     Popover,
-    Paper
+    Paper,
+    Menu,
+    MenuItem
 } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
 import ChatIcon from '@mui/icons-material/Chat';
-import { ThumbUpAltOutlined } from '@mui/icons-material';
+import { Delete, Edit, ThumbUpAltOutlined } from '@mui/icons-material';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import CloseIcon from '@mui/icons-material/Close';
@@ -28,13 +30,25 @@ export default function ChatDrawer({ open, toggleDrawer }) {
     const [attachment, setAttachment] = useState(null);
     const [emojiAnchor, setEmojiAnchor] = useState(null);
     const [selectedMessage, setSelectedMessage] = useState(null);
+   
+    const [editIndex, setEditIndex] = useState(null);
+
+    console.log("messages", messages);
 
 
 
     // Handle Sending New Message
     const handleSend = () => {
         if (input || attachment) {
-            setMessages([...messages, { text: input, file: attachment, reactions: [] }]);
+            if (editIndex !== null) {
+                const updatedMessages = messages.map((msg, index) =>
+                    index === editIndex ? { ...msg, text: input, file: attachment } : msg
+                );
+                setMessages(updatedMessages);
+                setEditIndex(null);
+            } else {
+                setMessages([...messages, { text: input, file: attachment }]);
+            }
             setInput('');
             setAttachment(null);
         }
@@ -54,11 +68,13 @@ export default function ChatDrawer({ open, toggleDrawer }) {
 
     // Handle Emoji Selection
     const handleEmojiClick = (emojiObject) => {
+        console.log("emojiObject", emojiObject);    
+        console.log("messages", messages);  
         const updatedMessages = messages.map((msg, index) => {
             if (index === selectedMessage) {
                 return {
                     ...msg,
-                    reactions: [...msg.reactions, emojiObject.emoji]
+                    reactions: [...(msg.reactions || [] ), emojiObject.emoji]
                 };
             }
             return msg;
@@ -75,6 +91,31 @@ export default function ChatDrawer({ open, toggleDrawer }) {
     const removeAttachment = () => {
         setAttachment(null);
     };
+
+    // const handleContextMenu = (event, index) => {
+    //     event.preventDefault();
+    //     setSelectedFileIndex(index);
+    //     setContextMenu(
+    //         contextMenu === null
+    //             ? { mouseX: event.clientX - 2, mouseY: event.clientY - 4 }
+    //             : null,
+    //     );
+    // };
+
+    const handleDeleteFile = (i) => {
+        console.log("index", i);    
+        const updatedMessages = messages.filter((msg, index) => index !== i);
+        setMessages(updatedMessages);
+    };
+
+    const handleEdit = (i) => {
+        console.log("index", i);
+        const message = messages[i];
+        setInput(message.text);
+        setAttachment(message.file);
+        setEditIndex(i);
+    };
+
 
     return (
         <>
@@ -100,8 +141,12 @@ export default function ChatDrawer({ open, toggleDrawer }) {
 
                     {/* Chat Messages */}
                     <List sx={{ height: 470, overflow: 'auto', mt: 2 }}>
-                        {messages.map((msg, index) => (
-                            <ListItem key={index} alignItems="flex-start" sx={{ padding: "3px", mb: 1 }}>
+                        {messages && messages.map((msg, index) => (
+                            <ListItem
+                                key={index}
+                                alignItems="flex-start"
+                                sx={{ padding: "3px", mb: 1 }}
+                            >
                                 <Box
                                     sx={{
                                         border: '1px solid #eceff1',
@@ -127,7 +172,7 @@ export default function ChatDrawer({ open, toggleDrawer }) {
                                             </Typography>
                                         </Box>
                                         <Typography>{msg.text}</Typography>
-                                        {msg.file && (
+                                        {msg?.file && (
                                             <Paper
                                                 elevation={2}
                                                 sx={{
@@ -144,38 +189,55 @@ export default function ChatDrawer({ open, toggleDrawer }) {
                                     </Box>
 
                                     {/* Reactions and Emoji Button */}
-                                    <Box mt={1} display="flex" padding={0} alignItems="center">
+                                    <Box mt={1} display="flex" padding={0} justifyContent="space-between" alignItems="center">
                                         {/* {msg.reactions.map((emoji, idx) => (
                                             <Typography key={idx} sx={{ marginRight: 1 }}>
                                                 {emoji}
                                             </Typography>
                                         ))} */}
-                                        <IconButton
-                                            size='small'
-                                        >
-                                            <ThumbUpAltOutlined />
-                                        </IconButton>
-                                        <IconButton
-                                            size='small'
-                                            onClick={(event) => openEmojiPicker(event, index)}
-                                        >
-                                            {
-                                                msg.reactions.length > 0 ? (
-                                                    <Typography sx={{ marginRight: 1 }}>
-                                                        {msg.reactions[0]}
-                                                    </Typography>
+                                        <Box display="flex" padding={0} alignItems="center">
+                                            <IconButton
+                                                size='small'
+                                            >
+                                                <ThumbUpAltOutlined />
+                                            </IconButton>
+                                            <IconButton
+                                                size='small'
+                                                onClick={(event) => openEmojiPicker(event, index)}
+                                            >
+                                                {
+                                                    msg?.reactions?.length > 0 ? (
+                                                        <Typography sx={{ marginRight: 1 }}>
+                                                            {msg.reactions[msg.reactions.length - 1]}
+                                                        </Typography>
 
-                                                ) : (
-                                                    <IconButton
-                                                        size='small'
-                                                        onClick={(event) => openEmojiPicker(event, index)}
-                                                    >
-                                                        <InsertEmoticonIcon />
-                                                    </IconButton>
-                                                )
-                                            }
+                                                    ) : (
+                                                        <IconButton
+                                                            size='small'
+                                                            onClick={(event) => openEmojiPicker(event, index)}
+                                                        >
+                                                            <InsertEmoticonIcon />
+                                                        </IconButton>
+                                                    )
+                                                }
 
-                                        </IconButton>
+                                            </IconButton>
+                                        </Box>
+                                        <Box display="flex" padding={0} alignItems="center">
+                                            <IconButton
+                                                size='small'
+                                                onClick={() => handleEdit(index)}   
+                                            >
+                                                <Edit />
+                                            </IconButton>
+                                            <IconButton
+                                                size='small'
+                                                onClick={() => handleDeleteFile(index)} 
+
+                                            >
+                                                <Delete />
+                                            </IconButton>
+                                        </Box>
                                     </Box>
                                 </Box>
                             </ListItem>
@@ -236,6 +298,18 @@ export default function ChatDrawer({ open, toggleDrawer }) {
 
                     </Box>
                 </Box>
+                {/* <Menu
+                    open={contextMenu !== null}
+                    onClose={() => setContextMenu(null)}
+                    anchorReference="anchorPosition"
+                    anchorPosition={
+                        contextMenu !== null
+                            ? { top: contextMenu.mouseY, left: contextMenu.mouseX }
+                            : undefined
+                    }
+                >
+                    <MenuItem onClick={handleDeleteFile}>Remove File</MenuItem>
+                </Menu> */}
             </Drawer>
 
             {/* Emoji Picker Popover */}

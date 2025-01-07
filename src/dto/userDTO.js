@@ -18,23 +18,22 @@ export const userDTO = {
 
 export function buildUserDTO(user) {
     console.log("user", user)
-    let id = 1;
     const uDTO = { ...userDTO };
-    uDTO.id = id + 1;
-    uDTO.userType = user?.userType;
-    uDTO.name = user?.name;
-    uDTO.officeEmailId = user?.officeEmailId || user?.email;
-    uDTO.mobile = user?.mobile;
-    uDTO.password = user?.password;
-    uDTO.confirmPassword = user?.confirmPassword;
-    uDTO.joiningDate = user?.joiningDate;
-    uDTO.consultanType = user?.consultanType;
-    uDTO.position = user?.position;
-    uDTO.dateOfBirth = user?.dateOfBirth;
-    uDTO.status = user?.status;
-    uDTO.language = user?.language;
-    uDTO.customer = user?.customerName;
-    uDTO.locked = user?.locked;
+    uDTO.id = user?.Id;
+    uDTO.userType = user?.UserType;
+    uDTO.name = user?.UserName;
+    uDTO.officeEmailId = user?.OfficeEmailId || user?.email;
+    uDTO.mobile = user?.Mobile;
+    uDTO.password = user?.Password;
+    // uDTO.confirmPassword = user?.confirmPassword;
+    uDTO.joiningDate = user?.JoiningDate;
+    uDTO.consultanType = user?.ConsultanType;
+    uDTO.position = user?.Position;
+    uDTO.dateOfBirth = user?.DateOfBirth;
+    uDTO.status = user?.Status;
+    uDTO.language = user?.Language;
+    uDTO.customer = user?.Customerid;
+    uDTO.locked = user?.Locked;
     console.log("uDTO", uDTO)
     return uDTO;
 }

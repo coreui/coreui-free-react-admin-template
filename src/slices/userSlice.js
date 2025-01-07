@@ -4,22 +4,22 @@ import { createNewUser, getUserList } from '../components/common/apiCalls';
 
 const initialState = {
     userList: [
-        {
-            "id": 1,
-            "userType": "Admin",
-            "name": "Jishnu",
-            "officeEmailId": "ji@gmail.com",
-            "mobile": "1111111",
-            "password": "123456789",
-            "confirmPassword": "123456789",
-            "customer": "",
-            "joiningDate": "2024-12-05",
-            "position": "Manager",
-            "dateOfBirth": "2024-12-03",
-            "status": "Active",
-            "language": "English",
-            "locked": "Locked"
-        }
+        // {
+        //     "id": 2,
+        //     "userType": "Admin",
+        //     "name": "Jishnu",
+        //     "officeEmailId": "ji@gmail.com",
+        //     "mobile": "1111111",
+        //     "password": "123456789",
+        //     "confirmPassword": "123456789",
+        //     "customer": "",
+        //     "joiningDate": "2024-12-05",
+        //     "position": "Manager",
+        //     "dateOfBirth": "2024-12-03",
+        //     "status": "Active",
+        //     "language": "English",
+        //     "locked": "Locked"
+        // }
     ],
     user: userDTO, 
     status: '',
@@ -27,12 +27,12 @@ const initialState = {
 };
 
 // Async Thunk for Fetching User List
-export const fetchUserList = createAsyncThunk('user/fetchUserList', async (userObj) => {
-    const userList = await getUserList(userObj);
-    const response = buildUserListDTO(userList);
+export const fetchUserList = createAsyncThunk('user/fetchUserList', async (userQueries) => {
+    const userList = await getUserList(userQueries);
+    console.log("User List Response:", userList);   
     // Await async result
-    console.log("Processed User List Response:", response);
-    return response; 
+    // console.log("Processed User List Response:", response);
+    return userList; 
 });
 
 // Async Thunk for Creating User
@@ -59,7 +59,8 @@ const userSlice = createSlice({
             })
             .addCase(fetchUserList.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.userList = action.payload;
+                console.log("Payload received in fetchUserList:", action.payload)
+                state.userList = buildUserListDTO(action.payload);
                 console.log("Updated state.userList:", state.userList);
             })
             .addCase(fetchUserList.rejected, (state, action) => {

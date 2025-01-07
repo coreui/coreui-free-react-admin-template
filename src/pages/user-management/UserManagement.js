@@ -50,11 +50,11 @@ const UserManagement = () => {
   const dataGridRef = useRef();
 
   // Fetch users from backend
-  // useEffect(() => {
-  //   if (user) {
-  //   dispatch(fetchUserList());
-  //   }
-  // }, [userList]);
+  useEffect(() => {
+    const params = {filter: "A", orderby: 1, pagesize: 4, page: 1, select: null};
+    dispatch(fetchUserList(params));
+  
+  }, []);
 
   // Calculate Drawer Position and Height
   useEffect(() => {

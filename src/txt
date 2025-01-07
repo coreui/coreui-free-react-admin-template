@@ -1,74 +1,22 @@
 {
-    "userType": "Admin",
-    "name": "Jishnu",
-    "officeEmailId": "ji@gmail.com",
-    "mobile": "1111111",
-    "password": "123456789",
-    "confirmPassword": "123456789",
-    "joiningDate": "2024-12-05",
-    "position": "Manager",
-    "dateOfBirth": "2024-12-03",
-    "status": "Active",
-    "language": "English",
-    "locked": "Locked"
+  "ConsultantType": null,
+  "Created_at": null,
+  "Createdby": null,
+  "Customerid": null,
+  "DateOfBirth": null,
+  "FirstName": "Test",
+  "Id": 1,
+  "JoiningDate": null,
+  "Language": null,
+  "LastName": null,
+  "Locked": null,
+  "Mobile": null,
+  "Modifiedat": null,
+  "Modifiedby": null,
+  "OfficeEmailId": null,
+  "Password": null,
+  "Position": null,
+  "Status": null,
+  "UserName": null,
+  "UserType": "1"
 }
-
-  {
-    customer: null,
-    taskDate: null,
-    task: null,
-    startTime: null,
-    description: null,
-    endTime: null, // Only for customer
-    approvedHours: null,
-    remainingHours: null,
-    totalTime: null,
-    totalWorkingTime: null,
-    contactPerson: null,
-    user: null,
-    internalNotes: null,
-    status: null,
-    allUsers: false,    
-  }
-
-  {
-    ticketNumber: null,
-    customer: null,
-    module: null,
-    contactName: null,
-    form: null,
-    projectName: null,
-    subject: null, // Only for customer
-    attachment: null,
-    status: null,
-    approvedHours: null,
-    balanceHours: null,
-    priority: null,
-    detailDescription: null,
-    user: null,
-  }
-
-  {
-    "ticketNumber": "2580",
-    "customer": {
-        "id": 1,
-        "customerName": "John Doe",
-        "projectType": "Web Development"
-    },
-    "module": "Module 1",
-    "contactName": {
-        "id": 3,
-        "contactName": "Sam Brown"
-    },
-    "form": "Form 1",
-    "projectName": "Project 1",
-    "subject": "ddfdfdf",
-    "attachment": {},
-    "status": "Open",
-    "approvedHours": "100",
-    "balanceHours": "10",
-    "priority": "Low",
-    "detailDescription": "<p>kkkkkkkk</p>",
-    "user": "User 1"
-}
-

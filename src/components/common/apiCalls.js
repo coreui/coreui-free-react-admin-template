@@ -29,7 +29,13 @@ select: null
 }
 const apiName={
     GetUsers: "GetUsers",
-    CreateUser: "CreateUser",
+    InsertUser: "InsertUser",
+    UpdateUser: "UpdateUser",
+    DeleteUser: "DeleteUser",
+    GetCustomers: "GetCustomers",
+    InsertCustomer: "InsertCustomer",
+    UpdateCustomer: "UpdateCustomer",
+    DeleteCustomer: "DeleteCustomer",
 }
 const ConstructApiCall = (ApiName, data = null,QueryParams=ApiQueryParams) => {
     
@@ -74,7 +80,8 @@ export const getUserList = async (QueryParams) => {
         const response = await axios({
             method: apiCallConfig.method,
             url: apiCallConfig.url,
-            data: apiCallConfig.body
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
         });
 
         return getDataFromResponse(response);
@@ -86,19 +93,147 @@ export const getUserList = async (QueryParams) => {
 
 //Create user
 export const createNewUser = async (userObj) => {
-    const apiCallConfig = ConstructApiCall(apiName.CreateUser,userObj);
-    return userObj;
+    const apiCallConfig = ConstructApiCall(apiName.InsertUser,userObj);
+    console.log("API Call Config:", apiCallConfig)
+
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
 }
+
+//Update user
+export const updateUser = async (userObj) => {
+    const apiCallConfig = ConstructApiCall(apiName.UpdateUser,userObj);
+    console.log("API Call Config:", apiCallConfig)
+
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
+}
+
+export const deleteUser = async (userId) => {
+    const apiCallConfig = ConstructApiCall(apiName.DeleteUser,userId);
+    console.log("API Call Config:", apiCallConfig)
+
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return response;
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
+}
+
 
 //Get customer list 
-export const getCustomerList = async (customerList) => {
-    return customerList;
-}   
+export const customerList = async (QueryParams) => {
+    const apiCallConfig = ConstructApiCall(apiName.GetCustomers,null,QueryParams);
+    console.log("API Call Config:", apiCallConfig)
 
-//Create customer   
-export const createNewCustomer = async (customerObj, connections) => {
-    return {customerObj, connections};  
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
+}; 
+
+//Create customer
+export const insertCustomer = async (customerObj) => {
+    const apiCallConfig = ConstructApiCall(apiName.InsertCustomer,customerObj);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
+}; 
+
+//Update customer
+export const updateCustomer = async (customerObj) => {
+    const apiCallConfig = ConstructApiCall(apiName.UpdateCustomer,customerObj);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
+};
+
+//Delete customer
+export const deleteCustomer = async (customerId) => {
+    const apiCallConfig = ConstructApiCall(apiName.DeleteCustomer,customerId);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return response;
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
 }
+
 
 //Get connection list
 export const getConnectionList = async (connectionList) => {

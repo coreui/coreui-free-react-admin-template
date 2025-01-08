@@ -17,7 +17,7 @@ import userValidationSchema from './userValidationSchema';
 import Grid from '@mui/material/Grid2';
 import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
 import { createUser } from '../../slices/userSlice';
-import { userDTO } from '../../dto/userDTO';
+import { buildUserDTO, userDTO } from '../../dto/userDTO';
 import { ConsultantTypes, Languages, LockStatus, Positions, Status, UserTypeArray, userTypeObj } from '../../components/common/utils';
 import { showAlert } from '../../slices/alertSlice';
 
@@ -28,7 +28,9 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
   const [isEditMode, setIsEditMode] = useState(false);
   const [formData, setFormData] = useState({
     userType: '',
-    name: '',
+    firstName: '',
+    lastName: '',
+    username: '',
     officeEmailId: '',
     mobile: '',
     password: '',
@@ -50,7 +52,8 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
     validationSchema: userValidationSchema,
     onSubmit: (values) => {
       console.log(values);
-      dispatch(createUser(values));
+      const userObj = buildUserDTO(values);
+      //dispatch(createUser(userObj));
       // handleOpenDialog()
       const alert = {
         open: true,
@@ -120,13 +123,38 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
-              label="Name"
-              name="name"
-              value={formik.values.name}
+              label="First Name"
+              name="firstName"
+              value={formik.values.firstName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.name && Boolean(formik.errors.name)}
-              helperText={formik.touched.name && formik.errors.name}
+              error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+              helperText={formik.touched.firstName && formik.errors.firstName}
+            />
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <TextField
+              fullWidth
+              label="Last Name"
+              name="lastName"
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+              helperText={formik.touched.lastName && formik.errors.lastName}
+            />
+          </Grid>
+
+          <Grid size={{ xs: 12, md: 6 }}>
+            <TextField
+              fullWidth
+              label="User Name"
+              name="username"
+              value={formik.values.username}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.username && Boolean(formik.errors.username)}
+              helperText={formik.touched.username && formik.errors.username}
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -261,8 +289,8 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     helperText={formik.touched.status && formik.errors.status}
                   >
                     {Status.map((type) => (
-                      <MenuItem key={type} value={type}>
-                        {type}
+                      <MenuItem key={type} value={type.id}>
+                        {type.label}
                       </MenuItem>
                     ))}
                   </TextField>
@@ -320,15 +348,16 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     error={formik.touched.status && Boolean(formik.errors.status)}
                     helperText={formik.touched.status && formik.errors.status}
                   >
-                    {Status.map((type) => (
-                      <MenuItem key={type} value={type}>
-                        {type}
+                    {Status.map((obj) => (
+                      <MenuItem key={obj.id} value={obj.id}>
+                        {obj.label}
                       </MenuItem>
                     ))}
                   </TextField>
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <AutoCompleteDataGrid
+                    label="Select Customer"
                     columns={autoCompleteDataGridColumns}
                     rows={autoCompleteDataGridRows} 
                     value={formik.values.customerName || ''}

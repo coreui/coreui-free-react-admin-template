@@ -17,6 +17,9 @@ export const customerDTO = {
     controlCenterPass: null,
     installationCredentials: null,
     connections: null,
+    //List<contactDto> contacts:null,
+    //list of contactDto
+    //List of ConnectionDto
 }
 
 export const customerListDTO = {

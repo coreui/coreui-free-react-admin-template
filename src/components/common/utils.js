@@ -16,7 +16,7 @@ export const userTypeObj = {
 export const UserTypeArray = ["None", "Admin", "Consultant", "Customer"];
 export const ConsultantTypes = ["Technical", "Functional", "Implementation", "Support", "Development"];
 export const Positions = ["Manager", "Senior", "Junior"];
-export const Status = ["Active", "Inactive"];
+export const Status = [{id: 0, label:"Inactive"}, {id: 1, label:"Active"},];
 export const Languages = ["English", "Hebrew"];
 export const LockStatus = ["Locked", "Unlocked"];
 

@@ -51,8 +51,8 @@ const UserManagement = () => {
 
   // Fetch users from backend
   useEffect(() => {
-    const params = {filter: "A", orderby: 1, pagesize: 4, page: 1, select: null};
-    dispatch(fetchUserList(params));
+    
+    dispatch(fetchUserList());
   
   }, []);
 

@@ -2,7 +2,9 @@ import * as yup from 'yup';
 
 const userValidationSchema = yup.object().shape({
     userType: yup.string().required('User Type is required'),
-    name: yup.string().required('Name is required'),
+    firstName: yup.string().required('First name is required'),
+    lastName: yup.string().required('Last name is required'),
+    username: yup.string().required('User name is required'),
     officeEmailId: yup.string().email('Invalid email format').required('Office email ID is required'),
     mobile: yup.string().required('Mobile is required'),
     password: yup.string().min(8, 'Password must be at least 8 characters long').required('Password is required'),

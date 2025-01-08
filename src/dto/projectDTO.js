@@ -12,6 +12,7 @@ export const projectDTO = {
     budget: null,
     consumedHours: null,    
     balanceHours: null, 
+    
 };  
 
 export const buildProjectDTO = (project) => {

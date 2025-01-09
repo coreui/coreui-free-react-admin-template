@@ -3,7 +3,7 @@ export const userDTO = {
     userType: null,
     firstName: null,
     lastName: null, 
-    username: null,
+    userName: null,
     officeEmailId: null,
     mobile: '',
     password: null,
@@ -15,37 +15,39 @@ export const userDTO = {
     status: null,
     language: null,
     customer: null, 
+    customerId: null,
     locked: null,
-    created_at: null,
-    modifiedat: null,
-    createdby: null,    
-    modifiedby: null,
+    createdAt: null,
+    modifiedAt: null,
+    createdBy: null,    
+    modifiedBy: null,
 };  
 
 export function buildUserDTO(user) {
     console.log("user", user)
     const uDTO = { ...userDTO };
-    uDTO.id = user?.Id || user?.id;
-    uDTO.userType = user?.UserType || user?.userType;
-    uDTO.firstName = user?.FirstName || user?.firstName;
-    uDTO.lastName = user?.LastName || user?.lastName;
-    uDTO.username = user?.UserName|| user?.username;
-    uDTO.officeEmailId = user?.OfficeEmailId || user?.officeEmailId;
-    uDTO.mobile = user?.Mobile || user?.mobile;
-    uDTO.password = user?.Password || user?.password    ;
+    uDTO.id = user?.id;
+    uDTO.userType = user?.userType;
+    uDTO.firstName = user?.firstName;
+    uDTO.lastName = user?.lastName;
+    uDTO.userName = user?.userName;
+    uDTO.officeEmailId = user?.officeEmailId;
+    uDTO.mobile = user?.mobile;
+    uDTO.password = user?.password    ;
     // uDTO.confirmPassword = user?.confirmPassword;
-    uDTO.joiningDate = user?.JoiningDate || user?.joiningDate;
-    uDTO.consultantType = user?.ConsultantType || user?.consultantType;
-    uDTO.position = user?.Position || user?.position;
-    uDTO.dateOfBirth = user?.DateOfBirth || user?.dateOfBirth;
-    uDTO.status = user?.Status || user?.status;
-    uDTO.language = user?.Language || user?.language;
-    uDTO.customer = user?.Customerid === null ? user?.customerName?.id : user?.Customerid;
-    uDTO.locked = user?.Locked || user?.locked;
-    uDTO.created_at = user?.Created_at || user?.created_at;
-    uDTO.modifiedat = user?.Modifiedat || user?.modifiedat;
-    uDTO.createdby = user?.Createdby || user?.createdby;
-    uDTO.modifiedby = user?.Modifiedby || user?.modifiedby;
+    uDTO.joiningDate = user?.joiningDate;
+    uDTO.consultantType =  user?.consultantType;
+    uDTO.position = user?.position;
+    uDTO.dateOfBirth = user?.dateOfBirth;
+    uDTO.status = user?.status;
+    uDTO.language = user?.language;
+    uDTO.customer = user?.customer;
+    uDTO.customerId = user?.customer?.id || user?.customerId;
+    uDTO.locked = user?.locked;
+    uDTO.createdAt = user?.createdAt;
+    uDTO.modifiedAt = user?.modifiedAt;
+    uDTO.createdBy = user?.createdBy;
+    uDTO.modifiedBy = user?.modifiedBy;
     console.log("uDTO", uDTO)
     return uDTO;
 }

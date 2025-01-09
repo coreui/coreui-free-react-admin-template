@@ -63,8 +63,17 @@ const ConstructApiCall = (ApiName, data = null,QueryParams=ApiQueryParams) => {
 };
 
 const getDataFromResponse = (response) => {
-    return response.data[0].data;
-}
+    if (response.data) {
+        const resultString = response.data[0].resObject[0].result;
+        console.log("Result String:", resultString);        
+
+        const result = JSON.parse(resultString);
+        console.log("Result:", result); 
+        return result.data;  
+    }
+    return null;
+};
+
 
 //user login
 export const userLogin = async (credentials) => {
@@ -84,13 +93,36 @@ export const getUserList = async (QueryParams) => {
             headers: apiCallConfig.headers
         });
 
-        return getDataFromResponse(response);
+        console.log("Response:", response);
+
+        const extractedData = getDataFromResponse(response);
+        return extractedData;
+        console.log("Extracted Data:", extractedData);      
     } catch (error) {
         console.error("API call failed", error);
         return null;
     }
 };
 
+//get single user
+export const getSingleUser = async (obj) => {
+    const apiCallConfig = ConstructApiCall(apiName.GetUsers,obj);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }   
+}
 //Create user
 export const createNewUser = async (userObj) => {
     const apiCallConfig = ConstructApiCall(apiName.InsertUser,userObj);
@@ -133,8 +165,8 @@ export const updateUser = async (userObj) => {
     }
 }
 
-export const deleteUser = async (userId) => {
-    const apiCallConfig = ConstructApiCall(apiName.DeleteUser,userId);
+export const deleteUser = async (obj) => {
+    const apiCallConfig = ConstructApiCall(apiName.DeleteUser,obj);
     console.log("API Call Config:", apiCallConfig)
 
 
@@ -234,6 +266,14 @@ export const deleteCustomer = async (customerId) => {
     }
 }
 
+
+export const createNewCustomer = async (customerObj) => {
+    return customerObj;
+}
+
+export const getCustomerList = async (customerList) => {
+    return customerList;
+}   
 
 //Get connection list
 export const getConnectionList = async (connectionList) => {

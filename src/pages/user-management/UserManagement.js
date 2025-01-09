@@ -11,23 +11,24 @@ import {
   Dialog,
   IconButton,
 } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid,  } from '@mui/x-data-grid';
 import { Delete, Edit } from '@mui/icons-material';
 import EditContainer from '../../components/common/EditContainer';
 import EditUserModal from './EditUserForm';
 import DialogBox from '../../components/common/DialogBox';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, fetchUserList } from '../../slices/userSlice';
+import { deleteAUser, fetchSingleUser, fetchUserList } from '../../slices/userSlice';
 import { userTypeObj } from '../../components/common/utils';
 import MyAlert from '../../components/common/Alert';
 import { showAlert } from '../../slices/alertSlice';
 import { showPopup } from '../../slices/popoverSlice';
 import DeletePopover from '../../components/common/DeletePopover';
+import { CustomToolbar } from '../../components/common/CustomToolbar';
 
 const UserManagement = () => {
 
   const dispatch = useDispatch();
-  const { userList, user } = useSelector((state) => state.user);
+  const { userList, status } = useSelector((state) => state.user);
   console.log("User List:", userList);
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
@@ -48,13 +49,24 @@ const UserManagement = () => {
   });
   const [anchorEl, setAnchorEl] = useState(null);
   const dataGridRef = useRef();
+  const [filterModel, setFilterModel] = useState({
+    items: [{ field: 'status', operator: 'equals', value: 'Active' }]
+  })
+
+ 
 
   // Fetch users from backend
   useEffect(() => {
     
     dispatch(fetchUserList());
   
-  }, []);
+  }, [users]);
+
+  useEffect(() => {
+    if (isEditMode && currentUserId) {
+      dispatch(fetchSingleUser({id: currentUserId}));
+    }
+  }, [isEditMode])
 
   // Calculate Drawer Position and Height
   useEffect(() => {
@@ -85,7 +97,7 @@ const UserManagement = () => {
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteUser(id));
+    dispatch(deleteAUser({id: id}));
     const alert = {
       open: true,
       message: "User deleted successfully",
@@ -98,6 +110,13 @@ const UserManagement = () => {
   const handleCloseSnackbar = () => {
     setSnackbar((prev) => ({ ...prev, open: false }));
   };
+
+  const handleRowClick = (row) => {
+    // navigate("/reportDefinitions", { state: { row: row } })
+    setDrawerOpen(true);
+    setIsEditMode(true);
+    setCurrentUserId(row.id);
+  }
 
   const columns = [
     {
@@ -138,9 +157,23 @@ const UserManagement = () => {
       minWidth: 150 
     },
     {
-      field: 'name',
-      headerName: 'Name',
-      renderHeader: () => <strong>Name</strong>,
+      field: 'firstName',
+      headerName: 'First Name',
+      renderHeader: () => <strong>First Name</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'lastName',
+      headerName: 'Last Name',
+      renderHeader: () => <strong>Last Name</strong>,
+      flex: 1,
+      minWidth: 150 
+    },
+    {
+      field: 'userName',
+      headerName: 'User Name',
+      renderHeader: () => <strong>User Name</strong>,
       flex: 1,
       minWidth: 150 
     },
@@ -158,13 +191,13 @@ const UserManagement = () => {
       flex: 1,
       minWidth: 150 
     },
-    {
-      field: 'password',
-      headerName: 'Password',
-      renderHeader: () => <strong>Password</strong>,
-      flex: 1,
-      minWidth: 150 
-    },
+    // {
+    //   field: 'password',
+    //   headerName: 'Password',
+    //   renderHeader: () => <strong>Password</strong>,
+    //   flex: 1,
+    //   minWidth: 150 
+    // },
     {
       field: 'customer',
       headerName: 'Customer',
@@ -205,6 +238,16 @@ const UserManagement = () => {
       field: 'status',
       headerName: 'Status',
       renderHeader: () => <strong>Status</strong>,
+      renderCell: (params) => (
+        params.row.status ? (
+          
+        <div>
+          <p>Active</p>
+        </div>
+          ) : (
+            <p>Inactive</p>
+          )
+      ),
       flex: 1,
       minWidth: 150 
     }
@@ -305,6 +348,7 @@ const UserManagement = () => {
               <DataGrid
                 rows={userList}
                 columns={columns}
+                onRowClick={(rows) => handleRowClick(rows.row)}
                 disableColumnMenu
                 disableRowSelectionOnClick
                 hideFooterPagination
@@ -314,6 +358,17 @@ const UserManagement = () => {
                 sx={{
                   height: 'calc(100vh - 300px)',
                 }}
+                // filterModel={filterModel}
+                // onFilterModelChange={(newFilterModel) => setFilterModel(newFilterModel)}
+                slots={{ 
+                  toolbar: CustomToolbar,
+                }}
+                initialState={{
+                  sorting: {
+                      sortModel: [{ field: 'ModifiedOn', sort: 'desc' }]
+                  },
+                  pagination: { paginationModel: { pageSize: 50 } },
+              }}
               />
             </Box>
 
@@ -321,8 +376,15 @@ const UserManagement = () => {
         </Card>
 
         <EditContainer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-          <EditUserModal onClose={() => setDrawerOpen(false)} handleOpenDialog={handleOpenDialog} />
-          <DialogBox open={dialogOpen} handleCloseDialog={handleCloseDialog} />
+          <EditUserModal 
+            onClose={() => {
+            setDrawerOpen(false)
+            setIsEditMode(false)
+            }} 
+            // handleOpenDialog={handleOpenDialog} 
+            isEditMode={isEditMode} 
+          />
+          {/* <DialogBox open={dialogOpen} handleCloseDialog={handleCloseDialog} /> */}
         </EditContainer>
 
 

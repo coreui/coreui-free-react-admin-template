@@ -107,6 +107,7 @@ const AutoCompleteDataGrid = ({
         const values = Object.values(option).filter((_, index) => index !== 0); 
         return values[0] || ''; 
       }}
+      isOptionEqualToValue={(option, value) => option.id === value.id}  
       
      
       slots={{ popper: CustomPopper }}

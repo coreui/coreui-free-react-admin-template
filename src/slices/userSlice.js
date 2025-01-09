@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { buildUserDTO, buildUserListDTO, userDTO } from '../dto/userDTO';
-import { createNewUser, deleteUser, getUserList, updateUser } from '../components/common/apiCalls';
+import { createNewUser, deleteUser, getSingleUser, getUserList, updateUser } from '../components/common/apiCalls';
 import { Api_Status } from '../components/common/utils';
 
 const initialState = {
@@ -25,15 +25,23 @@ const initialState = {
     user: userDTO, 
     status: '',
     error: null,
+
 };
 
 // Async Thunk for Fetching User List
 export const fetchUserList = createAsyncThunk('user/fetchUserList', async (userQueries) => {
-    const userList = await getUserList(userQueries);
-    console.log("User List Response:", userList);   
+    const response = await getUserList(userQueries);
+    console.log("User List Response:", response);   
     // Await async result
     // console.log("Processed User List Response:", response);
-    return userList; 
+    return response; 
+});
+
+//Async Thunk for Fetching Single User
+ export const fetchSingleUser = createAsyncThunk('user/fetchSingleUser', async (obj) => {
+    const user = await getSingleUser(obj);
+    console.log("Processed User Response:", user);
+    return user;
 });
 
 // Async Thunk for Creating User
@@ -51,8 +59,8 @@ export const updateExistingUser = createAsyncThunk('user/updateExistingUser', as
     return user;
 });
 
-export const deleteAUser = createAsyncThunk('user/deleteUser', async (userId) => {
-    const user = await deleteUser(userId);
+export const deleteAUser = createAsyncThunk('user/deleteAUser', async (obj) => {
+    const user = await deleteUser(obj);
     console.log("Processed User Response:", user);
     return user;
 });
@@ -83,6 +91,19 @@ const userSlice = createSlice({
             .addCase(createUser.pending, (state) => {
                 state.status = Api_Status.Loading;
             })
+            .addCase(fetchSingleUser.pending, (state) => {
+                state.status = Api_Status.Loading;
+            })
+            .addCase(fetchSingleUser.fulfilled, (state, action) => {
+                state.status = Api_Status.Succeeded;
+                console.log("Payload received in fetchSingleUser:", action.payload);
+                state.user = buildUserListDTO(action.payload);
+                console.log("Updated state.user:", state.user);
+            })
+            .addCase(fetchSingleUser.rejected, (state, action) => {
+                state.status = Api_Status.Failed;
+                state.error = action.error?.message || 'Failed to fetch user';
+            })
             .addCase(createUser.fulfilled, (state, action) => {
                 console.log("Payload received in createUser:", action.payload);
                 state.status = Api_Status.Succeeded;
@@ -102,9 +123,9 @@ const userSlice = createSlice({
             .addCase(updateExistingUser.fulfilled, (state, action) => {
                 console.log("Payload received in updateExistingUser:", action.payload);
                 state.status = Api_Status.Succeeded;
-                state.user = buildUserDTO(action.payload);
+                state.user = buildUserListDTO(action.payload);
                 console.log("Updated state.user:", state.user);
-                console.log("Updated state.userList:", state.userList);
+                
             })
             .addCase(updateExistingUser.rejected, (state, action) => {
                 state.status = Api_Status.Failed;
@@ -128,4 +149,5 @@ const userSlice = createSlice({
             });
     },
 });
+// export const { deleteUser } = userSlice.actions;
 export default userSlice.reducer;

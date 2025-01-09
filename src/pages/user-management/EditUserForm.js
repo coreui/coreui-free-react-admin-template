@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Typography, TextField, Button, MenuItem, Divider, useTheme } from '@mui/material'
 import { Formik, useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,34 +16,20 @@ import {
 import userValidationSchema from './userValidationSchema';
 import Grid from '@mui/material/Grid2';
 import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
-import { createUser } from '../../slices/userSlice';
+import { createUser, updateExistingUser } from '../../slices/userSlice';
 import { buildUserDTO, userDTO } from '../../dto/userDTO';
 import { ConsultantTypes, Languages, LockStatus, Positions, Status, UserTypeArray, userTypeObj } from '../../components/common/utils';
 import { showAlert } from '../../slices/alertSlice';
 
 
-const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) => {
+const EditUserModal = ({ onClose, isEditMode, }) => {
+
   const dispatch = useDispatch();
-  const [editedUser, setEditedUser] = useState(user)
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [formData, setFormData] = useState({
-    userType: '',
-    firstName: '',
-    lastName: '',
-    username: '',
-    officeEmailId: '',
-    mobile: '',
-    password: '',
-    confirmPassword: '',
-    customerName: null, // Only for customer
-    joiningDate: '',
-    consultantType: '',
-    position: '',
-    dateOfBirth: '',
-    status: '',
-    language: '',
-    locked: '',
-  });
+  const { user } = useSelector((state) => state.user);
+  console.log("User:", user);
+  // const [editedUser, setEditedUser] = useState(user)
+  // const [isEditMode, setIsEditMode] = useState(false);
+  const [formData, setFormData] = useState({ ...userDTO });
 
   const theme = useTheme();
 
@@ -51,19 +37,68 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
     initialValues: formData,
     validationSchema: userValidationSchema,
     onSubmit: (values) => {
-      console.log(values);
       const userObj = buildUserDTO(values);
-      //dispatch(createUser(userObj));
-      // handleOpenDialog()
-      const alert = {
-        open: true,
-        message: 'User Created Successfully!',
-        severity: 'success',  
+      userObj.id = user[0].id;
+      if (isEditMode && userObj.id) {
+        console.log("UserObj:", userObj);
+        dispatch(updateExistingUser(userObj));
+        const alert = {
+          open: true,
+          message: 'User Updated Successfully!',
+          severity: 'success',
+        }
+        dispatch(showAlert(alert));
+        onClose();
+      } else {
+        console.log(values);
+        dispatch(createUser(userObj));
+        // handleOpenDialog()
+        const alert = {
+          open: true,
+          message: 'User Created Successfully!',
+          severity: 'success',
+        }
+        dispatch(showAlert(alert));
+        onClose();
       }
-      dispatch(showAlert(alert)); 
-      onClose();
+
     },
   });
+
+  console.log("formik", formik.errors);
+  console.log("formik", formik.values);
+
+  useEffect(() => {
+    if (isEditMode && user && user.length > 0) {
+      const userObj = user[0];
+      console.log("UserObj:", userObj);
+
+      // Ensure the field value is set only when formik is ready
+      if (formik.values.userType !== userObj.userType) {
+        formik.setFieldValue('userType', userObj.userType || '');
+        formik.setFieldValue('firstName', userObj.firstName || '');
+        formik.setFieldValue('lastName', userObj.lastName || '');
+        formik.setFieldValue('userName', userObj.userName || '');
+        formik.setFieldValue('officeEmailId', userObj.officeEmailId || '');
+        formik.setFieldValue('mobile', userObj.mobile || '');
+        formik.setFieldValue('password', userObj.password || '');
+        formik.setFieldValue('confirmPassword', userObj.password || '');
+        formik.setFieldValue('joiningDate', userObj.joiningDate || '');
+        formik.setFieldValue('consultantType', userObj.consultantType || '');
+        formik.setFieldValue('position', userObj.position || '');
+        formik.setFieldValue('dateOfBirth', userObj.dateOfBirth || '');
+        formik.setFieldValue('status', userObj.status ? 1 : 0 || '');
+        formik.setFieldValue('language', userObj.language || '');
+        formik.setFieldValue('customer', userObj.customer || '');
+        formik.setFieldValue('customerId', userObj.customerId || '');
+        formik.setFieldValue('locked', userObj.locked ? 1 : 0 || '');
+
+      }
+    }
+  }, [isEditMode, user]);
+
+
+
 
   const autoCompleteDataGridColumns = ["Customer Name", "Project Type"];
   const autoCompleteDataGridRows = [
@@ -106,7 +141,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
               fullWidth
               label="User Type"
               name="userType"
-              value={formik.values.userType}
+              value={formik.values.userType || ''}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.userType && Boolean(formik.errors.userType)} //grid v2
@@ -118,6 +153,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                 </MenuItem>
               ))}
             </TextField>
+
           </Grid>
 
           <Grid size={{ xs: 12, md: 6 }}>
@@ -149,12 +185,12 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
             <TextField
               fullWidth
               label="User Name"
-              name="username"
-              value={formik.values.username}
+              name="userName"
+              value={formik.values.userName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.username && Boolean(formik.errors.username)}
-              helperText={formik.touched.username && formik.errors.username}
+              error={formik.touched.userName && Boolean(formik.errors.userName)}
+              helperText={formik.touched.userName && formik.errors.userName}
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -208,7 +244,11 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
             />
           </Grid>
           {
-            formik.values.userType === userTypeObj.ADMIN || formik.values.userType === '' || formik.values.userType === userTypeObj.CONSULTANT || formik.values.userType === userTypeObj.NONE ? (
+            formik.values.userType === userTypeObj.ADMIN ||
+              formik.values.userType === '' ||
+              formik.values.userType === null ||
+              formik.values.userType === userTypeObj.CONSULTANT ||
+              formik.values.userType === userTypeObj.NONE ? (
               <>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <TextField
@@ -230,7 +270,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     fullWidth
                     label="Consultant Type"
                     name="consultantType"
-                    value={formik.values.consultantType}
+                    value={formik.values.consultantType || ''}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     error={formik.touched.consultantType && Boolean(formik.errors.consultantType)}
@@ -249,7 +289,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     fullWidth
                     label="Position"
                     name="position"
-                    value={formik.values.position}
+                    value={formik.values.position || ''}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     error={formik.touched.position && Boolean(formik.errors.position)}
@@ -282,14 +322,14 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     fullWidth
                     label="Status"
                     name="status"
-                    value={formik.values.status}
+                    value={formik.values.status || ''}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     error={formik.touched.status && Boolean(formik.errors.status)}
                     helperText={formik.touched.status && formik.errors.status}
                   >
                     {Status.map((type) => (
-                      <MenuItem key={type} value={type.id}>
+                      <MenuItem key={type.id} value={type.id}>
                         {type.label}
                       </MenuItem>
                     ))}
@@ -301,7 +341,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     fullWidth
                     label="Language"
                     name="language"
-                    value={formik.values.language}
+                    value={formik.values.language || ''}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     error={formik.touched.language && Boolean(formik.errors.language)}
@@ -320,15 +360,15 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     fullWidth
                     label="Locked"
                     name="locked"
-                    value={formik.values.locked}
+                    value={formik.values.locked || ''}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     error={formik.touched.locked && Boolean(formik.errors.locked)}
                     helperText={formik.touched.locked && formik.errors.locked}
                   >
-                    {LockStatus.map((type) => (
-                      <MenuItem key={type} value={type}>
-                        {type}
+                    {LockStatus.map((obj) => (
+                      <MenuItem key={obj.id} value={obj.id}>
+                        {obj.status}
                       </MenuItem>
                     ))}
                   </TextField>
@@ -342,7 +382,7 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     fullWidth
                     label="Status"
                     name="status"
-                    value={formik.values.status}
+                    value={formik.values.status || ''}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     error={formik.touched.status && Boolean(formik.errors.status)}
@@ -359,15 +399,15 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                   <AutoCompleteDataGrid
                     label="Select Customer"
                     columns={autoCompleteDataGridColumns}
-                    rows={autoCompleteDataGridRows} 
-                    value={formik.values.customerName || ''}
+                    rows={autoCompleteDataGridRows}
+                    value={formik.values.customer || ''}
                     onChange={(event, value) => {
                       console.log("Value:", value);
-                      formik.setFieldValue('customerName', value);
+                      formik.setFieldValue('customer', value);
                     }}
-                    onBlur={() => formik.setFieldTouched('customerName', true)}
-                    error={formik.touched.customerName && Boolean(formik.errors.customerName)}
-                    helperText={formik.touched.customerName && formik.errors.customerName}
+                    onBlur={() => formik.setFieldTouched('customer', true)}
+                    error={formik.touched.customer && Boolean(formik.errors.customer)}
+                    helperText={formik.touched.customer && formik.errors.customer}
                   />
 
                 </Grid>
@@ -377,15 +417,15 @@ const EditUserModal = ({ user, show, handleClose, handleOpenDialog, onClose }) =
                     fullWidth
                     label="Locked"
                     name="locked"
-                    value={formik.values.locked}
+                    value={formik.values.locked || ''}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     error={formik.touched.locked && Boolean(formik.errors.locked)}
                     helperText={formik.touched.locked && formik.errors.locked}
                   >
-                    {LockStatus.map((type) => (
-                      <MenuItem key={type} value={type}>
-                        {type}
+                    {LockStatus.map((obj) => (
+                      <MenuItem key={obj.id} value={obj.id}>
+                        {obj.status}
                       </MenuItem>
                     ))}
                   </TextField>

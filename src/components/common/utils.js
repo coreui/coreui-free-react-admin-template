@@ -18,7 +18,7 @@ export const ConsultantTypes = ["Technical", "Functional", "Implementation", "Su
 export const Positions = ["Manager", "Senior", "Junior"];
 export const Status = [{id: 0, label:"Inactive"}, {id: 1, label:"Active"},];
 export const Languages = ["English", "Hebrew"];
-export const LockStatus = ["Locked", "Unlocked"];
+export const LockStatus = [{ id: 0, status:"Unlocked"}, { id: 1, status:"Locked"}];
 
 export const ProjectTypes = ["Implementation", "Support", "Development", "License", "All"];
 export const ContactPersons = [

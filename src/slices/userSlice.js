@@ -123,7 +123,7 @@ const userSlice = createSlice({
             .addCase(updateExistingUser.fulfilled, (state, action) => {
                 console.log("Payload received in updateExistingUser:", action.payload);
                 state.status = Api_Status.Succeeded;
-                state.user = buildUserListDTO(action.payload);
+                //state.user = buildUserListDTO(action.payload);
                 console.log("Updated state.user:", state.user);
                 
             })

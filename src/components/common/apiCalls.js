@@ -207,7 +207,7 @@ export const customerList = async (QueryParams) => {
 }; 
 
 //Create customer
-export const insertCustomer = async (customerObj) => {
+export const createNewCustomer = async (customerObj) => {
     const apiCallConfig = ConstructApiCall(apiName.InsertCustomer,customerObj);
     console.log("API Call Config:", apiCallConfig)
 
@@ -267,9 +267,9 @@ export const deleteCustomer = async (customerId) => {
 }
 
 
-export const createNewCustomer = async (customerObj) => {
-    return customerObj;
-}
+// export const createNewCustomer = async (customerObj) => {
+//     return customerObj;
+// }
 
 export const getCustomerList = async (customerList) => {
     return customerList;

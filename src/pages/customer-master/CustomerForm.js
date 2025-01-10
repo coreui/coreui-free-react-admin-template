@@ -34,14 +34,15 @@ import DeletePopover from '../../components/common/DeletePopover';
 import PopperComponent from '../../components/common/popper';
 import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
 import ContactForm from '../../components/common/ContactForm';
+import { customerDTO } from '../../dto/customerDTO';
 
 
-const userTypes = ["None", "Admin", "Consultant", "Customer"];
-const consultantTypes = ["Technical", "Functional", "Implementation", "Support", "Development"];
-const positions = ["Manager", "Senior", "Junior"];
-const statuses = ["Active", "Inactive"];
-const languages = ["English", "Hebrew"];
-const lockStatuses = ["Locked", "Unlocked"];
+// const userTypes = ["None", "Admin", "Consultant", "Customer"];
+// const consultantTypes = ["Technical", "Functional", "Implementation", "Support", "Development"];
+// const positions = ["Manager", "Senior", "Junior"];
+// const statuses = ["Active", "Inactive"];
+// const languages = ["English", "Hebrew"];
+// const lockStatuses = ["Locked", "Unlocked"];
 
 const CustomerForm = ({ user, show, handleClose, onClose }) => {
 
@@ -55,22 +56,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
   const [anchorElm, setAnchorElm] = useState(null);
   const [editedUser, setEditedUser] = useState(user)
   const [isEditMode, setIsEditMode] = useState(false);
-  const [formData, setFormData] = useState({
-    customerName: '',
-    contactPerson: null,
-    customerNameInEnglish: '',
-    email: '',
-    phoneNumber: '',
-    country: '',
-    projectType: '',
-    siteLocation: '',
-    distanceInKm: '',
-    SAPVersion: '',
-    SAPCode: '',
-    controlCenterUser: '',
-    controlCenterPass: '',
-    installationCredentials: '',
-  });
+  const [formData, setFormData] = useState({...customerDTO});
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
@@ -412,8 +398,8 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
             >
               {
                 ProjectTypes.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
+                  <MenuItem key={option.id} >
+                    {option.label}
                   </MenuItem>
                 ))
 

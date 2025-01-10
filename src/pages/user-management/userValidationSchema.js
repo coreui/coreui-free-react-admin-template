@@ -36,13 +36,13 @@ const userValidationSchema = yup.object().shape({
         then: (schema) => schema.required('Date of birth is required'), // 
         otherwise: (schema) => schema.nullable(), // If the user type is customer, then the date of birth is not required 
     }),
-    status: yup.string().required('Status is required'),
+    //status: yup.string().required('Status is required'),
     language: yup.string().when('userType', {
         is: (val) => val !== 'Customer', // If the user type is not customer, then the language is required
         then: (schema) => schema.required('Language is required'), //
         otherwise: (schema) => schema.nullable(), // If the user type is customer, then the language is not required   
     }),
-    locked: yup.string().required('Locked status is required'),
+    //locked: yup.string().required('Locked status is required'),
 });
 
 export default userValidationSchema;

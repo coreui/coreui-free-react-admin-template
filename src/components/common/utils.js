@@ -6,21 +6,31 @@ import MediumPriorityIcon from '@mui/icons-material/Flag'; // Custom medium icon
 
 //enums
 export const userTypeObj = {
-    NONE: 'None',
-    ADMIN: 'Admin',
-    CONSULTANT: 'Consultant',
-    CUSTOMER: 'Customer'
+    NONE: 0,
+    ADMIN: 1,
+    CONSULTANT: 2,
+    CUSTOMER:3
 
 }
 
-export const UserTypeArray = ["None", "Admin", "Consultant", "Customer"];
-export const ConsultantTypes = ["Technical", "Functional", "Implementation", "Support", "Development"];
-export const Positions = ["Manager", "Senior", "Junior"];
+//export const UserTypeArray = ["None", "Admin", "Consultant", "Customer"];
+//export const ConsultantTypes = ["Technical", "Functional", "Implementation", "Support", "Development"];
+//export const Positions = ["Manager", "Senior", "Junior"];
 export const Status = [{id: 0, label:"Inactive"}, {id: 1, label:"Active"},];
-export const Languages = ["English", "Hebrew"];
-export const LockStatus = [{ id: 0, status:"Unlocked"}, { id: 1, status:"Locked"}];
+export const Languages = [{id: 0, label:"English"}, {id: 1, label:"Hebrew"},]; // ["English", "Hebrew"];
+export const LockStatus = [{ id: 0, label:"Unlocked"}, { id: 1, label:"Locked"}]; 
+//export const ProjectTypes = ["Implementation", "Support", "Development", "License", "All"];
 
-export const ProjectTypes = ["Implementation", "Support", "Development", "License", "All"];
+ export const UserTypeArray = [{id:userTypeObj.NONE,label:"None"},{id:userTypeObj.ADMIN,label:"Admin"},{id:userTypeObj.CONSULTANT,label:"Consultant"},
+  {id:userTypeObj.CUSTOMER,label:"Customer"}]//["None", "Admin", "Consultant", "Customer"];
+ export const ConsultantTypes = [{id:1,label:"Technical"},{id:2,label:"Functional"},{id:3,label:"Implementation"},{id:3,label:"Support"}]//["Technical", "Functional", "Implementation", "Support", "Development"];
+export const Positions =[{id:1,value:"Manager"},{id:2,label:"Senior"},{id:3,label:"Junior"}]// ["Manager", "Senior", "Junior"];
+ 
+// export const Languages = ["English", "Hebrew"];
+// export const LockStatus = [{ id: 0, status:"Unlocked"}, { id: 1, status:"Locked"}]; 
+  export const ProjectTypes = [{id:0,label:"All"},{id:2,label:"Implementation"},{id:3,label:"Support"},{id:3,label:"Development"},{id:3,label:"License"}]//["Implementation", "Support", "Development", "License", "All"];
+
+
 export const ContactPersons = [
     { label: 'John Doe', id: 1 },
     { label: 'Jane Smith', id: 2 },

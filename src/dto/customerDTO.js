@@ -1,7 +1,7 @@
 import { buildConnectionDTO, buildConnectionDTOList } from "./connectionDTO";
 
 export const customerDTO = {
-    id: 1,
+    id: -1,
     customerName: null,
     contactPerson: null,
     customerNameInEnglish: null,
@@ -16,10 +16,9 @@ export const customerDTO = {
     controlCenterUser: null,
     controlCenterPass: null,
     installationCredentials: null,
-    connections: null,
-    //List<contactDto> contacts:null,
-    //list of contactDto
-    //List of ConnectionDto
+    connections: [], // Corrected to use an array for connections
+    contacts: [], // Added a proper array for contactDto
+ 
 }
 
 export const customerListDTO = {
@@ -33,9 +32,9 @@ export const customerListDTO = {
 }
 
 export function buildCustomerDTO(customer, connections) {
-    let id = 1;
+    //let id = 1;
     const cDTO = {...customerDTO};
-    cDTO.id = id + 1;
+   // cDTO.id = id + 1;
     cDTO.customerName = customer?.customerName;
     cDTO.contactPerson = customer?.contactPerson;
     cDTO.customerNameInEnglish = customer?.customerNameInEnglish;

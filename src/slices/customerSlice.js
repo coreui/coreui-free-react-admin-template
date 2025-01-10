@@ -11,11 +11,12 @@ const initialState = {
 };
 
 // Async Thunk for creating a new customer
-export const createCustomer = createAsyncThunk('customer/createCustomer', async ({ customerObj, connections }) => {
+export const createCustomer = createAsyncThunk('customer/createCustomer', async ({ customerObj,connections }) => {
     console.log("Creating Customer:", customerObj);
-    console.log("Creating Customer Connections:", connections);
-    const newCustomer = await createNewCustomer(customerObj, connections);  
-    const response = await buildCustomerDTO(newCustomer.customerObj, newCustomer.connections);
+    //console.log("Creating Customer Connections:", connections);
+    const cDTO =  buildCustomerDTO(newCustomer.customerObj, connections);
+    const response = await createNewCustomer(cDTO);  
+   
     console.log("Processed Customer Response:", response);
     return response;
 });

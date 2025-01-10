@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Typography, TextField, Button, MenuItem, Divider, useTheme } from '@mui/material'
+import { Box, Typography, TextField, Button, MenuItem, Divider, useTheme, Switch, FormControlLabel } from '@mui/material'
 import { Formik, useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -38,8 +38,9 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
     validationSchema: userValidationSchema,
     onSubmit: (values) => {
       const userObj = buildUserDTO(values);
-      userObj.id = user[0].id;
-      if (isEditMode && userObj.id) {
+      
+      if (isEditMode  && user && user.length > 0) {
+        userObj.id = user[0].id;
         console.log("UserObj:", userObj);
         dispatch(updateExistingUser(userObj));
         const alert = {
@@ -87,11 +88,11 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
         formik.setFieldValue('consultantType', userObj.consultantType || '');
         formik.setFieldValue('position', userObj.position || '');
         formik.setFieldValue('dateOfBirth', userObj.dateOfBirth || '');
-        formik.setFieldValue('status', userObj.status ? 1 : 0 || '');
-        formik.setFieldValue('language', userObj.language || '');
+        formik.setFieldValue('status', userObj.status ? 0 : 1 || 1);
+        formik.setFieldValue('language', userObj.language || 0);
         formik.setFieldValue('customer', userObj.customer || '');
-        formik.setFieldValue('customerId', userObj.customerId || '');
-        formik.setFieldValue('locked', userObj.locked ? 1 : 0 || '');
+        formik.setFieldValue('customerId', userObj.customerId || null);
+        formik.setFieldValue('locked', userObj.locked ? 1 : 0 || 0);
 
       }
     }
@@ -148,8 +149,8 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
               helperText={formik.touched.userType && formik.errors.userType}
             >
               {UserTypeArray.map((type) => (
-                <MenuItem key={type} value={type}>
-                  {type}
+                <MenuItem key={type.id} value={type.id}>
+                  {type.label}
                 </MenuItem>
               ))}
             </TextField>
@@ -277,8 +278,8 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
                     helperText={formik.touched.consultantType && formik.errors.consultantType}
                   >
                     {ConsultantTypes.map((type) => (
-                      <MenuItem key={type} value={type}>
-                        {type}
+                      <MenuItem key={type.id} value={type.id}>
+                        {type.label}
                       </MenuItem>
                     ))}
                   </TextField>
@@ -296,8 +297,8 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
                     helperText={formik.touched.position && formik.errors.position}
                   >
                     {Positions.map((type) => (
-                      <MenuItem key={type} value={type}>
-                        {type}
+                      <MenuItem key={type.id} value={type.id}>
+                        {type.label}
                       </MenuItem>
                     ))}
                   </TextField>
@@ -317,7 +318,12 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
                   />
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
-                  <TextField
+                <FormControlLabel control={<Switch checked={formik.values.status }  onChange={(e)=>{formik.setFieldValue("status",e.target.checked)}} 
+                    onBlur={formik.handleBlur} />} label="Active" name="status" /> 
+                     <FormControlLabel control={<Switch checked={formik.values.locked } onChange={(e)=>{formik.setFieldValue("locked",e.target.checked)}}
+                    onBlur={formik.handleBlur}  />} label="Locked" name="locked" /> 
+                
+                  {/* <TextField
                     select
                     fullWidth
                     label="Status"
@@ -333,7 +339,7 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
                         {type.label}
                       </MenuItem>
                     ))}
-                  </TextField>
+                  </TextField> */}
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <TextField
@@ -341,21 +347,22 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
                     fullWidth
                     label="Language"
                     name="language"
-                    value={formik.values.language || ''}
+                    value={formik.values.language || 0}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     error={formik.touched.language && Boolean(formik.errors.language)}
                     helperText={formik.touched.language && formik.errors.language}
                   >
                     {Languages.map((type) => (
-                      <MenuItem key={type} value={type}>
-                        {type}
+                      <MenuItem key={type.id} value={type.id}>
+                        {type.label}
                       </MenuItem>
                     ))}
                   </TextField>
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
-                  <TextField
+               
+                  {/* <TextField
                     select
                     fullWidth
                     label="Locked"
@@ -368,32 +375,19 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
                   >
                     {LockStatus.map((obj) => (
                       <MenuItem key={obj.id} value={obj.id}>
-                        {obj.status}
+                        {obj.label}
                       </MenuItem>
                     ))}
-                  </TextField>
+                  </TextField> */}
                 </Grid>
               </>
             ) : (
               <>
                 <Grid size={{ xs: 12, md: 6 }}>
-                  <TextField
-                    select
-                    fullWidth
-                    label="Status"
-                    name="status"
-                    value={formik.values.status || ''}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={formik.touched.status && Boolean(formik.errors.status)}
-                    helperText={formik.touched.status && formik.errors.status}
-                  >
-                    {Status.map((obj) => (
-                      <MenuItem key={obj.id} value={obj.id}>
-                        {obj.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
+                <FormControlLabel control={<Switch checked={formik.values.status }  onChange={(e)=>{formik.setFieldValue("status",e.target.checked)}} 
+                    onBlur={formik.handleBlur} />} label="Active" name="status" /> 
+                     <FormControlLabel control={<Switch checked={formik.values.locked } onChange={(e)=>{formik.setFieldValue("locked",e.target.checked)}}
+                    onBlur={formik.handleBlur}  />} label="Locked" name="locked" /> 
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <AutoCompleteDataGrid
@@ -412,23 +406,8 @@ const EditUserModal = ({ onClose, isEditMode, }) => {
 
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
-                  <TextField
-                    select
-                    fullWidth
-                    label="Locked"
-                    name="locked"
-                    value={formik.values.locked || ''}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={formik.touched.locked && Boolean(formik.errors.locked)}
-                    helperText={formik.touched.locked && formik.errors.locked}
-                  >
-                    {LockStatus.map((obj) => (
-                      <MenuItem key={obj.id} value={obj.id}>
-                        {obj.status}
-                      </MenuItem>
-                    ))}
-                  </TextField>
+               
+                  
                 </Grid>
 
               </>

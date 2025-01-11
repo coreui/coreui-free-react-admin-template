@@ -391,7 +391,7 @@ const NewTask = () => {
             <p>{customer.projectType}</p> 
           </div>
         ) : (
-          <p>No customer info</p>
+          <p>N/A</p>
         );
       },
       flex: 1,

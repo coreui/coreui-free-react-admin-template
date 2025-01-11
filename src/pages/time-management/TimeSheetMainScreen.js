@@ -148,7 +148,7 @@ const TimeSheetMainScreen = () => {
             <p>{customer.projectType}</p>
           </div>
         ) : (
-          <p>No customer info</p>
+          <p>N/A</p>
         );
       },
       flex: 1,
@@ -328,7 +328,7 @@ const TimeSheetMainScreen = () => {
               <p>{customer.projectType}</p>
             </div>
           ) : (
-            <p>No customer info</p>
+            <p>N/A</p>
           );
         }
         return params.row[key];

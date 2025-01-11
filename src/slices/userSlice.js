@@ -23,7 +23,8 @@ const initialState = {
         // }
     ],
     user: userDTO, 
-    status: '',
+    status: Api_Status.Idle,
+    reloadList:Api_Status.Idle,
     error: null,
 
 };
@@ -90,23 +91,27 @@ const userSlice = createSlice({
             })
             .addCase(createUser.pending, (state) => {
                 state.status = Api_Status.Loading;
+                state.reloadList=Api_Status.Loading;
             })
             .addCase(fetchSingleUser.pending, (state) => {
                 state.status = Api_Status.Loading;
             })
             .addCase(fetchSingleUser.fulfilled, (state, action) => {
                 state.status = Api_Status.Succeeded;
+                
                 console.log("Payload received in fetchSingleUser:", action.payload);
                 state.user = buildUserListDTO(action.payload);
                 console.log("Updated state.user:", state.user);
             })
             .addCase(fetchSingleUser.rejected, (state, action) => {
                 state.status = Api_Status.Failed;
+              
                 state.error = action.error?.message || 'Failed to fetch user';
             })
             .addCase(createUser.fulfilled, (state, action) => {
                 console.log("Payload received in createUser:", action.payload);
                 state.status = Api_Status.Succeeded;
+                state.reloadList=Api_Status.Succeeded;
                 console.log("action.payload:", action.payload); 
                 state.user = buildUserDTO(action.payload);
                 console.log("Updated state.user:", state.user);
@@ -114,36 +119,43 @@ const userSlice = createSlice({
             })
             .addCase(createUser.rejected, (state, action) => {
                 state.status = Api_Status.Failed;
+                state.reloadList=Api_Status.Failed;
                 state.error = action.error?.message || 'Failed to create user';
                 console.error("Error in createUser:", action.error);
             })
             .addCase(updateExistingUser.pending, (state) => {
                 state.status = Api_Status.Loading;
+                state.reloadList=Api_Status.Loading;
             })
             .addCase(updateExistingUser.fulfilled, (state, action) => {
                 console.log("Payload received in updateExistingUser:", action.payload);
                 state.status = Api_Status.Succeeded;
+                state.reloadList=Api_Status.Succeeded;
                 //state.user = buildUserListDTO(action.payload);
                 console.log("Updated state.user:", state.user);
                 
             })
             .addCase(updateExistingUser.rejected, (state, action) => {
                 state.status = Api_Status.Failed;
+                state.reloadList=Api_Status.Failed;
                 state.error = action.error?.message || 'Failed to update user';
                 console.error("Error in updateExistingUser:", action.error);
             })
             .addCase(deleteAUser.pending, (state) => {
                 state.status = Api_Status.Loading;
+                state.reloadList=Api_Status.Loading;
             })
             .addCase(deleteAUser.fulfilled, (state, action) => {
                 console.log("Payload received in deleteAUser:", action.payload);
                 state.status = Api_Status.Succeeded;
+                state.reloadList    = Api_Status.Succeeded;
                 //state.user = buildUserDTO(action.payload);
                 console.log("Updated state.user:", state.user);
                 console.log("Updated state.userList:", state.userList);
             })
             .addCase(deleteAUser.rejected, (state, action) => {
                 state.status = Api_Status.Failed;
+                state.reloadList=Api_Status.Failed;
                 state.error = action.error?.message || 'Failed to delete user';
                 console.error("Error in deleteAUser:", action.error);
             });

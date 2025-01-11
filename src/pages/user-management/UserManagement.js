@@ -10,6 +10,7 @@ import {
   CardContent,
   Dialog,
   IconButton,
+   
 } from '@mui/material';
 import { DataGrid,  } from '@mui/x-data-grid';
 import { Delete, Edit } from '@mui/icons-material';
@@ -18,17 +19,18 @@ import EditUserModal from './EditUserForm';
 import DialogBox from '../../components/common/DialogBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAUser, fetchSingleUser, fetchUserList } from '../../slices/userSlice';
-import { userTypeObj } from '../../components/common/utils';
+import { Positions, ProjectTypes, UserTypeArray, userTypeObj } from '../../components/common/utils';
 import MyAlert from '../../components/common/Alert';
 import { showAlert } from '../../slices/alertSlice';
 import { showPopup } from '../../slices/popoverSlice';
 import DeletePopover from '../../components/common/DeletePopover';
 import { CustomToolbar } from '../../components/common/CustomToolbar';
+import {themeStyles} from '../../layout/theme';
 
 const UserManagement = () => {
 
   const dispatch = useDispatch();
-  const { userList, status } = useSelector((state) => state.user);
+  const { userList, status,reloadList } = useSelector((state) => state.user);
   console.log("User List:", userList);
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
@@ -60,7 +62,7 @@ const UserManagement = () => {
     
     dispatch(fetchUserList());
   
-  }, [users]);
+  }, [users,reloadList]);
 
   useEffect(() => {
     if (isEditMode && currentUserId) {
@@ -119,42 +121,18 @@ const UserManagement = () => {
   }
 
   const columns = [
-    {
-      field: 'actions',
-      headerName: '',
-      renderHeader: () => (
-        <strong></strong>
-      ),
-      flex: 1,
-      minWidth: 150,
-      renderCell: (params) => (
-        <Box>
-          <IconButton
-            size="small"
-            variant="contained"
-            color="primary"
-          // onClick={() => handleEditClick(params.row)}
-          >
-            <Edit />
-          </IconButton>
-          <IconButton
-            size="small"
-            variant="contained"
-            color="secondary"
-            onClick={(event) => handleDeleteClick(event, params.row)}
-          >
-            <Delete />
-          </IconButton>
-          <DeletePopover anchorEl={anchorEl} handleDelete={handleDelete} handleClose={handlePopoverClose} />
-        </Box>
-      ),
-    },
+   
     {
       field: 'userType',
       headerName: 'User Type',
       renderHeader: () => <strong>User Type</strong>,
       flex: 1,
-      minWidth: 150 
+      minWidth: 150 ,
+      renderCell: (params) => ( 
+        <div>
+          {UserTypeArray[params.value].label} 
+          </div>
+      ),
     },
     {
       field: 'firstName',
@@ -211,10 +189,10 @@ const UserManagement = () => {
         return customer ? (
           <div>
             <p>{customer.customerName}</p>
-            <p>{customer.projectType}</p>
+            <p>{ProjectTypes[customer.projectType].label}</p>
           </div>
         ) : (
-          <p>No customer info</p>
+          <p>N/A</p>
         );
       },
       flex: 1,
@@ -232,7 +210,12 @@ const UserManagement = () => {
       headerName: 'Position',
       renderHeader: () => <strong>Position</strong>,
       flex: 1,
-      minWidth: 150 
+      minWidth: 150 ,
+      renderCell: (params) => (
+        <div>
+          {Positions[params.value].label}
+        </div>
+      )
     },
     {
       field: 'status',
@@ -250,12 +233,44 @@ const UserManagement = () => {
       ),
       flex: 1,
       minWidth: 150 
-    }
+    },
+    {
+      field: 'actions',
+      headerName: '',
+       
+      flex: 1,
+      minWidth: 70,
+      renderCell: (params) => (
+        <Box>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="primary"
+            style={{ cursor: 'pointer' }}
+          // onClick={() => handleEditClick(params.row)}
+          >
+            {/* <Edit /> */}
+          </IconButton>
+          <IconButton
+            size="small"
+            variant="contained"
+            color="secondary"
+            style={{ cursor: 'pointer' }}
+            onClick={(event) => handleDeleteClick(event, params.row)}
+          >
+            <Delete />
+          </IconButton>
+          <DeletePopover anchorEl={anchorEl} handleDelete={handleDelete} handleClose={handlePopoverClose} />
+        </Box>
+      ),
+      cellClassName: 'stickyRightColumn', // Apply the sticky class
+      headerClassName: 'stickyRightColumn', // Apply the sticky class to the header
+    },
     
   ];
 
   const rows = users;
-
+  const classes = themeStyles();
   const generateColumnsFromData = (data) => {
     if (!data || data.length === 0) {
       return [];
@@ -309,7 +324,7 @@ const UserManagement = () => {
               <p>{customer.projectType}</p>
             </div>
           ) : (
-            <p>No customer info</p>
+            <p>N/A</p>
           );
         }
         return params.row[key];
@@ -319,7 +334,8 @@ const UserManagement = () => {
     return columns;
   };
 
-
+   
+  
   //MUI DataGrid 
   return (
     <div ref={dataGridRef}>
@@ -345,6 +361,7 @@ const UserManagement = () => {
               </Button>
             </Box>
             <Box width="100%" height="100%">
+             
               <DataGrid
                 rows={userList}
                 columns={columns}
@@ -355,6 +372,8 @@ const UserManagement = () => {
                 getRowId={(row) => row.id}
                 showCellVerticalBorder
                 showColumnVerticalBorder
+                
+                disableColumnReorder
                 sx={{
                   height: 'calc(100vh - 300px)',
                 }}
@@ -369,6 +388,12 @@ const UserManagement = () => {
                   },
                   pagination: { paginationModel: { pageSize: 50 } },
               }}
+              getCellClassName={(params) =>
+                params.field === 'actions' ? classes.stickyRightColumn : ''
+              }
+              getColumnHeaderClassName={(params) =>
+                params.field === 'actions' ? classes.stickyRightColumn : ''
+              }
               />
             </Box>
 

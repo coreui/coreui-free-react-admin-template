@@ -23,6 +23,7 @@ import { deleteProject } from '../../slices/projectSlice';
 import { showAlert } from '../../slices/alertSlice';
 import { showPopup } from '../../slices/popoverSlice';
 import DeletePopover from '../../components/common/DeletePopover';
+import { ProjectTypes } from '../../components/common/utils';
 
 
 
@@ -189,10 +190,10 @@ const ProjectManagement = () => {
                 return customer ? (
                     <div>
                         <p>{customer.customerName}</p>
-                        <p>{customer.projectType}</p>
+                        <p>{ProjectTypes[customer.projectType].label}</p>
                     </div>
                 ) : (
-                    <p>No customer info</p>
+                    <p>N/A</p>
                 );
             },
             flex: 1,

@@ -2,8 +2,9 @@ import { AlignHorizontalLeft } from '@mui/icons-material';
 import { darkScrollbar, formControlClasses } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import zIndex from '@mui/material/styles/zIndex';
+import { makeStyles } from '@mui/styles';
 
-const theme = createTheme({
+ const theme = createTheme({
     palette: {
         primary: {
             main: '#1976d2',
@@ -54,7 +55,15 @@ const theme = createTheme({
        
 
 
-    },
+    } 
 });
+export const themeStyles = makeStyles ({
+    stickyRightColumn: {
+      position: 'sticky',
+      right: 0,
+      backgroundColor: '#fff', // Ensure a solid background
+      zIndex: 100, // Ensure it stays on top
+    },
+  });
 
-export default theme;
+ export default theme;

@@ -1,6 +1,8 @@
+import { UserTypeArray } from "../components/common/utils";
+
 export const userDTO = {
     id: null,
-    userType: null,
+    userType: null, 
     firstName: null,
     lastName: null, 
     userName: null,
@@ -27,7 +29,8 @@ export function buildUserDTO(user) {
     console.log("user", user)
     const uDTO = { ...userDTO };
     uDTO.id = user?.id;
-    uDTO.userType = user?.userType;
+    uDTO.userType =user?.userType; //UserTypeArray[user?.userType].label;
+
     uDTO.firstName = user?.firstName;
     uDTO.lastName = user?.lastName;
     uDTO.userName = user?.userName;
@@ -37,7 +40,7 @@ export function buildUserDTO(user) {
     // uDTO.confirmPassword = user?.confirmPassword;
     uDTO.joiningDate = user?.joiningDate;
     uDTO.consultantType =  user?.consultantType;
-    uDTO.position = user?.position;
+    uDTO.position =user?.position;// UserTypeArray[user?.position].label;
     uDTO.dateOfBirth = user?.dateOfBirth;
     uDTO.status = user?.status;
     uDTO.language = user?.language;

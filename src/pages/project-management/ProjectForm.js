@@ -121,8 +121,8 @@ const ProjectForm = ({ contact, show, handleClose, handleOpenDialog, onClose }) 
               >
                 {
                   ProjectTypes.map((type) => (
-                    <MenuItem key={type} value={type}>
-                      {type}
+                    <MenuItem key={type.id} value={type.id}>
+                      {type.label}
                     </MenuItem>
                   ))
                 }

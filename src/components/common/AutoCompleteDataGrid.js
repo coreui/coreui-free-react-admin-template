@@ -27,6 +27,7 @@ const AutoCompleteDataGrid = ({
   rows,
   value,
   onChange,
+  getOptionLabel,
   onBlur,
   error,
   helperText,
@@ -103,10 +104,11 @@ const AutoCompleteDataGrid = ({
       value={value}
       onChange={onChange}
       onBlur={onBlur} // Update value on user interaction
-      getOptionLabel={(option) => {
-        const values = Object.values(option).filter((_, index) => index !== 0); 
-        return values[0] || ''; 
-      }}
+      // getOptionLabel={(option) => {
+      //   const values = Object.values(option).filter((_, index) => index !== 0); 
+      //    return values[0] || ''; 
+      // }}
+      getOptionLabel={getOptionLabel}
       isOptionEqualToValue={(option, value) => option.id === value.id}  
       
      

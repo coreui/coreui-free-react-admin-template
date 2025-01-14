@@ -1,28 +1,29 @@
-import * as yup from 'yup';
-const contactFormValidationSchema = yup.object().shape({
-    contactName: yup.string()
-        .required('Contact name is required')
-        .min(2, 'Contact name must be at least 2 characters')
-        .max(50, 'Contact name must be less than 50 characters'),
-    email: yup.string()
-        .required('Email is required')
-        .email('Email is not valid'),
-    phone: yup.string()
-        .required('Phone number is required')
-        .matches(/^[0-9]+$/, 'Phone number must be only digits')
-        .min(10, 'Phone number must be at least 10 digits')
-        .max(15, 'Phone number must be less than 15 digits'),
-    extension: yup.string()
-        .matches(/^[0-9]*$/, 'Extension must be only digits')
-        .max(5, 'Extension must be less than 5 digits'),
-    cellular: yup.string()
-        .matches(/^[0-9]+$/, 'Cellular number must be only digits')
-        .min(10, 'Cellular number must be at least 10 digits')
-        .max(15, 'Cellular number must be less than 15 digits'),
-    position: yup.string()
-        .required('Position is required')
-        .min(2, 'Position must be at least 2 characters')
-        .max(50, 'Position must be less than 50 characters'),
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object({
+  id: Yup.string().nullable(),
+  customerId: Yup.string().nullable(),
+  contactName: Yup.string()
+    .required('Contact name is required')
+    .min(2, 'Contact name must be at least 2 characters'),
+  email: Yup.string()
+    .required('Email is required')
+    .email('Invalid email address'),
+  phone: Yup.string()
+    .required('Phone number is required')
+    .matches(/^\d{10}$/, 'Phone number must be exactly 10 digits'),
+  extension: Yup.string().required('Extension is required'),
+  cellular: Yup.string().required('Cellular is required'),
+  position: Yup.string().required('Position is required'),
+  accessPortal: Yup.boolean(),
+  sendEmail: Yup.boolean(), 
+  locked: Yup.string()
+    .required('Lock status is required')
+    .oneOf(['locked', 'unlocked'], 'Invalid lock status'),
+  status: Yup.boolean().nullable(),
+  isPrimary: Yup.boolean().nullable(),
+  createdAt: Yup.date().nullable(),
+  createdBy: Yup.string().nullable(),
 });
 
-export default contactFormValidationSchema;
+export default validationSchema;

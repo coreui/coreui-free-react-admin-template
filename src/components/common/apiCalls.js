@@ -36,6 +36,11 @@ const apiName={
     InsertCustomer: "InsertCustomer",
     UpdateCustomer: "UpdateCustomer",
     DeleteCustomer: "DeleteCustomer",
+    GetContacts: "GetContacts", 
+    InsertContact: "InsertContact",
+    UpdateContact: "UpdateContact",
+    DeleteContact: "DeleteContact",
+    GetProjects: "GetProjects",
 }
 const ConstructApiCall = (ApiName, data = null,QueryParams=ApiQueryParams) => {
     
@@ -187,7 +192,7 @@ export const deleteUser = async (obj) => {
 
 
 //Get customer list 
-export const customerList = async (QueryParams) => {
+export const getCustomerList = async (QueryParams) => {
     const apiCallConfig = ConstructApiCall(apiName.GetCustomers,null,QueryParams);
     console.log("API Call Config:", apiCallConfig)
 
@@ -246,6 +251,26 @@ export const updateCustomer = async (customerObj) => {
     }
 };
 
+//Get single customer   
+export const getSingleCustomer = async (obj) => {
+    const apiCallConfig = ConstructApiCall(apiName.GetCustomers,obj);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }   
+}
+
 //Delete customer
 export const deleteCustomer = async (customerId) => {
     const apiCallConfig = ConstructApiCall(apiName.DeleteCustomer,customerId);
@@ -265,15 +290,7 @@ export const deleteCustomer = async (customerId) => {
         return null;
     }
 }
-
-
-// export const createNewCustomer = async (customerObj) => {
-//     return customerObj;
-// }
-
-export const getCustomerList = async (customerList) => {
-    return customerList;
-}   
+ 
 
 //Get connection list
 export const getConnectionList = async (connectionList) => {
@@ -282,18 +299,112 @@ export const getConnectionList = async (connectionList) => {
 
 //Create connection 
 export const createNewConnection = async (connectionObj) => {    
-    return connectionObj;
+    return connectionObj;   
 }  
 
-//Get contact list
-export const getContactList = async (contactList) => {
-    return contactList;
-}       
+///Get user list
+export const getContactList = async (QueryParams) => {
+    const apiCallConfig = ConstructApiCall(apiName.GetContacts,null,QueryParams);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        console.log("Response:", response);
+
+        const extractedData = getDataFromResponse(response);
+        return extractedData;
+        console.log("Extracted Data:", extractedData);      
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
+};     
 
 //Create contact
 export const createNewContact = async (contactObj) => {
-    return contactObj;
+    const apiCallConfig = ConstructApiCall(apiName.InsertContact,contactObj);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
 }   
+
+//Update contact
+export const updateContact = async (contactObj) => {
+    const apiCallConfig = ConstructApiCall(apiName.UpdateContact,contactObj);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
+}  
+
+//Get single contact    
+export const getSingleContact = async (obj) => {
+    const apiCallConfig = ConstructApiCall(apiName.GetContacts,obj);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return getDataFromResponse(response);
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }   
+}   
+
+//Delete contact
+export const deleteContact = async (obj) => {
+    const apiCallConfig = ConstructApiCall(apiName.DeleteContact,obj);
+    console.log("API Call Config:", apiCallConfig)
+
+    try {
+        const response = await axios({
+            method: apiCallConfig.method,
+            url: apiCallConfig.url,
+            data: apiCallConfig.body,
+            headers: apiCallConfig.headers
+        });
+
+        return response;
+    } catch (error) {
+        console.error("API call failed", error);
+        return null;
+    }
+}
 
 //Get project list
 export const getProjectList = async (projectList) => {

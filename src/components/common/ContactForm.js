@@ -6,35 +6,24 @@ import Grid from '@mui/material/Grid2';
 import { useDispatch } from 'react-redux';
 import { showAlert } from '../../slices/alertSlice';
 import { addNewContact } from '../../slices/contactSlice';
+import { buildContactDTO, contactDTO } from '../../dto/contactDTO';
+import validationSchema from '../../pages/customer-master/contact-details/contactFormValidationSchema';
 
 const ContactForm = (props) => {
 
     const theme = useTheme();
     const dispatch = useDispatch();
 
+    const [formData, setFormData] = React.useState({...contactDTO});    
+
     const formik = useFormik({
-        initialValues: {
-            contactName: '',
-            email: '',
-            phone: '',
-            extension: '',
-            cellular: '',
-            position: '',
-            accessPortal: false,
-            sendEmail: false,
-            locked: 'unlocked',
-        },
-        validationSchema: Yup.object({
-            contactName: Yup.string().required('Required'),
-            email: Yup.string().email('Invalid email address').required('Required'),
-            phone: Yup.string().required('Required'),
-            extension: Yup.string().required('Required'),
-            cellular: Yup.string().required('Required'),
-            position: Yup.string().required('Required'),
-        }),
+        initialValues: formData,
+        validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log(values);
-            dispatch(addNewContact(values));
+            const contactDTO = buildContactDTO(values); 
+            console.log("contactDTO: ", contactDTO);
+            dispatch(addNewContact(contactDTO));
             const alert = {
                 open: true,
                 message: "Contact created successfully",
@@ -95,7 +84,7 @@ const ContactForm = (props) => {
                 </Box>
                 <Divider sx={{ background: 'black' }} />
             </Box>
-            <Box component="form" sx={{ ...theme.formControl.formComponent }} onSubmit={formik.handleSubmit}>
+            <Box component="form" sx={{ ...theme.formControl.formComponent }} >
                 <Grid container spacing={2}>
                     <Grid
                         item
@@ -197,7 +186,7 @@ const ContactForm = (props) => {
                                 labelId="locked-label"
                                 id="locked"
                                 name="locked"
-                                value={formik.values.locked}
+                                value={formik.values.locked || ''}  
                                 onChange={formik.handleChange}
                                 InputLabelProps={{
                                     shrink: true,

@@ -21,7 +21,7 @@ import AutoCompleteDataGrid from '../../../components/common/AutoCompleteDataGri
 import ContactForm from '../../../components/common/ContactForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { deleteContact } from '../../../slices/contactSlice';
+import { deleteContact, fetchContacts } from '../../../slices/contactSlice';
 import MyAlert from '../../../components/common/Alert';
 import { showAlert } from '../../../slices/alertSlice';
 import { showPopup } from '../../../slices/popoverSlice';
@@ -30,7 +30,7 @@ import DeletePopover from '../../../components/common/DeletePopover';
 
 const ContactMainScreen = () => {
     const dispatch = useDispatch();
-    const { contactList } = useSelector((state) => state.contacts);
+    const { contactList, reloadList } = useSelector((state) => state.contacts);
     console.log("contactList: ", contactList);  
     const [users, setUsers] = useState([]);
     const [formData, setFormData] = useState({
@@ -55,13 +55,8 @@ const ContactMainScreen = () => {
 
     // Fetch users from backend
     useEffect(() => {
-        const fetchUsers = async () => {
-            const response = await fetch('http://localhost:3001/users');
-            const data = await response.json();
-            setUsers(data);
-        };
-        fetchUsers();
-    }, []);
+        dispatch(fetchContacts());
+    }, [reloadList]);
 
     // Calculate Drawer Position and Height
     useEffect(() => {

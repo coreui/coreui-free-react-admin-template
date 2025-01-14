@@ -6,7 +6,6 @@ import { Cancel, Done } from '@mui/icons-material';
 
 const DeletePopover = (props) => {
     const { show,data } = useSelector((state) => state.delete);
-    console.log('DeletePopover', data);
     
     const { anchorEl, handleClose, handleDelete } = props;
 

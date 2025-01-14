@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Typography, TextField, Button, Popper, Divider, Paper, Grow, IconButton, Tooltip, MenuItem } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -24,7 +24,7 @@ import ConnectionForm from './ConnectionsForm';
 import { Add, Delete, Edit } from '@mui/icons-material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
-import { createCustomer } from '../../slices/customerSlice';
+import { createCustomer, updateExistingCustomer } from '../../slices/customerSlice';
 import { ContactPersons, ProjectTypes } from '../../components/common/utils';
 import MyAlert from '../../components/common/Alert';
 import { deleteConnection } from '../../slices/connectionSlice';
@@ -34,7 +34,7 @@ import DeletePopover from '../../components/common/DeletePopover';
 import PopperComponent from '../../components/common/popper';
 import AutoCompleteDataGrid from '../../components/common/AutoCompleteDataGrid';
 import ContactForm from '../../components/common/ContactForm';
-import { customerDTO } from '../../dto/customerDTO';
+import { buildCustomerDTO, customerDTO } from '../../dto/customerDTO';
 
 
 // const userTypes = ["None", "Admin", "Consultant", "Customer"];
@@ -44,19 +44,20 @@ import { customerDTO } from '../../dto/customerDTO';
 // const languages = ["English", "Hebrew"];
 // const lockStatuses = ["Locked", "Unlocked"];
 
-const CustomerForm = ({ user, show, handleClose, onClose }) => {
+const CustomerForm = ({ onClose, isEditMode }) => {
 
   const dispatch = useDispatch();
-  const {connectionList} = useSelector(state => state.connection)
-  console.log("Connection List:", connectionList);
+  const { connectionList } = useSelector(state => state.connection)
+  const { customer } = useSelector(state => state.customer)
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const [isOpenContact, setIsOpenContact] = useState(false);
   const [isEditContact, setIsEditContact] = useState(false);
   const [anchorElm, setAnchorElm] = useState(null);
-  const [editedUser, setEditedUser] = useState(user)
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [formData, setFormData] = useState({...customerDTO});
+  // const [editedUser, setEditedUser] = useState(user)
+  // const [isEditMode, setIsEditMode] = useState(false);
+  const [formData, setFormData] = useState({ ...customerDTO });
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
@@ -71,19 +72,50 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
     initialValues: formData,
     validationSchema: customerValidationSchema,
     onSubmit: (values) => {
-      console.log(values);
-      dispatch(createCustomer({ customerObj: values, connections: connectionList }));
-      const alert ={
-        open: true,
-        message: "Customer created successfully",
-        severity: "success",
-      };
-      dispatch(showAlert(alert));
-      onClose();
+      console.log("customer data's", values);
+      const cDTO = buildCustomerDTO(values, connectionList);
+      if (isEditMode && customer && customer.length > 0) {
+        cDTO.id = customer[0].id;
+        console.log("Customer DTO:", cDTO);
+        dispatch(updateExistingCustomer(cDTO));
+        const alert = {
+          open: true,
+          message: 'User Updated Successfully!',
+          severity: 'success',
+        }
+        dispatch(showAlert(alert));
+        onClose();
 
-     
+      } else {
+        dispatch(createCustomer(cDTO));
+        const alert = {
+          open: true,
+          message: "Customer created successfully",
+          severity: "success",
+        };
+        dispatch(showAlert(alert));
+        onClose();
+      }
+
+
     },
   });
+
+  useEffect(() => {
+    if (isEditMode && customer && customer.length > 0) {
+      console.log("Customer Data:", customer[0]);
+      const contactPerson = ContactPersons.find(cp => cp.id === customer[0].contactPerson);
+      console.log("Contact Person:", contactPerson);
+      setFormData({
+        ...customer[0],
+        contactPerson: contactPerson || null,
+      });
+      formik.setValues({
+        ...customer[0],
+        contactPerson: contactPerson || null,
+      });
+    }
+  }, [customer, isEditMode])
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget); // Correctly sets the anchor element
@@ -106,12 +138,12 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
 
   const handleDelete = (id) => {
     dispatch(deleteConnection(id));
-    const alert ={
+    const alert = {
       open: true,
       message: "Connection deleted successfully",
       severity: "success",
     };
-    dispatch(showAlert(alert)); 
+    dispatch(showAlert(alert));
     handlePopoverClose();
   }
 
@@ -137,41 +169,41 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
 
 
   const columns = [
-    { 
-      field: 'connectionType', 
-      headerName: 'Connection Type', 
-      renderHeader: () => <strong>Connection Type</strong>, 
-      flex: 1 
+    {
+      field: 'connectionType',
+      headerName: 'Connection Type',
+      renderHeader: () => <strong>Connection Type</strong>,
+      flex: 1
     },
-    { 
-      field: 'vpnType', 
+    {
+      field: 'vpnType',
       headerName: 'VPN Type',
-      renderHeader: () => <strong>VPN Type</strong>, 
-      flex: 1 
+      renderHeader: () => <strong>VPN Type</strong>,
+      flex: 1
     },
-    { 
-      field: 'address', 
-      headerName: 'Address', 
+    {
+      field: 'address',
+      headerName: 'Address',
       renderHeader: () => <strong>Address</strong>,
-      flex: 1 
+      flex: 1
     },
-    { 
-      field: 'user', 
+    {
+      field: 'user',
       headerName: 'User',
-      renderHeader: () => <strong>User</strong>,   
-      flex: 1 
+      renderHeader: () => <strong>User</strong>,
+      flex: 1
     },
-    { 
-      field: 'password', 
+    {
+      field: 'password',
       headerName: 'Password',
-      renderHeader: () => <strong>Password</strong>,   
-      flex: 1 
+      renderHeader: () => <strong>Password</strong>,
+      flex: 1
     },
-    { 
-      field: 'comments', 
+    {
+      field: 'comments',
       headerName: 'Comments',
-      renderHeader: () => <strong>Comments</strong>,   
-      flex: 1 
+      renderHeader: () => <strong>Comments</strong>,
+      flex: 1
     },
     {
       field: 'actions',
@@ -191,19 +223,13 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
               <Delete />
             </IconButton>
           </Tooltip>
-          <DeletePopover anchorEl={anchorElement} handleClose={handlePopoverClose} handleDelete={handleDelete} /> 
+          <DeletePopover anchorEl={anchorElement} handleClose={handlePopoverClose} handleDelete={handleDelete} />
         </Box>
       ),
     },
   ]
 
-  const rows = [
-    { id: 1, connectionType: 'VPN', vpnType: 'SSL', address: '192.168.1.1', user: 'admin', password: 'password123' },
-    { id: 2, connectionType: 'RMT', vpnType: 'None', address: '10.0.0.1', user: 'user', password: 'password456' },
-    { id: 3, connectionType: 'SAP', vpnType: 'None', address: 'None', user: 'user', password: 'password456' },
-    { id: 4, connectionType: 'SQL', vpnType: 'None', address: 'None', user: 'user', password: 'password456' },
-
-  ];
+  
 
   const contactColumns = ["Contact Name"]; // Corrected typo
   const contactRows = [
@@ -219,7 +245,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
   return (
     <Box component="div">
       <Box display={snackbar.open ? "flex" : "none"} justifyContent="center" alignItems="center" mb={2} width="100%" >
-          <MyAlert snackbar={snackbar} onClose={handleCloseSnackbar} />
+        <MyAlert snackbar={snackbar} onClose={handleCloseSnackbar} />
       </Box>
       <Box component="div" sx={{ ...theme.formControl.formHeaderOuterContainer }}>
         <Box component="div" sx={{ ...theme.formControl.formHeaderContainer }}>
@@ -292,11 +318,12 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
                   label="Select Contact Person"
                   columns={contactColumns}
                   rows={contactRows}
-                  value={formik.values.contactPerson || ''}
+                  value={formik.values.contactPerson || null}
                   onChange={(event, value) => {
                     console.log("value", value);
                     formik.setFieldValue('contactPerson', value);
                   }}
+                  getOptionLabel={(option) => option.label || option.contactName}
                   onBlur={() => formik.setFieldTouched('contactPerson', true)}
                   error={formik.touched.contactPerson && Boolean(formik.errors.contactPerson)}
                   helperText={formik.touched.contactPerson && formik.errors.contactPerson}
@@ -333,14 +360,14 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
-              label="Customer Name In English"
-              name="customerNameInEnglish"
-              value={formik.values.customerNameInEnglish}
+              label="Customer Name In Hebrew"
+              name="customerNameHebrew"
+              value={formik.values.customerNameHebrew}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.customerNameInEnglish && Boolean(formik.errors.customerNameInEnglish)}
-              helperText={formik.touched.customerNameInEnglish && formik.errors.customerNameInEnglish}
-              required
+              error={formik.touched.customerNameHebrew && Boolean(formik.errors.customerNameHebrew)}
+              helperText={formik.touched.customerNameHebrew && formik.errors.customerNameHebrew}
+            // required
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -382,7 +409,7 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
               required
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          {/* <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               select
@@ -398,14 +425,14 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
             >
               {
                 ProjectTypes.map((option) => (
-                  <MenuItem key={option.id} >
+                  <MenuItem key={option.id} value ={option.id}>
                     {option.label}
                   </MenuItem>
                 ))
 
               }
             </TextField>
-          </Grid>
+          </Grid> */}
           <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
@@ -436,12 +463,12 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
             <TextField
               fullWidth
               label="SAP Version"
-              name="SAPVersion"
-              value={formik.values.SAPVersion}
+              name="sapVersion"
+              value={formik.values.sapVersion}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.SAPVersion && Boolean(formik.errors.SAPVersion)}
-              helperText={formik.touched.SAPVersion && formik.errors.SAPVersion}
+              error={formik.touched.sapVersion && Boolean(formik.errors.sapVersion)}
+              helperText={formik.touched.sapVersion && formik.errors.sapVersion}
               required
             />
           </Grid>
@@ -449,12 +476,12 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
             <TextField
               fullWidth
               label="SAP Code"
-              name="SAPCode"
-              value={formik.values.SAPCode}
+              name="sapCode"
+              value={formik.values.sapCode}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.SAPCode && Boolean(formik.errors.SAPCode)}
-              helperText={formik.touched.SAPCode && formik.errors.SAPCode}
+              error={formik.touched.sapCode && Boolean(formik.errors.sapCode)}
+              helperText={formik.touched.sapCode && formik.errors.sapCode}
               required
             />
           </Grid>
@@ -486,10 +513,10 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
             />
           </Grid>
         </Grid>
+      </Box>
         <PopperComponent open={isOpenContact} anchorEl={anchorElm}>
           <ContactForm isEditContact={isEditContact} onClose={handleCloseContactPopper} page={"popupScreen"} />
         </PopperComponent>
-      </Box>
       <Divider sx={{ bgcolor: "black" }} />
       <Box padding={2} component="div">
         <Box component="div" py={2} display="flex" justifyContent="space-between" alignItems="center"  >
@@ -518,20 +545,20 @@ const CustomerForm = ({ user, show, handleClose, onClose }) => {
             </Grow>
           )}
         </Popper>
-        <ConnectionSettingGrid columns={columns} rows={rows} />
+        <ConnectionSettingGrid columns={columns}  />
       </Box>
-      <Box component="div" sx={{height: "auto"}} padding={2} mb={2}>
+      <Box component="div" sx={{ height: "auto" }} padding={2} mb={2}>
         <Typography variant="h6" gutterBottom>Installation Credentials</Typography>
-        <ReactQuill theme='snow' 
-          value={formik.values.installationCredentials} 
-          onChange={(value) => formik.setFieldValue('installationCredentials', value)} 
-          style={{ height: '90px', marginBottom: 16 }} 
+        <ReactQuill theme='snow'
+          value={formik.values.installationCredentials}
+          onChange={(value) => formik.setFieldValue('installationCredentials', value)}
+          style={{ height: '90px', marginBottom: 16 }}
         />
       </Box>
       <Box component="div" padding={4} mt={2}></Box>
     </Box>
   )
-  
+
 }
 
 export default CustomerForm;

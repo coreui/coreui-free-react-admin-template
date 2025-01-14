@@ -1,72 +1,108 @@
-//without customer
-{
-    "id": null,
-    "userType": "Admin",
-    "firstName": "Sam",
-    "lastName": "Brown",
-    "username": "sam",
-    "officeEmailId": "ddfdfdf@gmail.com",
-    "mobile": "6238094827",
-    "password": "123456789",
-    "joiningDate": "2025-01-10",
-    "consultantType": "Technical",
-    "position": "Manager",
-    "dateOfBirth": "2025-01-11",
-    "status": 1,
-    "language": "English",
-    "locked": 1,
-    "created_at": null,
-    "modifiedat": null,
-    "createdby": null,
-    "modifiedby": null
-}
+// Formik values
 
 {
-  "id": null,
-  "userType": "Customer",
-  "firstName": "john",
-  "lastName": "Doe",
-  "username": "doe",
-  "officeEmailId": "d@gmail.com",
-  "mobile": "6238094827",
-  "password": "123456789",
-  "joiningDate": null,
-  "consultantType": null,
-  "position": null,
-  "dateOfBirth": null,
-  "status": 1,
-  "language": null,
-  "customer": {
+  "id": -1,
+  "customerName": "TestCustomer 1",
+  "contactPerson": {
       "id": 1,
-      "customerName": "John Doe",
-      "projectType": "Web Development"
+      "contactName": "John Doe"
   },
-  "locked": 1,
-  "created_at": null,
-  "modifiedat": null,
-  "createdby": null,
-  "modifiedby": null,
-  "confirmPassword": "123456789"
+  "customerNameHebrew": "Test",
+  "email": "Support@DataBrain.co.il",
+  "phoneNumber": "6238095847",
+  "country": "india",
+  "projectType": null,
+  "siteLocation": "location",
+  "distanceInKm": "100",
+  "sapVersion": "10",
+  "sapCode": "v21",
+  "controlCenterUser": "dfdfdf",
+  "controlCenterPass": "123456789",
+  "installationCredentials": "<p>heloo</p>",
+  "connections": [],
+  "contacts": []
+}
+
+//customer connection array
+
+[
+  {
+      "id": 2,
+      "connectionType": "VPN",
+      "vpnType": "CheckPoint",
+      "address": "ljlkj",
+      "user": "dfdf",
+      "password": "fdfdfdf",
+      "comments": "dfdfdfdf"
+  }
+]
+
+
+//customer obj that sent into the insert customer
+{
+  "id": -1,
+  "customerName": "TestCustomer2",
+  "contactPerson": {
+      "id": 1,
+      "contactName": "John Doe"
+  },
+  "customerNameHebrew": null,
+  "email": "asdasds@asdasd.com",
+  "phoneNumber": "123456789",
+  "country": "india",
+  "projectType": null,
+  "siteLocation": "location",
+  "distanceInKm": "100",
+  "sapVersion": "10.1",
+  "sapCode": "v2",
+  "controlCenterUser": "dfdfd",
+  "controlCenterPass": "dfdfdf",
+  "installationCredentials": "<p>dfdfdfdfdw</p>",
+  "connections": [
+      {
+          "id": 2,
+          "connectionType": "VPN",
+          "vpnType": "FortiClient",
+          "address": "fdfdfdf",
+          "user": "dfdfdf",
+          "password": "fdfdf",
+          "comments": "fdfdfdf"
+      }
+  ],
+  "contacts": [],
+  "customerNameInEnglish": "Test"
 }
 
 {
-  "id": null,
-  "userType": "Customer",
-  "firstName": "john",
-  "lastName": "Doe",
-  "username": "doe",
-  "officeEmailId": "d@gmail.com",
-  "mobile": "6238094827",
-  "password": "123456789",
-  "joiningDate": null,
-  "consultantType": null,
-  "position": null,
-  "dateOfBirth": null,
-  "status": 1,
-  "language": null,
-  "locked": 1,
-  "created_at": null,
-  "modifiedat": null,
-  "createdby": null,
-  "modifiedby": null
+  "id": -1,
+  "customerName": "TestCustomer2",
+  "contactPerson": {
+      "id": 1,
+      "contactName": "John Doe"
+  },
+  "customerNameHebrew": null,
+  "email": "asdasds@asdasd.com",
+  "phoneNumber": "123456789",
+  "country": "india",
+  "projectType": null,
+  "siteLocation": "location",
+  "distanceInKm": "100",
+  "sapVersion": "10.1",
+  "sapCode": "v2",
+  "controlCenterUser": "dfdfd",
+  "controlCenterPass": "dfdfdf",
+  "installationCredentials": "<p>dfdfdfdfdw</p>",
+  "connections": [
+      {
+          "id": 2,
+          "connectionType": "VPN",
+          "vpnType": "FortiClient",
+          "address": "fdfdfdf",
+          "user": "dfdfdf",
+          "password": "fdfdf",
+          "comments": "fdfdfdf"
+      }
+  ],
+  "contacts": [],
+  "customerNameHebrew": "Test"
 }

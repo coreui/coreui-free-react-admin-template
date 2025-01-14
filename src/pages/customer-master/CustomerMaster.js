@@ -16,9 +16,9 @@ import { Delete, Edit } from '@mui/icons-material';
 import EditContainer from '../../components/common/EditContainer';
 import DialogBox from '../../components/common/DialogBox';
 import CustomerForm from './CustomerForm';
-import { getCustomerList } from '../../components/common/apiCalls';
+//import { getCustomerList } from '../../components/common/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';  
-import { deleteCustomer, fetchCustomerList } from '../../slices/customerSlice';
+import { deleteExistingCustomer, fetchCustomerList, fetchSingleCustomer } from '../../slices/customerSlice';
 import MyAlert from '../../components/common/Alert';
 import { showAlert } from '../../slices/alertSlice';
 import { showPopup } from '../../slices/popoverSlice';
@@ -27,7 +27,7 @@ import DeletePopover from '../../components/common/DeletePopover';
 const ClientManagement = () => {
 
   const dispatch = useDispatch();
-  const {customerList, status} = useSelector((state) => state.customer); 
+  const {customerList, status, reloadList} = useSelector((state) => state.customer); 
   console.log("Status:", status);  
   console.log("Customer List:", customerList);
 
@@ -54,7 +54,13 @@ const ClientManagement = () => {
   // Fetch users from backend
   useEffect(() => {
     dispatch(fetchCustomerList());
-  }, [customerList]);
+  }, [reloadList]); 
+
+  useEffect(() => { 
+    if (isEditMode && currentUserId) {
+      dispatch(fetchSingleCustomer({id: currentUserId}))
+    }
+  }, [isEditMode, currentUserId]);  
 
   // Calculate Drawer Position and Height
   useEffect(() => {
@@ -85,7 +91,7 @@ const ClientManagement = () => {
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteCustomer(id));
+    dispatch(deleteExistingCustomer({id: id}));
     const alert ={
       open: true,
       message: "Customer deleted successfully",
@@ -100,6 +106,13 @@ const ClientManagement = () => {
   };
 
   const rows = customerList || [];
+
+  const handleRowClick = (row) => { 
+    setDrawerOpen(true);  
+    setIsEditMode(true);
+    setCurrentUserId(row.id);
+    console.log("Row Clicked:", row);
+  }
 
   //to fetch columns from api data
   const generateColumnsFromData = (data) => {
@@ -158,10 +171,10 @@ const ClientManagement = () => {
       minWidth: 150, 
     },
     { 
-      field: 'customerNameInEnglish', 
-      headerName: 'Customer Name (English)', 
+      field: 'customerNameHebrew', 
+      headerName: 'Customer Name (Hebrew)', 
       renderHeader: () => ( 
-        <strong>Customer Name (English)</strong>
+        <strong>Customer Name (Hebrew)</strong>
       ),
       flex: 1,
       minWidth: 150,
@@ -193,15 +206,15 @@ const ClientManagement = () => {
       flex: 1,
       minWidth: 150,
     },
-    { 
-      field: 'projectType', 
-      headerName: 'Project Type', 
-      renderHeader: () => ( 
-        <strong>Project Type</strong>
-      ),
-      flex: 1,
-      minWidth: 150, 
-    },
+    // { 
+    //   field: 'projectType', 
+    //   headerName: 'Project Type', 
+    //   renderHeader: () => ( 
+    //     <strong>Project Type</strong>
+    //   ),
+    //   flex: 1,
+    //   minWidth: 150, 
+    // },
     { 
       field: 'siteLocation', 
       headerName: 'Site Location', 
@@ -221,7 +234,7 @@ const ClientManagement = () => {
       minWidth: 150,
     },
     { 
-      field: 'SAPVersion', 
+      field: 'sapVersion', 
       headerName: 'SAP Version', 
       renderHeader: () => ( 
         <strong>SAP Version</strong>
@@ -230,7 +243,7 @@ const ClientManagement = () => {
       minWidth: 150, 
     },
     { 
-      field: 'SAPCode', 
+      field: 'sapCode', 
       headerName: 'SAP Code', 
       renderHeader: () => ( 
         <strong>SAP Code</strong>
@@ -376,10 +389,11 @@ const ClientManagement = () => {
             <DataGrid
               rows={rows}
               columns={columns}
+              onRowClick={(rows) => handleRowClick(rows.row)}
               disableColumnMenu
               disableRowSelectionOnClick
               hideFooterPagination
-              getRowId={(row) => row.id}
+              getRowId={(row) => row && row.id}
               showCellVerticalBorder
               showColumnVerticalBorder
               sx={{
@@ -392,7 +406,14 @@ const ClientManagement = () => {
 
         <EditContainer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
           {/* <EditUserModal onClose={() => setDrawerOpen(false)} handleOpenDialog={handleOpenDialog} /> */}
-            <CustomerForm onClose={() => setDrawerOpen(false)}  />
+            <CustomerForm
+             onClose={() =>{
+               setDrawerOpen(false)
+               setIsEditMode(false)
+               setCurrentUserId(null)}
+             }
+             isEditMode={isEditMode}  
+            />
           <DialogBox open={dialogOpen} handleCloseDialog={handleCloseDialog} />
         </EditContainer>
 

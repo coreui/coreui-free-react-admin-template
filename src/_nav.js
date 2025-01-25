@@ -12,8 +12,13 @@ import {
   cilGraph,
   cilHeart,
   cilHistory,
+  cilGlobeAlt,
+  cilGraph,
+  cilHeart,
+  cilHistory,
   cilNotes,
   cilPencil,
+  cilPeople,
   cilPeople,
   cilPuzzle,
   cilSpeedometer,
@@ -22,6 +27,42 @@ import {
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
 const _nav = [
+    {
+      component: CNavItem,
+      name: 'Dashboard',
+      to: '/dashboard',
+      icon: <CIcon icon={cilGraph} customClassName="nav-icon" />,
+      badge: {
+        color: 'info',
+      },
+    },
+    {
+      component: CNavGroup,
+      name: 'Community',
+      to: '/community',
+      icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
+      items: [
+        {
+          component: CNavItem,
+          name: 'Friends',
+          to: '/community/friends',
+          icon: <CIcon icon={cilHeart} customClassName="nav-icon" />,
+        },
+        {
+          component: CNavItem,
+          name: 'Explore',
+          to: '/community/explore',
+          icon: <CIcon icon={cilGlobeAlt} customClassName="nav-icon" />,
+        },
+      ],
+    },
+    {
+      component: CNavItem,
+      name: 'History',
+      to: '/history',
+      icon: <CIcon icon={cilHistory} customClassName="nav-icon" />,
+    },
+];
   {
     component: CNavItem,
     name: 'Dashboard',

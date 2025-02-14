@@ -19,8 +19,8 @@
     "start": "vite"
   },
   "dependencies": {
-    "@coreui/chartjs": "^4.0.0",
-    "@coreui/coreui": "^5.2.0",
+    "@coreui/chartjs": "^4.1.0",
+    "@coreui/coreui": "^5.3.1",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.3.0",
     "@coreui/react": "^5.5.0",
@@ -41,15 +41,15 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
-    "eslint": "^9.19.0",
+    "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
-    "globals": "^15.14.0",
-    "postcss": "^8.5.1",
-    "prettier": "3.4.2",
-    "sass": "^1.84.0",
+    "globals": "^15.15.0",
+    "postcss": "^8.5.2",
+    "prettier": "3.5.1",
+    "sass": "^1.85.0",
     "vite": "^6.1.0"
   }
 }

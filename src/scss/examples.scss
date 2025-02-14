@@ -1,10 +1,9 @@
 /* stylelint-disable scss/selector-no-redundant-nesting-selector */
-
-$enable-deprecation-messages: false !default;
-
-@import "@coreui/coreui/scss/functions";
-@import "@coreui/coreui/scss/variables";
-@import "@coreui/coreui/scss/mixins";
+@use "@coreui/coreui/scss/variables" as * with (
+  $enable-deprecation-messages: false
+);
+@use "@coreui/coreui/scss/mixins/breakpoints" as *;
+@use "@coreui/coreui/scss/mixins/color-mode" as *;
 
 .example {
   &:not(:first-child) {
@@ -107,5 +106,11 @@ $enable-deprecation-messages: false !default;
         display: block;
       }
     }
+  }
+}
+
+@include color-mode(dark) {
+  .example .tab-content {
+    background-color: var(--#{$prefix}secondary-bg);
   }
 }

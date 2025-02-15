@@ -21,10 +21,23 @@ import {
   cilUser,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../Firebase/useAuth'
 import avatar8 from './../../assets/images/avatars/8.jpg'
 
 const AppHeaderDropdown = () => {
+    const { signOut } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+          await signOut();
+          navigate('/login');
+        } catch (error) {
+          console.error('Logout error:', error);
+        }
+      };
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
@@ -84,9 +97,9 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem href="#">
+        <CDropdownItem onClick={handleLogout}>
           <CIcon icon={cilLockLocked} className="me-2" />
-          Lock Account
+          Log Out
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

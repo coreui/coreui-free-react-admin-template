@@ -29,7 +29,15 @@
     "@popperjs/core": "^2.11.8",
     "chart.js": "^4.4.7",
     "classnames": "^2.5.1",
+<<<<<<< Updated upstream
     "core-js": "^3.40.0",
+=======
+    "core-js": "^3.39.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "firebase": "^11.2.0",
+    "firebase-admin": "^13.1.0",
+>>>>>>> Stashed changes
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

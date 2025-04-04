@@ -1,0 +1,23 @@
+@mixin ltr-rtl($property, $value) {
+  #{$property}: $value;
+  [dir="rtl"] & {
+    #{$property}-right: $value;
+    #{$property}-left: auto;
+  }
+}
+
+@mixin transition($transition...) {
+  transition: $transition;
+}
+
+@mixin color-mode($mode) {
+  @if $mode == dark {
+    @media (prefers-color-scheme: dark) {
+      @content;
+    }
+  } @else if $mode == light {
+    @media (prefers-color-scheme: light) {
+      @content;
+    }
+  }
+}

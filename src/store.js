@@ -1,13 +1,18 @@
 import React from 'react'
-import { legacy_createStore as createStore } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { thunk } from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux'
 import PropTypes from 'prop-types'
-import rootReducer from './reducers'
+import authReducer from './reducers/authReducer'
+import dataReducer from './reducers/appReducer'
 
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-)
+const rootReducer = combineReducers({
+  auth: authReducer,
+  data: dataReducer,
+})
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 const StoreProvider = ({ children }) => <Provider store={store}>{children}</Provider>
 

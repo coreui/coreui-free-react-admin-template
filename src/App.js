@@ -1,10 +1,10 @@
 import React, { Suspense, useEffect } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
 import { CSpinner } from '@coreui/react'
 import './scss/style.scss'
 import PrivateRoute from './PrivateRute'
-import { isLogged } from './actions/authActions'
+import { checkAuthentication } from './actions/authActions'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
@@ -16,9 +16,11 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
 const App = () => {
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    isLogged()
-  }, [])
+    dispatch(checkAuthentication())
+  }, [dispatch])
 
   return (
     <HashRouter>

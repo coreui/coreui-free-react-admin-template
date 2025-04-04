@@ -1,15 +1,19 @@
 // If you want to override variables do it here
-@import "variables";
+@use "variables" as *;
 
 // Import styles
-@import "@coreui/coreui/scss/coreui";
-@import "@coreui/chartjs/scss/coreui-chartjs";
+@use "@coreui/coreui/scss/coreui" as coreui;
+@use "@coreui/chartjs/scss/coreui-chartjs" as chartjs;
 
 // Vendors
-@import "vendors/simplebar";
+@use "vendors/simplebar" as simplebar;
 
 // Custom styles for this theme
-@import "theme";
+@use "theme" as theme;
 
 // If you want to add custom CSS you can put it here
-@import "custom";
+@use "custom" as custom;
+
+// Import Bootstrap CSS and Bootstrap Icons CSS
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';

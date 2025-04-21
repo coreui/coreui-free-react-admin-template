@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classNames from 'classnames'
 
 import {
@@ -10,6 +10,7 @@ import {
   CCardFooter,
   CCardHeader,
   CCol,
+  CContainer,
   CProgress,
   CRow,
   CTable,
@@ -53,8 +54,19 @@ import avatar6 from 'src/assets/images/avatars/6.jpg'
 import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import MainChart from './MainChart'
-
-const Dashboard = () => {
+import axiosInstance from '../../utils/api/axiosConfig'
+const Dashboard =() => {
+  
+  useEffect( ()=>{
+    fetchUserInfo()
+},[])
+  const fetchUserInfo = async () => {
+    try {
+      const response = await axiosInstance.get('/auth/me')
+    } catch (error) {
+      console.error(error)
+    }
+  }
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
@@ -177,9 +189,10 @@ const Dashboard = () => {
   ]
 
   return (
-    <>
-      <WidgetsDropdown className="mb-4" />
-      <CCard className="mb-4">
+    
+    <CContainer className='px-4' >
+      <WidgetsDropdown className="mb-4 mt-4 " />
+      <CCard className="mb-4 ">
         <CCardBody>
           <CRow>
             <CCol sm={5}>
@@ -233,8 +246,8 @@ const Dashboard = () => {
           </CRow>
         </CCardFooter>
       </CCard>
-      <WidgetsBrand className="mb-4" withCharts />
-      <CRow>
+      <WidgetsBrand className="mb-4 " withCharts />
+      <CRow className='mx-3'>
         <CCol xs>
           <CCard className="mb-4">
             <CCardHeader>Traffic {' & '} Sales</CCardHeader>
@@ -380,7 +393,7 @@ const Dashboard = () => {
           </CCard>
         </CCol>
       </CRow>
-    </>
+      </CContainer>
   )
 }
 

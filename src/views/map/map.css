@@ -1,0 +1,362 @@
+.map-container {
+  position: relative;
+  width: 100%;
+  height:calc(100vh - 68px);
+  background-color: #f8f9fa;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.layer-panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  max-width: 250px;
+}
+
+.toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.layer-list {
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+}
+
+.layer-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color:#0056b3;
+}
+
+.layer-item input {
+  margin-right: 8px;
+}
+.feature-properties {
+  position: absolute;
+  top: 90px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  max-height: 500px;
+  overflow-y: auto;
+  color: white;
+}
+
+.feature-properties h3 {
+  font-size: 18px;
+}
+
+.properties-list {
+  display: table;
+  width: 100%;
+  border-spacing: 0 8px;
+}
+
+.property-item {
+  display: table-row;
+}
+
+.property-item strong {
+  display: table-cell;
+  padding-right: 20px;
+  white-space: nowrap;
+  color: #a8a8a8;
+  text-transform: capitalize;
+}
+
+.property-item span {
+  display: table-cell;
+  word-break: break-word;
+}
+
+.feature-properties::-webkit-scrollbar {
+  width: 8px;
+}
+
+.feature-properties::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.feature-properties::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.feature-properties::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.close-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: red;
+}
+
+.close-button:hover {
+  color: darkred;
+}
+.feature-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.search-panel {
+  position: absolute;
+  top: 10px;
+  left:15px;
+  outline: none;
+  border: none;
+  z-index: 2;
+  width: 400px;
+  max-height: 400px;
+}
+
+.search-header {
+  background-color: #fff;
+  border-radius: 4px 4px 0 0;
+}
+
+.search-input-container {
+  display: flex;
+  gap: 5px;
+}
+
+.search-input-container .form-control {
+  flex: 1;
+  outline: none;
+  border: none;
+}
+.form-controller ::placeholder {
+  color: black !important;
+}
+.form-controller::-webkit-input-placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
+
+.form-controller::-moz-placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
+
+.form-controller:-ms-input-placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
+
+.form-controller:-moz-placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
+.search-results {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.search-results h5 {
+  margin: 0; /* Remove default margins */
+  font-size: 14px;
+  color: #0056b3;
+  font-weight: 600;
+}
+
+.close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.search-results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-result-item {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+}
+
+.search-result-item:hover {
+  background-color: #f0f0f0;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-results::-webkit-scrollbar {
+  width: 0px;
+}
+
+.search-results::-webkit-scrollbar:hover {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+.form-select {
+  width: 200px;
+  padding: 10px 14px;
+  border: none;
+  box-shadow: none;
+  border-radius: 4px;
+  outline: none;
+  height: 44px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+/* Enhanced Zoom Control Styles */
+.custom-zoom-control {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.custom-zoom-control button {
+  width: 35px;
+  height: 35px;
+  margin: 4px 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.custom-zoom-control button:hover {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.custom-zoom-control button:active {
+  background-color: #f8f9fa;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+/* Customize individual zoom buttons */
+.custom-zoom-control .ol-zoom-in {
+  border-radius: 8px 8px 4px 4px;
+}
+
+.custom-zoom-control .ol-zoom-out {
+  border-radius: 4px 4px 8px 8px;
+}
+
+/* Adding a subtle divider between buttons */
+.custom-zoom-control .ol-zoom-in:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Add responsive styles for mobile */
+@media (max-width: 768px) {
+  .custom-zoom-control {
+    bottom: 60px;
+  }
+  
+  .custom-zoom-control button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+}
+
+/* Make sure buttons don't appear when printing */
+@media print {
+  .custom-zoom-control {
+    display: none !important;
+  }
+}

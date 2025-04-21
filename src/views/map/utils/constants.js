@@ -1,0 +1,11 @@
+export const WMS_URL = 'http://109.199.124.208:2000/layers/wms'
+export const WFS_URL = 'http://109.199.124.208:2000/layers/wfs'
+export const WMTS_URL = 'http://109.199.124.208:2000/layers/wmts'
+export const SEARCH_URL = 'http://109.199.124.208:2000/layers/search'
+export const LAYERS_API_URL = 'http://109.199.124.208:2000/layers'
+export const mapExtent = [69.5, 41, 70.5, 42]
+export const minZoom = 10
+export const maxZoom = 17
+export const zoom = 13
+export const center = [69.95, 41.65]
+export const projection = 'EPSG:4326'

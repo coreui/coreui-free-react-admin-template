@@ -5,9 +5,7 @@ const Map = React.lazy(() => import('./views/map/Map'))
 const Users = React.lazy(() => import('./views/users/Users'))
 const Roles = React.lazy(() => import('./views/roles/Roles'))
 const Departments = React.lazy(() => import('./views/departments/Departments'))
-const InstructionsPage = React.lazy(() => import('./views/instructions/user'))
-const InstructionsAdmin = React.lazy(() => import('./views/instructions/admin'))
-const InstructionForm = React.lazy(() => import('./views/instructions/instructionForm'))
+
 const LayerForm = React.lazy(() => import('./views/layers/layers'))
 const AddLayer = React.lazy(() => import('./views/layers/add'))
 const EditLayer = React.lazy(() => import('./views/layers/edit'))
@@ -74,33 +72,45 @@ const routes = [
     },
   },
   {
-    path: '/instructions',
-    name: 'Instructions',
-    element: InstructionsPage,
-    permissions: {
-      method: 'GET',
-      actionName: 'Seeing Instructions',
-      actionName2: 'CMS Management',
-    },
+    path: '/contact',
+    name: 'Contact',
+    element: React.lazy(() => import('./views/contact/Contact')),
+    permissions: { method: 'GET' },
   },
   {
-    path: '/instructor',
-    name: 'Instructor',
-    element: InstructionsAdmin,
-    permissions: { method: 'GET', actionName: 'CMS Management' },
+    path: '/about', 
+    name: 'About',
+    element: React.lazy(() => import('./views/about/About')),
+    permissions: { method: 'GET' },
   },
-  {
-    path: '/instructor/new',
-    name: 'Add Instruction',
-    element: InstructionForm,
-    permissions: { method: 'GET', actionName: 'CMS Management' },
-  },
-  {
-    path: '/instructor/edit/:id',
-    name: 'Edit Instruction',
-    element: InstructionForm,
-    permissions: { method: 'GET', actionName: 'CMS Management' },
-  },
+  // {
+  //   path: '/instructions',
+  //   name: 'Instructions',
+  //   element: InstructionsPage,
+  //   permissions: {
+  //     method: 'GET',
+  //     actionName: 'Seeing Instructions',
+  //     actionName2: 'CMS Management',
+  //   },
+  // },
+  // {
+  //   path: '/instructor',
+  //   name: 'Instructor',
+  //   element: InstructionsAdmin,
+  //   permissions: { method: 'GET', actionName: 'CMS Management' },
+  // },
+  // {
+  //   path: '/instructor/new',
+  //   name: 'Add Instruction',
+  //   element: InstructionForm,
+  //   permissions: { method: 'GET', actionName: 'CMS Management' },
+  // },
+  // {
+  //   path: '/instructor/edit/:id',
+  //   name: 'Edit Instruction',
+  //   element: InstructionForm,
+  //   permissions: { method: 'GET', actionName: 'CMS Management' },
+  // },
 ]
 
 export default routes

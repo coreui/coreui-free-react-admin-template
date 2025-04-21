@@ -1,6 +1,6 @@
 // utils/permissions.js
 export const checkUserPermission = (user, path, actionName) => {
-    const defaultAccessiblePaths = ['/dashboard','/profile'];
+    const defaultAccessiblePaths = ['/dashboard','/profile','/about','/contact'];
     if (defaultAccessiblePaths.includes(path)) {
         return true; 
       }

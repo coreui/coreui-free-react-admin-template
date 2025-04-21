@@ -1,7 +1,7 @@
 // _nav.js
 import React from 'react';
 import CIcon from '@coreui/icons-react';
-import { cilSpeedometer, cilMap, cilUser, cilDescription, cilEducation, cilLayers } from '@coreui/icons';
+import { cilSpeedometer, cilMap, cilUser, cilDescription, cilEducation, cilLayers, cilPhone } from '@coreui/icons';
 import { CNavGroup, CNavItem } from '@coreui/react';
 
 const _nav = [
@@ -37,6 +37,20 @@ const _nav = [
     icon: <CIcon icon={cilLayers} customClassName="nav-icon" />, 
     permissions: { actionName:"Map Management"},
   },
+  {
+    component: CNavItem,
+    name: 'Contact',
+    to: '/contact',
+    icon: <CIcon icon={cilPhone} customClassName="nav-icon" />,
+    permissions: { actionName: 'Dashboard' },
+  },
+  {
+    component: CNavItem,
+    name: 'About',
+    to: '/about',
+    icon: <CIcon icon={cilEducation} customClassName="nav-icon" />,
+    permissions: { actionName: 'Dashboard' },
+  }
   // {
   //   component: CNavItem,
   //   name: 'Instructor',

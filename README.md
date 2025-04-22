@@ -63,8 +63,8 @@ This will build the Spring Boot backend, start PostgreSQL, and run all services.
 ### 💻 Frontend Setup
 
 ```bash
-git clone https://github.com/yourusername/chorvoq-gis.git
-cd chorvoq-gis
+git clone https://github.com/Abdulhafiz0512/web2.git
+cd web2
 npm install
 npm run dev
 ```

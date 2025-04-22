@@ -17,7 +17,7 @@ Chorvoq GIS is a full-stack web-based GIS (Geographic Information System) tool f
 
 ## 📸 Interface Preview
 
-![Layer Management](./path-to-screenshot1.png)  
+![Layer Management](./path-to-screenshot1.png)
 *Layer Management Panel*
 
 ![Map Interaction](./path-to-screenshot2.png)  

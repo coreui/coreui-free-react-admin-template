@@ -149,7 +149,6 @@ web2/
 
 ## ✅ Future Improvements
 
-- 🔐 Role-based access & authentication
 - 📤 Export shapes as GeoJSON or PDF
 - 🌐 Multilingual interface
 - 📲 GPS location tracking & mobile support

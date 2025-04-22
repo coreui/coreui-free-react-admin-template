@@ -38,7 +38,7 @@ Each **layer** contains multiple **shapes**, each linked to metadata and managed
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, Leaflet.js
+- **Frontend**: React
 - **Backend**: Spring Boot – [Backend Repository](https://github.com/MuhammadayubErkinoff/FinalProject.git)
 - **Map Source**: GeoServer (WMS Layers)
 - **Database**: PostgreSQL

@@ -11,7 +11,7 @@ const root = createRoot(container)
 root.render(
   <React.StrictMode>
     <StoreProvider>
-      <ToastContainer hideProgressBar pauseOnFocusLoss={false} autoClose={2000} />
+      <ToastContainer hideProgressBar pauseOnFocusLoss={false} autoClose={2000} closeOnClick />
       <App />
     </StoreProvider>
   </React.StrictMode>,

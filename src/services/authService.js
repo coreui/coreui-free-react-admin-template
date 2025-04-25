@@ -15,8 +15,16 @@ const login = async (email, password) => {
   }
 }
 
-const logout = () => {
-  localStorage.removeItem('user')
+const logout = async () => {
+  try {
+    const response = await axios.post(`${API_URL}logout`)
+    console.log(response)
+    localStorage.removeItem('user')
+    return response.data
+  } catch (error) {
+    console.error('Error logout in:', error)
+    throw error
+  }
 }
 
 const checkAuth = async () => {

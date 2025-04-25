@@ -16,6 +16,20 @@ export const loginFailure = (error) => ({
   payload: error,
 })
 
+export const logoutRequest = () => ({
+  type: 'LOGOUT_REQUEST',
+})
+
+export const logoutSuccess = (user) => ({
+  type: 'LOGOUT_SUCCESS',
+  payload: user,
+})
+
+export const logoutFailure = (error) => ({
+  type: 'LOGOUT_FAILURE',
+  payload: error,
+})
+
 export const login = (username, password) => async (dispatch) => {
   dispatch(loginRequest())
   try {
@@ -27,11 +41,15 @@ export const login = (username, password) => async (dispatch) => {
   }
 }
 
-export const logout = () => (dispatch) => {
-  authService.logout()
-  dispatch({
-    type: 'LOGOUT',
-  })
+export const logout = () => async (dispatch) => {
+  dispatch(logoutRequest())
+  try {
+    const user = await authService.logout()
+    dispatch(logoutSuccess(user))
+  } catch (error) {
+    dispatch(logoutFailure(error))
+    console.error('Error logging out:', error)
+  }
 }
 
 export const checkAuthRequest = () => ({

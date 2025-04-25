@@ -1,0 +1,4 @@
+@use "coreui-reboot" with (
+  $enable-ltr: false,
+  $enable-rtl: true
+);

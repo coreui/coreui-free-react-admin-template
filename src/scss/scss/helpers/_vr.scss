@@ -1,0 +1,11 @@
+@use "../variables" as *;
+
+.vr {
+  display: inline-block;
+  align-self: stretch;
+  width: $vr-border-width;
+  min-height: 1em;
+  padding: 0;
+  background-color: currentcolor;
+  opacity: $hr-opacity;
+}

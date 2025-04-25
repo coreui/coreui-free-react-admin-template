@@ -1,0 +1,23 @@
+@use "contrast-ratio" as *;
+
+// We use this function only in variables.scss because recursive imports are not allowed in Sass anymore.
+
+@function color-contrast-variables($background, $color-contrast-dark, $color-contrast-light, $white, $black, $min-contrast-ratio) {
+  $foregrounds: $color-contrast-light, $color-contrast-dark, $white, $black;
+  $max-ratio: 0;
+  $max-ratio-color: null;
+
+  @each $color in $foregrounds {
+    $contrast-ratio: contrast-ratio($background, $color);
+    @if $contrast-ratio > $min-contrast-ratio {
+      @return $color;
+    } @else if $contrast-ratio > $max-ratio {
+      $max-ratio: $contrast-ratio;
+      $max-ratio-color: $color;
+    }
+  }
+
+  @warn "Found no color leading to #{$min-contrast-ratio}:1 contrast ratio against #{$background}...";
+
+  @return $max-ratio-color;
+}

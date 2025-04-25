@@ -1,0 +1,4 @@
+@use "coreui" with (
+  $enable-ltr: false,
+  $enable-rtl: true
+);

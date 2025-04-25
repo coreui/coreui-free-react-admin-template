@@ -1,0 +1,57 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "color" as *;
+@use "rgba-css-var" as *;
+@use "to-rgb" as *;
+@use "../variables" as *;
+
+// stylelint-disable scss/dollar-variable-pattern
+@function map-loop($map, $func, $args...) {
+  $_map: ();
+
+  @each $key, $value in $map {
+    // allow to pass the $key and $value of the map as an function argument
+    $_args: ();
+    @each $arg in $args {
+      $_args: list.append($_args, if($arg == "$prefix", $prefix, if($arg == "$key", $key, if($arg == "$value", $value, $arg))));
+    }
+
+    $_map: map.merge($_map, ($key: meta.call(meta.get-function($func), $_args...)));
+  }
+  @return $_map;
+}
+// stylelint-enable scss/dollar-variable-pattern
+
+// Internal Bootstrap function to turn maps into its negative variant.
+// It prefixes the keys with `n` and makes the value negative.
+@function negativify-map($map) {
+  $result: ();
+  @each $key, $value in $map {
+    @if $key != 0 {
+      $result: map.merge($result, ("n" + $key: (-$value)));
+    }
+  }
+  @return $result;
+}
+
+// Get multiple keys from a sass map
+@function map-get-multiple($map, $values) {
+  $result: ();
+  @each $key, $value in $map {
+    @if (list.index($values, $key) != null) {
+      $result: map.merge($result, ($key: $value));
+    }
+  }
+  @return $result;
+}
+
+// Merge multiple maps
+@function map-merge-multiple($maps...) {
+  $merged-maps: ();
+
+  @each $map in $maps {
+    $merged-maps: map.merge($merged-maps, $map);
+  }
+  @return $merged-maps;
+}

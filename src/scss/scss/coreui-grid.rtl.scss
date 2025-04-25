@@ -1,0 +1,4 @@
+@use "coreui-grid" with (
+  $enable-ltr: false,
+  $enable-rtl: true
+);

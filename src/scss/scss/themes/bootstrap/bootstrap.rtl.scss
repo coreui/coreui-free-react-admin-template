@@ -1,0 +1,4 @@
+@use "bootstrap" with (
+  $enable-ltr: false,
+  $enable-rtl: true
+);

@@ -1,0 +1,63 @@
+@use "mixins/grid" as *;
+@use "variables" as *;
+
+$include-column-box-sizing: false !default;
+
+// Row
+//
+// Rows contain your columns.
+
+:root {
+  @each $name, $value in $grid-breakpoints {
+    --#{$prefix}breakpoint-#{$name}: #{$value};
+  }
+
+  --#{$prefix}mobile-breakpoint: #{$mobile-breakpoint};
+}
+
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+
+    > * {
+      @include make-col-ready($include-column-box-sizing);
+    }
+  }
+}
+
+@if $enable-cssgrid {
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(var(--#{$prefix}rows, 1), 1fr);
+    grid-template-columns: repeat(var(--#{$prefix}columns, #{$grid-columns}), 1fr);
+    gap: var(--#{$prefix}gap, #{$grid-gutter-width});
+
+    @include make-cssgrid();
+  }
+}
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}
+
+@if $enable-container-queries {
+  .cq-container {
+    container-type: inline-size;
+  }
+
+  .cq-row {
+    container-type: inline-size;
+    @include make-row();
+
+    > * {
+      @include make-col-ready($include-column-box-sizing);
+    }
+  }
+
+  @include make-c-grid-columns();
+}

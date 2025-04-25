@@ -2,8 +2,10 @@
 @use "variables" as *;
 
 // Import styles
-@use "@coreui/coreui/scss/coreui" as coreui;
-@use "@coreui/chartjs/scss/coreui-chartjs" as chartjs;
+@use "scss/coreui" as coreui;
+// @use "coreui-chartjs/coreui-chartjs" as chartjs;
+// @use "@coreui/coreui/scss/coreui" as coreui;
+// @use "@coreui/chartjs/scss/coreui-chartjs" as chartjs;
 
 // Vendors
 @use "vendors/simplebar" as simplebar;

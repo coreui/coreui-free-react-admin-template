@@ -1,0 +1,34 @@
+@use "../functions/color" as *;
+@use "../functions/color-contrast" as *;
+@use "../functions/to-rgb" as *;
+@use "../variables" as *;
+
+@each $color, $value in $theme-colors {
+  .link-#{$color} {
+    color: rgba(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-opacity, 1)) if($enable-important-utilities, !important, null);
+    text-decoration-color: rgba(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-underline-opacity, 1)) if($enable-important-utilities, !important, null);
+
+    @if $link-shade-percentage != 0 {
+      &:hover,
+      &:focus {
+        $hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
+        color: rgba(#{to-rgb($hover-color)}, var(--#{$prefix}link-opacity, 1)) if($enable-important-utilities, !important, null);
+        text-decoration-color: rgba(to-rgb($hover-color), var(--#{$prefix}link-underline-opacity, 1)) if($enable-important-utilities, !important, null);
+      }
+    }
+  }
+}
+
+// One-off special link helper as a bridge until v6
+.link-body-emphasis {
+  color: rgba(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 1)) if($enable-important-utilities, !important, null);
+  text-decoration-color: rgba(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 1)) if($enable-important-utilities, !important, null);
+
+  @if $link-shade-percentage != 0 {
+    &:hover,
+    &:focus {
+      color: rgba(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, .75)) if($enable-important-utilities, !important, null);
+      text-decoration-color: rgba(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, .75)) if($enable-important-utilities, !important, null);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@use "../functions/color" as *;
+@use "../functions/color-contrast" as *;
+@use "../functions/to-rgb" as *;
+@use "../mixins/color-mode" as *;
+@use "../variables" as *;
+@use "../variables-dark" as *;
+
+@each $color, $value in $theme-colors {
+  .text-bg-#{$color} {
+    color: color-contrast($value) if($enable-important-utilities, !important, null);
+    background-color: rgba(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, 1)) if($enable-important-utilities, !important, null);
+  }
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    @each $color, $value in $theme-colors-dark {
+      $color-rgb: to-rgb($value);
+      .text-bg-#{$color} {
+        color: color-contrast($value) if($enable-important-utilities, !important, null);
+        background-color: rgba($color-rgb, var(--#{$prefix}bg-opacity, 1)) if($enable-important-utilities, !important, null);
+      }
+    }
+  }
+}

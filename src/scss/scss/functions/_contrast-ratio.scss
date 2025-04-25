@@ -1,0 +1,35 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+@use "math" as *;
+
+@function contrast-ratio($background, $foreground) {
+  $l1: luminance($background);
+  $l2: luminance(opaque($background, $foreground));
+
+  @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
+}
+
+// Return WCAG2.2 relative luminance
+// See https://www.w3.org/TR/WCAG/#dfn-relative-luminance
+// See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
+@function luminance($color) {
+  $rgb: (
+    "r": color.channel($color, "red", $space: rgb), // stylelint-disable-line scss/at-function-named-arguments
+    "g": color.channel($color, "green", $space: rgb), // stylelint-disable-line scss/at-function-named-arguments
+    "b": color.channel($color, "blue", $space: rgb) // stylelint-disable-line scss/at-function-named-arguments
+  );
+
+  @each $name, $value in $rgb {
+    $value: if(divide($value, 255) < .04045, divide(divide($value, 255), 12.92), math.pow(divide((divide(math.round($value) + 1, 255) + .055), 1.055), 2.4));
+    $rgb: map.merge($rgb, ($name: $value));
+  }
+
+  @return (map.get($rgb, "r") * .2126) + (map.get($rgb, "g") * .7152) + (map.get($rgb, "b") * .0722);
+}
+
+// Return opaque color
+// opaque(#fff, rgba(0, 0, 0, .5)) => #808080
+@function opaque($background, $foreground) {
+  @return color.mix(rgba($foreground, 1), $background, color.opacity($foreground) * 100%);
+}

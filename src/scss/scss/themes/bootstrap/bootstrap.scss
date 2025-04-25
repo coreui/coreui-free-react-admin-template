@@ -1,0 +1,125 @@
+@use "sass:color";
+@use "../../banner" with (
+  $file: "Bootstrap Theme"
+);
+@use "../../functions/color" as *;
+
+// scss-docs-start gray-color-variables
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+// scss-docs-end gray-color-variables
+
+// scss-docs-start color-variables
+$blue:    #0d6efd !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #d63384 !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #198754 !default;
+$teal:    #20c997 !default;
+$cyan:    #0dcaf0 !default;
+// scss-docs-end color-variables
+
+// scss-docs-start theme-color-variables
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-900 !default;
+// scss-docs-end theme-color-variables
+
+// scss-docs-start theme-text-dark-variables
+$primary-text-emphasis-dark:        tint-color($primary, 40%) !default;
+$secondary-text-emphasis-dark:      tint-color($secondary, 40%) !default;
+$success-text-emphasis-dark:        tint-color($success, 40%) !default;
+$info-text-emphasis-dark:           tint-color($info, 40%) !default;
+$warning-text-emphasis-dark:        tint-color($warning, 40%) !default;
+$danger-text-emphasis-dark:         tint-color($danger, 40%) !default;
+// scss-docs-end theme-text-dark-variables
+
+// scss-docs-start theme-bg-subtle-dark-variables
+$primary-bg-subtle-dark:            shade-color($primary, 80%) !default;
+$secondary-bg-subtle-dark:          shade-color($secondary, 80%) !default;
+$success-bg-subtle-dark:            shade-color($success, 80%) !default;
+$info-bg-subtle-dark:               shade-color($info, 80%) !default;
+$warning-bg-subtle-dark:            shade-color($warning, 80%) !default;
+$danger-bg-subtle-dark:             shade-color($danger, 80%) !default;
+// scss-docs-end theme-bg-subtle-dark-variables
+
+// scss-docs-start theme-border-subtle-dark-variables
+$primary-border-subtle-dark:        shade-color($primary, 40%) !default;
+$secondary-border-subtle-dark:      shade-color($secondary, 40%) !default;
+$success-border-subtle-dark:        shade-color($success, 40%) !default;
+$info-border-subtle-dark:           shade-color($info, 40%) !default;
+$warning-border-subtle-dark:        shade-color($warning, 40%) !default;
+$danger-border-subtle-dark:         shade-color($danger, 40%) !default;
+// scss-docs-end theme-border-subtle-dark-variables
+
+@forward "../../coreui" with (
+  $prefix:                        bs- !default,
+  $data-infix:                    -bs- !default,
+  $white:                         $white !default,
+  $gray-100:                      $gray-100 !default,
+  $gray-200:                      $gray-200 !default,
+  $gray-300:                      $gray-300 !default,
+  $gray-400:                      $gray-400 !default,
+  $gray-500:                      $gray-500 !default,
+  $gray-600:                      $gray-600 !default,
+  $gray-700:                      $gray-700 !default,
+  $gray-800:                      $gray-800 !default,
+  $gray-900:                      $gray-900 !default,
+  $black:                         $black !default,
+  $primary:                       $primary !default,
+  $secondary:                     $secondary !default,
+  $success:                       $success !default,
+  $info:                          $info !default,
+  $warning:                       $warning !default,
+  $danger:                        $danger !default,
+  $light:                         $light !default,
+  $dark:                          $dark !default,
+  $body-color:                    $gray-900 !default,
+  $body-secondary-color:          rgba($gray-900, .75) !default,
+  $body-tertiary-bg:              rgba($gray-900, .75) !default,
+  $component-active-color:        $white !default,
+  $component-active-bg:           $primary !default,
+  $body-color-dark:               $gray-300 !default,
+  $body-bg-dark:                  $gray-900 !default,
+  $body-secondary-color-dark:     rgba($gray-300, .75) !default,
+  $body-secondary-bg-dark:        $gray-800 !default,
+  $body-tertiary-color-dark:      rgba($gray-300, .5) !default,
+  $body-tertiary-bg-dark:         color.mix($gray-800, $gray-900, 50%) !default,
+  $primary-text-emphasis-dark:    $primary-text-emphasis-dark !default,
+  $secondary-text-emphasis-dark:  $secondary-text-emphasis-dark !default,
+  $success-text-emphasis-dark:    $success-text-emphasis-dark !default,
+  $info-text-emphasis-dark:       $info-text-emphasis-dark !default,
+  $warning-text-emphasis-dark:    $warning-text-emphasis-dark !default,
+  $danger-text-emphasis-dark:     $danger-text-emphasis-dark !default,
+  $primary-bg-subtle-dark:        $primary-bg-subtle-dark !default,
+  $secondary-bg-subtle-dark:      $secondary-bg-subtle-dark !default,
+  $success-bg-subtle-dark:        $success-bg-subtle-dark !default,
+  $info-bg-subtle-dark:           $info-bg-subtle-dark !default,
+  $warning-bg-subtle-dark:        $warning-bg-subtle-dark !default,
+  $danger-bg-subtle-dark:         $danger-bg-subtle-dark !default,
+  $primary-border-subtle-dark:    $primary-border-subtle-dark !default,
+  $secondary-border-subtle-dark:  $secondary-border-subtle-dark !default,
+  $success-border-subtle-dark:    $success-border-subtle-dark !default,
+  $info-border-subtle-dark:       $info-border-subtle-dark !default,
+  $warning-border-subtle-dark:    $warning-border-subtle-dark !default,
+  $danger-border-subtle-dark:     $danger-border-subtle-dark !default,
+  $theme-colors-dark:             () !default,
+  $grays-dark:                    () !default,
+);

@@ -1,0 +1,118 @@
+@use "sass:string";
+@use "../functions/str-replace" as *;
+@use "../variables" as *;
+
+// Applies styles only when LTR is enabled and the HTML does NOT have the "rtl"
+// attribute (i.e., left-to-right contexts).
+
+@mixin ltr {
+  @if $enable-ltr {
+    html:not([dir="rtl"]) & {
+      @content;
+    }
+  }
+}
+
+// Applies styles only when RTL is enabled and the element is within an RTL
+// context (i.e., the element is a descendant of an element with dir="rtl").
+
+@mixin rtl {
+  @if $enable-rtl {
+    *[dir="rtl"] & {
+      @content;
+    }
+  }
+}
+
+// This function takes an element (or string) and returns its "mirrored" version.
+// For example, it will replace "left" with "right" and vice versa.
+
+@function reflect($element) {
+  $string: #{$element};
+  @if string.index($string, "left") {
+    @return str-replace($string, "left", "right");
+  }
+  @if string.index($string, "right") {
+    @return str-replace($string, "right", "left");
+  }
+
+  @return string.unquote($string);
+}
+
+// Generates CSS for a given property with different values for LTR and RTL
+// contexts. Allows an optional custom property name and value for RTL.
+//
+// @param {String} $property - The CSS property for LTR context (e.g., margin-left).
+// @param {String} $value - The value for the property in LTR context.
+// @param {String} $property-rtl - Optional custom property name for RTL context.
+// @param {String} $value-rtl - Optional custom value for RTL context.
+// @param {Boolean} $important - Optional "!important" flag.
+
+@mixin ltr-rtl($property, $value, $property-rtl: null, $value-rtl: null, $important: false) {
+  $property-reflected: reflect($property);
+  $value-reflected: reflect($value);
+
+  @if $enable-ltr and $enable-rtl {
+    @include ltr() {
+      #{$property}: $value if($important, !important, null);
+    }
+    @include rtl() {
+      @if $value-rtl {
+        #{$property-reflected}: $value-rtl if($important, !important, null);
+      }
+      @else {
+        #{$property-reflected}: $value-reflected if($important, !important, null);
+      }
+    }
+  }
+  @else {
+    @if $enable-rtl {
+      @if $value-rtl {
+        #{$property-reflected}: $value-rtl if($important, !important, null);
+      }
+      @else {
+        #{$property-reflected}: $value-reflected if($important, !important, null);
+      }
+    }
+    @else {
+      #{$property}: $value if($important, !important, null);
+    }
+  }
+}
+
+// Similar to ltr-rtl but assumes the property name is the same for both
+// contexts. It only mirrors the value for RTL if a custom RTL value is not
+// provided.
+//
+// @param {String} $property - The CSS property to apply.
+// @param {String} $value - The value for the property in LTR context.
+// @param {String} $value-rtl - Optional custom value for RTL context.
+// @param {Boolean} $important - Optional "!important" flag.
+
+@mixin ltr-rtl-value-only($property, $value, $value-rtl: null, $important: false) {
+  $value-reflected: reflect($value);
+
+  @if $enable-ltr and $enable-rtl {
+    @include ltr() {
+      #{$property}: $value if($important, !important, null);
+    }
+    @include rtl() {
+      @if $value-rtl {
+        #{$property}: $value-rtl if($important, !important, null);
+      } @else {
+        #{$property}: $value-reflected if($important, !important, null);
+      }
+    }
+  }
+  @else {
+    @if $enable-rtl {
+      @if $value-rtl {
+        #{$property}: $value-rtl if($important, !important, null);
+      } @else {
+        #{$property}: $value-reflected if($important, !important, null);
+      }
+    } @else {
+      #{$property}: $value if($important, !important, null);
+    }
+  }
+}

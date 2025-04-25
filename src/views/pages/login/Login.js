@@ -5,6 +5,23 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../../../assets/images/logo.png'
 import { toast } from 'react-toastify'
 
+import {
+  CButton,
+  CCard,
+  CCardBody,
+  CCardGroup,
+  CCol,
+  CContainer,
+  CForm,
+  CFormInput,
+  CImage,
+  CInputGroup,
+  CInputGroupText,
+  CRow,
+} from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilLockLocked, cilUser } from '@coreui/icons'
+
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -22,73 +39,64 @@ const Login = () => {
       toast.error('Invalid username or password')
     }
   }
-
   return (
-    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <div className="card-group">
-              <div className="card p-4">
-                <div className="card-body">
-                  <form onSubmit={handleLogin}>
+    <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
+      <CContainer>
+        <CRow className="justify-content-center">
+          <CCol md={8}>
+            <CCardGroup>
+              <CCard className="p-4">
+                <CCardBody>
+                  <CForm>
                     <h1>Login</h1>
-                    <p className="text-muted">Sign In to your account</p>
-                    <div className="input-group mb-3">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="bi bi-person"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        className="form-control"
+                    <p className="text-body-secondary">Sign In to your account</p>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon icon={cilUser} />
+                      </CInputGroupText>
+                      <CFormInput
                         placeholder="Username"
                         autoComplete="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                       />
-                    </div>
-                    <div className="input-group mb-4">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="bi bi-lock"></i>
-                        </span>
-                      </div>
-                      <input
+                    </CInputGroup>
+                    <CInputGroup className="mb-4">
+                      <CInputGroupText>
+                        <CIcon icon={cilLockLocked} />
+                      </CInputGroupText>
+                      <CFormInput
                         type="password"
-                        className="form-control"
                         placeholder="Password"
                         autoComplete="current-password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
-                    </div>
-                    <div className="row">
-                      <div className="col-6">
-                        <button type="submit" className="btn btn-primary px-4">
+                    </CInputGroup>
+                    <CRow>
+                      <CCol xs={6}>
+                        <CButton color="primary" className="px-4" onClick={handleLogin}>
                           Login
-                        </button>
-                      </div>
-                      <div className="col-6 text-right">
-                        <button type="button" className="btn btn-link px-0">
+                        </CButton>
+                      </CCol>
+                      <CCol xs={6} className="text-right">
+                        <CButton color="link" className="px-0">
                           Forgot password?
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <div
-                className="card text-white bg-primary py-5 d-none d-md-flex align-items-center justify-content-center"
-                style={{ width: '44%' }}
-              >
-                <img src={logo} alt="Logo" className="w-50" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                        </CButton>
+                      </CCol>
+                    </CRow>
+                  </CForm>
+                </CCardBody>
+              </CCard>
+              <CCard className="bg-primary p-4">
+                <CCardBody className="text-center">
+                  <CImage src={logo} alt="Logo" fluid align="center" />
+                </CCardBody>
+              </CCard>
+            </CCardGroup>
+          </CCol>
+        </CRow>
+      </CContainer>
     </div>
   )
 }

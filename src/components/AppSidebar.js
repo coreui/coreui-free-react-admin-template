@@ -21,7 +21,7 @@ import { toggleSideBar, toggleUnfoldable } from '../actions/appActions'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
-  const { sidebarUnfoldable, sidebarShow } = useSelector((state) => state.app)
+  const { sidebarUnfoldable, sidebarShow } = useSelector((state) => state.data)
 
   const handleVisibleChange = (visible) => {
     if (visible !== sidebarShow) {

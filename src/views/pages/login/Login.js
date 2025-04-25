@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login, checkAuthentication } from '../../../actions/authActions'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../../assets/images/logo.png'
+import { toast } from 'react-toastify'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -17,6 +18,8 @@ const Login = () => {
     dispatch(checkAuthentication())
     if (isAuthenticated) {
       navigate('/')
+    } else {
+      toast.error('Invalid username or password')
     }
   }
 

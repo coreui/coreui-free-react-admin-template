@@ -27,14 +27,18 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { isAuthenticated } = useSelector((state) => state.auth)
+  const { isAuthenticated, user } = useSelector((state) => state.auth)
 
   const handleLogin = async (e) => {
     e.preventDefault()
     await dispatch(login(username, password))
     await dispatch(checkAuthentication())
     if (isAuthenticated) {
-      navigate('/')
+      if (user.user.IsEmployee) {
+        navigate('/')
+      } else if (user.user.IsManager) {
+        navigate('/')
+      }
     } else {
       toast.error('Invalid username or password')
     }

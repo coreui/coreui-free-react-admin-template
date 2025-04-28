@@ -1,13 +1,18 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { CSpinner } from '@coreui/react'
 import './scss/style.scss'
 import PrivateRoute from './PrivateRute'
 import { checkAuthentication } from './actions/authActions'
 
 // Containers
-const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
+const DefaultLayoutEmployee = React.lazy(() => import('./layout/DefaultLayoutEmployee'))
+const DefaultLayoutManager = React.lazy(() => import('./layout/DefaultLayoutManager'))
+const DefaultLayout = () => {
+  const { user } = useSelector((state) => state.auth)
+  return user.user.IsEmployee ? <DefaultLayoutEmployee /> : <DefaultLayoutManager />
+}
 
 // Pages
 const Login = React.lazy(() => import('./views/pages/login/Login'))

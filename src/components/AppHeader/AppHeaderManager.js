@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -25,14 +25,16 @@ import {
   cilSun,
 } from '@coreui/icons'
 
-import { AppBreadcrumb } from './index'
-import { AppHeaderDropdown } from './header/index'
-import { switchThemeMode, toggleSideBar } from '../actions/appActions'
-const AppHeader = () => {
+import { AppBreadcrumb } from '../index'
+import { AppHeaderDropdown } from '../header/index'
+import { switchThemeMode, toggleSideBar } from '../../actions/appActions'
+const AppHeaderManager = () => {
+  const location = useLocation()
   const headerRef = useRef()
   const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
   const dispatch = useDispatch()
   const { theme } = useSelector((state) => state.data)
+  const { user } = useSelector((state) => state.auth)
 
   useEffect(() => {
     document.addEventListener('scroll', () => {
@@ -65,10 +67,14 @@ const AppHeader = () => {
             </CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
+            <CNavLink to="/dashboard" as={NavLink}>
+              Employees
+            </CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">Settings</CNavLink>
+            <CNavLink to="/dashboard" as={NavLink}>
+              Projects
+            </CNavLink>
           </CNavItem>
         </CHeaderNav>
         <CHeaderNav className="ms-auto">
@@ -145,4 +151,4 @@ const AppHeader = () => {
   )
 }
 
-export default AppHeader
+export default AppHeaderManager

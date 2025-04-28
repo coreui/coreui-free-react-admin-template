@@ -32,7 +32,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault()
     await dispatch(login(username, password))
-    dispatch(checkAuthentication())
+    await dispatch(checkAuthentication())
     if (isAuthenticated) {
       navigate('/')
     } else {

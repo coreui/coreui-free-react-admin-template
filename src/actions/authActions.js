@@ -34,7 +34,12 @@ export const login = (username, password) => async (dispatch) => {
   dispatch(loginRequest())
   try {
     const user = await authService.login(username, password)
-    dispatch(loginSuccess(user))
+    if (user.error) {
+      dispatch(loginFailure(error))
+      throw new Error(user.error)
+    } else {
+      dispatch(loginSuccess(user))
+    }
   } catch (error) {
     dispatch(loginFailure(error))
     console.error('Error logging in:', error)

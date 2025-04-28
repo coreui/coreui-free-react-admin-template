@@ -1,36 +1,37 @@
 import React from 'react'
 import {
+  CDropdownDivider,
+  CDropdownToggle,
+  CDropdownHeader,
+  CDropdownMenu,
+  CDropdownItem,
+  CDropdown,
   CAvatar,
   CBadge,
-  CDropdown,
-  CDropdownDivider,
-  CDropdownHeader,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
+  CCol,
 } from '@coreui/react'
 import {
-  cilBell,
-  cilCreditCard,
   cilCommentSquare,
+  cilAccountLogout,
   cilEnvelopeOpen,
-  cilFile,
-  cilLockLocked,
+  cilCreditCard,
   cilSettings,
+  cilBell,
+  cilFile,
   cilTask,
   cilUser,
-  cilAccountLogout,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../../actions/authActions'
 
 const AppHeaderDropdown = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { user } = useSelector((state) => state.auth)
 
   const handleLogout = async (e) => {
     e.preventDefault()
@@ -39,9 +40,14 @@ const AppHeaderDropdown = () => {
   }
   return (
     <CDropdown variant="nav-item">
-      <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
-        <CAvatar src={avatar8} size="md" />
-      </CDropdownToggle>
+      <CCol className="d-flex align-items-center">
+        <div className="fw-semibold">
+          {user.user.FirstName} {user.user.LastName}
+        </div>
+        <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
+          <CAvatar src={avatar8} size="md" />
+        </CDropdownToggle>
+      </CCol>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-body-secondary fw-semibold mb-2">Account</CDropdownHeader>
         <CDropdownItem href="#">

@@ -47,8 +47,8 @@ const authReducer = (state = initialState, action) => {
     case 'AUTH_CHECK_FAILURE':
       return {
         ...state,
+        isAuthenticated: false,
         loading: false,
-        error: action.payload,
       }
     case 'LOGOUT':
       return {

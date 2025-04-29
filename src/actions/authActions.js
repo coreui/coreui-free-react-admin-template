@@ -30,20 +30,23 @@ export const logoutFailure = (error) => ({
   payload: error,
 })
 
-export const login = (username, password) => async (dispatch) => {
+export const login = (username, password) => (dispatch) => {
   dispatch(loginRequest())
-  try {
-    const user = await authService.login(username, password)
-    if (user.error) {
-      dispatch(loginFailure(error))
-      throw new Error(user.error)
+  return authService
+  .login(username, password)
+  .then((response) => {
+    if (response.error) {
+      dispatch(loginFailure(response.error))
+      throw new Error(response.error)
     } else {
-      dispatch(loginSuccess(user))
+      dispatch(loginSuccess(response))
+      return response
     }
-  } catch (error) {
+  })
+  .catch((error) => {
     dispatch(loginFailure(error))
-    console.error('Error logging in:', error)
-  }
+    throw new Error(error)
+  })
 }
 
 export const logout = () => async (dispatch) => {
@@ -66,18 +69,25 @@ export const checkAuthSuccess = (data) => ({
   payload: data,
 })
 
-export const checkAuthFailure = (error) => ({
+export const checkAuthFailure = () => ({
   type: 'AUTH_CHECK_FAILURE',
-  payload: error,
 })
 
-export const checkAuthentication = () => async (dispatch) => {
+export const checkAuthentication = () => (dispatch) => {
   dispatch(checkAuthRequest())
-  try {
-    const response = await authService.checkAuth()
-    dispatch(checkAuthSuccess(response.data))
-  } catch (error) {
-    dispatch(checkAuthFailure(error))
-    console.error('Error checking authentication status:', error)
-  }
+  return authService
+    .checkAuth()
+    .then((response) => {
+      if (response.data.error) {
+        dispatch(checkAuthFailure())
+        throw new Error(response.error)
+      } else {
+        dispatch(checkAuthSuccess(response.data))
+        return response
+      }
+    })
+    .catch((error) => {
+      dispatch(checkAuthFailure())
+      throw new Error(error)
+    })
 }

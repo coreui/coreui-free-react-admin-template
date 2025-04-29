@@ -27,21 +27,32 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { isAuthenticated, user } = useSelector((state) => state.auth)
 
-  const handleLogin = async (e) => {
-    e.preventDefault()
-    await dispatch(login(username, password))
-    await dispatch(checkAuthentication())
-    if (isAuthenticated) {
-      if (user.user.IsEmployee) {
-        navigate('/')
-      } else if (user.user.IsManager) {
-        navigate('/')
-      }
-    } else {
-      toast.error('Invalid username or password')
+  const redirect = (user) => {
+    if (user.IsEmployee) {
+      navigate('/')
+    } else if (user.IsManager) {
+      navigate('/')
     }
+  }
+  const handleLogin = (e) => {
+    e.preventDefault()
+    dispatch(login(username, password))
+      .then((response) => {
+        console.log({ response })
+        if (response.error) {
+          toast.error('Invalid username or password')
+        }
+        if (response) {
+          toast.success('Login successful')
+          redirect(response.user)
+        }
+      })
+      .then(() => dispatch(checkAuthentication()))
+      .catch((error) => {
+        console.error('Login error:', error)
+        toast.error('Invalid username or password')
+      })
   }
   return (
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">

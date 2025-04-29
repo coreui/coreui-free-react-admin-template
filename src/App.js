@@ -11,7 +11,11 @@ const DefaultLayoutEmployee = React.lazy(() => import('./layout/DefaultLayoutEmp
 const DefaultLayoutManager = React.lazy(() => import('./layout/DefaultLayoutManager'))
 const DefaultLayout = () => {
   const { user } = useSelector((state) => state.auth)
-  return user.user.IsEmployee ? <DefaultLayoutEmployee /> : <DefaultLayoutManager />
+  return user !== null && user.user.IsEmployee ? (
+    <DefaultLayoutEmployee />
+  ) : (
+    <DefaultLayoutManager />
+  )
 }
 
 // Pages

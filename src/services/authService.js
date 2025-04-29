@@ -27,14 +27,16 @@ const logout = async () => {
   }
 }
 
-const checkAuth = async () => {
-  try {
-    const response = await axios.get(`${API_URL}check-auth`)
-    return response
-  } catch (error) {
-    console.error('Error checking authentication status:', error)
-    throw error
-  }
+const checkAuth = () => {
+  return axios
+    .get(`${API_URL}check-auth`)
+    .then((response) => {
+      return response
+    })
+    .catch((error) => {
+      console.error('Error checking authentication:')
+      return error
+    })
 }
 
 const getCurrentUser = () => {

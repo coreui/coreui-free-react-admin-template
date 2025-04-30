@@ -1,6 +1,7 @@
 import React from 'react'
 import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
 import { useLocation } from 'react-router-dom'
+import ModalCreateTicket from '../components/Modal/ModalCreateTicket'
 
 const DefaultLayout = () => {
   const location = useLocation()
@@ -12,6 +13,7 @@ const DefaultLayout = () => {
         <AppHeader />
         <div className="body flex-grow-1">
           <AppContent />
+          <ModalCreateTicket />
         </div>
         <AppFooter />
       </div>

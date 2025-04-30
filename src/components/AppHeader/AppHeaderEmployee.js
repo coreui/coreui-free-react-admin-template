@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -9,32 +9,22 @@ import {
   CDropdownToggle,
   CHeader,
   CHeaderNav,
-  CHeaderToggler,
   CNavLink,
   CNavItem,
   useColorModes,
+  CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import {
-  cilBell,
-  cilContrast,
-  cilEnvelopeOpen,
-  cilList,
-  cilMenu,
-  cilMoon,
-  cilSun,
-} from '@coreui/icons'
+import { cilBell, cilEnvelopeOpen, cilList, cilMoon, cilSun } from '@coreui/icons'
 
 import { AppBreadcrumb } from '../index'
 import { AppHeaderDropdown } from '../header/index'
-import { switchThemeMode, toggleSideBar } from '../../actions/appActions'
+import { switchThemeMode, toggleCreateTicketModalOpen } from '../../actions/appActions'
 const AppHeaderEmployee = () => {
-  const location = useLocation()
   const headerRef = useRef()
   const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
   const dispatch = useDispatch()
   const { theme } = useSelector((state) => state.data)
-  const { user } = useSelector((state) => state.auth)
 
   useEffect(() => {
     document.addEventListener('scroll', () => {
@@ -54,12 +44,6 @@ const AppHeaderEmployee = () => {
   return (
     <CHeader position="sticky" className="mb-4 p-0" ref={headerRef}>
       <CContainer className="border-bottom px-4" fluid>
-        {/* <CHeaderToggler
-          onClick={() => dispatch(toggleSideBar())}
-          style={{ marginInlineStart: '-14px' }}
-        >
-          <CIcon icon={cilMenu} size="lg" />
-        </CHeaderToggler> */}
         <CHeaderNav className="d-none d-md-flex">
           <CNavItem>
             <CNavLink to="/dashboard" as={NavLink}>
@@ -73,6 +57,13 @@ const AppHeaderEmployee = () => {
           </CNavItem>
         </CHeaderNav>
         <CHeaderNav className="ms-auto">
+          <CNavItem>
+            <CNavLink onClick={() => dispatch(toggleCreateTicketModalOpen())}>
+              <CButton color="primary " size="sm">
+                Créer
+              </CButton>
+            </CNavLink>
+          </CNavItem>
           <CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilBell} size="lg" />
@@ -98,8 +89,6 @@ const AppHeaderEmployee = () => {
               {colorMode === 'dark' ? (
                 <CIcon icon={cilMoon} size="lg" />
               ) : (
-                // ) : colorMode === 'auto' ? (
-                // <CIcon icon={cilContrast} size="lg" />
                 <CIcon icon={cilSun} size="lg" />
               )}
             </CDropdownToggle>
@@ -122,15 +111,6 @@ const AppHeaderEmployee = () => {
               >
                 <CIcon className="me-2" icon={cilMoon} size="lg" /> Dark
               </CDropdownItem>
-              {/* <CDropdownItem
-                active={colorMode === 'auto'}
-                className="d-flex align-items-center"
-                as="button"
-                type="button"
-                onClick={() => switchColorMode('auto')}
-              >
-                <CIcon className="me-2" icon={cilContrast} size="lg" /> Auto
-              </CDropdownItem> */}
             </CDropdownMenu>
           </CDropdown>
           <li className="nav-item py-1">

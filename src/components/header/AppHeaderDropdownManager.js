@@ -28,7 +28,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { checkAuthentication, logout } from '../../actions/authActions'
 
-const AppHeaderDropdown = () => {
+const AppHeaderDropdownManager = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { user } = useSelector((state) => state.auth)
@@ -79,28 +79,10 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownHeader className="bg-body-secondary fw-semibold my-2">Settings</CDropdownHeader>
-        <CDropdownItem href="#">
-          <CIcon icon={cilUser} className="me-2" />
-          Profile
-        </CDropdownItem>
-        <CDropdownItem href="#">
-          <CIcon icon={cilSettings} className="me-2" />
-          Settings
-        </CDropdownItem>
-        {/* <CDropdownItem href="#">
-          <CIcon icon={cilCreditCard} className="me-2" />
-          Payments
-          <CBadge color="secondary" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem> */}
-        {/* <CDropdownItem href="#">
-          <CIcon icon={cilFile} className="me-2" />
-          Projects
-          <CBadge color="primary" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem> */}
+        <CDropdownItem href="#">Profile</CDropdownItem>
+        <CDropdownItem href="#">Settings</CDropdownItem>
+        <CDropdownItem href="/jira/config-jira-api">configuration jira API</CDropdownItem>
+        <CDropdownItem href="#">Projects</CDropdownItem>
         <CDropdownDivider />
         <CDropdownItem onClick={handleLogout}>
           <CIcon icon={cilAccountLogout} className="me-2" />
@@ -111,4 +93,4 @@ const AppHeaderDropdown = () => {
   )
 }
 
-export default AppHeaderDropdown
+export default AppHeaderDropdownManager

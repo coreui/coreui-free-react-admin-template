@@ -3,7 +3,7 @@ const initialState = {
   sidebarShow: true,
   sidebarUnfoldable: false,
   theme: 'light',
-  isCreateTicketModalOpen: true,
+  isCreateTicketModalOpen: false,
 }
 
 const appReducer = (state = initialState, action) => {

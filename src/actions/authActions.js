@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react'
 import authService from '../services/authService'
 
@@ -33,20 +32,20 @@ export const logoutFailure = (error) => ({
 export const login = (username, password) => (dispatch) => {
   dispatch(loginRequest())
   return authService
-  .login(username, password)
-  .then((response) => {
-    if (response.error) {
-      dispatch(loginFailure(response.error))
-      throw new Error(response.error)
-    } else {
-      dispatch(loginSuccess(response))
-      return response
-    }
-  })
-  .catch((error) => {
-    dispatch(loginFailure(error))
-    throw new Error(error)
-  })
+    .login(username, password)
+    .then((response) => {
+      if (response.error) {
+        dispatch(loginFailure(response.error))
+        throw new Error(response.error)
+      } else {
+        dispatch(loginSuccess(response))
+        return response
+      }
+    })
+    .catch((error) => {
+      dispatch(loginFailure(error))
+      throw new Error(error)
+    })
 }
 
 export const logout = () => async (dispatch) => {

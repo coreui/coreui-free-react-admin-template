@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const initialState = {
   isAuthenticated: false,
   user: null,

@@ -8,7 +8,7 @@ const DefaultLayout = () => {
 
   return (
     <div>
-      {location.pathname === '/' && <AppSidebar />}
+      <AppSidebar />
       <div className="wrapper d-flex flex-column min-vh-100">
         <AppHeader />
         <div className="body flex-grow-1">

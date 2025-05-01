@@ -1,22 +1,13 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, useCallback, useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { CSpinner } from '@coreui/react'
 import './scss/style.scss'
 import PrivateRoute from './PrivateRute'
 import { checkAuthentication } from './actions/authActions'
 
 // Containers
-const DefaultLayoutEmployee = React.lazy(() => import('./layout/DefaultLayoutEmployee'))
-const DefaultLayoutManager = React.lazy(() => import('./layout/DefaultLayoutManager'))
-const DefaultLayout = () => {
-  const { user } = useSelector((state) => state.auth)
-  return user !== null && user.user.IsEmployee ? (
-    <DefaultLayoutEmployee />
-  ) : (
-    <DefaultLayoutManager />
-  )
-}
+const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 // Pages
 const Login = React.lazy(() => import('./views/pages/login/Login'))
@@ -28,18 +19,20 @@ const App = () => {
   const dispatch = useDispatch()
   const [isChecking, setIsChecking] = useState(true)
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        await dispatch(checkAuthentication())
-      } catch (error) {
-        console.error('Authentication check failed:', error)
-      } finally {
-        setIsChecking(false)
-      }
+  const checkAuth = useCallback(async () => {
+    console.log('checkAuth')
+    try {
+      await dispatch(checkAuthentication())
+    } catch (error) {
+      console.error('Authentication check failed:', error)
+    } finally {
+      setIsChecking(false)
     }
-    checkAuth()
   }, [dispatch])
+
+  useEffect(() => {
+    checkAuth()
+  }, [checkAuth])
 
   if (isChecking) {
     return (

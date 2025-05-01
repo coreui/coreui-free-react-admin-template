@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -9,22 +9,33 @@ import {
   CDropdownToggle,
   CHeader,
   CHeaderNav,
+  CHeaderToggler,
   CNavLink,
   CNavItem,
   useColorModes,
   CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBell, cilEnvelopeOpen, cilList, cilMoon, cilSun } from '@coreui/icons'
+import {
+  cilBell,
+  cilContrast,
+  cilEnvelopeOpen,
+  cilList,
+  cilMenu,
+  cilMoon,
+  cilSun,
+} from '@coreui/icons'
 
-import { AppBreadcrumb } from '../index'
-import { AppHeaderDropdown } from '../header/index'
-import { switchThemeMode, toggleCreateTicketModalOpen } from '../../actions/appActions'
-const AppHeaderEmployee = () => {
+import { AppBreadcrumb } from './index'
+import { AppHeaderDropdown, AppHeaderDropdownManager } from './header/index'
+import { switchThemeMode, toggleCreateTicketModalOpen, toggleSideBar } from '../actions/appActions'
+const AppHeader = () => {
+  const location = useLocation()
   const headerRef = useRef()
   const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
   const dispatch = useDispatch()
   const { theme } = useSelector((state) => state.data)
+  const { user } = useSelector((state) => state.auth)
 
   useEffect(() => {
     document.addEventListener('scroll', () => {
@@ -44,10 +55,26 @@ const AppHeaderEmployee = () => {
   return (
     <CHeader position="sticky" className="mb-4 p-0" ref={headerRef}>
       <CContainer className="border-bottom px-4" fluid>
+        <CHeaderToggler
+          onClick={() => dispatch(toggleSideBar())}
+          style={{ marginInlineStart: '-14px' }}
+        >
+          <CIcon icon={cilMenu} size="lg" />
+        </CHeaderToggler>
         <CHeaderNav className="d-none d-md-flex">
           <CNavItem>
             <CNavLink to="/dashboard" as={NavLink}>
               Dashboard
+            </CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink to="/dashboard" as={NavLink}>
+              Employees
+            </CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink to="/dashboard" as={NavLink}>
+              Projects
             </CNavLink>
           </CNavItem>
           <CNavItem>
@@ -116,7 +143,12 @@ const AppHeaderEmployee = () => {
           <li className="nav-item py-1">
             <div className="vr h-100 mx-2 text-body text-opacity-75"></div>
           </li>
-          <AppHeaderDropdown />
+          {user !== null && user.user.IsEmployee && !user.user.IsManager ? (
+            <AppHeaderDropdown />
+          ) : user !== null && !user.user.IsEmployee && user.user.IsManager ? (
+            <AppHeaderDropdownManager />
+          ) : null}
+          {/* <AppHeaderDropdown /> */}
         </CHeaderNav>
       </CContainer>
       <CContainer className="px-4" fluid>
@@ -126,4 +158,4 @@ const AppHeaderEmployee = () => {
   )
 }
 
-export default AppHeaderEmployee
+export default AppHeader

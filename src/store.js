@@ -6,10 +6,12 @@ import { Provider } from 'react-redux'
 import PropTypes from 'prop-types'
 import authReducer from './reducers/authReducer'
 import dataReducer from './reducers/appReducer'
+import jiraReducer from './reducers/jiraReducer'
 
 const rootReducer = combineReducers({
   auth: authReducer,
   data: dataReducer,
+  jira: jiraReducer,
 })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

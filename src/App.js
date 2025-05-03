@@ -20,7 +20,6 @@ const App = () => {
   const [isChecking, setIsChecking] = useState(true)
 
   const checkAuth = useCallback(async () => {
-    console.log('checkAuth')
     try {
       await dispatch(checkAuthentication())
     } catch (error) {

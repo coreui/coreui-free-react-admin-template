@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const initialState = {
-  sidebarShow: true,
+  sidebarShow: false,
   sidebarUnfoldable: false,
   theme: 'light',
   isCreateTicketModalOpen: false,

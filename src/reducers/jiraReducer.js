@@ -1,4 +1,5 @@
 const initialState = {
+  configCanbeAdded: false,
   jiraConfigList: [],
   loading: false,
   error: null,
@@ -18,6 +19,40 @@ const jiraReducer = (state = initialState, action) => {
         loading: false,
       }
     case 'GET_ALL_CONFIG_JIRA_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      }
+    case 'CHECK_CONNECTION_JIRA_API_REQUEST':
+      return {
+        ...state,
+        loading: true,
+      }
+    case 'CHECK_CONNECTION_JIRA_API_SUCCESS':
+      return {
+        ...state,
+        configCanbeAdded: true,
+        loading: false,
+      }
+    case 'CHECK_CONNECTION_JIRA_API_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        configCanbeAdded: false,
+      }
+    case 'ADD_NEW_CONFIG_JIRA_API_REQUEST':
+      return {
+        ...state,
+        loading: true,
+      }
+    case 'ADD_NEW_CONFIG_JIRA_API_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+      }
+    case 'ADD_NEW_CONFIG_JIRA_API_FAILURE':
       return {
         ...state,
         loading: false,

@@ -26,6 +26,8 @@ module.exports = {
     },
   },
   rules: {
+    console: 'off', // Disables the no-console rule
+    'no-unused-vars': 'warn', // Warns about unused variables
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
   },

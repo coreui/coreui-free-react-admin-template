@@ -3,6 +3,7 @@ const initialState = {
   user: null,
   loading: false,
   error: null,
+  role: null,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -39,7 +40,8 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        user: action.payload,
+        user: action.payload.user,
+        role: action.payload.role,
         loading: false,
       }
     case 'LOGIN_FAILURE':

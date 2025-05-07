@@ -5,9 +5,9 @@ export const loginRequest = () => ({
   type: 'LOGIN_REQUEST',
 })
 
-export const loginSuccess = (user) => ({
+export const loginSuccess = (user, role) => ({
   type: 'LOGIN_SUCCESS',
-  payload: user,
+  payload: { user, role },
 })
 
 export const loginFailure = (error) => ({
@@ -38,7 +38,13 @@ export const login = (username, password) => (dispatch) => {
         dispatch(loginFailure(response.error))
         throw new Error(response.error)
       } else {
-        dispatch(loginSuccess(response))
+        const user = response.user
+        if (user.IsEmployee && user.IsManager === false) {
+          dispatch(loginSuccess(response, 'employee'))
+        }
+        if (user.IsManager && user.IsEmployee === false) {
+          dispatch(loginSuccess(response, 'manager'))
+        }
         return response
       }
     })

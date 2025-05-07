@@ -139,10 +139,19 @@ export const deleteConfigJiraAPI = (id) => (dispatch) => {
 }
 
 export const editConfigJiraAPI =
-  (id, protocol, host, username, password, apiVersion, strictSSL) => (dispatch) => {
+  (id, protocol, host, username, password, apiVersion, strictSSL, enableConfig) => (dispatch) => {
     dispatch(EDIT_CONFIG_JIRA_API_REQUEST())
     return jiraService
-      .editConfigJiraAPI(id, protocol, host, username, password, apiVersion, strictSSL)
+      .editConfigJiraAPI(
+        id,
+        protocol,
+        host,
+        username,
+        password,
+        apiVersion,
+        strictSSL,
+        enableConfig,
+      )
       .then((response) => {
         console.log(response)
         dispatch(EDIT_CONFIG_JIRA_API_SUCCESS())

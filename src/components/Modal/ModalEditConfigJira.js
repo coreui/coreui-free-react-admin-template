@@ -30,17 +30,20 @@ const ModalEditConfigJira = () => {
   const [FormControlInputPassword, setFormControlInputPassword] = useState('')
   const [FormControlInputAPIVersion, setFormControlInputAPIVersion] = useState(2)
   const [CheckStrictSSL, setCheckStrictSSL] = useState(true)
+  const [enableConfig, setEnableConfig] = useState(true)
 
   useEffect(() => {
     if (configIdToEdit !== null) {
       const configToEdit = jiraConfigList.find((config) => config.id === configIdToEdit)
       if (configToEdit) {
+        console.log(configToEdit)
         setFormControlInputHostURL(configToEdit.host)
         setRadioOptionProtocol(configToEdit.protocol)
         setFormControlInputUsername(configToEdit.username)
         setFormControlInputPassword(configToEdit.password)
         setFormControlInputAPIVersion(configToEdit.apiVersion)
         setCheckStrictSSL(configToEdit.strictSSL)
+        setEnableConfig(configToEdit.enableConfig)
       }
     }
   }, [configIdToEdit, jiraConfigList])
@@ -84,6 +87,7 @@ const ModalEditConfigJira = () => {
           FormControlInputPassword,
           FormControlInputAPIVersion,
           CheckStrictSSL,
+          enableConfig,
         ),
       )
         .then((response) => {

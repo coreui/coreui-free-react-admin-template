@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { deleteConfigJiraAPI, getAllConfigJiraAPI } from '../../../actions/jiraActions'
+import {
+  deleteConfigJiraAPI,
+  editConfigJiraAPI,
+  getAllConfigJiraAPI,
+} from '../../../actions/jiraActions'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   CTable,
@@ -10,16 +14,16 @@ import {
   CCollapse,
   CCard,
   CCardBody,
-  CFormCheck,
   CButtonGroup,
+  CBadge,
 } from '@coreui/react'
 import AddNewConfigJira from '../../forms/addNewConfigJira'
 import { toast } from 'react-toastify'
 import { toggleEditConfigJiraModalOpen } from '../../../actions/jiraActions'
 const columns = [
   {
-    key: 'select',
-    label: 'Select',
+    key: 'status',
+    label: 'Status',
     _props: { scope: 'col' },
   },
   {
@@ -79,7 +83,6 @@ const ConfigJiraApi = () => {
       dispatch(deleteConfigJiraAPI(deleteList))
         .then((response) => {
           if (response) {
-            console.log(response)
             if (response.data.error) {
               toast.error('delete failed')
             } else {
@@ -94,9 +97,45 @@ const ConfigJiraApi = () => {
           console.error('Error checking connection:', error)
           toast.error('Connection failed')
         })
-      console.log('Delete config with ID:', configId)
     },
     [dispatch],
+  )
+
+  const handleChangeStatusConfiguration = useCallback(
+    (event) => {
+      event.preventDefault()
+      const configId = event.target.id.split('-')[1]
+      // Call the edit action here
+      const configToEdit = jiraConfigList.find((config) => config.id === configId)
+      dispatch(
+        editConfigJiraAPI(
+          configId,
+          configToEdit.protocol,
+          configToEdit.host,
+          configToEdit.username,
+          configToEdit.password,
+          configToEdit.apiVersion,
+          configToEdit.strictSSL,
+          !configToEdit.enableConfig,
+        ),
+      )
+        .then((response) => {
+          if (response) {
+            if (response.data.error) {
+              toast.error('update failed')
+            } else {
+              toast.success('successful updated')
+            }
+          }
+        })
+        .then(() => {
+          dispatch(getAllConfigJiraAPI())
+        })
+        .catch((error) => {
+          toast.error('Connection failed')
+        })
+    },
+    [dispatch, jiraConfigList],
   )
 
   const handleClickEditConfiguration = useCallback(
@@ -119,15 +158,12 @@ const ConfigJiraApi = () => {
   useEffect(() => {
     if (jiraConfigList && jiraConfigList.length > 0) {
       const transformedItems = jiraConfigList.map((item) => ({
-        select: (
-          <CFormCheck
-            type="checkbox"
-            id={`select-${item.id}`}
-            label=""
-            className="form-check-input"
-          />
-        ),
         id: item.id,
+        status: item.enableConfig ? (
+          <CBadge color="success">Enabled</CBadge>
+        ) : (
+          <CBadge color="danger">Disabled</CBadge>
+        ),
         Host: item.host,
         Username: item.username,
         Protocol: item.protocol,
@@ -151,12 +187,25 @@ const ConfigJiraApi = () => {
             >
               Edit
             </CButton>
+            <CButton
+              variant="ghost"
+              color="success"
+              onClick={(e) => handleChangeStatusConfiguration(e)}
+              id={`status-${item.id}`}
+            >
+              {item.enableConfig ? 'Disable' : 'Enable'}
+            </CButton>
           </CButtonGroup>
         ),
       }))
       setConfigItems(transformedItems)
     }
-  }, [jiraConfigList, handleClickDeleteConfiguration, handleClickEditConfiguration])
+  }, [
+    jiraConfigList,
+    handleClickDeleteConfiguration,
+    handleClickEditConfiguration,
+    handleChangeStatusConfiguration,
+  ])
 
   return (
     <CContainer>

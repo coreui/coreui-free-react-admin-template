@@ -78,11 +78,20 @@ const deleteConfigJiraAPI = (idList) => {
     })
 }
 
-const editConfigJiraAPI = (id, protocol, host, username, password, apiVersion, strictSSL) => {
+const editConfigJiraAPI = (
+  id,
+  protocol,
+  host,
+  username,
+  password,
+  apiVersion,
+  strictSSL,
+  enableConfig,
+) => {
   return axios
     .post(
       `${API_URL}updateConfigByID`,
-      { id, protocol, host, username, password, apiVersion, strictSSL },
+      { id, protocol, host, username, password, apiVersion, strictSSL, enableConfig },
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,

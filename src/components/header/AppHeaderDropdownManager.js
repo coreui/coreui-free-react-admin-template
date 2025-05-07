@@ -45,7 +45,7 @@ const AppHeaderDropdownManager = () => {
           {user.user.FirstName} {user.user.LastName}
         </div>
         <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
-          <CAvatar src={avatar8} size="md" />
+          <CAvatar src={avatar8} size="md" alt="avatar" />
         </CDropdownToggle>
       </CCol>
       <CDropdownMenu className="pt-0" placement="bottom-end">

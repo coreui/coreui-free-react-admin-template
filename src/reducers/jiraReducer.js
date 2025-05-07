@@ -3,6 +3,8 @@ const initialState = {
   jiraConfigList: [],
   loading: false,
   error: null,
+  isEditConfigJiraModalOpen: false,
+  configIdToEdit: null,
 }
 
 const jiraReducer = (state = initialState, action) => {
@@ -53,6 +55,49 @@ const jiraReducer = (state = initialState, action) => {
         loading: false,
       }
     case 'ADD_NEW_CONFIG_JIRA_API_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      }
+    case 'DELETE_CONFIG_JIRA_API_REQUEST':
+      return {
+        ...state,
+        loading: true,
+      }
+    case 'DELETE_CONFIG_JIRA_API_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+      }
+    case 'DELETE_CONFIG_JIRA_API_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      }
+    case 'TOGGLE_EDIT_CONFIG_JIRA_MODAL_OPEN':
+      return {
+        ...state,
+        isEditConfigJiraModalOpen: true,
+        configIdToEdit: action.payload,
+      }
+    case 'TOGGLE_EDIT_CONFIG_JIRA_MODAL_CLOSE':
+      return {
+        ...state,
+        isEditConfigJiraModalOpen: false,
+      }
+    case 'EDIT_CONFIG_JIRA_API_REQUEST':
+      return {
+        ...state,
+        loading: true,
+      }
+    case 'EDIT_CONFIG_JIRA_API_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+      }
+    case 'EDIT_CONFIG_JIRA_API_FAILURE':
       return {
         ...state,
         loading: false,

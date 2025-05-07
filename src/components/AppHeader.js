@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -16,21 +16,12 @@ import {
   CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import {
-  cilBell,
-  cilContrast,
-  cilEnvelopeOpen,
-  cilList,
-  cilMenu,
-  cilMoon,
-  cilSun,
-} from '@coreui/icons'
+import { cilBell, cilEnvelopeOpen, cilList, cilMenu, cilMoon, cilSun } from '@coreui/icons'
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown, AppHeaderDropdownManager } from './header/index'
 import { switchThemeMode, toggleCreateTicketModalOpen, toggleSideBar } from '../actions/appActions'
 const AppHeader = () => {
-  const location = useLocation()
   const headerRef = useRef()
   const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
   const dispatch = useDispatch()
@@ -50,7 +41,7 @@ const AppHeader = () => {
 
   useEffect(() => {
     setColorMode(theme)
-  }, [theme])
+  }, [theme, setColorMode])
 
   return (
     <CHeader position="sticky" className="mb-4 p-0" ref={headerRef}>

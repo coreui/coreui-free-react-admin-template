@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { CButton, CCallout, CForm, CFormCheck, CFormInput } from '@coreui/react'
-import { addNewConfigJiraAPI, checkConnectionJiraAPI, getAllConfigJiraAPI } from '../../actions/jiraActions'
+import {
+  addNewConfigJiraAPI,
+  checkConnectionJiraAPI,
+  getAllConfigJiraAPI,
+} from '../../actions/jiraActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
@@ -13,7 +17,7 @@ const AddNewConfigJira = () => {
   const [FormControlInputUsername, setFormControlInputUsername] = useState('')
   const [FormControlInputPassword, setFormControlInputPassword] = useState('')
   const [FormControlInputAPIVersion, setFormControlInputAPIVersion] = useState(2)
-  const [CheckStrictSSL, setCheckStrictSSL] = useState(false)
+  const [CheckStrictSSL, setCheckStrictSSL] = useState(true)
 
   const checkConnection = () => {
     dispatch(
@@ -145,7 +149,6 @@ const AddNewConfigJira = () => {
       <CFormCheck
         id="CheckStrictSSL"
         label="Strict SSL"
-        defaultChecked
         required
         onChange={(e) => setCheckStrictSSL(e.target.checked)}
         checked={CheckStrictSSL}

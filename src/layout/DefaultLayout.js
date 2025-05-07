@@ -2,6 +2,7 @@ import React from 'react'
 import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
 import { useLocation } from 'react-router-dom'
 import ModalCreateTicket from '../components/Modal/ModalCreateTicket'
+import ModalEditConfigJira from '../components/Modal/ModalEditConfigJira'
 
 const DefaultLayout = () => {
   const location = useLocation()
@@ -14,6 +15,7 @@ const DefaultLayout = () => {
         <div className="body flex-grow-1">
           <AppContent />
           <ModalCreateTicket />
+          <ModalEditConfigJira />
         </div>
         <AppFooter />
       </div>

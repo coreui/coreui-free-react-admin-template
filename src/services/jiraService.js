@@ -58,8 +58,50 @@ const addNewConfigJiraAPI = (protocol, host, username, password, apiVersion, str
     })
 }
 
+const deleteConfigJiraAPI = (idList) => {
+  return axios
+    .post(
+      `${API_URL}deleteConfigByID`,
+      { ids: idList },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      },
+    )
+    .then((response) => {
+      return response
+    })
+    .catch((error) => {
+      console.log('Error deleting config Api Jira:', error)
+      return error
+    })
+}
+
+const editConfigJiraAPI = (id, protocol, host, username, password, apiVersion, strictSSL) => {
+  return axios
+    .post(
+      `${API_URL}updateConfigByID`,
+      { id, protocol, host, username, password, apiVersion, strictSSL },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      },
+    )
+    .then((response) => {
+      return response
+    })
+    .catch((error) => {
+      console.log('Error editing config Api Jira:', error)
+      return error
+    })
+}
+
 export default {
   getAllConfigJira,
   checkConnectionJiraApi,
   addNewConfigJiraAPI,
+  deleteConfigJiraAPI,
+  editConfigJiraAPI,
 }

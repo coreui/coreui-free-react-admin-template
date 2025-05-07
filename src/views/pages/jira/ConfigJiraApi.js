@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { getAllConfigJiraAPI } from '../../../actions/jiraActions'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { deleteConfigJiraAPI, getAllConfigJiraAPI } from '../../../actions/jiraActions'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   CTable,
@@ -10,13 +10,18 @@ import {
   CCollapse,
   CCard,
   CCardBody,
-  CForm,
-  CFormInput,
-  CFormSelect,
   CFormCheck,
+  CButtonGroup,
 } from '@coreui/react'
 import AddNewConfigJira from '../../forms/addNewConfigJira'
+import { toast } from 'react-toastify'
+import { toggleEditConfigJiraModalOpen } from '../../../actions/jiraActions'
 const columns = [
+  {
+    key: 'select',
+    label: 'Select',
+    _props: { scope: 'col' },
+  },
   {
     key: 'Host',
     label: 'Host',
@@ -37,6 +42,11 @@ const columns = [
     label: 'API Version',
     _props: { scope: 'col' },
   },
+  {
+    key: 'Actions',
+    label: 'actions',
+    _props: { scope: 'col' },
+  },
   // {
   //   key: 'Strict SSL',
   //   label: 'Strict SSL',
@@ -51,13 +61,53 @@ const ConfigJiraApi = () => {
 
   const { jiraConfigList } = useSelector((state) => state.jira)
 
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
   const [configItems, setConfigItems] = useState([])
 
   const handleClickAjouterConfiguration = (event) => {
     event.preventDefault()
     setVisible(!visible)
   }
+
+  const handleClickDeleteConfiguration = useCallback(
+    (event) => {
+      event.preventDefault()
+      const configId = event.target.id.split('-')[1]
+      // Call the delete action here
+      const deleteList = []
+      deleteList.push(configId)
+      dispatch(deleteConfigJiraAPI(deleteList))
+        .then((response) => {
+          if (response) {
+            console.log(response)
+            if (response.data.error) {
+              toast.error('delete failed')
+            } else {
+              toast.success('successful deleted')
+            }
+          }
+        })
+        .then(() => {
+          dispatch(getAllConfigJiraAPI())
+        })
+        .catch((error) => {
+          console.error('Error checking connection:', error)
+          toast.error('Connection failed')
+        })
+      console.log('Delete config with ID:', configId)
+    },
+    [dispatch],
+  )
+
+  const handleClickEditConfiguration = useCallback(
+    (event) => {
+      event.preventDefault()
+      const configId = event.target.id.split('-')[1]
+      // Call the edit action here
+      dispatch(toggleEditConfigJiraModalOpen(configId))
+    },
+    [dispatch],
+  )
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -69,15 +119,44 @@ const ConfigJiraApi = () => {
   useEffect(() => {
     if (jiraConfigList && jiraConfigList.length > 0) {
       const transformedItems = jiraConfigList.map((item) => ({
+        select: (
+          <CFormCheck
+            type="checkbox"
+            id={`select-${item.id}`}
+            label=""
+            className="form-check-input"
+          />
+        ),
+        id: item.id,
         Host: item.host,
         Username: item.username,
         Protocol: item.protocol,
         'API Version': item.apiVersion,
         'Strict SSL': item.strictSSL,
+        Actions: (
+          <CButtonGroup size="sm" role="group" aria-label="Small button group">
+            <CButton
+              variant="ghost"
+              color="danger"
+              onClick={(e) => handleClickDeleteConfiguration(e)}
+              id={`delete-${item.id}`}
+            >
+              delete
+            </CButton>
+            <CButton
+              variant="ghost"
+              color="primary"
+              onClick={(e) => handleClickEditConfiguration(e)}
+              id={`edit-${item.id}`}
+            >
+              Edit
+            </CButton>
+          </CButtonGroup>
+        ),
       }))
       setConfigItems(transformedItems)
     }
-  }, [jiraConfigList])
+  }, [jiraConfigList, handleClickDeleteConfiguration, handleClickEditConfiguration])
 
   return (
     <CContainer>

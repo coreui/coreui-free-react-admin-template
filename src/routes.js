@@ -56,12 +56,20 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const ConfigJiraApi = React.lazy(() => import('./views/pages/jira/ConfigJiraApi'))
 
+const Projet = React.lazy(() => import('./views/pages/projet/projet'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
+
   { path: '/tickets', name: 'Tickets', element: Tickets },
+
   { path: '/jira', name: 'Jira', element: ConfigJiraApi, exact: true },
   { path: '/jira/config-jira-api', name: 'Configuration Jira API', element: ConfigJiraApi },
+
+  { path: '/projet', element: Projet, name: 'Projet', exact: true },
+  { path: '/projet/list', name: 'liste des projets', element: Projet },
+
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

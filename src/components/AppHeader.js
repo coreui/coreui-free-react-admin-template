@@ -20,7 +20,9 @@ import { cilBell, cilEnvelopeOpen, cilList, cilMenu, cilMoon, cilSun } from '@co
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown, AppHeaderDropdownManager } from './header/index'
-import { switchThemeMode, toggleCreateTicketModalOpen, toggleSideBar } from '../actions/appActions'
+import { switchThemeMode, toggleSideBar } from '../actions/appActions'
+import { toggleCreateTicketModalOpen } from '../actions/ticketActions'
+
 const AppHeader = () => {
   const headerRef = useRef()
   const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')

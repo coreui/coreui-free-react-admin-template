@@ -7,11 +7,13 @@ import PropTypes from 'prop-types'
 import authReducer from './reducers/authReducer'
 import dataReducer from './reducers/appReducer'
 import jiraReducer from './reducers/jiraReducer'
+import ticketReducer from './reducers/ticketReducer'
 
 const rootReducer = combineReducers({
   auth: authReducer,
   data: dataReducer,
   jira: jiraReducer,
+  ticket: ticketReducer,
 })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

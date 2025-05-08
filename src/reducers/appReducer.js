@@ -3,7 +3,6 @@ const initialState = {
   sidebarShow: false,
   sidebarUnfoldable: false,
   theme: 'light',
-  isCreateTicketModalOpen: false,
 }
 
 const appReducer = (state = initialState, action) => {
@@ -22,16 +21,6 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         theme: action.payload,
-      }
-    case 'TOGGLE_CREATE_TICKET_MODAL_OPEN':
-      return {
-        ...state,
-        isCreateTicketModalOpen: true,
-      }
-    case 'TOGGLE_CREATE_TICKET_MODAL_CLOSE':
-      return {
-        ...state,
-        isCreateTicketModalOpen: false,
       }
     default:
       return state

@@ -1,10 +1,10 @@
 import { CButton, CModal, CModalBody, CModalFooter, CModalHeader } from '@coreui/react'
 import React from 'react'
-import { toggleCreateTicketModalClose } from '../../actions/appActions'
+import { toggleCreateTicketModalClose } from '../../actions/ticketActions'
 import { useDispatch, useSelector } from 'react-redux'
 
 const ModalCreateTicket = () => {
-  const { isCreateTicketModalOpen } = useSelector((state) => state.data)
+  const { isCreateTicketModalOpen } = useSelector((state) => state.ticket)
   const dispatch = useDispatch()
   return (
     <CModal

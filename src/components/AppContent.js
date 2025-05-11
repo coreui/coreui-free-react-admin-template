@@ -1,14 +1,14 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { CContainer, CSpinner } from '@coreui/react'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 // routes config
 import routes from '../routes'
 
 const AppContent = () => {
   return (
-    <CContainer className="px-4" lg>
-      <Suspense fallback={<CSpinner color="primary" />}>
+    <div className="px-4">
+      <Suspense fallback={<CircularProgress color="primary" />}>
         <Routes>
           {routes.map((route, idx) => {
             return (
@@ -26,7 +26,7 @@ const AppContent = () => {
           <Route path="/" element={<Navigate to="dashboard" replace />} />
         </Routes>
       </Suspense>
-    </CContainer>
+    </div>
   )
 }
 

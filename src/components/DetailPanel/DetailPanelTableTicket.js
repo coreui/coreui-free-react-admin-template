@@ -3,19 +3,15 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Button,
-  ButtonGroup,
-  Card,
+  Grid,
   TextField,
   Typography,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { CCol, CRow } from '@coreui/react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontWeight: theme.typography.fontWeightBold,
   },
 }))
 
@@ -37,7 +33,7 @@ const DetailPanelTableTicket = ({ rowData }) => {
     setLoading(true)
   }
 
-  function jiraToHtml(text) {
+  const jiraToHtml = (text) => {
     // Échappement de base
     text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
@@ -110,6 +106,7 @@ const DetailPanelTableTicket = ({ rowData }) => {
 
     return text
   }
+
   const classes = useStyles()
 
   return (
@@ -146,17 +143,18 @@ const DetailPanelTableTicket = ({ rowData }) => {
               <Typography className={classes.heading}>Détails</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>
-                <strong>Personne assignée</strong>
-                <strong>{rowData.fields.assignee.displayName}</strong>
-              </Typography>
+              <Grid container direction="row" justifyContent="space-between" alignItems="center">
+                <Grid item xs={6}>
+                  <div className="fw-bold">Personne assignée</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div>{rowData.fields.assignee.displayName}</div>
+                </Grid>
+              </Grid>
             </AccordionDetails>
           </Accordion>
         </div>
       </div>
-
-      {/* {parseJiraMarkup(rowData.fields.description)}
-      <TextField value={rowData.fields.description} /> */}
     </div>
   )
 }

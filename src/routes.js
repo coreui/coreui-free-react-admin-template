@@ -1,6 +1,10 @@
 import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
+<<<<<<< HEAD
+=======
+const Users = React.lazy(() => import('./views/pages/users/Users'))
+>>>>>>> 33b7218 (Initial commit)
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
@@ -35,6 +39,10 @@ const Layout = React.lazy(() => import('./views/forms/layout/Layout'))
 const Range = React.lazy(() => import('./views/forms/range/Range'))
 const Select = React.lazy(() => import('./views/forms/select/Select'))
 const Validation = React.lazy(() => import('./views/forms/validation/Validation'))
+<<<<<<< HEAD
+=======
+const CustomerForm = React.lazy(() => import('./views/forms/CustomerForm'))
+>>>>>>> 33b7218 (Initial commit)
 
 const Charts = React.lazy(() => import('./views/charts/Charts'))
 
@@ -87,6 +95,10 @@ const routes = [
   { path: '/forms/floating-labels', name: 'Floating Labels', element: FloatingLabels },
   { path: '/forms/layout', name: 'Layout', element: Layout },
   { path: '/forms/validation', name: 'Validation', element: Validation },
+<<<<<<< HEAD
+=======
+  { path: '/customer-form', name: 'Customer Form', element: CustomerForm },
+>>>>>>> 33b7218 (Initial commit)
   { path: '/icons', exact: true, name: 'Icons', element: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', element: CoreUIIcons },
   { path: '/icons/flags', name: 'Flags', element: Flags },
@@ -97,6 +109,10 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
+<<<<<<< HEAD
+=======
+  { path: '/users', name: 'Users', element: Users },
+>>>>>>> 33b7218 (Initial commit)
 ]
 
 export default routes

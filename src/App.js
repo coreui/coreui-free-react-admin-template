@@ -1,25 +1,17 @@
 import React, { Suspense, useEffect } from 'react'
-<<<<<<< HEAD
-import { HashRouter, Route, Routes } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-=======
 import { HashRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { AuthProvider } from './context/AuthContext'
 import { useAuth } from './context/AuthContext'
->>>>>>> 33b7218 (Initial commit)
 
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
 
-<<<<<<< HEAD
-=======
 const PrivateRoute = ({ children }) => {
   const { user } = useAuth();
   return user ? children : <Navigate to="/login" />;
 };
 
->>>>>>> 33b7218 (Initial commit)
 // We use those styles to show code examples, you should remove them in your application.
 import './scss/examples.scss'
 
@@ -32,11 +24,7 @@ const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
-<<<<<<< HEAD
-const App = () => {
-=======
 const AppContent = () => {
->>>>>>> 33b7218 (Initial commit)
   const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
   const storedTheme = useSelector((state) => state.theme)
 
@@ -62,15 +50,6 @@ const AppContent = () => {
             <CSpinner color="primary" variant="grow" />
           </div>
         }
-<<<<<<< HEAD
-      >
-        <Routes>
-          <Route exact path="/login" name="Login Page" element={<Login />} />
-          <Route exact path="/register" name="Register Page" element={<Register />} />
-          <Route exact path="/404" name="Page 404" element={<Page404 />} />
-          <Route exact path="/500" name="Page 500" element={<Page500 />} />
-          <Route path="*" name="Home" element={<DefaultLayout />} />
-=======
       >          <Routes>
             <Route exact path="/login" name="Login Page" element={<Login />} />
             <Route exact path="/register" name="Register Page" element={<Register />} />
@@ -85,15 +64,12 @@ const AppContent = () => {
                 </PrivateRoute>
               }
             />
->>>>>>> 33b7218 (Initial commit)
         </Routes>
       </Suspense>
     </HashRouter>
   )
 }
 
-<<<<<<< HEAD
-=======
 const App = () => {
   return (
     <AuthProvider>
@@ -102,5 +78,4 @@ const App = () => {
   );
 };
 
->>>>>>> 33b7218 (Initial commit)
 export default App

@@ -42,7 +42,6 @@ import MainChart from './MainChart'
 import OpenStreetMapView from './OpenStreetMapView'
 
 const Dashboard = () => {
-
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
@@ -254,7 +253,6 @@ const Dashboard = () => {
               </CRow>
 
               <br />
-
             </CCardBody>
           </CCard>
         </CCol>
@@ -266,9 +264,7 @@ const Dashboard = () => {
             <CCardHeader>OpenStreetMap Example (No Card Required)</CCardHeader>
             <CCardBody>
               <OpenStreetMapView />
-              <div className="small text-body-secondary mt-2">
-                This map uses free OpenStreetMap tiles and does not require an API key or credit card.
-              </div>
+              <div className="small text-body-secondary mt-2"></div>
             </CCardBody>
           </CCard>
         </CCol>

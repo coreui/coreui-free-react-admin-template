@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React from 'react'
-import { Link } from 'react-router-dom'
-=======
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
->>>>>>> 33b7218 (Initial commit)
 import {
   CButton,
   CCard,
@@ -17,19 +12,13 @@ import {
   CInputGroup,
   CInputGroupText,
   CRow,
-<<<<<<< HEAD
-} from '@coreui/react'
-=======
   CAlert,
 } from '@coreui/react'
 import { useAuth } from '../../../context/AuthContext'
->>>>>>> 33b7218 (Initial commit)
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 
 const Login = () => {
-<<<<<<< HEAD
-=======
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -48,7 +37,6 @@ const Login = () => {
     }
   };
 
->>>>>>> 33b7218 (Initial commit)
   return (
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -57,11 +45,6 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-<<<<<<< HEAD
-                  <CForm>
-                    <h1>Login</h1>
-                    <p className="text-body-secondary">Sign In to your account</p>
-=======
                   <CForm onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p className="text-body-secondary">Sign In to your account</p>
@@ -70,14 +53,10 @@ const Login = () => {
                         {error}
                       </CAlert>
                     )}
->>>>>>> 33b7218 (Initial commit)
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-<<<<<<< HEAD
-                      <CFormInput placeholder="Username" autoComplete="username" />
-=======
                       <CFormInput 
                         placeholder="Username" 
                         autoComplete="username"
@@ -85,7 +64,6 @@ const Login = () => {
                         onChange={(e) => setUsername(e.target.value)}
                         required
                       />
->>>>>>> 33b7218 (Initial commit)
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -95,21 +73,14 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
-<<<<<<< HEAD
-=======
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
->>>>>>> 33b7218 (Initial commit)
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-<<<<<<< HEAD
-                        <CButton color="primary" className="px-4">
-=======
                         <CButton type="submit" color="primary" className="px-4">
->>>>>>> 33b7218 (Initial commit)
                           Login
                         </CButton>
                       </CCol>

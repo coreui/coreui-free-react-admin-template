@@ -1,8 +1,5 @@
 import React from 'react'
-<<<<<<< HEAD
-=======
 import { useNavigate } from 'react-router-dom'
->>>>>>> 33b7218 (Initial commit)
 import {
   CAvatar,
   CBadge,
@@ -13,10 +10,7 @@ import {
   CDropdownMenu,
   CDropdownToggle,
 } from '@coreui/react'
-<<<<<<< HEAD
-=======
 import { useAuth } from '../../context/AuthContext'
->>>>>>> 33b7218 (Initial commit)
 import {
   cilBell,
   cilCreditCard,
@@ -33,8 +27,6 @@ import CIcon from '@coreui/icons-react'
 import avatar8 from './../../assets/images/avatars/8.jpg'
 
 const AppHeaderDropdown = () => {
-<<<<<<< HEAD
-=======
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -43,7 +35,6 @@ const AppHeaderDropdown = () => {
     navigate('/login');
   };
 
->>>>>>> 33b7218 (Initial commit)
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
@@ -65,21 +56,6 @@ const AppHeaderDropdown = () => {
             42
           </CBadge>
         </CDropdownItem>
-<<<<<<< HEAD
-        <CDropdownItem href="#">
-          <CIcon icon={cilTask} className="me-2" />
-          Tasks
-          <CBadge color="danger" className="ms-2">
-            42
-          </CBadge>
-        </CDropdownItem>
-        <CDropdownItem href="#">
-          <CIcon icon={cilCommentSquare} className="me-2" />
-          Comments
-          <CBadge color="warning" className="ms-2">
-            42
-          </CBadge>
-=======
         <CDropdownItem>
           <CIcon icon={cilUser} className="me-2" />
           {user?.username || 'User'}
@@ -88,7 +64,6 @@ const AppHeaderDropdown = () => {
         <CDropdownItem onClick={handleLogout}>
           <CIcon icon={cilLockLocked} className="me-2" />
           Logout
->>>>>>> 33b7218 (Initial commit)
         </CDropdownItem>
         <CDropdownHeader className="bg-body-secondary fw-semibold my-2">Settings</CDropdownHeader>
         <CDropdownItem href="#">

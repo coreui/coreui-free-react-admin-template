@@ -10,10 +10,7 @@ import {
   cilExternalLink,
   cilNotes,
   cilPencil,
-<<<<<<< HEAD
-=======
   cilPeople,
->>>>>>> 33b7218 (Initial commit)
   cilPuzzle,
   cilSpeedometer,
   cilStar,
@@ -32,15 +29,12 @@ const _nav = [
     },
   },
   {
-<<<<<<< HEAD
-=======
     component: CNavItem,
     name: 'Users',
     to: '/users',
     icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
   },
   {
->>>>>>> 33b7218 (Initial commit)
     component: CNavTitle,
     name: 'Theme',
   },

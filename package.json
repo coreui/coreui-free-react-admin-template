@@ -14,9 +14,10 @@
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
     "build": "vite build",
+    "dev": "vite",
     "lint": "eslint",
     "serve": "vite preview",
-    "start": "vite"
+    "start": "react-scripts start"
   },
   "dependencies": {
     "@coreui/chartjs": "^4.1.0",
@@ -27,12 +28,19 @@
     "@coreui/react-chartjs": "^3.0.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
+    "@react-google-maps/api": "^2.20.6",
     "chart.js": "^4.4.7",
     "classnames": "^2.5.1",
     "core-js": "^3.40.0",
+    "googleapis": "^148.0.0",
+    "leaflet": "^1.9.4",
+    "openrouteservice-js": "^0.4.1",
+    "papaparse": "^5.5.2",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0",
+    "react-leaflet-cluster": "^2.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
     "redux": "5.0.1",

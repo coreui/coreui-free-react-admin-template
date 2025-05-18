@@ -2,7 +2,10 @@ import React from 'react'
 import classNames from 'classnames'
 
 import {
+<<<<<<< HEAD
   CAvatar,
+=======
+>>>>>>> 33b7218 (Initial commit)
   CButton,
   CButtonGroup,
   CCard,
@@ -12,12 +15,15 @@ import {
   CCol,
   CProgress,
   CRow,
+<<<<<<< HEAD
   CTable,
   CTableBody,
   CTableDataCell,
   CTableHead,
   CTableHeaderCell,
   CTableRow,
+=======
+>>>>>>> 33b7218 (Initial commit)
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
@@ -43,6 +49,7 @@ import {
   cilUserFemale,
 } from '@coreui/icons'
 
+<<<<<<< HEAD
 import avatar1 from 'src/assets/images/avatars/1.jpg'
 import avatar2 from 'src/assets/images/avatars/2.jpg'
 import avatar3 from 'src/assets/images/avatars/3.jpg'
@@ -55,6 +62,15 @@ import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import MainChart from './MainChart'
 
 const Dashboard = () => {
+=======
+import WidgetsBrand from '../widgets/WidgetsBrand'
+import WidgetsDropdown from '../widgets/WidgetsDropdown'
+import MainChart from './MainChart'
+import OpenStreetMapView from './OpenStreetMapView'
+
+const Dashboard = () => {
+
+>>>>>>> 33b7218 (Initial commit)
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
     { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
@@ -85,6 +101,7 @@ const Dashboard = () => {
     { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
   ]
 
+<<<<<<< HEAD
   const tableExample = [
     {
       avatar: { src: avatar1, status: 'success' },
@@ -173,6 +190,40 @@ const Dashboard = () => {
       },
       payment: { name: 'Amex', icon: cibCcAmex },
       activity: 'Last week',
+=======
+  // If tableData is supposed to be a prop, add it to the function signature:
+  // const Dashboard = ({ tableData }) => {
+
+  // For now, define a sample tableData array here:
+  const tableData = [
+    {
+      user: { name: 'John Doe', new: true, registered: 'Jan 1, 2023' },
+      country: { flag: cifUs, name: 'USA' },
+      usage: { value: 50, period: 'Jun 2023', color: 'success' },
+      payment: { icon: cibCcVisa },
+      activity: '10 sec ago',
+    },
+    {
+      user: { name: 'Jane Smith', new: false, registered: 'Feb 15, 2023' },
+      country: { flag: cifFr, name: 'France' },
+      usage: { value: 80, period: 'Jun 2023', color: 'info' },
+      payment: { icon: cibCcMastercard },
+      activity: '5 min ago',
+    },
+    {
+      user: { name: 'Mike Brown', new: false, registered: 'Mar 10, 2023' },
+      country: { flag: cifIn, name: 'India' },
+      usage: { value: 30, period: 'Jun 2023', color: 'warning' },
+      payment: { icon: cibCcPaypal },
+      activity: '1 hour ago',
+    },
+    {
+      user: { name: 'Emily White', new: true, registered: 'Apr 20, 2023' },
+      country: { flag: cifEs, name: 'Spain' },
+      usage: { value: 65, period: 'Jun 2023', color: 'danger' },
+      payment: { icon: cibCcStripe },
+      activity: 'Yesterday',
+>>>>>>> 33b7218 (Initial commit)
     },
   ]
 
@@ -323,6 +374,7 @@ const Dashboard = () => {
 
               <br />
 
+<<<<<<< HEAD
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead className="text-nowrap">
                   <CTableRow>
@@ -376,6 +428,22 @@ const Dashboard = () => {
                   ))}
                 </CTableBody>
               </CTable>
+=======
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+
+      <CRow>
+        <CCol xs={12}>
+          <CCard className="mb-4">
+            <CCardHeader>OpenStreetMap Example (No Card Required)</CCardHeader>
+            <CCardBody>
+              <OpenStreetMapView />
+              <div className="small text-body-secondary mt-2">
+                This map uses free OpenStreetMap tiles and does not require an API key or credit card.
+              </div>
+>>>>>>> 33b7218 (Initial commit)
             </CCardBody>
           </CCard>
         </CCol>

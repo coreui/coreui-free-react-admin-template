@@ -8,12 +8,14 @@ import authReducer from './reducers/authReducer'
 import dataReducer from './reducers/appReducer'
 import jiraReducer from './reducers/jiraReducer'
 import ticketReducer from './reducers/ticketReducer'
+import userReducer from './reducers/userReducer'
 
 const rootReducer = combineReducers({
   auth: authReducer,
   data: dataReducer,
   jira: jiraReducer,
   ticket: ticketReducer,
+  user: userReducer,
 })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

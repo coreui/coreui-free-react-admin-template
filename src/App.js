@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback, useEffect, useState } from 'react'
+import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { CSpinner } from '@coreui/react'
@@ -19,6 +19,8 @@ const App = () => {
   const dispatch = useDispatch()
   const [isChecking, setIsChecking] = useState(true)
 
+  const isFirstRender = useRef(true)
+
   const checkAuth = useCallback(async () => {
     try {
       await dispatch(checkAuthentication())
@@ -30,7 +32,10 @@ const App = () => {
   }, [dispatch])
 
   useEffect(() => {
-    checkAuth()
+    if (isFirstRender.current) {
+      checkAuth()
+      isFirstRender.current = false
+    }
   }, [checkAuth])
 
   if (isChecking) {

@@ -13,6 +13,7 @@ import {
   CWidgetStatsF,
   CBadge,
   CAlert,
+  CSpinner,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
@@ -27,28 +28,66 @@ import {
 } from '@coreui/icons'
 import { CChart } from '@coreui/react-chartjs'
 
+// URL của API - sử dụng import.meta.env thay vì process.env cho Vite
+// console.log("import",import.meta.env.VITE_API_URL)
+const API_URL = import.meta.env.VITE_API_URL || 'https://api.example.com'
+
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    // In a real app, replace with actual API call
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await fetch('/api/dashboard')
-    //     const data = await response.json()
-    //     setDashboardData(data)
-    //   } catch (err) {
-    //     setError('Failed to load dashboard data')
-    //     console.error(err)
-    //   } finally {
-    //     setLoading(false)
-    //   }
-    // }
+    const fetchDashboardData = async () => {
+      try {
+        setLoading(true)
+        
+        // Gọi API thực tế
+        const response = await fetch(`${API_URL}/api/dashboard`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}` // Nếu có yêu cầu xác thực
+          }
+        })
+        
+        // Kiểm tra response status
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`)
+        }
+        
+        // Parse dữ liệu JSON
+        const data = await response.json()
+        
+        // Cập nhật state với dữ liệu từ API
+        setDashboardData(data)
+        setError(null)
+      } catch (err) {
+        console.error('Failed to fetch dashboard data:', err)
+        setError('Không thể tải dữ liệu dashboard. Vui lòng thử lại sau.')
+        
+        // Sử dụng dữ liệu giả lập trong trường hợp API lỗi (chỉ dùng cho development)
+        if (process.env.NODE_ENV === 'development') {
+          setDashboardData(mockDashboardData())
+        }
+      } finally {
+        setLoading(false)
+      }
+    }
     
-    // Mock data for development
-    const mockData = {
+    // Gọi function fetch data
+    fetchDashboardData()
+    
+    // Thiết lập interval để cập nhật dữ liệu mỗi 5 phút
+    const intervalId = setInterval(fetchDashboardData, 5 * 60 * 1000)
+    
+    // Cleanup interval khi component unmount
+    return () => clearInterval(intervalId)
+  }, [])
+  
+  // Dữ liệu giả lập cho development
+  const mockDashboardData = () => {
+    return {
       totalUsers: 1250,
       activeUsers: 980,
       totalGifts: 4500,
@@ -72,15 +111,7 @@ const Dashboard = () => {
         points: [12500000, 9800000, 11200000, 8500000, 10200000, 9500000, 3450000]
       }
     }
-    
-    // Simulate API call
-    setTimeout(() => {
-      setDashboardData(mockData)
-      setLoading(false)
-    }, 800)
-    
-    // fetchData()
-  }, [])
+  }
   
   // Format numbers for easier reading
   const formatNumber = (num) => {
@@ -116,16 +147,54 @@ const Dashboard = () => {
     return days
   }
 
+  // Hiển thị loading spinner
   if (loading) {
-    return <div className="d-flex justify-content-center mt-5"><div className="spinner-border text-primary" role="status"></div></div>
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '400px' }}>
+        <CSpinner color="primary" />
+        <span className="ms-2">Đang tải dữ liệu...</span>
+      </div>
+    )
   }
 
-  if (error) {
-    return <CAlert color="danger">{error}</CAlert>
+  // Hiển thị thông báo lỗi
+  if (error && !dashboardData) {
+    return (
+      <CAlert color="danger" dismissible>
+        <strong>Lỗi!</strong> {error}
+        <div className="mt-3">
+          <CButton 
+            color="danger" 
+            variant="outline" 
+            onClick={() => window.location.reload()}
+          >
+            Thử lại
+          </CButton>
+        </div>
+      </CAlert>
+    )
+  }
+
+  // Hiển thị cảnh báo khi có lỗi nhưng vẫn có dữ liệu
+  const errorAlert = error && (
+    <CAlert color="warning" dismissible className="mb-4">
+      {error}
+    </CAlert>
+  )
+  
+  // Nếu không có dữ liệu và không đang loading
+  if (!dashboardData) {
+    return (
+      <CAlert color="info">
+        Không có dữ liệu nào khả dụng.
+      </CAlert>
+    )
   }
 
   return (
     <>
+      {errorAlert}
+      
       {/* User and Gift Summary Widgets */}
       <CRow className="mb-4">
         <CCol sm={6} lg={3}>

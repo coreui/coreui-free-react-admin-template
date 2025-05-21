@@ -23,3 +23,4 @@ yarn.lock
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+REACT_APP_API_URL=https://b3uyvi86dj.execute-api.ap-northeast-1.amazonaws.com/api

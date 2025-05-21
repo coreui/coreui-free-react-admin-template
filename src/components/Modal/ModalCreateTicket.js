@@ -11,11 +11,15 @@ import {
   Divider,
   Grid,
   Typography,
+  Slide,
 } from '@mui/material'
 import { toggleCreateTicketModalClose } from '../../actions/ticketActions'
 import BugIssueForm from './ModalBody/BugIssueForm'
 import { projects, issueTypes } from '../../utils/TicketsConsts'
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />
+})
 const ModalCreateTicket = () => {
   const { isCreateTicketModalOpen } = useSelector((state) => state.ticket)
   const [project, setProject] = React.useState(projects[0].value)
@@ -26,15 +30,22 @@ const ModalCreateTicket = () => {
   }
   return (
     <Dialog
+      slots={{
+        transition: Transition,
+      }}
+      keepMounted
+      scroll={'paper'}
       open={isCreateTicketModalOpen}
       onClose={() => dispatch(toggleCreateTicketModalClose())}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
+      // aria-labelledby="alert-dialog-title"
+      // aria-describedby="alert-dialog-description"
+      aria-labelledby="scroll-dialog-title"
+      aria-describedby="scroll-dialog-description"
       maxWidth="md"
       fullWidth
     >
-      <DialogTitle>Créer un nouveau ticket</DialogTitle>
-      <DialogContent>
+      <DialogTitle id="scroll-dialog-title">Créer un nouveau ticket</DialogTitle>
+      <DialogContent dividers>
         <DialogContentText id="alert-dialog-description">
           Les champs obligatoires sont marqués d'un astérisque *
         </DialogContentText>

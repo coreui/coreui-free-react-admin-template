@@ -58,3 +58,18 @@ export const issueTypes = [
   //   label: 'Incident',
   // },
 ]
+
+export const Prioritys = [
+  {
+    value: 'P1',
+    label: 'High',
+  },
+  {
+    value: 'P2',
+    label: 'Medium',
+  },
+  {
+    value: 'P3',
+    label: 'Low',
+  },
+]

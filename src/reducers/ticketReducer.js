@@ -2,7 +2,7 @@ const initialState = {
   ticketList: [],
   loading: false,
   error: null,
-  isCreateTicketModalOpen: false,
+  isCreateTicketModalOpen: true,
 }
 
 const ticketReducer = (state = initialState, action) => {

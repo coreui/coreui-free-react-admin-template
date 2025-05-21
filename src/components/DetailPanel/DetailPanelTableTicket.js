@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 const DetailPanelTableTicket = ({ rowData }) => {
   const [summaryFocus, setSummaryFocus] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [expanded, setExpanded] = useState(true)
 
   const handleUpdateTicket = (rowData) => {
     console.log('update ticket', rowData)
@@ -130,11 +131,13 @@ const DetailPanelTableTicket = ({ rowData }) => {
           />
           <div className="p-3">
             <strong className="pb-3 fs-6">Description</strong>
-            <div dangerouslySetInnerHTML={{ __html: jiraToHtml(rowData.fields.description) }} />
+            {rowData.fields.description && (
+              <div dangerouslySetInnerHTML={{ __html: jiraToHtml(rowData.fields.description) }} />
+            )}
           </div>
         </div>
         <div className="col-4">
-          <Accordion>
+          <Accordion expanded={expanded} onChange={() => setExpanded(!expanded)}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -148,7 +151,11 @@ const DetailPanelTableTicket = ({ rowData }) => {
                   <div className="fw-bold">Personne assignée</div>
                 </Grid>
                 <Grid item xs={6}>
-                  <div>{rowData.fields.assignee.displayName}</div>
+                  {rowData.fields.assignee ? (
+                    <div>{rowData.fields.assignee.displayName}</div>
+                  ) : (
+                    <div>not assigned</div>
+                  )}
                 </Grid>
               </Grid>
             </AccordionDetails>

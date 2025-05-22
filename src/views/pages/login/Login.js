@@ -1,118 +1,70 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { login, checkAuthentication } from '../../../actions/authActions'
+import React from 'react'
+import { AppProvider } from '@toolpad/core/AppProvider'
+import { SignInPage } from '@toolpad/core/SignInPage'
+import { useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
-import logo from '../../../assets/images/logo.png'
-import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
 
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardGroup,
-  CCol,
-  CContainer,
-  CForm,
-  CFormInput,
-  CImage,
-  CInputGroup,
-  CInputGroupText,
-  CRow,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { cilLockLocked, cilUser } from '@coreui/icons'
+import { login, checkAuthentication } from '../../../actions/authActions'
+import { providers } from '../../../utils/authProviders'
+import logo from '../../../assets/images/logo.png'
+
+const BRANDING = {
+  logo: <img src={logo} alt="Takeit logo" style={{ height: 60 }} />,
+  title: 'Takeit',
+}
 
 const Login = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const theme = useTheme()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const redirect = (user) => {
-    if (user.IsEmployee) {
-      navigate('/')
-    } else if (user.IsManager) {
+    if (user.IsEmployee || user.IsManager) {
       navigate('/')
     }
   }
-  const handleLogin = (e) => {
-    e.preventDefault()
-    dispatch(login(username, password))
-      .then((response) => {
-        console.log({ response })
-        if (response.error) {
-          toast.error('Invalid username or password')
-        }
-        if (response) {
-          toast.success('Login successful')
-          redirect(response.user)
-        }
-      })
-      .then(() => dispatch(checkAuthentication()))
-      .catch((error) => {
-        console.error('Login error:', error)
-        toast.error('Invalid username or password')
-      })
-  }
+
   return (
-    <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
-      <CContainer>
-        <CRow className="justify-content-center">
-          <CCol md={8}>
-            <CCardGroup>
-              <CCard className="p-4">
-                <CCardBody>
-                  <CForm>
-                    <h1>Login</h1>
-                    <p className="text-body-secondary">Sign In to your account</p>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupText>
-                        <CIcon icon={cilUser} />
-                      </CInputGroupText>
-                      <CFormInput
-                        placeholder="Username"
-                        autoComplete="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                      />
-                    </CInputGroup>
-                    <CInputGroup className="mb-4">
-                      <CInputGroupText>
-                        <CIcon icon={cilLockLocked} />
-                      </CInputGroupText>
-                      <CFormInput
-                        type="password"
-                        placeholder="Password"
-                        autoComplete="current-password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </CInputGroup>
-                    <CRow>
-                      <CCol xs={6}>
-                        <CButton color="primary" className="px-4" onClick={handleLogin}>
-                          Login
-                        </CButton>
-                      </CCol>
-                      <CCol xs={6} className="text-right">
-                        <CButton color="link" className="px-0">
-                          Forgot password?
-                        </CButton>
-                      </CCol>
-                    </CRow>
-                  </CForm>
-                </CCardBody>
-              </CCard>
-              <CCard className="bg-primary p-4">
-                <CCardBody className="text-center">
-                  <CImage src={logo} alt="Logo" fluid align="center" />
-                </CCardBody>
-              </CCard>
-            </CCardGroup>
-          </CCol>
-        </CRow>
-      </CContainer>
-    </div>
+    <AppProvider theme={theme} branding={BRANDING}>
+      <SignInPage
+        signIn={async (provider, formData) => {
+          if (provider.id === 'credentials') {
+            try {
+              const email = formData.get('email')
+              const password = formData.get('password')
+              const loginResponse = await dispatch(login(email, password))
+
+              if (loginResponse.error) {
+                return { error: 'Invalid username or password' }
+              }
+
+              await dispatch(checkAuthentication())
+
+              if (loginResponse && loginResponse.user) {
+                redirect(loginResponse.user)
+                return { success: true, user: loginResponse.user }
+              }
+
+              return { error: 'Unexpected response format' }
+            } catch (error) {
+              console.error('Login error:', error)
+              return { error: 'Authentication failed' }
+            }
+          }
+
+          return { error: "Cette fonctionnalité n'est pas disponible pour le moment." }
+        }}
+        slotProps={{
+          form: { noValidate: false },
+          emailField: { variant: 'standard', autoFocus: false },
+          passwordField: { variant: 'standard' },
+          submitButton: { variant: 'outlined' },
+          oAuthButton: { variant: 'contained' },
+        }}
+        providers={providers}
+      />
+    </AppProvider>
   )
 }
 

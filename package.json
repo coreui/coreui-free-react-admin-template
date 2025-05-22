@@ -37,6 +37,7 @@
     "@mui/x-date-pickers": "^8.3.1",
     "@popperjs/core": "^2.11.8",
     "@tinymce/tinymce-react": "^6.1.0",
+    "@toolpad/core": "^0.15.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",

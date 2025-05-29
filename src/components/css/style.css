@@ -1,0 +1,66 @@
+.AlertMargin {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.text-medium-emphasis-inverse {
+  color: black !important;
+}
+
+.bg-danger .text-medium-emphasis-inverse {
+  color: white !important;
+}
+
+.bg-success .text-medium-emphasis-inverse {
+  color: white !important;
+}
+
+.expensesTable {
+  max-height: 327px;
+}
+
+.custom-tooltip {
+  margin-top: -40%;
+  background-position-y: center;
+  border: 1px solid #000;
+  padding: 5px;
+  background-color: #fff;
+  color: #000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.bg-danger .card-body {
+  color: white;
+}
+.bg-secondary .card-body {
+  color: black;
+}
+.bg-warning .card-body {
+  color: #000;
+}
+#changeMonth {
+  height: 73px;
+}
+.DashCard-rentStatus {
+  background-color: transparent !important;
+}
+.chart-skills-rentStatus {
+  margin-top: 0px !important;
+}
+.pieHead {
+  padding-top: 0px !important;
+}
+.DashCard-rentStatus {
+  padding-bottom: 0px !important;
+}
+.chart-skills-rentStatus {
+  width: 160px !important;
+  height: 80px !important;
+}
+.chart-skills-rentStatus::after {
+  font-size: 18px !important;
+}
+#LoanMeter {
+  margin-top: 15px;
+}

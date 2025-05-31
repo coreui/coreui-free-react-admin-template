@@ -1,6 +1,10 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
+  //mine
+  cilHome,
+
+  // pre existent
   cilBell,
   cilCalculator,
   cilChartPie,
@@ -17,6 +21,22 @@ import {
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
 const _nav = [
+
+  // mine
+  {
+    component: CNavTitle,
+    name: 'Overview',
+  },
+
+  {
+    component: CNavItem,
+    name: 'Overview',
+    to: '/overview',
+    icon: <CIcon icon={cilHome} customClassName="nav-icon"/>,
+  },
+
+
+  // pre existent
   {
     component: CNavItem,
     name: 'Dashboard',

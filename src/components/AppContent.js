@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import { CircularProgress } from '@mui/material'
 
 // routes config
 import routes from '../routes'

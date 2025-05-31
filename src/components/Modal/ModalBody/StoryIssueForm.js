@@ -8,7 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 
-const BugIssueForm = () => {
+const StoryIssueForm = () => {
   const [Priority, setPriority] = React.useState(Prioritys[0].value)
   const handleEditorChange = (content, editor) => {
     console.log('Content:', content)
@@ -42,10 +42,10 @@ const BugIssueForm = () => {
           onEditorChange={handleEditorChange}
         />
       </Grid>
-      <Grid size={{ xs: 6, md: 3 }}>
+      {/* <Grid size={{ xs: 6, md: 3 }}>
         <Typography variant="overline">Priority</Typography>
-      </Grid>
-      <Grid size={{ xs: 6, md: 9 }}>
+      </Grid> */}
+      {/* <Grid size={{ xs: 6, md: 9 }}>
         <TextField
           id="standard-select-currency"
           select
@@ -60,8 +60,8 @@ const BugIssueForm = () => {
             </MenuItem>
           ))}
         </TextField>
-      </Grid>
-      <Grid size={{ xs: 6, md: 3 }}>
+      </Grid> */}
+      {/* <Grid size={{ xs: 6, md: 3 }}>
         <Typography variant="overline">Date debut</Typography>
       </Grid>
       <Grid size={{ xs: 6, md: 9 }}>
@@ -76,9 +76,9 @@ const BugIssueForm = () => {
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker slotProps={{ textField: { variant: 'standard' } }} />
         </LocalizationProvider>
-      </Grid>
+      </Grid> */}
     </Grid>
   )
 }
 
-export default BugIssueForm
+export default StoryIssueForm

@@ -1,25 +1,45 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { MenuItem, TextField } from '@material-ui/core'
 import { Grid, Typography } from '@mui/material'
 import { Editor } from '@tinymce/tinymce-react'
-import { Prioritys } from '../../../utils/TicketsConsts'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 
-const BugIssueForm = () => {
+import { Prioritys } from '../../../utils/TicketsConsts'
+
+const BugIssueForm = ({ newIssue, setNewIssue }) => {
   const [Priority, setPriority] = React.useState(Prioritys[0].value)
   const handleEditorChange = (content, editor) => {
     console.log('Content:', content)
   }
+
+  const handleChangeSummary = (event) => {
+    console.log(event.target.value)
+    setNewIssue({
+      ...newIssue,
+      fields: {
+        ...newIssue.fields,
+        summary: event.target.value,
+      },
+    })
+  }
+
   return (
     <Grid container spacing={2}>
       <Grid size={{ xs: 6, md: 3 }}>
         <Typography variant="overline">Summary*</Typography>
       </Grid>
       <Grid size={{ xs: 6, md: 9 }}>
-        <TextField id="standard-basic" variant="standard" fullWidth />
+        <TextField
+          id="standard-basic"
+          variant="standard"
+          fullWidth
+          onChange={(event) => handleChangeSummary(event)}
+          value={newIssue.fields.summary}
+        />
       </Grid>
       <Grid size={{ xs: 6, md: 3 }}>
         <Typography variant="overline">Description*</Typography>
@@ -79,6 +99,11 @@ const BugIssueForm = () => {
       </Grid>
     </Grid>
   )
+}
+
+BugIssueForm.propTypes = {
+  newIssue: PropTypes.object.isRequired,
+  setNewIssue: PropTypes.func.isRequired,
 }
 
 export default BugIssueForm

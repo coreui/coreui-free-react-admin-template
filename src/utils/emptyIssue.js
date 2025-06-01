@@ -93,7 +93,7 @@ export const emptyIssue = {
     },
     timeoriginalestimate: null,
     fixVersions: [],
-    summary: 'fix connection JIRA avec le backend pour recuperer la liste des tickets JIRA sallami',
+    summary: '',
     updated: '',
     issuetype: {
       id: '10002',

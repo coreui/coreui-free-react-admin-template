@@ -13,7 +13,7 @@ import {
   Typography,
   Slide,
 } from '@mui/material'
-import { toggleCreateTicketModalClose } from '../../actions/ticketActions'
+import { addNewTicketAPI, toggleCreateTicketModalClose } from '../../actions/ticketActions'
 import BugIssueForm from './ModalBody/BugIssueForm'
 import TaskIssueForm from './ModalBody/TaskIssueForm'
 import StoryIssueForm from './ModalBody/StoryIssueForm'
@@ -33,6 +33,10 @@ const ModalCreateTicket = () => {
     dispatch(toggleCreateTicketModalClose())
   }
 
+  const handleSubmitTicket = () => {
+    dispatch(addNewTicketAPI(newIssue))
+  }
+
   const generateId = () => {
     let id = ''
     for (let i = 0; i < 8; i++) {
@@ -43,10 +47,10 @@ const ModalCreateTicket = () => {
   useEffect(() => {
     const now = new Date().toISOString()
     setNewIssue({
-      ...emptyIssue,
+      ...newIssue,
       id: generateId(),
       fields: {
-        ...emptyIssue.fields,
+        ...newIssue.fields,
         created: now,
         lastViewed: now,
         updated: now,
@@ -59,9 +63,9 @@ const ModalCreateTicket = () => {
     switch (issueType) {
       case 'Bug':
         setNewIssue({
-          ...emptyIssue,
+          ...newIssue,
           fields: {
-            ...emptyIssue.fields,
+            ...newIssue.fields,
             issuetype: {
               id: '10002',
               hierarchyLevel: 0,
@@ -80,9 +84,9 @@ const ModalCreateTicket = () => {
 
       case 'Task':
         setNewIssue({
-          ...emptyIssue,
+          ...newIssue,
           fields: {
-            ...emptyIssue.fields,
+            ...newIssue.fields,
             issuetype: {
               self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10001',
               name: 'Tâche',
@@ -101,9 +105,9 @@ const ModalCreateTicket = () => {
 
       case 'Story':
         setNewIssue({
-          ...emptyIssue,
+          ...newIssue,
           fields: {
-            ...emptyIssue.fields,
+            ...newIssue.fields,
             issuetype: {
               hierarchyLevel: 0,
               subtask: false,
@@ -122,9 +126,9 @@ const ModalCreateTicket = () => {
 
       case 'Epic':
         setNewIssue({
-          ...emptyIssue,
+          ...newIssue,
           fields: {
-            ...emptyIssue.fields,
+            ...newIssue.fields,
             issuetype: {
               self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10004',
               id: '10004',
@@ -210,13 +214,13 @@ const ModalCreateTicket = () => {
           </Grid>
         </Grid>
         <Divider />
-        {issueType === 'Bug' && <BugIssueForm />}
-        {issueType === 'Task' && <TaskIssueForm />}
-        {issueType === 'Story' && <StoryIssueForm />}
+        {issueType === 'Bug' && <BugIssueForm newIssue={newIssue} setNewIssue={setNewIssue} />}
+        {issueType === 'Task' && <TaskIssueForm setNewIssue={setNewIssue} />}
+        {issueType === 'Story' && <StoryIssueForm setNewIssue={setNewIssue} />}
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button type="submit">Subscribe</Button>
+        <Button onClick={handleSubmitTicket}>Submit</Button>
       </DialogActions>
     </Dialog>
   )

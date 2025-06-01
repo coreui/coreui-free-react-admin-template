@@ -34,6 +34,22 @@ const ticketReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       }
+    case 'ADD_NEW_TICKET_REQUEST':
+      return {
+        ...state,
+        loading: true,
+      }
+    case 'ADD_NEW_TICKET_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+      }
+    case 'ADD_NEW_TICKET_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      }
     default:
       return state
   }

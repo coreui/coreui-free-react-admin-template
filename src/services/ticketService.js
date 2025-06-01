@@ -18,6 +18,27 @@ const getAllTickets = () => {
     })
 }
 
+const addNewTicket = (ticketData) => {
+  return axios
+    .post(
+      `${API_URL}addNewTicket`,
+      { ticket: ticketData },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      },
+    )
+    .then((response) => {
+      return response
+    })
+    .catch((error) => {
+      console.error('Error fetching all config Jira:', error)
+      return error
+    })
+}
+
 export default {
   getAllTickets,
+  addNewTicket,
 }

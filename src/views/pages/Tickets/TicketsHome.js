@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { CBadge, CContainer } from '@coreui/react'
+import { CBadge } from '@coreui/react'
 import { Paper } from '@material-ui/core'
-import MaterialTable from 'material-table'
+import MaterialTable from '@material-table/core'
 
 import { getAllTicketAPI } from '../../../actions/ticketActions'
 import tableIcons from '../../icons/MaterialTableIcons'
@@ -11,6 +12,7 @@ import DetailPanelTableTicket from '../../../components/DetailPanel/DetailPanelT
 
 const Tickets = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const isFirstRender = useRef(true)
   const { ticketList } = useSelector((state) => state.ticket)
 
@@ -30,6 +32,7 @@ const Tickets = () => {
         options={{
           paging: false,
         }}
+        onRowClick={(event, rowData) => navigate(`/ticket/${rowData.key}`)}
         columns={[
           {
             title: 'From',

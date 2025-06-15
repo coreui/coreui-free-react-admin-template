@@ -132,6 +132,7 @@ export const editProjectAPI = (projectId, projectData) => (dispatch) => {
         throw new Error(response.error)
       } else {
         dispatch(EDIT_PROJECT_SUCCESS(projectId))
+        dispatch(toggleEditProjectModalClose())
         return response
       }
     })

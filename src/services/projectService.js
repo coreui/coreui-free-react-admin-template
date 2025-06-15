@@ -30,7 +30,7 @@ const addNewProject = async (projectData, dispatch) => {
       if (dispatch) {
         setTimeout(() => {
           dispatch(getAllProjectAPI())
-        }, 2000)
+        }, 1000)
       }
     }
     return response
@@ -57,7 +57,7 @@ const deleteProject = async (projectId, dispatch) => {
       if (dispatch) {
         setTimeout(() => {
           dispatch(getAllProjectAPI())
-        }, 2000)
+        }, 1000)
       }
     }
     return response
@@ -68,8 +68,35 @@ const deleteProject = async (projectId, dispatch) => {
   }
 }
 
+const editProject = async (projectId, projectData, dispatch) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}editProject`,
+      { projectId, projectData },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      },
+    )
+    if (response.status === 200 && !response.data.error) {
+      toast.success(response.data.message || 'Project edited successfully')
+      if (dispatch) {
+        setTimeout(() => {
+          dispatch(getAllProjectAPI())
+        }, 1000)
+      }
+    }
+    return response
+  } catch (error) {
+    console.error('Error editing project:', error)
+    toast.error(error.response?.data?.message || 'Failed to edit project')
+    return error
+  }
+}
 export default {
   getAllProjects,
   addNewProject,
   deleteProject,
+  editProject,
 }

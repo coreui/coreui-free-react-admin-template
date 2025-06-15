@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   CButton,
   CButtonGroup,
@@ -13,7 +12,11 @@ import {
   CTable,
 } from '@coreui/react'
 
-import { getAllProjectAPI, deleteProjectAPI } from '../../../actions/projectActions'
+import {
+  getAllProjectAPI,
+  deleteProjectAPI,
+  toggleEditProjectModalOpen,
+} from '../../../actions/projectActions'
 import AddNewProject from '../../forms/addNewProject'
 
 const columns = [
@@ -67,10 +70,18 @@ const Projet = () => {
     (event) => {
       event.preventDefault()
       const projectId = event.target.id.split('-')[1]
-      // Call the delete action here
       const deleteList = []
       deleteList.push(projectId)
       dispatch(deleteProjectAPI(deleteList))
+    },
+    [dispatch],
+  )
+
+  const handleClickEdit = useCallback(
+    (event) => {
+      event.preventDefault()
+      const projectId = event.target.id.split('-')[1]
+      dispatch(toggleEditProjectModalOpen(projectId))
     },
     [dispatch],
   )
@@ -97,7 +108,7 @@ const Projet = () => {
             <CButton
               variant="ghost"
               color="primary"
-              // onClick={(e) => handleClickEditConfiguration(e)}
+              onClick={(e) => handleClickEdit(e)}
               id={`edit-${item.id}`}
             >
               Edit

@@ -1,5 +1,14 @@
 import projectService from '../services/projectService'
 
+export const toggleEditProjectModalOpen = (projectId) => ({
+  type: 'TOGGLE_EDIT_PROJECT_MODAL_OPEN',
+  payload: projectId,
+})
+
+export const toggleEditProjectModalClose = () => ({
+  type: 'TOGGLE_EDIT_PROJECT_MODAL_CLOSE',
+})
+
 export const GET_ALL_PROJECTS_REQUEST = () => ({
   type: 'GET_ALL_PROJECTS_REQUEST',
 })
@@ -95,6 +104,39 @@ export const deleteProjectAPI = (projectId) => (dispatch) => {
     })
     .catch((error) => {
       dispatch(DELETE_PROJECT_FAILURE(error))
+      throw new Error(error)
+    })
+}
+
+export const EDIT_PROJECT_REQUEST = () => ({
+  type: 'EDIT_PROJECT_REQUEST',
+})
+
+export const EDIT_PROJECT_SUCCESS = (projectId) => ({
+  type: 'EDIT_PROJECT_SUCCESS',
+  payload: projectId,
+})
+
+export const EDIT_PROJECT_FAILURE = (error) => ({
+  type: 'EDIT_PROJECT_FAILURE',
+  payload: error,
+})
+
+export const editProjectAPI = (projectId, projectData) => (dispatch) => {
+  dispatch(EDIT_PROJECT_REQUEST())
+  projectService
+    .editProject(projectId, projectData, dispatch)
+    .then((response) => {
+      if (response.error) {
+        dispatch(EDIT_PROJECT_FAILURE(response.error))
+        throw new Error(response.error)
+      } else {
+        dispatch(EDIT_PROJECT_SUCCESS(projectId))
+        return response
+      }
+    })
+    .catch((error) => {
+      dispatch(EDIT_PROJECT_FAILURE(error))
       throw new Error(error)
     })
 }

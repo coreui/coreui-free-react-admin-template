@@ -117,8 +117,9 @@ const Projet = () => {
         ),
       }))
       setProjectItems(transformedItems)
+      setVisible(false)
     }
-  }, [projectList, setProjectItems, handleClickDelete])
+  }, [projectList, setProjectItems, handleClickDelete, handleClickEdit])
 
   const handleClickAjouterProject = (event) => {
     event.preventDefault()

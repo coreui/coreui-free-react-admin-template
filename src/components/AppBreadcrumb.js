@@ -1,31 +1,41 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
-
+import { useLocation, matchPath } from 'react-router-dom'
 import routes from '../routes'
-
 import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
 const AppBreadcrumb = () => {
-  const currentLocation = useLocation().pathname
+  const location = useLocation()
+  const currentLocation = location.pathname
 
   const getRouteName = (pathname, routes) => {
-    const currentRoute = routes.find((route) => route.path === pathname)
-    return currentRoute ? currentRoute.name : false
+    for (const route of routes) {
+      const match = matchPath({ path: route.path, end: true }, pathname)
+      if (match) {
+        return route.name
+      }
+    }
+    return null
   }
 
   const getBreadcrumbs = (location) => {
     const breadcrumbs = []
-    location.split('/').reduce((prev, curr, index, array) => {
-      const currentPathname = `${prev}/${curr}`
-      const routeName = getRouteName(currentPathname, routes)
-      routeName &&
+    const pathnames = location.split('/').filter(Boolean)
+
+    pathnames.reduce((prevPath, currSegment, index) => {
+      const currentPath = `${prevPath}/${currSegment}`.replace(/\/+/g, '/')
+      const routeName = getRouteName(currentPath, routes)
+
+      if (routeName) {
         breadcrumbs.push({
-          pathname: currentPathname,
+          pathname: currentPath,
           name: routeName,
-          active: index + 1 === array.length ? true : false,
+          active: index === pathnames.length - 1,
         })
-      return currentPathname
-    })
+      }
+
+      return currentPath
+    }, '')
+
     return breadcrumbs
   }
 
@@ -34,16 +44,14 @@ const AppBreadcrumb = () => {
   return (
     <CBreadcrumb className="my-0">
       <CBreadcrumbItem href="/">Home</CBreadcrumbItem>
-      {breadcrumbs.map((breadcrumb, index) => {
-        return (
-          <CBreadcrumbItem
-            {...(breadcrumb.active ? { active: true } : { href: breadcrumb.pathname })}
-            key={index}
-          >
-            {breadcrumb.name}
-          </CBreadcrumbItem>
-        )
-      })}
+      {breadcrumbs.map((breadcrumb, index) => (
+        <CBreadcrumbItem
+          key={index}
+          {...(breadcrumb.active ? { active: true } : { href: breadcrumb.pathname })}
+        >
+          {breadcrumb.name}
+        </CBreadcrumbItem>
+      ))}
     </CBreadcrumb>
   )
 }

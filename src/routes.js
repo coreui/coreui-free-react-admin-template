@@ -63,7 +63,8 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
 
-  { path: '/tickets', name: 'Tickets', element: Tickets },
+  { path: '/tickets', name: 'Tickets', element: Tickets, exact: true },
+  { path: '/tickets/list', name: 'liste des Tickets', element: Tickets },
   { path: '/ticket/:code', name: 'Ticket View', element: TicketView },
 
   { path: '/jira', name: 'Jira', element: ConfigJiraApi, exact: true },

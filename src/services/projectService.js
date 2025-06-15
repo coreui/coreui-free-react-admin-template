@@ -71,7 +71,7 @@ const deleteProject = async (projectId, dispatch) => {
 const editProject = async (projectId, projectData, dispatch) => {
   try {
     const response = await axios.post(
-      `${API_URL}editProject`,
+      `${API_URL}updateProjectByID`,
       { projectId, projectData },
       {
         headers: {

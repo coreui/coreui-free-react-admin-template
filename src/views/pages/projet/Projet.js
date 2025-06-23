@@ -10,6 +10,7 @@ import {
   CContainer,
   CRow,
   CTable,
+  CSpinner,
 } from '@coreui/react'
 
 import {
@@ -53,7 +54,7 @@ const columns = [
 ]
 
 const Projet = () => {
-  const { projectList } = useSelector((state) => state.project)
+  const { projectList, loading } = useSelector((state) => state.project)
   const isFirstRender = useRef(true)
   const [visible, setVisible] = useState(false)
   const [projectItems, setProjectItems] = useState([])
@@ -124,6 +125,14 @@ const Projet = () => {
   const handleClickAjouterProject = (event) => {
     event.preventDefault()
     setVisible(!visible)
+  }
+
+  if (loading) {
+    return (
+      <div className="pt-3 text-center">
+        <CSpinner size="3rem" />
+      </div>
+    )
   }
 
   return (

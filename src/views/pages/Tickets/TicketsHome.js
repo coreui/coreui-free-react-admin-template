@@ -1,20 +1,29 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { CBadge } from '@coreui/react'
-import { Paper } from '@material-ui/core'
-import MaterialTable from '@material-table/core'
+import {
+  CBadge,
+  CButton,
+  CCol,
+  CContainer,
+  CRow,
+  CSpinner,
+  CTable,
+  CTableBody,
+  CTableDataCell,
+  CTableHead,
+  CTableHeaderCell,
+  CTableRow,
+} from '@coreui/react'
 
 import { getAllTicketAPI } from '../../../actions/ticketActions'
-import tableIcons from '../../icons/MaterialTableIcons'
-import DetailPanelTableTicket from '../../../components/DetailPanel/DetailPanelTableTicket'
 
 const Tickets = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const isFirstRender = useRef(true)
-  const { ticketList } = useSelector((state) => state.ticket)
+  const { ticketList, loading } = useSelector((state) => state.ticket)
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -23,70 +32,68 @@ const Tickets = () => {
     }
   }, [dispatch])
 
+  const handleClickAjouterTicket = (event) => {
+    event.preventDefault()
+    navigate('/ticket/add')
+  }
+
+  const handleRowClick = (user) => {
+    console.log('Utilisateur cliqué :', user)
+  }
+
+  if (loading) {
+    return (
+      <div className="pt-3 text-center">
+        <CSpinner size="3rem" />
+      </div>
+    )
+  }
   return (
-    <>
-      <MaterialTable
-        title="Tickets"
-        icons={tableIcons}
-        isLoading={ticketList.length === 0}
-        options={{
-          paging: false,
-        }}
-        onRowClick={(event, rowData) => navigate(`/ticket/${rowData.key}`)}
-        columns={[
-          {
-            title: 'From',
-            field: 'configId',
-            cellStyle: { width: '10%' },
-            headerStyle: { width: '10%' },
-            render: (rowData) =>
-              rowData.configId ? (
-                <CBadge color="primary" shape="rounded-pill">
-                  externe
+    <CContainer>
+      <CRow>
+        <CCol sm={10}>
+          <h2>All Ticket View</h2>
+          {/* <p className="text-medium-emphasis">Current Jira API configuration settings</p> */}
+        </CCol>
+        <CCol sm={2} className="text-end">
+          <CButton
+            color="success"
+            className="mb-2"
+            onClick={(event) => handleClickAjouterTicket(event)}
+          >
+            Ajouter Ticket
+          </CButton>
+        </CCol>
+      </CRow>
+      <CTable borderless hover responsive>
+        <CTableHead>
+          <CTableRow>
+            <CTableHeaderCell>From</CTableHeaderCell>
+            <CTableHeaderCell>Key</CTableHeaderCell>
+            <CTableHeaderCell>Summary</CTableHeaderCell>
+            <CTableHeaderCell>Status</CTableHeaderCell>
+          </CTableRow>
+        </CTableHead>
+        <CTableBody>
+          {ticketList.map((item, index) => (
+            <CTableRow
+              key={index}
+              onClick={() => handleRowClick(item)}
+              style={{ cursor: 'pointer' }}
+            >
+              <CTableDataCell>
+                <CBadge color={item.configId ? 'primary' : 'secondary'} shape="rounded-pill">
+                  {item.configId ? 'externe' : 'interne'}
                 </CBadge>
-              ) : (
-                <CBadge color="secondary" shape="rounded-pill">
-                  interne
-                </CBadge>
-              ),
-          },
-          {
-            title: 'key',
-            field: 'key',
-            cellStyle: { width: '10%' },
-            headerStyle: { width: '10%' },
-          },
-          {
-            title: 'summary',
-            field: 'fields.summary',
-            cellStyle: { width: '80%' },
-            headerStyle: { width: '80%' },
-          },
-          {
-            title: 'status',
-            field: 'fields.status.name',
-            cellStyle: { width: '10%' },
-            headerStyle: { width: '10%' },
-          },
-        ]}
-        data={ticketList}
-        components={{
-          Container: (props) => (
-            <Paper
-              {...props}
-              elevation={0}
-              style={{ backgroundColor: 'transparent', boxShadow: 'none' }}
-            />
-          ),
-        }}
-        detailPanel={[
-          {
-            tooltip: 'Show more info',
-            render: (rowData) => <DetailPanelTableTicket rowData={rowData} />,
-          },
-        ]}
-      />
-    </>
+              </CTableDataCell>
+              <CTableDataCell>{item.key}</CTableDataCell>
+              <CTableDataCell>{item.fields.summary}</CTableDataCell>
+              <CTableDataCell>{item.fields.status.name}</CTableDataCell>
+            </CTableRow>
+          ))}
+        </CTableBody>
+      </CTable>
+    </CContainer>
   )
 }
 

@@ -1,10 +1,10 @@
 import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { CircularProgress } from '@mui/material'
 import './scss/style.scss'
 import PrivateRoute from './PrivateRute'
 import { checkAuthentication } from './actions/authActions'
+import { CSpinner } from '@coreui/react'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
@@ -38,7 +38,7 @@ const App = () => {
   if (isChecking) {
     return (
       <div className="pt-3 text-center">
-        <CircularProgress size="3rem" />
+        <CSpinner size="3rem" />
       </div>
     )
   }
@@ -48,7 +48,7 @@ const App = () => {
       <Suspense
         fallback={
           <div className="pt-3 text-center">
-            <CircularProgress size="3rem" />
+            <CSpinner size="3rem" />
           </div>
         }
       >

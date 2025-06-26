@@ -3,7 +3,7 @@ import React from 'react'
 
 // mine
 const Overview = React.lazy(() => import('./views/overview/Overview'))
-
+const DeviceView = React.lazy(() => import('./views/devices/DeviceView'))
 
 // pre existent
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -61,6 +61,7 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   // mine
   { path: '/overview', name: 'Overview', element: Overview},
+  { path: '/device/:id', name: 'Device', element: DeviceView },
 
   // pre existent
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -110,3 +111,19 @@ const routes = [
 ]
 
 export default routes
+
+/*
+import React from 'react'
+import { Navigate } from 'react-router-dom'
+
+// Lazy loading components
+const Overview = React.lazy(() => import('./views/overview/Overview'))
+const DeviceView = React.lazy(() => import('./views/devices/DeviceView'))
+
+const routes = [
+  { path: '/', exact: true, name: 'Home', element: <Navigate to="/overview" replace /> },
+  { path: '/overview', name: 'Overview', element: <Overview /> },
+  { path: '/device/:id', name: 'Device', element: <DeviceView /> },
+]
+
+export default routes*/

@@ -36,6 +36,8 @@ const _nav = [
   },
 
 
+
+
   // pre existent
   {
     component: CNavItem,
@@ -469,3 +471,19 @@ const _nav = [
 ]
 
 export default _nav
+
+/*
+import React from 'react'
+import CIcon from '@coreui/icons-react'
+import { cilSpeedometer } from '@coreui/icons'
+
+const _nav = [
+  {
+    component: 'CNavItem',
+    name: 'Overview',
+    to: '/overview',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />
+  }
+]
+
+export default _nav*/

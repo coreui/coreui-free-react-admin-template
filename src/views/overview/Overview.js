@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+/*import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import {
   CCard,
@@ -24,7 +24,7 @@ const Overview = () => {
   const navgiate = useNavigate()
 
   // Function to handle navigation to different dashboards
-  /*
+  
   const handleViewDetails = (itemId) => {
     switch(item.department) {
     case 'Sales': navigate(`/sales-dashboard/${item.id}`); break;
@@ -33,7 +33,7 @@ const Overview = () => {
     case 'HR': navigate(`/hr-dashboard/${item.id}`); break;
     default: navigate(`/general-dashboard/${item.id}`);
     }
-  }*/
+  }
 
   // Sample data - replace this with your actual data fetching logic
   useEffect(() => {
@@ -163,4 +163,209 @@ const Overview = () => {
 
 export default Overview
 
-// <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>
+// <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>*/
+
+import React, { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { 
+  CCard, 
+  CCardBody, 
+  CCardHeader, 
+  CTable, 
+  CTableHead, 
+  CTableRow, 
+  CTableHeaderCell, 
+  CTableBody, 
+  CTableDataCell, 
+  CButton, 
+  CBadge,
+  CContainer,
+  CRow,
+  CCol
+} from '@coreui/react'
+import { useNavigation } from '../../hooks/useNavigation'
+
+const Overview = () => {
+  const navigate = useNavigate()
+  const { assets } = useNavigation()
+
+  // Generate random CVE numbers and risk levels for each asset
+  const enrichedAssets = useMemo(() => {
+    return assets.map(asset => {
+      // Generate a consistent random CVE based on asset ID (so it doesn't change on re-render)
+      const seed = asset.id.split('').reduce((a, b) => a + b.charCodeAt(0), 0)
+      const cveYear = 2020 + (seed % 5) // CVE years between 2020-2024
+      const cveNumber = (seed % 9999) + 1000 // CVE numbers between 1000-9999
+      const cve = `CVE-${cveYear}-${cveNumber}`
+      
+      // Generate consistent risk level
+      const riskLevels = ['Low', 'Medium', 'High', 'Critical']
+      const riskColors = ['success', 'warning', 'danger', 'dark']
+      const riskIndex = seed % 4
+      const riskLevel = riskLevels[riskIndex]
+      const riskColor = riskColors[riskIndex]
+      
+      return {
+        ...asset,
+        cve,
+        riskLevel,
+        riskColor
+      }
+    })
+  }, [assets])
+
+  const handleViewAsset = (assetId) => {
+    navigate(`/asset/${assetId}`)
+  }
+
+  const getRiskBadgeVariant = (riskLevel) => {
+    switch (riskLevel) {
+      case 'Low': return 'success'
+      case 'Medium': return 'warning'
+      case 'High': return 'danger'
+      case 'Critical': return 'dark'
+      default: return 'secondary'
+    }
+  }
+
+  return (
+    <CContainer fluid>
+      <CRow>
+        <CCol>
+          <CCard>
+            <CCardHeader>
+              <div className="d-flex justify-content-between align-items-center">
+                <h4 className="mb-0">Assets Overview</h4>
+                <CBadge color="info" shape="rounded-pill">
+                  {assets.length} Total Assets
+                </CBadge>
+              </div>
+            </CCardHeader>
+            <CCardBody>
+              {enrichedAssets.length === 0 ? (
+                <div className="text-center py-5">
+                  <h5 className="text-muted">No Assets Found</h5>
+                  <p className="text-muted">Start by adding departments and assets using the sidebar buttons.</p>
+                </div>
+              ) : (
+                <CTable hover responsive>
+                  <CTableHead>
+                    <CTableRow>
+                      <CTableHeaderCell scope="col">Device Name</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">Department</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">CVE #</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">Risk Level</CTableHeaderCell>
+                      <CTableHeaderCell scope="col" className="text-center">Asset Details</CTableHeaderCell>
+                    </CTableRow>
+                  </CTableHead>
+                  <CTableBody>
+                    {enrichedAssets.map((asset) => (
+                      <CTableRow key={asset.id}>
+                        <CTableDataCell>
+                          <div>
+                            <strong>{asset.name}</strong>
+                            <br />
+                            <small className="text-muted">
+                              {asset.vendor} - {asset.deviceType}
+                            </small>
+                          </div>
+                        </CTableDataCell>
+                        <CTableDataCell>
+                          <CBadge color="secondary" className="me-1">
+                            {asset.department}
+                          </CBadge>
+                        </CTableDataCell>
+                        <CTableDataCell>
+                          <code className="text-primary">{asset.cve}</code>
+                        </CTableDataCell>
+                        <CTableDataCell>
+                          <CBadge color={getRiskBadgeVariant(asset.riskLevel)}>
+                            {asset.riskLevel}
+                          </CBadge>
+                        </CTableDataCell>
+                        <CTableDataCell className="text-center">
+                          <CButton
+                            color="primary"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleViewAsset(asset.id)}
+                          >
+                            View Details
+                          </CButton>
+                        </CTableDataCell>
+                      </CTableRow>
+                    ))}
+                  </CTableBody>
+                </CTable>
+              )}
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+      
+      {/* Optional: Summary cards */}
+      {enrichedAssets.length > 0 && (
+        <CRow className="mt-4">
+          <CCol sm={6} lg={3}>
+            <CCard className="text-white bg-success">
+              <CCardBody>
+                <div className="d-flex justify-content-between">
+                  <div>
+                    <div className="fs-4 fw-semibold">
+                      {enrichedAssets.filter(a => a.riskLevel === 'Low').length}
+                    </div>
+                    <div>Low Risk</div>
+                  </div>
+                </div>
+              </CCardBody>
+            </CCard>
+          </CCol>
+          <CCol sm={6} lg={3}>
+            <CCard className="text-white bg-warning">
+              <CCardBody>
+                <div className="d-flex justify-content-between">
+                  <div>
+                    <div className="fs-4 fw-semibold">
+                      {enrichedAssets.filter(a => a.riskLevel === 'Medium').length}
+                    </div>
+                    <div>Medium Risk</div>
+                  </div>
+                </div>
+              </CCardBody>
+            </CCard>
+          </CCol>
+          <CCol sm={6} lg={3}>
+            <CCard className="text-white bg-danger">
+              <CCardBody>
+                <div className="d-flex justify-content-between">
+                  <div>
+                    <div className="fs-4 fw-semibold">
+                      {enrichedAssets.filter(a => a.riskLevel === 'High').length}
+                    </div>
+                    <div>High Risk</div>
+                  </div>
+                </div>
+              </CCardBody>
+            </CCard>
+          </CCol>
+          <CCol sm={6} lg={3}>
+            <CCard className="text-white bg-dark">
+              <CCardBody>
+                <div className="d-flex justify-content-between">
+                  <div>
+                    <div className="fs-4 fw-semibold">
+                      {enrichedAssets.filter(a => a.riskLevel === 'Critical').length}
+                    </div>
+                    <div>Critical Risk</div>
+                  </div>
+                </div>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+      )}
+    </CContainer>
+  )
+}
+
+export default Overview

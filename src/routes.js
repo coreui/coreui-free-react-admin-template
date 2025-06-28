@@ -3,7 +3,8 @@ import React from 'react'
 
 // mine
 const Overview = React.lazy(() => import('./views/overview/Overview'))
-const DeviceView = React.lazy(() => import('./views/devices/DeviceView'))
+const AssetView = React.lazy(() => import('./views/assets/AssetView'))
+const DataManagement = React.lazy(() => import('./components/DataManagement'))
 
 // pre existent
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -61,7 +62,8 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   // mine
   { path: '/overview', name: 'Overview', element: Overview},
-  { path: '/device/:id', name: 'Device', element: DeviceView },
+  { path: '/asset/:assetId', name: 'Asset', element: AssetView },
+  { path: '/datamanagement', name: 'Data Management', element: DataManagement },
 
   // pre existent
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },

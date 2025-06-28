@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
   //mine
@@ -19,8 +19,9 @@ import {
   cilStar,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
+import DynamicNavButtons from './components/DynamicNavButtons'
 
-const _nav = [
+export const _nav = (departments, onAddDepartment, onAddAsset, dynamicNavItems) => [
 
   // mine
   {
@@ -35,8 +36,42 @@ const _nav = [
     icon: <CIcon icon={cilHome} customClassName="nav-icon"/>,
   },
 
+  {
+    component: DynamicNavButtons,
+    props: {
+      onAddDepartment,
+      onAddAsset,
+      departments
+    }
+  },
 
-
+  
+  {
+  component: () => (
+    <div className="px-3 py-2">
+      <div className="d-flex gap-2">
+        <CButton 
+          size="md" 
+          color="success" 
+          variant="outline"
+          className="flex-fill"
+          onClick={() => console.log('Button 1')}
+        >
+          Btn 1
+        </CButton>
+        <CButton 
+          size="md" 
+          color="danger" 
+          variant="outline"
+          className="flex-fill"
+          onClick={() => console.log('Button 2')}
+        >
+          Btn 2
+        </CButton>
+      </div>
+    </div>
+    )
+  },
 
   // pre existent
   {
@@ -468,9 +503,10 @@ const _nav = [
     href: 'https://coreui.io/react/docs/templates/installation/',
     icon: <CIcon icon={cilDescription} customClassName="nav-icon" />,
   },
-]
+  ...dynamicNavItems
+]*/
 
-export default _nav
+//export default _nav
 
 /*
 import React from 'react'
@@ -487,3 +523,34 @@ const _nav = [
 ]
 
 export default _nav*/
+
+import React from 'react'
+import { CNavItem } from '@coreui/react'
+import { CIcon } from '@coreui/icons-react'
+import { cilHome, cilSettings } from '@coreui/icons'
+import DynamicNavButtons from './components/DynamicNavButtons'
+
+export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicNavItems) => [
+  {
+    component: CNavItem,
+    name: 'Overview',
+    to: '/overview',
+    icon: <CIcon icon={cilHome} customClassName="nav-icon"/>,
+  },
+  {
+    component: DynamicNavButtons,
+    props: {
+      onAddDepartment,
+      onAddAsset,
+      departments
+    }
+  },
+  ...dynamicNavItems,
+
+  {
+    component: CNavItem,
+    name: 'Data Management',
+    to: '/datamanagement',
+    icon: <CIcon icon={cilSettings} customClassName="nav-icon"/>,
+  }
+]

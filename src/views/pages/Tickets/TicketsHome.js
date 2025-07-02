@@ -37,8 +37,10 @@ const Tickets = () => {
     dispatch(toggleCreateTicketModalOpen())
   }
 
-  const handleRowClick = (user) => {
-    console.log('Utilisateur cliqué :', user)
+  const handleRowClick = (ticket) => {
+    console.log('Ticket cliqué :', ticket)
+    // Rediriger vers la vue détaillée du ticket
+    navigate(`/ticket/${ticket.key}`)
   }
 
   if (loading) {

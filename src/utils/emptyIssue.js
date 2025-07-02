@@ -146,7 +146,7 @@ export const emptyIssue = {
     },
   },
   id: '',
-  key: 'SCRUM-interne',
+  key: 'interne',
   self: '',
   // createdAt: {
   //   seconds: 1746709762,

@@ -19,14 +19,17 @@ import { addNewTicketAPI, toggleCreateTicketModalClose } from '../../actions/tic
 import BugIssueForm from './ModalBody/BugIssueForm'
 import TaskIssueForm from './ModalBody/TaskIssueForm'
 import StoryIssueForm from './ModalBody/StoryIssueForm'
+// import EpicIssueForm from './ModalBody/EpicIssueForm' // À créer si nécessaire
 import { projects, issueTypes } from '../../utils/TicketsConsts'
 import { emptyIssue } from '../../utils/emptyIssue'
+
 const ModalCreateTicket = () => {
   const { isCreateTicketModalOpen } = useSelector((state) => state.ticket)
   const location = useLocation()
   const [project, setProject] = useState(projects[0].value)
   const [issueType, setIssueType] = useState(issueTypes[0].value)
   const [newIssue, setNewIssue] = useState(emptyIssue)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const dispatch = useDispatch()
 
   // Extraire le code du projet depuis le pathname
@@ -52,11 +55,31 @@ const ModalCreateTicket = () => {
   }
 
   const handleClose = () => {
+    // Reset du formulaire lors de la fermeture
+    setNewIssue(emptyIssue)
+    setProject(projects[0].value)
+    setIssueType(issueTypes[0].value)
+    setIsSubmitting(false)
     dispatch(toggleCreateTicketModalClose())
   }
 
-  const handleSubmitTicket = () => {
-    dispatch(addNewTicketAPI(newIssue))
+  const handleSubmitTicket = async () => {
+    // Validation basique
+    if (!newIssue.fields?.summary?.trim()) {
+      alert('Le résumé est obligatoire')
+      return
+    }
+
+    setIsSubmitting(true)
+    try {
+      await dispatch(addNewTicketAPI(newIssue))
+      handleClose() // Fermer après succès
+    } catch (error) {
+      console.error('Erreur lors de la création du ticket:', error)
+      alert('Erreur lors de la création du ticket')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const generateId = () => {
@@ -259,13 +282,16 @@ const ModalCreateTicket = () => {
         {issueType === 'Bug' && <BugIssueForm newIssue={newIssue} setNewIssue={setNewIssue} />}
         {issueType === 'Task' && <TaskIssueForm newIssue={newIssue} setNewIssue={setNewIssue} />}
         {issueType === 'Story' && <StoryIssueForm newIssue={newIssue} setNewIssue={setNewIssue} />}
+        {issueType === 'Epic' && (
+          <div className="alert alert-info">Formulaire Epic à implémenter (EpicIssueForm)</div>
+        )}
       </CModalBody>
       <CModalFooter>
-        <CButton color="secondary" onClick={handleClose}>
+        <CButton color="secondary" onClick={handleClose} disabled={isSubmitting}>
           Annuler
         </CButton>
-        <CButton color="primary" onClick={handleSubmitTicket}>
-          Créer
+        <CButton color="primary" onClick={handleSubmitTicket} disabled={isSubmitting}>
+          {isSubmitting ? 'Création...' : 'Créer'}
         </CButton>
       </CModalFooter>
     </CModal>

@@ -37,6 +37,7 @@
     "@mui/styled-engine-sc": "^7.1.0",
     "@mui/x-date-pickers": "^8.3.1",
     "@popperjs/core": "^2.11.8",
+    "@tinymce/miniature": "^6.0.0",
     "@tinymce/tinymce-react": "^6.1.0",
     "@toolpad/core": "^0.15.0",
     "axios": "^1.7.7",

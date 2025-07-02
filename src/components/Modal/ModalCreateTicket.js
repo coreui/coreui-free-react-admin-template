@@ -1,34 +1,56 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { MenuItem, TextField } from '@material-ui/core'
+import { useLocation } from 'react-router-dom'
 import {
-  Dialog,
-  Button,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Divider,
-  Grid,
-  Typography,
-  Slide,
-} from '@mui/material'
+  CButton,
+  CCol,
+  CForm,
+  CFormLabel,
+  CFormSelect,
+  CModal,
+  CModalBody,
+  CModalFooter,
+  CModalHeader,
+  CModalTitle,
+  CRow,
+  CCallout,
+} from '@coreui/react'
 import { addNewTicketAPI, toggleCreateTicketModalClose } from '../../actions/ticketActions'
 import BugIssueForm from './ModalBody/BugIssueForm'
 import TaskIssueForm from './ModalBody/TaskIssueForm'
 import StoryIssueForm from './ModalBody/StoryIssueForm'
 import { projects, issueTypes } from '../../utils/TicketsConsts'
 import { emptyIssue } from '../../utils/emptyIssue'
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />
-})
 const ModalCreateTicket = () => {
   const { isCreateTicketModalOpen } = useSelector((state) => state.ticket)
+  const location = useLocation()
   const [project, setProject] = useState(projects[0].value)
   const [issueType, setIssueType] = useState(issueTypes[0].value)
   const [newIssue, setNewIssue] = useState(emptyIssue)
   const dispatch = useDispatch()
+
+  // Extraire le code du projet depuis le pathname
+  const getProjectFromPath = () => {
+    const pathSegments = location.pathname.split('/')
+    // Supposons que le format soit /project/{projectCode} ou similar
+    const projectCodeFromPath = pathSegments.find((segment) =>
+      projects.some(
+        (p) => p.value === segment || p.label.toLowerCase().includes(segment.toLowerCase()),
+      ),
+    )
+
+    if (projectCodeFromPath) {
+      const foundProject = projects.find(
+        (p) =>
+          p.value === projectCodeFromPath ||
+          p.label.toLowerCase().includes(projectCodeFromPath.toLowerCase()),
+      )
+      return foundProject ? foundProject.value : projects[0].value
+    }
+
+    return projects[0].value
+  }
+
   const handleClose = () => {
     dispatch(toggleCreateTicketModalClose())
   }
@@ -44,185 +66,209 @@ const ModalCreateTicket = () => {
     }
     return id
   }
+
+  // Définir le projet basé sur le pathname lors de l'ouverture du modal
+  useEffect(() => {
+    if (isCreateTicketModalOpen) {
+      const projectFromPath = getProjectFromPath()
+      setProject(projectFromPath)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCreateTicketModalOpen, location.pathname])
+
   useEffect(() => {
     const now = new Date().toISOString()
-    setNewIssue({
-      ...newIssue,
+    setNewIssue((prevIssue) => ({
+      ...prevIssue,
       id: generateId(),
       fields: {
-        ...newIssue.fields,
+        ...prevIssue.fields,
         created: now,
         lastViewed: now,
         updated: now,
         statuscategorychangedate: now,
+        project: {
+          key: project,
+          name: projects.find((p) => p.value === project)?.label || project,
+        },
       },
-    })
-  }, [isCreateTicketModalOpen])
+    }))
+  }, [isCreateTicketModalOpen, project])
 
   useEffect(() => {
-    switch (issueType) {
-      case 'Bug':
-        setNewIssue({
-          ...newIssue,
-          fields: {
-            ...newIssue.fields,
-            issuetype: {
-              id: '10002',
-              hierarchyLevel: 0,
-              iconUrl:
-                'https://sesame-team-pfe.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium',
-              avatarId: 10303,
-              subtask: false,
-              description: 'Un problème ou une erreur.',
-              entityId: 'b6942a7a-0278-49e3-89d3-85295176d3e8',
-              name: 'Bug',
-              self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10002',
-            },
-          },
-        })
-        break
+    setNewIssue((prevIssue) => {
+      let updatedIssue = { ...prevIssue }
 
-      case 'Task':
-        setNewIssue({
-          ...newIssue,
-          fields: {
-            ...newIssue.fields,
-            issuetype: {
-              self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10001',
-              name: 'Tâche',
-              description: 'Une tâche distincte.',
-              id: '10001',
-              entityId: 'ca1798d2-e4c6-4758-bfaf-7e38a85cd0ea',
-              iconUrl:
-                'https://sesame-team-pfe.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium',
-              avatarId: 10318,
-              subtask: false,
-              hierarchyLevel: 0,
+      switch (issueType) {
+        case 'Bug':
+          updatedIssue = {
+            ...prevIssue,
+            fields: {
+              ...prevIssue.fields,
+              issuetype: {
+                id: '10002',
+                hierarchyLevel: 0,
+                iconUrl:
+                  'https://sesame-team-pfe.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium',
+                avatarId: 10303,
+                subtask: false,
+                description: 'Un problème ou une erreur.',
+                entityId: 'b6942a7a-0278-49e3-89d3-85295176d3e8',
+                name: 'Bug',
+                self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10002',
+              },
             },
-          },
-        })
-        break
+          }
+          break
 
-      case 'Story':
-        setNewIssue({
-          ...newIssue,
-          fields: {
-            ...newIssue.fields,
-            issuetype: {
-              hierarchyLevel: 0,
-              subtask: false,
-              description: "Une fonctionnalité exprimée sous la forme d'un objectif utilisateur.",
-              iconUrl:
-                'https://sesame-team-pfe.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium',
-              avatarId: 10315,
-              entityId: '6b7e8da8-f84c-41ac-80ac-ba881764a634',
-              name: 'Story',
-              id: '10003',
-              self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10003',
+        case 'Task':
+          updatedIssue = {
+            ...prevIssue,
+            fields: {
+              ...prevIssue.fields,
+              issuetype: {
+                self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10001',
+                name: 'Tâche',
+                description: 'Une tâche distincte.',
+                id: '10001',
+                entityId: 'ca1798d2-e4c6-4758-bfaf-7e38a85cd0ea',
+                iconUrl:
+                  'https://sesame-team-pfe.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium',
+                avatarId: 10318,
+                subtask: false,
+                hierarchyLevel: 0,
+              },
             },
-          },
-        })
-        break
+          }
+          break
 
-      case 'Epic':
-        setNewIssue({
-          ...newIssue,
-          fields: {
-            ...newIssue.fields,
-            issuetype: {
-              self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10004',
-              id: '10004',
-              description: 'Une collection de bugs, stories et tâches connexes.',
-              iconUrl:
-                'https://sesame-team-pfe.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium',
-              name: 'Epic',
-              subtask: false,
-              avatarId: 10307,
-              entityId: 'd1c66b55-cd69-4aba-b239-665a2e2f6af3',
-              hierarchyLevel: 1,
+        case 'Story':
+          updatedIssue = {
+            ...prevIssue,
+            fields: {
+              ...prevIssue.fields,
+              issuetype: {
+                hierarchyLevel: 0,
+                subtask: false,
+                description: "Une fonctionnalité exprimée sous la forme d'un objectif utilisateur.",
+                iconUrl:
+                  'https://sesame-team-pfe.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium',
+                avatarId: 10315,
+                entityId: '6b7e8da8-f84c-41ac-80ac-ba881764a634',
+                name: 'Story',
+                id: '10003',
+                self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10003',
+              },
             },
-          },
-        })
-        break
+          }
+          break
 
-      default:
-        break
-    }
+        case 'Epic':
+          updatedIssue = {
+            ...prevIssue,
+            fields: {
+              ...prevIssue.fields,
+              issuetype: {
+                self: 'https://sesame-team-pfe.atlassian.net/rest/api/2/issuetype/10004',
+                id: '10004',
+                description: 'Une collection de bugs, stories et tâches connexes.',
+                iconUrl:
+                  'https://sesame-team-pfe.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium',
+                name: 'Epic',
+                subtask: false,
+                avatarId: 10307,
+                entityId: 'd1c66b55-cd69-4aba-b239-665a2e2f6af3',
+                hierarchyLevel: 1,
+              },
+            },
+          }
+          break
+
+        default:
+          break
+      }
+
+      return updatedIssue
+    })
   }, [issueType])
 
   return (
-    <Dialog
-      slots={{
-        transition: Transition,
-      }}
-      keepMounted
-      scroll={'paper'}
-      open={isCreateTicketModalOpen}
-      onClose={() => dispatch(toggleCreateTicketModalClose())}
-      // aria-labelledby="alert-dialog-title"
-      // aria-describedby="alert-dialog-description"
-      aria-labelledby="scroll-dialog-title"
-      aria-describedby="scroll-dialog-description"
-      maxWidth="md"
-      fullWidth
+    <CModal
+      visible={isCreateTicketModalOpen}
+      onClose={handleClose}
+      backdrop="static"
+      size="lg"
+      scrollable
     >
-      <DialogTitle id="scroll-dialog-title">Créer un nouveau ticket</DialogTitle>
-      <DialogContent dividers>
-        <DialogContentText id="alert-dialog-description">
+      <CModalHeader>
+        <CModalTitle>Créer un nouveau ticket</CModalTitle>
+      </CModalHeader>
+      <CModalBody>
+        <CCallout color="info" className="mb-3">
           Les champs obligatoires sont marqués d&apos;un astérisque *
-        </DialogContentText>
-        <Grid container spacing={2}>
-          <Grid size={{ xs: 6, md: 3 }}>
-            <Typography variant="overline">Projet*</Typography>
-          </Grid>
-          <Grid size={{ xs: 6, md: 5 }}>
-            <TextField
-              id="standard-select-currency"
-              select
-              fullWidth
-              value={project}
-              onChange={(event) => setProject(event.target.value)}
-              helperText="Please select your project"
-            >
-              {projects.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  <Typography variant="inherit">{option.label}</Typography>
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid size={{ xs: 6, md: 3 }}>
-            <Typography variant="overline">Issue Type*</Typography>
-          </Grid>
-          <Grid size={{ xs: 6, md: 5 }}>
-            <TextField
-              id="standard-select-currency"
-              select
-              fullWidth
-              value={issueType}
-              onChange={(event) => setIssueType(event.target.value)}
-              helperText="Please select the issue type"
-            >
-              {issueTypes.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  <Typography variant="inherit">{option.label}</Typography>
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-        </Grid>
-        <Divider />
+        </CCallout>
+
+        <CForm>
+          <CRow className="mb-3">
+            <CCol md={3}>
+              <CFormLabel className="fw-bold">Projet*</CFormLabel>
+            </CCol>
+            <CCol md={5}>
+              <CFormSelect
+                value={project}
+                onChange={(event) => setProject(event.target.value)}
+                aria-describedby="project-help"
+              >
+                {projects.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </CFormSelect>
+              <small id="project-help" className="form-text text-muted">
+                Veuillez sélectionner votre projet
+              </small>
+            </CCol>
+          </CRow>
+
+          <CRow className="mb-3">
+            <CCol md={3}>
+              <CFormLabel className="fw-bold">Type d&apos;issue*</CFormLabel>
+            </CCol>
+            <CCol md={5}>
+              <CFormSelect
+                value={issueType}
+                onChange={(event) => setIssueType(event.target.value)}
+                aria-describedby="issue-type-help"
+              >
+                {issueTypes.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </CFormSelect>
+              <small id="issue-type-help" className="form-text text-muted">
+                Veuillez sélectionner le type d&apos;issue
+              </small>
+            </CCol>
+          </CRow>
+        </CForm>
+
+        <hr />
+
         {issueType === 'Bug' && <BugIssueForm newIssue={newIssue} setNewIssue={setNewIssue} />}
-        {issueType === 'Task' && <TaskIssueForm setNewIssue={setNewIssue} />}
-        {issueType === 'Story' && <StoryIssueForm setNewIssue={setNewIssue} />}
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleSubmitTicket}>Submit</Button>
-      </DialogActions>
-    </Dialog>
+        {issueType === 'Task' && <TaskIssueForm newIssue={newIssue} setNewIssue={setNewIssue} />}
+        {issueType === 'Story' && <StoryIssueForm newIssue={newIssue} setNewIssue={setNewIssue} />}
+      </CModalBody>
+      <CModalFooter>
+        <CButton color="secondary" onClick={handleClose}>
+          Annuler
+        </CButton>
+        <CButton color="primary" onClick={handleSubmitTicket}>
+          Créer
+        </CButton>
+      </CModalFooter>
+    </CModal>
   )
 }
 

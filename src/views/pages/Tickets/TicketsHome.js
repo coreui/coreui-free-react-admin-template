@@ -17,7 +17,7 @@ import {
   CTableRow,
 } from '@coreui/react'
 
-import { getAllTicketAPI } from '../../../actions/ticketActions'
+import { getAllTicketAPI, toggleCreateTicketModalOpen } from '../../../actions/ticketActions'
 
 const Tickets = () => {
   const dispatch = useDispatch()
@@ -34,7 +34,7 @@ const Tickets = () => {
 
   const handleClickAjouterTicket = (event) => {
     event.preventDefault()
-    navigate('/ticket/add')
+    dispatch(toggleCreateTicketModalOpen())
   }
 
   const handleRowClick = (user) => {

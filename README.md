@@ -30,6 +30,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [Basic usage](#basic-usage)
 * [What's included](#whats-included)
 * [Documentation](#documentation)
+* [Components](#components)
 * [Versioning](#versioning)
 * [Creators](#creators)
 * [Community](#community)
@@ -143,6 +144,62 @@ coreui-free-react-admin-template
 ## Documentation
 
 The documentation for the CoreUI Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/docs/templates/installation/)
+
+## Components
+
+CoreUI React.js Admin Templates are built on top of CoreUI and CoreUI PRO UI components libraries, including all of these components.
+
+- [React Accordion](https://coreui.io/react/docs/components/accordion/)
+- [React Alert](https://coreui.io/react/docs/components/alert/)
+- [React Autocomplete](https://coreui.io/react/docs/forms/autocomplete/) **PRO**
+- [React Avatar](https://coreui.io/react/docs/components/avatar/)
+- [React Badge](https://coreui.io/react/docs/components/badge/)
+- [React Breadcrumb](https://coreui.io/react/docs/components/breadcrumb/)
+- [React Button](https://coreui.io/react/docs/components/button/)
+- [React Button Group](https://coreui.io/react/docs/components/button-group/)
+- [React Callout](https://coreui.io/react/docs/components/callout/)
+- [React Card](https://coreui.io/react/docs/components/card/)
+- [React Carousel](https://coreui.io/react/docs/components/carousel/)
+- [React Checkbox](https://coreui.io/react/docs/forms/checkbox/)
+- [React Close Button](https://coreui.io/react/docs/components/close-button/)
+- [React Collapse](https://coreui.io/react/docs/components/collapse/)
+- [React Date Picker](https://coreui.io/react/docs/forms/date-picker/) **PRO**
+- [React Date Range Picker](https://coreui.io/react/docs/forms/date-range-picker/) **PRO**
+- [React Dropdown](https://coreui.io/react/docs/components/dropdown/)
+- [React Floating Labels](https://coreui.io/react/docs/forms/floating-labels/)
+- [React Footer](https://coreui.io/react/docs/components/footer/)
+- [React Header](https://coreui.io/react/docs/components/header/)
+- [React Image](https://coreui.io/react/docs/components/image/)
+- [React Input](https://coreui.io/react/docs/forms/input/)
+- [React Input Group](https://coreui.io/react/docs/forms/input-group/)
+- [React List Group](https://coreui.io/react/docs/components/list-group/)
+- [React Loading Button](https://coreui.io/react/docs/components/loading-button/) **PRO**
+- [React Modal](https://coreui.io/react/docs/components/modal/)
+- [React Multi Select](https://coreui.io/react/docs/forms/multi-select/) **PRO**
+- [React Navs & Tabs](https://coreui.io/react/docs/components/navs-tabs/)
+- [React Navbar](https://coreui.io/react/docs/components/navbar/)
+- [React Offcanvas](https://coreui.io/react/docs/components/offcanvas/)
+- [React Pagination](https://coreui.io/react/docs/components/pagination/)
+- [React Password Input](https://coreui.io/react/docs/forms/password-input/) **PRO**
+- [React Placeholder](https://coreui.io/react/docs/components/placeholder/)
+- [React Popover](https://coreui.io/react/docs/components/popover/)
+- [React Progress](https://coreui.io/react/docs/components/progress/)
+- [React Radio](https://coreui.io/react/docs/forms/radio/)
+- [React Range](https://coreui.io/react/docs/forms/range/)
+- [React Range Slider](https://coreui.io/react/docs/forms/range-slider/) **PRO**
+- [React Rating](https://coreui.io/react/docs/forms/rating/)
+- [React Select](https://coreui.io/react/docs/forms/select/)
+- [React Sidebar](https://coreui.io/react/docs/components/sidebar/)
+- [React Smart Pagination](https://coreui.io/react/docs/components/smart-pagination/) **PRO**
+- [React Smart Table](https://coreui.io/react/docs/components/smart-table/) **PRO**
+- [React Spinner](https://coreui.io/react/docs/components/spinner/)
+- [React Stepper](https://coreui.io/react/docs/forms/stepper/) **PRO**
+- [React Switch](https://coreui.io/react/docs/forms/switch/)
+- [React Table](https://coreui.io/react/docs/components/table/)
+- [React Textarea](https://coreui.io/react/docs/forms/textarea/)
+- [React Time Picker](https://coreui.io/react/docs/forms/time-picker/) **PRO**
+- [React Toast](https://coreui.io/react/docs/components/toast/)
+- [React Tooltip](https://coreui.io/react/docs/components/tooltip/)
 
 ## Versioning
 

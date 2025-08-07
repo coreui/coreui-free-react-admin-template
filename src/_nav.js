@@ -225,13 +225,60 @@ const _nav = [
     items: [
       {
         component: CNavItem,
+        name: (
+          <React.Fragment>
+            {'Autocomplete'}
+            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+          </React.Fragment>
+        ),
+        href: 'https://coreui.io/react/docs/forms/autocomplete/',
+        badge: {
+          color: 'danger',
+          text: 'PRO',
+        },
+      },
+      {
+        component: CNavItem,
+        name: 'Checks & Radios',
+        to: '/forms/checks-radios',
+      },
+      {
+        component: CNavItem,
+        name: (
+          <React.Fragment>
+            {'Date Picker'}
+            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+          </React.Fragment>
+        ),
+        href: 'https://coreui.io/react/docs/forms/date-picker/',
+        badge: {
+          color: 'danger',
+          text: 'PRO',
+        },
+      },
+      {
+        component: CNavItem,
+        name: 'Date Range Picker',
+        href: 'https://coreui.io/react/docs/forms/date-range-picker/',
+        badge: {
+          color: 'danger',
+          text: 'PRO',
+        },
+      },
+      {
+        component: CNavItem,
+        name: 'Floating Labels',
+        to: '/forms/floating-labels',
+      },
+      {
+        component: CNavItem,
         name: 'Form Control',
         to: '/forms/form-control',
       },
       {
         component: CNavItem,
-        name: 'Select',
-        to: '/forms/select',
+        name: 'Input Group',
+        to: '/forms/input-group',
       },
       {
         component: CNavItem,
@@ -249,8 +296,17 @@ const _nav = [
       },
       {
         component: CNavItem,
-        name: 'Checks & Radios',
-        to: '/forms/checks-radios',
+        name: (
+          <React.Fragment>
+            {'Password Input'}
+            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+          </React.Fragment>
+        ),
+        href: 'https://coreui.io/react/docs/forms/password-input/',
+        badge: {
+          color: 'danger',
+          text: 'PRO',
+        },
       },
       {
         component: CNavItem,
@@ -287,32 +343,18 @@ const _nav = [
       },
       {
         component: CNavItem,
-        name: 'Input Group',
-        to: '/forms/input-group',
-      },
-      {
-        component: CNavItem,
-        name: 'Floating Labels',
-        to: '/forms/floating-labels',
+        name: 'Select',
+        to: '/forms/select',
       },
       {
         component: CNavItem,
         name: (
           <React.Fragment>
-            {'Date Picker'}
+            {'Stepper'}
             <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
           </React.Fragment>
         ),
-        href: 'https://coreui.io/react/docs/forms/date-picker/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-      {
-        component: CNavItem,
-        name: 'Date Range Picker',
-        href: 'https://coreui.io/react/docs/forms/date-range-picker/',
+        href: 'https://coreui.io/react/docs/forms/stepp/',
         badge: {
           color: 'danger',
           text: 'PRO',

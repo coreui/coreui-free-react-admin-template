@@ -8,15 +8,17 @@
         </div>
         <span class="ml-3 hidden sm:inline-flex items-center gap-1 text-sm bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-full">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-brand"><path d="M12 2.25c-4.97 0-9 3.857-9 8.609 0 5.676 7.338 10.602 8.221 11.162.48.309 1.078.309 1.558 0 .883-.56 8.221-5.486 8.221-11.162 0-4.752-4.03-8.609-9-8.609Zm0 11.359a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5Z"/></svg>
-          Pune
+          Bengaluru
         </span>
       </div>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
         <a href="#" class="hover:text-brand">Home</a>
-        <a href="#" class="hover:text-brand">Residential</a>
-        <a href="#" class="hover:text-brand">Managed Office</a>
-        <a href="#" class="hover:text-brand">News</a>
+        <a href="#" class="hover:text-brand">About</a>
+        <a href="#" class="hover:text-brand">Services</a>
+        <a href="#" class="hover:text-brand">Projects</a>
+        <a href="#" class="hover:text-brand">Commercial</a>
+        <a href="#" class="hover:text-brand">Contact</a>
       </nav>
 
       <div class="flex items-center gap-3">

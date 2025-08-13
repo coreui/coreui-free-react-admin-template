@@ -2,7 +2,7 @@
   <section class="py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-        <h2 class="text-xl sm:text-2xl font-bold">Read about Pune Real Estate</h2>
+        <h2 class="text-xl sm:text-2xl font-bold">Read about Bengaluru Real Estate</h2>
         <p class="text-gray-600">Explore collections of region</p>
       </div>
 

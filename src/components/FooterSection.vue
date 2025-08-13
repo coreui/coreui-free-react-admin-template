@@ -6,7 +6,7 @@
           <span class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-brand text-white font-bold">PV</span>
           <span class="text-xl font-extrabold tracking-tight text-white">PropVest</span>
         </div>
-        <p class="mt-3 text-sm text-gray-400 max-w-md">Welcome to a new age of home buying.</p>
+        <p class="mt-3 text-sm text-gray-400 max-w-md">Welcome to a new age of property investments.</p>
       </div>
       <div>
         <div class="font-semibold text-white">Our Services</div>
@@ -15,6 +15,7 @@
           <li><a href="#" class="hover:text-white">Broker Services</a></li>
           <li><a href="#" class="hover:text-white">Loan Services</a></li>
           <li><a href="#" class="hover:text-white">NRI Desk</a></li>
+          <li><a href="#" class="hover:text-white">Terms and conditions</a></li>
         </ul>
       </div>
       <div>

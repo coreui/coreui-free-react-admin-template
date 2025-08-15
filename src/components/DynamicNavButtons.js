@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
-import { 
-  CButton, 
-  CModal, 
-  CModalHeader, 
-  CModalTitle, 
-  CModalBody, 
+import React, { useState, useEffect, useCallback } from 'react'
+import {
+  CModal,
+  CModalHeader,
+  CModalTitle,
+  CModalBody,
   CModalFooter,
-  CFormInput,
-  CFormLabel,
-  CFormSelect,
+  CButton,
   CRow,
-  CCol
-} from '@coreui/react'
+  CCol,
+  CFormLabel,
+  CFormInput,
+  CFormSelect,
+  CCard,
+  CCardBody,
+  CListGroup,
+  CListGroupItem,
+  CSpinner,
+  CAlert
+} from '@coreui/react';
 
 const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
   const [departmentDialogVisible, setDepartmentDialogVisible] = useState(false)
@@ -23,6 +29,168 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
   const [deviceType, setDeviceType] = useState('')
   const [model, setModel] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState('')
+  // New
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedAsset, setSelectedAsset] = useState(null);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchError, setSearchError] = useState('');
+  const [showResults, setShowResults] = useState(false);
+
+  // Everything about asset searching and API calls
+  // Debounced search function
+  const debounce = useCallback((func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.apply(null, args), delay);
+    };
+  }, []);
+
+  // API call to search assets
+  const searchAssets = async (query) => {
+    if (!query.trim()) {
+      setSearchResults([]);
+      setShowResults(false);
+      return;
+    }
+
+    setIsSearching(true);
+    setSearchError('');
+
+    try {
+      const response = await fetch(`YOUR_API_ENDPOINT/assets/search`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer YOUR_TOKEN`, // Replace with your auth token
+        },
+        body: JSON.stringify({
+          query: query.trim(),
+          limit: 10
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setSearchResults(data.results || []); // Assuming API returns { results: [...] }
+      setShowResults(true);
+    } catch (error) {
+      console.error('Search error:', error);
+      setSearchError('Failed to search assets. Please try again.');
+      setSearchResults([]);
+      setShowResults(false);
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
+  // Debounced search with 400ms delay
+  const debouncedSearch = useCallback(
+    debounce(searchAssets, 400),
+    [debounce]
+  );
+
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    debouncedSearch(query);
+  };
+
+  // Handle asset selection from search results
+  const handleAssetSelect = (asset) => {
+    setSelectedAsset(asset);
+    setSearchQuery(asset.name || `${asset.vendor} ${asset.model}`); // Display selected asset
+    setShowResults(false);
+  };
+
+  // API call to get full asset details
+  const getAssetDetails = async (assetId) => {
+    try {
+      const response = await fetch(`YOUR_API_ENDPOINT/assets/${assetId}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer YOUR_TOKEN`, // Replace with your auth token
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const assetDetails = await response.json();
+      return assetDetails;
+    } catch (error) {
+      console.error('Error fetching asset details:', error);
+      throw error;
+    }
+  };
+
+  // Enhanced confirm handler
+  const handleAssetConfirm = async () => {
+    if (!selectedAsset || !selectedDepartment) return;
+
+    try {
+      const assetDetails = await getAssetDetails(selectedAsset.id);
+      
+      const asset = {
+        ...assetDetails,
+        department: selectedDepartment,
+        name: assetDetails.name || `${assetDetails.vendor} ${assetDetails.deviceType} - ${assetDetails.model}`,
+        id: assetDetails.id || `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+      }
+      
+      onAddAsset(asset);
+      
+      // Reset form
+      setSearchQuery('');
+      setSelectedAsset(null);
+//      setSelectedDepartment('');
+      setSearchResults([]);
+      setShowResults(false);
+      setSearchError('');
+      setAssetDialogVisible(false);
+    } catch (error) {
+      setSearchError('Failed to get asset details. Please try again.');
+    }
+  };
+
+  // Reset form function
+  const resetForm = () => {
+    setVendor('');
+    setDeviceType('');
+    setModel('');
+//    setSelectedDepartment('');
+    setSearchQuery('');
+    setSearchResults([]);
+    setSelectedAsset(null);
+    setShowResults(false);
+    setSearchError('');
+  };
+
+  // Reset form when modal opens/closes
+  //useEffect(() => {
+  //  if (!assetDialogVisible) {
+  //    resetForm();
+  //  }
+  //}, [assetDialogVisible]);
+
+  // Handle cancel
+  const handleAssetCancel = () => {
+    setSearchQuery('');
+    setSelectedAsset(null);
+//    setSelectedDepartment('');
+    setSearchResults([]);
+    setShowResults(false);
+    setSearchError('');
+    setAssetDialogVisible(false);
+  };
+
+
 
   const handleAddDepartment = () => {
     setDepartmentDialogVisible(true)
@@ -39,7 +207,7 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
       setDepartmentDialogVisible(false)
     }
   }
-
+/*
   const handleAssetConfirm = () => {
     if (vendor.trim() && deviceType.trim() && model.trim() && selectedDepartment) {
       const asset = {
@@ -61,12 +229,12 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
       setAssetDialogVisible(false)
     }
   }
-
+*/
   const handleDepartmentCancel = () => {
     setDepartmentName('')
     setDepartmentDialogVisible(false)
   }
-
+/*
   const handleAssetCancel = () => {
     setVendor('')
     setDeviceType('')
@@ -74,7 +242,7 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
     setSelectedDepartment('')
     setAssetDialogVisible(false)
   }
-
+*/
   return (
     <>
       <div className="px-3 py-2">
@@ -133,76 +301,108 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
           </CButton>
         </CModalFooter>
       </CModal>
-
-      {/* Asset Dialog */}
+      
+      {/* Asset Dialog*/}
       <CModal visible={assetDialogVisible} onClose={handleAssetCancel} size="lg">
-        <CModalHeader onClose={handleAssetCancel}>
-          <CModalTitle>Add Asset</CModalTitle>
-        </CModalHeader>
-        <CModalBody>
-          <CRow className="mb-3">
-            <CCol md={6}>
-              <CFormLabel htmlFor="vendorInput">Vendor</CFormLabel>
+      <CModalHeader onClose={handleAssetCancel}>
+        <CModalTitle>Add Asset</CModalTitle>
+      </CModalHeader>
+      <CModalBody>
+        {/* Search Section */}
+        <CRow className="mb-4">
+          <CCol md={12}>
+            <CFormLabel htmlFor="assetSearch">Search Assets</CFormLabel>
+            <div style={{ position: 'relative' }}>
               <CFormInput
-                id="vendorInput"
+                id="assetSearch"
                 type="text"
-                value={vendor}
-                onChange={(e) => setVendor(e.target.value)}
-                placeholder="Enter vendor name..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder="Start typing to search for assets..."
               />
-            </CCol>
-            <CCol md={6}>
-              <CFormLabel htmlFor="deviceTypeInput">Device Type</CFormLabel>
-              <CFormInput
-                id="deviceTypeInput"
-                type="text"
-                value={deviceType}
-                onChange={(e) => setDeviceType(e.target.value)}
-                placeholder="Enter device type..."
-              />
-            </CCol>
-          </CRow>
-          <CRow className="mb-3">
-            <CCol md={6}>
-              <CFormLabel htmlFor="modelInput">Model</CFormLabel>
-              <CFormInput
-                id="modelInput"
-                type="text"
-                value={model}
-                onChange={(e) => setModel(e.target.value)}
-                placeholder="Enter model..."
-              />
-            </CCol>
-            <CCol md={6}>
-              <CFormLabel htmlFor="departmentSelect">Department</CFormLabel>
-              <CFormSelect
-                id="departmentSelect"
-                value={selectedDepartment}
-                onChange={(e) => setSelectedDepartment(e.target.value)}
-              >
-                <option value="">Select department...</option>
-                {departments.map((dept, index) => (
-                  <option key={index} value={dept}>
-                    {dept}
-                  </option>
-                ))}
-              </CFormSelect>
-            </CCol>
-          </CRow>
-        </CModalBody>
-        <CModalFooter>
-          <CButton color="secondary" onClick={handleAssetCancel}>
-            Cancel
-          </CButton>
-          <CButton 
-            color="primary" 
-            onClick={handleAssetConfirm}
-            disabled={!vendor.trim() || !deviceType.trim() || !model.trim() || !selectedDepartment}
-          >
-            Confirm
-          </CButton>
-        </CModalFooter>
-      </CModal>
+              {isSearching && (
+                <div style={{ 
+                  position: 'absolute', 
+                  right: '10px', 
+                  top: '50%', 
+                  transform: 'translateY(-50%)' 
+                }}>
+                  <CSpinner size="sm" />
+                </div>
+              )}
+            </div>
+            
+            {/* Search Error */}
+            {searchError && (
+              <CAlert color="danger" className="mt-2">
+                {searchError}
+              </CAlert>
+            )}
+
+            {/* Search Results */}
+            {showResults && searchResults.length > 0 && (
+              <CCard className="mt-2" style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                <CListGroup flush>
+                  {searchResults.map((asset, index) => (
+                    <CListGroupItem 
+                      key={asset.id || index}
+                      action
+                      onClick={() => handleAssetSelect(asset)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div>
+                        <strong>{asset.name || `${asset.vendor} ${asset.model}`}</strong>
+                        {asset.vendor && <div className="text-muted small">Vendor: {asset.vendor}</div>}
+                        {asset.deviceType && <div className="text-muted small">Type: {asset.deviceType}</div>}
+                        {asset.model && <div className="text-muted small">Model: {asset.model}</div>}
+                      </div>
+                    </CListGroupItem>
+                  ))}
+                </CListGroup>
+              </CCard>
+            )}
+
+            {/* No Results Message */}
+            {showResults && searchResults.length === 0 && !isSearching && (
+              <CAlert color="info" className="mt-2">
+                No assets found matching your search.
+              </CAlert>
+            )}
+          </CCol>
+        </CRow>
+
+        {/* Department Selection */}
+        <CRow className="mb-3">
+          <CCol md={12}>
+            <CFormLabel htmlFor="departmentSelect">Department</CFormLabel>
+            <CFormSelect
+              id="departmentSelect"
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+            >
+              <option value="">Select department...</option>
+              {departments.map((dept, index) => (
+                <option key={index} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </CFormSelect>
+          </CCol>
+        </CRow>
+      </CModalBody>
+      <CModalFooter>
+        <CButton color="secondary" onClick={handleAssetCancel}>
+          Cancel
+        </CButton>
+        <CButton 
+          color="primary" 
+          onClick={handleAssetConfirm}
+          disabled={!selectedAsset || !selectedDepartment}
+        >
+          Confirm
+        </CButton>
+      </CModalFooter>
+    </CModal>
     </>
   )
 }

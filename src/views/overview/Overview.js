@@ -235,16 +235,16 @@ const Overview = () => {
           <CCard>
             <CCardHeader>
               <div className="d-flex justify-content-between align-items-center">
-                <h4 className="mb-0">Assets Overview</h4>
+                <h4 className="mb-0">Vulnerabilities Overview</h4>
                 <CBadge color="info" shape="rounded-pill">
-                  {assets.length} Total Assets
+                  {assets.length} Total Vulnerabilies
                 </CBadge>
               </div>
             </CCardHeader>
             <CCardBody>
               {enrichedAssets.length === 0 ? (
                 <div className="text-center py-5">
-                  <h5 className="text-muted">No Assets Found</h5>
+                  <h5 className="text-muted">No Vulnerable Assets Found</h5>
                   <p className="text-muted">Start by adding departments and assets using the sidebar buttons.</p>
                 </div>
               ) : (
@@ -253,9 +253,9 @@ const Overview = () => {
                     <CTableRow>
                       <CTableHeaderCell scope="col">Device Name</CTableHeaderCell>
                       <CTableHeaderCell scope="col">Department</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">CVE #</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Risk Level</CTableHeaderCell>
-                      <CTableHeaderCell scope="col" className="text-center">Asset Details</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">CVE ID</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">CVE Risk Level</CTableHeaderCell>
+                      <CTableHeaderCell scope="col" className="text-center">More Details</CTableHeaderCell>
                     </CTableRow>
                   </CTableHead>
                   <CTableBody>

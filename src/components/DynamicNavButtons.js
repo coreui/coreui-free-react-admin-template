@@ -48,45 +48,46 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
   }, []);
 
   // API call to search assets
-  const searchAssets = async (query) => {
-    if (!query.trim()) {
-      setSearchResults([]);
-      setShowResults(false);
-      return;
+  const searchCPEMatches = async (deviceName) => {
+  if (!deviceName.trim()) {
+    setSearchResults([]);
+    setShowResults(false);
+    return;
+  }
+
+  setIsSearching(true);
+  setSearchError('');
+
+  try {
+    const response = await fetch(`YOUR_API_ENDPOINT/security/cpe-search`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer YOUR_TOKEN`, // Replace with your auth token
+      },
+      body: JSON.stringify({
+        device_name: deviceName.trim()
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    setIsSearching(true);
-    setSearchError('');
-
-    try {
-      const response = await fetch(`YOUR_API_ENDPOINT/assets/search`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer YOUR_TOKEN`, // Replace with your auth token
-        },
-        body: JSON.stringify({
-          query: query.trim(),
-          limit: 10
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      setSearchResults(data.results || []); // Assuming API returns { results: [...] }
-      setShowResults(true);
-    } catch (error) {
-      console.error('Search error:', error);
-      setSearchError('Failed to search assets. Please try again.');
-      setSearchResults([]);
-      setShowResults(false);
-    } finally {
-      setIsSearching(false);
-    }
-  };
+    const data = await response.json();
+    // Backend returns: { device_name, matches: [CPEMatch], total_matches }
+    // CPEMatch: { device_name, vendor, model, cpe, score }
+    setSearchResults(data.matches || []);
+    setShowResults(true);
+  } catch (error) {
+    console.error('CPE search error:', error);
+    setSearchError('Failed to search for device matches. Please try again.');
+    setSearchResults([]);
+    setShowResults(false);
+  } finally {
+    setIsSearching(false);
+  }
+};
 
   // Debounced search with 400ms delay
   const debouncedSearch = useCallback(
@@ -109,26 +110,45 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
   };
 
   // API call to get full asset details
-  const getAssetDetails = async (assetId) => {
-    try {
-      const response = await fetch(`YOUR_API_ENDPOINT/assets/${assetId}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer YOUR_TOKEN`, // Replace with your auth token
-        }
-      });
+  const scanDeviceByCPE = async (cpe, deviceName = null, department = "Unknown") => {
+  try {
+    const response = await fetch(`YOUR_API_ENDPOINT/security/scan-by-cpe`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer YOUR_TOKEN`, // Replace with your auth token
+      },
+      body: JSON.stringify({
+        cpe: cpe,
+        device_name: deviceName,
+        department: department
+      })
+    });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const assetDetails = await response.json();
-      return assetDetails;
-    } catch (error) {
-      console.error('Error fetching asset details:', error);
-      throw error;
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
+
+    const scanResults = await response.json();
+    /* Backend returns FullScanResponse:
+    {
+      success: boolean,
+      error_message: string | null,
+      scan_time: float,
+      device: AssetInfo | null,
+      cves: CVEInfo[],
+      cwes: CWEInfo[],
+      capecs: CAPECInfo[],
+      attacks: AttackInfo[],
+      statistics: { cves: int, cwes: int, capecs: int, attacks: int }
+    }
+    */
+    return scanResults;
+  } catch (error) {
+    console.error('Error scanning device by CPE:', error);
+    throw error;
+  }
+};
 
   // Enhanced confirm handler
   const handleAssetConfirm = async () => {

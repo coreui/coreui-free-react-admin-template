@@ -488,7 +488,7 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
     setSearchError('');
 
     try {
-      const response = await fetch('/api/v1/security/cpe-search', {
+      const response = await fetch('http://localhost:8000/api/v1/security/cpe-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -540,7 +540,7 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
   // API call to scan device by CPE and get full vulnerability data
   const scanDeviceByCpe = async (cpe, deviceName, department) => {
     try {
-      const response = await fetch('/api/v1/security/scan-by-cpe', {
+      const response = await fetch('http://localhost:8000/api/v1/security/scan-by-cpe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -767,16 +767,20 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
                               <div className="text-muted small">
                                 <strong>Vendor:</strong> {match.vendor} | <strong>Model:</strong> {match.model}
                               </div>
+                              
                               <div className="text-muted small" style={{ fontSize: '0.75rem' }}>
                                 CPE: {match.cpe}
                               </div>
+                              
                             </div>
+                            {/*}
                             <CBadge 
                               color={match.score >= 80 ? 'success' : match.score >= 60 ? 'warning' : 'secondary'}
                               className="ms-2"
                             >
                               {match.score}%
                             </CBadge>
+                            */}
                           </div>
                         </CListGroupItem>
                       ))}

@@ -136,6 +136,46 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
 
   // Enhanced confirm handler
   const handleAssetConfirm = async () => {
+    if (!selectedCpeMatch || !selectedDepartment) return
+
+    setIsScanning(true)
+    setSearchError('')
+
+    try {
+      const scanResults = await scanDeviceByCpe(
+        selectedCpeMatch.cpe,
+        selectedCpeMatch.device_name,
+        selectedDepartment
+      )
+      
+      if (!scanResults.success) {
+        throw new Error(scanResults.error_message || 'Scan failed')
+      }
+
+      // Store CPE in the scan results for future refreshes
+      const enhancedResults = {
+        ...scanResults,
+        device: {
+          ...scanResults.device,
+          department: selectedDepartment // Ensure department is set
+        },
+        cpe: selectedCpeMatch.cpe // Store CPE for background refreshes
+      }
+      
+      // Pass the full API response to addAsset
+      onAddAsset(enhancedResults)
+      
+      // Reset form
+      resetAssetForm()
+      setAssetDialogVisible(false)
+    } catch (error) {
+      setSearchError(`Failed to scan device: ${error.message}`)
+    } finally {
+      setIsScanning(false)
+    }
+  }
+  /*
+  const handleAssetConfirm = async () => {
     if (!selectedCpeMatch || !selectedDepartment) return;
 
     setIsScanning(true);
@@ -182,7 +222,7 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
     } finally {
       setIsScanning(false);
     }
-  };
+  };*/
 
   // Reset asset form function
   const resetAssetForm = () => {

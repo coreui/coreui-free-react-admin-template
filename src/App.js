@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useNavigation } from './hooks/useNavigation'
 
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
@@ -20,6 +21,7 @@ const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 const App = () => {
   const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
   const storedTheme = useSelector((state) => state.theme)
+  const { refreshAllAssets } = useNavigation()
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.href.split('?')[1])
@@ -34,6 +36,16 @@ const App = () => {
 
     setColorMode(storedTheme)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // useEffect for background refresh
+  useEffect(() => {
+    // Start background refresh after a short delay to allow initial load
+    const timer = setTimeout(() => {
+      refreshAllAssets()
+    }, 2000)
+
+    return () => clearTimeout(timer)
+  }, [refreshAllAssets])
 
   return (
     <HashRouter>

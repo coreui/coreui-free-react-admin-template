@@ -65,3 +65,230 @@ body {
     --cui-footer-bg: var(--cui-body-bg);
   }
 }
+
+// Cybersecurity Theme Enhancements
+:root {
+  --cybersec-primary: #0066cc;
+  --cybersec-danger: #dc3545;
+  --cybersec-warning: #fd7e14;
+  --cybersec-success: #28a745;
+  --cybersec-dark: #1a1a1a;
+  --cybersec-light: #f8f9fa;
+}
+
+// Header enhancements
+.header {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  .navbar-nav .nav-link {
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(0, 102, 204, 0.1);
+      border-radius: 4px;
+    }
+  }
+}
+
+// Security status bar styling
+.security-status-bar {
+  background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(0, 102, 204, 0.05) 100%);
+  border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+}
+
+// Sidebar enhancements
+.sidebar {
+  .sidebar-brand {
+    background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+    
+    .sidebar-brand-full {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+  
+  // Security metrics section
+  .security-metrics-header {
+    background: rgba(0, 102, 204, 0.1);
+    backdrop-filter: blur(10px);
+    
+    .metric-item {
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: translateY(-1px);
+      }
+    }
+  }
+  
+  // Navigation enhancements
+  .nav-link {
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateX(2px);
+    }
+    
+    &.active {
+      background-color: rgba(0, 102, 204, 0.2);
+      border-left: 3px solid var(--cybersec-primary);
+    }
+  }
+}
+
+// Footer enhancements
+.footer {
+  border-top: 1px solid rgba(0, 102, 204, 0.2);
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(248, 249, 250, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  
+  .security-status-indicator {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
+
+// Security badge animations
+.security-badge {
+  animation: pulse 2s infinite;
+  
+  &.critical {
+    animation: pulse-danger 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes pulse-danger {
+  0% { 
+    opacity: 1; 
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  50% { 
+    opacity: 0.8; 
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1);
+  }
+  100% { 
+    opacity: 1; 
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+// Security alert styling
+.security-alert {
+  border-left: 4px solid var(--cybersec-danger);
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(220, 53, 69, 0.05) 100%);
+  
+  &.warning {
+    border-left-color: var(--cybersec-warning);
+    background: linear-gradient(135deg, rgba(253, 126, 20, 0.1) 0%, rgba(253, 126, 20, 0.05) 100%);
+  }
+  
+  &.success {
+    border-left-color: var(--cybersec-success);
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(40, 167, 69, 0.05) 100%);
+  }
+}
+
+// Vulnerability severity indicators
+.vuln-severity {
+  &.critical {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    font-weight: 600;
+  }
+  
+  &.high {
+    background: linear-gradient(135deg, #fd7e14 0%, #e55a00 100%);
+    color: white;
+    font-weight: 600;
+  }
+  
+  &.medium {
+    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+    color: #212529;
+    font-weight: 600;
+  }
+  
+  &.low {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+    color: white;
+    font-weight: 600;
+  }
+}
+
+// Dark mode adjustments
+@include color-mode(dark) {
+  .security-status-bar {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.2) 0%, rgba(0, 102, 204, 0.1) 100%);
+    border-bottom-color: rgba(0, 102, 204, 0.3);
+  }
+  
+  .footer {
+    background: linear-gradient(135deg, rgba(33, 37, 41, 0.9) 0%, rgba(33, 37, 41, 0.95) 100%);
+  }
+  
+  .security-alert {
+    &.critical {
+      background: linear-gradient(135deg, rgba(220, 53, 69, 0.2) 0%, rgba(220, 53, 69, 0.1) 100%);
+    }
+    
+    &.warning {
+      background: linear-gradient(135deg, rgba(253, 126, 20, 0.2) 0%, rgba(253, 126, 20, 0.1) 100%);
+    }
+    
+    &.success {
+      background: linear-gradient(135deg, rgba(40, 167, 69, 0.2) 0%, rgba(40, 167, 69, 0.1) 100%);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .header .security-status-bar {
+    .d-flex {
+      flex-direction: column;
+      gap: 0.5rem;
+      
+      .d-flex {
+        flex-direction: row;
+      }
+    }
+  }
+  
+  .sidebar .security-metrics-header {
+    .row {
+      margin: 0;
+      
+      .col-6 {
+        padding: 0.25rem;
+      }
+    }
+  }
+}
+
+// Loading states
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@include color-mode(dark) {
+  .loading-skeleton {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+  }
+}

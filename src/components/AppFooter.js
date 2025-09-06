@@ -1,7 +1,7 @@
 import React from 'react'
 import { CFooter, CBadge } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilAnimal, cilCheckCircle } from '@coreui/icons'
+import { cilShieldAlt, cilCheckCircle } from '@coreui/icons'
 import { useNavigation } from '../hooks/useNavigation'
 
 const AppFooter = () => {
@@ -40,14 +40,14 @@ const AppFooter = () => {
   const getStatusIcon = () => {
     switch (securityStatus.status) {
       case 'secure': return cilCheckCircle
-      default: return cilAnimal
+      default: return cilShieldAlt
     }
   }
 
   return (
     <CFooter className="px-4">
       <div className="d-flex align-items-center">
-        <CIcon icon={cilAnimal} className="me-2" />
+        <CIcon icon={cilShieldAlt} className="me-2" />
         <span className="me-2">CyberSec Dashboard</span>
         <span className="text-muted">&copy; 2025 Security Operations.</span>
       </div>

@@ -10,7 +10,7 @@ import {
   CBadge
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilAnimal, cilBug } from '@coreui/icons'
+import { cilShieldAlt, cilBug } from '@coreui/icons'
 import { AppSidebarNav } from './AppSidebarNav'
 import { getNavigation } from '../_nav'
 import { useNavigation } from '../hooks/useNavigation'
@@ -60,7 +60,7 @@ const AppSidebar = () => {
     >
       <CSidebarHeader className="border-bottom">
         <CSidebarBrand to="/" className="d-flex align-items-center">
-          <CIcon icon={cilAnimal} height={32} className="me-2" />
+          <CIcon icon={cilShieldAlt} height={32} className="me-2" />
           <div className="sidebar-brand-full">
             <div className="fw-bold text-light">CyberSec</div>
             <small className="text-light-emphasis">Dashboard</small>

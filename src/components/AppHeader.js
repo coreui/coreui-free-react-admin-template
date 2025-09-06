@@ -134,7 +134,7 @@ const AppHeader = () => {
       case 'good': return cilCheckCircle
       case 'warning': return cilTriangle
       case 'critical': return cilWarning
-      default: return cilAnimal
+      default: return cilShieldAlt
     }
   }
 
@@ -288,7 +288,7 @@ const AppHeader = () => {
               <div className="d-flex align-items-center gap-3">
                 <small className="text-muted">Security Overview:</small>
                 <div className="d-flex align-items-center gap-1">
-                  <CIcon icon={cilAnimal} size="sm" />
+                  <CIcon icon={cilShieldAlt} size="sm" />
                   <small>{securityMetrics.totalAssets} Assets</small>
                 </div>
                 <div className="d-flex align-items-center gap-1">

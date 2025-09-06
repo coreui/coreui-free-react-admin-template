@@ -1,171 +1,4 @@
-/*import React, { useState, useEffect } from 'react'
-import classNames from 'classnames'
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-  CBadge,
-  CSpinner,
-  CButton
-} from '@coreui/react'
-import { useNavigate } from 'react-router-dom'
-
-const Overview = () => {
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
-  const navgiate = useNavigate()
-
-  // Function to handle navigation to different dashboards
-  
-  const handleViewDetails = (itemId) => {
-    switch(item.department) {
-    case 'Sales': navigate(`/sales-dashboard/${item.id}`); break;
-    case 'Marketing': navigate(`/marketing-dashboard/${item.id}`); break;
-    case 'IT': navigate(`/tech-dashboard/${item.id}`); break;
-    case 'HR': navigate(`/hr-dashboard/${item.id}`); break;
-    default: navigate(`/general-dashboard/${item.id}`);
-    }
-  }
-
-  // Sample data - replace this with your actual data fetching logic
-  useEffect(() => {
-    // Simulate API call
-    const fetchData = async () => {
-      try {
-        // Replace this with your actual API call
-        const sampleData = [
-          { id: 1, deviceName: 'Cisco Switch Catalyst', department: 'Sales', numberOfCVEs: 5, riskLevel: 56, info: 'Asset Details' },
-          { id: 2, deviceName: 'Cisco Router', department: 'Sales', numberOfCVEs: 14, riskLevel: 40, info: 'Asset Details' },
-          { id: 3, deviceName: 'Cisco Switch E4345', department: 'Developement', numberOfCVEs: 2, riskLevel: 90, info: 'Asset Details' },
-          { id: 4, deviceName: 'Random Somthing Else', department: 'HR', numberOfCVEs: 8, riskLevel: 12, info: 'Asset Details' },
-          { id: 5, deviceName: 'Not The One You Think', department: 'Support', numberOfCVEs: 10, riskLevel: 78, info: 'Asset Details' },
-        ]
-        
-        // Sort by score in descending order
-        const sortedData = sampleData.sort((a, b) => b.riskLevel - a.riskLevel)
-        setData(sortedData)
-        setLoading(false)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-        setLoading(false)
-      }
-    }
-
-    fetchData()
-  }, [])
-
-  const getCVEBadgeColor = (riskLevel) => {
-    if (riskLevel >= 12) return 'danger'
-    if (riskLevel >= 7) return 'warning'
-    return 'success'
-  }
-
-  const getRiskLevelBadgeColor = (riskLevel) => {
-    if (riskLevel >= 90) return 'danger'
-    if (riskLevel >= 70) return 'warning'
-    return 'success'
-  }
-
-  //const getStatusBadgeColor = (status) => {
-  //  return status === 'Active' ? 'success' : 'secondary'
-  //}
-
-  if (loading) {
-    return (
-      <CRow>
-        <CCol xs={12}>
-          <CCard>
-            <CCardBody className="text-center">
-              <CSpinner color="primary" />
-              <p className="mt-2">Loading dashboard data...</p>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-    )
-  }
-
-  return (
-    <>
-      <CRow>
-        <CCol xs={12}>
-          <CCard className="mb-4">
-            <CCardHeader>
-              <strong>Dashboard</strong> <small>Sorted by Score (Descending)</small>
-            </CCardHeader>
-            <CCardBody>
-              <div style={{ 
-                maxHeight: '650px',
-                overflowY: 'auto',
-                //border: '1px solid #e9ecef',
-                //borderRadius: '0.375rem'
-              }}>
-                <CTable hover responsive className="mb-0">
-                  <CTableHead style={{ 
-                    position: 'sticky', 
-                    top: 0, 
-                    backgroundColor: '#f8f9fa',
-                    zIndex: 10
-                  }}>
-                    <CTableRow>
-                      <CTableHeaderCell scope="col">Device Name</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Department</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">CVE #</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Risk Level</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Asset Details</CTableHeaderCell>
-                    </CTableRow>
-                  </CTableHead>
-                  <CTableBody>
-                    {data.map((item, index) => (
-                      <CTableRow key={item.id}>
-                        <CTableDataCell>{item.deviceName}</CTableDataCell>
-                        <CTableDataCell>{item.department}</CTableDataCell>
-                        <CTableDataCell>
-                          <CBadge color={getCVEBadgeColor(item.numberOfCVEs)}>
-                            {item.numberOfCVEs}
-                          </CBadge>
-                        </CTableDataCell>
-                        <CTableDataCell>
-                          <CBadge color={getRiskLevelBadgeColor(item.riskLevel)}>
-                            {item.riskLevel}
-                          </CBadge>
-                        </CTableDataCell>
-                        <CTableDataCell>
-                          <CButton 
-                            color="primary" 
-                            variant="outline" 
-                            size="sm"
-                            onClick={() => handleViewDetails(item.id)}
-                          >
-                            Go to Details
-                          </CButton>
-                        </CTableDataCell>
-                      </CTableRow>
-                    ))}
-                  </CTableBody>
-                </CTable>
-              </div>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-    </>
-  )
-}
-
-export default Overview
-
-// <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>*/
-
-import React, { useMemo } from 'react'
+/*import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { 
   CCard, 
@@ -302,8 +135,8 @@ const Overview = () => {
           </CCard>
         </CCol>
       </CRow>
-      
-      {/* Optional: Summary cards */}
+      */
+      {/* Optional: Summary cards */}/*
       {enrichedAssets.length > 0 && (
         <CRow className="mt-4">
           <CCol sm={6} lg={3}>
@@ -364,6 +197,335 @@ const Overview = () => {
           </CCol>
         </CRow>
       )}
+    </CContainer>
+  )
+}
+
+export default Overview*/
+
+import React, { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { 
+  CCard, 
+  CCardBody, 
+  CCardHeader, 
+  CTable, 
+  CTableHead, 
+  CTableRow, 
+  CTableHeaderCell, 
+  CTableBody, 
+  CTableDataCell, 
+  CButton, 
+  CBadge,
+  CContainer,
+  CRow,
+  CCol,
+  CAlert,
+  CListGroup,
+  CListGroupItem,
+  CCollapse
+} from '@coreui/react'
+import { useNavigation } from '../../hooks/useNavigation'
+
+const Overview = () => {
+  const navigate = useNavigate()
+  const { assets } = useNavigation()
+  const [expandedAssets, setExpandedAssets] = React.useState({})
+
+  // Function to determine risk level based on CVSS score
+  const getCVSSRiskLevel = (cvssScore) => {
+    if (cvssScore >= 9.0) return 'Critical'
+    if (cvssScore >= 7.0) return 'High' 
+    if (cvssScore >= 4.0) return 'Medium'
+    if (cvssScore >= 0.1) return 'Low'
+    return 'None'
+  }
+
+  // Function to get badge color based on risk level
+  const getRiskBadgeColor = (riskLevel) => {
+    switch (riskLevel) {
+      case 'Critical': return 'danger'
+      case 'High': return 'warning'
+      case 'Medium': return 'info'
+      case 'Low': return 'success'
+      default: return 'secondary'
+    }
+  }
+
+  // Function to get CVSS badge color
+  const getCVSSBadgeColor = (cvssScore) => {
+    if (cvssScore >= 9.0) return 'danger'
+    if (cvssScore >= 7.0) return 'warning' 
+    if (cvssScore >= 4.0) return 'info'
+    return 'success'
+  }
+
+  // Process assets to include vulnerability summary
+  const processedAssets = useMemo(() => {
+    return assets.map(asset => {
+      const cves = asset.vulnerabilities?.cves || []
+      const hasCVEs = cves.length > 0
+      
+      // Calculate highest risk level
+      let highestRisk = 'None'
+      let maxCvss = 0
+      
+      if (hasCVEs) {
+        maxCvss = Math.max(...cves.map(cve => cve.cvss || 0))
+        highestRisk = getCVSSRiskLevel(maxCvss)
+      }
+
+      return {
+        ...asset,
+        cveCount: cves.length,
+        hasCVEs,
+        highestRisk,
+        maxCvss,
+        cves: cves.sort((a, b) => (b.cvss || 0) - (a.cvss || 0)) // Sort by CVSS descending
+      }
+    })
+  }, [assets])
+
+  // Calculate summary statistics
+  const summary = useMemo(() => {
+    const total = processedAssets.length
+    const vulnerable = processedAssets.filter(asset => asset.hasCVEs).length
+    const safe = total - vulnerable
+    const critical = processedAssets.filter(asset => asset.highestRisk === 'Critical').length
+    const high = processedAssets.filter(asset => asset.highestRisk === 'High').length
+    const medium = processedAssets.filter(asset => asset.highestRisk === 'Medium').length
+    const low = processedAssets.filter(asset => asset.highestRisk === 'Low').length
+
+    return { total, vulnerable, safe, critical, high, medium, low }
+  }, [processedAssets])
+
+  const handleViewAsset = (assetId) => {
+    navigate(`/asset/${assetId}`)
+  }
+
+  const toggleAssetExpansion = (assetId) => {
+    setExpandedAssets(prev => ({
+      ...prev,
+      [assetId]: !prev[assetId]
+    }))
+  }
+
+  return (
+    <CContainer fluid>
+      {/* Summary Dashboard */}
+      <CRow className="mb-4">
+        <CCol sm={6} lg={2}>
+          <CCard className="text-white bg-primary">
+            <CCardBody className="pb-0">
+              <div className="fs-4 fw-semibold">{summary.total}</div>
+              <div>Total Assets</div>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol sm={6} lg={2}>
+          <CCard className="text-white bg-success">
+            <CCardBody className="pb-0">
+              <div className="fs-4 fw-semibold">{summary.safe}</div>
+              <div>Safe Assets</div>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol sm={6} lg={2}>
+          <CCard className="text-white bg-warning">
+            <CCardBody className="pb-0">
+              <div className="fs-4 fw-semibold">{summary.vulnerable}</div>
+              <div>Vulnerable</div>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol sm={6} lg={2}>
+          <CCard className="text-white bg-danger">
+            <CCardBody className="pb-0">
+              <div className="fs-4 fw-semibold">{summary.critical + summary.high}</div>
+              <div>Critical/High</div>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol sm={6} lg={2}>
+          <CCard className="text-white bg-info">
+            <CCardBody className="pb-0">
+              <div className="fs-4 fw-semibold">{summary.medium}</div>
+              <div>Medium Risk</div>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol sm={6} lg={2}>
+          <CCard className="text-white bg-secondary">
+            <CCardBody className="pb-0">
+              <div className="fs-4 fw-semibold">{summary.low}</div>
+              <div>Low Risk</div>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+
+      {/* Main Assets Table */}
+      <CRow>
+        <CCol>
+          <CCard>
+            <CCardHeader>
+              <div className="d-flex justify-content-between align-items-center">
+                <h4 className="mb-0">Security Dashboard - Asset Overview</h4>
+                <CBadge color="info" shape="rounded-pill">
+                  {summary.total} Total Assets
+                </CBadge>
+              </div>
+            </CCardHeader>
+            <CCardBody>
+              {processedAssets.length === 0 ? (
+                <div className="text-center py-5">
+                  <h5 className="text-muted">No Assets Found</h5>
+                  <p className="text-muted">Start by adding departments and assets using the sidebar buttons.</p>
+                </div>
+              ) : (
+                <>
+                  {/* High Priority Alerts */}
+                  {summary.critical > 0 && (
+                    <CAlert color="danger" className="mb-4">
+                      <strong>🚨 Critical Alert:</strong> {summary.critical} asset(s) have CRITICAL vulnerabilities that require immediate attention!
+                    </CAlert>
+                  )}
+                  {summary.high > 0 && (
+                    <CAlert color="warning" className="mb-4">
+                      <strong>⚠️ High Priority:</strong> {summary.high} asset(s) have HIGH risk vulnerabilities.
+                    </CAlert>
+                  )}
+
+                  <CTable hover responsive>
+                    <CTableHead>
+                      <CTableRow>
+                        <CTableHeaderCell scope="col">Asset Details</CTableHeaderCell>
+                        <CTableHeaderCell scope="col">Department</CTableHeaderCell>
+                        <CTableHeaderCell scope="col">Security Status</CTableHeaderCell>
+                        <CTableHeaderCell scope="col">Vulnerability Count</CTableHeaderCell>
+                        <CTableHeaderCell scope="col">Highest Risk</CTableHeaderCell>
+                        <CTableHeaderCell scope="col" className="text-center">Actions</CTableHeaderCell>
+                      </CTableRow>
+                    </CTableHead>
+                    <CTableBody>
+                      {processedAssets.map((asset) => (
+                        <React.Fragment key={asset.id}>
+                          <CTableRow className={asset.highestRisk === 'Critical' ? 'table-danger' : asset.highestRisk === 'High' ? 'table-warning' : ''}>
+                            <CTableDataCell>
+                              <div>
+                                <strong>{asset.name}</strong>
+                                <br />
+                                <small className="text-muted">
+                                  {asset.vendor} {asset.model && `- ${asset.model}`}
+                                </small>
+                              </div>
+                            </CTableDataCell>
+                            <CTableDataCell>
+                              <CBadge color="secondary">
+                                {asset.department}
+                              </CBadge>
+                            </CTableDataCell>
+                            <CTableDataCell>
+                              {asset.hasCVEs ? (
+                                <CBadge color="danger" className="me-1">
+                                  🔓 Vulnerable
+                                </CBadge>
+                              ) : (
+                                <CBadge color="success" className="me-1">
+                                  🔒 Secure
+                                </CBadge>
+                              )}
+                            </CTableDataCell>
+                            <CTableDataCell>
+                              {asset.hasCVEs ? (
+                                <div>
+                                  <CBadge color="warning" className="me-2">
+                                    {asset.cveCount} CVEs
+                                  </CBadge>
+                                  {asset.cveCount > 0 && (
+                                    <CButton
+                                      size="sm"
+                                      color="link"
+                                      className="p-0"
+                                      onClick={() => toggleAssetExpansion(asset.id)}
+                                    >
+                                      {expandedAssets[asset.id] ? 'Hide Details' : 'Show Details'}
+                                    </CButton>
+                                  )}
+                                </div>
+                              ) : (
+                                <CBadge color="success">No CVEs</CBadge>
+                              )}
+                            </CTableDataCell>
+                            <CTableDataCell>
+                              <CBadge color={getRiskBadgeColor(asset.highestRisk)} className="me-1">
+                                {asset.highestRisk}
+                              </CBadge>
+                              {asset.maxCvss > 0 && (
+                                <small className="text-muted">
+                                  (CVSS: {asset.maxCvss})
+                                </small>
+                              )}
+                            </CTableDataCell>
+                            <CTableDataCell className="text-center">
+                              <CButton
+                                color="primary"
+                                variant="outline"
+                                size="sm"
+                                onClick={() => handleViewAsset(asset.id)}
+                              >
+                                Full Details
+                              </CButton>
+                            </CTableDataCell>
+                          </CTableRow>
+                          
+                          {/* Expandable CVE Details */}
+                          {asset.hasCVEs && (
+                            <CTableRow>
+                              <CTableDataCell colSpan={6} className="p-0">
+                                <CCollapse visible={expandedAssets[asset.id]}>
+                                  <div className="p-3 bg-light">
+                                    <h6>CVE Details for {asset.name}:</h6>
+                                    <CListGroup flush>
+                                      {asset.cves.slice(0, 10).map((cve, index) => (
+                                        <CListGroupItem key={index} className="d-flex justify-content-between align-items-center">
+                                          <div>
+                                            <code className="text-primary me-2">{cve.cve_id}</code>
+                                            <CBadge color={getCVSSBadgeColor(cve.cvss)} className="me-2">
+                                              CVSS: {cve.cvss || 'N/A'}
+                                            </CBadge>
+                                            {cve.epss && (
+                                              <CBadge color="secondary" className="me-2">
+                                                EPSS: {(cve.epss * 100).toFixed(1)}%
+                                              </CBadge>
+                                            )}
+                                            <CBadge color={getRiskBadgeColor(getCVSSRiskLevel(cve.cvss))}>
+                                              {getCVSSRiskLevel(cve.cvss)}
+                                            </CBadge>
+                                          </div>
+                                        </CListGroupItem>
+                                      ))}
+                                      {asset.cves.length > 10 && (
+                                        <CListGroupItem className="text-center text-muted">
+                                          <small>... and {asset.cves.length - 10} more CVEs</small>
+                                        </CListGroupItem>
+                                      )}
+                                    </CListGroup>
+                                  </div>
+                                </CCollapse>
+                              </CTableDataCell>
+                            </CTableRow>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </CTableBody>
+                  </CTable>
+                </>
+              )}
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
     </CContainer>
   )
 }

@@ -69,6 +69,17 @@ const AssetDetail = () => {
     }
   }, [asset])
 
+  const [activeTab, setActiveTab] = useState('cves')
+  useEffect(() => {
+    if(!enrichedAsset) return
+    const defaultTab = enrichedAsset.vulnerabilities.cves?.length ? 'cves'
+      : enrichedAsset.vulnerabilities.cwes?.length ? 'cwes'
+      : enrichedAsset.vulnerabilities.capecs?.length ? 'capecs'
+      : enrichedAsset.vulnerabilities.attacks?.length ? 'attacks'
+      : 'cves'
+    setActiveTab(defaultTab)
+  }, [enrichedAsset])
+
   const [editableFields, setEditableFields] = useState({
     ipAddress: enrichedAsset?.ipAddress || '',
     macAddress: enrichedAsset?.macAddress || '',
@@ -261,7 +272,7 @@ const AssetDetail = () => {
                     </CAlert>
                   ) : (
                     <CAlert color="success">
-                      <strong>✅ No Vulnerable CVEs Found</strong> - This device appears to be secure with no known critical vulnerabilities.
+                      <strong>✅ No Vulnerabilities Found</strong> - This device appears to be secure with no known critical vulnerabilities.
                     </CAlert>
                   )}
                 </CCol>
@@ -272,25 +283,25 @@ const AssetDetail = () => {
                 <CRow className="mb-4">
                   <CCol xs={12}>
                     <h5>Vulnerability Details</h5>
-                    <CTabs activeItemKey="cves">
+                    <CTabs activeItemKey={activeTab} onChange={(newKey) => setActiveTab(newKey)}>
                       <CTabList variant="pills" className="mb-3">
                         {enrichedAsset.vulnerabilities.cves?.length > 0 && (
-                          <CTab itemKey="cves">
+                          <CTab itemKey='cves'>
                             CVEs ({enrichedAsset.vulnerabilities.cves.length})
                           </CTab>
                         )}
                         {enrichedAsset.vulnerabilities.cwes?.length > 0 && (
-                          <CTab itemKey="cwes">
+                          <CTab itemKey='cwes'>
                             CWEs ({enrichedAsset.vulnerabilities.cwes.length})
                           </CTab>
                         )}
                         {enrichedAsset.vulnerabilities.capecs?.length > 0 && (
-                          <CTab itemKey="capecs">
+                          <CTab itemKey='capecs'>
                             CAPECs ({enrichedAsset.vulnerabilities.capecs.length})
                           </CTab>
                         )}
                         {enrichedAsset.vulnerabilities.attacks?.length > 0 && (
-                          <CTab itemKey="attacks">
+                          <CTab itemKey='attacks'>
                             ATT&CK ({enrichedAsset.vulnerabilities.attacks.length})
                           </CTab>
                         )}
@@ -298,7 +309,7 @@ const AssetDetail = () => {
                       
                       <CTabContent>
                         {enrichedAsset.vulnerabilities.cves?.length > 0 && (
-                          <CTabPanel className="py-3" itemKey="cves">
+                          <CTabPanel className="py-3" itemKey='cves'>
                             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                               <CListGroup>
                                 {enrichedAsset.vulnerabilities.cves.map((cve, index) => (
@@ -336,7 +347,7 @@ const AssetDetail = () => {
                         )}
                         
                         {enrichedAsset.vulnerabilities.cwes?.length > 0 && (
-                          <CTabPanel className="py-3" itemKey="cwes">
+                          <CTabPanel className="py-3" itemKey='cwes'>
                             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                               <CListGroup>
                                 {enrichedAsset.vulnerabilities.cwes.map((cwe, index) => (
@@ -357,7 +368,7 @@ const AssetDetail = () => {
                         )}
                         
                         {enrichedAsset.vulnerabilities.capecs?.length > 0 && (
-                          <CTabPanel className="py-3" itemKey="capecs">
+                          <CTabPanel className="py-3" itemKey='capecs'>
                             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                               <CListGroup>
                                 {enrichedAsset.vulnerabilities.capecs.map((capec, index) => (
@@ -390,7 +401,7 @@ const AssetDetail = () => {
                         )}
                         
                         {enrichedAsset.vulnerabilities.attacks?.length > 0 && (
-                          <CTabPanel className="py-3" itemKey="attacks">
+                          <CTabPanel className="py-3" itemKey='attacks'>
                             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                               <CListGroup>
                                 {enrichedAsset.vulnerabilities.attacks.map((attack, index) => (

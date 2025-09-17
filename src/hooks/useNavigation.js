@@ -64,9 +64,10 @@ export const useNavigation = () => {
       department: apiResponse.device?.department || '',
       description: apiResponse.device?.description || '',
       risk_level: apiResponse.device?.risk_level || 0,
+      os_family: apiResponse.device?.os_family || '',
 
-      // Store CPE for background refreshes
-      cpe: apiResponse.cpe || '',
+      // Store scan parameters for background refreshes
+      scan_params: apiResponse.scan_params || {},
       
       // Store full API response for detailed view
       vulnerabilities: {
@@ -125,22 +126,49 @@ export const useNavigation = () => {
           if (diffMinutes < 5) continue
         }
 
-        const response = await fetch('http://localhost:8000/api/v1/security/scan-by-cpe', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            cpe: asset.cpe || '', // You might need to store CPE in the asset
-            device_name: asset.name,
-            department: asset.department
+        // Use the new scan-by-os endpoint if we have scan parameters
+        if (asset.scan_params && asset.scan_params.os_family) {
+          const response = await fetch('http://localhost:8000/api/v1/security/scan-by-os', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              device_name: asset.scan_params.device_name || asset.name,
+              vendor: asset.scan_params.vendor || asset.vendor,
+              model: asset.scan_params.model || asset.model,
+              os_family: asset.scan_params.os_family,
+              version: asset.scan_params.version || asset.version,
+              department: asset.department
+            })
           })
-        })
 
-        if (response.ok) {
-          const apiResponse = await response.json()
-          if (apiResponse.success) {
-            updateAsset(asset.id, apiResponse)
+          if (response.ok) {
+            const apiResponse = await response.json()
+            if (apiResponse.success) {
+              updateAsset(asset.id, apiResponse)
+            }
+          }
+        }
+        // Fallback to old CPE method if no OS parameters available
+        else if (asset.cpe) {
+          const response = await fetch('http://localhost:8000/api/v1/security/scan-by-cpe', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              cpe: asset.cpe,
+              device_name: asset.name,
+              department: asset.department
+            })
+          })
+
+          if (response.ok) {
+            const apiResponse = await response.json()
+            if (apiResponse.success) {
+              updateAsset(asset.id, apiResponse)
+            }
           }
         }
       } catch (error) {

@@ -25,6 +25,7 @@ const AssetDetail = () => {
   const { assetId } = useParams()
   const navigate = useNavigate()
   const { assets } = useNavigation()
+  const [expandedItems, setExpandedItems] = useState({})
 
   const asset = assets.find(a => a.id === assetId)
 
@@ -59,10 +60,10 @@ const AssetDetail = () => {
       // Calculate risk level based on vulnerabilities if they exist
       riskLevel: hasVulnerabilities && asset.vulnerabilities.cves?.length > 0 
         ? (() => {
-            const maxCvss = Math.max(...asset.vulnerabilities.cves.map(cve => cve.cvss || 0))
-            if (maxCvss >= 9.0) return 'Critical'
-            if (maxCvss >= 7.0) return 'High' 
-            if (maxCvss >= 4.0) return 'Medium'
+            const mexRiskLevel = Math.max(...asset.vulnerabilities.cves.map(cve => cve.riskLevel || 0))
+            if (mexRiskLevel >= 9.0) return 'Critical'
+            if (mexRiskLevel >= 7.0) return 'High' 
+            if (mexRiskLevel >= 4.0) return 'Medium'
             return 'Low'
           })()
         : 'Secure'
@@ -96,6 +97,14 @@ const AssetDetail = () => {
       })
     }
   }, [enrichedAsset])
+
+  const toggleItemExpansion = (type, index) => {
+    const key = `${type}-${index}`
+    setExpandedItems(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }))
+  }
 
   if (!enrichedAsset) {
     return (
@@ -312,35 +321,102 @@ const AssetDetail = () => {
                           <CTabPanel className="py-3" itemKey='cves'>
                             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                               <CListGroup>
-                                {enrichedAsset.vulnerabilities.cves.map((cve, index) => (
-                                  <CListGroupItem key={index} className="border-0 border-bottom">
-                                    <div className="d-flex justify-content-between align-items-start">
-                                      <div className="flex-grow-1">
-                                        <div className="d-flex align-items-center gap-2 mb-2">
-                                          <code className="text-primary fw-bold">{cve.cve_id}</code>
-                                          <CBadge 
-                                            color={
-                                              cve.cvss >= 9.0 ? 'danger' : 
-                                              cve.cvss >= 7.0 ? 'warning' : 
-                                              cve.cvss >= 4.0 ? 'info' : 'secondary'
-                                            }
-                                          >
-                                            CVSS: {cve.cvss || 'N/A'}
-                                          </CBadge>
-                                          {cve.epss && (
-                                            <CBadge color="light" className="text-dark">
-                                              EPSS: {(cve.epss * 100).toFixed(1)}%
+                                {enrichedAsset.vulnerabilities.cves.map((cve, index) => {
+                                  const isExpanded = expandedItems[`cve-${index}`]
+                                  return (
+                                    <CListGroupItem key={index} className="border-0 border-bottom">
+                                      <div 
+                                        className="d-flex justify-content-between align-items-start cursor-pointer"
+                                        onClick={() => toggleItemExpansion('cve', index)}
+                                        style={{ cursor: 'pointer' }}
+                                      >
+                                        <div className="flex-grow-1">
+                                          <div className="d-flex align-items-center gap-2 mb-2">
+                                            <code className="text-primary fw-bold">{cve.cve_id}</code>
+                                            <CBadge 
+                                              color={
+                                                cve.cvss >= 9.0 ? 'danger' : 
+                                                cve.cvss >= 7.0 ? 'warning' : 
+                                                cve.cvss >= 4.0 ? 'info' : 'secondary'
+                                              }
+                                            >
+                                              CVSS: {cve.cvss || 'N/A'}
                                             </CBadge>
+                                            {cve.epss && (
+                                              <CBadge color="light" className="text-dark">
+                                                EPSS: {cve.impactscore}
+                                              </CBadge>
+                                            )}
+                                            <CButton size="sm" color="link" className="p-0 ms-auto">
+                                              {isExpanded ? 'Less' : 'More'}
+                                            </CButton>
+                                          </div>
+                                          <p className="mb-1 small text-muted">
+                                            {isExpanded 
+                                              ? cve.description 
+                                              : `${cve.description?.substring(0, 200)}${cve.description?.length > 200 ? '...' : ''}`
+                                            }
+                                          </p>
+                                          
+                                          {isExpanded && (
+                                            <div className="mt-3 p-3 bg-dark rounded">
+                                              <CRow>
+                                                <CCol md={6}>
+                                                  <strong>CVE ID:</strong> <code>{cve.cve_id}</code><br/>
+                                                  <strong>CVSS Score:</strong> {cve.cvss || 'N/A'}<br/>
+                                                  {cve.cvss_vector && (
+                                                    <>
+                                                      <strong>CVSS Vector:</strong> <code className="small">{cve.cvss_vector}</code><br/>
+                                                    </>
+                                                  )}
+                                                  {cve.epss && (
+                                                    <>
+                                                      <strong>Risk Level:</strong> {(cve.epss).toFixed(2)}%<br/>
+                                                    </>
+                                                  )}
+                                                </CCol>
+                                                <CCol md={6}>
+                                                  {cve.published_date && (
+                                                    <>
+                                                      <strong>Published:</strong> {new Date(cve.published_date).toLocaleDateString()}<br/>
+                                                    </>
+                                                  )}
+                                                  {cve.last_modified_date && (
+                                                    <>
+                                                      <strong>Last Modified:</strong> {new Date(cve.last_modified_date).toLocaleDateString()}<br/>
+                                                    </>
+                                                  )}
+                                                  {cve.source && (
+                                                    <>
+                                                      <strong>Source:</strong> {cve.source}<br/>
+                                                    </>
+                                                  )}
+                                                </CCol>
+                                              </CRow>
+                                              {cve.references && cve.references.length > 0 && (
+                                                <div className="mt-2">
+                                                  <strong>References:</strong>
+                                                  <ul className="small mt-1">
+                                                    {cve.references.slice(0, 5).map((ref, refIndex) => (
+                                                      <li key={refIndex}>
+                                                        <a href={ref} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                                                          {ref.length > 60 ? `${ref.substring(0, 60)}...` : ref}
+                                                        </a>
+                                                      </li>
+                                                    ))}
+                                                    {cve.references.length > 5 && (
+                                                      <li className="text-muted">... and {cve.references.length - 5} more</li>
+                                                    )}
+                                                  </ul>
+                                                </div>
+                                              )}
+                                            </div>
                                           )}
                                         </div>
-                                        <p className="mb-1 small text-muted">
-                                          {cve.description?.substring(0, 200)}
-                                          {cve.description?.length > 200 && '...'}
-                                        </p>
                                       </div>
-                                    </div>
-                                  </CListGroupItem>
-                                ))}
+                                    </CListGroupItem>
+                                  )
+                                })}
                               </CListGroup>
                             </div>
                           </CTabPanel>
@@ -350,18 +426,49 @@ const AssetDetail = () => {
                           <CTabPanel className="py-3" itemKey='cwes'>
                             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                               <CListGroup>
-                                {enrichedAsset.vulnerabilities.cwes.map((cwe, index) => (
-                                  <CListGroupItem key={index} className="border-0 border-bottom">
-                                    <div className="d-flex align-items-center gap-2 mb-2">
-                                      <code className="text-info fw-bold">{cwe.cwe_id}</code>
-                                      <span className="fw-semibold">{cwe.name}</span>
-                                    </div>
-                                    <p className="mb-0 small text-muted">
-                                      {cwe.description?.substring(0, 150)}
-                                      {cwe.description?.length > 150 && '...'}
-                                    </p>
-                                  </CListGroupItem>
-                                ))}
+                                {enrichedAsset.vulnerabilities.cwes.map((cwe, index) => {
+                                  const isExpanded = expandedItems[`cwe-${index}`]
+                                  return (
+                                    <CListGroupItem key={index} className="border-0 border-bottom">
+                                      <div 
+                                        className="cursor-pointer"
+                                        onClick={() => toggleItemExpansion('cwe', index)}
+                                        style={{ cursor: 'pointer' }}
+                                      >
+                                        <div className="d-flex align-items-center gap-2 mb-2">
+                                          <code className="text-info fw-bold">{cwe.cwe_id}</code>
+                                          <span className="fw-semibold">{cwe.name}</span>
+                                          <CButton size="sm" color="link" className="p-0 ms-auto">
+                                            {isExpanded ? 'Less' : 'More'}
+                                          </CButton>
+                                        </div>
+                                        <p className="mb-0 small text-muted">
+                                          {isExpanded 
+                                            ? cwe.description 
+                                            : `${cwe.description?.substring(0, 150)}${cwe.description?.length > 150 ? '...' : ''}`
+                                          }
+                                        </p>
+                                        
+                                        {isExpanded && (
+                                          <div className="mt-3 p-3 bg-dark rounded">
+                                            <strong>CWE ID:</strong> <code>{cwe.cwe_id}</code><br/>
+                                            <strong>Name:</strong> {cwe.name}<br/>
+                                            {cwe.weakness_abstraction && (
+                                              <>
+                                                <strong>Abstraction:</strong> {cwe.weakness_abstraction}<br/>
+                                              </>
+                                            )}
+                                            {cwe.status && (
+                                              <>
+                                                <strong>Status:</strong> {cwe.status}<br/>
+                                              </>
+                                            )}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </CListGroupItem>
+                                  )
+                                })}
                               </CListGroup>
                             </div>
                           </CTabPanel>
@@ -371,30 +478,61 @@ const AssetDetail = () => {
                           <CTabPanel className="py-3" itemKey='capecs'>
                             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                               <CListGroup>
-                                {enrichedAsset.vulnerabilities.capecs.map((capec, index) => (
-                                  <CListGroupItem key={index} className="border-0 border-bottom">
-                                    <div className="d-flex justify-content-between align-items-start">
-                                      <div className="flex-grow-1">
-                                        <div className="d-flex align-items-center gap-2 mb-2">
-                                          <code className="text-warning fw-bold">{capec.capec_id}</code>
-                                          <span className="fw-semibold">{capec.name}</span>
+                                {enrichedAsset.vulnerabilities.capecs.map((capec, index) => {
+                                  const isExpanded = expandedItems[`capec-${index}`]
+                                  return (
+                                    <CListGroupItem key={index} className="border-0 border-bottom">
+                                      <div 
+                                        className="cursor-pointer"
+                                        onClick={() => toggleItemExpansion('capec', index)}
+                                        style={{ cursor: 'pointer' }}
+                                      >
+                                        <div className="d-flex justify-content-between align-items-start">
+                                          <div className="flex-grow-1">
+                                            <div className="d-flex align-items-center gap-2 mb-2">
+                                              <code className="text-warning fw-bold">{capec.capec_id}</code>
+                                              <span className="fw-semibold">{capec.name}</span>
+                                              <CButton size="sm" color="link" className="p-0 ms-auto">
+                                                {isExpanded ? 'Less' : 'More'}
+                                              </CButton>
+                                            </div>
+                                            <div className="d-flex gap-2 mb-2">
+                                              <CBadge color="secondary">
+                                                Severity: {capec.typical_severity || 'Unknown'}
+                                              </CBadge>
+                                              <CBadge color="light" className="text-dark">
+                                                Likelihood: {capec.likelihood_of_attack || 'Unknown'}
+                                              </CBadge>
+                                            </div>
+                                            <p className="mb-0 small text-muted">
+                                              {isExpanded 
+                                                ? capec.description 
+                                                : `${capec.description?.substring(0, 150)}${capec.description?.length > 150 ? '...' : ''}`
+                                              }
+                                            </p>
+                                            
+                                            {isExpanded && (
+                                              <div className="mt-3 p-3 bg-dark rounded">
+                                                <CRow>
+                                                  <CCol md={6}>
+                                                    <strong>CAPEC ID:</strong> <code>{capec.capec_id}</code><br/>
+                                                    <strong>Name:</strong> {capec.name}<br/>
+                                                    <strong>Abstraction:</strong> {capec.abstraction || 'N/A'}<br/>
+                                                  </CCol>
+                                                  <CCol md={6}>
+                                                    <strong>Severity:</strong> {capec.typical_severity || 'Unknown'}<br/>
+                                                    <strong>Likelihood:</strong> {capec.likelihood_of_attack || 'Unknown'}<br/>
+                                                    <strong>Status:</strong> {capec.status || 'N/A'}<br/>
+                                                  </CCol>
+                                                </CRow>
+                                              </div>
+                                            )}
+                                          </div>
                                         </div>
-                                        <div className="d-flex gap-2 mb-2">
-                                          <CBadge color="secondary">
-                                            Severity: {capec.typical_severity || 'Unknown'}
-                                          </CBadge>
-                                          <CBadge color="light" className="text-dark">
-                                            Likelihood: {capec.likelihood_of_attack || 'Unknown'}
-                                          </CBadge>
-                                        </div>
-                                        <p className="mb-0 small text-muted">
-                                          {capec.description?.substring(0, 150)}
-                                          {capec.description?.length > 150 && '...'}
-                                        </p>
                                       </div>
-                                    </div>
-                                  </CListGroupItem>
-                                ))}
+                                    </CListGroupItem>
+                                  )
+                                })}
                               </CListGroup>
                             </div>
                           </CTabPanel>
@@ -404,34 +542,73 @@ const AssetDetail = () => {
                           <CTabPanel className="py-3" itemKey='attacks'>
                             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                               <CListGroup>
-                                {enrichedAsset.vulnerabilities.attacks.map((attack, index) => (
-                                  <CListGroupItem key={index} className="border-0 border-bottom">
-                                    <div className="d-flex justify-content-between align-items-start">
-                                      <div className="flex-grow-1">
-                                        <div className="d-flex align-items-center gap-2 mb-2">
-                                          <code className="text-danger fw-bold">{attack.technique_id}</code>
-                                          <span className="fw-semibold">{attack.name}</span>
+                                {enrichedAsset.vulnerabilities.attacks.map((attack, index) => {
+                                  const isExpanded = expandedItems[`attack-${index}`]
+                                  return (
+                                    <CListGroupItem key={index} className="border-0 border-bottom">
+                                      <div 
+                                        className="cursor-pointer"
+                                        onClick={() => toggleItemExpansion('attack', index)}
+                                        style={{ cursor: 'pointer' }}
+                                      >
+                                        <div className="d-flex justify-content-between align-items-start">
+                                          <div className="flex-grow-1">
+                                            <div className="d-flex align-items-center gap-2 mb-2">
+                                              <code className="text-danger fw-bold">{attack.technique_id}</code>
+                                              <span className="fw-semibold">{attack.name}</span>
+                                              <CButton size="sm" color="link" className="p-0 ms-auto">
+                                                {isExpanded ? 'Less' : 'More'}
+                                              </CButton>
+                                            </div>
+                                            <div className="d-flex flex-wrap gap-1 mb-2">
+                                              {attack.tactics && (
+                                                <CBadge color="danger" className="small">
+                                                  {attack.tactics}
+                                                </CBadge>
+                                              )}
+                                              {attack.platforms && (
+                                                <CBadge color="secondary" className="small">
+                                                  {attack.platforms.length > 20 ? attack.platforms.substring(0, 20) + '...' : attack.platforms}
+                                                </CBadge>
+                                              )}
+                                            </div>
+                                            <p className="mb-0 small text-muted">
+                                              {isExpanded 
+                                                ? attack.description 
+                                                : `${attack.description?.substring(0, 150)}${attack.description?.length > 150 ? '...' : ''}`
+                                              }
+                                            </p>
+                                            
+                                            {isExpanded && (
+                                              <div className="mt-3 p-3 bg-dark rounded">
+                                                <CRow>
+                                                  <CCol md={6}>
+                                                    <strong>Technique ID:</strong> <code>{attack.technique_id}</code><br/>
+                                                    <strong>Name:</strong> {attack.name}<br/>
+                                                    <strong>Tactics:</strong> {attack.tactics || 'N/A'}<br/>
+                                                  </CCol>
+                                                  <CCol md={6}>
+                                                    <strong>Platforms:</strong> {attack.platforms || 'N/A'}<br/>
+                                                    {attack.data_sources && (
+                                                      <>
+                                                        <strong>Data Sources:</strong> {attack.data_sources}<br/>
+                                                      </>
+                                                    )}
+                                                    {attack.detection && (
+                                                      <>
+                                                        <strong>Detection:</strong> {attack.detection.substring(0, 100)}...<br/>
+                                                      </>
+                                                    )}
+                                                  </CCol>
+                                                </CRow>
+                                              </div>
+                                            )}
+                                          </div>
                                         </div>
-                                        <div className="d-flex flex-wrap gap-1 mb-2">
-                                          {attack.tactics && (
-                                            <CBadge color="danger" className="small">
-                                              {attack.tactics}
-                                            </CBadge>
-                                          )}
-                                          {attack.platforms && (
-                                            <CBadge color="secondary" className="small">
-                                              {attack.platforms.length > 20 ? attack.platforms.substring(0, 20) + '...' : attack.platforms}
-                                            </CBadge>
-                                          )}
-                                        </div>
-                                        <p className="mb-0 small text-muted">
-                                          {attack.description?.substring(0, 150)}
-                                          {attack.description?.length > 150 && '...'}
-                                        </p>
                                       </div>
-                                    </div>
-                                  </CListGroupItem>
-                                ))}
+                                    </CListGroupItem>
+                                  )
+                                })}
                               </CListGroup>
                             </div>
                           </CTabPanel>

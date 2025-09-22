@@ -19,6 +19,11 @@ const AppBreadcrumb = () => {
   const getBreadcrumbs = (location) => {
     const breadcrumbs = []
     
+    // Handle root/overview case - don't add extra breadcrumbs
+    if (location === '/' || location === '/overview') {
+      return breadcrumbs // Return empty array, the "Overview" will be shown as base
+    }
+
     // Handle special dynamic routes
     if (location.startsWith('/asset/')) {
       const asset = assets.find(a => a.id === assetId)
@@ -44,6 +49,11 @@ const AppBreadcrumb = () => {
     // Handle standard routes
     const pathSegments = location.split('/').filter(segment => segment !== '')
     
+    // Skip if this is just the overview page
+    if (pathSegments.length === 1 && pathSegments[0] === 'overview') {
+      return breadcrumbs
+    }
+    
     pathSegments.reduce((prev, curr, index, array) => {
       const currentPathname = `${prev}/${curr}`
       let routeName = getRouteName(currentPathname, routes)
@@ -51,11 +61,9 @@ const AppBreadcrumb = () => {
 
       // Set appropriate icons for known routes
       switch (currentPathname) {
-        case '/overview':
-          icon = cilHome
-          break
         case '/datamanagement':
           icon = cilSettings
+          routeName = 'Data Management'
           break
         default:
           if (departments.includes(curr)) {
@@ -89,11 +97,13 @@ const AppBreadcrumb = () => {
 
   return (
     <CBreadcrumb className="my-0">
-      {/* Home/Overview breadcrumb */}
-      <CBreadcrumbItem href="/#/overview" className="d-flex align-items-center">
-        <CIcon icon={cilHome} size="sm" className="me-1" />
-        Overview
-      </CBreadcrumbItem>
+      {/* Home/Overview breadcrumb - only show if not already on overview */}
+      {currentLocation !== '/' && currentLocation !== '/overview' && (
+        <CBreadcrumbItem href="/#/overview" className="d-flex align-items-center">
+          <CIcon icon={cilHome} size="sm" className="me-1" />
+          Overview
+        </CBreadcrumbItem>
+      )}
       
       {breadcrumbs.map((breadcrumb, index) => {
         return (

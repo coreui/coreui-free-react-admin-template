@@ -69,21 +69,32 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
         {
           component: CNavItem,
           name: 'Scan Results',
-          to: '/vulnerabilities/scan-results',
+          to: '#',
+          disabled: true,
           badge: {
-            color: 'danger',
-            text: 'NEW',
+            color: 'secondary',
+            text: 'COMING SOON',
           },
         },
         {
           component: CNavItem,
           name: 'CVE Database',
-          to: '/vulnerabilities/cve-database',
+          to: '#',
+          disabled: true,
+          badge: {
+            color: 'secondary',
+            text: 'COMING SOON',
+          },
         },
         {
           component: CNavItem,
           name: 'Risk Assessment',
-          to: '/vulnerabilities/risk-assessment',
+          to: '#',
+          disabled: true,
+          badge: {
+            color: 'secondary',
+            text: 'COMING SOON',
+          },
         }
       ]
     },
@@ -95,17 +106,32 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
         {
           component: CNavItem,
           name: 'Threat Intelligence',
-          to: '/analytics/threat-intelligence',
+          to: '#',
+          disabled: true,
+          badge: {
+            color: 'secondary',
+            text: 'COMING SOON',
+          },
         },
         {
           component: CNavItem,
           name: 'Attack Patterns',
-          to: '/analytics/attack-patterns',
+          to: '#',
+          disabled: true,
+          badge: {
+            color: 'secondary',
+            text: 'COMING SOON',
+          },
         },
         {
           component: CNavItem,
           name: 'Security Metrics',
-          to: '/analytics/security-metrics',
+          to: '#',
+          disabled: true,
+          badge: {
+            color: 'secondary',
+            text: 'COMING SOON',
+          },
         }
       ]
     }

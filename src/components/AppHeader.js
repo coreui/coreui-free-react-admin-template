@@ -101,23 +101,37 @@ const AppHeader = () => {
 
   // Simulate security alerts (in real app, this would come from your backend)
   useEffect(() => {
-    const alerts = [
-      {
-        id: 1,
-        type: 'critical',
-        title: 'Critical Vulnerability Detected',
-        message: 'CVE-2024-1234 found in 3 assets',
-        timestamp: new Date(Date.now() - 30 * 60 * 1000)
-      },
-      {
-        id: 2,
-        type: 'warning',
-        title: 'Outdated Software Detected',
-        message: '5 assets need security updates',
-        timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000)
+    const alerts = []
+    
+    assets.forEach(asset => {
+      if (asset.vulnerabilities?.cves) {
+        asset.vulnerabilities.cves.forEach(cve => {
+          if (cve.cvss >= 7.0) { // Only show high/critical vulnerabilities
+            alerts.push({
+              id: `${asset.id}-${cve.cve_id}`,
+              type: cve.cvss >= 9.0 ? 'critical' : 'high',
+              title: `${cve.cve_id} - ${asset.name}`,
+              message: `CVSS: ${cve.cvss} - ${cve.description?.substring(0, 100)}...`,
+              timestamp: new Date(asset.last_updated || Date.now()),
+              assetId: asset.id,
+              assetName: asset.name,
+              cveId: cve.cve_id,
+              cvssScore: cve.cvss
+            })
+          }
+        })
       }
-    ]
-    setSecurityAlerts(alerts)
+    })
+    
+    // Sort by CVSS score descending, then by timestamp
+    alerts.sort((a, b) => {
+      if (b.cvssScore !== a.cvssScore) {
+        return b.cvssScore - a.cvssScore
+      }
+      return b.timestamp - a.timestamp
+    })
+    
+    setSecurityAlerts(alerts.slice(0, 20)) // Limit to 20 most critical
   }, [assets])
 
   const getSecurityStatusColor = () => {
@@ -166,72 +180,58 @@ const AppHeader = () => {
           </CHeaderNav>
 
           {/* Security Tools */}
-          <CHeaderNav className="ms-auto">
-            {/* Security Alerts */}
-            <CNavItem>
-              <CNavLink 
-                href="#" 
-                onClick={(e) => {
-                  e.preventDefault()
-                  setShowAlertsModal(true)
-                }}
-                className="position-relative"
-              >
-                <CIcon icon={cilBell} size="lg" />
-                {securityAlerts.length > 0 && (
-                  <CBadge 
-                    color="danger" 
-                    position="top-end" 
-                    shape="rounded-pill"
-                    className="position-absolute"
-                  >
-                    {securityAlerts.length}
-                  </CBadge>
-                )}
-              </CNavLink>
-            </CNavItem>
-
-            {/* Vulnerability Scanner */}
-            <CNavItem>
-              <CNavLink 
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault()
-                  // Implement scan functionality
-                  setLastScanTime(new Date())
-                  alert('Vulnerability scan initiated...')
-                }}
-                title="Run Vulnerability Scan"
-              >
-                <CIcon icon={cilBug} size="lg" />
-              </CNavLink>
-            </CNavItem>
-
-            {/* Security Status Indicator */}
-            <CNavItem>
-              <CNavLink 
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setShowSecurityStatus(true)
-                }}
-                className="position-relative"
-              >
-                <CIcon 
-                  icon={getSecurityStatusIcon()} 
-                  size="lg" 
-                  className={`text-${getSecurityStatusColor()}`}
-                />
-                <CBadge 
-                  color={getSecurityStatusColor()} 
-                  className="position-absolute top-0 start-100 translate-middle"
-                  style={{ fontSize: '0.6rem', padding: '0.2rem 0.4rem' }}
+            <CHeaderNav className="ms-auto">
+              {/* Security Alerts */}
+              <CNavItem>
+                <CNavLink 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setShowAlertsModal(true)
+                  }}
+                  className="position-relative"
+                  title="Security Alerts"
                 >
-                  {securityMetrics.overallRiskScore}
-                </CBadge>
-              </CNavLink>
-            </CNavItem>
-          </CHeaderNav>
+                  <CIcon icon={cilBell} size="lg" />
+                  {securityAlerts.length > 0 && (
+                    <CBadge 
+                      color="danger" 
+                      position="top-end" 
+                      shape="rounded-pill"
+                      className="position-absolute"
+                    >
+                      {securityAlerts.length}
+                    </CBadge>
+                  )}
+                </CNavLink>
+              </CNavItem>
+
+              {/* Security Status Indicator */}
+              <CNavItem>
+                <CNavLink 
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setShowSecurityStatus(true)
+                  }}
+                  className="position-relative"
+                  title="Security Status Overview"
+                >
+                  <CIcon 
+                    icon={getSecurityStatusIcon()} 
+                    size="lg" 
+                    className={`text-${getSecurityStatusColor()}`}
+                  />
+                  <CBadge 
+                    color={getSecurityStatusColor()} 
+                    className="position-absolute top-0 start-100 translate-middle"
+                    style={{ fontSize: '0.6rem', padding: '0.2rem 0.4rem' }}
+                  >
+                    {securityMetrics.overallRiskScore}
+                  </CBadge>
+                </CNavLink>
+              </CNavItem>
+            </CHeaderNav>
 
           {/* Theme Switcher */}
           <CHeaderNav>
@@ -331,23 +331,42 @@ const AppHeader = () => {
                         icon={alert.type === 'critical' ? cilWarning : cilTriangle} 
                         className={alert.type === 'critical' ? 'text-danger' : 'text-warning'}
                       />
-                      {alert.title}
+                      <code className="text-primary">{alert.cveId}</code>
+                      <span>on {alert.assetName}</span>
                     </div>
-                    <p className="mb-1">{alert.message}</p>
+                    <div className="d-flex gap-2 my-1">
+                      <CBadge 
+                        color={alert.cvssScore >= 9.0 ? 'danger' : 'warning'}
+                      >
+                        CVSS: {alert.cvssScore}
+                      </CBadge>
+                      <CBadge color={alert.type === 'critical' ? 'danger' : 'warning'}>
+                        {alert.type.toUpperCase()}
+                      </CBadge>
+                    </div>
+                    <p className="mb-1 small">{alert.message}</p>
                     <small className="text-muted">
                       {alert.timestamp.toLocaleString()}
                     </small>
                   </div>
-                  <CBadge color={alert.type === 'critical' ? 'danger' : 'warning'}>
-                    {alert.type}
-                  </CBadge>
+                  <CButton
+                    color="primary"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      setShowAlertsModal(false)
+                      navigate(`/asset/${alert.assetId}`)
+                    }}
+                  >
+                    View Asset
+                  </CButton>
                 </CListGroupItem>
               ))}
             </CListGroup>
           ) : (
             <CAlert color="success">
               <CIcon icon={cilCheckCircle} className="me-2" />
-              No security alerts at this time.
+              No critical or high-risk vulnerabilities found.
             </CAlert>
           )}
         </CModalBody>

@@ -28,11 +28,11 @@ const Overview = () => {
   const [expandedAssets, setExpandedAssets] = React.useState({})
 
   // Function to determine risk level based on CVSS score
-  const getCVSSRiskLevel = (cvssScore) => {
-    if (cvssScore >= 9.0) return 'Critical'
-    if (cvssScore >= 7.0) return 'High' 
-    if (cvssScore >= 4.0) return 'Medium'
-    if (cvssScore >= 0.1) return 'Low'
+  const getCVSSRiskLevel = (riskLevel) => {
+    if (riskLevel >= 9.0) return 'Critical'
+    if (riskLevel >= 7.0) return 'High' 
+    if (riskLevel >= 4.0) return 'Medium'
+    if (riskLevel >= 0.1) return 'Low'
     return 'None'
   }
 
@@ -48,10 +48,10 @@ const Overview = () => {
   }
 
   // Function to get CVSS badge color
-  const getCVSSBadgeColor = (cvssScore) => {
-    if (cvssScore >= 9.0) return 'danger'
-    if (cvssScore >= 7.0) return 'warning' 
-    if (cvssScore >= 4.0) return 'info'
+  const getCVSSBadgeColor = (riskLevel) => {
+    if (riskLevel >= 9.0) return 'danger'
+    if (riskLevel >= 7.0) return 'warning' 
+    if (riskLevel >= 4.0) return 'info'
     return 'success'
   }
 
@@ -63,11 +63,11 @@ const Overview = () => {
       
       // Calculate highest risk level
       let highestRisk = 'None'
-      let maxCvss = 0
+      let maxRiskLevel = 0
       
       if (hasCVEs) {
-        maxCvss = Math.max(...cves.map(cve => cve.cvss || 0))
-        highestRisk = getCVSSRiskLevel(maxCvss)
+        maxRiskLevel = Math.max(...cves.map(cve => cve.riskLevel || 0))
+        highestRisk = getCVSSRiskLevel(maxRiskLevel)
       }
 
       return {
@@ -75,8 +75,8 @@ const Overview = () => {
         cveCount: cves.length,
         hasCVEs,
         highestRisk,
-        maxCvss,
-        cves: cves.sort((a, b) => (b.cvss || 0) - (a.cvss || 0)) // Sort by CVSS descending
+        maxRiskLevel,
+        cves: cves.sort((a, b) => (b.riskLevel || 0) - (a.riskLevel || 0)) // Sort by Risk Level descending
       }
     })
   }, [assets])
@@ -104,13 +104,13 @@ const Overview = () => {
       [assetId]: !prev[assetId]
     }))
   }
-
+/*
   const handleReset = () => {
     localStorage.clear()
     sessionStorage.clear()
     window.location.reload()
   }
-
+*/
   return (
     <CContainer fluid>
       {/* Summary Dashboard */}
@@ -204,7 +204,7 @@ const Overview = () => {
                         <CTableHeaderCell scope="col">Department</CTableHeaderCell>
                         <CTableHeaderCell scope="col">Security Status</CTableHeaderCell>
                         <CTableHeaderCell scope="col">Vulnerability Count</CTableHeaderCell>
-                        <CTableHeaderCell scope="col">Highest Risk</CTableHeaderCell>
+                        <CTableHeaderCell scope="col">Risk Level</CTableHeaderCell>
                         <CTableHeaderCell scope="col" className="text-center">Actions</CTableHeaderCell>
                       </CTableRow>
                     </CTableHead>
@@ -262,9 +262,9 @@ const Overview = () => {
                               <CBadge color={getRiskBadgeColor(asset.highestRisk)} className="me-1">
                                 {asset.highestRisk}
                               </CBadge>
-                              {asset.maxCvss > 0 && (
+                              {asset.maxRiskLevel > 0 && (
                                 <small className="text-muted">
-                                  (CVSS: {asset.maxCvss})
+                                  (CVSS: {asset.maxRiskLevel})
                                 </small>
                               )}
                             </CTableDataCell>
@@ -279,11 +279,11 @@ const Overview = () => {
                               </CButton>
                             </CTableDataCell>
                           </CTableRow>
-
+{/*
                           <CButton color="danger" onClick={handleReset}>
                             Reset App
                           </CButton>
-                          
+*/}
                           {/* Expandable CVE Details */}
                           {asset.hasCVEs && (
                             <CTableRow>
@@ -299,9 +299,9 @@ const Overview = () => {
                                             <CBadge color={getCVSSBadgeColor(cve.cvss)} className="me-2">
                                               CVSS: {cve.cvss || 'N/A'}
                                             </CBadge>
-                                            {cve.epss && (
+                                            {cve.riskLevel && (
                                               <CBadge color="secondary" className="me-2">
-                                                EPSS: {(cve.epss * 100).toFixed(1)}%
+                                                Risk Level: {cve.riskLevel}
                                               </CBadge>
                                             )}
                                             <CBadge color={getRiskBadgeColor(getCVSSRiskLevel(cve.cvss))}>

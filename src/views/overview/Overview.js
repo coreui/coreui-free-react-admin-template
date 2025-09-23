@@ -24,7 +24,7 @@ import { useNavigation } from '../../hooks/useNavigation'
 
 const Overview = () => {
   const navigate = useNavigate()
-  const { assets } = useNavigation()
+  const { assets, departments } = useNavigation()
   const [expandedAssets, setExpandedAssets] = React.useState({})
 
   // Function to determine risk level based on CVSS score
@@ -61,12 +61,13 @@ const Overview = () => {
       const cves = asset.vulnerabilities?.cves || []
       const hasCVEs = cves.length > 0
       
-      // Calculate highest risk level
+      // Calculate highest risk level - Fix field names
       let highestRisk = 'None'
       let maxRiskLevel = 0
       
       if (hasCVEs) {
-        maxRiskLevel = Math.max(...cves.map(cve => cve.riskLevel || 0))
+        // Fix: Use risk_level instead of riskLevel, fallback to cvss
+        maxRiskLevel = Math.max(...cves.map(cve => cve.risk_level || cve.cvss || 0))
         highestRisk = getCVSSRiskLevel(maxRiskLevel)
       }
 
@@ -76,7 +77,8 @@ const Overview = () => {
         hasCVEs,
         highestRisk,
         maxRiskLevel,
-        cves: cves.sort((a, b) => (b.riskLevel || 0) - (a.riskLevel || 0)) // Sort by Risk Level descending
+        // Fix: Sort by risk_level instead of riskLevel
+        cves: cves.sort((a, b) => (b.risk_level || b.cvss || 0) - (a.risk_level || a.cvss || 0))
       }
     })
   }, [assets])
@@ -216,7 +218,7 @@ const Overview = () => {
                               <div>
                                 <strong>{asset.name}</strong>
                                 <br />
-                                <small className="text-muted">
+                                <small className="text-dark">
                                   {asset.vendor} {asset.model && `- ${asset.model}`}
                                 </small>
                               </div>
@@ -263,7 +265,7 @@ const Overview = () => {
                                 {asset.highestRisk}
                               </CBadge>
                               {asset.maxRiskLevel > 0 && (
-                                <small className="text-muted">
+                                <small className="text-dark">
                                   (CVSS: {asset.maxRiskLevel})
                                 </small>
                               )}
@@ -293,20 +295,55 @@ const Overview = () => {
                                     <h6>CVE Details for {asset.name}:</h6>
                                     <CListGroup flush>
                                       {asset.cves.slice(0, 10).map((cve, index) => (
-                                        <CListGroupItem key={index} className="d-flex justify-content-between align-items-center">
-                                          <div>
-                                            <code className="text-primary me-2">{cve.cve_id}</code>
-                                            <CBadge color={getCVSSBadgeColor(cve.cvss)} className="me-2">
-                                              CVSS: {cve.cvss || 'N/A'}
-                                            </CBadge>
-                                            {cve.riskLevel && (
-                                              <CBadge color="secondary" className="me-2">
-                                                Risk Level: {cve.riskLevel}
+                                        <CListGroupItem key={index} className="d-flex justify-content-between align-items-start">
+                                          <div className="flex-grow-1">
+                                            <div className="d-flex align-items-center gap-2 mb-2">
+                                              <code className="text-primary me-2">{cve.cve_id}</code>
+                                              
+                                              {/* CVSS Badge */}
+                                              <CBadge color={getCVSSBadgeColor(cve.cvss)} className="me-2">
+                                                CVSS: {cve.cvss || 'N/A'}
                                               </CBadge>
-                                            )}
-                                            <CBadge color={getRiskBadgeColor(getCVSSRiskLevel(cve.cvss))}>
-                                              {getCVSSRiskLevel(cve.cvss)}
-                                            </CBadge>
+                                              
+                                              {/* Risk Level Badge - Fix field name */}
+                                              {(cve.risk_level !== undefined && cve.risk_level !== null) && (
+                                                <CBadge color="danger" className="me-2">
+                                                  Risk: {cve.risk_level.toFixed(2)}
+                                                </CBadge>
+                                              )}
+                                              
+                                              {/* EPSS Badge */}
+                                              {(cve.epss !== undefined && cve.epss !== null) && (
+                                                <CBadge color="warning" className="me-2">
+                                                  EPSS: {(cve.epss * 100).toFixed(2)}%
+                                                </CBadge>
+                                              )}
+                                              
+                                              {/* Impact Score Badge */}
+                                              {(cve.impact_score !== undefined && cve.impact_score !== null) && (
+                                                <CBadge color="info" className="me-2">
+                                                  Impact: {cve.impact_score.toFixed(2)}
+                                                </CBadge>
+                                              )}
+                                              
+                                              {/* Exploitability Score Badge - Add this missing field */}
+                                              {(cve.exploitability_score !== undefined && cve.exploitability_score !== null) && (
+                                                <CBadge color="secondary" className="me-2">
+                                                  Exploit: {cve.exploitability_score.toFixed(2)}
+                                                </CBadge>
+                                              )}
+                                              
+                                              {/* Overall Risk Level Badge */}
+                                              <CBadge color={getRiskBadgeColor(getCVSSRiskLevel(cve.risk_level || cve.cvss))}>
+                                                {getCVSSRiskLevel(cve.risk_level || cve.cvss)}
+                                              </CBadge>
+                                            </div>
+                                            
+                                            {/* Description */}
+                                            <div className="small text-muted mt-1">
+                                              {cve.description?.substring(0, 150)}
+                                              {cve.description?.length > 150 ? '...' : ''}
+                                            </div>
                                           </div>
                                         </CListGroupItem>
                                       ))}

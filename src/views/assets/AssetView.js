@@ -60,10 +60,11 @@ const AssetDetail = () => {
       // Calculate risk level based on vulnerabilities if they exist
       riskLevel: hasVulnerabilities && asset.vulnerabilities.cves?.length > 0 
         ? (() => {
-            const mexRiskLevel = Math.max(...asset.vulnerabilities.cves.map(cve => cve.riskLevel || 0))
-            if (mexRiskLevel >= 9.0) return 'Critical'
-            if (mexRiskLevel >= 7.0) return 'High' 
-            if (mexRiskLevel >= 4.0) return 'Medium'
+            // Fix: Use risk_level instead of riskLevel
+            const maxRiskLevel = Math.max(...asset.vulnerabilities.cves.map(cve => cve.risk_level || cve.cvss || 0))
+            if (maxRiskLevel >= 9.0) return 'Critical'
+            if (maxRiskLevel >= 7.0) return 'High' 
+            if (maxRiskLevel >= 4.0) return 'Medium'
             return 'Low'
           })()
         : 'Secure'
@@ -333,6 +334,8 @@ const AssetDetail = () => {
                                         <div className="flex-grow-1">
                                           <div className="d-flex align-items-center gap-2 mb-2">
                                             <code className="text-primary fw-bold">{cve.cve_id}</code>
+                                            
+                                            {/* CVSS Score Badge */}
                                             <CBadge 
                                               color={
                                                 cve.cvss >= 9.0 ? 'danger' : 
@@ -342,15 +345,40 @@ const AssetDetail = () => {
                                             >
                                               CVSS: {cve.cvss || 'N/A'}
                                             </CBadge>
-                                            {cve.epss && (
-                                              <CBadge color="light" className="text-dark">
-                                                EPSS: {cve.impactscore}
+                                            
+                                            {/* Risk Level Badge - Fix the field name */}
+                                            {(cve.risk_level !== undefined && cve.risk_level !== null) && (
+                                              <CBadge color="danger" className="text-white">
+                                                Risk: {cve.risk_level.toFixed(2)}
                                               </CBadge>
                                             )}
+                                            
+                                            {/* EPSS Badge */}
+                                            {(cve.epss !== undefined && cve.epss !== null) && (
+                                              <CBadge color="warning">
+                                                EPSS: {(cve.epss * 100).toFixed(2)}%
+                                              </CBadge>
+                                            )}
+                                            
+                                            {/* Impact Score Badge - Fix the field name */}
+                                            {(cve.impact_score !== undefined && cve.impact_score !== null) && (
+                                              <CBadge color="info">
+                                                Impact: {cve.impact_score.toFixed(2)}
+                                              </CBadge>
+                                            )}
+                                            
+                                            {/* Exploitability Score Badge - Add this missing field */}
+                                            {(cve.exploitability_score !== undefined && cve.exploitability_score !== null) && (
+                                              <CBadge color="light" className="text-dark">
+                                                Exploit: {cve.exploitability_score.toFixed(2)}
+                                              </CBadge>
+                                            )}
+                                            
                                             <CButton size="sm" color="link" className="p-0 ms-auto">
                                               {isExpanded ? 'Less' : 'More'}
                                             </CButton>
                                           </div>
+                                          
                                           <p className="mb-1 small text-muted">
                                             {isExpanded 
                                               ? cve.description 
@@ -364,14 +392,15 @@ const AssetDetail = () => {
                                                 <CCol md={6}>
                                                   <strong>CVE ID:</strong> <code>{cve.cve_id}</code><br/>
                                                   <strong>CVSS Score:</strong> {cve.cvss || 'N/A'}<br/>
+                                                  {/* Fix field names to match backend */}
+                                                  <strong>Risk Level:</strong> {cve.risk_level?.toFixed(2) || 'N/A'}<br/>
+                                                  <strong>EPSS:</strong> {cve.epss ? `${(cve.epss * 100).toFixed(2)}%` : 'N/A'}<br/>
+                                                  <strong>Impact Score:</strong> {cve.impact_score?.toFixed(2) || 'N/A'}<br/>
+                                                  <strong>Exploitability Score:</strong> {cve.exploitability_score?.toFixed(2) || 'N/A'}<br/>
+                                                  
                                                   {cve.cvss_vector && (
                                                     <>
                                                       <strong>CVSS Vector:</strong> <code className="small">{cve.cvss_vector}</code><br/>
-                                                    </>
-                                                  )}
-                                                  {cve.epss && (
-                                                    <>
-                                                      <strong>Risk Level:</strong> {(cve.epss).toFixed(2)}%<br/>
                                                     </>
                                                   )}
                                                 </CCol>

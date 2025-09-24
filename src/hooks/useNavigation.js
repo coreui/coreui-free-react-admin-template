@@ -18,6 +18,22 @@ export const useNavigation = () => {
     }
   })
 
+  const calculateNormalizedRiskLevel = (cve) => {
+    // Normalize EPSS (0-1) to (0-5)
+    const normalizedEpss = (cve.epss || 0) * 5
+    
+    // Normalize Impact Score (0-10) to (0-5)
+    const normalizedImpact = ((cve.impact_score || 0) / 10) * 5
+    
+    // Normalize Exploitability Score (0-10) to (0-5)
+    const normalizedExploit = ((cve.exploitability_score || 0) / 10) * 5
+    
+    // Calculate risk level: epss * impact * exploitability (0-125)
+    const riskLevel = normalizedEpss * normalizedImpact * normalizedExploit
+    
+    return riskLevel
+  }
+
   const [assets, setAssets] = useState(() => {
     try {
       const savedAssets = localStorage.getItem(ASSETS_STORAGE_KEY)
@@ -53,6 +69,17 @@ export const useNavigation = () => {
   }
 
   const addAsset = (apiResponse) => {
+    // Process CVEs to add normalized risk levels
+    const processedCVEs = (apiResponse.cves || []).map(cve => ({
+      ...cve,
+      normalized_risk_level: calculateNormalizedRiskLevel(cve)
+    }))
+    
+    // Calculate overall device risk level
+    const overallRiskLevel = processedCVEs.length > 0 
+      ? processedCVEs.reduce((sum, cve) => sum + cve.normalized_risk_level, 0) / processedCVEs.length
+      : 0
+
     // Transform API response to match your current asset structure
     const asset = {
       id: apiResponse.device?.id?.toString() || `asset-${Date.now()}`,
@@ -63,15 +90,15 @@ export const useNavigation = () => {
       type: apiResponse.device?.type || 'Unknown',
       department: apiResponse.device?.department || '',
       description: apiResponse.device?.description || '',
-      risk_level: apiResponse.device?.risk_level || 0,
+      risk_level: overallRiskLevel, // Use calculated overall risk level
       os_family: apiResponse.device?.os_family || '',
 
       // Store scan parameters for background refreshes
       scan_params: apiResponse.scan_params || {},
       
-      // Store full API response for detailed view
+      // Store processed vulnerability data
       vulnerabilities: {
-        cves: apiResponse.cves || [],
+        cves: processedCVEs,
         cwes: apiResponse.cwes || [],
         capecs: apiResponse.capecs || [],
         attacks: apiResponse.attacks || []
@@ -89,13 +116,24 @@ export const useNavigation = () => {
 
   // Add new function to update existing asset
   const updateAsset = (assetId, apiResponse) => {
+    // Process CVEs to add normalized risk levels
+    const processedCVEs = (apiResponse.cves || []).map(cve => ({
+      ...cve,
+      normalized_risk_level: calculateNormalizedRiskLevel(cve)
+    }))
+    
+    // Calculate overall device risk level
+    const overallRiskLevel = processedCVEs.length > 0 
+      ? processedCVEs.reduce((sum, cve) => sum + cve.normalized_risk_level, 0) / processedCVEs.length
+      : 0
+
     setAssets(prev => prev.map(asset => {
       if (asset.id === assetId) {
         return {
           ...asset,
-          // Update vulnerability data
+          // Update vulnerability data with normalized risk levels
           vulnerabilities: {
-            cves: apiResponse.cves || [],
+            cves: processedCVEs,
             cwes: apiResponse.cwes || [],
             capecs: apiResponse.capecs || [],
             attacks: apiResponse.attacks || []
@@ -103,9 +141,11 @@ export const useNavigation = () => {
           statistics: apiResponse.statistics || {},
           scan_time: apiResponse.scan_time || 0,
           last_updated: new Date().toISOString(),
+          risk_level: overallRiskLevel, // Update overall risk level
           // Update device info if provided
           ...(apiResponse.device && {
-            risk_level: apiResponse.device.risk_level,
+            os_family: apiResponse.device.os_family,
+            version: apiResponse.device.version,
             description: apiResponse.device.description
           })
         }
@@ -193,7 +233,19 @@ export const useNavigation = () => {
 
   // Function to remove a specific asset
   const removeAsset = (assetId) => {
-    setAssets(prev => prev.filter(asset => asset.id !== assetId))
+    setAssets(prev => {
+      const updatedAssets = prev.filter(asset => asset.id !== assetId)
+      
+      // Clear all related vulnerability data from localStorage or any other storage
+      // This ensures CVEs, CWEs, CAPECs, and ATT&CK data are completely removed
+      try {
+        localStorage.setItem(ASSETS_STORAGE_KEY, JSON.stringify(updatedAssets))
+      } catch (error) {
+        console.error('Error saving assets after removal:', error)
+      }
+      
+      return updatedAssets
+    })
   }
 
   const dynamicNavItems = useMemo(() => {

@@ -24,7 +24,8 @@ import { useNavigation } from '../../hooks/useNavigation'
 const AssetDetail = () => {
   const { assetId } = useParams()
   const navigate = useNavigate()
-  const { assets } = useNavigation()
+  const { assets, updateAsset } = useNavigation()
+  const [isSaving, setIsSaving] = useState(false)
   const [expandedItems, setExpandedItems] = useState({})
 
   const asset = assets.find(a => a.id === assetId)
@@ -49,6 +50,14 @@ const AssetDetail = () => {
     const lastScanDate = asset.last_updated ? new Date(asset.last_updated).toLocaleDateString() : new Date().toLocaleDateString()
     const osVersion = asset.version || `${asset.vendor || 'Generic'} OS v${(seed % 5) + 1}.${(seed % 10)}`
     
+    // Use overall device risk level for risk assessment
+    const deviceRiskLevel = asset.risk_level || 0
+    let riskLevel = 'Secure'
+    if (deviceRiskLevel >= 100) riskLevel = 'Critical'
+    else if (deviceRiskLevel >= 75) riskLevel = 'High'
+    else if (deviceRiskLevel >= 50) riskLevel = 'Medium'
+    else if (deviceRiskLevel >= 0) riskLevel = 'Low'
+    
     return {
       ...asset,
       hasVulnerabilities,
@@ -57,17 +66,8 @@ const AssetDetail = () => {
       macAddress,
       lastScanDate,
       osVersion,
-      // Calculate risk level based on vulnerabilities if they exist
-      riskLevel: hasVulnerabilities && asset.vulnerabilities.cves?.length > 0 
-        ? (() => {
-            // Fix: Use risk_level instead of riskLevel
-            const maxRiskLevel = Math.max(...asset.vulnerabilities.cves.map(cve => cve.risk_level || cve.cvss || 0))
-            if (maxRiskLevel >= 9.0) return 'Critical'
-            if (maxRiskLevel >= 7.0) return 'High' 
-            if (maxRiskLevel >= 4.0) return 'Medium'
-            return 'Low'
-          })()
-        : 'Secure'
+      riskLevel,
+      deviceRiskLevel
     }
   }, [asset])
 
@@ -85,7 +85,8 @@ const AssetDetail = () => {
   const [editableFields, setEditableFields] = useState({
     ipAddress: enrichedAsset?.ipAddress || '',
     macAddress: enrichedAsset?.macAddress || '',
-    osVersion: enrichedAsset?.osVersion || ''
+    osVersion: enrichedAsset?.osVersion || '',
+    osFamily: enrichedAsset?.osFamily || ''
   })
   const [isEditing, setIsEditing] = useState(false)
 
@@ -94,7 +95,8 @@ const AssetDetail = () => {
       setEditableFields({
         ipAddress: enrichedAsset.ipAddress,
         macAddress: enrichedAsset.macAddress,
-        osVersion: enrichedAsset.osVersion
+        osVersion: enrichedAsset.osVersion,
+        osFamily: enrichedAsset.osFamily
       })
     }
   }, [enrichedAsset])
@@ -105,6 +107,58 @@ const AssetDetail = () => {
       ...prev,
       [key]: !prev[key]
     }))
+  }
+
+  const handleSave = async () => {
+    setIsSaving(true)
+    
+    // Check if OS version or OS family changed
+    const originalOsVersion = enrichedAsset.version || enrichedAsset.osVersion
+    const originalOsFamily = enrichedAsset.os_family
+    
+    const osVersionChanged = editableFields.osVersion !== originalOsVersion
+    const osFamilyChanged = editableFields.osFamily !== originalOsFamily
+    
+    if (osVersionChanged || osFamilyChanged) {
+      try {
+        // Make API call to get updated vulnerability data
+        const response = await fetch('http://localhost:8000/api/v1/security/scan-by-os', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            device_name: enrichedAsset.scan_params?.device_name || enrichedAsset.name,
+            h_cpe: enrichedAsset.scan_params?.h_cpe,
+            vendor: enrichedAsset.scan_params?.vendor || enrichedAsset.vendor,
+            model: enrichedAsset.scan_params?.model || enrichedAsset.model,
+            os_family: editableFields.osFamily,
+            version: editableFields.osVersion,
+            department: enrichedAsset.department
+          })
+        })
+
+        if (response.ok) {
+          const apiResponse = await response.json()
+          if (apiResponse.success) {
+            // Update asset with new vulnerability data
+            updateAsset(enrichedAsset.id, {
+              ...apiResponse,
+              device: {
+                ...apiResponse.device,
+                os_family: editableFields.osFamily,
+                version: editableFields.osVersion
+              }
+            })
+          }
+        }
+      } catch (error) {
+        console.error('Error updating asset vulnerabilities:', error)
+      }
+    }
+    
+    setIsSaving(false)
+    setIsEditing(false)
   }
 
   if (!enrichedAsset) {
@@ -213,14 +267,19 @@ const AssetDetail = () => {
                       variant="outline"
                       onClick={() => {
                         if (isEditing) {
-                          // Save logic here if needed
-                          setIsEditing(false)
+                          handleSave()
                         } else {
                           setIsEditing(true)
                         }
                       }}
+                      disabled={isSaving}
                     >
-                      {isEditing ? "Save" : "Edit"}
+                      {isSaving ? (
+                        <>
+                          <CSpinner size="sm" className="me-1" />
+                          Updating...
+                        </>
+                      ) : isEditing ? "Save" : "Edit"}
                     </CButton>
                   </div>
                   
@@ -249,6 +308,19 @@ const AssetDetail = () => {
                         />
                       ) : (
                         <code>{editableFields.macAddress}</code>
+                      )}
+                    </CListGroupItem>
+                    <CListGroupItem className="d-flex justify-content-between align-items-center">
+                      <strong>OS Family:</strong>
+                      {isEditing ? (
+                        <CFormInput
+                          size="sm"
+                          value={editableFields.osFamily}
+                          onChange={(e) => setEditableFields(prev => ({...prev, osFamily: e.target.value}))}
+                          style={{ width: '150px' }}
+                        />
+                      ) : (
+                        <span>{editableFields.osFamily || 'Not specified'}</span>
                       )}
                     </CListGroupItem>
                     <CListGroupItem className="d-flex justify-content-between align-items-center">
@@ -347,9 +419,9 @@ const AssetDetail = () => {
                                             </CBadge>
                                             
                                             {/* Risk Level Badge - Fix the field name */}
-                                            {(cve.risk_level !== undefined && cve.risk_level !== null) && (
+                                            {(cve.normalized_risk_level !== undefined && cve.normalized_risk_level !== null) && (
                                               <CBadge color="danger" className="text-white">
-                                                Risk: {cve.risk_level.toFixed(2)}
+                                                Risk Level: {cve.normalized_risk_level.toFixed(2)}
                                               </CBadge>
                                             )}
                                             
@@ -370,7 +442,7 @@ const AssetDetail = () => {
                                             {/* Exploitability Score Badge - Add this missing field */}
                                             {(cve.exploitability_score !== undefined && cve.exploitability_score !== null) && (
                                               <CBadge color="light" className="text-dark">
-                                                Exploit: {cve.exploitability_score.toFixed(2)}
+                                                Exploitability: {cve.exploitability_score.toFixed(2)}
                                               </CBadge>
                                             )}
                                             
@@ -393,7 +465,7 @@ const AssetDetail = () => {
                                                   <strong>CVE ID:</strong> <code>{cve.cve_id}</code><br/>
                                                   <strong>CVSS Score:</strong> {cve.cvss || 'N/A'}<br/>
                                                   {/* Fix field names to match backend */}
-                                                  <strong>Risk Level:</strong> {cve.risk_level?.toFixed(2) || 'N/A'}<br/>
+                                                  <strong>Risk Level:</strong> {cve.normalized_risk_level?.toFixed(2) || 'N/A'}<br/>
                                                   <strong>EPSS:</strong> {cve.epss ? `${(cve.epss * 100).toFixed(2)}%` : 'N/A'}<br/>
                                                   <strong>Impact Score:</strong> {cve.impact_score?.toFixed(2) || 'N/A'}<br/>
                                                   <strong>Exploitability Score:</strong> {cve.exploitability_score?.toFixed(2) || 'N/A'}<br/>

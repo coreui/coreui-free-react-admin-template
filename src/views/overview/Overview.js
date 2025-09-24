@@ -29,12 +29,12 @@ const Overview = () => {
 
   // Function to determine risk level based on CVSS score
   const getCVSSRiskLevel = (riskLevel) => {
-    if (riskLevel >= 9.0) return 'Critical'
-    if (riskLevel >= 7.0) return 'High' 
-    if (riskLevel >= 4.0) return 'Medium'
-    if (riskLevel >= 0.1) return 'Low'
-    return 'None'
-  }
+  if (riskLevel >= 100) return 'Critical'  
+  if (riskLevel >= 75) return 'High'
+  if (riskLevel >= 50) return 'Medium'
+  if (riskLevel >= 0) return 'Low'
+  return 'None'
+}
 
   // Function to get badge color based on risk level
   const getRiskBadgeColor = (riskLevel) => {
@@ -49,38 +49,35 @@ const Overview = () => {
 
   // Function to get CVSS badge color
   const getCVSSBadgeColor = (riskLevel) => {
-    if (riskLevel >= 9.0) return 'danger'
-    if (riskLevel >= 7.0) return 'warning' 
-    if (riskLevel >= 4.0) return 'info'
+    if (riskLevel >= 100) return 'danger'
+    if (riskLevel >= 75) return 'warning'
+    if (riskLevel >= 50) return 'info'
     return 'success'
   }
 
   // Process assets to include vulnerability summary
   const processedAssets = useMemo(() => {
-    return assets.map(asset => {
-      const cves = asset.vulnerabilities?.cves || []
-      const hasCVEs = cves.length > 0
-      
-      // Calculate highest risk level - Fix field names
-      let highestRisk = 'None'
-      let maxRiskLevel = 0
-      
-      if (hasCVEs) {
-        // Fix: Use risk_level instead of riskLevel, fallback to cvss
-        maxRiskLevel = Math.max(...cves.map(cve => cve.risk_level || cve.cvss || 0))
-        highestRisk = getCVSSRiskLevel(maxRiskLevel)
-      }
+    return assets
+      .map(asset => {
+        const cves = asset.vulnerabilities?.cves || []
+        const hasCVEs = cves.length > 0
+        
+        // Use the overall device risk level calculated in useNavigation
+        const maxRiskLevel = asset.risk_level || 0
+        const highestRisk = getCVSSRiskLevel(maxRiskLevel)
 
-      return {
-        ...asset,
-        cveCount: cves.length,
-        hasCVEs,
-        highestRisk,
-        maxRiskLevel,
-        // Fix: Sort by risk_level instead of riskLevel
-        cves: cves.sort((a, b) => (b.risk_level || b.cvss || 0) - (a.risk_level || a.cvss || 0))
-      }
-    })
+        return {
+          ...asset,
+          cveCount: cves.length,
+          hasCVEs,
+          highestRisk,
+          maxRiskLevel,
+          // Sort CVEs by normalized risk level
+          cves: cves.sort((a, b) => (b.normalized_risk_level || 0) - (a.normalized_risk_level || 0))
+        }
+      })
+      // Sort assets by overall risk level (highest risk first)
+      .sort((a, b) => (b.maxRiskLevel || 0) - (a.maxRiskLevel || 0))
   }, [assets])
 
   // Calculate summary statistics
@@ -306,9 +303,9 @@ const Overview = () => {
                                               </CBadge>
                                               
                                               {/* Risk Level Badge - Fix field name */}
-                                              {(cve.risk_level !== undefined && cve.risk_level !== null) && (
+                                              {(cve.normalized_risk_level !== undefined && cve.normalized_risk_level !== null) && (
                                                 <CBadge color="danger" className="me-2">
-                                                  Risk: {cve.risk_level.toFixed(2)}
+                                                  Risk Level: {cve.normalized_risk_level.toFixed(2)}
                                                 </CBadge>
                                               )}
                                               

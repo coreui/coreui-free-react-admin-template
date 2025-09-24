@@ -1,162 +1,4 @@
-/*import React from 'react'
-import { useParams } from 'react-router-dom'
-import { CCard, CCardBody, CCardHeader } from '@coreui/react'
-
-const AssetView = ({ assets }) => {
-  const { assetId } = useParams()
-  const asset = assets?.find(a => a.id === assetId)
-
-  if (!asset) {
-    return (
-      <CCard>
-        <CCardHeader>Asset Not Found</CCardHeader>
-        <CCardBody>The requested asset could not be found.</CCardBody>
-      </CCard>
-    )
-  }
-
-  return (
-    <CCard>
-      <CCardHeader>
-        <h4>{asset.name}</h4>
-      </CCardHeader>
-      <CCardBody>
-        <div className="row">
-          <div className="col-md-6">
-            <p><strong>Vendor:</strong> {asset.vendor}</p>
-            <p><strong>Device Type:</strong> {asset.deviceType}</p>
-          </div>
-          <div className="col-md-6">
-            <p><strong>Model:</strong> {asset.model}</p>
-            <p><strong>Department:</strong> {asset.department}</p>
-          </div>
-        </div>
-        { Add more asset details here }
-      </CCardBody>
-    </CCard>
-  )
-}
-
-export default AssetView*/
-
-/*
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { 
-  CCard, 
-  CCardBody, 
-  CCardHeader, 
-  CRow, 
-  CCol,
-  CBreadcrumb,
-  CBreadcrumbItem,
-  CAlert
-} from '@coreui/react'
-
-const AssetDetail = () => {
-  const { assetId } = useParams()
-  
-  // Get asset data from localStorage (for now)
-  const getAssetData = () => {
-    try {
-      const savedAssets = localStorage.getItem('coreui_assets')
-      const assets = savedAssets ? JSON.parse(savedAssets) : []
-      return assets.find(asset => asset.id === assetId)
-    } catch (error) {
-      console.error('Error loading asset data:', error)
-      return null
-    }
-  }
-
-  const asset = getAssetData()
-
-  if (!asset) {
-    return (
-      <div>
-        <CBreadcrumb>
-          <CBreadcrumbItem href="/dashboard">Home</CBreadcrumbItem>
-          <CBreadcrumbItem active>Asset Not Found</CBreadcrumbItem>
-        </CBreadcrumb>
-        
-        <CAlert color="danger">
-          <h4>Asset Not Found</h4>
-          <p>The requested asset could not be found or may have been removed.</p>
-        </CAlert>
-      </div>
-    )
-  }
-
-  return (
-    <div>
-      <CBreadcrumb>
-        <CBreadcrumbItem href="/dashboard">Home</CBreadcrumbItem>
-        <CBreadcrumbItem active>{asset.name}</CBreadcrumbItem>
-      </CBreadcrumb>
-
-      <CRow>
-        <CCol xs={12}>
-          <CCard>
-            <CCardHeader>
-              <h4>{asset.name}</h4>
-              <small className="text-muted">Asset Details</small>
-            </CCardHeader>
-            <CCardBody>
-              <CRow>
-                <CCol md={6}>
-                  <div className="mb-3">
-                    <strong>Vendor:</strong>
-                    <div>{asset.vendor}</div>
-                  </div>
-                  <div className="mb-3">
-                    <strong>Device Type:</strong>
-                    <div>{asset.deviceType}</div>
-                  </div>
-                </CCol>
-                <CCol md={6}>
-                  <div className="mb-3">
-                    <strong>Model:</strong>
-                    <div>{asset.model}</div>
-                  </div>
-                  <div className="mb-3">
-                    <strong>Department:</strong>
-                    <div>{asset.department}</div>
-                  </div>
-                </CCol>
-              </CRow>
-
-              { Add more sections as needed }
-              <CRow className="mt-4">
-                <CCol xs={12}>
-                  <CCard>
-                    <CCardHeader>
-                      <h5>Additional Information</h5>
-                    </CCardHeader>
-                    <CCardBody>
-                      <p>Add more asset-specific content here such as:</p>
-                      <ul>
-                        <li>Serial numbers</li>
-                        <li>Purchase date</li>
-                        <li>Warranty information</li>
-                        <li>Location details</li>
-                        <li>Maintenance history</li>
-                        <li>Usage statistics</li>
-                      </ul>
-                    </CCardBody>
-                  </CCard>
-                </CCol>
-              </CRow>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-    </div>
-  )
-}
-
-export default AssetDetail*/
-
-
-import React, { useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { 
   CCard, 
@@ -168,7 +10,14 @@ import {
   CRow,
   CCol,
   CListGroup,
-  CListGroupItem
+  CListGroupItem,
+  CFormInput,
+  CTabs,
+  CTabList,
+  CTab,
+  CTabContent,
+  CTabPanel,
+  CAlert
 } from '@coreui/react'
 import { useNavigation } from '../../hooks/useNavigation'
 
@@ -176,6 +25,7 @@ const AssetDetail = () => {
   const { assetId } = useParams()
   const navigate = useNavigate()
   const { assets } = useNavigation()
+  const [expandedItems, setExpandedItems] = useState({})
 
   const asset = assets.find(a => a.id === assetId)
 
@@ -183,33 +33,79 @@ const AssetDetail = () => {
   const enrichedAsset = useMemo(() => {
     if (!asset) return null
     
+    // Check if we have vulnerability data
+    const hasVulnerabilities = asset.vulnerabilities && (
+      (asset.vulnerabilities.cves && asset.vulnerabilities.cves.length > 0) ||
+      (asset.vulnerabilities.cwes && asset.vulnerabilities.cwes.length > 0) ||
+      (asset.vulnerabilities.capecs && asset.vulnerabilities.capecs.length > 0) ||
+      (asset.vulnerabilities.attacks && asset.vulnerabilities.attacks.length > 0)
+    )
+    
+    // Generate consistent mock network data based on asset ID
     const seed = asset.id.split('').reduce((a, b) => a + b.charCodeAt(0), 0)
-    const cveYear = 2020 + (seed % 5)
-    const cveNumber = (seed % 9999) + 1000
-    const cve = `CVE-${cveYear}-${cveNumber}`
-    
-    const riskLevels = ['Low', 'Medium', 'High', 'Critical']
-    const riskIndex = seed % 4
-    const riskLevel = riskLevels[riskIndex]
-    
-    // Generate additional mock data for detailed view
     const serialNumber = `SN${(seed % 999999).toString().padStart(6, '0')}`
     const ipAddress = `192.168.${(seed % 255) + 1}.${((seed * 7) % 255) + 1}`
     const macAddress = `00:${((seed % 255).toString(16).padStart(2, '0'))}:${(((seed * 3) % 255).toString(16).padStart(2, '0'))}:${(((seed * 5) % 255).toString(16).padStart(2, '0'))}:${(((seed * 7) % 255).toString(16).padStart(2, '0'))}:${(((seed * 11) % 255).toString(16).padStart(2, '0'))}`
-    const lastScanDate = new Date(Date.now() - (seed % 30) * 24 * 60 * 60 * 1000).toLocaleDateString()
-    const osVersion = `OS v${(seed % 5) + 1}.${(seed % 10)}.${(seed % 100)}`
+    const lastScanDate = asset.last_updated ? new Date(asset.last_updated).toLocaleDateString() : new Date().toLocaleDateString()
+    const osVersion = asset.version || `${asset.vendor || 'Generic'} OS v${(seed % 5) + 1}.${(seed % 10)}`
     
     return {
       ...asset,
-      cve,
-      riskLevel,
+      hasVulnerabilities,
       serialNumber,
       ipAddress,
       macAddress,
       lastScanDate,
-      osVersion
+      osVersion,
+      // Calculate risk level based on vulnerabilities if they exist
+      riskLevel: hasVulnerabilities && asset.vulnerabilities.cves?.length > 0 
+        ? (() => {
+            // Fix: Use risk_level instead of riskLevel
+            const maxRiskLevel = Math.max(...asset.vulnerabilities.cves.map(cve => cve.risk_level || cve.cvss || 0))
+            if (maxRiskLevel >= 9.0) return 'Critical'
+            if (maxRiskLevel >= 7.0) return 'High' 
+            if (maxRiskLevel >= 4.0) return 'Medium'
+            return 'Low'
+          })()
+        : 'Secure'
     }
   }, [asset])
+
+  const [activeTab, setActiveTab] = useState('cves')
+  useEffect(() => {
+    if(!enrichedAsset) return
+    const defaultTab = enrichedAsset.vulnerabilities.cves?.length ? 'cves'
+      : enrichedAsset.vulnerabilities.cwes?.length ? 'cwes'
+      : enrichedAsset.vulnerabilities.capecs?.length ? 'capecs'
+      : enrichedAsset.vulnerabilities.attacks?.length ? 'attacks'
+      : 'cves'
+    setActiveTab(defaultTab)
+  }, [enrichedAsset])
+
+  const [editableFields, setEditableFields] = useState({
+    ipAddress: enrichedAsset?.ipAddress || '',
+    macAddress: enrichedAsset?.macAddress || '',
+    osVersion: enrichedAsset?.osVersion || ''
+  })
+  const [isEditing, setIsEditing] = useState(false)
+
+  useEffect(() => {
+    if (enrichedAsset) {
+      setEditableFields({
+        ipAddress: enrichedAsset.ipAddress,
+        macAddress: enrichedAsset.macAddress,
+        osVersion: enrichedAsset.osVersion
+      })
+    }
+  }, [enrichedAsset])
+
+  const toggleItemExpansion = (type, index) => {
+    const key = `${type}-${index}`
+    setExpandedItems(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }))
+  }
 
   if (!enrichedAsset) {
     return (
@@ -257,8 +153,22 @@ const AssetDetail = () => {
             <CCardHeader>
               <div className="d-flex justify-content-between align-items-center">
                 <div>
-                  <h4 className="mb-1">{enrichedAsset.name}</h4>
-                  <CBadge color="secondary">{enrichedAsset.department}</CBadge>
+                  <div className="d-flex align-items-center gap-2 mb-1">
+                    <h4 className="mb-0">{enrichedAsset.name}</h4>
+                    {enrichedAsset.hasVulnerabilities ? (
+                      <CBadge color="warning" size="sm">
+                        ⚠️ Vulnerabilities Found
+                      </CBadge>
+                    ) : (
+                      <CBadge color="success" size="sm">
+                        ✅ Secure
+                      </CBadge>
+                    )}
+                  </div>
+                  <div className="d-flex gap-2">
+                    <CBadge color="secondary">{enrichedAsset.department}</CBadge>
+                    <CBadge color="info">{enrichedAsset.type}</CBadge>
+                  </div>
                 </div>
                 <CButton 
                   color="secondary" 
@@ -270,17 +180,18 @@ const AssetDetail = () => {
               </div>
             </CCardHeader>
             <CCardBody>
-              <CRow>
+              {/* Device Information Section */}
+              <CRow className="mb-4">
                 <CCol md={6}>
-                  <h5>Basic Information</h5>
+                  <h5>Device Information</h5>
                   <CListGroup flush>
+                    <CListGroupItem className="d-flex justify-content-between">
+                      <strong>Name:</strong>
+                      <span>{enrichedAsset.name}</span>
+                    </CListGroupItem>
                     <CListGroupItem className="d-flex justify-content-between">
                       <strong>Vendor:</strong>
                       <span>{enrichedAsset.vendor}</span>
-                    </CListGroupItem>
-                    <CListGroupItem className="d-flex justify-content-between">
-                      <strong>Device Type:</strong>
-                      <span>{enrichedAsset.deviceType}</span>
                     </CListGroupItem>
                     <CListGroupItem className="d-flex justify-content-between">
                       <strong>Model:</strong>
@@ -290,27 +201,68 @@ const AssetDetail = () => {
                       <strong>Department:</strong>
                       <CBadge color="secondary">{enrichedAsset.department}</CBadge>
                     </CListGroupItem>
-                    <CListGroupItem className="d-flex justify-content-between">
-                      <strong>Serial Number:</strong>
-                      <code>{enrichedAsset.serialNumber}</code>
-                    </CListGroupItem>
                   </CListGroup>
                 </CCol>
                 
                 <CCol md={6}>
-                  <h5>Network Information</h5>
+                  <div className="d-flex justify-content-between align-items-start mb-3">
+                    <h5>Network & System Info</h5>
+                    <CButton 
+                      size="sm" 
+                      color={isEditing ? "success" : "primary"} 
+                      variant="outline"
+                      onClick={() => {
+                        if (isEditing) {
+                          // Save logic here if needed
+                          setIsEditing(false)
+                        } else {
+                          setIsEditing(true)
+                        }
+                      }}
+                    >
+                      {isEditing ? "Save" : "Edit"}
+                    </CButton>
+                  </div>
+                  
                   <CListGroup flush>
-                    <CListGroupItem className="d-flex justify-content-between">
+                    <CListGroupItem className="d-flex justify-content-between align-items-center">
                       <strong>IP Address:</strong>
-                      <code>{enrichedAsset.ipAddress}</code>
+                      {isEditing ? (
+                        <CFormInput
+                          size="sm"
+                          value={editableFields.ipAddress}
+                          onChange={(e) => setEditableFields(prev => ({...prev, ipAddress: e.target.value}))}
+                          style={{ width: '150px' }}
+                        />
+                      ) : (
+                        <code>{editableFields.ipAddress}</code>
+                      )}
                     </CListGroupItem>
-                    <CListGroupItem className="d-flex justify-content-between">
+                    <CListGroupItem className="d-flex justify-content-between align-items-center">
                       <strong>MAC Address:</strong>
-                      <code>{enrichedAsset.macAddress}</code>
+                      {isEditing ? (
+                        <CFormInput
+                          size="sm"
+                          value={editableFields.macAddress}
+                          onChange={(e) => setEditableFields(prev => ({...prev, macAddress: e.target.value}))}
+                          style={{ width: '150px' }}
+                        />
+                      ) : (
+                        <code>{editableFields.macAddress}</code>
+                      )}
                     </CListGroupItem>
-                    <CListGroupItem className="d-flex justify-content-between">
+                    <CListGroupItem className="d-flex justify-content-between align-items-center">
                       <strong>OS Version:</strong>
-                      <span>{enrichedAsset.osVersion}</span>
+                      {isEditing ? (
+                        <CFormInput
+                          size="sm"
+                          value={editableFields.osVersion}
+                          onChange={(e) => setEditableFields(prev => ({...prev, osVersion: e.target.value}))}
+                          style={{ width: '150px' }}
+                        />
+                      ) : (
+                        <span>{editableFields.osVersion}</span>
+                      )}
                     </CListGroupItem>
                     <CListGroupItem className="d-flex justify-content-between">
                       <strong>Last Scan:</strong>
@@ -319,45 +271,463 @@ const AssetDetail = () => {
                   </CListGroup>
                 </CCol>
               </CRow>
-              
-              <hr className="my-4" />
-              
-              <CRow>
-                <CCol md={6}>
-                  <h5>Security Information</h5>
-                  <CListGroup flush>
-                    <CListGroupItem className="d-flex justify-content-between align-items-center">
-                      <strong>CVE Number:</strong>
-                      <code className="text-primary">{enrichedAsset.cve}</code>
-                    </CListGroupItem>
-                    <CListGroupItem className="d-flex justify-content-between align-items-center">
-                      <strong>Risk Level:</strong>
-                      <CBadge color={getRiskBadgeVariant(enrichedAsset.riskLevel)} size="lg">
-                        {enrichedAsset.riskLevel}
-                      </CBadge>
-                    </CListGroupItem>
-                  </CListGroup>
+
+              {/* Security Status Section */}
+              <CRow className="mb-4">
+                <CCol xs={12}>
+                  <h5>Security Status</h5>
+                  {enrichedAsset.hasVulnerabilities ? (
+                    <CAlert color="warning">
+                      <strong>⚠️ Vulnerabilities Found</strong> - This device has known security vulnerabilities that require attention.
+                    </CAlert>
+                  ) : (
+                    <CAlert color="success">
+                      <strong>✅ No Vulnerabilities Found</strong> - This device appears to be secure with no known critical vulnerabilities.
+                    </CAlert>
+                  )}
                 </CCol>
-                
-                <CCol md={6}>
-                  <h5>Actions</h5>
-                  <div className="d-grid gap-2">
-                    <CButton color="primary" variant="outline">
-                      Run Security Scan
-                    </CButton>
-                    <CButton color="info" variant="outline">
-                      Update Asset Info
-                    </CButton>
-                    <CButton color="warning" variant="outline">
-                      Generate Report
-                    </CButton>
-                  </div>
+              </CRow>
+
+              {/* Vulnerability Details Section - Only show if vulnerabilities exist */}
+              {enrichedAsset.hasVulnerabilities && (
+                <CRow className="mb-4">
+                  <CCol xs={12}>
+                    <h5>Vulnerability Details</h5>
+                    <CTabs activeItemKey={activeTab} onChange={(newKey) => setActiveTab(newKey)}>
+                      <CTabList variant="pills" className="mb-3">
+                        {enrichedAsset.vulnerabilities.cves?.length > 0 && (
+                          <CTab itemKey='cves'>
+                            CVEs ({enrichedAsset.vulnerabilities.cves.length})
+                          </CTab>
+                        )}
+                        {enrichedAsset.vulnerabilities.cwes?.length > 0 && (
+                          <CTab itemKey='cwes'>
+                            CWEs ({enrichedAsset.vulnerabilities.cwes.length})
+                          </CTab>
+                        )}
+                        {enrichedAsset.vulnerabilities.capecs?.length > 0 && (
+                          <CTab itemKey='capecs'>
+                            CAPECs ({enrichedAsset.vulnerabilities.capecs.length})
+                          </CTab>
+                        )}
+                        {enrichedAsset.vulnerabilities.attacks?.length > 0 && (
+                          <CTab itemKey='attacks'>
+                            ATT&CK ({enrichedAsset.vulnerabilities.attacks.length})
+                          </CTab>
+                        )}
+                      </CTabList>
+                      
+                      <CTabContent>
+                        {enrichedAsset.vulnerabilities.cves?.length > 0 && (
+                          <CTabPanel className="py-3" itemKey='cves'>
+                            <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                              <CListGroup>
+                                {enrichedAsset.vulnerabilities.cves.map((cve, index) => {
+                                  const isExpanded = expandedItems[`cve-${index}`]
+                                  return (
+                                    <CListGroupItem key={index} className="border-0 border-bottom">
+                                      <div 
+                                        className="d-flex justify-content-between align-items-start cursor-pointer"
+                                        onClick={() => toggleItemExpansion('cve', index)}
+                                        style={{ cursor: 'pointer' }}
+                                      >
+                                        <div className="flex-grow-1">
+                                          <div className="d-flex align-items-center gap-2 mb-2">
+                                            <code className="text-primary fw-bold">{cve.cve_id}</code>
+                                            
+                                            {/* CVSS Score Badge */}
+                                            <CBadge 
+                                              color={
+                                                cve.cvss >= 9.0 ? 'danger' : 
+                                                cve.cvss >= 7.0 ? 'warning' : 
+                                                cve.cvss >= 4.0 ? 'info' : 'secondary'
+                                              }
+                                            >
+                                              CVSS: {cve.cvss || 'N/A'}
+                                            </CBadge>
+                                            
+                                            {/* Risk Level Badge - Fix the field name */}
+                                            {(cve.risk_level !== undefined && cve.risk_level !== null) && (
+                                              <CBadge color="danger" className="text-white">
+                                                Risk: {cve.risk_level.toFixed(2)}
+                                              </CBadge>
+                                            )}
+                                            
+                                            {/* EPSS Badge */}
+                                            {(cve.epss !== undefined && cve.epss !== null) && (
+                                              <CBadge color="warning">
+                                                EPSS: {(cve.epss * 100).toFixed(2)}%
+                                              </CBadge>
+                                            )}
+                                            
+                                            {/* Impact Score Badge - Fix the field name */}
+                                            {(cve.impact_score !== undefined && cve.impact_score !== null) && (
+                                              <CBadge color="info">
+                                                Impact: {cve.impact_score.toFixed(2)}
+                                              </CBadge>
+                                            )}
+                                            
+                                            {/* Exploitability Score Badge - Add this missing field */}
+                                            {(cve.exploitability_score !== undefined && cve.exploitability_score !== null) && (
+                                              <CBadge color="light" className="text-dark">
+                                                Exploit: {cve.exploitability_score.toFixed(2)}
+                                              </CBadge>
+                                            )}
+                                            
+                                            <CButton size="sm" color="link" className="p-0 ms-auto">
+                                              {isExpanded ? 'Less' : 'More'}
+                                            </CButton>
+                                          </div>
+                                          
+                                          <p className="mb-1 small text-muted">
+                                            {isExpanded 
+                                              ? cve.description 
+                                              : `${cve.description?.substring(0, 200)}${cve.description?.length > 200 ? '...' : ''}`
+                                            }
+                                          </p>
+                                          
+                                          {isExpanded && (
+                                            <div className="mt-3 p-3 bg-dark rounded">
+                                              <CRow>
+                                                <CCol md={6}>
+                                                  <strong>CVE ID:</strong> <code>{cve.cve_id}</code><br/>
+                                                  <strong>CVSS Score:</strong> {cve.cvss || 'N/A'}<br/>
+                                                  {/* Fix field names to match backend */}
+                                                  <strong>Risk Level:</strong> {cve.risk_level?.toFixed(2) || 'N/A'}<br/>
+                                                  <strong>EPSS:</strong> {cve.epss ? `${(cve.epss * 100).toFixed(2)}%` : 'N/A'}<br/>
+                                                  <strong>Impact Score:</strong> {cve.impact_score?.toFixed(2) || 'N/A'}<br/>
+                                                  <strong>Exploitability Score:</strong> {cve.exploitability_score?.toFixed(2) || 'N/A'}<br/>
+                                                  
+                                                  {cve.cvss_vector && (
+                                                    <>
+                                                      <strong>CVSS Vector:</strong> <code className="small">{cve.cvss_vector}</code><br/>
+                                                    </>
+                                                  )}
+                                                </CCol>
+                                                <CCol md={6}>
+                                                  {cve.published_date && (
+                                                    <>
+                                                      <strong>Published:</strong> {new Date(cve.published_date).toLocaleDateString()}<br/>
+                                                    </>
+                                                  )}
+                                                  {cve.last_modified_date && (
+                                                    <>
+                                                      <strong>Last Modified:</strong> {new Date(cve.last_modified_date).toLocaleDateString()}<br/>
+                                                    </>
+                                                  )}
+                                                  {cve.source && (
+                                                    <>
+                                                      <strong>Source:</strong> {cve.source}<br/>
+                                                    </>
+                                                  )}
+                                                </CCol>
+                                              </CRow>
+                                              {cve.references && cve.references.length > 0 && (
+                                                <div className="mt-2">
+                                                  <strong>References:</strong>
+                                                  <ul className="small mt-1">
+                                                    {cve.references.slice(0, 5).map((ref, refIndex) => (
+                                                      <li key={refIndex}>
+                                                        <a href={ref} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                                                          {ref.length > 60 ? `${ref.substring(0, 60)}...` : ref}
+                                                        </a>
+                                                      </li>
+                                                    ))}
+                                                    {cve.references.length > 5 && (
+                                                      <li className="text-muted">... and {cve.references.length - 5} more</li>
+                                                    )}
+                                                  </ul>
+                                                </div>
+                                              )}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                                    </CListGroupItem>
+                                  )
+                                })}
+                              </CListGroup>
+                            </div>
+                          </CTabPanel>
+                        )}
+                        
+                        {enrichedAsset.vulnerabilities.cwes?.length > 0 && (
+                          <CTabPanel className="py-3" itemKey='cwes'>
+                            <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                              <CListGroup>
+                                {enrichedAsset.vulnerabilities.cwes.map((cwe, index) => {
+                                  const isExpanded = expandedItems[`cwe-${index}`]
+                                  return (
+                                    <CListGroupItem key={index} className="border-0 border-bottom">
+                                      <div 
+                                        className="cursor-pointer"
+                                        onClick={() => toggleItemExpansion('cwe', index)}
+                                        style={{ cursor: 'pointer' }}
+                                      >
+                                        <div className="d-flex align-items-center gap-2 mb-2">
+                                          <code className="text-info fw-bold">{cwe.cwe_id}</code>
+                                          <span className="fw-semibold">{cwe.name}</span>
+                                          <CButton size="sm" color="link" className="p-0 ms-auto">
+                                            {isExpanded ? 'Less' : 'More'}
+                                          </CButton>
+                                        </div>
+                                        <p className="mb-0 small text-muted">
+                                          {isExpanded 
+                                            ? cwe.description 
+                                            : `${cwe.description?.substring(0, 150)}${cwe.description?.length > 150 ? '...' : ''}`
+                                          }
+                                        </p>
+                                        
+                                        {isExpanded && (
+                                          <div className="mt-3 p-3 bg-dark rounded">
+                                            <strong>CWE ID:</strong> <code>{cwe.cwe_id}</code><br/>
+                                            <strong>Name:</strong> {cwe.name}<br/>
+                                            {cwe.weakness_abstraction && (
+                                              <>
+                                                <strong>Abstraction:</strong> {cwe.weakness_abstraction}<br/>
+                                              </>
+                                            )}
+                                            {cwe.status && (
+                                              <>
+                                                <strong>Status:</strong> {cwe.status}<br/>
+                                              </>
+                                            )}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </CListGroupItem>
+                                  )
+                                })}
+                              </CListGroup>
+                            </div>
+                          </CTabPanel>
+                        )}
+                        
+                        {enrichedAsset.vulnerabilities.capecs?.length > 0 && (
+                          <CTabPanel className="py-3" itemKey='capecs'>
+                            <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                              <CListGroup>
+                                {enrichedAsset.vulnerabilities.capecs.map((capec, index) => {
+                                  const isExpanded = expandedItems[`capec-${index}`]
+                                  return (
+                                    <CListGroupItem key={index} className="border-0 border-bottom">
+                                      <div 
+                                        className="cursor-pointer"
+                                        onClick={() => toggleItemExpansion('capec', index)}
+                                        style={{ cursor: 'pointer' }}
+                                      >
+                                        <div className="d-flex justify-content-between align-items-start">
+                                          <div className="flex-grow-1">
+                                            <div className="d-flex align-items-center gap-2 mb-2">
+                                              <code className="text-warning fw-bold">{capec.capec_id}</code>
+                                              <span className="fw-semibold">{capec.name}</span>
+                                              <CButton size="sm" color="link" className="p-0 ms-auto">
+                                                {isExpanded ? 'Less' : 'More'}
+                                              </CButton>
+                                            </div>
+                                            <div className="d-flex gap-2 mb-2">
+                                              <CBadge color="secondary">
+                                                Severity: {capec.typical_severity || 'Unknown'}
+                                              </CBadge>
+                                              <CBadge color="light" className="text-dark">
+                                                Likelihood: {capec.likelihood_of_attack || 'Unknown'}
+                                              </CBadge>
+                                            </div>
+                                            <p className="mb-0 small text-muted">
+                                              {isExpanded 
+                                                ? capec.description 
+                                                : `${capec.description?.substring(0, 150)}${capec.description?.length > 150 ? '...' : ''}`
+                                              }
+                                            </p>
+                                            
+                                            {isExpanded && (
+                                              <div className="mt-3 p-3 bg-dark rounded">
+                                                <CRow>
+                                                  <CCol md={6}>
+                                                    <strong>CAPEC ID:</strong> <code>{capec.capec_id}</code><br/>
+                                                    <strong>Name:</strong> {capec.name}<br/>
+                                                    <strong>Abstraction:</strong> {capec.abstraction || 'N/A'}<br/>
+                                                  </CCol>
+                                                  <CCol md={6}>
+                                                    <strong>Severity:</strong> {capec.typical_severity || 'Unknown'}<br/>
+                                                    <strong>Likelihood:</strong> {capec.likelihood_of_attack || 'Unknown'}<br/>
+                                                    <strong>Status:</strong> {capec.status || 'N/A'}<br/>
+                                                  </CCol>
+                                                </CRow>
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </CListGroupItem>
+                                  )
+                                })}
+                              </CListGroup>
+                            </div>
+                          </CTabPanel>
+                        )}
+                        
+                        {enrichedAsset.vulnerabilities.attacks?.length > 0 && (
+                          <CTabPanel className="py-3" itemKey='attacks'>
+                            <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                              <CListGroup>
+                                {enrichedAsset.vulnerabilities.attacks.map((attack, index) => {
+                                  const isExpanded = expandedItems[`attack-${index}`]
+                                  return (
+                                    <CListGroupItem key={index} className="border-0 border-bottom">
+                                      <div 
+                                        className="cursor-pointer"
+                                        onClick={() => toggleItemExpansion('attack', index)}
+                                        style={{ cursor: 'pointer' }}
+                                      >
+                                        <div className="d-flex justify-content-between align-items-start">
+                                          <div className="flex-grow-1">
+                                            <div className="d-flex align-items-center gap-2 mb-2">
+                                              <code className="text-danger fw-bold">{attack.technique_id}</code>
+                                              <span className="fw-semibold">{attack.name}</span>
+                                              <CButton size="sm" color="link" className="p-0 ms-auto">
+                                                {isExpanded ? 'Less' : 'More'}
+                                              </CButton>
+                                            </div>
+                                            <div className="d-flex flex-wrap gap-1 mb-2">
+                                              {attack.tactics && (
+                                                <CBadge color="danger" className="small">
+                                                  {attack.tactics}
+                                                </CBadge>
+                                              )}
+                                              {attack.platforms && (
+                                                <CBadge color="secondary" className="small">
+                                                  {attack.platforms.length > 20 ? attack.platforms.substring(0, 20) + '...' : attack.platforms}
+                                                </CBadge>
+                                              )}
+                                            </div>
+                                            <p className="mb-0 small text-muted">
+                                              {isExpanded 
+                                                ? attack.description 
+                                                : `${attack.description?.substring(0, 150)}${attack.description?.length > 150 ? '...' : ''}`
+                                              }
+                                            </p>
+                                            
+                                            {isExpanded && (
+                                              <div className="mt-3 p-3 bg-dark rounded">
+                                                <CRow>
+                                                  <CCol md={6}>
+                                                    <strong>Technique ID:</strong> <code>{attack.technique_id}</code><br/>
+                                                    <strong>Name:</strong> {attack.name}<br/>
+                                                    <strong>Tactics:</strong> {attack.tactics || 'N/A'}<br/>
+                                                  </CCol>
+                                                  <CCol md={6}>
+                                                    <strong>Platforms:</strong> {attack.platforms || 'N/A'}<br/>
+                                                    {attack.data_sources && (
+                                                      <>
+                                                        <strong>Data Sources:</strong> {attack.data_sources}<br/>
+                                                      </>
+                                                    )}
+                                                    {attack.detection && (
+                                                      <>
+                                                        <strong>Detection:</strong> {attack.detection.substring(0, 100)}...<br/>
+                                                      </>
+                                                    )}
+                                                  </CCol>
+                                                </CRow>
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </CListGroupItem>
+                                  )
+                                })}
+                              </CListGroup>
+                            </div>
+                          </CTabPanel>
+                        )}
+                      </CTabContent>
+                    </CTabs>
+                  </CCol>
+                </CRow>
+              )}
+
+              {/* Summary Section */}
+              <CRow>
+                <CCol xs={12}>
+                  <hr />
+                  {enrichedAsset.hasVulnerabilities ? (
+                    <CAlert color="danger" className="mb-0">
+                      <strong>Action Required:</strong> This device has {
+                        (enrichedAsset.vulnerabilities.cves?.length || 0) + 
+                        (enrichedAsset.vulnerabilities.cwes?.length || 0) + 
+                        (enrichedAsset.vulnerabilities.capecs?.length || 0) + 
+                        (enrichedAsset.vulnerabilities.attacks?.length || 0)
+                      } security findings that should be reviewed and addressed.
+                    </CAlert>
+                  ) : (
+                    <CAlert color="success" className="mb-0">
+                      <strong>All Clear:</strong> No vulnerable CVEs were found for this device. Continue monitoring for new threats.
+                    </CAlert>
+                  )}
                 </CCol>
               </CRow>
             </CCardBody>
           </CCard>
         </CCol>
       </CRow>
+      {enrichedAsset.vulnerabilities && enrichedAsset.vulnerabilities.cves.length > 0 && (
+        <>
+          <hr className="my-4" />
+          <CRow>
+            <CCol xs={12}>
+              <h5>Vulnerability Details</h5>
+            </CCol>
+          </CRow>
+          
+          <CRow>
+            <CCol md={6}>
+              <h6>CVEs ({enrichedAsset.vulnerabilities.cves.length})</h6>
+              <CListGroup flush style={{ maxHeight: '300px', overflowY: 'auto' }}>
+                {enrichedAsset.vulnerabilities.cves.slice(0, 10).map((cve, index) => (
+                  <CListGroupItem key={index}>
+                    <div className="d-flex justify-content-between align-items-start">
+                      <div>
+                        <code className="text-primary">{cve.cve_id}</code>
+                        <div className="small text-muted mt-1">
+                          {cve.description?.substring(0, 100)}...
+                        </div>
+                      </div>
+                      <div className="text-end">
+                        <CBadge color={cve.cvss >= 7 ? 'danger' : cve.cvss >= 4 ? 'warning' : 'info'}>
+                          CVSS: {cve.cvss}
+                        </CBadge>
+                      </div>
+                    </div>
+                  </CListGroupItem>
+                ))}
+                {enrichedAsset.vulnerabilities.cves.length > 10 && (
+                  <CListGroupItem className="text-center text-muted">
+                    ... and {enrichedAsset.vulnerabilities.cves.length - 10} more
+                  </CListGroupItem>
+                )}
+              </CListGroup>
+            </CCol>
+            
+            <CCol md={6}>
+              <h6>Attack Patterns ({enrichedAsset.vulnerabilities.capecs?.length || 0})</h6>
+              <CListGroup flush style={{ maxHeight: '300px', overflowY: 'auto' }}>
+                {enrichedAsset.vulnerabilities.capecs?.slice(0, 5).map((capec, index) => (
+                  <CListGroupItem key={index}>
+                    <div>
+                      <strong>{capec.capec_id}</strong>: {capec.name}
+                      <div className="small text-muted mt-1">
+                        Severity: {capec.typical_severity}
+                      </div>
+                    </div>
+                  </CListGroupItem>
+                )) || <CListGroupItem className="text-muted">No attack patterns found</CListGroupItem>}
+              </CListGroup>
+            </CCol>
+          </CRow>
+        </>
+      )}
     </CContainer>
   )
 }

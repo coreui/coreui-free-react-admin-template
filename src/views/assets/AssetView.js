@@ -17,32 +17,39 @@ import {
   CTab,
   CTabContent,
   CTabPanel,
-  CAlert
+  CAlert,
+  CSpinner
 } from '@coreui/react'
 import { useNavigation } from '../../hooks/useNavigation'
 
 const AssetDetail = () => {
   const { assetId } = useParams()
   const navigate = useNavigate()
-  const { assets, updateAsset } = useNavigation()
+  const { assets, updateAsset, removeAsset } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
   const [expandedItems, setExpandedItems] = useState({})
+  const [activeTab, setActiveTab] = useState('cves')
+  const [isEditing, setIsEditing] = useState(false)
 
-  const asset = assets.find(a => a.id === assetId)
+//  const asset = assets.find(a => a.id === assetId)
 
-  // Generate the same random data as in Overview (consistent based on asset ID)
+  // Find asset from the central state
+  const asset = useMemo(() => {
+    return assets.find(a => a.id === assetId)
+  }, [assets, assetId])
+
+  // Generate enriched asset data based on current asset
   const enrichedAsset = useMemo(() => {
     if (!asset) return null
     
-    // Check if we have vulnerability data
     const hasVulnerabilities = asset.vulnerabilities && (
-      (asset.vulnerabilities.cves && asset.vulnerabilities.cves.length > 0) ||
-      (asset.vulnerabilities.cwes && asset.vulnerabilities.cwes.length > 0) ||
-      (asset.vulnerabilities.capecs && asset.vulnerabilities.capecs.length > 0) ||
-      (asset.vulnerabilities.attacks && asset.vulnerabilities.attacks.length > 0)
+      (asset.vulnerabilities.cves?.length > 0) ||
+      (asset.vulnerabilities.cwes?.length > 0) ||
+      (asset.vulnerabilities.capecs?.length > 0) ||
+      (asset.vulnerabilities.attacks?.length > 0)
     )
     
-    // Generate consistent mock network data based on asset ID
     const seed = asset.id.split('').reduce((a, b) => a + b.charCodeAt(0), 0)
     const serialNumber = `SN${(seed % 999999).toString().padStart(6, '0')}`
     const ipAddress = `192.168.${(seed % 255) + 1}.${((seed * 7) % 255) + 1}`
@@ -50,13 +57,12 @@ const AssetDetail = () => {
     const lastScanDate = asset.last_updated ? new Date(asset.last_updated).toLocaleDateString() : new Date().toLocaleDateString()
     const osVersion = asset.version || `${asset.vendor || 'Generic'} OS v${(seed % 5) + 1}.${(seed % 10)}`
     
-    // Use overall device risk level for risk assessment
     const deviceRiskLevel = asset.risk_level || 0
     let riskLevel = 'Secure'
     if (deviceRiskLevel >= 100) riskLevel = 'Critical'
     else if (deviceRiskLevel >= 75) riskLevel = 'High'
     else if (deviceRiskLevel >= 50) riskLevel = 'Medium'
-    else if (deviceRiskLevel >= 0) riskLevel = 'Low'
+    else if (deviceRiskLevel > 0) riskLevel = 'Low'
     
     return {
       ...asset,
@@ -66,12 +72,12 @@ const AssetDetail = () => {
       macAddress,
       lastScanDate,
       osVersion,
+      osFamily: asset.os_family || '',
       riskLevel,
       deviceRiskLevel
     }
   }, [asset])
 
-  const [activeTab, setActiveTab] = useState('cves')
   useEffect(() => {
     if(!enrichedAsset) return
     const defaultTab = enrichedAsset.vulnerabilities.cves?.length ? 'cves'
@@ -82,24 +88,36 @@ const AssetDetail = () => {
     setActiveTab(defaultTab)
   }, [enrichedAsset])
 
+  // Initialize editable fields based on enriched asset
   const [editableFields, setEditableFields] = useState({
-    ipAddress: enrichedAsset?.ipAddress || '',
-    macAddress: enrichedAsset?.macAddress || '',
-    osVersion: enrichedAsset?.osVersion || '',
-    osFamily: enrichedAsset?.osFamily || ''
+    ipAddress: '',
+    macAddress: '',
+    osVersion: '',
+    osFamily: ''
   })
-  const [isEditing, setIsEditing] = useState(false)
 
+  // Update editable fields when enriched asset changes
   useEffect(() => {
     if (enrichedAsset) {
       setEditableFields({
         ipAddress: enrichedAsset.ipAddress,
         macAddress: enrichedAsset.macAddress,
-        osVersion: enrichedAsset.osVersion,
-        osFamily: enrichedAsset.osFamily
+        osVersion: enrichedAsset.version || enrichedAsset.osVersion,
+        osFamily: enrichedAsset.os_family || enrichedAsset.osFamily || ''
       })
     }
   }, [enrichedAsset])
+
+  // Update active tab when vulnerabilities change
+  useEffect(() => {
+    if (!enrichedAsset) return
+    const defaultTab = enrichedAsset.vulnerabilities?.cves?.length ? 'cves'
+      : enrichedAsset.vulnerabilities?.cwes?.length ? 'cwes'
+      : enrichedAsset.vulnerabilities?.capecs?.length ? 'capecs'
+      : enrichedAsset.vulnerabilities?.attacks?.length ? 'attacks'
+      : 'cves'
+    setActiveTab(defaultTab)
+  }, [enrichedAsset?.vulnerabilities])
 
   const toggleItemExpansion = (type, index) => {
     const key = `${type}-${index}`
@@ -110,50 +128,70 @@ const AssetDetail = () => {
   }
 
   const handleSave = async () => {
+    if (!enrichedAsset) return
+    
     setIsSaving(true)
     
-    // Check if OS version or OS family changed
     const originalOsVersion = enrichedAsset.version || enrichedAsset.osVersion
-    const originalOsFamily = enrichedAsset.os_family
+    const originalOsFamily = enrichedAsset.os_family || enrichedAsset.osFamily || ''
     
     const osVersionChanged = editableFields.osVersion !== originalOsVersion
     const osFamilyChanged = editableFields.osFamily !== originalOsFamily
     
     if (osVersionChanged || osFamilyChanged) {
       try {
-        // Make API call to get updated vulnerability data
+        const requestBody = {
+          device_name: enrichedAsset.scan_params?.device_name || enrichedAsset.name,
+          h_cpe: enrichedAsset.h_cpe || enrichedAsset.scan_params?.h_cpe || '',
+          vendor: enrichedAsset.vendor || enrichedAsset.scan_params?.vendor || '',
+          model: enrichedAsset.model || enrichedAsset.scan_params?.model || '',
+          os_family: editableFields.osFamily || '',
+          version: editableFields.osVersion || '',
+          department: enrichedAsset.department || ''
+        }
+        
+        console.log('Sending update request:', requestBody)
+        
         const response = await fetch('http://localhost:8000/api/v1/security/scan-by-os', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            device_name: enrichedAsset.scan_params?.device_name || enrichedAsset.name,
-            h_cpe: enrichedAsset.scan_params?.h_cpe,
-            vendor: enrichedAsset.scan_params?.vendor || enrichedAsset.vendor,
-            model: enrichedAsset.scan_params?.model || enrichedAsset.model,
-            os_family: editableFields.osFamily,
-            version: editableFields.osVersion,
-            department: enrichedAsset.department
-          })
+          body: JSON.stringify(requestBody)
         })
 
-        if (response.ok) {
-          const apiResponse = await response.json()
-          if (apiResponse.success) {
-            // Update asset with new vulnerability data
-            updateAsset(enrichedAsset.id, {
-              ...apiResponse,
-              device: {
-                ...apiResponse.device,
-                os_family: editableFields.osFamily,
-                version: editableFields.osVersion
-              }
-            })
-          }
+        if (!response.ok) {
+          const errorData = await response.json()
+          throw new Error(errorData.detail || `HTTP error! status: ${response.status}`)
+        }
+
+        const apiResponse = await response.json()
+        if (apiResponse.success) {
+          // Update using the central state management
+          updateAsset(enrichedAsset.id, {
+            ...apiResponse,
+            device: {
+              ...apiResponse.device,
+              id: enrichedAsset.id, // Preserve the ID
+              os_family: editableFields.osFamily,
+              version: editableFields.osVersion,
+              h_cpe: enrichedAsset.h_cpe || enrichedAsset.scan_params?.h_cpe
+            },
+            scan_params: {
+              ...enrichedAsset.scan_params,
+              os_family: editableFields.osFamily,
+              version: editableFields.osVersion
+            }
+          })
+          
+          // Show success feedback
+          alert('Asset updated successfully!')
+        } else {
+          throw new Error(apiResponse.error_message || 'Update failed')
         }
       } catch (error) {
-        console.error('Error updating asset vulnerabilities:', error)
+        console.error('Error updating asset:', error)
+        alert(`Failed to update: ${error.message}`)
       }
     }
     
@@ -161,6 +199,59 @@ const AssetDetail = () => {
     setIsEditing(false)
   }
 
+  const handleDelete = async () => {
+    if (!enrichedAsset) return
+    
+    if (!window.confirm(`Are you sure you want to delete ${enrichedAsset.name}?`)) {
+      return
+    }
+    
+    setIsDeleting(true)
+    
+    try {
+      // Remove the asset using central state management
+      removeAsset(enrichedAsset.id)
+      
+      // Navigate back to overview
+      navigate('/overview')
+      
+      // Show success feedback
+      alert('Asset deleted successfully!')
+    } catch (error) {
+      console.error('Error deleting asset:', error)
+      alert(`Failed to delete: ${error.message}`)
+      setIsDeleting(false)
+    }
+  }
+
+  // Add this to the header section (after the Back to Overview button):
+  const headerButtons = (
+    <div className="d-flex gap-2">
+      <CButton 
+        color="danger" 
+        variant="outline"
+        size="sm"
+        onClick={handleDelete}
+        disabled={isDeleting}
+      >
+        {isDeleting ? (
+          <>
+            <CSpinner size="sm" className="me-1" />
+            Deleting...
+          </>
+        ) : 'Delete Asset'}
+      </CButton>
+      <CButton 
+        color="secondary" 
+        variant="outline"
+        onClick={() => navigate('/overview')}
+      >
+        Back to Overview
+      </CButton>
+    </div>
+  )
+
+  // Early return if asset not found
   if (!enrichedAsset) {
     return (
       <CContainer fluid>
@@ -170,13 +261,7 @@ const AssetDetail = () => {
               <CCardHeader>
                 <div className="d-flex justify-content-between align-items-center">
                   <h4>Asset Not Found</h4>
-                  <CButton 
-                    color="secondary" 
-                    variant="outline"
-                    onClick={() => navigate('/overview')}
-                  >
-                    Back to Overview
-                  </CButton>
+                  {headerButtons}
                 </div>
               </CCardHeader>
               <CCardBody>
@@ -224,13 +309,7 @@ const AssetDetail = () => {
                     <CBadge color="info">{enrichedAsset.type}</CBadge>
                   </div>
                 </div>
-                <CButton 
-                  color="secondary" 
-                  variant="outline"
-                  onClick={() => navigate('/overview')}
-                >
-                  Back to Overview
-                </CButton>
+                {headerButtons}
               </div>
             </CCardHeader>
             <CCardBody>
@@ -419,9 +498,9 @@ const AssetDetail = () => {
                                             </CBadge>
                                             
                                             {/* Risk Level Badge - Fix the field name */}
-                                            {(cve.normalized_risk_level !== undefined && cve.normalized_risk_level !== null) && (
+                                            {(cve.risk_level !== undefined && cve.risk_level !== null) && (
                                               <CBadge color="danger" className="text-white">
-                                                Risk Level: {cve.normalized_risk_level.toFixed(2)}
+                                                Risk Level: {cve.risk_level.toFixed(2)}
                                               </CBadge>
                                             )}
                                             
@@ -465,7 +544,7 @@ const AssetDetail = () => {
                                                   <strong>CVE ID:</strong> <code>{cve.cve_id}</code><br/>
                                                   <strong>CVSS Score:</strong> {cve.cvss || 'N/A'}<br/>
                                                   {/* Fix field names to match backend */}
-                                                  <strong>Risk Level:</strong> {cve.normalized_risk_level?.toFixed(2) || 'N/A'}<br/>
+                                                  <strong>Risk Level:</strong> {cve.risk_level?.toFixed(2) || 'N/A'}<br/>
                                                   <strong>EPSS:</strong> {cve.epss ? `${(cve.epss * 100).toFixed(2)}%` : 'N/A'}<br/>
                                                   <strong>Impact Score:</strong> {cve.impact_score?.toFixed(2) || 'N/A'}<br/>
                                                   <strong>Exploitability Score:</strong> {cve.exploitability_score?.toFixed(2) || 'N/A'}<br/>

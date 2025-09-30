@@ -62,7 +62,7 @@ const Overview = () => {
         const cves = asset.vulnerabilities?.cves || []
         const hasCVEs = cves.length > 0
         
-        // Use the overall device risk level calculated in useNavigation
+        // Use risk_level directly from backend
         const maxRiskLevel = asset.risk_level || 0
         const highestRisk = getCVSSRiskLevel(maxRiskLevel)
 
@@ -72,11 +72,11 @@ const Overview = () => {
           hasCVEs,
           highestRisk,
           maxRiskLevel,
-          // Sort CVEs by normalized risk level
-          cves: cves.sort((a, b) => (b.normalized_risk_level || 0) - (a.normalized_risk_level || 0))
+          // Sort CVEs by risk_level from backend
+          cves: [...cves].sort((a, b) => (b.risk_level || 0) - (a.risk_level || 0))
         }
       })
-      // Sort assets by overall risk level (highest risk first)
+      // Sort assets by risk level (highest risk first)
       .sort((a, b) => (b.maxRiskLevel || 0) - (a.maxRiskLevel || 0))
   }, [assets])
 
@@ -209,19 +209,15 @@ const Overview = () => {
                     </CTableHead>
                     <CTableBody>
                       {processedAssets.map((asset) => (
-                        <React.Fragment key={asset.id}>
-                          <CTableRow className={asset.highestRisk === 'Critical' ? 'table-danger' : asset.highestRisk === 'High' ? 'table-warning' : ''}>
+                        <React.Fragment key={`${asset.id}-${asset.last_updated || ''}`}>
+                          <CTableRow>
                             <CTableDataCell>
                               <div>
                                 <strong>{asset.name}</strong>
-                                <br />
-                                <small className="text-dark">
-                                  {asset.vendor} {asset.model && `- ${asset.model}`}
-                                </small>
                               </div>
                             </CTableDataCell>
                             <CTableDataCell>
-                              <CBadge color="secondary">
+                              <CBadge color="dark">
                                 {asset.department}
                               </CBadge>
                             </CTableDataCell>
@@ -238,8 +234,8 @@ const Overview = () => {
                             </CTableDataCell>
                             <CTableDataCell>
                               {asset.hasCVEs ? (
-                                <div>
-                                  <CBadge color="warning" className="me-2">
+                                <div className="d-flex flex-column align-items-start">
+                                  <CBadge color="warning" className="mb-1">
                                     {asset.cveCount} CVEs
                                   </CBadge>
                                   {asset.cveCount > 0 && (
@@ -258,14 +254,16 @@ const Overview = () => {
                               )}
                             </CTableDataCell>
                             <CTableDataCell>
-                              <CBadge color={getRiskBadgeColor(asset.highestRisk)} className="me-1">
-                                {asset.highestRisk}
-                              </CBadge>
-                              {asset.maxRiskLevel > 0 && (
-                                <small className="text-dark">
-                                  (CVSS: {asset.maxRiskLevel})
-                                </small>
-                              )}
+                              <div className="d-flex flex-column align-items-start">
+                                <CBadge color={getRiskBadgeColor(asset.highestRisk)} className="mb-1">
+                                  {asset.highestRisk}
+                                </CBadge>
+                                {asset.maxRiskLevel > 0 && (
+                                  <small className="text-bright">
+                                    (Risk Level: {asset.maxRiskLevel.toFixed(2)})
+                                  </small>
+                                )}
+                              </div>
                             </CTableDataCell>
                             <CTableDataCell className="text-center">
                               <CButton
@@ -292,20 +290,20 @@ const Overview = () => {
                                     <h6>CVE Details for {asset.name}:</h6>
                                     <CListGroup flush>
                                       {asset.cves.slice(0, 10).map((cve, index) => (
-                                        <CListGroupItem key={index} className="d-flex justify-content-between align-items-start">
+                                        <CListGroupItem key={`${asset.id}-cve-${cve.cve_id}-${index}`} className="d-flex justify-content-between align-items-start">
                                           <div className="flex-grow-1">
                                             <div className="d-flex align-items-center gap-2 mb-2">
                                               <code className="text-primary me-2">{cve.cve_id}</code>
                                               
                                               {/* CVSS Badge */}
-                                              <CBadge color={getCVSSBadgeColor(cve.cvss)} className="me-2">
+                                              <CBadge color={getCVSSBadgeColor(cve.cvss || 0)} className="me-2">
                                                 CVSS: {cve.cvss || 'N/A'}
                                               </CBadge>
                                               
-                                              {/* Risk Level Badge - Fix field name */}
-                                              {(cve.normalized_risk_level !== undefined && cve.normalized_risk_level !== null) && (
+                                              {/* Risk Level Badge - using backend's risk_level */}
+                                              {(cve.risk_level !== undefined && cve.risk_level !== null) && (
                                                 <CBadge color="danger" className="me-2">
-                                                  Risk Level: {cve.normalized_risk_level.toFixed(2)}
+                                                  Risk: {cve.risk_level.toFixed(2)}
                                                 </CBadge>
                                               )}
                                               
@@ -323,17 +321,12 @@ const Overview = () => {
                                                 </CBadge>
                                               )}
                                               
-                                              {/* Exploitability Score Badge - Add this missing field */}
+                                              {/* Exploitability Score Badge */}
                                               {(cve.exploitability_score !== undefined && cve.exploitability_score !== null) && (
                                                 <CBadge color="secondary" className="me-2">
                                                   Exploit: {cve.exploitability_score.toFixed(2)}
                                                 </CBadge>
                                               )}
-                                              
-                                              {/* Overall Risk Level Badge */}
-                                              <CBadge color={getRiskBadgeColor(getCVSSRiskLevel(cve.risk_level || cve.cvss))}>
-                                                {getCVSSRiskLevel(cve.risk_level || cve.cvss)}
-                                              </CBadge>
                                             </div>
                                             
                                             {/* Description */}

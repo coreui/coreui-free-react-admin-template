@@ -11,7 +11,8 @@ import {
   CModalFooter,
   CListGroup,
   CListGroupItem,
-  CBadge
+  CBadge,
+  CSpinner
 } from '@coreui/react'
 import { useNavigation } from '../hooks/useNavigation'
 
@@ -25,6 +26,43 @@ const DataManagement = () => {
   } = useNavigation()
   
   const [showClearModal, setShowClearModal] = useState(false)
+  const [deletingItems, setDeletingItems] = useState({})
+
+  const handleRemoveDepartment = async (dept) => {
+    setDeletingItems(prev => ({ ...prev, [`dept-${dept}`]: true }))
+    
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100)) // Small delay for UI feedback
+      removeDepartment(dept)
+      // Optional: Show success message
+    } catch (error) {
+      console.error('Error removing department:', error)
+    } finally {
+      setDeletingItems(prev => {
+        const newState = { ...prev }
+        delete newState[`dept-${dept}`]
+        return newState
+      })
+    }
+  }
+
+  const handleRemoveAsset = async (assetId) => {
+    setDeletingItems(prev => ({ ...prev, [`asset-${assetId}`]: true }))
+    
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100)) // Small delay for UI feedback
+      removeAsset(assetId)
+      // Optional: Show success message
+    } catch (error) {
+      console.error('Error removing asset:', error)
+    } finally {
+      setDeletingItems(prev => {
+        const newState = { ...prev }
+        delete newState[`asset-${assetId}`]
+        return newState
+      })
+    }
+  }
 
   const handleClearAll = () => {
     clearAllData()
@@ -55,9 +93,14 @@ const DataManagement = () => {
                       size="sm" 
                       color="danger" 
                       variant="outline"
-                      onClick={() => removeDepartment(dept)}
+                      onClick={() => handleRemoveDepartment(dept)}
+                      disabled={deletingItems[`dept-${dept}`]}
                     >
-                      Remove
+                      {deletingItems[`dept-${dept}`] ? (
+                        <>
+                          <CSpinner size="sm" />
+                        </>
+                      ) : 'Remove'}
                     </CButton>
                   </CListGroupItem>
                 )
@@ -84,9 +127,14 @@ const DataManagement = () => {
                     size="sm" 
                     color="danger" 
                     variant="outline"
-                    onClick={() => removeAsset(asset.id)}
+                    onClick={() => handleRemoveAsset(asset.id)}
+                    disabled={deletingItems[`asset-${asset.id}`]}
                   >
-                    Remove
+                    {deletingItems[`asset-${asset.id}`] ? (
+                      <>
+                        <CSpinner size="sm" />
+                      </>
+                    ) : 'Remove'}
                   </CButton>
                 </CListGroupItem>
               ))}

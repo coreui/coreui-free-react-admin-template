@@ -190,7 +190,7 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
     try {
       const scanResults = await scanDeviceByOs(
         selectedCpeMatch.device_name,
-        selectedCpeMatch.cpe,
+        selectedCpeMatch.cpe,  // This is h_cpe
         selectedCpeMatch.vendor,
         selectedCpeMatch.model,
         selectedOsFamily,
@@ -202,18 +202,20 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
         throw new Error(scanResults.error_message || 'Scan failed')
       }
 
-      // Store OS information in the scan results for future refreshes
+      // Store OS information and h_cpe in the scan results for future refreshes
       const enhancedResults = {
         ...scanResults,
         device: {
           ...scanResults.device,
           department: selectedDepartment,
           os_family: selectedOsFamily,
-          version: osVersion.trim()
+          version: osVersion.trim(),
+          h_cpe: selectedCpeMatch.cpe  // Store h_cpe in device
         },
         // Store scanning parameters for background refreshes
         scan_params: {
           device_name: selectedCpeMatch.device_name,
+          h_cpe: selectedCpeMatch.cpe,  // Store h_cpe for refreshes
           vendor: selectedCpeMatch.vendor,
           model: selectedCpeMatch.model,
           os_family: selectedOsFamily,

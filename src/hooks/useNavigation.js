@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { CNavGroup, CNavItem } from '@coreui/react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFolder, cilDescription } from '@coreui/icons'
@@ -44,6 +44,8 @@ export const useNavigation = () => {
     }
   })
 
+  const abortControllersRef = useRef({})
+
   // Save departments to localStorage whenever it changes
   useEffect(() => {
     try {
@@ -62,27 +64,37 @@ export const useNavigation = () => {
     }
   }, [assets])
 
+  useEffect(() => {
+    return () => {
+      Object.values(abortControllersRef.current).forEach(controller => controller.abort())
+      abortControllersRef.current = {}
+    }
+  }, [])
+
   const addDepartment = (departmentName) => {
     if (!departments.includes(departmentName)) {
       setDepartments(prev => [...prev, departmentName])
     }
   }
 
-  const addAsset = (apiResponse) => {
-    // Process CVEs to add normalized risk levels
-    const processedCVEs = (apiResponse.cves || []).map(cve => ({
-      ...cve,
-      normalized_risk_level: calculateNormalizedRiskLevel(cve)
-    }))
+  const addAsset = useCallback((apiResponse) => {
+    if (!apiResponse || !apiResponse.device) return
     
-    // Calculate overall device risk level
-    const overallRiskLevel = processedCVEs.length > 0 
-      ? processedCVEs.reduce((sum, cve) => sum + cve.normalized_risk_level, 0) / processedCVEs.length
-      : 0
+//    const assetId = apiResponse.device?.id?.toString() || `asset-${Date.now()}-${Math.random()}`
+    // Make asset ID unique by appending version
+    const assetId = apiResponse.device?.id?.toString()
+      ? `${apiResponse.device.id}-${apiResponse.device.version || ''}`
+      : `asset-${Date.now()}-${Math.random()}`
 
-    // Transform API response to match your current asset structure
+    
+    // Cancel any pending fetches for this asset
+    if (abortControllersRef.current[assetId]) {
+      abortControllersRef.current[assetId].abort()
+      delete abortControllersRef.current[assetId]
+    }
+    
     const asset = {
-      id: apiResponse.device?.id?.toString() || `asset-${Date.now()}`,
+      id: assetId,
       name: apiResponse.device?.name || 'Unknown Device',
       vendor: apiResponse.device?.vendor || 'Unknown Vendor',
       model: apiResponse.device?.model || 'Unknown Model',
@@ -90,15 +102,24 @@ export const useNavigation = () => {
       type: apiResponse.device?.type || 'Unknown',
       department: apiResponse.device?.department || '',
       description: apiResponse.device?.description || '',
-      risk_level: overallRiskLevel, // Use calculated overall risk level
+      risk_level: apiResponse.device?.risk_level || 0,
       os_family: apiResponse.device?.os_family || '',
-
-      // Store scan parameters for background refreshes
-      scan_params: apiResponse.scan_params || {},
+      h_cpe: apiResponse.device?.h_cpe || '',
       
-      // Store processed vulnerability data
+      // Store scan parameters for future refreshes
+      scan_params: {
+        device_name: apiResponse.device?.name,
+        h_cpe: apiResponse.device?.h_cpe,
+        vendor: apiResponse.device?.vendor,
+        model: apiResponse.device?.model,
+        os_family: apiResponse.device?.os_family,
+        version: apiResponse.device?.version,
+        department: apiResponse.device?.department
+      },
+      
+      // Store vulnerability data - complete replacement, no merging
       vulnerabilities: {
-        cves: processedCVEs,
+        cves: apiResponse.cves || [],
         cwes: apiResponse.cwes || [],
         capecs: apiResponse.capecs || [],
         attacks: apiResponse.attacks || []
@@ -106,34 +127,35 @@ export const useNavigation = () => {
       statistics: apiResponse.statistics || {},
       scan_time: apiResponse.scan_time || 0,
       last_updated: new Date().toISOString(),
-      
-      // Keep backward compatibility
       deviceType: apiResponse.device?.type || 'Unknown'
     }
     
-    setAssets(prev => [...prev, asset])
-  }
+    // Immutable state update
+    setAssets(prev => {
+      const filtered = prev.filter(a => a.id !== assetId)
+      return [...filtered, asset]
+    })
+  }, [])
 
   // Add new function to update existing asset
-  const updateAsset = (assetId, apiResponse) => {
-    // Process CVEs to add normalized risk levels
-    const processedCVEs = (apiResponse.cves || []).map(cve => ({
-      ...cve,
-      normalized_risk_level: calculateNormalizedRiskLevel(cve)
-    }))
+  const updateAsset = useCallback((assetId, apiResponse) => {
+    if (!apiResponse) return
     
-    // Calculate overall device risk level
-    const overallRiskLevel = processedCVEs.length > 0 
-      ? processedCVEs.reduce((sum, cve) => sum + cve.normalized_risk_level, 0) / processedCVEs.length
-      : 0
-
-    setAssets(prev => prev.map(asset => {
-      if (asset.id === assetId) {
+    // Cancel any pending fetches for this asset
+    if (abortControllersRef.current[assetId]) {
+      abortControllersRef.current[assetId].abort()
+      delete abortControllersRef.current[assetId]
+    }
+    
+    setAssets(prev => {
+      return prev.map(asset => {
+        if (asset.id !== assetId) return asset
+        
+        // Complete replacement of vulnerability data
         return {
           ...asset,
-          // Update vulnerability data with normalized risk levels
           vulnerabilities: {
-            cves: processedCVEs,
+            cves: apiResponse.cves || [],
             cwes: apiResponse.cwes || [],
             capecs: apiResponse.capecs || [],
             attacks: apiResponse.attacks || []
@@ -141,18 +163,79 @@ export const useNavigation = () => {
           statistics: apiResponse.statistics || {},
           scan_time: apiResponse.scan_time || 0,
           last_updated: new Date().toISOString(),
-          risk_level: overallRiskLevel, // Update overall risk level
+          risk_level: apiResponse.device?.risk_level || asset.risk_level || 0,
+          
           // Update device info if provided
           ...(apiResponse.device && {
-            os_family: apiResponse.device.os_family,
-            version: apiResponse.device.version,
-            description: apiResponse.device.description
+            os_family: apiResponse.device.os_family || asset.os_family,
+            version: apiResponse.device.version || asset.version,
+            description: apiResponse.device.description || asset.description,
+            h_cpe: apiResponse.device.h_cpe || asset.h_cpe,
+            risk_level: apiResponse.device.risk_level || 0,
+            
+            // Update scan_params for future refreshes
+            scan_params: {
+              ...asset.scan_params,
+              os_family: apiResponse.device.os_family || asset.scan_params?.os_family,
+              version: apiResponse.device.version || asset.scan_params?.version,
+              h_cpe: apiResponse.device.h_cpe || asset.scan_params?.h_cpe
+            }
           })
         }
+      })
+    })
+  }, [])
+
+  const refreshAsset = useCallback(async (assetId) => {
+    const asset = assets.find(a => a.id === assetId)
+    if (!asset || !asset.scan_params) return
+    
+    // Cancel any existing fetch for this asset
+    if (abortControllersRef.current[assetId]) {
+      abortControllersRef.current[assetId].abort()
+    }
+    
+    // Create new abort controller
+    const abortController = new AbortController()
+    abortControllersRef.current[assetId] = abortController
+    
+    try {
+      const response = await fetch('http://localhost:8000/api/v1/security/scan-by-os', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        signal: abortController.signal,
+        body: JSON.stringify({
+          device_name: asset.scan_params.device_name || asset.name,
+          h_cpe: asset.scan_params.h_cpe || asset.h_cpe || '',
+          vendor: asset.scan_params.vendor || asset.vendor,
+          model: asset.scan_params.model || asset.model,
+          os_family: asset.scan_params.os_family || asset.os_family,
+          version: asset.scan_params.version || asset.version,
+          department: asset.department
+        })
+      })
+      
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+      
+      const apiResponse = await response.json()
+      if (apiResponse.success) {
+        updateAsset(assetId, apiResponse)
       }
-      return asset
-    }))
-  }
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        console.log(`Fetch aborted for asset ${assetId}`)
+      } else {
+        console.error(`Failed to refresh asset ${assetId}:`, error)
+      }
+    } finally {
+      // Clean up abort controller reference
+      if (abortControllersRef.current[assetId] === abortController) {
+        delete abortControllersRef.current[assetId]
+      }
+    }
+  }, [assets, updateAsset])
 
   // Add background refresh function
   const refreshAllAssets = async () => {
@@ -218,35 +301,73 @@ export const useNavigation = () => {
   }
 
   // Function to clear all data (useful for testing or reset functionality)
-  const clearAllData = () => {
+  const clearAllData = useCallback(() => {
+    // Cancel all pending fetches
+    Object.values(abortControllersRef.current).forEach(controller => controller.abort())
+    abortControllersRef.current = {}
+    
+    // Clear all state
     setDepartments([])
     setAssets([])
+    
+    // Clear localStorage
     localStorage.removeItem(DEPARTMENTS_STORAGE_KEY)
     localStorage.removeItem(ASSETS_STORAGE_KEY)
-  }
+  }, [])
 
   // Function to remove a specific department and its assets
-  const removeDepartment = (departmentName) => {
+  const removeDepartment = useCallback((departmentName) => {
+    // Get all asset IDs for this department
+    const departmentAssetIds = assets.filter(a => a.department === departmentName).map(a => a.id)
+    
+    // Cancel all pending fetches for department assets
+    departmentAssetIds.forEach(assetId => {
+      if (abortControllersRef.current[assetId]) {
+        abortControllersRef.current[assetId].abort()
+        delete abortControllersRef.current[assetId]
+      }
+    })
+    
+    // Remove department
     setDepartments(prev => prev.filter(dept => dept !== departmentName))
-    setAssets(prev => prev.filter(asset => asset.department !== departmentName))
-  }
+    
+    // Remove all assets in this department
+    setAssets(prev => {
+      const newAssets = prev.filter(asset => asset.department !== departmentName)
+      
+      // Update localStorage immediately
+      try {
+        localStorage.setItem(ASSETS_STORAGE_KEY, JSON.stringify(newAssets))
+      } catch (error) {
+        console.error('Error saving assets after department removal:', error)
+      }
+      
+      return newAssets
+    })
+  }, [assets])
 
   // Function to remove a specific asset
-  const removeAsset = (assetId) => {
+  const removeAsset = useCallback((assetId) => {
+    // Cancel any pending fetches for this asset
+    if (abortControllersRef.current[assetId]) {
+      abortControllersRef.current[assetId].abort()
+      delete abortControllersRef.current[assetId]
+    }
+    
+    // Immutable state update - remove asset and all its data
     setAssets(prev => {
-      const updatedAssets = prev.filter(asset => asset.id !== assetId)
+      const newAssets = prev.filter(asset => asset.id !== assetId)
       
-      // Clear all related vulnerability data from localStorage or any other storage
-      // This ensures CVEs, CWEs, CAPECs, and ATT&CK data are completely removed
+      // Update localStorage immediately
       try {
-        localStorage.setItem(ASSETS_STORAGE_KEY, JSON.stringify(updatedAssets))
+        localStorage.setItem(ASSETS_STORAGE_KEY, JSON.stringify(newAssets))
       } catch (error) {
         console.error('Error saving assets after removal:', error)
       }
       
-      return updatedAssets
+      return newAssets
     })
-  }
+  }, [])
 
   const dynamicNavItems = useMemo(() => {
     const navItems = []
@@ -260,6 +381,7 @@ export const useNavigation = () => {
           name: department,
           icon: <CIcon icon={cilFolder} customClassName="nav-icon"/>,
           items: departmentAssets.map(asset => ({
+            key: asset.id,
             component: CNavItem,
             name: asset.name,
             to: `/asset/${asset.id}`,
@@ -292,6 +414,7 @@ export const useNavigation = () => {
     addDepartment,
     addAsset,
     updateAsset,
+    refreshAsset,
     refreshAllAssets,
     removeDepartment,
     removeAsset,

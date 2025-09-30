@@ -34,8 +34,9 @@ const AppSidebar = () => {
     assets.forEach(asset => {
       if (asset.vulnerabilities?.cves) {
         totalVulns += asset.vulnerabilities.cves.length
+        // Use backend's risk_level for critical determination
         criticalVulns += asset.vulnerabilities.cves.filter(cve => 
-          cve.cvss_score >= 7.0
+          (cve.risk_level && cve.risk_level >= 75) || (cve.cvss_score >= 7.0)
         ).length
       }
     })

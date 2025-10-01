@@ -33,11 +33,14 @@ export const AppSidebarNav = ({ items }) => {
     
     // Handle our custom DynamicNavButtons component
     if (Component === DynamicNavButtons) {
-      return <Component key={index} {...item.props} />
+      return <Component key={item.key || `dynamic-nav-${index}`} {...item.props} />
     }
     
+    // Use stable key: prioritize item.key, then rest.to, then fall back to index
+    const stableKey = item.key || rest.to || `nav-item-${index}`
+    
     return (
-      <Component as="div" key={item.key || rest.to || index}>
+      <Component as="div" key={stableKey}>
         {rest.to || rest.href ? (
           <CNavLink
             {...(rest.to && { as: NavLink, to: rest.to })}
@@ -55,10 +58,14 @@ export const AppSidebarNav = ({ items }) => {
   const navGroup = (item, index) => {
     const { component, name, icon, items, to, ...rest } = item
     const Component = component
+    
+    // Use stable key: prioritize item.key, then name, then fall back to index
+    const stableKey = item.key || `nav-group-${name}-${index}`
+    
     return (
-      <Component compact as="div" key={item.key || name || index} toggler={navLink(name, icon)} {...rest}>
-        {item.items?.map((item, idx) =>
-          item.items ? navGroup(item, idx) : navItem(item, idx, true),
+      <Component compact as="div" key={stableKey} toggler={navLink(name, icon)} {...rest}>
+        {item.items?.map((childItem, idx) =>
+          childItem.items ? navGroup(childItem, idx) : navItem(childItem, idx, true),
         )}
       </Component>
     )
@@ -67,7 +74,11 @@ export const AppSidebarNav = ({ items }) => {
   return (
     <CSidebarNav as={SimpleBar}>
       {items &&
-        items.map((item, index) => (item.items ? navGroup(item, index) : navItem(item, index)))}
+        items.map((item, index) => {
+          // Use stable key for top-level items too
+          const stableKey = item.key || item.name || `top-level-${index}`
+          return item.items ? navGroup(item, index) : navItem(item, index)
+        })}
     </CSidebarNav>
   )
 }

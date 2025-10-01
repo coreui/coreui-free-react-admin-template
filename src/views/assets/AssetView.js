@@ -150,8 +150,6 @@ const AssetDetail = () => {
           department: enrichedAsset.department || ''
         }
         
-        console.log('Sending update request:', requestBody)
-        
         const response = await fetch('http://localhost:8000/api/v1/security/scan-by-os', {
           method: 'POST',
           headers: {
@@ -167,24 +165,9 @@ const AssetDetail = () => {
 
         const apiResponse = await response.json()
         if (apiResponse.success) {
-          // Update using the central state management
-          updateAsset(enrichedAsset.id, {
-            ...apiResponse,
-            device: {
-              ...apiResponse.device,
-              id: enrichedAsset.id, // Preserve the ID
-              os_family: editableFields.osFamily,
-              version: editableFields.osVersion,
-              h_cpe: enrichedAsset.h_cpe || enrichedAsset.scan_params?.h_cpe
-            },
-            scan_params: {
-              ...enrichedAsset.scan_params,
-              os_family: editableFields.osFamily,
-              version: editableFields.osVersion
-            }
-          })
+          // CRITICAL: Pass the FULL apiResponse, not partial data
+          updateAsset(enrichedAsset.id, apiResponse)
           
-          // Show success feedback
           alert('Asset updated successfully!')
         } else {
           throw new Error(apiResponse.error_message || 'Update failed')

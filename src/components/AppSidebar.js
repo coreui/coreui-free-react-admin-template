@@ -123,4 +123,5 @@ const AppSidebar = () => {
   )
 }
 
-export default React.memo(AppSidebar)
+export default AppSidebar
+//export default React.memo(AppSidebar)

@@ -80,11 +80,9 @@ export const useNavigation = () => {
   const addAsset = useCallback((apiResponse) => {
     if (!apiResponse || !apiResponse.device) return
     
-//    const assetId = apiResponse.device?.id?.toString() || `asset-${Date.now()}-${Math.random()}`
-    // Make asset ID unique by appending version
-    const assetId = apiResponse.device?.id?.toString()
-      ? `${apiResponse.device.id}-${apiResponse.device.version || ''}`
-      : `asset-${Date.now()}-${Math.random()}`
+    // Make asset ID unique by including timestamp to prevent ID collisions
+    const baseId = apiResponse.device?.id?.toString() || `asset-${Date.now()}`
+    const assetId = `${baseId}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
 
     
     // Cancel any pending fetches for this asset
@@ -151,9 +149,10 @@ export const useNavigation = () => {
       return prev.map(asset => {
         if (asset.id !== assetId) return asset
         
-        // Complete replacement of vulnerability data
+        // COMPLETE REPLACEMENT - not merging
         return {
           ...asset,
+          // Replace ALL vulnerability data
           vulnerabilities: {
             cves: apiResponse.cves || [],
             cwes: apiResponse.cwes || [],
@@ -163,7 +162,7 @@ export const useNavigation = () => {
           statistics: apiResponse.statistics || {},
           scan_time: apiResponse.scan_time || 0,
           last_updated: new Date().toISOString(),
-          risk_level: apiResponse.device?.risk_level || asset.risk_level || 0,
+          risk_level: apiResponse.device?.risk_level || 0,
           
           // Update device info if provided
           ...(apiResponse.device && {
@@ -171,14 +170,16 @@ export const useNavigation = () => {
             version: apiResponse.device.version || asset.version,
             description: apiResponse.device.description || asset.description,
             h_cpe: apiResponse.device.h_cpe || asset.h_cpe,
-            risk_level: apiResponse.device.risk_level || 0,
             
             // Update scan_params for future refreshes
             scan_params: {
-              ...asset.scan_params,
+              device_name: apiResponse.device.name || asset.scan_params?.device_name || asset.name,
+              h_cpe: apiResponse.device.h_cpe || asset.scan_params?.h_cpe || asset.h_cpe,
+              vendor: apiResponse.device.vendor || asset.scan_params?.vendor || asset.vendor,
+              model: apiResponse.device.model || asset.scan_params?.model || asset.model,
               os_family: apiResponse.device.os_family || asset.scan_params?.os_family,
               version: apiResponse.device.version || asset.scan_params?.version,
-              h_cpe: apiResponse.device.h_cpe || asset.scan_params?.h_cpe
+              department: apiResponse.device.department || asset.department
             }
           })
         }
@@ -335,13 +336,6 @@ export const useNavigation = () => {
     setAssets(prev => {
       const newAssets = prev.filter(asset => asset.department !== departmentName)
       
-      // Update localStorage immediately
-      try {
-        localStorage.setItem(ASSETS_STORAGE_KEY, JSON.stringify(newAssets))
-      } catch (error) {
-        console.error('Error saving assets after department removal:', error)
-      }
-      
       return newAssets
     })
   }, [assets])
@@ -354,17 +348,9 @@ export const useNavigation = () => {
       delete abortControllersRef.current[assetId]
     }
     
-    // Immutable state update - remove asset and all its data
+    // Immutable state update - completely remove asset and all its data
     setAssets(prev => {
       const newAssets = prev.filter(asset => asset.id !== assetId)
-      
-      // Update localStorage immediately
-      try {
-        localStorage.setItem(ASSETS_STORAGE_KEY, JSON.stringify(newAssets))
-      } catch (error) {
-        console.error('Error saving assets after removal:', error)
-      }
-      
       return newAssets
     })
   }, [])
@@ -379,9 +365,10 @@ export const useNavigation = () => {
         navItems.push({
           component: CNavGroup,
           name: department,
+          key: `dept-${department}`, // Add stable key
           icon: <CIcon icon={cilFolder} customClassName="nav-icon"/>,
           items: departmentAssets.map(asset => ({
-            key: asset.id,
+            key: asset.id, // This is already good - using asset.id
             component: CNavItem,
             name: asset.name,
             to: `/asset/${asset.id}`,
@@ -389,12 +376,13 @@ export const useNavigation = () => {
           }))
         })
       } else {
-        // Show department even if no assets yet
         navItems.push({
           component: CNavGroup,
           name: department,
+          key: `dept-${department}`, // Add stable key
           icon: <CIcon icon={cilFolder} customClassName="nav-icon"/>,
           items: [{
+            key: `empty-${department}`, // Add stable key
             component: CNavItem,
             name: 'No assets yet',
             to: '#',

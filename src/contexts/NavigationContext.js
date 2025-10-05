@@ -89,6 +89,7 @@ export const NavigationProvider = ({ children }) => {
     
     const asset = {
       id: assetId,
+      db_id: apiResponse.device?.id || '',
       name: apiResponse.device?.name || 'Unknown Device',
       vendor: apiResponse.device?.vendor || 'Unknown Vendor',
       model: apiResponse.device?.model || 'Unknown Model',

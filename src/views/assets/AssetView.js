@@ -303,7 +303,7 @@ const AssetDetail = () => {
                   <CListGroup flush>
                     <CListGroupItem className="d-flex justify-content-between">
                       <strong>Name:</strong>
-                      <span>{enrichedAsset.name}</span>
+                      <span>{enrichedAsset.name + enrichedAsset.id}</span>
                     </CListGroupItem>
                     <CListGroupItem className="d-flex justify-content-between">
                       <strong>Vendor:</strong>

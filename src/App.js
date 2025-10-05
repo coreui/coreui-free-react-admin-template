@@ -37,7 +37,7 @@ const App = () => {
     setColorMode(storedTheme)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-/*
+
   // useEffect for background refresh
   useEffect(() => {
     // Start background refresh after a short delay to allow initial load
@@ -47,7 +47,7 @@ const App = () => {
 
     return () => clearTimeout(timer)
   }, [refreshAllAssets])
-*/
+
 
   return (
     <HashRouter>

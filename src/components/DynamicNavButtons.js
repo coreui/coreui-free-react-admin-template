@@ -207,6 +207,7 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
       const enhancedResults = {
         ...scanResults,
         device: {
+          db_id: scanResults.device.id,
           ...scanResults.device,
           department: selectedDepartment,
           os_family: selectedOsFamily,
@@ -220,7 +221,8 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
           vendor: selectedCpeMatch.vendor,
           model: selectedCpeMatch.model,
           os_family: selectedOsFamily,
-          version: osVersion.trim()
+          version: osVersion.trim(),
+          department: selectedDepartment
         }
       }
       

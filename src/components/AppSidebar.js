@@ -13,7 +13,7 @@ import CIcon from '@coreui/icons-react'
 import { cilShieldAlt, cilBug } from '@coreui/icons'
 import { AppSidebarNav } from './AppSidebarNav'
 import { getNavigation } from '../_nav'
-import { useNavigation } from '../hooks/useNavigation'
+import { useNavigation } from '../contexts/NavigationContext'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()

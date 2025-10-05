@@ -44,7 +44,7 @@ import {
 } from '@coreui/icons'
 
 import { AppBreadcrumb } from './index'
-import { useNavigation } from '../hooks/useNavigation'
+import { useNavigation } from '../contexts/NavigationContext'
 
 const AppHeader = () => {
   const headerRef = useRef()

@@ -2,7 +2,7 @@ import React from 'react'
 import { CFooter, CBadge } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilShieldAlt, cilCheckCircle } from '@coreui/icons'
-import { useNavigation } from '../hooks/useNavigation'
+import { useNavigation } from '../contexts/NavigationContext'
 
 const AppFooter = () => {
   const { assets } = useNavigation()

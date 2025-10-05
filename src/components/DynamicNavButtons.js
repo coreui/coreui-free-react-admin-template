@@ -18,7 +18,8 @@ import {
   CSpinner,
   CAlert,
   CBadge
-} from '@coreui/react';
+} from '@coreui/react'
+import { useNavigation } from '../contexts/NavigationContext'
 
 const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
   const [departmentDialogVisible, setDepartmentDialogVisible] = useState(false)
@@ -381,7 +382,6 @@ const DynamicNavButtons = ({ onAddDepartment, onAddAsset, departments }) => {
                       {cpeMatches.map((match, index) => (
                         <CListGroupItem 
                           key={index}
-                          action
                           onClick={() => handleCpeMatchSelect(match)}
                           style={{ cursor: 'pointer' }}
                           className={selectedCpeMatch?.cpe === match.cpe ? 'bg-light' : ''}

@@ -20,7 +20,7 @@ import {
   CListGroupItem,
   CCollapse
 } from '@coreui/react'
-import { useNavigation } from '../../hooks/useNavigation'
+import { useNavigation } from '../../contexts/NavigationContext'
 
 const Overview = () => {
   const navigate = useNavigate()
@@ -209,7 +209,7 @@ const Overview = () => {
                     </CTableHead>
                     <CTableBody>
                       {processedAssets.map((asset) => (
-                        <React.Fragment key={`${asset.id}-${asset.last_updated || ''}`}>
+                        <React.Fragment key={asset.id}>
                           <CTableRow>
                             <CTableDataCell>
                               <div>
@@ -290,7 +290,7 @@ const Overview = () => {
                                     <h6>CVE Details for {asset.name}:</h6>
                                     <CListGroup flush>
                                       {asset.cves.slice(0, 10).map((cve, index) => (
-                                        <CListGroupItem key={`${asset.id}-cve-${cve.cve_id}-${index}`} className="d-flex justify-content-between align-items-start">
+                                        <CListGroupItem key={`${asset.id}-${cve.cve_id}-${index}`} className="d-flex justify-content-between align-items-start">
                                           <div className="flex-grow-1">
                                             <div className="d-flex align-items-center gap-2 mb-2">
                                               <code className="text-primary me-2">{cve.cve_id}</code>

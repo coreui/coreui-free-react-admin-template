@@ -18,41 +18,38 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
   {
     component: CNavTitle,
     name: 'Security Dashboard',
+    key: 'title-security-dashboard',
   },
-
-  // Overview Page
   {
     component: CNavItem,
     name: 'Overview',
     to: '/overview',
     icon: <CIcon icon={cilChart} customClassName="nav-icon"/>,
+    key: 'nav-overview',
   },
-
-  // Asset Management Buttons
   {
     component: DynamicNavButtons,
+    key: 'dynamic-nav-buttons',
     props: {
       onAddDepartment,
       onAddAsset,
       departments
     }
   },
-
-  // Dynamic Department and Asset Items
   ...dynamicNavItems,
-
-  // Management Section Title
+  
   ...(dynamicNavItems.length > 0 ? [{
     component: CNavTitle,
     name: 'Management',
+    key: 'title-management',
   }] : []),
-
-  // Data Management
+  
   {
     component: CNavItem,
     name: 'Data Management',
     to: '/datamanagement',
     icon: <CIcon icon={cilSettings} customClassName="nav-icon"/>,
+    key: 'nav-data-management',
   },
 
   // Security Tools Section (if there are assets)
@@ -60,13 +57,16 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
     {
       component: CNavTitle,
       name: 'Security Tools',
+      key: 'title-security-tools',
     },
     {
       component: CNavGroup,
       name: 'Vulnerability Management',
+      key: 'group-vuln-mgmt',
       icon: <CIcon icon={cilBug} customClassName="nav-icon"/>,
       items: [
         {
+          key: 'vuln-scan-results',
           component: CNavItem,
           name: 'Scan Results',
           to: '#',
@@ -77,6 +77,7 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
           },
         },
         {
+          key: 'vuln-cve-db',
           component: CNavItem,
           name: 'CVE Database',
           to: '#',
@@ -87,6 +88,7 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
           },
         },
         {
+          key: 'vuln-risk-assess',
           component: CNavItem,
           name: 'Risk Assessment',
           to: '#',
@@ -101,9 +103,11 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
     {
       component: CNavGroup,
       name: 'Security Analytics',
+      key: 'group-sec-analytics',
       icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon"/>,
       items: [
         {
+          key: 'analytics-threat-intel',
           component: CNavItem,
           name: 'Threat Intelligence',
           to: '#',
@@ -114,6 +118,7 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
           },
         },
         {
+          key: 'analytics-attack-patterns',
           component: CNavItem,
           name: 'Attack Patterns',
           to: '#',
@@ -124,6 +129,7 @@ export const getNavigation = (departments, onAddDepartment, onAddAsset, dynamicN
           },
         },
         {
+          key: 'analytics-sec-metrics',
           component: CNavItem,
           name: 'Security Metrics',
           to: '#',

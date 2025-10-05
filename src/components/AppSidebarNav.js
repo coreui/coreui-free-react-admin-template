@@ -28,16 +28,16 @@ export const AppSidebarNav = ({ items }) => {
   }
 
   const navItem = (item, index, indent = false) => {
-    const { component, name, badge, icon, ...rest } = item
+    const { component, name, badge, icon, key: itemKey, ...rest } = item
     const Component = component
     
     // Handle our custom DynamicNavButtons component
     if (Component === DynamicNavButtons) {
-      return <Component key={item.key || `dynamic-nav-${index}`} {...item.props} />
+      return <Component key={itemKey || `dynamic-nav-${index}`} {...item.props} />
     }
     
-    // Use stable key: prioritize item.key, then rest.to, then fall back to index
-    const stableKey = item.key || rest.to || `nav-item-${index}`
+    // CRITICAL: Extract key, don't spread it
+    const stableKey = itemKey || rest.to || `nav-item-${name}-${index}`
     
     return (
       <Component as="div" key={stableKey}>
@@ -45,6 +45,7 @@ export const AppSidebarNav = ({ items }) => {
           <CNavLink
             {...(rest.to && { as: NavLink, to: rest.to })}
             {...(rest.href && { href: rest.href })}
+            {...rest}
           >
             {navLink(name, icon, badge, indent)}
           </CNavLink>
@@ -56,15 +57,21 @@ export const AppSidebarNav = ({ items }) => {
   }
 
   const navGroup = (item, index) => {
-    const { component, name, icon, items, to, ...rest } = item
+    const { component, name, icon, items: groupItems, key: itemKey, to, ...rest } = item
     const Component = component
     
-    // Use stable key: prioritize item.key, then name, then fall back to index
-    const stableKey = item.key || `nav-group-${name}-${index}`
+    // CRITICAL: Extract key, don't spread it
+    const stableKey = itemKey || `nav-group-${name}`
     
     return (
-      <Component compact as="div" key={stableKey} toggler={navLink(name, icon)} {...rest}>
-        {item.items?.map((childItem, idx) =>
+      <Component 
+        key={stableKey}
+        compact 
+        as="div" 
+        toggler={navLink(name, icon)} 
+        {...rest}
+      >
+        {groupItems?.map((childItem, idx) =>
           childItem.items ? navGroup(childItem, idx) : navItem(childItem, idx, true),
         )}
       </Component>
@@ -74,11 +81,9 @@ export const AppSidebarNav = ({ items }) => {
   return (
     <CSidebarNav as={SimpleBar}>
       {items &&
-        items.map((item, index) => {
-          // Use stable key for top-level items too
-          const stableKey = item.key || item.name || `top-level-${index}`
-          return item.items ? navGroup(item, index) : navItem(item, index)
-        })}
+        items.map((item, index) =>
+          item.items ? navGroup(item, index) : navItem(item, index)
+        )}
     </CSidebarNav>
   )
 }

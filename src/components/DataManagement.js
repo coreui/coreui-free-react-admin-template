@@ -14,7 +14,7 @@ import {
   CBadge,
   CSpinner
 } from '@coreui/react'
-import { useNavigation } from '../hooks/useNavigation'
+import { useNavigation } from '../contexts/NavigationContext'
 
 const DataManagement = () => {
   const { 
@@ -28,40 +28,36 @@ const DataManagement = () => {
   const [showClearModal, setShowClearModal] = useState(false)
   const [deletingItems, setDeletingItems] = useState({})
 
-  const handleRemoveDepartment = async (dept) => {
+  const handleRemoveDepartment = (dept) => {
     setDeletingItems(prev => ({ ...prev, [`dept-${dept}`]: true }))
     
-    try {
-      await new Promise(resolve => setTimeout(resolve, 100)) // Small delay for UI feedback
-      removeDepartment(dept)
-      // Optional: Show success message
-    } catch (error) {
-      console.error('Error removing department:', error)
-    } finally {
+    // Remove immediately - no async needed
+    removeDepartment(dept)
+    
+    // Clear loading state after a brief moment for UI feedback
+    setTimeout(() => {
       setDeletingItems(prev => {
         const newState = { ...prev }
         delete newState[`dept-${dept}`]
         return newState
       })
-    }
+    }, 100)
   }
 
-  const handleRemoveAsset = async (assetId) => {
+  const handleRemoveAsset = (assetId) => {
     setDeletingItems(prev => ({ ...prev, [`asset-${assetId}`]: true }))
     
-    try {
-      await new Promise(resolve => setTimeout(resolve, 100)) // Small delay for UI feedback
-      removeAsset(assetId)
-      // Optional: Show success message
-    } catch (error) {
-      console.error('Error removing asset:', error)
-    } finally {
+    // Remove immediately - no async needed
+    removeAsset(assetId)
+    
+    // Clear loading state after a brief moment for UI feedback
+    setTimeout(() => {
       setDeletingItems(prev => {
         const newState = { ...prev }
         delete newState[`asset-${assetId}`]
         return newState
       })
-    }
+    }, 100)
   }
 
   const handleClearAll = () => {

@@ -4,7 +4,7 @@ import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilHome, cilFolder, cilDescription, cilSettings } from '@coreui/icons'
 import routes from '../routes'
-import { useNavigation } from '../hooks/useNavigation'
+import { useNavigation } from '../contexts/NavigationContext'
 
 const AppBreadcrumb = () => {
   const currentLocation = useLocation().pathname

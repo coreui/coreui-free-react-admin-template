@@ -20,7 +20,7 @@ import {
   CAlert,
   CSpinner
 } from '@coreui/react'
-import { useNavigation } from '../../hooks/useNavigation'
+import { useNavigation } from '../../contexts/NavigationContext'
 
 const AssetDetail = () => {
   const { assetId } = useParams()

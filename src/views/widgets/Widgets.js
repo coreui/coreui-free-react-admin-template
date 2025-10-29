@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import {
   CCard,
   CCardBody,
@@ -34,16 +34,120 @@ import { DocsExample } from 'src/components'
 import WidgetsBrand from './WidgetsBrand'
 import WidgetsDropdown from './WidgetsDropdown'
 
+// Constants
+const CHART_LABELS = ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M']
+
+const COMMON_CHART_OPTIONS = {
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
+  scales: {
+    x: {
+      display: false,
+    },
+    y: {
+      display: false,
+    },
+  },
+}
+
+const LINE_CHART_OPTIONS = {
+  ...COMMON_CHART_OPTIONS,
+  elements: {
+    line: {
+      tension: 0.4,
+    },
+    point: {
+      radius: 0,
+    },
+  },
+}
+
+// Helper to generate random data
+const generateRandomData = (count, min = 40, max = 100) =>
+  Array.from({ length: count }, () => Math.floor(Math.random() * (max - min + 1) + min))
+
+// Footer component for widgets
+const WidgetFooter = () => (
+  <CLink
+    className="font-weight-bold font-xs text-body-secondary"
+    href="https://coreui.io/"
+    rel="noopener noreferrer" // Fixed typo: norefferer -> noreferrer
+    target="_blank"
+  >
+    View more
+    <CIcon icon={cilArrowRight} className="float-end" width={16} />
+  </CLink>
+)
+
+// Chart factory functions
+const createBarChartConfig = (color, data) => ({
+  labels: CHART_LABELS,
+  datasets: [
+    {
+      backgroundColor: getStyle(color),
+      borderColor: 'transparent',
+      borderWidth: 1,
+      data,
+    },
+  ],
+})
+
+const createLineChartConfig = (color, data) => ({
+  labels: CHART_LABELS,
+  datasets: [
+    {
+      backgroundColor: 'transparent',
+      borderColor: getStyle(color),
+      borderWidth: 2,
+      data,
+    },
+  ],
+})
+
 const Widgets = () => {
-  const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+  // Generate random data once per render
+  const chartData = useMemo(() => ({
+    bar1: generateRandomData(15),
+    bar2: generateRandomData(15),
+    bar3: generateRandomData(15),
+    line1: generateRandomData(15),
+    line2: generateRandomData(15),
+    line3: generateRandomData(15),
+  }), [])
+
+  // Reusable chart components
+  const BarChart = ({ color, data }) => (
+    <CChartBar
+      className="mx-auto"
+      style={{ height: '40px', width: '80px' }}
+      data={createBarChartConfig(color, data)}
+      options={COMMON_CHART_OPTIONS}
+    />
+  )
+
+  const LineChart = ({ color, data }) => (
+    <CChartLine
+      className="mx-auto"
+      style={{ height: '40px', width: '80px' }}
+      data={createLineChartConfig(color, data)}
+      options={LINE_CHART_OPTIONS}
+    />
+  )
 
   return (
     <CCard className="mb-4">
       <CCardHeader>Widgets</CCardHeader>
       <CCardBody>
+        {/* CWidgetStatsA Example */}
         <DocsExample href="components/widgets/#cwidgetstatsa">
           <WidgetsDropdown />
         </DocsExample>
+
+        {/* CWidgetStatsB Example - Default */}
         <DocsExample href="components/widgets/#cwidgetstatsb">
           <CRow xs={{ gutter: 4 }}>
             <CCol xs={12} sm={6} xl={4} xxl={3}>
@@ -80,6 +184,8 @@ const Widgets = () => {
             </CCol>
           </CRow>
         </DocsExample>
+
+        {/* CWidgetStatsB Example - Inverse */}
         <DocsExample href="components/widgets/#cwidgetstatsb">
           <CRow xs={{ gutter: 4 }}>
             <CCol xs={12} sm={6} xl={4} xxl={3}>
@@ -124,460 +230,56 @@ const Widgets = () => {
             </CCol>
           </CRow>
         </DocsExample>
+
+        {/* CWidgetStatsE Example - With Charts */}
         <DocsExample href="components/widgets/#cwidgetstatse">
           <CRow xs={{ gutter: 4 }}>
             <CCol sm={4} md={3} xl={2}>
               <CWidgetStatsE
-                chart={
-                  <CChartBar
-                    className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
-                    data={{
-                      labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                      ],
-                      datasets: [
-                        {
-                          backgroundColor: getStyle('--cui-danger'),
-                          borderColor: 'transparent',
-                          borderWidth: 1,
-                          data: [
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
-                    }}
-                    options={{
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          display: false,
-                        },
-                      },
-                      scales: {
-                        x: {
-                          display: false,
-                        },
-                        y: {
-                          display: false,
-                        },
-                      },
-                    }}
-                  />
-                }
+                chart={<BarChart color="--cui-danger" data={chartData.bar1} />}
                 title="title"
                 value="1,123"
               />
             </CCol>
             <CCol sm={4} md={3} xl={2}>
               <CWidgetStatsE
-                chart={
-                  <CChartBar
-                    className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
-                    data={{
-                      labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                      ],
-                      datasets: [
-                        {
-                          backgroundColor: getStyle('--cui-primary'),
-                          borderColor: 'transparent',
-                          borderWidth: 1,
-                          data: [
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
-                    }}
-                    options={{
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          display: false,
-                        },
-                      },
-                      scales: {
-                        x: {
-                          display: false,
-                        },
-                        y: {
-                          display: false,
-                        },
-                      },
-                    }}
-                  />
-                }
+                chart={<BarChart color="--cui-primary" data={chartData.bar2} />}
                 title="title"
                 value="1,123"
               />
             </CCol>
             <CCol sm={4} md={3} xl={2}>
               <CWidgetStatsE
-                chart={
-                  <CChartBar
-                    className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
-                    data={{
-                      labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                      ],
-                      datasets: [
-                        {
-                          backgroundColor: getStyle('--cui-success'),
-                          borderColor: 'transparent',
-                          borderWidth: 1,
-                          data: [
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
-                    }}
-                    options={{
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          display: false,
-                        },
-                      },
-                      scales: {
-                        x: {
-                          display: false,
-                        },
-                        y: {
-                          display: false,
-                        },
-                      },
-                    }}
-                  />
-                }
+                chart={<BarChart color="--cui-success" data={chartData.bar3} />}
                 title="title"
                 value="1,123"
               />
             </CCol>
             <CCol sm={4} md={3} xl={2}>
               <CWidgetStatsE
-                chart={
-                  <CChartLine
-                    className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
-                    data={{
-                      labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                      ],
-                      datasets: [
-                        {
-                          backgroundColor: 'transparent',
-                          borderColor: getStyle('--cui-danger'),
-                          borderWidth: 2,
-                          data: [
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
-                    }}
-                    options={{
-                      maintainAspectRatio: false,
-                      elements: {
-                        line: {
-                          tension: 0.4,
-                        },
-                        point: {
-                          radius: 0,
-                        },
-                      },
-                      plugins: {
-                        legend: {
-                          display: false,
-                        },
-                      },
-                      scales: {
-                        x: {
-                          display: false,
-                        },
-                        y: {
-                          display: false,
-                        },
-                      },
-                    }}
-                  />
-                }
+                chart={<LineChart color="--cui-danger" data={chartData.line1} />}
                 title="title"
                 value="1,123"
               />
             </CCol>
             <CCol sm={4} md={3} xl={2}>
               <CWidgetStatsE
-                chart={
-                  <CChartLine
-                    className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
-                    data={{
-                      labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                      ],
-                      datasets: [
-                        {
-                          backgroundColor: 'transparent',
-                          borderColor: getStyle('--cui-success'),
-                          borderWidth: 2,
-                          data: [
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
-                    }}
-                    options={{
-                      maintainAspectRatio: false,
-                      elements: {
-                        line: {
-                          tension: 0.4,
-                        },
-                        point: {
-                          radius: 0,
-                        },
-                      },
-                      plugins: {
-                        legend: {
-                          display: false,
-                        },
-                      },
-                      scales: {
-                        x: {
-                          display: false,
-                        },
-                        y: {
-                          display: false,
-                        },
-                      },
-                    }}
-                  />
-                }
+                chart={<LineChart color="--cui-success" data={chartData.line2} />}
                 title="title"
                 value="1,123"
               />
             </CCol>
             <CCol sm={4} md={3} xl={2}>
               <CWidgetStatsE
-                chart={
-                  <CChartLine
-                    className="mx-auto"
-                    style={{ height: '40px', width: '80px' }}
-                    data={{
-                      labels: [
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                        'T',
-                        'W',
-                        'T',
-                        'F',
-                        'S',
-                        'S',
-                        'M',
-                      ],
-                      datasets: [
-                        {
-                          backgroundColor: 'transparent',
-                          borderColor: getStyle('--cui-info'),
-                          borderWidth: 2,
-                          data: [
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                            random(40, 100),
-                          ],
-                        },
-                      ],
-                    }}
-                    options={{
-                      maintainAspectRatio: false,
-                      elements: {
-                        line: {
-                          tension: 0.4,
-                        },
-                        point: {
-                          radius: 0,
-                        },
-                      },
-                      plugins: {
-                        legend: {
-                          display: false,
-                        },
-                      },
-                      scales: {
-                        x: {
-                          display: false,
-                        },
-                        y: {
-                          display: false,
-                        },
-                      },
-                    }}
-                  />
-                }
+                chart={<LineChart color="--cui-info" data={chartData.line3} />}
                 title="title"
                 value="1,123"
               />
             </CCol>
           </CRow>
         </DocsExample>
+
+        {/* CWidgetStatsF Example - Basic */}
         <DocsExample href="components/widgets/#cwidgetstatsf">
           <CRow xs={{ gutter: 4 }}>
             <CCol xs={12} sm={6} xl={4} xxl={3}>
@@ -614,7 +316,9 @@ const Widgets = () => {
             </CCol>
           </CRow>
         </DocsExample>
-        <DocsExample href="components/widgets/#cwidgetstatsf">
+
+        {/* CWidgetStatsF Example - With Footer */}
+        <DocsExample href="components/widgets/#cwidgetstatf">
           <CRow xs={{ gutter: 4 }}>
             <CCol xs={12} sm={6} xl={4} xxl={3}>
               <CWidgetStatsF
@@ -622,17 +326,7 @@ const Widgets = () => {
                 title="income"
                 value="$1.999,50"
                 color="primary"
-                footer={
-                  <CLink
-                    className="font-weight-bold font-xs text-body-secondary"
-                    href="https://coreui.io/"
-                    rel="noopener norefferer"
-                    target="_blank"
-                  >
-                    View more
-                    <CIcon icon={cilArrowRight} className="float-end" width={16} />
-                  </CLink>
-                }
+                footer={<WidgetFooter />}
               />
             </CCol>
             <CCol xs={12} sm={6} xl={4} xxl={3}>
@@ -641,17 +335,7 @@ const Widgets = () => {
                 title="income"
                 value="$1.999,50"
                 color="info"
-                footer={
-                  <CLink
-                    className="font-weight-bold font-xs text-body-secondary"
-                    href="https://coreui.io/"
-                    rel="noopener norefferer"
-                    target="_blank"
-                  >
-                    View more
-                    <CIcon icon={cilArrowRight} className="float-end" width={16} />
-                  </CLink>
-                }
+                footer={<WidgetFooter />}
               />
             </CCol>
             <CCol xs={12} sm={6} xl={4} xxl={3}>
@@ -660,17 +344,7 @@ const Widgets = () => {
                 title="income"
                 value="$1.999,50"
                 color="warning"
-                footer={
-                  <CLink
-                    className="font-weight-bold font-xs text-body-secondary"
-                    href="https://coreui.io/"
-                    rel="noopener norefferer"
-                    target="_blank"
-                  >
-                    View more
-                    <CIcon icon={cilArrowRight} className="float-end" width={16} />
-                  </CLink>
-                }
+                footer={<WidgetFooter />}
               />
             </CCol>
             <CCol xs={12} sm={6} xl={4} xxl={3}>
@@ -679,22 +353,14 @@ const Widgets = () => {
                 title="income"
                 value="$1.999,50"
                 color="danger"
-                footer={
-                  <CLink
-                    className="font-weight-bold font-xs text-body-secondary"
-                    href="https://coreui.io/"
-                    rel="noopener norefferer"
-                    target="_blank"
-                  >
-                    View more
-                    <CIcon icon={cilArrowRight} className="float-end" width={16} />
-                  </CLink>
-                }
+                footer={<WidgetFooter />}
               />
             </CCol>
           </CRow>
         </DocsExample>
-        <DocsExample href="components/widgets/#cwidgetstatsf">
+
+        {/* CWidgetStatsF Example - No Padding */}
+        <DocsExample href="components/widgets/#cwidgetstatf">
           <CRow xs={{ gutter: 4 }}>
             <CCol xs={12} sm={6} xl={4} xxl={3}>
               <CWidgetStatsF
@@ -734,12 +400,17 @@ const Widgets = () => {
             </CCol>
           </CRow>
         </DocsExample>
+
+        {/* WidgetsBrand Examples */}
         <DocsExample href="components/widgets/#cwidgetstatsd">
           <WidgetsBrand />
         </DocsExample>
+
         <DocsExample href="components/widgets/#cwidgetstatsd">
           <WidgetsBrand withCharts />
         </DocsExample>
+
+        {/* CWidgetStatsC Example - Card Group */}
         <DocsExample href="components/widgets/#cwidgetstatsc">
           <CCardGroup className="mb-4">
             <CWidgetStatsC
@@ -774,6 +445,8 @@ const Widgets = () => {
             />
           </CCardGroup>
         </DocsExample>
+
+        {/* CWidgetStatsC Example - Grid */}
         <DocsExample href="components/widgets/#cwidgetstatsc">
           <CRow xs={{ gutter: 4 }}>
             <CCol xs={6} lg={4} xxl={2}>
@@ -826,6 +499,8 @@ const Widgets = () => {
             </CCol>
           </CRow>
         </DocsExample>
+
+        {/* CWidgetStatsC Example - Inverse */}
         <DocsExample href="components/widgets/#cwidgetstatsc">
           <CRow xs={{ gutter: 4 }}>
             <CCol xs={6} lg={4} xxl={2}>

@@ -29,7 +29,7 @@ const MainChart = () => {
     return () => document.documentElement.removeEventListener('ColorSchemeChange', handleColorSchemeChange)
   }, [chartRef])
 
-  const random = () => Math.round(Math.random() * 100)
+  const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min
 
   return (
     <>

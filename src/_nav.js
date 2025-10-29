@@ -354,7 +354,7 @@ const _nav = [
             <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
           </React.Fragment>
         ),
-        href: 'https://coreui.io/react/docs/forms/stepp/',
+        href: 'https://coreui.io/react/docs/forms/stepper/',
         badge: {
           color: 'danger',
           text: 'PRO',

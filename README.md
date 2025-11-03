@@ -28,6 +28,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [Quick Start](#quick-start)
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
+* [Testing](#testing)
 * [What's included](#whats-included)
 * [Documentation](#documentation)
 * [Components](#components)
@@ -111,6 +112,96 @@ or
 # build for production with minification
 $ yarn build
 ```
+
+## Testing
+
+This project uses [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/react) for unit testing.
+
+### Running Tests
+
+```bash
+# Run tests in watch mode
+$ npm test
+
+# Run tests once
+$ npm test -- --run
+
+# Run tests with UI
+$ npm run test:ui
+
+# Run tests with coverage
+$ npm run test:coverage
+```
+
+### Test Structure
+
+Tests are located alongside their source files with the `.test.js` extension:
+
+```
+src/
+├── components/
+│   ├── AppHeader.js
+│   ├── AppHeader.test.js
+│   ├── AppFooter.js
+│   └── AppFooter.test.js
+├── App.js
+├── App.test.js
+└── store.test.js
+```
+
+### Writing Tests
+
+**Basic Component Test:**
+```javascript
+import { render, screen } from '@testing-library/react'
+import { describe, it, expect } from 'vitest'
+import MyComponent from './MyComponent'
+
+describe('MyComponent', () => {
+  it('renders without crashing', () => {
+    render(<MyComponent />)
+    expect(screen.getByText('Hello')).toBeInTheDocument()
+  })
+})
+```
+
+**Testing with Redux:**
+```javascript
+import { Provider } from 'react-redux'
+import store from '../store'
+
+const renderWithProviders = (component) => {
+  return render(
+    <Provider store={store}>
+      {component}
+    </Provider>
+  )
+}
+```
+
+**Testing with Router:**
+```javascript
+import { BrowserRouter } from 'react-router-dom'
+
+const renderWithRouter = (component) => {
+  return render(
+    <BrowserRouter>
+      {component}
+    </BrowserRouter>
+  )
+}
+```
+
+### Current Test Coverage
+
+- ✅ AppFooter
+- ✅ AppHeader
+- ✅ AppSidebar
+- ✅ AppSidebarNav
+- ✅ AppBreadcrumb
+- ✅ AppContent
+- ✅ App
+- ✅ Store (Redux)
 
 ## What's included
 

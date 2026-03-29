@@ -101,19 +101,19 @@ src/
 ├── layout/          # Layout wrapper components
 ├── views/           # Page/route components
 ├── scss/            # Global styles and themes
-├── App.js           # Root component with routing
-├── index.js         # Application entry point
+├── App.jsx          # Root component with routing
+├── index.jsx        # Application entry point
 ├── routes.js        # Route definitions
-├── _nav.js          # Navigation menu configuration
+├── _nav.jsx         # Navigation menu configuration
 └── store.js         # Redux store setup
 ```
 
 ### Key Files
 
-- **`App.js`**: Main application component, routing setup, theme initialization
-- **`index.js`**: ReactDOM render, Provider setup, store connection
+- **`App.jsx`**: Main application component, routing setup, theme initialization
+- **`index.jsx`**: ReactDOM render, Provider setup, store connection
 - **`routes.js`**: Array of route configurations for protected routes
-- **`_nav.js`**: Navigation menu structure for sidebar
+- **`_nav.jsx`**: Navigation menu structure for sidebar
 - **`store.js`**: Redux store with global state (theme, sidebar)
 
 ## Development Workflow
@@ -324,7 +324,7 @@ const routes = [
 export default routes
 ```
 
-**3. Add navigation item to `src/_nav.js`** (optional):
+**3. Add navigation item to `src/_nav.jsx`** (optional):
 
 ```javascript
 import { cilBasket } from '@coreui/icons'

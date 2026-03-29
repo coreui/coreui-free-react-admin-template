@@ -88,7 +88,7 @@ The application follows a **functional component architecture** with React Hooks
 
 ```
 ┌──────────────────────────────────────────┐
-│           Application (App.js)           │
+│           Application (App.jsx)          │
 │  - HashRouter                            │
 │  - Theme Management                      │
 │  - Route Configuration                   │
@@ -149,30 +149,30 @@ coreui-free-react-admin-template/
 ├── src/                         # Source code
 │   │
 │   ├── assets/                  # Application assets
-│   │   ├── brand/              # Logo components (logo.js, sygnet.js)
+│   │   ├── brand/              # Logo components (logo.jsx, sygnet.jsx)
 │   │   └── images/             # Image files (avatars, etc.)
 │   │
 │   ├── components/              # Reusable UI components
-│   │   ├── AppBreadcrumb.js    # Breadcrumb navigation
-│   │   ├── AppContent.js       # Main content area wrapper
-│   │   ├── AppFooter.js        # Footer component
-│   │   ├── AppHeader.js        # Header component
-│   │   ├── AppSidebar.js       # Sidebar navigation
-│   │   ├── AppSidebarNav.js    # Sidebar navigation renderer
-│   │   ├── DocsComponents.js   # Documentation component showcase
-│   │   ├── DocsExample.js      # Code example wrapper
-│   │   ├── DocsIcons.js        # Icon showcase
-│   │   ├── DocsLink.js         # Documentation link
+│   │   ├── AppBreadcrumb.jsx   # Breadcrumb navigation
+│   │   ├── AppContent.jsx      # Main content area wrapper
+│   │   ├── AppFooter.jsx       # Footer component
+│   │   ├── AppHeader.jsx       # Header component
+│   │   ├── AppSidebar.jsx      # Sidebar navigation
+│   │   ├── AppSidebarNav.jsx   # Sidebar navigation renderer
+│   │   ├── DocsComponents.jsx  # Documentation component showcase
+│   │   ├── DocsExample.jsx     # Code example wrapper
+│   │   ├── DocsIcons.jsx       # Icon showcase
+│   │   ├── DocsLink.jsx        # Documentation link
 │   │   ├── header/             # Header sub-components
-│   │   │   └── AppHeaderDropdown.js  # User dropdown menu
+│   │   │   └── AppHeaderDropdown.jsx  # User dropdown menu
 │   │   └── index.js            # Component barrel export
 │   │
 │   ├── layout/                  # Layout wrapper components
-│   │   └── DefaultLayout.js    # Main application layout
+│   │   └── DefaultLayout.jsx   # Main application layout
 │   │
 │   ├── views/                   # Page/view components
 │   │   ├── dashboard/          # Dashboard page
-│   │   │   └── Dashboard.js
+│   │   │   └── Dashboard.jsx
 │   │   ├── base/               # Base UI component examples
 │   │   │   ├── accordion/
 │   │   │   ├── breadcrumbs/
@@ -207,10 +207,10 @@ coreui-free-react-admin-template/
 │   │   ├── examples.scss       # Documentation example styles
 │   │   └── vendors/            # Third-party style overrides
 │   │
-│   ├── App.js                   # Root application component
-│   ├── index.js                 # Application entry point
+│   ├── App.jsx                  # Root application component
+│   ├── index.jsx                # Application entry point
 │   ├── routes.js                # Route definitions
-│   ├── _nav.js                  # Sidebar navigation configuration
+│   ├── _nav.jsx                 # Sidebar navigation configuration
 │   └── store.js                 # Redux store configuration
 │
 ├── build/                       # Build utilities (optional)
@@ -227,7 +227,7 @@ coreui-free-react-admin-template/
 
 ## Core Components
 
-### Application Component (App.js)
+### Application Component (App.jsx)
 
 The root component that:
 - Sets up HashRouter for client-side routing
@@ -242,7 +242,7 @@ The root component that:
 
 ### Layout System
 
-#### DefaultLayout (layout/DefaultLayout.js)
+#### DefaultLayout (layout/DefaultLayout.jsx)
 
 The main application layout wrapper that composes:
 - **AppSidebar**: Collapsible navigation sidebar
@@ -254,19 +254,19 @@ The main application layout wrapper that composes:
 
 #### Navigation Components
 
-**AppSidebar** (`components/AppSidebar.js`):
+**AppSidebar** (`components/AppSidebar.jsx`):
 - Renders collapsible sidebar
 - Integrates with Redux for show/hide state
 - Uses AppSidebarNav for menu rendering
 - Includes branding section
 
-**AppSidebarNav** (`components/AppSidebarNav.js`):
+**AppSidebarNav** (`components/AppSidebarNav.jsx`):
 - Recursive navigation renderer
 - Supports nested menu items
 - Renders CoreUI nav components (CNavItem, CNavGroup, CNavTitle)
 - Handles active state based on current route
 
-**AppHeader** (`components/AppHeader.js`):
+**AppHeader** (`components/AppHeader.jsx`):
 - Fixed top navigation bar
 - Sidebar toggle button
 - Breadcrumb navigation
@@ -309,7 +309,7 @@ const Dashboard = () => {
 
 The application uses React Router DOM for declarative routing:
 
-**Configuration** (`App.js`):
+**Configuration** (`App.jsx`):
 ```javascript
 <HashRouter>
   <Routes>
@@ -322,7 +322,7 @@ The application uses React Router DOM for declarative routing:
 </HashRouter>
 ```
 
-**Protected Routes** (`DefaultLayout.js` + `routes.js`):
+**Protected Routes** (`DefaultLayout.jsx` + `routes.js`):
 ```javascript
 // routes.js - Route definitions
 const routes = [
@@ -332,7 +332,7 @@ const routes = [
   // ... more routes
 ]
 
-// DefaultLayout.js - Route rendering
+// DefaultLayout.jsx - Route rendering
 <Suspense fallback={<CSpinner />}>
   <Routes>
     {routes.map((route, idx) => (
@@ -365,7 +365,7 @@ const Login = React.lazy(() => import('./views/pages/login/Login'))
 
 ### Navigation Configuration
 
-Navigation structure defined in `_nav.js`:
+Navigation structure defined in `_nav.jsx`:
 
 ```javascript
 export default [

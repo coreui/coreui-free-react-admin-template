@@ -477,8 +477,9 @@ Theme persists in localStorage and syncs with Redux state.
 
 **Main Stylesheet** (`src/scss/style.scss`):
 ```scss
-// Import CoreUI and Bootstrap
-@import '@coreui/coreui/scss/coreui';
+@use "@coreui/coreui/scss/coreui" as * with (
+  $enable-deprecation-messages: false
+);
 
 // Custom variables and overrides
 @import 'custom';

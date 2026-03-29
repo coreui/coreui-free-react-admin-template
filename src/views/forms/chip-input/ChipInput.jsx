@@ -1,11 +1,3 @@
-/**
- * ChipInput Form Component Demo Page
- *
- * Demonstrates CoreUI React chip input component with various examples.
- *
- * @module views/forms/chip-input
- */
-
 import {
   CCard,
   CCardBody,

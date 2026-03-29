@@ -1,11 +1,3 @@
-/**
- * Chip Component Demo Page
- *
- * Demonstrates CoreUI React chip component with various examples.
- *
- * @module views/base/chip
- */
-
 import { CCard, CCardBody, CCardHeader, CChip, CCol, CRow } from '@coreui/react'
 import { DocsComponents, DocsExample } from 'src/components'
 

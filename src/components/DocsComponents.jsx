@@ -25,7 +25,7 @@ const DocsComponents = (props) => (
         explore extended examples, detailed API documentation, and customization options, refer to
         our docs.
       </div>
-      <div className="col-md-auto col-12 mt-3 mt-lg-0">
+      <div className="col-md-auto col-12 mt-3 mt-lg-0 d-flex flex-column">
         <a
           className="btn btn-primary text-nowrap text-white"
           href={`https://coreui.io/react/docs/${props.href}`}
@@ -33,6 +33,15 @@ const DocsComponents = (props) => (
           rel="noopener noreferrer"
         >
           Explore Documentation
+        </a>
+        <div className="text-center my-1">or</div>
+        <a
+          className="btn btn-danger text-nowrap text-white"
+          href="https://coreui.io/pricing/?framework=bootstrap&src=free-react-admin-template-docs-banner"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Get CoreUI PRO →
         </a>
       </div>
     </div>

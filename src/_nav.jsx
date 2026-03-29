@@ -147,6 +147,11 @@ const _nav = [
       },
       {
         component: CNavItem,
+        name: 'Chip',
+        to: '/base/chip',
+      },
+      {
+        component: CNavItem,
         name: 'Collapse',
         to: '/base/collapses',
       },
@@ -299,6 +304,11 @@ const _nav = [
         component: CNavItem,
         name: 'Checks & Radios',
         to: '/forms/checks-radios',
+      },
+      {
+        component: CNavItem,
+        name: 'Chip Input',
+        to: '/forms/chip-input',
       },
       {
         component: CNavItem,

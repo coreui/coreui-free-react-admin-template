@@ -34,9 +34,9 @@ The CoreUI Free React Admin Template is a professional admin dashboard built on 
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| React | 19.2.3 | UI library for building component-based interfaces |
-| React DOM | 19.2.3 | DOM rendering and manipulation |
-| React Router DOM | 7.11.0 | Client-side routing and navigation |
+| React | 19.2.4 | UI library for building component-based interfaces |
+| React DOM | 19.2.4 | DOM rendering and manipulation |
+| React Router DOM | 7.13.2 | Client-side routing and navigation |
 | Redux | 5.0.1 | Predictable state container |
 | React-Redux | 9.2.0 | React bindings for Redux |
 
@@ -44,8 +44,8 @@ The CoreUI Free React Admin Template is a professional admin dashboard built on 
 
 | Library | Version | Purpose |
 |---------|---------|---------|
-| @coreui/coreui | 5.5.0 | CoreUI CSS framework based on Bootstrap 5 |
-| @coreui/react | 5.9.2 | CoreUI React components |
+| @coreui/coreui | 5.6.1 | CoreUI CSS framework based on Bootstrap 5 |
+| @coreui/react | 5.10.0 | CoreUI React components |
 | @coreui/icons | 3.0.1 | CoreUI icon set |
 | @coreui/icons-react | 2.3.0 | CoreUI icons as React components |
 | @coreui/utils | 2.0.2 | Utility functions for CoreUI |
@@ -56,20 +56,20 @@ The CoreUI Free React Admin Template is a professional admin dashboard built on 
 | Library | Version | Purpose |
 |---------|---------|---------|
 | Chart.js | 4.5.1 | HTML5 charting library |
-| @coreui/chartjs | 4.1.0 | CoreUI Chart.js themes and defaults |
+| @coreui/chartjs | 4.2.0 | CoreUI Chart.js themes and defaults |
 | @coreui/react-chartjs | 3.0.0 | React wrapper for Chart.js with CoreUI styling |
 
 ### Build Tools & Development
 
 | Tool | Version | Purpose |
 |------|---------|---------|
-| Vite | 7.3.0 | Fast build tool and dev server with HMR |
-| @vitejs/plugin-react | 5.1.2 | Vite plugin for React Fast Refresh |
-| Sass | 1.97.0 | CSS preprocessor for styling |
-| PostCSS | 8.5.6 | CSS transformation with autoprefixer |
-| Autoprefixer | 10.4.23 | Automatic vendor prefixing |
+| Vite | 8.0.3 | Fast build tool and dev server with HMR |
+| @vitejs/plugin-react | 6.0.1 | Vite plugin for React Fast Refresh |
+| Sass | 1.98.0 | CSS preprocessor for styling |
+| PostCSS | 8.5.8 | CSS transformation with autoprefixer |
+| Autoprefixer | 10.4.27 | Automatic vendor prefixing |
 | ESLint | 9.39.2 | JavaScript linting and code quality |
-| Prettier | 3.7.4 | Code formatting |
+| Prettier | 3.8.1 | Code formatting |
 
 ### Utilities
 
@@ -77,7 +77,7 @@ The CoreUI Free React Admin Template is a professional admin dashboard built on 
 |---------|---------|---------|
 | classnames | 2.5.1 | Conditional CSS class management |
 | prop-types | 15.8.1 | Runtime type checking for React props |
-| core-js | 3.47.0 | Polyfills for JavaScript features |
+| core-js | 3.49.0 | Polyfills for JavaScript features |
 | @popperjs/core | 2.11.8 | Tooltip and popover positioning |
 
 ## Architectural Pattern

@@ -37,7 +37,7 @@ const DocsComponents = (props) => (
         <div className="text-center my-1">or</div>
         <a
           className="btn btn-danger text-nowrap text-white"
-          href="https://coreui.io/pricing/?framework=bootstrap&src=free-react-admin-template-docs-banner"
+          href="https://coreui.io/pricing/?framework=react&src=free-react-admin-template-docs-banner"
           target="_blank"
           rel="noopener noreferrer"
         >

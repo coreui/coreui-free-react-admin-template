@@ -12,7 +12,7 @@ You are working with the CoreUI Free React Admin Template, a professional admin 
 - CoreUI React 5.x and @coreui/coreui 5.x
 - React Router 7.x for client-side routing
 - Redux 5.x with React-Redux for state management
-- Vite 7.x for development server and building
+- Vite 8.x for development server and building
 - Sass/SCSS for styling with Bootstrap 5 variables
 - Chart.js 4.x with @coreui/react-chartjs for data visualization
 
@@ -261,12 +261,12 @@ export default [
 ## External Dependencies
 
 **Core Libraries**:
-- @coreui/coreui: ^5.5.0 - CoreUI CSS framework
-- @coreui/react: ^5.9.2 - CoreUI React components
+- @coreui/coreui: ^5.6.1 - CoreUI CSS framework
+- @coreui/react: ^5.10.0 - CoreUI React components
 - @coreui/icons-react: ^2.3.0 - CoreUI icons for React
-- react: ^19.2.3 - React library
-- react-dom: ^19.2.3 - React DOM rendering
-- react-router-dom: ^7.11.0 - Routing library
+- react: ^19.2.4 - React library
+- react-dom: ^19.2.4 - React DOM rendering
+- react-router-dom: ^7.13.2 - Routing library
 - redux: 5.0.1 - State management
 - react-redux: ^9.2.0 - React bindings for Redux
 

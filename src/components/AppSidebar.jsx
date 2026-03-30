@@ -1,3 +1,24 @@
+/**
+ * AppSidebar Component
+ *
+ * Collapsible navigation sidebar with branding, menu items, and toggle controls.
+ *
+ * Features:
+ * - Redux-controlled visibility state
+ * - Unfoldable/narrow mode for more screen space
+ * - Brand logo with full and narrow variants
+ * - Close button for mobile devices
+ * - Footer with toggle button
+ * - Dark color scheme
+ * - Fixed positioning
+ *
+ * @component
+ * @example
+ * return (
+ *   <AppSidebar />
+ * )
+ */
+
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -19,6 +40,18 @@ import { sygnet } from 'src/assets/brand/sygnet'
 // sidebar nav config
 import navigation from '../_nav'
 
+/**
+ * AppSidebar functional component
+ *
+ * Manages sidebar state with Redux:
+ * - sidebarShow: Controls sidebar visibility
+ * - sidebarUnfoldable: Controls narrow/wide mode
+ *
+ * Renders navigation from _nav.js configuration file.
+ * Memoized to prevent unnecessary re-renders.
+ *
+ * @returns {React.ReactElement} Sidebar with navigation
+ */
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)

@@ -27,25 +27,18 @@ const Buttons = () => {
                     {state.charAt(0).toUpperCase() + state.slice(1)}
                   </CCol>
                   <CCol xs>
-                    {[
-                      'primary',
-                      'secondary',
-                      'success',
-                      'danger',
-                      'warning',
-                      'info',
-                      'light',
-                      'dark',
-                    ].map((color, index) => (
-                      <CButton
-                        color={color}
-                        key={index}
-                        active={state === 'active'}
-                        disabled={state === 'disabled'}
-                      >
-                        {color.charAt(0).toUpperCase() + color.slice(1)}
-                      </CButton>
-                    ))}
+                    {['primary', 'secondary', 'success', 'danger', 'warning', 'info'].map(
+                      (color, index) => (
+                        <CButton
+                          color={color}
+                          key={index}
+                          active={state === 'active'}
+                          disabled={state === 'disabled'}
+                        >
+                          {color.charAt(0).toUpperCase() + color.slice(1)}
+                        </CButton>
+                      ),
+                    )}
                     <CButton color="link">Link</CButton>
                   </CCol>
                 </CRow>
@@ -70,26 +63,19 @@ const Buttons = () => {
                     {state.charAt(0).toUpperCase() + state.slice(1)}
                   </CCol>
                   <CCol xs>
-                    {[
-                      'primary',
-                      'secondary',
-                      'success',
-                      'danger',
-                      'warning',
-                      'info',
-                      'light',
-                      'dark',
-                    ].map((color, index) => (
-                      <CButton
-                        color={color}
-                        key={index}
-                        active={state === 'active'}
-                        disabled={state === 'disabled'}
-                      >
-                        <CIcon icon={cilBell} className="me-2" />
-                        {color.charAt(0).toUpperCase() + color.slice(1)}
-                      </CButton>
-                    ))}
+                    {['primary', 'secondary', 'success', 'danger', 'warning', 'info'].map(
+                      (color, index) => (
+                        <CButton
+                          color={color}
+                          key={index}
+                          active={state === 'active'}
+                          disabled={state === 'disabled'}
+                        >
+                          <CIcon icon={cilBell} className="me-2" />
+                          {color.charAt(0).toUpperCase() + color.slice(1)}
+                        </CButton>
+                      ),
+                    )}
                     <CButton color="link">
                       <CIcon icon={cilBell} className="me-2" />
                       Link
@@ -149,26 +135,19 @@ const Buttons = () => {
                     {state.charAt(0).toUpperCase() + state.slice(1)}
                   </CCol>
                   <CCol xs>
-                    {[
-                      'primary',
-                      'secondary',
-                      'success',
-                      'danger',
-                      'warning',
-                      'info',
-                      'light',
-                      'dark',
-                    ].map((color, index) => (
-                      <CButton
-                        color={color}
-                        variant="outline"
-                        key={index}
-                        active={state === 'active'}
-                        disabled={state === 'disabled'}
-                      >
-                        {color.charAt(0).toUpperCase() + color.slice(1)}
-                      </CButton>
-                    ))}
+                    {['primary', 'secondary', 'success', 'danger', 'warning', 'info'].map(
+                      (color, index) => (
+                        <CButton
+                          color={color}
+                          variant="outline"
+                          key={index}
+                          active={state === 'active'}
+                          disabled={state === 'disabled'}
+                        >
+                          {color.charAt(0).toUpperCase() + color.slice(1)}
+                        </CButton>
+                      ),
+                    )}
                   </CCol>
                 </CRow>
               ))}
@@ -193,26 +172,19 @@ const Buttons = () => {
                     {state.charAt(0).toUpperCase() + state.slice(1)}
                   </CCol>
                   <CCol xs>
-                    {[
-                      'primary',
-                      'secondary',
-                      'success',
-                      'danger',
-                      'warning',
-                      'info',
-                      'light',
-                      'dark',
-                    ].map((color, index) => (
-                      <CButton
-                        color={color}
-                        variant="ghost"
-                        key={index}
-                        active={state === 'active'}
-                        disabled={state === 'disabled'}
-                      >
-                        {color.charAt(0).toUpperCase() + color.slice(1)}
-                      </CButton>
-                    ))}
+                    {['primary', 'secondary', 'success', 'danger', 'warning', 'info'].map(
+                      (color, index) => (
+                        <CButton
+                          color={color}
+                          variant="ghost"
+                          key={index}
+                          active={state === 'active'}
+                          disabled={state === 'disabled'}
+                        >
+                          {color.charAt(0).toUpperCase() + color.slice(1)}
+                        </CButton>
+                      ),
+                    )}
                   </CCol>
                 </CRow>
               ))}

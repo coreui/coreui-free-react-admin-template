@@ -7,7 +7,7 @@ const MainChart = () => {
   const chartRef = useRef(null)
 
   useEffect(() => {
-    document.documentElement.addEventListener('ColorSchemeChange', () => {
+    const handleColorSchemeChange = () => {
       if (chartRef.current) {
         setTimeout(() => {
           chartRef.current.options.scales.x.grid.borderColor = getStyle(
@@ -23,10 +23,14 @@ const MainChart = () => {
           chartRef.current.update()
         })
       }
-    })
+    }
+
+    document.documentElement.addEventListener('ColorSchemeChange', handleColorSchemeChange)
+    return () =>
+      document.documentElement.removeEventListener('ColorSchemeChange', handleColorSchemeChange)
   }, [chartRef])
 
-  const random = () => Math.round(Math.random() * 100)
+  const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min
 
   return (
     <>

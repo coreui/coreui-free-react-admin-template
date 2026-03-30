@@ -1,5 +1,21 @@
+/**
+ * Application Routes Configuration
+ *
+ * Defines all protected routes in the application using React lazy loading
+ * for code splitting and performance optimization.
+ *
+ * Each route object contains:
+ * - path: URL path for the route
+ * - name: Human-readable name for breadcrumbs
+ * - element: Lazy-loaded React component
+ * - exact: (optional) Requires exact path match
+ *
+ * @module routes
+ */
+
 import React from 'react'
 
+// Dashboard
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
@@ -9,6 +25,7 @@ const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
 const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'))
 const Cards = React.lazy(() => import('./views/base/cards/Cards'))
 const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'))
+const Chip = React.lazy(() => import('./views/base/chip/Chip'))
 const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'))
 const ListGroups = React.lazy(() => import('./views/base/list-groups/ListGroups'))
 const Navs = React.lazy(() => import('./views/base/navs/Navs'))
@@ -28,6 +45,7 @@ const Dropdowns = React.lazy(() => import('./views/buttons/dropdowns/Dropdowns')
 
 //Forms
 const ChecksRadios = React.lazy(() => import('./views/forms/checks-radios/ChecksRadios'))
+const ChipInput = React.lazy(() => import('./views/forms/chip-input/ChipInput'))
 const FloatingLabels = React.lazy(() => import('./views/forms/floating-labels/FloatingLabels'))
 const FormControl = React.lazy(() => import('./views/forms/form-control/FormControl'))
 const InputGroup = React.lazy(() => import('./views/forms/input-group/InputGroup'))
@@ -51,7 +69,24 @@ const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
-const routes = [
+/**
+ * Array of route configuration objects
+ *
+ * @type {Array<Object>}
+ * @property {string} path - URL path pattern
+ * @property {string} name - Display name for breadcrumbs and navigation
+ * @property {React.LazyExoticComponent} element - Lazy-loaded component
+ * @property {boolean} [exact] - Whether to match path exactly
+ *
+ * @example
+ * // Route renders when URL matches '/dashboard'
+ * { path: '/dashboard', name: 'Dashboard', element: Dashboard }
+ *
+ * @example
+ * // Route with exact match required
+ * { path: '/base', name: 'Base', element: Cards, exact: true }
+ */
+export const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
@@ -62,6 +97,7 @@ const routes = [
   { path: '/base/breadcrumbs', name: 'Breadcrumbs', element: Breadcrumbs },
   { path: '/base/cards', name: 'Cards', element: Cards },
   { path: '/base/carousels', name: 'Carousel', element: Carousels },
+  { path: '/base/chip', name: 'Chip', element: Chip },
   { path: '/base/collapses', name: 'Collapse', element: Collapses },
   { path: '/base/list-groups', name: 'List Groups', element: ListGroups },
   { path: '/base/navs', name: 'Navs', element: Navs },
@@ -82,6 +118,7 @@ const routes = [
   { path: '/forms/form-control', name: 'Form Control', element: FormControl },
   { path: '/forms/select', name: 'Select', element: Select },
   { path: '/forms/checks-radios', name: 'Checks & Radios', element: ChecksRadios },
+  { path: '/forms/chip-input', name: 'Chip Input', element: ChipInput },
   { path: '/forms/range', name: 'Range', element: Range },
   { path: '/forms/input-group', name: 'Input Group', element: InputGroup },
   { path: '/forms/floating-labels', name: 'Floating Labels', element: FloatingLabels },

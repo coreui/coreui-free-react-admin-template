@@ -1,4 +1,4 @@
-# CoreUI Free React Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%React%204%20Admin%20Template%20&url=https://coreui.io&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
+# CoreUI Free React Admin Template - Built for AI-Assisted Development [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%React%204%20Admin%20Template%20&url=https://coreui.io&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
@@ -29,6 +29,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
 * [What's included](#whats-included)
+* [AI-Friendly Development](#ai-friendly-development)
 * [Documentation](#documentation)
 * [Components](#components)
 * [Versioning](#versioning)
@@ -128,9 +129,9 @@ coreui-free-react-admin-template
 │   ├── layouts/     # layout containers
 │   ├── scss/        # scss styles
 │   ├── views/       # application views
-│   ├── _nav.js      # sidebar navigation config
-│   ├── App.js
-│   ├── index.js
+│   ├── _nav.jsx     # sidebar navigation config
+│   ├── App.jsx
+│   ├── index.jsx
 │   ├── routes.js    # routes config
 │   └── store.js     # template state example 
 │
@@ -140,6 +141,32 @@ coreui-free-react-admin-template
 ├── ...
 └── vite.config.mjs  # vite config
 ```
+
+## AI-Friendly Development
+
+This template is optimized for AI-assisted development with comprehensive context files and documentation:
+
+### Context Files
+- **`.cursorrules`** - Comprehensive AI context file with project conventions, patterns, and guidelines for working with React, CoreUI, and the template architecture
+- **`ARCHITECTURE.md`** - Detailed technical documentation covering the project structure, component hierarchy, routing system, state management, and build pipeline
+- **`DEVELOPMENT.md`** - Practical developer guide with setup instructions, development workflows, code examples, and best practices
+
+### Code Documentation
+- All React components include detailed JSDoc comments with parameter types and descriptions
+- Inline documentation explaining complex logic and patterns
+- PropTypes definitions for runtime type checking
+
+### Benefits for AI Coding Assistants
+
+When using AI coding assistants like Cursor, Claude Code, or GitHub Copilot, these context files help the AI to:
+
+- **Understand the Stack**: Recognize that this is a React 19 application using CoreUI React components (not Tailwind CSS or other frameworks)
+- **Follow Patterns**: Generate code that matches the project's component structure and conventions
+- **Use Correct Components**: Suggest appropriate CoreUI React components from `@coreui/react`
+- **Maintain Code Style**: Follow ESLint and Prettier rules automatically
+- **Respect Architecture**: Work within the established routing, state management, and styling patterns
+
+Simply open the project in your AI-enabled IDE, and the assistant will automatically have context about the React architecture, CoreUI React component usage, development workflows, and coding standards.
 
 ## Documentation
 
@@ -179,6 +206,7 @@ CoreUI React.js Admin Templates are built on top of CoreUI and CoreUI PRO UI com
 - [React Navs & Tabs](https://coreui.io/react/docs/components/navs-tabs/)
 - [React Navbar](https://coreui.io/react/docs/components/navbar/)
 - [React Offcanvas](https://coreui.io/react/docs/components/offcanvas/)
+- [React One Time Password Input](https://coreui.io/react/docs/forms/one-time-password-input/) **PRO**
 - [React Pagination](https://coreui.io/react/docs/components/pagination/)
 - [React Password Input](https://coreui.io/react/docs/forms/password-input/) **PRO**
 - [React Placeholder](https://coreui.io/react/docs/components/placeholder/)
@@ -237,6 +265,6 @@ CoreUI is an MIT-licensed open source project and is completely free to use. How
 
 ## Copyright and License
 
-copyright 2025 creativeLabs Łukasz Holeczek.   
+copyright 2026 creativeLabs Łukasz Holeczek.   
 
 Code released under [the MIT license](https://github.com/coreui/coreui-free-react-admin-template/blob/main/LICENSE).

@@ -86,7 +86,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
  * // Route with exact match required
  * { path: '/base', name: 'Base', element: Cards, exact: true }
  */
-const routes = [
+export const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },

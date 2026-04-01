@@ -39,6 +39,10 @@
     "simplebar-react": "^3.3.2"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
     "autoprefixer": "^10.4.27",
     "eslint": "^9.39.2",
@@ -50,6 +54,7 @@
     "postcss": "^8.5.8",
     "prettier": "3.8.1",
     "sass": "^1.98.0",
+    "typescript": "^6.0.2",
     "vite": "^8.0.3"
   }
 }

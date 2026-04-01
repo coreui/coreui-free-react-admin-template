@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "es6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noImplicitAny": true, // Disallow 'any' type
+    "strictNullChecks": true, // Null and undefined are not assignable to other types
+    "strictFunctionTypes": true, // Function parameters are contravariant
+    "noImplicitReturns": true, // All code paths must return a value
+    "noFallthroughCasesInSwitch": true // Switch statements need breaks
+  },
+  "include": ["src"]
+}

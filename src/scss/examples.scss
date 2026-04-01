@@ -1,9 +1,9 @@
 /* stylelint-disable scss/selector-no-redundant-nesting-selector */
-@use "@coreui/coreui/scss/variables" as * with (
+@use '@coreui/coreui/scss/variables' as * with (
   $enable-deprecation-messages: false
 );
-@use "@coreui/coreui/scss/mixins/breakpoints" as *;
-@use "@coreui/coreui/scss/mixins/color-mode" as *;
+@use '@coreui/coreui/scss/mixins/breakpoints' as *;
+@use '@coreui/coreui/scss/mixins/color-mode' as *;
 
 .example {
   &:not(:first-child) {
@@ -11,7 +11,7 @@
   }
 
   .tab-content {
-    background-color: rgba(var(--#{$prefix}tertiary-bg-rgb), .75);
+    background-color: rgba(var(--#{$prefix}tertiary-bg-rgb), 0.75);
   }
 
   & + p {
@@ -26,7 +26,7 @@
 
     > .form-control {
       + .form-control {
-        margin-top: .5rem;
+        margin-top: 0.5rem;
       }
     }
 
@@ -49,7 +49,7 @@
     // Images
     > svg + svg,
     > img + img {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
 
     // Buttons
@@ -57,10 +57,10 @@
     .col-auto > .btn,
     > .btn,
     > .btn-group {
-      margin: .25rem .125rem;
+      margin: 0.25rem 0.125rem;
     }
     > .btn-toolbar + .btn-toolbar {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
     }
 
     // List groups
@@ -68,7 +68,7 @@
       max-width: 400px;
     }
 
-    > [class*="list-group-horizontal"] {
+    > [class*='list-group-horizontal'] {
       max-width: 100%;
     }
 
@@ -96,8 +96,8 @@
 
     // Pagination
     .pagination {
-      margin-top: .5rem;
-      margin-bottom: .5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
     .docs-example-modal {

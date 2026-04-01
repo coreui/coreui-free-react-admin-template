@@ -53,12 +53,14 @@ A comprehensive guide for developers working with the CoreUI Free React Admin Te
 ### Installation
 
 1. **Clone the repository** (or download the source):
+
 ```bash
 git clone https://github.com/coreui/coreui-free-react-admin-template.git
 cd coreui-free-react-admin-template
 ```
 
 2. **Install dependencies**:
+
 ```bash
 npm install
 # or
@@ -66,6 +68,7 @@ yarn install
 ```
 
 3. **Start the development server**:
+
 ```bash
 npm start
 # or
@@ -75,18 +78,19 @@ yarn start
 4. **Open your browser** to [http://localhost:3000](http://localhost:3000)
 
 The development server includes:
+
 - Hot Module Replacement (HMR) for instant updates
 - Automatic browser refresh on file changes
 - Error overlay for compile-time and runtime errors
 
 ### Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Start development server on port 3000 |
-| `npm run build` | Build optimized production bundle |
-| `npm run serve` | Preview production build locally |
-| `npm run lint` | Run ESLint to check code quality |
+| Command         | Description                           |
+| --------------- | ------------------------------------- |
+| `npm start`     | Start development server on port 3000 |
+| `npm run build` | Build optimized production bundle     |
+| `npm run serve` | Preview production build locally      |
+| `npm run lint`  | Run ESLint to check code quality      |
 
 ## Project Structure
 
@@ -131,6 +135,7 @@ src/
 ### Hot Module Replacement (HMR)
 
 Vite provides instant feedback:
+
 - **JavaScript/JSX changes**: Component updates without page reload
 - **CSS/SCSS changes**: Style updates without reload
 - **Configuration changes**: Require server restart
@@ -140,12 +145,14 @@ Vite provides instant feedback:
 **Port**: 3000 (configurable in `vite.config.mjs`)
 
 **Features**:
+
 - Fast cold start (~500ms)
 - Instant HMR (<50ms)
 - Error overlay with stack traces
 - Network access for mobile testing
 
 **Access from mobile**:
+
 ```bash
 # Find your local IP
 # Windows: ipconfig
@@ -261,6 +268,7 @@ export default useFetch
 ```
 
 **Usage**:
+
 ```javascript
 const MyComponent = () => {
   const { data, loading, error } = useFetch('/api/users')
@@ -281,13 +289,7 @@ const MyComponent = () => {
 ```javascript
 // src/views/products/Products.js
 import React from 'react'
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-} from '@coreui/react'
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
 
 const Products = () => {
   return (
@@ -297,9 +299,7 @@ const Products = () => {
           <CCardHeader>
             <strong>Products</strong>
           </CCardHeader>
-          <CCardBody>
-            {/* Your content here */}
-          </CCardBody>
+          <CCardBody>{/* Your content here */}</CCardBody>
         </CCard>
       </CCol>
     </CRow>
@@ -341,6 +341,7 @@ export default [
 ```
 
 **4. Test the page**:
+
 - Navigate to `http://localhost:3000/#/products`
 - Check that navigation highlights correctly
 - Verify breadcrumb displays properly
@@ -348,6 +349,7 @@ export default [
 ### Page Templates
 
 **List Page**:
+
 ```javascript
 const ListPage = () => {
   const [items, setItems] = useState([])
@@ -368,7 +370,7 @@ const ListPage = () => {
             </CTableRow>
           </CTableHead>
           <CTableBody>
-            {items.map(item => (
+            {items.map((item) => (
               <CTableRow key={item.id}>
                 <CTableDataCell>{item.name}</CTableDataCell>
                 <CTableDataCell>{item.status}</CTableDataCell>
@@ -383,6 +385,7 @@ const ListPage = () => {
 ```
 
 **Detail Page**:
+
 ```javascript
 const DetailPage = () => {
   const { id } = useParams()
@@ -480,11 +483,7 @@ const DefaultLayout = () => {
     }
   }, [isAuthenticated, navigate])
 
-  return (
-    <div>
-      {/* Layout content */}
-    </div>
-  )
+  return <div>{/* Layout content */}</div>
 }
 ```
 
@@ -569,14 +568,7 @@ const Counter = () => {
 **ALWAYS use CoreUI React components** from `@coreui/react`:
 
 ```javascript
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-} from '@coreui/react'
+import { CButton, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
 
 const MyComponent = () => (
   <CRow>
@@ -606,6 +598,7 @@ Use Bootstrap utility classes for quick styling:
 ```
 
 **Common utilities**:
+
 - Spacing: `m-3`, `mt-2`, `mb-4`, `p-3`, `px-4`, `py-2`
 - Display: `d-flex`, `d-none`, `d-block`, `d-inline`
 - Flexbox: `justify-content-between`, `align-items-center`
@@ -644,16 +637,19 @@ const MyComponent = () => (
 Use CoreUI CSS variables for theming:
 
 ```javascript
-<div style={{
-  backgroundColor: 'var(--cui-primary)',
-  color: 'var(--cui-white)',
-  padding: 'var(--cui-spacer-3)',
-}}>
+<div
+  style={{
+    backgroundColor: 'var(--cui-primary)',
+    color: 'var(--cui-white)',
+    padding: 'var(--cui-spacer-3)',
+  }}
+>
   Styled with CSS variables
 </div>
 ```
 
 **Common variables**:
+
 - Colors: `--cui-primary`, `--cui-secondary`, `--cui-success`, `--cui-danger`
 - Background: `--cui-body-bg`, `--cui-light`, `--cui-dark`
 - Text: `--cui-body-color`, `--cui-text-muted`
@@ -670,7 +666,7 @@ const MyComponent = ({ isActive, isPrimary }) => {
   const buttonClass = classNames('btn', {
     'btn-primary': isPrimary,
     'btn-secondary': !isPrimary,
-    'active': isActive,
+    active: isActive,
   })
 
   return <button className={buttonClass}>Button</button>
@@ -706,7 +702,7 @@ const MyForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }))
@@ -730,12 +726,7 @@ const MyForm = () => {
     <CCard>
       <CCardHeader>Contact Form</CCardHeader>
       <CCardBody>
-        <CForm
-          className="row g-3"
-          noValidate
-          validated={validated}
-          onSubmit={handleSubmit}
-        >
+        <CForm className="row g-3" noValidate validated={validated} onSubmit={handleSubmit}>
           <CCol md={6}>
             <CFormLabel htmlFor="name">Name</CFormLabel>
             <CFormInput
@@ -786,15 +777,13 @@ export default MyForm
 ### Form Validation
 
 **HTML5 validation**:
+
 ```javascript
-<CFormInput
-  type="email"
-  required
-  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-/>
+<CFormInput type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
 ```
 
 **Custom validation**:
+
 ```javascript
 const [errors, setErrors] = useState({})
 
@@ -893,6 +882,7 @@ npm run lint -- --fix
 ### Code Style Guidelines
 
 **JavaScript**:
+
 - No semicolons (enforced by Prettier)
 - Single quotes for strings
 - 2-space indentation
@@ -900,12 +890,14 @@ npm run lint -- --fix
 - Destructuring when possible
 
 **React**:
+
 - Functional components only
 - Hooks at top level
 - PropTypes for all components
 - Meaningful component names
 
 **File naming**:
+
 - PascalCase for components: `UserCard.js`
 - camelCase for utilities: `dateHelper.js`
 - kebab-case for styles: `user-card.scss`
@@ -941,6 +933,7 @@ Before committing changes:
 ### Browser Testing
 
 Test in modern browsers:
+
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
@@ -949,6 +942,7 @@ Test in modern browsers:
 ### Responsive Testing
 
 Test at common breakpoints:
+
 - Mobile: 375px, 414px
 - Tablet: 768px, 1024px
 - Desktop: 1366px, 1920px
@@ -966,6 +960,7 @@ npm run build
 ```
 
 Output in `build/` directory:
+
 - Minified JavaScript bundles
 - Extracted and minified CSS
 - Optimized assets
@@ -1026,6 +1021,7 @@ VITE_APP_NAME=My App
 ```
 
 **Usage in code**:
+
 ```javascript
 const apiUrl = import.meta.env.VITE_API_URL
 ```
@@ -1039,6 +1035,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 **Problem**: Port 3000 already in use
 
 **Solution**:
+
 ```bash
 # Kill process on port 3000
 # Mac/Linux:
@@ -1056,6 +1053,7 @@ taskkill /PID <PID> /F
 **Problem**: Module not found errors
 
 **Solution**:
+
 ```bash
 # Clear node_modules and reinstall
 rm -rf node_modules package-lock.json
@@ -1067,6 +1065,7 @@ npm install
 **Problem**: Styles not updating
 
 **Solution**:
+
 - Clear browser cache
 - Hard refresh (Cmd/Ctrl + Shift + R)
 - Restart dev server
@@ -1076,6 +1075,7 @@ npm install
 **Problem**: HMR not working
 
 **Solution**:
+
 - Check file is saved
 - Restart dev server
 - Check for syntax errors in console
@@ -1085,6 +1085,7 @@ npm install
 **Problem**: Build fails with memory error
 
 **Solution**:
+
 ```bash
 # Increase Node memory limit
 NODE_OPTIONS="--max-old-space-size=4096" npm run build
@@ -1093,16 +1094,19 @@ NODE_OPTIONS="--max-old-space-size=4096" npm run build
 ### Debugging Tips
 
 **React DevTools**:
+
 - Inspect component hierarchy
 - View props and state
 - Profile component renders
 
 **Redux DevTools**:
+
 - Inspect Redux state
 - Time-travel debugging
 - Action history
 
 **Console logging**:
+
 ```javascript
 console.log('Variable:', variable)
 console.table(arrayOfObjects)
@@ -1110,6 +1114,7 @@ console.error('Error:', error)
 ```
 
 **React error boundaries**:
+
 ```javascript
 class ErrorBoundary extends React.Component {
   state = { hasError: false }
@@ -1169,6 +1174,7 @@ class ErrorBoundary extends React.Component {
 ### Git Workflow
 
 **Commit messages** (Conventional Commits):
+
 ```
 feat: add user profile page
 fix: resolve navigation bug on mobile
@@ -1180,6 +1186,7 @@ chore: update dependencies
 ```
 
 **Branch naming**:
+
 ```
 feature/user-profile
 fix/navigation-bug

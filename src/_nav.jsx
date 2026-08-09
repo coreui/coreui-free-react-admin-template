@@ -13,15 +13,13 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
-  cilBell,
+  cilBug,
   cilCalculator,
   cilChartPie,
-  cilCursor,
   cilDescription,
-  cilDrop,
   cilExternalLink,
+  cilLockLocked,
   cilNotes,
-  cilPencil,
   cilPuzzle,
   cilSpeedometer,
   cilStar,
@@ -55,14 +53,13 @@ import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
  * // Navigation group with children
  * {
  *   component: CNavGroup,
- *   name: 'Base',
- *   to: '/base',
+ *   name: 'Components',
  *   icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
  *   items: [
  *     {
  *       component: CNavItem,
  *       name: 'Cards',
- *       to: '/base/cards',
+ *       to: '/components/cards',
  *     },
  *   ],
  * }
@@ -71,7 +68,7 @@ import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
  * // Section title
  * {
  *   component: CNavTitle,
- *   name: 'Theme',
+ *   name: 'UI Elements',
  * }
  */
 const _nav = [
@@ -87,39 +84,49 @@ const _nav = [
   },
   {
     component: CNavTitle,
-    name: 'Theme',
+    name: 'UI Elements',
   },
   {
     component: CNavItem,
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavTitle,
-    name: 'Components',
+    name: 'Charts',
+    to: '/charts',
+    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
   },
   {
     component: CNavGroup,
-    name: 'Base',
-    to: '/base',
+    name: 'Components',
+    to: '/components',
     icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
         name: 'Accordion',
-        to: '/base/accordion',
+        to: '/components/accordion',
+      },
+      {
+        component: CNavItem,
+        name: 'Alerts',
+        to: '/components/alerts',
+      },
+      {
+        component: CNavItem,
+        name: 'Badge',
+        to: '/components/badge',
       },
       {
         component: CNavItem,
         name: 'Breadcrumb',
-        to: '/base/breadcrumbs',
+        to: '/components/breadcrumb',
+      },
+      {
+        component: CNavItem,
+        name: 'Buttons',
+        to: '/components/buttons',
+      },
+      {
+        component: CNavItem,
+        name: 'Buttons Group',
+        to: '/components/button-group',
       },
       {
         component: CNavItem,
@@ -138,52 +145,76 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Cards',
-        to: '/base/cards',
+        to: '/components/cards',
       },
       {
         component: CNavItem,
         name: 'Carousel',
-        to: '/base/carousels',
+        to: '/components/carousel',
       },
       {
         component: CNavItem,
         name: 'Chip',
-        to: '/base/chip',
+        to: '/components/chip',
       },
       {
         component: CNavItem,
         name: 'Collapse',
-        to: '/base/collapses',
+        to: '/components/collapse',
+      },
+      {
+        component: CNavItem,
+        name: 'Dropdowns',
+        to: '/components/dropdowns',
       },
       {
         component: CNavItem,
         name: 'List group',
-        to: '/base/list-groups',
+        to: '/components/list-group',
+      },
+      {
+        component: CNavItem,
+        name: (
+          <React.Fragment>
+            {'Loading Buttons'}
+            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
+          </React.Fragment>
+        ),
+        href: 'https://coreui.io/react/docs/components/loading-button/',
+        badge: {
+          color: 'danger',
+          text: 'PRO',
+        },
+      },
+      {
+        component: CNavItem,
+        name: 'Modals',
+        to: '/components/modals',
       },
       {
         component: CNavItem,
         name: 'Navs & Tabs',
-        to: '/base/navs',
+        to: '/components/navs-tabs',
       },
       {
         component: CNavItem,
         name: 'Pagination',
-        to: '/base/paginations',
+        to: '/components/pagination',
       },
       {
         component: CNavItem,
         name: 'Placeholders',
-        to: '/base/placeholders',
+        to: '/components/placeholders',
       },
       {
         component: CNavItem,
         name: 'Popovers',
-        to: '/base/popovers',
+        to: '/components/popovers',
       },
       {
         component: CNavItem,
         name: 'Progress',
-        to: '/base/progress',
+        to: '/components/progress',
       },
       {
         component: CNavItem,
@@ -211,22 +242,27 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Spinners',
-        to: '/base/spinners',
+        to: '/components/spinners',
       },
       {
         component: CNavItem,
         name: 'Tables',
-        to: '/base/tables',
+        to: '/components/tables',
       },
       {
         component: CNavItem,
         name: 'Tabs',
-        to: '/base/tabs',
+        to: '/components/tabs',
+      },
+      {
+        component: CNavItem,
+        name: 'Toasts',
+        to: '/components/toasts',
       },
       {
         component: CNavItem,
         name: 'Tooltips',
-        to: '/base/tooltips',
+        to: '/components/tooltips',
       },
       {
         component: CNavItem,
@@ -237,43 +273,6 @@ const _nav = [
           </React.Fragment>
         ),
         href: 'https://coreui.io/react/docs/components/virtual-scroller/',
-        badge: {
-          color: 'danger',
-          text: 'PRO',
-        },
-      },
-    ],
-  },
-  {
-    component: CNavGroup,
-    name: 'Buttons',
-    to: '/buttons',
-    icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Buttons',
-        to: '/buttons/buttons',
-      },
-      {
-        component: CNavItem,
-        name: 'Buttons groups',
-        to: '/buttons/button-groups',
-      },
-      {
-        component: CNavItem,
-        name: 'Dropdowns',
-        to: '/buttons/dropdowns',
-      },
-      {
-        component: CNavItem,
-        name: (
-          <React.Fragment>
-            {'Loading Button'}
-            <CIcon icon={cilExternalLink} size="sm" className="ms-2" />
-          </React.Fragment>
-        ),
-        href: 'https://coreui.io/react/docs/components/loading-button/',
         badge: {
           color: 'danger',
           text: 'PRO',
@@ -469,12 +468,6 @@ const _nav = [
     ],
   },
   {
-    component: CNavItem,
-    name: 'Charts',
-    to: '/charts',
-    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
-  },
-  {
     component: CNavGroup,
     name: 'Icons',
     icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
@@ -497,33 +490,6 @@ const _nav = [
     ],
   },
   {
-    component: CNavGroup,
-    name: 'Notifications',
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Alerts',
-        to: '/notifications/alerts',
-      },
-      {
-        component: CNavItem,
-        name: 'Badges',
-        to: '/notifications/badges',
-      },
-      {
-        component: CNavItem,
-        name: 'Modal',
-        to: '/notifications/modals',
-      },
-      {
-        component: CNavItem,
-        name: 'Toasts',
-        to: '/notifications/toasts',
-      },
-    ],
-  },
-  {
     component: CNavItem,
     name: 'Widgets',
     to: '/widgets',
@@ -539,28 +505,61 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'Pages',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    name: 'Authentication',
+    icon: <CIcon icon={cilLockLocked} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
         name: 'Login',
-        to: '/login',
+        to: '/authentication/login',
       },
       {
         component: CNavItem,
         name: 'Register',
-        to: '/register',
+        to: '/authentication/register',
       },
       {
         component: CNavItem,
+        name: 'Check Email',
+        to: '/authentication/check-email',
+      },
+      {
+        component: CNavGroup,
+        name: 'Forgot password',
+        items: [
+          {
+            component: CNavItem,
+            name: 'Reset Password',
+            to: '/authentication/reset-password',
+          },
+          {
+            component: CNavItem,
+            name: 'Change Password',
+            to: '/authentication/change-password',
+          },
+          {
+            component: CNavItem,
+            name: 'Password Changed',
+            to: '/authentication/password-changed',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Error pages',
+    icon: <CIcon icon={cilBug} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
         name: 'Error 404',
-        to: '/404',
+        to: '/error-pages/404',
       },
       {
         component: CNavItem,
         name: 'Error 500',
-        to: '/500',
+        to: '/error-pages/500',
       },
     ],
   },

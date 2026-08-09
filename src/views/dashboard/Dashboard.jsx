@@ -27,16 +27,12 @@ import {
   cibCcPaypal,
   cibCcStripe,
   cibCcVisa,
-  cibGoogle,
-  cibFacebook,
-  cibLinkedin,
   cifBr,
   cifEs,
   cifFr,
   cifIn,
   cifPl,
   cifUs,
-  cibTwitter,
   cilCloudDownload,
   cilPeople,
   cilUser,
@@ -49,8 +45,12 @@ import avatar3 from 'src/assets/images/avatars/3.jpg'
 import avatar4 from 'src/assets/images/avatars/4.jpg'
 import avatar5 from 'src/assets/images/avatars/5.jpg'
 import avatar6 from 'src/assets/images/avatars/6.jpg'
+import { chatgpt } from 'src/assets/brand/chatgpt'
+import { google } from 'src/assets/brand/google'
+import { linkedinBadge } from 'src/assets/brand/linkedin-badge'
+import { twitterX } from 'src/assets/brand/twitter-x'
 
-import WidgetsBrand from '../widgets/WidgetsBrand'
+import DashboardBrand from './DashboardBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import MainChart from './MainChart'
 
@@ -79,10 +79,10 @@ const Dashboard = () => {
   ]
 
   const progressGroupExample3 = [
-    { title: 'Organic Search', icon: cibGoogle, percent: 56, value: '191,235' },
-    { title: 'Facebook', icon: cibFacebook, percent: 15, value: '51,223' },
-    { title: 'Twitter', icon: cibTwitter, percent: 11, value: '37,564' },
-    { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
+    { title: 'Organic Search', icon: google, percent: 56, value: '191,235' },
+    { title: 'ChatGPT', icon: chatgpt, percent: 15, value: '51,223' },
+    { title: 'Twitter', icon: twitterX, percent: 11, value: '37,564' },
+    { title: 'LinkedIn', icon: linkedinBadge, percent: 8, value: '27,319' },
   ]
 
   const tableExample = [
@@ -91,12 +91,12 @@ const Dashboard = () => {
       user: {
         name: 'Yiorgos Avraamu',
         new: true,
-        registered: 'Jan 1, 2023',
+        registered: 'Mar 15, 2025',
       },
       country: { name: 'USA', flag: cifUs },
       usage: {
         value: 50,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
+        period: 'Mar 1, 2026 - Apr 30, 2026',
         color: 'success',
       },
       payment: { name: 'Mastercard', icon: cibCcMastercard },
@@ -107,12 +107,12 @@ const Dashboard = () => {
       user: {
         name: 'Avram Tarasios',
         new: false,
-        registered: 'Jan 1, 2023',
+        registered: 'Aug 22, 2024',
       },
       country: { name: 'Brazil', flag: cifBr },
       usage: {
         value: 22,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
+        period: 'Jan 15, 2026 - Feb 14, 2026',
         color: 'info',
       },
       payment: { name: 'Visa', icon: cibCcVisa },
@@ -120,11 +120,11 @@ const Dashboard = () => {
     },
     {
       avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2023' },
+      user: { name: 'Quintin Ed', new: true, registered: 'Nov 7, 2024' },
       country: { name: 'India', flag: cifIn },
       usage: {
         value: 74,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
+        period: 'Feb 10, 2026 - Mar 11, 2026',
         color: 'warning',
       },
       payment: { name: 'Stripe', icon: cibCcStripe },
@@ -132,11 +132,11 @@ const Dashboard = () => {
     },
     {
       avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2023' },
+      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 30, 2025' },
       country: { name: 'France', flag: cifFr },
       usage: {
         value: 98,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
+        period: 'Apr 1, 2026 - Apr 30, 2026',
         color: 'danger',
       },
       payment: { name: 'PayPal', icon: cibCcPaypal },
@@ -147,12 +147,12 @@ const Dashboard = () => {
       user: {
         name: 'Agapetus Tadeáš',
         new: true,
-        registered: 'Jan 1, 2023',
+        registered: 'Jun 12, 2024',
       },
       country: { name: 'Spain', flag: cifEs },
       usage: {
         value: 22,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
+        period: 'Mar 20, 2026 - Apr 19, 2026',
         color: 'primary',
       },
       payment: { name: 'Google Wallet', icon: cibCcApplePay },
@@ -163,12 +163,12 @@ const Dashboard = () => {
       user: {
         name: 'Friderik Dávid',
         new: true,
-        registered: 'Jan 1, 2023',
+        registered: 'Dec 3, 2025',
       },
       country: { name: 'Poland', flag: cifPl },
       usage: {
         value: 43,
-        period: 'Jun 11, 2023 - Jul 10, 2023',
+        period: 'Apr 5, 2026 - May 4, 2026',
         color: 'success',
       },
       payment: { name: 'Amex', icon: cibCcAmex },
@@ -186,7 +186,7 @@ const Dashboard = () => {
               <h4 id="traffic" className="card-title mb-0">
                 Traffic
               </h4>
-              <div className="small text-body-secondary">January - July 2023</div>
+              <div className="small text-body-secondary">October 2025 - April 2026</div>
             </CCol>
             <CCol sm={7} className="d-none d-md-block">
               <CButton color="primary" className="float-end">
@@ -233,7 +233,7 @@ const Dashboard = () => {
           </CRow>
         </CCardFooter>
       </CCard>
-      <WidgetsBrand className="mb-4" withCharts />
+      <DashboardBrand className="mb-4" />
       <CRow>
         <CCol xs>
           <CCard className="mb-4">

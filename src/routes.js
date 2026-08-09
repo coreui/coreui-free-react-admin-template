@@ -28,6 +28,7 @@ const ButtonGroups = React.lazy(() => import('./views/components/button-group/Bu
 const Cards = React.lazy(() => import('./views/components/cards/Cards'))
 const Carousels = React.lazy(() => import('./views/components/carousel/Carousel'))
 const Chip = React.lazy(() => import('./views/components/chip/Chip'))
+const ChipSet = React.lazy(() => import('./views/components/chip-set/ChipSet'))
 const Collapses = React.lazy(() => import('./views/components/collapse/Collapse'))
 const Dropdowns = React.lazy(() => import('./views/components/dropdowns/Dropdowns'))
 const ListGroups = React.lazy(() => import('./views/components/list-group/ListGroup'))
@@ -93,6 +94,7 @@ export const routes = [
   { path: '/components/cards', name: 'Cards', element: Cards },
   { path: '/components/carousel', name: 'Carousel', element: Carousels },
   { path: '/components/chip', name: 'Chip', element: Chip },
+  { path: '/components/chip-set', name: 'Chip Set', element: ChipSet },
   { path: '/components/collapse', name: 'Collapse', element: Collapses },
   { path: '/components/dropdowns', name: 'Dropdowns', element: Dropdowns },
   { path: '/components/list-group', name: 'List group', element: ListGroups },

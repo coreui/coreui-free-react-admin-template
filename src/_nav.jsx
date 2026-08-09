@@ -159,6 +159,11 @@ const _nav = [
       },
       {
         component: CNavItem,
+        name: 'Chip Set',
+        to: '/components/chip-set',
+      },
+      {
+        component: CNavItem,
         name: 'Collapse',
         to: '/components/collapse',
       },

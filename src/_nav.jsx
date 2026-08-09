@@ -282,6 +282,16 @@ const _nav = [
     ],
   },
   {
+    component: CNavItem,
+    name: 'Data Grid',
+    to: '/data-grid',
+    icon: <CIcon icon={cilGrid} customClassName="nav-icon" />,
+    badge: {
+      color: 'warning',
+      text: 'ADD-ON',
+    },
+  },
+  {
     component: CNavGroup,
     name: 'Forms',
     icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
@@ -498,16 +508,6 @@ const _nav = [
     badge: {
       color: 'info',
       text: 'NEW',
-    },
-  },
-  {
-    component: CNavItem,
-    name: 'Data Grid',
-    to: '/data-grid',
-    icon: <CIcon icon={cilGrid} customClassName="nav-icon" />,
-    badge: {
-      color: 'warning',
-      text: 'ADD-ON',
     },
   },
   {

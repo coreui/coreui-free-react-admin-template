@@ -20,6 +20,7 @@ import {
   cilDescription,
   cilDrop,
   cilExternalLink,
+  cilGrid,
   cilNotes,
   cilPencil,
   cilPuzzle,
@@ -531,6 +532,16 @@ const _nav = [
     badge: {
       color: 'info',
       text: 'NEW',
+    },
+  },
+  {
+    component: CNavItem,
+    name: 'Data Grid',
+    to: '/data-grid',
+    icon: <CIcon icon={cilGrid} customClassName="nav-icon" />,
+    badge: {
+      color: 'warning',
+      text: 'ADD-ON',
     },
   },
   {

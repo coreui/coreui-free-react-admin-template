@@ -38,6 +38,7 @@ const Paginations = React.lazy(() => import('./views/components/pagination/Pagin
 const Placeholders = React.lazy(() => import('./views/components/placeholders/Placeholders'))
 const Popovers = React.lazy(() => import('./views/components/popovers/Popovers'))
 const Progress = React.lazy(() => import('./views/components/progress/Progress'))
+const SearchButton = React.lazy(() => import('./views/components/search-button/SearchButton'))
 const Spinners = React.lazy(() => import('./views/components/spinners/Spinners'))
 const Tabs = React.lazy(() => import('./views/components/tabs/Tabs'))
 const Tables = React.lazy(() => import('./views/components/tables/Tables'))
@@ -104,6 +105,7 @@ export const routes = [
   { path: '/components/placeholders', name: 'Placeholders', element: Placeholders },
   { path: '/components/popovers', name: 'Popovers', element: Popovers },
   { path: '/components/progress', name: 'Progress', element: Progress },
+  { path: '/components/search-button', name: 'Search Button', element: SearchButton },
   { path: '/components/spinners', name: 'Spinners', element: Spinners },
   { path: '/components/tabs', name: 'Tabs', element: Tabs },
   { path: '/components/tables', name: 'Tables', element: Tables },

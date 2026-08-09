@@ -223,6 +223,11 @@ const _nav = [
       },
       {
         component: CNavItem,
+        name: 'Search Button',
+        to: '/components/search-button',
+      },
+      {
+        component: CNavItem,
         name: 'Smart Pagination',
         href: 'https://coreui.io/react/docs/components/smart-pagination/',
         badge: {

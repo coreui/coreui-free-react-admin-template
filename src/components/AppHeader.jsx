@@ -4,6 +4,7 @@
  * Main application header with navigation, theme switcher, and user menu.
  * Features include:
  * - Sidebar toggle button
+ * - Search button with keyboard shortcut and recent searches modal
  * - Primary navigation links
  * - Notification and action icons
  * - Theme switcher (light/dark/auto)
@@ -18,19 +19,28 @@
  * )
  */
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
+  CBadge,
   CContainer,
   CDropdown,
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
+  CFormInput,
   CHeader,
   CHeaderNav,
   CHeaderToggler,
+  CListGroup,
+  CListGroupItem,
+  CModal,
+  CModalBody,
+  CModalHeader,
+  CModalTitle,
   CNavLink,
   CNavItem,
+  CSearchButton,
   useColorModes,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
@@ -61,6 +71,7 @@ import { AppHeaderDropdown } from './header/index'
 const AppHeader = () => {
   const headerRef = useRef()
   const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
+  const [searchVisible, setSearchVisible] = useState(false)
 
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
@@ -84,6 +95,58 @@ const AppHeader = () => {
         >
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
+        <CSearchButton
+          onTrigger={() => setSearchVisible(true)}
+          aria-label="Open search dialog"
+          aria-controls="app-header-search-modal"
+        />
+        <CModal
+          id="app-header-search-modal"
+          visible={searchVisible}
+          onClose={() => setSearchVisible(false)}
+          aria-labelledby="app-header-search-modal-title"
+        >
+          <CModalHeader>
+            <CModalTitle id="app-header-search-modal-title" className="w-100">
+              <CFormInput type="search" placeholder="Search" aria-label="Search" />
+            </CModalTitle>
+          </CModalHeader>
+          <CModalBody>
+            <p className="text-body-secondary small mb-2">Recent searches</p>
+            <CListGroup flush>
+              <CListGroupItem
+                as="button"
+                type="button"
+                className="d-flex justify-content-between align-items-center"
+              >
+                CoreUI components overview
+                <CBadge color="secondary" shape="rounded-pill">
+                  Open
+                </CBadge>
+              </CListGroupItem>
+              <CListGroupItem
+                as="button"
+                type="button"
+                className="d-flex justify-content-between align-items-center"
+              >
+                Modal dialog examples
+                <CBadge color="secondary" shape="rounded-pill">
+                  Open
+                </CBadge>
+              </CListGroupItem>
+              <CListGroupItem
+                as="button"
+                type="button"
+                className="d-flex justify-content-between align-items-center"
+              >
+                Sidebar navigation customization
+                <CBadge color="secondary" shape="rounded-pill">
+                  Open
+                </CBadge>
+              </CListGroupItem>
+            </CListGroup>
+          </CModalBody>
+        </CModal>
         <CHeaderNav className="ms-auto">
           <CNavItem>
             <CNavLink href="#">

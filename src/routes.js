@@ -28,6 +28,7 @@ const ButtonGroups = React.lazy(() => import('./views/components/button-group/Bu
 const Cards = React.lazy(() => import('./views/components/cards/Cards'))
 const Carousels = React.lazy(() => import('./views/components/carousel/Carousel'))
 const Chip = React.lazy(() => import('./views/components/chip/Chip'))
+const ChipSet = React.lazy(() => import('./views/components/chip-set/ChipSet'))
 const Collapses = React.lazy(() => import('./views/components/collapse/Collapse'))
 const Dropdowns = React.lazy(() => import('./views/components/dropdowns/Dropdowns'))
 const ListGroups = React.lazy(() => import('./views/components/list-group/ListGroup'))
@@ -37,6 +38,7 @@ const Paginations = React.lazy(() => import('./views/components/pagination/Pagin
 const Placeholders = React.lazy(() => import('./views/components/placeholders/Placeholders'))
 const Popovers = React.lazy(() => import('./views/components/popovers/Popovers'))
 const Progress = React.lazy(() => import('./views/components/progress/Progress'))
+const SearchButton = React.lazy(() => import('./views/components/search-button/SearchButton'))
 const Spinners = React.lazy(() => import('./views/components/spinners/Spinners'))
 const Tabs = React.lazy(() => import('./views/components/tabs/Tabs'))
 const Tables = React.lazy(() => import('./views/components/tables/Tables'))
@@ -95,6 +97,7 @@ export const routes = [
   { path: '/components/cards', name: 'Cards', element: Cards },
   { path: '/components/carousel', name: 'Carousel', element: Carousels },
   { path: '/components/chip', name: 'Chip', element: Chip },
+  { path: '/components/chip-set', name: 'Chip Set', element: ChipSet },
   { path: '/components/collapse', name: 'Collapse', element: Collapses },
   { path: '/components/dropdowns', name: 'Dropdowns', element: Dropdowns },
   { path: '/components/list-group', name: 'List group', element: ListGroups },
@@ -104,6 +107,7 @@ export const routes = [
   { path: '/components/placeholders', name: 'Placeholders', element: Placeholders },
   { path: '/components/popovers', name: 'Popovers', element: Popovers },
   { path: '/components/progress', name: 'Progress', element: Progress },
+  { path: '/components/search-button', name: 'Search Button', element: SearchButton },
   { path: '/components/spinners', name: 'Spinners', element: Spinners },
   { path: '/components/tabs', name: 'Tabs', element: Tabs },
   { path: '/components/tables', name: 'Tables', element: Tables },

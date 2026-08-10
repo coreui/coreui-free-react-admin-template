@@ -25,6 +25,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [Versions](#versions)
 * [CoreUI PRO](#coreui-pro)
 * [CoreUI PRO React Admin Templates](#coreui-pro-react-admin-templates)
+* [Data Grid](#data-grid)
 * [Quick Start](#quick-start)
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
@@ -63,6 +64,19 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 | Modern Theme | Bright Theme |
 | --- | --- |
 | [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_default_v3_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=modern) | [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_light_v3_light_dark.webp)](https://coreui.io/product/react-dashboard-template/?theme=bright)|
+
+## Data Grid
+
+CoreUI React Data Grid handles 100,000+ rows with sorting, filtering, virtualization, column pinning, inline editing and CSV export — using the same markup and stylesheet this template already uses.
+
+```bash
+npm install @coreui/react-data-grid
+```
+
+One license also covers JavaScript, Vue and Angular. It's a separate add-on, not part of CoreUI PRO.
+
+- [React Data Grid](https://coreui.io/data-grid/react/?src=readme-free-react)
+- [Documentation](https://coreui.io/data-grid/react/docs/getting-started/introduction/?src=readme-free-react)
 
 ## Quick Start
 

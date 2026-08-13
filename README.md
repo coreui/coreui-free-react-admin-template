@@ -26,6 +26,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * [CoreUI PRO](#coreui-pro)
 * [CoreUI PRO React Admin Templates](#coreui-pro-react-admin-templates)
 * [Data Grid](#data-grid)
+* [Scheduler](#scheduler)
 * [Quick Start](#quick-start)
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
@@ -77,6 +78,19 @@ One license also covers JavaScript, Vue and Angular. It's a separate add-on, not
 
 - [React Data Grid](https://coreui.io/data-grid/react/?src=readme-free-react)
 - [Documentation](https://coreui.io/data-grid/react/docs/getting-started/introduction/?src=readme-free-react)
+
+## Scheduler
+
+CoreUI React Scheduler ships six views — day, week, month, agenda, resources, and timeline — with drag & drop, RFC 5545 recurrence, and DST-safe time handling, using the same markup and stylesheet this template already uses.
+
+```bash
+npm install @coreui/react-scheduler
+```
+
+One license also covers JavaScript, Vue and Angular. It's a separate add-on, not part of CoreUI PRO.
+
+- [React Scheduler](https://coreui.io/scheduler/react/?src=readme-free-react)
+- [Documentation](https://coreui.io/scheduler/react/docs/getting-started/introduction/?src=readme-free-react)
 
 ## Quick Start
 

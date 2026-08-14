@@ -66,6 +66,7 @@ const Brands = React.lazy(() => import('./views/icons/brands/Brands'))
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const DataGrid = React.lazy(() => import('./views/data-grid/DataGrid'))
+const Scheduler = React.lazy(() => import('./views/scheduler/Scheduler'))
 
 /**
  * Array of route configuration objects
@@ -130,6 +131,7 @@ export const routes = [
   { path: '/icons/brands', name: 'Brands', element: Brands },
   { path: '/widgets', name: 'Widgets', element: Widgets },
   { path: '/data-grid', name: 'Data Grid', element: DataGrid },
+  { path: '/scheduler', name: 'Scheduler', element: Scheduler },
 ]
 
 export default routes

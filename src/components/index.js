@@ -9,6 +9,7 @@ import DocsDataGrid from './DocsDataGrid'
 import DocsIcons from './DocsIcons'
 import DocsLink from './DocsLink'
 import DocsExample from './DocsExample'
+import DocsScheduler from './DocsScheduler'
 
 export {
   AppBreadcrumb,
@@ -22,4 +23,5 @@ export {
   DocsIcons,
   DocsLink,
   DocsExample,
+  DocsScheduler,
 }

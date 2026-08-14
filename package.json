@@ -27,6 +27,8 @@
     "@coreui/react": "^5.13.0",
     "@coreui/react-chartjs": "^3.0.0",
     "@coreui/react-data-grid": "^0.3.0-rc.0",
+    "@coreui/react-scheduler": "^0.1.0-rc.0",
+    "@coreui/scheduler": "^0.1.0-rc.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
     "chart.js": "^4.5.1",

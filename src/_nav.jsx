@@ -15,6 +15,7 @@ import CIcon from '@coreui/icons-react'
 import {
   cilBug,
   cilCalculator,
+  cilCalendar,
   cilChartPie,
   cilDescription,
   cilExternalLink,
@@ -509,6 +510,16 @@ const _nav = [
         to: '/icons/brands',
       },
     ],
+  },
+  {
+    component: CNavItem,
+    name: 'Scheduler',
+    to: '/scheduler',
+    icon: <CIcon icon={cilCalendar} customClassName="nav-icon" />,
+    badge: {
+      color: 'warning',
+      text: 'ADD-ON',
+    },
   },
   {
     component: CNavItem,

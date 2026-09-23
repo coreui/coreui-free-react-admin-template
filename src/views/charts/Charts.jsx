@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CCard, CCardBody, CCol, CCardHeader, CRow } from '@coreui/react'
 import {
   CChartBar,
@@ -10,8 +10,13 @@ import {
 } from '@coreui/react-chartjs'
 import { DocsLink } from 'src/components'
 
+const random = () => Math.round(Math.random() * 100)
+
 const Charts = () => {
-  const random = () => Math.round(Math.random() * 100)
+  const [randomData] = useState(() => [
+    Array.from({ length: 7 }, () => random()),
+    Array.from({ length: 7 }, () => random()),
+  ])
 
   return (
     <CRow>
@@ -54,7 +59,7 @@ const Charts = () => {
                     borderColor: 'rgba(220, 220, 220, 1)',
                     pointBackgroundColor: 'rgba(220, 220, 220, 1)',
                     pointBorderColor: '#fff',
-                    data: [random(), random(), random(), random(), random(), random(), random()],
+                    data: randomData[0],
                   },
                   {
                     label: 'My Second dataset',
@@ -62,7 +67,7 @@ const Charts = () => {
                     borderColor: 'rgba(151, 187, 205, 1)',
                     pointBackgroundColor: 'rgba(151, 187, 205, 1)',
                     pointBorderColor: '#fff',
-                    data: [random(), random(), random(), random(), random(), random(), random()],
+                    data: randomData[1],
                   },
                 ],
               }}

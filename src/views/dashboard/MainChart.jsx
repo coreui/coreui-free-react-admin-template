@@ -1,10 +1,16 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle } from '@coreui/utils'
 
+const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min
+
 const MainChart = () => {
   const chartRef = useRef(null)
+  const [randomData] = useState(() => [
+    Array.from({ length: 7 }, () => random(50, 200)),
+    Array.from({ length: 7 }, () => random(50, 200)),
+  ])
 
   useEffect(() => {
     const handleColorSchemeChange = () => {
@@ -30,8 +36,6 @@ const MainChart = () => {
       document.documentElement.removeEventListener('ColorSchemeChange', handleColorSchemeChange)
   }, [chartRef])
 
-  const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min
-
   return (
     <>
       <CChartLine
@@ -46,15 +50,7 @@ const MainChart = () => {
               borderColor: getStyle('--cui-info'),
               pointHoverBackgroundColor: getStyle('--cui-info'),
               borderWidth: 2,
-              data: [
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-              ],
+              data: randomData[0],
               fill: true,
             },
             {
@@ -63,15 +59,7 @@ const MainChart = () => {
               borderColor: getStyle('--cui-success'),
               pointHoverBackgroundColor: getStyle('--cui-success'),
               borderWidth: 2,
-              data: [
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-                random(50, 200),
-              ],
+              data: randomData[1],
             },
             {
               label: 'My Third dataset',
